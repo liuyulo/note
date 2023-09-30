@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Application of Derivative</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Application of Derivative</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="application-of-derivative">Application of Derivative</h1>
+<ul>
+<li><a href="#theorems">Theorems</a>
+<ul>
+<li><a href="#critical-point-cp">Critical Point (CP)</a></li>
+<li><a href="#evt">EVT</a>
+<ul>
+<li><a href="#extrema">Extrema</a></li>
+<li><a href="#example">Example</a></li>
+</ul></li>
+<li><a href="#rolle">Rolle</a></li>
+<li><a href="#mvt">MVT</a></li>
+</ul></li>
+<li><a href="#curve-sketching">Curve Sketching</a>
+<ul>
+<li><a href="#example-1">Example</a></li>
+<li><a href="#example-slant">Example Slant</a></li>
+</ul></li>
+<li><a href="#lhôpital">L’Hôpital</a></li>
+</ul>
+</div>
+<h1 id="theorems">Theorems</h1>
+<h2 id="critical-point-cp">Critical Point (CP)</h2>
+<blockquote>
+<p><span class="math inline">x=c</span> where <span
+class="math inline">f&#39;(c)=0</span> or <span
+class="math inline">f&#39;(c)</span> DNE</p>
+</blockquote>
+<ul>
+<li>critical point means one of the following
+<ul>
+<li>change <em>increase/decrease</em>
+<ul>
+<li>local/global max</li>
+<li>local/global min</li>
+</ul></li>
+<li>change concave <em>up/down</em>
+<ul>
+<li>inflection point</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="evt">EVT</h2>
+<blockquote>
+<p>if <span class="math inline">f</span> is <em>continuous on <span
+class="math inline">[a,b]</span></em>, then <span
+class="math inline">f</span> <strong>has an abs max and an abs
+min</strong> at <span class="math inline">[a,b]</span></p>
+</blockquote>
+<h3 id="extrema">Extrema</h3>
+<blockquote>
+<ul>
+<li><span class="math inline">\exists\delta&gt;0\enspace\forall
+x\in(c-\delta,c+\delta)\text{ st }f(c)\ge f(x)\iff</span> <em>local
+max</em> at <span class="math inline">x=c</span></li>
+<li><span class="math inline">\exists\delta&gt;0\enspace\forall
+x\in(c-\delta,c+\delta)\text{ st }f(c)\le f(x)\iff</span> <em>local
+min</em> at <span class="math inline">x=c</span></li>
+</ul>
+</blockquote>
+<ul>
+<li>proof <strong>Fermats Theorem</strong><br>if <em>c is local
+extremum</em> and <em><span class="math inline">f&#39;(c)</span>
+exists</em>, then <strong><span
+class="math inline">f&#39;(c)=0</span></strong> (e.g. max)
+<ul>
+<li><span class="math inline">f(x)</span> has local max at <span
+class="math inline">x=c</span> means <span
+class="math display">\exists\delta&gt;0\enspace\forall
+x\in(c-\delta,c+\delta)\text{ st }f(c)\ge f(x)</span> <span
+class="math display">\begin{aligned}
+  \because\;&amp;\forall x\in[c,c+\delta)\enspace
+f(x)-f(c)\le0\Rightarrow x-c\ge0\\
+  \therefore\;&amp; f&#39;(c^+)=\lim\limits_{x\to
+c}\frac{f(x)-f(c)}{x-c}\le0\\
+  \because\;&amp;\forall x\in(c-\delta,c]\enspace
+f(x)-f(c)\le0\Rightarrow x-c\le0\\
+  \therefore\;&amp;f&#39;(c^-)=\lim\limits_{x\to
+c}\frac{f(x)-f(c)}{x-c}\le0\\
+  \because\;&amp;f&#39;(c)\text{ exists}\\
+  \therefore\;&amp;f&#39;(c^-)=f&#39;(c^+)=0=f&#39;(c)\quad\blacksquare
+  \end{aligned}</span> ### Example</li>
+</ul></li>
+<li>find abs min and abs max of <span
+class="math inline">f(x)=x^2=27x+1</span> at <span
+class="math inline">[-1,6]</span>
+<ol type="1">
+<li><span class="math inline">\because f(x)</span> is polynomial
+<ul>
+<li><span class="math inline">\therefore</span> is continuous on <span
+class="math inline">[-1,6]</span></li>
+<li><span class="math inline">\therefore</span> has an abs max and an
+abs min</li>
+</ul></li>
+<li>find cp on <span class="math inline">(1,6)</span>
+<ul>
+<li><span class="math inline">f&#39;(x)=3x^2-27</span></li>
+<li><span class="math inline">f&#39;(x)=0</span><br> when <span
+class="math inline">x_1=-3\not\in(-1,6)\quad x_2=3\in(1,6)</span></li>
+<li><span class="math inline">f&#39;(x)</span> DNE<br> no such
+points</li>
+</ul></li>
+<li>compare with bound
+<ul>
+<li><span class="math inline">f(-1)=-53\\f(3)=27\\f(6)=55</span></li>
+<li><span class="math inline">\therefore</span> abs max at <span
+class="math inline">x=6</span>, abs min at <span
+class="math inline">x=3</span> ## Rolle &gt; if <span
+class="math inline">f</span> is <em>continuous on <span
+class="math inline">[a,b]</span></em> and <em>diffable on <span
+class="math inline">(a,b)</span></em> and <em><span
+class="math inline">f(a)=f(b)=0</span></em>, then <strong><span
+class="math inline">\exists c\in(a,b)\enspace
+f&#39;(c)=0</span></strong></li>
+</ul></li>
+</ol></li>
+<li>proof (EVT)
+<ul>
+<li>assume diffable on <span class="math inline">(a,b)</span> and
+continuous on <span class="math inline">[a,b]</span></li>
+<li><span class="math inline">\because f(a)=f(b)</span></li>
+<li>(EVT) <span class="math inline">\therefore\exists c\in[a,b]</span>
+st <span class="math inline">x=c</span> is an absolute extrema</li>
+<li><span class="math inline">\therefore x=c</span> is also a local
+extrema</li>
+<li>(Fermat’s Theorem) <span class="math inline">\therefore
+f&#39;(c)=0</span></li>
+</ul></li>
+</ul>
+<h2 id="mvt">MVT</h2>
+<blockquote>
+<p>if <span class="math inline">f</span> is <em>continuous on <span
+class="math inline">[a,b]</span></em> and <em>diffable on <span
+class="math inline">(a,b)</span></em>, then <span
+class="math display">\textcolor{#66ccff}{\exists
+c\in(a,b)\quad\frac{f(b)-f(a)}{b-a}=f&#39;(c)}</span></p>
+</blockquote>
+<ul>
+<li>proof
+<ul>
+<li>assume <span class="math inline">f</span> is cont on <span
+class="math inline">[a,b]</span> and diffable on <span
+class="math inline">(a,b)</span></li>
+<li>let <span class="math inline">l</span> be the secant line from <span
+class="math inline">(a,f(a))</span> to <span
+class="math inline">(b,f(b))</span> <span
+class="math display">l=\frac{f(b)-f(a)}{b-a}(x-a)+f(a)</span></li>
+<li>let <span class="math inline">g=f-l</span> <span
+class="math display">g=f(x)-\frac{f(b)-f(a)}{b-a}(x-a)+f(a)</span></li>
+<li><span class="math inline">\because f</span> and <span
+class="math inline">l</span> are both cont on <span
+class="math inline">[a,b]</span> and diffable on <span
+class="math inline">(a,b)</span><br> <span
+class="math inline">\therefore g</span> is cont on <span
+class="math inline">[a,b]</span> and diffable on <span
+class="math inline">(a,b)</span></li>
+<li><span class="math inline">\because</span> <span
+class="math display">\begin{aligned}
+    &amp;g(a)=f(a)-\frac{f(b)-f(a)}{b-a}(a-a)-f(a)=0\\
+    &amp;g(b)=f(b)-\frac{f(b)-f(a)}{b-a}(b-a)-f(a)=0\\
+\end{aligned}</span> (Rolle’s) <span
+class="math inline">\therefore\exists c\in(a,b)\quad
+g&#39;(c)=0</span></li>
+<li><span class="math inline">\because</span> <span
+class="math display">\begin{aligned}
+    g&#39;&amp;=\left(f(x)-\frac{f(b)-f(a)}{b-a}(x-a)+f(a)\right)&#39;\\
+    &amp;=f&#39;(x)-\frac{f(b)-f(a)}{b-a}(1-0)+0\\
+    &amp;=f&#39;(x)-\frac{f(b)-f(a)}{b-a}\\
+\end{aligned}</span> <span class="math inline">\therefore</span> <span
+class="math display">\begin{aligned}
+    g&#39;(c)=0&amp;=f&#39;(c)-\frac{f(b)-f(a)}{b-a}\\
+    f&#39;(c)&amp;=\frac{f(b)-f(a)}{b-a}\quad\blacksquare
+\end{aligned}</span></li>
+</ul></li>
+</ul>
+<h1 id="curve-sketching">Curve Sketching</h1>
+<ol type="1">
+<li><span class="math inline">\text{Dom}(f)</span></li>
+<li><em>intercepts</em>
+<ul>
+<li>when <span class="math inline">x=0</span>, find <span
+class="math inline">f(x)</span></li>
+<li>when <span class="math inline">f(x)=0</span> find <span
+class="math inline">x</span></li>
+</ul></li>
+<li><em>symmetry</em>
+<ul>
+<li>check if <span class="math inline">f(-x)=f(x)</span> or <span
+class="math inline">f(-x)=-f(x)</span></li>
+</ul></li>
+<li>asymptotes
+<ul>
+<li><em>VA</em> approach both side to <span class="math inline">a</span>
+where <span class="math inline">f(a)</span> DNE</li>
+<li><em>SA</em>
+<ul>
+<li><span class="math inline">y=mx+b</span><br> <span
+class="math inline">m=\lim\limits_{x\to\pm\infty}\frac{f(x)}x</span><br>
+<span
+class="math inline">b=\lim\limits_{x\to\pm\infty}(f-mx)</span></li>
+</ul></li>
+<li>(only if <span class="math inline">m=0</span>) <em>HA</em> approach
+to <span class="math inline">-\infty</span> and <span
+class="math inline">\infty</span></li>
+<li>do <span class="math inline">\text{HA}=f(x)</span> to see if
+intersection exists</li>
+</ul></li>
+<li><em>cp ip</em>
+<ul>
+<li>use <span class="math inline">f&#39;(x)=0</span> to get cps</li>
+<li>use <span class="math inline">f&#39;&#39;(x)=0</span> to get
+ips</li>
+</ul></li>
+<li>test signs
+<ul>
+<li>use <span class="math inline">f(x)</span> to test <code>+</code> or
+<code>-</code> on intervals divided by y-int and VA</li>
+<li>use <span class="math inline">f&#39;(x)</span> to test
+<code>↗</code> or <code>↘</code> (divided by cps)</li>
+<li>use <span class="math inline">f&#39;&#39;(x)</span> to test
+<code>∪</code> or <code>∩</code> (divided by ips)</li>
+</ul></li>
+<li>draw graph</li>
+</ol>
+<h2 id="example">Example</h2>
+<p><span class="math display">\begin{aligned}
+    f(x)&amp;=x^5-15x^3=x^3(x-\sqrt{15})(x+\sqrt{15})\\
+    f&#39;(x)&amp;=5x^4=5x^2(x+3)(x-3)\\
+    f&#39;&#39;(x)&amp;=20x^3-90x=10x(\sqrt2x-3)(\sqrt2x+3)
+\end{aligned}</span></p>
+<ol type="1">
+<li><p>polynomial <span
+class="math inline">\therefore\text{Dom}(f)=\mathbb{R}</span></p></li>
+<li><p><span class="math inline">f(x)=0</span> when <em><span
+class="math inline">x=0</span></em> and <em><span
+class="math inline">x=\pm\sqrt{15}\approx\pm3.87</span></em><br> <span
+class="math inline">f(0)=0</span></p></li>
+<li><p><span class="math inline">\because
+f(-x)=(-x)^5-15(-x)^3=-x^5+15x^3=-f(x)</span><br> <span
+class="math inline">\therefore f(x)</span> is odd<br> <span
+class="math inline">\therefore</span> only need to consider <span
+class="math inline">[0,\infty)</span><br></p></li>
+<li><p><span
+class="math inline">\because\text{Dom}(f)=\mathbb{R}\quad\therefore</span>
+no VA<br> <span
+class="math inline">\because\lim\limits_{x\to\infty}f(x)=\infty\quad\therefore</span>
+no HA<br> no SA</p></li>
+<li><p><span class="math inline">f&#39;(x)=0</span> when <em><span
+class="math inline">x=0</span></em> and <em><span
+class="math inline">x=\pm3</span></em><br> <span
+class="math inline">f&#39;&#39;(x)=0</span> when <em><span
+class="math inline">x=0</span></em> and <em><span
+class="math inline">x=\pm\frac3{\sqrt2}\approx\pm2.12</span></em></p></li>
+<li><p>(test values, then) chart</p>
+<pre><code>   0             2.12     3    3.87
+───┼────────────────────────────┼────────&gt;
+   │f(1) &lt; 0                    │f(4) &gt; 0
+f  │             neg            │  pos
+───┼──────────────────────┼─────┴────────
+   │f&#39;(1) &lt; 0             │f(4) &gt; 0
+f&#39; │          ↘          min      ↗
+───┼──────────────┼───────┴──────────────
+   │f&#39;&#39;(1) &lt; 0    │f&#39;&#39;(3) &gt; 0
+f&#39;&#39;│       ∩      IP          ∪
+───┴──────────────┴──────────────────────
+
+                           🭿
+0 ─── 2.12 ─── 3 ─── 3.87 ───&gt;
+   🭾        🭼     🭿</code></pre></li>
+<li><p>draw graph (with left side mirrored)<br> <img
+src="assets/curve.png" /></p></li>
+</ol>
+<h2 id="example-slant">Example Slant</h2>
+<p><span class="math display">\begin{aligned}
+    y&amp;=\sqrt{x^2+4x}=|x|\sqrt{1+4/x}\\
+    y&#39;&amp;=\frac{x+2}{\sqrt{x^2+4x}}=\frac{x+2}{\sqrt{x(x+4)}}\\
+    y&#39;&#39;&amp;=\frac{-4}{(x^2+4x)^{3/2}}=\frac{-4}{(x(x+4))^{3/2}}
+\end{aligned}</span></p>
+<ol type="1">
+<li><span class="math inline">\because x(x+4)\ge0</span><br> <span
+class="math inline">\therefore\text{Dom}(f)=(-\infty,-4]\cup[0,\infty)</span></li>
+<li><span class="math inline">f(x)=0</span> when <span
+class="math inline">x=0</span> and <span
+class="math inline">x=-4</span><br> <span
+class="math inline">f(0)=0</span></li>
+<li>no symmetry</li>
+<li>no VA<br> <span
+class="math inline">\begin{aligned}  m_1&amp;=\lim\limits_{x\to-\infty}\frac{|x|\sqrt{1+4/x}}x=\lim\limits_{x\to-\infty}\frac{-x\sqrt{1+4/x}}x=-1\\  b_1&amp;=\lim\limits_{x\to-\infty}(f+x)=\lim\limits_{x\to-\infty}\frac{(f+x)(f-x)}{f-x}=\lim\limits_{x\to-\infty}\frac{4x}{|x|\sqrt{1+4/x}-x}=-2\\  \text{LSA}&amp;:y=-x-2\\  m_2&amp;=\lim\limits_{x\to\infty}\frac{|x|\sqrt{1+4/x}}x=\lim\limits_{x\to\infty}\frac{x\sqrt{1+4/x}}x=1\\  b_2&amp;=\lim\limits_{x\to\infty}(f-x)=\lim\limits_{x\to\infty}\frac{(f-x)(f+x)}{f+x}=\lim\limits_{x\to\infty}\frac{4x}{|x|\sqrt{1+4/x}+x}=2\\  \text{RSA}&amp;:y=x+2
+\end{aligned}</span><br> no HA</li>
+<li>… # L’Hôpital &gt; if <span class="math inline">f,g</span> are
+diffable and <span class="math inline">g(c)\ne0</span> &gt; <span
+class="math display">\lim\limits_{x\to c}\frac fg=\lim\limits_{x\to
+c}\frac{f&#39;}{g&#39;}</span></li>
+</ol>
+</body>
+</html>

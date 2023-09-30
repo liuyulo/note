@@ -1,0 +1,149 @@
+---
+title: Subgroup
+---
+
+import Tikz from '../../components/Tikz.astro'
+
+<details class="definition" open>
+<summary>order</summary>
+- order of group $G$ is $|G|$: number of elements
+- order of $a\in G$ is $|a|$: smallest $n$ st $a^n=e$ (or infinity)
+</details>
+
+<details class="definition" open>
+<summary>subgroup $H\le G$</summary>
+iff $H\sube G$ is a group with the operation of $G$
+
+-  $H<G$ denotes proper subgroup
+</details>
+
+<details class="theorem" open>
+<summary>subgroup test: set $H$ is a subgroup of $G$, $H\le G$ iff all </summary>
+- $H$ non empty
+- $H\sube G$
+- $a,b\in H\implies ab^{-1}\in H$
+</details>
+
+## Center
+
+<details class="definition" open>
+<summary>center of group $G$ is $Z(G)\le G$</summary>
+$$
+Z(G)=\{a\in G:ab=ba\enspace\forall b\in G\}
+$$
+
+i.e. group of elements that commute with any element
+</details>
+
+<details class="definition" open>
+<summary>centraliser of $a\in G$ is $C(a)\le G$</summary>
+$$
+C(a)=\{b\in G:ab=ba\}
+$$
+
+i.e. group of elements that commute with $a$
+</details>
+
+<details class="theorem" open>
+<summary>$G$ abeliean $\iff G=Z(G)$</summary>
+
+</details>
+
+<details open class="example">
+<summary>$\exists!a\in G$ st $|a|=2\implies a\in Z(G)$</summary>
+<details class="list-none">
+<summary>**Proof.** assume $\exists!a\in G$ st $|a|=2$</summary>
+
+$\therefore a^2=e$ by def
+
+let any $b\in G$
+
+$$
+\begin{aligned}
+  \therefore&&(b^{-1}ab)^2&=b^{-1}abb^{-1}ab=b^{-1}a^2b=e\\
+  \therefore&&|b^{-1}ab|&=2\\
+  \therefore&&b^{-1}ab&=a\\
+  \therefore&&ab&=b(b^{-1}ab)=ba
+\end{aligned}
+$$
+
+$\therefore a\in Z(G)\quad\square$
+</details>
+</details>
+
+<details class="example" open>
+<summary>given $\exists k\in\mathbb N$ st $\forall x\in G\enspace x^{2k+1}=e$, wts $\forall a,b\in G\enspace a^2=b^2\implies a=b$</summary>
+
+<details>
+<summary>**Proof.** let any $a,b\in G$</summary>
+let any $a,b\in G$
+$$
+\begin{aligned}
+  \because&&a^2&=b^2\\
+  \therefore&&e&=a^2a^{-2}=b^2a^{-2}\\
+  \therefore&&a&=ea=(ba^{-1})^{2k+1}a=(ba^{-1})^{2k}ba^{-1}a=(b^2a^{-2})^kb=b\quad\square
+\end{aligned}
+$$
+</details>
+
+</details>
+
+<details class="example" open>
+<summary>let $G=SL(2,\mathbb R)$ wts $Z(G)=\{aI:a\in\mathbb R\}$</summary>
+<details>
+<summary>**Proof.** wts $\sube$, let any $A=\begin{pmatrix}a&b\\c&d\\\end{pmatrix}\in Z(G)$</summary>
+
+
+
+$$
+\begin{aligned}
+  \because&&\begin{pmatrix}a&0\\c&0\\\end{pmatrix}&=\begin{pmatrix}a&b\\c&d\\\end{pmatrix}\begin{pmatrix}1&0\\0&0\\\end{pmatrix}=\begin{pmatrix}1&0\\0&0\\\end{pmatrix}\begin{pmatrix}a&b\\c&d\\\end{pmatrix}=\begin{pmatrix}a&b\\0&0\\\end{pmatrix}\\
+  \therefore&&b&=0=c\\
+  \because&&\begin{pmatrix}b&a\\d&c\\\end{pmatrix}&=\begin{pmatrix}a&b\\c&d\\\end{pmatrix}\begin{pmatrix}0&1\\1&0\\\end{pmatrix}=\begin{pmatrix}0&1\\1&0\\\end{pmatrix}\begin{pmatrix}a&b\\c&d\\\end{pmatrix}=\begin{pmatrix}c&d\\a&b\\\end{pmatrix}\\
+  \therefore&&a&=d\\
+  \therefore&&\begin{pmatrix}a&b\\c&d\\\end{pmatrix}&=\begin{pmatrix}a&0\\0&a\\\end{pmatrix}=aI\in\{aI:a\in\mathbb R\}
+\end{aligned}
+$$
+
+wts $\supe$, let any $aI\in\{aI:a\in\mathbb R\}$
+
+- let any $B\in SR(2,\mathbb R)$
+- $\therefore aIB=aB=BaI$
+- $\therefore aI\in Z(G)$
+
+</details>
+</details>
+
+## Subgroup Lattice
+<details class="definition" open>
+<summary>subgroup lattice of group $G$</summary>
+- undirected graph
+  - each vertex is a subgroup of $G$
+  - each edge indicates bottom is proper subgroup of top
+- top most vertex is $G$, bottom most is $\{e\}$
+- between $G$ and $\{e\}$ has all subgroups of $G$
+</details>
+
+<details class="example" open>
+<summary>subgroup lattice of $Z_{30}$</summary>
+
+<Tikz>
+{String.raw`$$
+\begin{tikzpicture}
+\node at(0.00, 2.50)(1){$\langle1\rangle$};
+\node at(-2.17, 1.25)(2){$\langle2\rangle$};
+\node at(0, 1.25)(3){$\langle3\rangle$};
+\node at(2.17, 1.25)(5){$\langle5\rangle$};
+\node at(-2.17, -1.25)(6){$\langle6\rangle$};
+\node at(0, -1.25)(10){$\langle10\rangle$};
+\node at(2.17, -1.25)(15){$\langle15\rangle$};
+\node at(0.00, -2.50)(0){$\langle0\rangle$};
+\draw (1) edge (2) edge (3) edge (5)
+    (6) edge (2) edge (3) edge (0)
+    (10) edge (2) edge (5) edge (0)
+    (15) edge (3) edge (5) edge (0);
+\end{tikzpicture}
+$$`}
+</Tikz>
+
+</details>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Morphology II</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Morphology II</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#complex-derivations-and-constraints">Complex Derivations
+and Constraints</a>
+<ul>
+<li><a href="#morphological-ambiguity">Morphological Ambiguity</a></li>
+</ul></li>
+<li><a href="#word-formation-process">Word Formation Process</a>
+<ul>
+<li><a href="#compounding">Compounding</a></li>
+<li><a href="#properties-of-compounds">Properties of Compounds</a>
+<ul>
+<li><a href="#endocentric">Endocentric</a></li>
+<li><a href="#exocentric">Exocentric</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#other-word-formation-process">Other Word Formation
+Process</a>
+<ul>
+<li><a href="#affixation">Affixation</a></li>
+<li><a href="#internal-change-inflection">Internal Change
+(Inflection)</a></li>
+<li><a href="#suppletion-inflection">Suppletion (Inflection)</a></li>
+<li><a href="#reduplication-inflection">Reduplication (Inflection)</a>
+<ul>
+<li><a href="#partial-reduplication">Partial Reduplication</a></li>
+<li><a href="#full-reduplication">Full Reduplication</a></li>
+</ul></li>
+<li><a href="#zero-derivation">Zero Derivation</a></li>
+<li><a href="#clipping">Clipping</a></li>
+<li><a href="#blending">Blending</a></li>
+<li><a href="#backformation">Backformation</a></li>
+<li><a href="#acronym-and-initialism">Acronym and Initialism</a></li>
+<li><a href="#coinage">Coinage</a></li>
+<li><a href="#eponymy">Eponymy</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="introduction">Introduction</h1>
+<blockquote>
+<p>word structure can be represented with <strong>morphological
+trees</strong></p>
+</blockquote>
+<p>(draw this in exam)</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>        n</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ┌───┴───┐</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   adj     suff</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> ┌──┴─┐     │</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> n   suff   │</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> │    │     │</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>job -less -ness</span></code></pre></div>
+<p>(but this is used here to save space)</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>   ┌─ adj ┬── n ──── job</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n ─┤      └── suff ─ -less</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>   └─ suff ───────── -ness</span></code></pre></div>
+<h1 id="complex-derivations-and-constraints">Complex Derivations and
+Constraints</h1>
+<blockquote>
+<p>if both prefix and suffix exist, check which one can freely attach to
+the n/v/adj/adv/etc</p>
+</blockquote>
+<p>discontinuation - (dis-continua)tion exists because <code>dis-</code>
+is attached to verb - <del>dis(continua-tion)</del> dne because
+<code>dis-</code> cannot attach to noun</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>   ┌─ v ┬── pref ─ dis-</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n ─┤    └── v ──── continue</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   └─ suff ─────── -tion</span></code></pre></div>
+<h2 id="morphological-ambiguity">Morphological Ambiguity</h2>
+<blockquote>
+<p>words that are <strong>structurally ambiguous</strong> have
+<em>multiple meanings</em>, therefore multiple trees</p>
+</blockquote>
+<ul>
+<li><strong>un</strong>: reverse meaning, but the <strong>verb</strong>
+must be reversible
+<ul>
+<li>un(believable) is not ambiguous because <del>unbelieve</del>
+dne</li>
+</ul></li>
+</ul>
+<p>untie(able): be able to untie</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>     ┌─ v ┬── pref ─ un-</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>adj ─┤    └── v ──── tie</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     └─ suff ─────── -able</span></code></pre></div>
+<p>un(tieable): not tieable, unable to tie</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>     ┌─ pref ──────── un-</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>adj ─┤      ┌─ v ──── tie</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     └─ adj ┴─ suff ─ -able</span></code></pre></div>
+<h1 id="word-formation-process">Word Formation Process</h1>
+<h2 id="compounding">Compounding</h2>
+<blockquote>
+<p>join together two existing words into a new unit</p>
+</blockquote>
+<ul>
+<li><strong>head</strong> determines the lexical category
+<ul>
+<li>in Eng, ususally on the <strong>right</strong> (parking
+<strong>ticket</strong>, case-<strong>sensitive</strong>)</li>
+</ul></li>
+</ul>
+<h2 id="properties-of-compounds">Properties of Compounds</h2>
+<blockquote>
+<p>written in multitude of ways: <strong>hyphen</strong>,
+<strong>single</strong> word, <strong>separate</strong> words<br>
+pronounce differently: “<strong>green</strong>house” vs “green
+<strong>house</strong>”</p>
+</blockquote>
+<h3 id="endocentric">Endocentric</h3>
+<blockquote>
+<p>meaning is related to the <strong>head</strong> of the compound</p>
+</blockquote>
+<ul>
+<li>earth<strong>worm</strong> is a type of worm</li>
+<li>self-<strong>care</strong> is a type of care</li>
+</ul>
+<h3 id="exocentric">Exocentric</h3>
+<blockquote>
+<p>meaning is not predictable</p>
+</blockquote>
+<ul>
+<li>blue<strong>bell</strong> is not a type of bell (it’s a flower)</li>
+</ul>
+<h1 id="other-word-formation-process">Other Word Formation Process</h1>
+<h2 id="affixation">Affixation</h2>
+<table>
+<tbody>
+<tr>
+<td>
+</td>
+<td>
+inflectional
+</td>
+<td>
+derivational
+</td>
+</tr>
+<tr>
+<td>
+prefixation
+</td>
+<td>
+</td>
+<td>
+write
+</td>
+</tr>
+<tr>
+<td>
+suffixation
+</td>
+<td>
+rewrite
+</td>
+<td>
+writer
+</td>
+</tr>
+<tbody>
+</table>
+<h2 id="internal-change-inflection">Internal Change (Inflection)</h2>
+<blockquote>
+<p>a non-morphemic element is changed to represent
+<strong>inflection</strong>(grammatical change)</p>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>- swim =<span class="op">&gt;</span> swam</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>- drink =<span class="op">&gt;</span> drank</span></code></pre></div>
+<h2 id="suppletion-inflection">Suppletion (Inflection)</h2>
+<blockquote>
+<p>replaced by another completely unrelated morpheme</p>
+</blockquote>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>- go =<span class="op">&gt;</span> went</span></code></pre></div>
+<h2 id="reduplication-inflection">Reduplication (Inflection)</h2>
+<h3 id="partial-reduplication">Partial Reduplication</h3>
+<blockquote>
+<p>repeat part of the morphological base</p>
+</blockquote>
+<p>eg Tagalog</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>- takbo(run) =<span class="op">&gt;</span> tatakbo(will run)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>- pili(choose) =<span class="op">&gt;</span> pipili(will choose)</span></code></pre></div>
+<h3 id="full-reduplication">Full Reduplication</h3>
+<blockquote>
+<p>copy the entire morphological base to change meaning</p>
+</blockquote>
+<p>eg Indonesian</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>- orang(man) =<span class="op">&gt;</span> orang orang(men)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>- mangga(mango) =<span class="op">&gt;</span> mangga mangga(mangoes)</span></code></pre></div>
+<h2 id="zero-derivation">Zero Derivation</h2>
+<blockquote>
+<p>assign a new lexical category to an already existing word</p>
+</blockquote>
+<ul>
+<li>talk, sleep, ship, train, stop, drink</li>
+</ul>
+<h2 id="clipping">Clipping</h2>
+<blockquote>
+<p>shorten a multisyllabic word by deleting syllable(s)</p>
+</blockquote>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>- fanatic =<span class="op">&gt;</span> fan</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>- biology =<span class="op">&gt;</span> bio</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>- application =<span class="op">&gt;</span> app</span></code></pre></div>
+<h2 id="blending">Blending</h2>
+<blockquote>
+<p>create new words from parts of already existing words</p>
+</blockquote>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>- motor <span class="op">+</span> hotel = motel</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>- breakfast <span class="op">+</span> lunch = brunch</span></code></pre></div>
+<h2 id="backformation">Backformation</h2>
+<blockquote>
+<p>create new lexicas entries by removing an affix from an already
+existing word</p>
+</blockquote>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>- donation =<span class="op">&gt;</span> donate</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>- editor =<span class="op">&gt;</span> edit</span></code></pre></div>
+<h2 id="acronym-and-initialism">Acronym and Initialism</h2>
+<blockquote>
+<p>take the first letters in phrase</p>
+</blockquote>
+<ul>
+<li><strong>acronym</strong>: pronounce as a word
+<ul>
+<li><em>NASA</em>: Natioal Aeronautics and Space Administration</li>
+<li><em>laser</em>: light amplification by simulated emission of
+radiation</li>
+</ul></li>
+<li><strong>initialism</strong>(abbreviation): pronounce letter by
+letter
+<ul>
+<li><em>USA</em>: United States of America</li>
+<li><em>CD</em>: Compact Disc</li>
+</ul></li>
+</ul>
+<h2 id="coinage">Coinage</h2>
+<blockquote>
+<p>produce a new word from scratch, responsible for product names,
+company names, etc</p>
+</blockquote>
+<ul>
+<li>Kleenex, Kodak, Teflon</li>
+</ul>
+<h2 id="eponymy">Eponymy</h2>
+<blockquote>
+<p>words created from names of people</p>
+</blockquote>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>- ferries =<span class="op">&gt;</span> George Washington Gale Ferries Jr<span class="fu">.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>- watt =<span class="op">&gt;</span> James Watt</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>- and other measurement units</span></code></pre></div>
+</body>
+</html>

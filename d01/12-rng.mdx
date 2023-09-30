@@ -1,0 +1,446 @@
+---
+title: Ring Theory
+---
+
+<details class="definition" open>
+<summary>ring</summary>
+
+a **ring** $R$ is set with *addition* and *multiplication* such that
+
+- $R$ is abelian additive group
+- $R$ is multiplicative semigroup
+- multiplication is distributive wrt addition
+
+trivial ring is $\{0\}$
+
+</details>
+
+<details class="definition" open>
+<summary></summary>
+
+- ring **with unity** is *non-trivial* ring with multiplicative identity (i.e. multiplicative monoid)
+- **commutative** ring is ring with commutative multiplication 
+- $a$ **divides** $b\iff a|b$, that is $\exists c\enspace b=ac$
+- let $R^*$ denote $R\setminus\{0\}$ (without add iden)
+- $a\in R^*$ is a **unit** $\iff a$ has multiplicative inverse
+</details>
+
+<details class="definition" open>
+<summary>characteristic</summary>
+
+for ring $R,r\in R$ and $n\in\mathbb Z^+$, let $nr$ denote
+
+$$
+\underbrace{r+\cdots+r}_n
+$$
+
+the **characteristic** of ring $R$ is 
+
+$$
+\operatorname{char}R=\min\{n\in\mathbb Z^+:nr=0\enspace r\in R\}
+$$
+
+or $\operatorname{char}R=0$ if no such $n$ exists
+</details>
+
+
+<details class="example" open>
+<summary>everyday rings</summary>
+
+- $M_n(R)$ is noncomm ring of nxn matrices over ring $R$
+- $\mathbb Z[i]$ is ring of gaussian integers
+- $\mathbb Z_n$ is comm finite ring with nonzero char
+- $\mathbb Z_n[x]$ is comm infinite ring with nonzero char
+- $R_1\oplus R_2$ is ring
+</details>
+
+<details class="theorem" open>
+<summary>subring test</summary>
+
+for ring $R$ and nonempty $S\sube R$ where
+
+- $S$ closed under difference
+- $S$ closed under multiplication
+
+then $S$ is subring of $R$
+
+</details>
+
+<details class="definition" open>
+<summary>center of ring</summary>
+
+for ring $R$, its **center** is 
+
+$$
+Z(R)=\{r:\forall a\in R\enspace ar=ra\}
+$$
+
+</details>
+
+<details class="example" open>
+<summary>commutative rings</summary>
+
+<details class="list-none">
+<summary>**Proof.** outer/inner cancellation implies commutative</summary>
+
+let any ring $R$
+
+assume $ab=ca\implies  b=c$ for any $a\ne0$, wts $R$ commutative
+
+let any $a,b\in R$
+
+case $b=0$
+
+$\therefore ab=a0=0=0a=ab$
+
+case $b\ne 0$
+
+$\because b(ab)=bab=(ba)b$
+
+$\therefore ab=ba\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** every $x^2-x$ commutes implies commutative</summary>
+
+let any $a\in R$
+
+- wts $a^2\in Z(R)$, let any $b\in R$
+  $$
+  \begin{align*}
+      \because&&(a^2-a)+(b^2-b)+ab+ba&=(a+b)^2-(a+b)\in Z(R)\\
+      \therefore&& ab+ba&\in Z(R)\tag{$Z(R)$ is ring}\\
+      \therefore&& a^2b+aba&=a(ab+ba)=(ab+ba)a=aba+ba^2=ba^2+aba\\
+      \therefore&& a^2b&=ba^2\\
+  \end{align*}
+  $$
+- thus $a^2\in Z(R)$ as wanted
+- wts $a\in Z(R)$
+  $$
+  \begin{align*}
+    \because&& a^2-a,a^2\in Z(R)\\
+    \therefore&& a=a^2-(a^2-a)\in Z(R)\tag{$Z(R)$ is ring}
+  \end{align*}
+  $$
+thus $R\subseteq Z(R)$
+
+$\therefore R=Z(R)$ is commutative $\enspace\square$
+
+</details>
+
+
+<details class="list-none">
+<summary>**Proof.** every $x^2+x$ commutes implies commutative</summary>
+
+let any $r\in R$
+
+$$
+\therefore r^2-r=(-r)^2+(-r)\in Z(R)
+$$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** every $[x^2,y]=[x,y]$ implies commutative</summary>
+
+$$
+\begin{align*}
+  \because&& x^2y-yx^2&=xy-yx\\
+  \therefore&&(x^2-x)y&=y(x^2-x)\\
+  \therefore&& x^2-x&\in Z(R)\enspace\square
+\end{align*}
+$$
+
+
+</details>
+
+<details>
+<summary>**Proof.** every $x^2=x$ implies commutative</summary>
+
+let any $a,b\in R$
+
+$$
+\begin{align*}
+  \therefore&& -a&=(-a)^2=a^2\\
+  \therefore&&ab&=ab+(a\textcolor{red}{-a})+(b\textcolor{red}{-b})+(ab-ab)+(ba-ba)\\
+  &&&=ab+\textcolor{red}{a^2}+ab+ba+\textcolor{red}{b^2}-a-b-ab-ba\\
+  &&&=ab+(a+b)^2-a-b-ab-ba\\
+  &&&=ab+a+b-a-b-ab-ba=-ba=ba\enspace\square
+\end{align*}
+$$
+
+</details>
+</details>
+
+<details class="example" open>
+<summary>Boolean rings: every element is idempotent</summary>
+
+
+<details>
+<summary>**Proof.** powerset is boolean ring</summary>
+
+for any nonempty $X$, let $\mathcal{P}(X)$ be bool ring with
+
+$$
+\begin{align*}
+  A+B&=A\triangle B\\
+  A\cdot B&=A\cap B\\
+  0&=\varnothing\\
+  1&=X\\
+\end{align*}
+$$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** for commutative ring, unit + nilpotent is unit</summary>
+
+let any comm ring $R$
+
+assume $a\in R$ is unit, and $b\in R$ is nilpotent: $b^2=0$
+
+wts $a+b$ is unit
+
+$$
+\begin{align*}
+  (a+b)\cdot a^{-1}(1-a^{-1}b)=(1+a^{-1}b)(1-a^{-1}b)=1-a^{-2}b^2=1\enspace\square
+\end{align*}
+$$
+</details>
+
+
+</details>
+
+## Integral Domain
+
+<details class="definition" open>
+<summary>integral domain</summary>
+
+an **integral domain** $D$ is a comm ring with unity that has no zero divisors, that is,
+$$
+\forall a\forall b\enspace ab=0\implies a\ne 0\implies b=0
+$$
+
+nonzero $a$ in comm ring $R$ is a **zero divisor** $\iff\exists b\in R^*$ such that $ab=0$
+
+</details>
+
+<details class="theorem" open>
+<summary>integral domain iff cancellation</summary>
+$R$ is integral domain iff cancellation, that is
+
+$$
+\forall a\in R^*\enspace\forall b, c\in R\enspace ab=ac\implies b=c
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+$(\implies)$ assume intdom
+
+- let any $ab=ac$ where $a\ne0$
+- $\therefore 0=ab-ac=a(b-c)$
+- $\therefore b-c=0$, thus $b=c$
+- $\therefore$ cancellation
+
+$(\impliedby)$ assume cancellation
+
+- let any $ab=0$ and $a\ne 0$
+- $\because ab=a0$ and $a\ne 0$
+- $\therefore b=0$
+- $\therefore$ intdom
+</details>
+</details>
+
+<details class="example" open>
+<summary>for finite commutative ring</summary>
+
+<details class="list-none">
+<summary>**Proof.** every nonzero element is either zero-divisor or unit</summary>
+
+let any $a\in R^*$, assume not zero-divisor, wts is unit
+
+$\therefore f=b\mapsto ab$ is $f:R^*\to R^*$
+
+BWOC assume $f$ not surj
+
+- $\therefore f$ not inj <span class="float-right">($R$ finite)</span>
+- $\therefore\exists b\ne c\in R^*$ st $ab=ac$
+- $\therefore a(b-c)=ab-ac=0$ where $b-c\ne 0$, contradicts that $a$ is not zero-div
+
+$\therefore f:R^*\twoheadrightarrow R^*$ where $1\in R^*$
+
+$\therefore\exists b\in R^*$ st $ab=1\enspace\square$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** has a non-zero-divisor iff has unity</summary>
+
+$(\impliedby )1$ is a not zero divisor
+
+$(\implies )$ let $a$ be non-zero divisor and $|R|=n$
+
+<details>
+<summary>$\therefore T_a:R\stackrel\sim\to R$ whene $T_a(b)=ab$</summary>
+
+- otherwise $T_a$ not injective
+- $\therefore\exists b\ne c$ st $ab=ac$
+- $\therefore a(b-c)=0$ where $b-c\ne 0$, contradicts that $a$ is not zero-div
+</details>
+
+$\therefore\langle T_a\rangle\le S_n$ is finite, let $k=|\langle T_a\rangle|$
+
+$\therefore T_a^k=T_{a^k}$ is $1_R$, that is, identity mapping
+
+$\therefore a^k$ is multiplicative identity (aka unity) $\square$
+
+</details>
+
+</details>
+
+
+<details class="theorem" open>
+<summary>$\mathbb Z_n$ is integral domain $\iff n$ is prime</summary>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+$(\implies)$ assume $n$ is composite
+
+- $\therefore\exists1\lt a,b\lt n$ such that $n=ab$
+- $\therefore ab\equiv 0\mod n$, thus $a\in\mathbb Z_n$ is zero divisor
+- $\therefore\mathbb Z_n$ is not intdom
+
+$(\impliedby)$ assume $n$ is prime
+
+- let any $a,b\in\mathbb Z_n$ st $ab=0$
+- $\therefore p|ab$
+- $\therefore p|a$ or $p|b$ since $p$ is prime
+- $\therefore a=0$ or $b=0$
+- $\therefore \mathbb Z_n$ is intdom $\quad\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>characteristic of integral domain is $0$ or prime</summary>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+assume $\operatorname{char} D=n$, wts $n$ is prime
+
+let any $1\le s,t\le n$ such that $n=st$
+
+- $\therefore0=n\cdot 1=st\cdot1=(s\cdot 1)(t\cdot 1)$
+- $\therefore s\cdot 1=0$ or $t\cdot 1=0$
+- $\because n$ is smallest integer st $n\cdot 1=0$
+- $\therefore s=n$ or $t=n$, thus $n$ prime $\quad\square$
+</details>
+</details>
+
+<details class="example" open>
+<summary>commutative ring with unique aba is integral domain</summary>
+
+for commutative ring $R$ with at least two elements where
+
+$$
+\forall a\in R^*\quad\exists!b\in R\quad aba=a
+$$
+
+then $R$ is integral domain
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+(1) wts no divisors
+
+let any $a\in R^*$ and any $c\in R$, assume $ac=0$, wts $c=0$
+
+$\because\exists!b\in R\quad aba=a$
+
+$\therefore aba=aba+0a=aba+aca=a(b+c)a$
+
+$\therefore b=b+c$, thus $c=b-b=0$ as  wanted
+
+thus cancellation holds
+
+(2) wts has unity
+
+choose some $a\in R^*$ <span class="float-right">($|R|\ge2$)</span>
+
+$\therefore\exists!b\in R\quad aba=a$
+
+wts $ab$ is unity, let any $r\in R$
+
+$\because raba=ra$ where $a\in R^*$
+
+$\therefore r(ab)=r$, and $(ab)r=r$ by comm $\enspace\square$
+</details>
+</details>
+
+<details class="example" open>
+<summary>no integral domain has 6 elements</summary>
+
+<details class="list-none">
+<summary>**Proof.** let any commutative ring $R$ with 6 elements</summary>
+
+wts $R$ as a zero divisor
+
+consider the additive group $(R,+)$ of order 6
+
+$\therefore R$ has some element $a$ with order 2, and $b$ with order 3<span class="float-right">(Sylow 1)</span>
+
+$\therefore$ let $c=a+b$, thus $c$ has additive order 6
+
+$\therefore 2c,3c\ne 0$ and $6c=0$ 
+
+however in $R$ as a comm ring
+
+$$
+(2c)(3c)=(6c)c=0c=0
+$$
+
+$\therefore 2c$ is zero divisor of $R$, thus not integral domain $\enspace\square$
+
+</details>
+</details>
+
+
+
+## Field
+
+<details class="definition" open>
+<summary>field</summary>
+- **field** $F$ is commutative ring where $F^*$ is multiplicative group
+- **field** $F$ is commutative ring where every nonzero element is unit
+- **field** $F$ is ring where $F^*$ is abelian multiplicative group
+</details>
+
+
+<details class="theorem" open>
+<summary></summary>
+
+<details>
+<summary>**Proof.** any field is an integral domain</summary>
+let any $ab=0$ and $a\ne 0$
+
+- $\therefore b=a^{-1}ab=a^{-1}0=0$
+- $\therefore$ is intdom
+</details>
+
+<details class="list-none">
+<summary>**Proof.** any finite integral domain is field</summary>
+let any finite intdom $D$, wts has inverse
+
+- let $D=\{0,1=a_0,a_1,\cdots,a_n\}$ and let $A=\{a_i\}\sub D$
+- let any $a\in D^*$, consider $aA\sube D$
+- case $\exists i\ne j$ st $aa_i=aa_j$
+- $\therefore a_i=a_j$, contradicts that $a_0,\cdots,a_n$ are distinct
+- $\because 0\in aA$, otherwise $D$ would have a zero divisor
+- $\therefore aA=A$
+- $\therefore 1\in aA$
+- $\therefore a$ has a inverse in $A\sub D\quad\square$
+</details>
+
+**Corollary.** $\mathbb Z_p$ is field for any prime $p$
+</details>
+
+

@@ -1,0 +1,113 @@
+---
+title: Divisibility in Integral Domains
+---
+
+<details class="definition" open>
+<summary>associates, irreducibles, primes</summary>
+
+for any integral domain $D$
+
+
+<div class="flex justify-center">
+
+
+| | |
+|-:|:-|
+| $a,b\in D$ are **associates** | $a=ub$ for some unit $u\in D$
+| nonunit $a\in D^*$ is **irreducible** | $\forall a\forall b\quad a=bc\implies b$ or $c$ is unit
+| nonunit $p\in D^*$ is **prime** | $\forall a\forall b\quad p\mid ab\implies p\mid a$ or $p\mid b$
+</div>
+
+<details class="list-none">
+<summary>**Proof.** prime element iff generates nontrivial prime ideal</summary>
+
+for any nonunit $p\in D^*$ and any $ab\in \langle p\rangle$, that is, $p\mid ab$
+
+- $p$ is prime
+- $\iff p\mid a$ or $p\mid b$
+- $\iff a\in\langle p\rangle$ or $b\in\langle p\rangle$
+- $\iff\langle p\rangle$ is prime
+</details>
+
+<details class="list-none">
+<summary>**Proof.** associates iff generates same principal ideal</summary>
+
+$(\implies )$ let any $a=ub$
+
+- $\therefore ra=(ru)b\in \langle b\rangle$ for any $ra\in\langle a\rangle$
+- $\therefore rb=(ru^{-1})ub=(ru^{-1})a\in\langle a\rangle$ for any $rb\in\langle b\rangle$
+
+$(\impliedby )$ let any $\langle a\rangle=\langle b\rangle$ 
+
+- $\therefore a=rb$ and $b=sa$ for some $r,s\in D$
+- $\therefore b=rsb$, thus $rs=1$<span class="float-right">($D$ intdom)</span>
+
+
+</details>
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+<details class="list-none">
+<summary>**Proof.** (ID) prime implies irreducible</summary>
+
+let any prime $p=ab\in D^*$, WLOG assume $a\in D^*$
+
+- $\therefore p\mid a$, thus $a=pt$ for some $t\in D^*$<span class="float-right">($a\in D^*$)</span>
+- $\therefore a=pt=abt$, thus $bt=1$
+- $\therefore b$ is unit
+
+$\therefore p$ irreducible $\enspace\square$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** (PID) prime iff irreducible</summary>
+
+wts irreducible implies prime
+
+let any irreducible $a\in D^*$
+
+let any $b,c\in D$, assume $a\mid bc$
+
+let ideal $A=\langle a,b\rangle=\langle d\rangle$ for some $d \in D$
+
+- $\therefore a\in A$, thus $a=dr$ for some $r\in D$
+- $\therefore d$ unit or $r$ unit<span class="float-right">($a$ irreducible)</span>
+
+case $d$ unit
+
+- $\therefore A=\langle d\rangle=D\ni 1$
+- $\therefore\exists x,y\in D$ such that $1=ax+by$, that is, $c=acx+bcy$
+- $\because a\mid \underline acx$ and $a\mid\underline{bc}y$
+- $\therefore a\mid c$ as wanted
+
+case $r$ unit
+
+- $\therefore\langle a\rangle=\langle d\rangle=A\ni b$<span class="float-right">($a,d$ associates)</span>
+- $\therefore a\mid b$ as wanted
+
+$\therefore a$
+</details>
+</details>
+
+
+<details class="example" open>
+<summary></summary>
+
+<details class="list-none">
+<summary>**Proof.** any nontrival prime in PID is maximal</summary>
+
+let any nontrivial prime $\langle p\rangle\subseteq D$
+
+let any $\langle b\rangle\supset\langle p\rangle$, wts $\langle b\rangle=D$
+
+- $\therefore b\mid p$, thus $bd=p$ for some $d\in D$
+- $\because p$ irreducible<span class="float-right">($p$ prime, since $D$ PID)</span>
+- $\therefore b$ is unit ($d$ is not unit, since $b,p$ not associates)
+- $\therefore\langle b\rangle=D\enspace\square $
+
+</details>
+
+</details>

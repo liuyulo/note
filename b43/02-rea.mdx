@@ -1,0 +1,364 @@
+---
+title: Real Numbers
+---
+
+## Completeness
+<details class="theorem" open>
+<summary>real numbers are complete</summary>
+for any nonempty $A\sube\mathbb R$
+<div class="flex justify-center">
+$A$ is bounded $\implies A$ has supremum and infimum
+</div>
+</details>
+
+<details class="theorem" open>
+<summary>archimedean property</summary>
+$$
+\forall a,b\in\mathbb R^+\enspace\exists n\in\mathbb n\enspace a\lt nb
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+BWOC assume $\exists a,b\in\mathbb R\enspace\forall n\in\mathbb N\enspace na\le b$
+
+- $\therefore b$ is upper bound of $S=\{na:n\in\mathbb N\}$
+- $\therefore\exists\beta=\sup S\in\mathbb R$ 
+- $\because\beta-a\lt\beta$
+- $\therefore\beta-a$ is not ubd of $S$
+- $\therefore\exists n'\in\mathbb N\enspace\beta-a\lt n'a$
+- $\therefore\beta\lt(n'+1)a$, contradicts that $\beta$ is ubd of $S\quad\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>density</summary>
+$$
+\forall c,d\in\mathbb R\enspace\exists q\in\mathbb Q\enspace(c\lt d\implies c\lt q\lt d)
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let any $c\lt d$
+- let $\lambda=d-c\gt0$
+- $\therefore\exists N\in\mathbb N\enspace N\lambda\gt1$ (arch)
+- $\phantom\therefore\exists P\in\mathbb N\enspace\enspace P\gt Nc$
+- $\phantom\therefore\exists Q\in\mathbb N\enspace\enspace Q\gt -Nc$
+- $\therefore -Q\lt Nc\lt P$
+- $\therefore\exists M\enspace -Q\le M-1\le Nc\lt M\le P$
+- $\therefore c\lt M/N$ and $\therefore M\le Nc+1$
+- $\therefore M/N\le c+1/N\lt c+\lambda=d$
+- $\therefore c\lt M/N\lt d\quad\square$
+</details>
+</details>
+
+
+<details class="theorem" open>
+<summary>triangle inequality</summary>
+
+$$
+  |a|-|b|\le|a+b|\le|a|+|b|\\
+$$
+
+<details>
+<summary>**Proof.**</summary>
+
+$$
+\begin{align*}
+  \because |a+b|&\le|a|+|b|\\
+  \therefore|a|&=|a+b-b|\le|a+b|+|-b|=|a+b|+|b|\\
+  \therefore|a+b|&\le|a|-|b|
+\end{align*}
+$$
+</details>
+</details>
+
+## Extremum
+
+<details class="definition" open>
+<summary>supremum & infimum</summary>
+
+for nonempty $A$ 
+
+- $\alpha$ is **infimum** (denoted $\inf A$) iff
+  - $a\ge\alpha$ for any $a\in A$ (is lower bound)
+  - $\alpha\ge\alpha'$ for any lower bound $\alpha'$ (is greatest)
+- $\beta$ is **supremum** (denoted $\sup A$) iff
+  - $a\le\beta$ for any $a\in A$ (is upper bound)
+  - $\beta'\le\beta$ for any upper bound $\beta'$ (is least)
+</details>
+
+<details class="definition" open>
+<summary>sup and inf</summary>
+for nonempty bounded $A$ and $\alpha,\beta$
+
+$$
+\begin{align*}
+  \inf A=\alpha&\iff\forall\varepsilon\gt0\enspace\exists x\in A\enspace\alpha\le x\lt\alpha+\varepsilon\\
+  \sup A=\beta&\iff\forall\varepsilon\gt0\enspace\exists x\in A\enspace\beta-\varepsilon\lt x\le\beta\\
+\end{align*}
+$$
+</details>
+
+
+
+<details class="theorem" open>
+<summary>extremum of subset</summary>
+for any nonempty $A\sube B\sube\mathbb R$
+
+$$
+\inf B\le\inf A\le\sup A\le\sup B
+$$
+</details>
+
+<details class="example" open>
+<summary>square root is real</summary>
+
+$$
+\exists x\in R\enspace x^2=2
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let $A=\{x\in[0,2]:x^2\lt 2\}$
+
+- $\therefore 0\in A$ since $0^2=0\le 2$ and $0\in[0,2]$
+- $\therefore A$ nonempty
+- $\because x\le 2$ for any $x\in A$ by definition
+- $\therefore A$ nonempty and bounded above
+- $\therefore \exists\alpha\in\mathbb R$ such that $\alpha=\sup A$
+
+BWOC assume $\alpha^2\lt 2$, wts $\alpha$ is not lower bound
+
+<details>
+<summary>aside</summary>
+
+want $(\alpha+\varepsilon)^2\lt 2$
+
+$\therefore$ want
+
+$$
+  (\alpha+\varepsilon)^2=\alpha^2+2\alpha\varepsilon+\varepsilon^2\lt\alpha^2+2\alpha\varepsilon+\varepsilon=\alpha^2+(2\alpha+1)\varepsilon\lt2\\
+$$
+
+$\therefore$ want
+
+$$
+0\lt\varepsilon\lt\frac{2-\alpha^2}{2\alpha+1}
+$$
+
+</details>
+
+- $\because 1\le\alpha$ since $1\in A$, and $2-\alpha^2\gt0$
+- $\therefore (2-\alpha^2)/(2\alpha+1)\gt0$
+- $\therefore$ by density, $\exists\varepsilon\in\mathbb R$ st
+
+$$
+0\lt\varepsilon\lt\min\left\{1,\frac{2-\alpha^2}{2\alpha+1}\right\}
+$$
+
+
+- $\therefore$ we have $\alpha\lt\alpha+\varepsilon$ and
+
+$$
+\begin{align*}
+  (\alpha+\varepsilon)^2&=\alpha^2+2\alpha\varepsilon+\varepsilon^2\le\alpha^2+2\alpha\varepsilon+\varepsilon\tag{$0\lt\varepsilon\lt1$}\\
+  &=\alpha^2+(2\alpha+1)\varepsilon\lt\alpha^2+2-\alpha^2=2
+\end{align*}
+$$
+
+- $\because 1\le\alpha\lt\alpha+\varepsilon\lt(\alpha+\varepsilon)^2\lt 2$ since $1\in A$
+- $\therefore\alpha+\varepsilon\in[0,2]$, thus $\alpha+\varepsilon\in A$, contradicts that $\alpha$ is upper bound
+
+BWOC assume $\alpha^2\gt2$, wts not least
+
+<details>
+<summary>aside</summary>
+
+want
+
+$$
+\exists\varepsilon\gt0\enspace\forall x\in A\enspace x\le\alpha-\varepsilon\lt\alpha
+$$
+
+$\therefore$ want
+
+$$
+x^2\lt 2\lt(\alpha-\varepsilon)^2
+$$
+
+$\therefore$ want
+
+$$
+(\alpha-\varepsilon)^2=\alpha^2-2\alpha\varepsilon+\varepsilon^2\gt\alpha^2-2\alpha\varepsilon\gt2
+$$
+
+$\therefore$ want
+
+$$
+\begin{align*}
+  &&\alpha^2&\gt 2+2\alpha\varepsilon\\
+\therefore&&\alpha^2-2&\gt2\alpha\varepsilon\\
+\therefore&&\varepsilon&\lt\frac{\alpha^2-2}{2\alpha}
+\end{align*}
+$$
+</details>
+
+- $\because 1\le\alpha$ since $1\in A$ 
+
+- $\therefore$ let $\varepsilon\in\mathbb R$ be
+
+
+$$
+\varepsilon=\frac{\alpha^2-2}{2\alpha}
+$$
+
+- $\therefore$ for any $x\in A$
+
+$$
+\begin{align*}
+  x^2&\lt 2=\alpha^2-2\alpha\frac{\alpha^2-2}{2\alpha}=\alpha^2-2\alpha\varepsilon\le\alpha^2-2\alpha\varepsilon+\varepsilon^2=(\alpha-\varepsilon)^2\\
+  \therefore x&\le\alpha-\varepsilon\lt\alpha
+\end{align*}
+$$
+
+- $\therefore\alpha-\varepsilon$ is upper bound, contradicts that $\alpha$ is supremum $\quad\square$
+</details>
+</details>
+
+<details class="example" open>
+<summary>inf with positive scalar</summary>
+
+for nonempty $A\sube\mathbb R$ and $k\in\mathbb R^+$
+
+$$
+k\inf A=\inf(kA)
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let $\alpha=\inf A$
+
+wts $k\alpha$ is lower bound of $kA$
+
+- let any $ka\in kA$, thus $\alpha\le a$
+- $\therefore k\alpha\lt ka$ as wanted
+
+wts $k\alpha$ is infimum, BWOC assume $\exists\alpha'\in\mathbb R\enspace\forall ka\in kA\enspace (k\alpha\lt\alpha'\le ka)$ 
+
+- $\therefore$ for any $a\in A$
+$$
+\alpha=\frac{k\alpha}k\lt\frac{\alpha'}k\le\frac{ka}k=a\in A
+$$
+- $\therefore\alpha'/k$ is lower bound of $A$, contradicts that $\alpha$ is infimum $\quad\square$
+</details>
+</details>
+
+
+<details class="example" open>
+<summary>bounded function</summary>
+for nonempty $A$ and bounded $f,g:A\to\mathbb R$
+
+$$
+\sup(f+g)[A]\le\sup f[A]+\sup g[A]
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let $\beta_f=\sup f[A]$ and $\beta_g=\sup g[A]$
+
+$\therefore$ for any $x\in A$
+
+$$
+\begin{align*}
+  &&f(x)&\le\beta_f\quad g(x)\le \beta_g\\
+  \therefore&&f(x)+g(x)&\le\beta_f+\beta_g
+\end{align*}
+$$
+
+- $\therefore\beta_f+\beta_g$ is upper bound of $(f+g)[A]\quad\square$
+</details>
+</details>
+
+<details class="example" open>
+<summary>infinite union of closed intervals is not closed</summary>
+
+$$
+\bigcup_{n=1}^\infty[1/n,1]=(0,1]
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let $U$ be the union
+
+
+$(\implies)$ let any $x\in U$
+
+- $\therefore\exists n\in\mathbb Z^+\quad x\in[1/n,1]$
+- $\therefore 0\lt1/n\le x\le 1$, thus $x\in(0,1]$
+
+
+$(\impliedby)$ let any $x\in(0,1]$
+
+- $\because (1/n)\to0$ and $x\gt0$
+- $\therefore\exists n$ st $1/n=|1/n-0|\lt x\le 1$
+- $\therefore 1\in(1/n,1]\sube U\quad\square$
+</details>
+</details>
+
+<details class="example" open>
+<summary>find extrema</summary>
+let $f(x)=x^2+x-1=(x-\alpha_A)(x-\alpha_B)$ where
+
+$$
+\alpha_A=\frac{\sqrt5-1}2\gt0\qquad\alpha_B=-\frac{\sqrt5+1}2\lt0
+$$
+
+let $A=\{x\in[0,\infty):x^2+x-1\gt0\}$
+
+<details>
+<summary>wts $\inf A=\alpha_A$ and $A$ has no supremum</summary>
+
+for any $x\in\mathbb R$ (draw graph)
+
+$$
+\begin{align*}
+  \because&&f(x)\lt0&\iff x\in(-\infty,\alpha_B)\cup(\alpha_A,\infty)\\
+  \therefore&&x\in A&\iff x\in(\alpha_A,\infty)
+\end{align*}
+$$
+
+$\therefore \inf A=\inf(\alpha_A,\infty)=\alpha_A$ and $A$ has no supremum
+</details>
+
+let $B=\{x\in\mathbb Q\cap(-\infty,0]:f(x)\le0\}$
+
+<details>
+<summary>wts $\inf B=\alpha_B$ and $\sup B=0$</summary>
+
+for any $x\in\mathbb R$
+
+$$
+\begin{align*}
+  \because&& f(x)\le0&\iff x\in[\alpha_B,\alpha_A]\\
+  \therefore&&x\in B&\iff x\in\mathbb Q\cap[\alpha_B,0]
+\end{align*}
+$$
+
+wts $\inf B=\alpha_B$
+
+- let any $\varepsilon\gt0$
+- $\therefore\exists q\in\mathbb Q$ st $\alpha_B\lt q\lt\min\{\alpha_B+\varepsilon,0\}$ (density)
+- $\therefore q\in B$
+
+- $\therefore\inf B=\alpha_B$
+
+wts $\sup B=0$
+
+- $\because 0\in B\lt 0$
+- $\therefore \max B=0$, thus $0$ is supremum
+</details>
+</details>
+
+

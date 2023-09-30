@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{xcolor,amsmath,amssymb,amsfonts}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage[tt=false, type1=true]{libertine}
+\usepackage[libertine]{newtxmath}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\definecolor{red}{HTML}{c63a44}
+\begin{document}
+$$
+\usetikzlibrary{arrows}
+\begin{tikzpicture}[scale=3]
+    \node at (0,0)(r){$R$};
+    \node at (1,0)(s){$S$};
+    \node at (0,-1)(k){$R/\ker\varphi$};
+    \path[->]
+        (r)edge node[left]{$\eta$}(k)
+        (r)edge node[above]{$\varphi$}(s);
+    \path[right hook->](k)edge node[below]{$\psi$}(s);
+\end{tikzpicture}
+$$
+\end{document}

@@ -1,0 +1,197 @@
+---
+title: Normal Subgroup
+---
+
+## Examples
+
+<details class="example" open>
+<summary>ab $|G|=pq$ is cyclic for distinct prime $p,q$</summary>
+$\therefore$ by cauchy $\exists a,b\in G$ with $|a|=p$ and $|b|=q$\
+$\because (ab)^{pq}=(a^p)^q(b^q)^p=e$ thus $|ab|$ divides $pq$\
+$\therefore|ab|=1$ or $p$ or $q$ or $pq$\
+BWOC assume $|ab|=1$, that is $ab=e$
+- $\therefore a=b^{-1}$ thus $|a|=|b|$, contradicts that $p\ne q$
+
+BWOC assume $|ab|=p$ (similar for $|ab|=q$)
+- $\therefore e=(ab)^p=a^pb^p=b^p$, contradicts that $|b|=q$ (prime)
+
+$\therefore|ab|=pq$, thus $G=\langle ab\rangle\quad\square$
+</details>
+
+<details class="example" open>
+<summary>$G/N=(\mathbb Z_4\oplus\mathbb Z_{12})/\langle (2,2)\rangle$ not isomorphic to $\mathbb Z_8$ nor $\mathbb Z_2\oplus\mathbb Z_2\oplus\mathbb Z_2$</summary>
+wts any element in $G/N$ has order at most $4$
+- $\because$ for any $(a,b)N\in G/N$
+
+$$
+\begin{aligned}
+4(a,b)&=(4a,4b)=(0,4b)\in\{(0,0),(0,4),(0,8)\}\sube N\\
+\therefore((a,b)N)^4&=(a,b)^4N=N
+\end{aligned}
+$$
+
+- $\therefore |(a,b)N|$ divides $4$, thus at most $4$
+- $\therefore G/N\not\cong\mathbb Z_8$
+
+wts $G/N$ has element of order $4$
+- $\because (1,0)N$ has order $4$
+- $\therefore G/N\not\cong\mathbb Z_2\oplus\mathbb Z_2\oplus\mathbb Z_2\quad\square$
+</details>
+
+<details class="example" open>
+<summary>noab $|G|=8\implies G$ is not internal direct product of proper subgroup</summary>
+$\because$ by Lagrange, proper subgroup must have order $2$ or $4$, with are both ab\
+$\because$ ab group $\implies$ ab external direct prod $\implies$ ab internal direct prod
+
+</details>
+
+<details class="example" open>
+<summary>$G$ not ab $\implies\operatorname{aut} G$ not cyclic</summary>
+$\because G$ not ab\
+$\therefore G/Z(G)$ not cyclic\
+$\therefore\operatorname{inn}G$ not cyclic
+$\therefore\operatorname{aut}G$ not cyclic $\quad\square$
+</details>
+
+<details class="example list-none" open>
+<summary>let $H\le G$ with index $2$, wts $H$ has all odd-order elements of $G$</summary>
+
+$\because|G:H|=2$\
+if $a\in H$, then $aH=H=Ha$\
+if $a\not\in H$, then $aH=Ha$ since $G=H\sqcup Ha=H\sqcup aH$\
+$\therefore H\triangleleft G$ and $|G/H|=2$\
+$\therefore (aH)^2=H$ for any $a\in G$\
+$\therefore$ for any $a\in G$ with $a^{2n+1}=e$ for some $n\in\mathbb N$
+- $H=eH=a^{2n+1}H=a(a^nH)^2=aH$
+- $\therefore a\in H\quad\square$
+
+</details>
+
+## Normaliser
+
+<details class="definition" open>
+<summary>normaliser of $H\le G$</summary>
+
+$$
+N(H)=\{a\in G: aHa^{-1}=H\}
+$$
+</details>
+
+## Internal Direct Product
+
+<details class="definition" open>
+<summary>internal direct product</summary>
+- if $H,K\vartriangleleft G$, $H\cap K=\{e\}$
+- then $G=H\times K=HK$ is the interal direct product of $H$ and $K$
+</details>
+
+<details class="theorem" open>
+<summary>internal direct product is isomorphic to external direct product</summary>
+
+$$
+H_1\times\cdots\times H_n\cong H_1\oplus\cdots\oplus H_n
+$$
+</details>
+
+## Factor Group
+
+<details class="definition" open>
+<summary>let $H\vartriangleleft G$</summary>
+$$
+G/H=\{aH:a\in G\}
+$$
+
+$G/H$ is a group under $(aH)(bH)=abH$
+
+- $G$ cy $\implies G/H$ cy
+- $G$ ab $\implies G/H$ ab
+</details>
+
+<details class="theorem" open>
+<summary>$G/Z(G)$ cyclic $\implies G/Z=\{Z\}\implies G=Z$</summary>
+
+<details class="list-none">
+<summary>**Proof.** assume $G/Z=\langle gZ\rangle$ for some $g\in G$</summary>
+
+let any $a\in G$
+
+- $\therefore\exists i$ st $aZ=(gZ)^i=g^iZ$
+- $\therefore a\in g^iZ$ thus $\exists z\in Z$ st $a=g^iz$
+- $\therefore ga=gg^iz=zg^ig=ag$
+- $\therefore a\in C(g)$
+
+$\therefore g\in Z$ thus $gZ=Z$\
+$\therefore G/Z=\langle gZ\rangle=\langle Z\rangle=\{Z\}$\
+$\therefore G=Z$ thus ab $\quad\square$
+</details>
+
+collaries
+
+- $G/Z$ cyclic $\implies G/Z$ trivial
+- $G/H$ cyclic for some $H\le Z(G)\implies G$ abelian
+- contrapositive
+  - e.g. nonabelian $G$ and $p,q$ prime
+  - $|G|=pq\implies Z(G)=\{e\}$
+
+</details>
+
+<details class="theorem" open>
+<summary>$G/Z(G)\cong\operatorname{Inn}(G)$</summary>
+
+<details class="list-none" >
+<summary>**Proof.** let $Z=(G)$ and $T=gZ\mapsto \varphi_g$</summary>
+
+wts well-defined, assume $aZ=bZ$, wts $\varphi_a=\varphi_b$
+
+- $\therefore b^{-1}a\in Z$
+- $\therefore$ for any $x\in G$
+
+$$
+axa^{-1}=b(b^{-1}ax)a^{-1}=b(xb^{-1}a)a^{-1}=bxb^{-1}
+$$
+
+- $\therefore \varphi_a=\varphi_b$
+
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>Cauchy's theorem</summary>
+let $|G|=n$ and prime $p|n$
+
+- then $\exists a\in G$ such that $|a|=p$
+</details>
+
+## Normal Subgroup
+
+<details class="definition" open>
+<summary>$H\le G$ is normal when, denoted as $H\vartriangleleft G$</summary>
+for any $a\in G$
+
+$$
+aH=Ha
+$$
+</details>
+
+<details class="theorem" open>
+<summary>normal subgroup test</summary>
+$H\vartriangleleft G$ iff
+
+1. $H\le G$
+2. $\forall a\in G\enspace aHa^{-1}\in H$
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+- $H\le Z(G)\implies H\triangleleft Z(G)$
+- $Z(G)\vartriangleleft G$
+- $A_n\vartriangleleft S_n$
+- $H\vartriangleleft G$ and $K\le G\implies HK\le G$
+- $H,K\triangleleft G$ then
+  - $HK\triangleleft G$
+  - $H\cap K\triangleleft G$
+- $G$ has unique subgroup $H$ of its order $\implies H\vartriangleleft G$
+  - for any $a\in G$ the inner aut $\varphi_a:H\to aHa^{-1}$
+  - $\therefore aHa^{-1}\le G$ and $|H|=|aHa^{-1}|$
+- $SL(2,\mathbb R)\vartriangleleft GL(2,\mathbb R)$
+</details>

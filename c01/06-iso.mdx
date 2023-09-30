@@ -1,0 +1,230 @@
+---
+title: Isomorphism
+---
+
+import Tikz from '../../components/Tikz.astro'
+
+<details class="theorem" open>
+<summary>Cayley's theorem</summary>
+every group is isomorphic to a permutation group
+
+<details>
+<summary>**Proof.** let any group $G$</summary>
+
+for any $g\in G$, define permutation $T_g:G\to G$ where $T_g(a)=ga$
+
+- $\therefore T_g$ is permutation i.e. bijective endofunction
+
+let $G'=\{T_g:g\in G\}$
+
+- $\therefore G'$ is group (of permutations) under function composition
+
+let $\psi:G\to G'$ where $\psi(a)=T_a$
+
+- $\therefore\psi$ is isomorphism
+
+</details>
+</details>
+
+## Automorphism & Inner
+
+<details class="definition" open>
+<summary>automorphism is isomorphism & endomorphism</summary>
+$\operatorname{Aut}(G)$ is the group of automorphisms in $G$
+</details>
+
+<details class="definition" open>
+<summary>inner automorphism is $\varphi_a:G\to G$ for any $a\in G$</summary>
+$$
+\varphi_a(g)=aga^{-1}
+$$
+
+$\operatorname{Inn}(G)=\{\varphi_a:a\in G\}$ is a group
+</details>
+
+<details class="example" open>
+<summary>any aut $\varphi:\mathbb Q\to\mathbb Q$ (under add) has form $\varphi(x)=x\varphi(1)$</summary>
+let any $x=n/m\in\mathbb Q$
+
+$$
+\begin{aligned}
+  \varphi(x)&=\varphi(n/m)=\varphi\left(\sum^n\frac1m\right)=\sum^n\varphi\left(1/m\right)=n\varphi(1/m)\\
+  &=n\frac mm\varphi(1/m)=\frac nmm\phi(1/m)=\frac nm\sum^m\varphi(1/m)\\
+  &=\frac nm\varphi\left(\sum^m\frac1m\right)=\frac nm\varphi(1)=x\varphi(1)\quad\square
+\end{aligned}
+$$
+</details>
+
+<details class="example">
+<summary>$G\cong H\implies\operatorname{Aut}(G)\cong\operatorname{Aut}(H)$</summary>
+
+<Tikz>
+{String.raw`$$
+\begin{tikzpicture}[scale=2]
+\node at(0,0)(g1){$G$};
+\node at(1,0)(h1){$H$};
+\node at(0,-1)(g2){$G$};
+\node at(1,-1)(h2){$H$};
+%
+\path[->] 
+    (g1) edge node[right]{$\alpha$} (g2)
+    (g2) edge node[above]{$\varphi$} (h2)
+    (h1) edge node[above]{$\varphi^{-1}$} (g1);
+\path[->,dashed]
+    (h1) edge node[right]{$\varphi\alpha\varphi^{-1}$} (h2);
+\end{tikzpicture}
+$$`}
+</Tikz>
+
+let $\varphi:G\to H$ be an isomorphism
+
+let $\psi:\operatorname{Aut}(G)\to\operatorname{Aut}(H)$ 
+ -  $\psi(\alpha)=\varphi\alpha\varphi^{-1}$ for any $\alpha\in\operatorname{Aut}(G)$
+<details>
+<summary>**Proof.** $\psi$ hom</summary> 
+let any $\alpha_1,\alpha_2\in\operatorname{Aut}(G)$
+
+$$
+\begin{aligned}
+  \psi(\alpha_1\alpha_2)&=\varphi(\alpha_1\alpha_2)\varphi^{-1}\\
+  &=(\varphi\alpha_1\varphi^{-1})(\varphi\alpha_2\varphi^{-1})\\
+  &=\psi(\alpha_1)\psi(\alpha_2)
+\end{aligned}
+$$
+</details>
+
+<details>
+<summary>**Proof.** $\psi$ bij</summary>
+let $\mu:\operatorname{Aut}(H)\to\operatorname{Aut}(G)$
+  - $\mu(\beta)=\varphi^{-1}\beta\varphi$
+
+let any $\alpha\in\operatorname{Aut}(G)$
+
+$$
+(\mu\psi)(\alpha)=\mu(\varphi\alpha\varphi^{-1})=\varphi^{-1}\varphi\alpha\varphi^{-1}\varphi=\alpha
+$$
+
+$\therefore\mu\psi=1_{\operatorname{Aut}(G)}$, thus bijective
+</details>
+</details>
+
+## Properties
+
+<details class="theorem" open>
+<summary>properties of **hom**omorphism on elements</summary>
+
+|perserves| $\varphi:G\to G'$ |
+|-|-|
+| identity | $\varphi(e)=e$
+| exponent | $\varphi(a^n)=\varphi(a)^n$
+| commute | $ab=ba\iff\varphi(ab)=\varphi(ba)$
+</details>
+<details class="theorem" open>
+<summary>properties of **hom**omorphism on groups</summary>
+for $\varphi:G\to G'$
+- for any set $A\sube G$, define $\varphi(A)=\{\varphi(a):a\in A\}\sube \varphi(G)$
+- $\varphi(G)=G'$
+
+| perserves | $\varphi:G\to G'$
+|-|-|
+| subgroup | $H\le G\iff\varphi(H)\le \varphi(G)$
+| cyclic | $G=\langle a\rangle\iff \varphi(G)=\langle\varphi(a)\rangle$
+| abelian | $G$ abelian $\iff \varphi(G)$ abelian
+</details>
+
+<details class="theorem" open>
+<summary>properties of **iso**morphism on elements</summary>
+
+- $\varphi(Z(G))=Z(\varphi(G))$
+
+for any $a\in G$
+
+- $|a|=|\varphi(a)|$
+- for any $n\in\mathbb N$
+  - $|\{b:b^n=a\}|=|\{b:b^n=\varphi(a)\}|$
+- for finite $G$
+  - $G$ and $\varphi(G)$ have the same number of elements of any order
+
+</details>
+
+## Isomorphic Groups
+
+<details class="theorem" open>
+<summary>$(\mathbb Q,+)$ is not isomorphic to $(\mathbb Q^*,\cdot)$</summary>
+<details>
+<summary>**Proof.** BWOC assume $\varphi:\mathbb Q\to\mathbb Q^*$ is isomorphism</summary>
+
+$\therefore\exists a\in \mathbb Q\enspace\varphi(a)=-1$
+
+$ \therefore -1=\varphi(a)=\varphi(1/2a+1/2a)=\varphi(1/2a)\varphi(1/2a)=\varphi(1/2a)^2\ge0$
+
+$\therefore$ contradicts that $-1<0\quad\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>any finite cyclic group is isomorphic to $(\mathbb Z_n,+_n)$</summary>
+- **Proof.** same
+</details>
+
+<details class="theorem" open>
+<summary>any inifinite cyclic group is isomorphic to $(\mathbb Z,+)$</summary>
+- **Proof.** let $\varphi:\mathbb Z\to\langle a\rangle$ where $\varphi(n)=a^n$
+</details>
+
+## Isomorphism
+
+<details class="definition" open>
+<summary>a homomorphism from group $G$ to $\overline G$ is $\varphi:G\to\overline G$ such that</summary>
+
+for any $a,b\in G$
+
+$$
+\varphi(ab)=\varphi(a)\varphi(b)
+$$
+
+<details>
+<summary>i.e. this digram commutes</summary>
+
+for group $(G,\cdot)$ and $(\overline G,\odot)$ with homomorphism $\varphi:G\to\overline G$
+
+<Tikz>
+{String.raw`$$
+\begin{tikzpicture}[scale=2]
+\node at(0,0)(gg){$G\times G$};
+\node at(1,0)(g){$G$};
+\node at(0,-1)(hh){$\overline G\times\overline G$};
+\node at(1,-1)(h){$\overline G$};
+\path[->, transform canvas={xshift=10pt}] (gg) edge node[right]{$\varphi$} (hh);
+\path[->, transform canvas={xshift=-10pt}] (gg) edge node[right]{$\varphi$} (hh);
+\path[->]
+    (g) edge node[right]{$\varphi$} (h)
+    (gg) edge node[above]{$\cdot$} (g)
+    (hh) edge node[below]{$\odot$} (h);
+\end{tikzpicture}
+$$`}
+</Tikz>
+</details>
+
+</details>
+
+<details class="definition" open>
+<summary>isomorphism</summary>
+isomorphism is a bijective homomorphism
+
+- $G\cong G'$ iff $\exists$ iso $\varphi:G\to G'$
+
+wts $G\cong G'$
+
+1. let $\varphi:G\to G'$ be a map
+4. wts $\forall a,b\in G\enspace\varphi(ab)=\varphi(a)\varphi(b)$ (hom)
+2. wts $\forall a,b\in G\enspace\varphi(a)=\varphi(b)\implies a=b$ (inj)
+3. wts $\forall a'\in G'\enspace\exists a\in G\enspace\varphi(a)=a'$ (surj)
+</details>
+
+<details class="definition" open>
+<summary>more morphisms</summary>
+- endomorphism is $\varphi:G\to G$
+- automorphism is endomorphism & isomorphism
+</details>
+

@@ -1,0 +1,79 @@
+---
+title: Cyclic Group
+---
+
+import Tikz from '../../components/Tikz.astro'
+
+<details class="definition" open>
+<summary>group generator $a\in G$</summary>
+$$
+\langle a\rangle=\{a^n:n\in\mathbb Z\}\le G
+$$
+
+$G$ is cyclic iff $\langle a\rangle=G$
+
+<details>
+<summary>**Proof.** $\langle a\rangle\le G$</summary>
+- $a\in\langle a\rangle\implies\langle a\rangle$ nonempty
+- for any $a^n,a^m\in\langle a\rangle$
+  - $a^n(a^m)^{-1}=a^{n-m}\in\langle a\rangle$
+- $\therefore\langle a\rangle\le G$ 
+</details>
+
+- cyclic groups are abelian
+</details>
+
+
+
+<details class="theorem" open>
+<summary>for a group $G$ and $a\in G$</summary>
+
+case $|a|=n<\infty$
+
+- $a^i=a^j\iff n|(i-j)$
+
+ case $|a|=\infty$
+
+- $a^i=a^j\iff i=j$
+
+</details>
+<details class="theorem" open>
+<summary>for any $a,b\in G$</summary>
+$|a|=|\langle a\rangle|$
+
+- $a^k=e$ iff $|a|$ divides $k$
+- $|G|<\infty$ and $ab=ba\implies |ab|$ divides $|a||b|$
+</details>
+
+<details class="example" open>
+<summary>infinite group $G=SL(2,\mathbb R)$</summary>
+let 
+$$
+\begin{aligned}
+&&A&=\begin{pmatrix}0&-1\\1&0\\\end{pmatrix}\quad B=\begin{pmatrix}0&1\\-1&-1\\\end{pmatrix}\in G\\
+\therefore&&AB&=\begin{pmatrix}1&0\\0&1\\\end{pmatrix}\quad(AB)^n=\begin{pmatrix}1&n\\0&1\\\end{pmatrix}
+\end{aligned}
+$$
+
+$\therefore |A|=4$ and $|B|=3$, but $|AB|=\infty$
+</details>
+
+<details class="theorem" open>
+<summary>let $|G|=n$ and $d=\gcd(n,k)$</summary>
+$$
+\langle a^k\rangle=\langle a^d\rangle\quad|a^k|=n/d
+$$
+
+- $\therefore$ if $|a|=n$, then $\langle a\rangle=\langle a^k\rangle\iff \gcd(n,k)=1$
+</details>
+
+<details class="theorem" open>
+<summary>fundamental theorem of cyclic group</summary>
+
+let any cyclic group $\langle a\rangle$ with $|a|<\infty$
+
+- for any $G\le\langle a\rangle$, $G$ is cyclic and $|G|$ divides $|a|$
+- for any divisor $d$ of $|a|$, the only subgroup with order $d$ is $\langle a^{n/d}\rangle$
+</details>
+
+

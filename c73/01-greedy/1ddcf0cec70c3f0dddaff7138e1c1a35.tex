@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{xcolor,amsmath,amssymb,amsfonts}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage[tt=false, type1=true]{libertine}
+\usepackage[libertine]{newtxmath}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\definecolor{red}{HTML}{c63a44}
+\usepackage{forest}
+
+\begin{document}
+
+\begin{forest}
+    [,for children={no edge}, for descendants={minimum size=2em,inner sep=2pt}
+        [$a'$,circle,draw,for descendants={circle,draw,gray,edge=gray}[$a_1$][$a_2$]]
+        [$a_3$,circle,draw]
+        [$\cdots$]
+        [$a_n$,circle,draw]
+    ]
+\end{forest}
+
+\end{document}

@@ -1,0 +1,123 @@
+---
+title: Error Correcting Codes
+---
+
+
+## Error Correcting Codes
+
+> just injective maps duh
+
+<details class="definition" open>
+<summary>error correcting code</summary>
+
+for alphabet $\Sigma$ and $k,n$ with Hamming distance $d$
+
+<div class="flex justify-center">
+$C:\Sigma^k\to\Sigma^n$ is a **ECC**
+</div>
+where
+
+- $n$ is the **code length** (depends on $k$)
+- $C(\Sigma^k)$ is the set of **codewords**
+- $(\Sigma^n,d)$ is a metric space
+</details>
+
+<details class="definition" open>
+<summary>code rate, distance, relative distance</summary>
+
+for $C:\Sigma^k\to\Sigma^n$
+
+- $k/n$ is **rate** of $C$
+  - high rate means low redundency
+- $d(C)=\min\{d(C(x_1),C(x_2)):x_1\ne x_2\in \Sigma^k\}$ is **distance** of $C$
+  - high distance means corrects more errors
+- $d(C)/n$ is **relative distance** of $C$
+</details>
+
+<details class="definition" open>
+<summary>linear code</summary>
+$C:\mathbb F_q^k\to\mathbb F_q^n$ is **linear** means $C(x+y)=C(x)+C(y)$
+
+- $C$ is $k\times n$ matrix over $\mathbb F_q$, called **generating matrix**
+- $w(y)=d(y,0)$ is **weight** of $y\in\mathbb F_q^n$
+- $d(C)=\min\{w(C(x)):x\ne0\in\mathbb F_q^k\}$
+</details>
+
+## Random Codes
+
+> constructive proof? never heard of that
+
+<details class="theorem" open>
+<summary>probabilistic method</summary>
+> (ab)used by Paul Erdős [ɛrdøːʃ]
+
+let predicate $Q$ (over some universe)
+
+$\because \nexists aQ(a)\implies P(Q(a))=0\in[0,1]$
+
+$\therefore P(Q(a))\gt0\implies\exists aQ(a)$
+
+<details open>
+<summary>other uses</summary>
+
+$$
+\begin{align*}
+P(Q(a))\lt 1&\implies\exists a\neg Q(a)\\
+\exists a(X(a)\lt E(X))&\implies\exists a(X(a)\gt E(X))\\
+\exists a(X(a)\ge E(X))
+\end{align*}
+$$
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary>good code exists and most codes are good</summary>
+for any relative distance $\delta\lt 1/2$, large enough $k$, any $t$ such that
+
+$$
+n\ge\frac{k+t}{1-H_2(\delta)}
+$$
+
+- where $H_2(\alpha)=\alpha\log_2(1/\alpha)+(1-\alpha)\log_2(1/(1-\alpha))$ is the entropy function
+
+$$
+P(d(C)/n\ge\delta)\gt1-2^{-t}
+$$
+
+- where $C:\mathbb F_2^k\to\mathbb F_2^n$ is a random code
+
+<details class="list-none" open>
+<summary>**Poof.** outline</summary>
+todo
+</details>
+
+**Corollary.** ($t=0$) $\exists C:\mathbb F_2^n\to\mathbb F_2^n$ where $d(C)/n\gt\delta$, that is, good
+
+- that is, Gilbert-Varshamov bound
+
+**Corollary.** ($t=1$) most linear codes are good
+</details>
+
+## Walsh-Hadamard Code
+
+> long, but relative distance 1/2
+
+<details class="definition" open>
+<summary>WH code</summary>
+let alphabet $\mathbb F_2$ and length $n=2^k$
+- let domain $\mathbb F_2^k=\{\alpha_1,\cdots,\alpha_n\}$
+
+$$
+\begin{align*}
+  C(x)&=(x\cdot \alpha_i)_{i=1}^n
+\end{align*}
+$$
+</details>
+
+<details class="theorem" open>
+<summary>relative distance of half</summary>
+$\because w(C(x))=2^{k-1}$ for any $x\in \mathbb F_2^k$
+
+$\therefore$ relative distance is $2^{k-1}/2^{k}=1/2$
+</details>

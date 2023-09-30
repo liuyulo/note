@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>A48 | Intro to Comptuer Science II</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #131313;
+        color: #eaeaea;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #eaeaea;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #ff6680; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #787878; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #66ccff; } /* DataType */
+    code span.dv { color: #a68cd9; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #ff6680; font-style: italic; } /* Keyword */
+    code span.op { color: #787878; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #ff6680; } /* Preprocessor */
+    code span.sc { color: #a68cd9; } /* SpecialChar */
+    code span.ss { color: #a68cd9; } /* SpecialString */
+    code span.st { color: #ffe666; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style>
+  @charset "UTF-8";
+  .hidden {
+    display: none;
+  }
+
+  html {
+    font-family: "source sans pro", "iosevka custom extended", "UD Digi Kyokasho NK-R", sans-serif;
+    font-size: 20px;
+    background: #000000;
+    color: #f1f1f1;
+  }
+  html body {
+    padding-bottom: 30em;
+  }
+  html header#title-block-header {
+    display: flex;
+    justify-content: center;
+  }
+  html h1:not(.title) {
+    border-bottom: 1px solid;
+  }
+  html h1, html h2, html h3 {
+    color: #ffe666;
+    margin: 0.5em 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  html a {
+    color: #ffe666;
+    text-decoration: none;
+  }
+  html a:visited {
+    color: #ffe666;
+  }
+  html a:hover {
+    color: #f1f1f1;
+    text-decoration: underline;
+    background: #0f0f0f;
+  }
+  html blockquote {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ffe666;
+    background: rgba(255, 230, 102, 0.1);
+    color: rgba(241, 241, 241, 0.75) !important;
+  }
+  html p, html header {
+    margin: 0;
+  }
+  html ul {
+    padding-left: 2em;
+  }
+  html table {
+    border-collapse: collapse;
+  }
+  html table tbody > tr:not(:first-child) {
+    border-top: 1px solid #5e5e5e;
+  }
+  html table thead {
+    border-bottom: 1px solid #f1f1f1 !important;
+  }
+  html table td, html table th {
+    padding: 0.5em;
+  }
+  html pre {
+    background: #0f0f0f;
+    margin: 0;
+  }
+  html pre > code {
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  html code {
+    color: #f1f1f1;
+    padding: 0 5px;
+    line-height: 1.3;
+    font-family: "iosevka custom extended";
+  }
+
+  details.theorem {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #39c5bb;
+    background: rgba(57, 197, 187, 0.1);
+    padding-top: 0;
+  }
+  details.theorem strong, details.theorem .textbf {
+    color: #39c5bb;
+  }
+  details.theorem summary {
+    cursor: pointer;
+  }
+  details.theorem > summary {
+    padding: 0.5em 1em;
+    background: rgba(57, 197, 187, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.theorem > summary::before {
+    content: "theorem.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #39c5bb;
+  }
+  details.example {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff9966;
+    background: rgba(255, 153, 102, 0.1);
+    padding-top: 0;
+  }
+  details.example strong, details.example .textbf {
+    color: #ff9966;
+  }
+  details.example summary {
+    cursor: pointer;
+  }
+  details.example > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 153, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.example > summary::before {
+    content: "example.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff9966;
+  }
+  details.definition {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #66ccff;
+    background: rgba(102, 204, 255, 0.1);
+    padding-top: 0;
+  }
+  details.definition strong, details.definition .textbf {
+    color: #66ccff;
+  }
+  details.definition summary {
+    cursor: pointer;
+  }
+  details.definition > summary {
+    padding: 0.5em 1em;
+    background: rgba(102, 204, 255, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.definition > summary::before {
+    content: "definition.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #66ccff;
+  }
+  details.algorithm {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.algorithm strong, details.algorithm .textbf {
+    color: #ff6680;
+  }
+  details.algorithm summary {
+    cursor: pointer;
+  }
+  details.algorithm > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.algorithm > summary::before {
+    content: "algorithm.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff6680;
+  }
+  details.leek {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #39c5bb;
+    background: rgba(57, 197, 187, 0.1);
+    padding-top: 0;
+  }
+  details.leek strong, details.leek .textbf {
+    color: #39c5bb;
+  }
+  details.leek summary {
+    cursor: pointer;
+  }
+  details.leek > summary {
+    padding: 0.5em 1em;
+    background: rgba(57, 197, 187, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.orange {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff9966;
+    background: rgba(255, 153, 102, 0.1);
+    padding-top: 0;
+  }
+  details.orange strong, details.orange .textbf {
+    color: #ff9966;
+  }
+  details.orange summary {
+    cursor: pointer;
+  }
+  details.orange > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 153, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.sky {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #66ccff;
+    background: rgba(102, 204, 255, 0.1);
+    padding-top: 0;
+  }
+  details.sky strong, details.sky .textbf {
+    color: #66ccff;
+  }
+  details.sky summary {
+    cursor: pointer;
+  }
+  details.sky > summary {
+    padding: 0.5em 1em;
+    background: rgba(102, 204, 255, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.pink {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.pink strong, details.pink .textbf {
+    color: #ff6680;
+  }
+  details.pink summary {
+    cursor: pointer;
+  }
+  details.pink > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.yellow {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ffe666;
+    background: rgba(255, 230, 102, 0.1);
+    padding-top: 0;
+  }
+  details.yellow strong, details.yellow .textbf {
+    color: #ffe666;
+  }
+  details.yellow summary {
+    cursor: pointer;
+  }
+  details.yellow > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 230, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+
+  .inference + ul > li {
+    list-style-type: decimal;
+  }
+  .inference + ul > li:last-child {
+    border-top: solid 1px #f1f1f1;
+    list-style-type: "∴ ";
+  }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">A48 | Intro to Comptuer Science II</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#memory-model" id="toc-memory-model">Memory Model</a></li>
+<li><a href="#computational-complexity"
+id="toc-computational-complexity">Computational Complexity</a></li>
+<li><a href="#data-structure" id="toc-data-structure">Data Structure</a>
+<ul>
+<li><a href="#bst" id="toc-bst">BST</a></li>
+<li><a href="#graph" id="toc-graph">Graph</a></li>
+</ul></li>
+<li><a href="#recursion" id="toc-recursion">Recursion</a>
+<ul>
+<li><a href="#divide-and-conquer"
+id="toc-divide-and-conquer">Divide-and-Conquer</a></li>
+<li><a href="#recursion-1" id="toc-recursion-1">Recursion</a></li>
+<li><a href="#tail-recursion"
+id="toc-tail-recursion">Tail-Recursion</a></li>
+</ul></li>
+<li><a href="#software-design" id="toc-software-design">Software
+Design</a></li>
+<li><a href="#oop" id="toc-oop">OOP</a></li>
+</ul>
+</nav>
+<h1 id="memory-model">Memory Model</h1>
+<blockquote>
+<p>one box for one var (including CDT)</p>
+</blockquote>
+<ul>
+<li><p>primitive <code
+class="sourceCode c"><span class="dt">int</span> n <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></code></p>
+<pre><code> n╶─────┐
+ │ 0x3e │
+ │  20  │
+int╶────┘</code></pre></li>
+<li><p>array <code
+class="sourceCode c"><span class="dt">char</span> text<span class="op">[</span><span class="dv">4</span><span class="op">]</span> <span class="op">=</span> <span class="st">&quot;ffs&quot;</span><span class="op">;</span></code></p>
+<pre><code>text╶───┬──────┬──────┬──────┐
+ │ 0xce ╎ 0xcf ╎ 0xd0 ╎ 0xd1 │
+ │ &#39;f&#39;  ╎ &#39;f&#39;  ╎ &#39;s&#39;  ╎  0   │
+char[4]╶┴──────┴──────┴──────┘</code></pre></li>
+<li><p>pointer <code
+class="sourceCode c"><span class="dt">int</span> num <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> <span class="op">*</span>ptr <span class="op">=</span> <span class="op">&amp;</span>i<span class="op">;</span></code></p>
+<pre><code>num╶────┐ ptr╶────┐ 
+ │ 0x59 │  │ 0x6a │
+ │  1   │  │ 0x59 │
+int╶────┘ int*╶───┘</code></pre></li>
+<li><p>function <code
+class="sourceCode c"><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">){</span> <span class="dt">int</span> c <span class="op">=</span> <span class="dv">40</span><span class="op">;</span> <span class="op">}</span></code></p>
+<pre><code>main() ═════════════════════════════╗
+  ║ argc╶───┐   c╶─────┐ &lt;return&gt;╶┐ ║ 
+  ║  │ 0x59 │   │ 0x6a │   │ 0x7c │ ║
+  ║  │  0   │   │  40  │   │      │ ║
+  ║ int╶────┘  int ╶───┘  int ╶───┘ ║
+  ╚═════════════════════════════════╝</code></pre></li>
+</ul>
+<h1 id="computational-complexity">Computational Complexity</h1>
+<details class="definition">
+<summary>
+Big <span class="math inline">\mathcal O</span> Notation:
+<strong>slowest</strong>-growing function of <span
+class="math inline">N</span>
+</summary>
+<span class="math display">f(N)=\mathcal O(g(N))\iff\exist c\textsf{ st
+}\forall N\in\Z^+\enspace|f(N)|\leqslant cg(N)</span>
+</details>
+<details class="theorem">
+<summary>
+for <span class="math inline">\mathcal O(\log N)</span> base doesn’t
+matter
+</summary>
+<span class="math display">\mathcal O(\log_bN)=\mathcal
+O\left(\frac{\log N}{\log b}\right)=\mathcal O(\log N)</span>
+</details>
+<details class="definition">
+<summary>
+Complexities
+</summary>
+<ul>
+<li><strong>Algorithm</strong> complexity: complexity of a
+algorithm</li>
+<li><strong>Problem</strong> complexity: the theoretically fastest
+algorithm to the problem</li>
+</ul>
+</details>
+<h1 id="data-structure">Data Structure</h1>
+<h2 id="bst">BST</h2>
+<p>array of <code>{ 1, 3, 2, 5, 2, 0 }</code> can be represented as
+follows:</p>
+<pre><code>  1 (root)
+ 🮣🮧🮢
+ 2 3
+🮣🮠🮣🮧🮢
+0 2 5</code></pre>
+<p>let <code>u</code> be a node in a BST</p>
+<ul>
+<li><code>v</code> in the left subtree of <code>u</code> iff
+<code>v.key &lt;= u.key</code></li>
+<li><code>v</code> in the right subtree of <code>u</code> iff
+<code>v.key &gt; u.key</code></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> Node<span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> key<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> Noe<span class="op">*</span> left<span class="op">;</span> <span class="co">// &lt;=</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> BST<span class="op">*</span> right<span class="op">;</span> <span class="co">// &gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<details class="algorithm">
+<summary>
+Traverse <span class="math inline">\mathcal O(n)</span>
+</summary>
+<p>go through the tree in nondecreasing order</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> walk<span class="op">(</span>Node<span class="op">*</span> node<span class="op">){</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>node <span class="op">!=</span> NULL<span class="op">){</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        walk<span class="op">(</span>node<span class="op">-&gt;</span>left<span class="op">);</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        print<span class="op">(</span>node<span class="op">-&gt;</span>key<span class="op">);</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        walk<span class="op">(</span>node<span class="op">-&gt;</span>right<span class="op">);</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+<details class="algorithm">
+<summary>
+Search <span class="math inline">\mathcal O(\log n)</span>
+</summary>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Node<span class="op">*</span> search<span class="op">(</span>Node<span class="op">*</span> node<span class="op">,</span> <span class="dt">int</span> key<span class="op">){</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// iterative</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>node <span class="op">!=</span> NULL <span class="kw">and</span> key <span class="op">!=</span> node<span class="op">-&gt;</span>key<span class="op">){</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span><span class="op">(</span>node<span class="op">-&gt;</span>key <span class="op">&lt;</span> key<span class="op">){</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            node <span class="op">=</span> node<span class="op">-&gt;</span>left<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span><span class="cf">else</span><span class="op">{</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>            node <span class="op">=</span> node<span class="op">-&gt;</span>right<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> node<span class="op">;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>Node<span class="op">*</span> search<span class="op">(</span>Node<span class="op">*</span> node<span class="op">,</span> <span class="dt">int</span> key<span class="op">){</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// recursive</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>node <span class="op">==</span> NULL <span class="kw">or</span> node<span class="op">-&gt;</span>key <span class="op">==</span> key<span class="op">){</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> node<span class="op">;</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>node<span class="op">-&gt;</span>key <span class="op">&lt;</span> key<span class="op">){</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> search<span class="op">(</span>node<span class="op">-&gt;</span>right<span class="op">,</span> key<span class="op">);</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span><span class="cf">else</span><span class="op">{</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> search<span class="op">(</span>node<span class="op">-&gt;</span>left<span class="op">,</span> key<span class="op">);</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+</details>
+<details class="algorithm">
+<summary>
+Find Min/Max
+</summary>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Node<span class="op">*</span> min<span class="op">(</span>Node<span class="op">*</span> node<span class="op">){</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// always go left</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>node<span class="op">-&gt;</span>left <span class="op">!=</span> NULL<span class="op">){</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        node <span class="op">=</span> node<span class="op">-&gt;</span>left<span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> node<span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>Node<span class="op">*</span> max<span class="op">(</span>Node<span class="op">*</span> node<span class="op">){</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// always go right</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>node<span class="op">-&gt;</span>right <span class="op">!=</span> NULL<span class="op">){</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        node <span class="op">=</span> node<span class="op">-&gt;</span>right<span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> node<span class="op">;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+<details class="algorithm">
+<summary>
+Find Successor (needs min)
+</summary>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Node<span class="op">*</span> successor<span class="op">(</span>Node<span class="op">*</span> node<span class="op">){</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>node<span class="op">-&gt;</span>right <span class="op">!=</span> NULL<span class="op">){</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> min<span class="op">(</span>node<span class="op">-&gt;</span>right<span class="op">);</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// needs parent otherwise</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// dont need this case if node has both left and right</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    Node<span class="op">*</span> parent <span class="op">=</span> node<span class="op">-&gt;</span>parent<span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>parent <span class="op">!=</span> NULL <span class="kw">and</span> node <span class="op">==</span> parent<span class="op">-&gt;</span>right<span class="op">){</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        node <span class="op">=</span> parent</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        parent <span class="op">=</span> parent<span class="op">.</span>parent<span class="op">;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parent<span class="op">;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+<details class="algorithm">
+<summary>
+Insert/Delete
+</summary>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Node<span class="op">*</span> insert<span class="op">(</span>Node<span class="op">*</span> root<span class="op">,</span> Node<span class="op">*</span> node<span class="op">){</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>root <span class="op">==</span> NULL<span class="op">){</span> <span class="co">// empty (sub)tree</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> node<span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>node<span class="op">-&gt;</span>key <span class="op">&gt;</span> root<span class="op">-&gt;</span>key<span class="op">){</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        root<span class="op">-&gt;</span>right <span class="op">=</span> insert<span class="op">(</span>root<span class="op">-&gt;</span>right<span class="op">,</span> node<span class="op">);</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span><span class="cf">else</span><span class="op">{</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        root<span class="op">-&gt;</span>left <span class="op">=</span> insert<span class="op">(</span>root<span class="op">-&gt;</span>left<span class="op">,</span> node<span class="op">);</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// (sub)root unchanged</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> root<span class="op">;</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>Node<span class="op">*</span> delete<span class="op">(</span>Node<span class="op">*</span> root<span class="op">,</span> <span class="dt">int</span> key<span class="op">){</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>root <span class="op">==</span> NULL<span class="op">){</span> <span class="co">// empty (sub)tree</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> NULL<span class="op">;</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>root<span class="op">-&gt;</span>key <span class="op">&lt;</span> key<span class="op">){</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        root<span class="op">-&gt;</span>right <span class="op">=</span> delete<span class="op">(</span>root<span class="op">-&gt;</span>right<span class="op">,</span> key<span class="op">);</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span><span class="cf">else</span> <span class="cf">if</span><span class="op">(</span>root<span class="op">-&gt;</span>key <span class="op">&gt;</span> key<span class="op">){</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        root<span class="op">-&gt;</span>left <span class="op">=</span> delete<span class="op">(</span>root<span class="op">-&gt;</span>left<span class="op">,</span> key<span class="op">);</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span><span class="cf">else</span><span class="op">{</span> <span class="co">// delete root</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        Node<span class="op">*</span> replacement <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span><span class="op">(</span>root<span class="op">-&gt;</span>left <span class="op">!=</span> NULL <span class="op">&amp;&amp;</span> root<span class="op">-&gt;</span>right <span class="op">!=</span> NULL<span class="op">){</span><span class="co">// case 1</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>            <span class="co">// transplant successor</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>            replacement <span class="op">=</span> min<span class="op">(</span>root<span class="op">-&gt;</span>right<span class="op">);</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span><span class="cf">else</span> <span class="cf">if</span><span class="op">(</span>root<span class="op">-&gt;</span>left <span class="op">!=</span> NULL<span class="op">){</span> <span class="co">// case 2</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>            replacement <span class="op">=</span> root<span class="op">-&gt;</span>left<span class="op">;</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span><span class="cf">else</span><span class="op">{</span> <span class="co">// case 3 root-&gt;right != NULL</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>            replacement <span class="op">=</span> root<span class="op">-&gt;</span>right<span class="op">;</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>        free<span class="op">(</span>root<span class="op">);</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> replacement<span class="op">;</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">// not delete root</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> root<span class="op">;</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+<h2 id="graph">Graph</h2>
+<details class="definition">
+<summary>
+</summary>
+<p><span class="math display">G=(V,E)</span> where</p>
+<ul>
+<li><span class="math inline">V</span> is set of
+<strong>vertices</strong> (aka nodes)</li>
+<li><span class="math inline">E</span> is set of
+<strong>edges</strong></li>
+</ul>
+</details>
+<details class="theorem">
+<summary>
+Types of Graphs
+</summary>
+<ul>
+<li><strong>undirected</strong>: goes both ways
+<ul>
+<li>basically bidirection graph</li>
+<li><span class="math inline">E=\{\{u,v\}:u,v\textsf{ are neighbours
+}\}</span></li>
+</ul></li>
+<li><strong>directed</strong> (aka digraph)
+<ul>
+<li><span class="math inline">E=\{(u,v):u\textsf{ goes to
+}v\}</span></li>
+</ul></li>
+</ul>
+</details>
+<details class="definition">
+<summary>
+Terms related to graph
+</summary>
+<p>for <span class="math inline">u\in V</span></p>
+<ul>
+<li><strong>neighbourhood</strong>
+<ul>
+<li>(undirected) neighbourhood of <span class="math inline">u</span> is
+<span class="math inline">\{v\in V:\{u,v\}\in E\}</span></li>
+<li>(directed) <strong>in-neighbourhood</strong> of <span
+class="math inline">u</span> is <span class="math inline">\{v\in
+V:(v,u)\in E\}</span></li>
+<li>(directed) <strong>out-neigbhourhood</strong> of <span
+class="math inline">u</span> is <span class="math inline">\{u\in
+V:(u,v)\in E\}</span></li>
+</ul></li>
+<li><strong>degree</strong>
+<ul>
+<li>(undirected) degree of <span class="math inline">u</span> is
+<code>len(neighbh u)</code></li>
+<li>(directed) <strong>in-degree</strong> of <span
+class="math inline">u</span> is <code>len(in-neighbh u)</code></li>
+<li>(directed) <strong>out-degree</strong> of <span
+class="math inline">u</span> is <code>len(out-neighbh u)</code></li>
+</ul></li>
+<li><strong>path</strong> <span class="math inline">u\to v</span> is a
+sequence <span
+class="math inline">\{a_i\}_{i=1}^n=\{u,a_2,\cdots,a_{n-1},v\}</span>
+such that
+<ul>
+<li>for <strong>undirected</strong> <span
+class="math display">\{a_n,a_{n+1}\}\in E</span></li>
+<li>for <strong>directed</strong> <span
+class="math display">(a_n,a_{n+1})\in E</span></li>
+</ul></li>
+<li><strong>cycle</strong>
+<ul>
+<li>(undirected) path where <span
+class="math inline">a_1=a_n\quad\forall n&gt;2</span></li>
+<li>(directed) path where <span class="math inline">a_1=a_n\quad\forall
+n</span></li>
+</ul></li>
+</ul>
+</details>
+<details class="theorem">
+<summary>
+Graph Implementation
+</summary>
+<ul>
+<li><strong>Adjacency List</strong>: <code
+class="sourceCode rust"><span class="kw">let</span> graph<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">usize</span><span class="op">&gt;&gt;</span></code>
+<ul>
+<li><code>graph[u]</code> gives neighbourhood of <code>u</code></li>
+<li>space efficient</li>
+</ul></li>
+<li><strong>Adjacency Matrix</strong>: <code
+class="sourceCode rust"><span class="kw">let</span> graph<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">bool</span><span class="op">&gt;&gt;</span></code>
+<ul>
+<li><code>graph[u][v]</code> gives if <span class="math inline">(u,v)\in
+E</span> (can be used as <strong>weighed</strong> graph)</li>
+<li>undirected graph <span class="math inline">\implies</span> matrix is
+<strong>symmetric</strong></li>
+<li>needs <span class="math inline">\mathcal O(|V|^2)</span> space</li>
+</ul></li>
+</ul>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th>Get Edge</th>
+<th>Insert Edge</th>
+<th>Del Edge</th>
+<th>Insert Node</th>
+<th>Del Node</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">LinkedList</td>
+<td><span class="math inline">\color{red}\mathcal O(|V|)</span></td>
+<td><span class="math inline">\color{red}\mathcal O(1)</span></td>
+<td><span class="math inline">\color{red}\mathcal O(|V|)</span></td>
+<td><span class="math inline">\color{lime}\mathcal O(1)</span></td>
+<td><span class="math inline">\color{lime}\mathcal O(|E|)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Matrix</td>
+<td><span class="math inline">\color{lime}\mathcal O(1)</span></td>
+<td><span class="math inline">\color{lime}\mathcal O(1)</span></td>
+<td><span class="math inline">\color{lime}\mathcal O(1)</span></td>
+<td><span class="math inline">\color{red}\mathcal O(|V|^2)</span></td>
+<td><span class="math inline">\color{red}\mathcal O(|V|^2)</span></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h1 id="recursion">Recursion</h1>
+<h2 id="divide-and-conquer">Divide-and-Conquer</h2>
+<details class="yellow">
+<summary>
+<strong>When to Use DaC</strong>
+</summary>
+<ul>
+<li>problem can be broken down into smaller/simpler subproblems</li>
+<li>same algorithm applies to the subproblems and the original</li>
+<li>the solution to the original can be built from the solutions to the
+subproblems</li>
+</ul>
+</details>
+<details class="example">
+<summary>
+Quicksort <span class="math inline">\mathcal O(N\log N)</span>
+</summary>
+<ol type="1">
+<li><code
+class="sourceCode rust"><span class="cf">if</span> array<span class="op">.</span>len() <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">{</span> <span class="cf">return</span> array <span class="op">}</span></code>
+(sorted)</li>
+<li>choose an entry in array as pivot</li>
+<li>split array into lower <code>L</code> and upper <code>U</code><br>
+such that <code
+class="sourceCode rust">L[i] <span class="op">&lt;</span> pivot <span class="op">&lt;=</span> U[i] ∀i</code></li>
+<li><code
+class="sourceCode rust"><span class="cf">return</span> L <span class="op">+</span> H</code></li>
+</ol>
+<ul>
+<li>average <span class="math inline">\mathcal O(N\log N)</span></li>
+<li>worst <span class="math inline">\mathcal O(N^2)</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+Merge Sort <span class="math inline">\mathcal O(N\log N)</span>
+</summary>
+<ul>
+<li>need to split <span class="math inline">N\log N</span> times</li>
+<li>for each split, merge takes <span class="math inline">N</span></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode rs"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> merge_sort(array)<span class="op">:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> len(array) <span class="op">==</span> <span class="dv">1</span><span class="op">:</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>       <span class="cf">return</span> array <span class="co">// sorted</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   <span class="co">// split the array into lower+upper half</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>   lower<span class="op">,</span> upper <span class="op">=</span> split(array)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>   <span class="co">// sort both subarrays</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>   low_sorted <span class="op">=</span> merge_sort(lower)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>   high_sorted <span class="op">=</span> merge_sort(upper)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>   <span class="co">// merge both subarrays in sorted order</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> merge(low_sorted<span class="op">,</span> high_sorted)</span></code></pre></div>
+</details>
+<h2 id="recursion-1">Recursion</h2>
+<details class="yellow">
+<summary>
+<strong>To Make a Recursive Solution</strong>
+</summary>
+<ul>
+<li>base case (the trivial form of the problem): <strong>to make sure
+recursion ends</strong>
+<ul>
+<li>empty/1-char string</li>
+<li>graph of 1 node</li>
+<li>reach the node we look for</li>
+</ul></li>
+<li>recursive case
+<ul>
+<li>divide the problem into simpler subproblems</li>
+<li>pass the subproblems to the same fuction (i.e. recursively)</li>
+<li>should be able to reach the base case <strong>in every
+situation</strong></li>
+</ul></li>
+</ul>
+</details>
+<h2 id="tail-recursion">Tail-Recursion</h2>
+<details class="theorem">
+<summary>
+</summary>
+<ul>
+<li><strong>Without Tail Recursion</strong>
+<ul>
+<li>program will create <strong>call stack</strong> for recursive
+functions</li>
+<li>each call to the fn will add up to the <strong>top</strong> of the
+stack</li>
+<li>when a fn finishes, the stack’s top is <strong>popped</strong></li>
+<li><span class="math inline">\therefore</span> push, push, …, push,
+pop, pop, …, pop</li>
+<li><span class="math inline">\therefore</span> can cause <strong>stack
+overflow</strong></li>
+</ul></li>
+<li><strong>With Tail Recursion</strong>
+<ul>
+<li>the fn returns the result of its recursive call
+<strong>directly</strong></li>
+<li>compiler can recoginise this and optimise it</li>
+<li><span class="math inline">\therefore</span> push, pop, push, pop,
+…</li>
+<li><span class="math inline">\therefore</span> no stack overflow</li>
+<li>but only works for <strong>linear recursion</strong></li>
+</ul></li>
+</ul>
+</details>
+<h1 id="software-design">Software Design</h1>
+<details class="definition">
+<summary>
+Making a Good Software
+</summary>
+<ul>
+<li><strong>Modularity</strong>: each particular task is put in one
+module
+<ul>
+<li>can be individually understood/tested/maintained</li>
+</ul></li>
+<li><strong>Reusability</strong>: can be used for other similar
+tasks</li>
+<li><strong>Extendibiilty</strong>: can be improved easily</li>
+<li><strong>Maintainability</strong>: well-documented</li>
+<li><strong>Correctness</strong>: well-tested, bug-free</li>
+<li><strong>Efficiency</strong>:
+<ul>
+<li>efficient algorithm for the problem (growth matter)</li>
+<li>efficient impl for the algorithm (constants matter)</li>
+</ul></li>
+<li><strong>Openness</strong>: make open source</li>
+<li><strong>Privacy/Security</strong>: secure data exchange, safe
+storage of personal info</li>
+</ul>
+</details>
+<details class="example" open>
+<summary>
+Modularity in <code>C</code>
+</summary>
+<ol type="1">
+<li>header file <code>.h</code> contains only <strong>fn
+decl</strong></li>
+<li>program file <code>.c</code> contains <strong>fn impl</strong> (of
+fns from <code>#include "header.h"</code>)</li>
+<li>object file <code>.o</code> compiled from each <code>.c</code>
+file</li>
+<li>executable linked with all <code>.o</code> file</li>
+</ol>
+</details>
+<h1 id="oop">OOP</h1>
+<details class="theorem">
+<summary>
+Object Oriented Programming
+</summary>
+<ul>
+<li>based on <strong>encapsulation</strong>
+<ul>
+<li>wraps all the data and the fuctions that manipulate it together</li>
+<li>allows <strong>data/functionality hiding</strong></li>
+</ul></li>
+<li>uses <strong>class</strong> (template for creating
+<strong>instances/objects</strong>)
+<ul>
+<li>encapsulates data and function
+<ul>
+<li>data becomes <strong>member variables</strong></li>
+<li>function becomes <strong>class methods</strong></li>
+</ul></li>
+<li>fields can be hidden using <strong>access control modifiers</strong>
+<ul>
+<li><code>public</code> to everyone</li>
+<li><code>protected</code> to self and classed derived from self</li>
+<li><code>private</code> to self</li>
+</ul></li>
+<li>has <strong>constructor/destructor</strong>
+<ul>
+<li>constructor initialises the member variables</li>
+<li>destructor cleans up (e.g. free memory)</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details class="yellow">
+<summary>
+<strong>Features</strong>
+</summary>
+<ul>
+<li>supports <strong>method overloading</strong>
+<ul>
+<li>declare the same method with different parameters</li>
+</ul></li>
+<li>supports <strong>inheritance</strong> (and polymorphism)
+<ul>
+<li>creates hierarchical repr of classes</li>
+<li>avoids data dup by introducing <strong>shared members</strong></li>
+<li>supports <strong>polymorphism</strong>
+<ul>
+<li>can pass a subtype to a function that accepts type</li>
+</ul></li>
+</ul></li>
+<li>supports <strong>abstract class</strong> (aka interface, trait)
+<ul>
+<li>base class that only declares what methods subclasses must have</li>
+</ul></li>
+</ul>
+</details>
+<script>
+const headers = ['h1', 'h2', 'h3'];
+const hidden = ' hidden';
+const isheader = tag => /h\d/.test(tag);
+
+function cmp(a,b){ // assume h1 > h2
+	// same header level
+	if(a === b) return 0;
+	// h1 > h2 => 1    h2 < h1 => -1
+	return (+a[1] < +b[1]) * 2 - 1;
+}
+
+function toggle(tag, element, hide){
+	if(!element) return;
+
+	const t = element.tagName.toLowerCase();
+	if(isheader(t) && cmp(tag, t) <= 0) return;
+
+	if(hide){
+		element.className += hidden;
+	}else{
+		element.className = element.className.replace(hidden, '');
+	}
+	toggle(tag, element.nextElementSibling, hide);
+}
+
+// open all details
+document.querySelectorAll('details:not(.example)').forEach(e => e.open = true);
+// click on header will hide all following elements until next header of same level
+headers.forEach(
+	tag => document.querySelectorAll(tag + ':not(.title)').forEach(
+		element => element.onclick = ({target: { nextElementSibling } }) => {
+			toggle(tag, nextElementSibling, !nextElementSibling.className.includes('hidden'))
+		}
+	)
+);
+// click on title to toggle all h1
+document.querySelector('h1.title').onclick = () => document.querySelectorAll('h1:not(.title)').forEach(h1 => h1.click());
+
+</script>
+</body>
+</html>

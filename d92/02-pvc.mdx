@@ -1,0 +1,161 @@
+---
+title: Parvaresh-Vardy Code
+---
+
+## Parvaresh-Vardy
+
+<details class="algorithm" open>
+<summary>reed-solomon</summary>
+
+let $\mathbb{F}=\{x_1,\cdots, x_n\}$
+
+for $k\le n$, the RS code is
+
+$$
+\text{RS}:\mathbb{F}^k\to\mathbb{F}^n
+$$
+
+on input $A(x)\equiv(a_0,\cdots,a_{k-1})\in\mathbb{F}^n$
+
+- return $(A(x_1),\cdots, A(x_n))\in\mathbb{F}^n$
+
+specs
+
+- rate is $R=k/n$
+- distance is $1-k/n$
+</details>
+
+<details class="algorithm" open>
+<summary>parvaresh-vardy</summary>
+
+
+let $\mathbb{F}=\{x_1,\cdots,x_q\}$ with 
+
+- $n\le q$
+- $m,h\in\mathbb{Z}^+$
+
+the PV code is
+
+$$
+\text{PV}:\mathbb{F}_q^n\to\mathbb{F}_{q^m}^q
+$$
+
+on input $(a_0,\cdots,a_{n-1})\in\mathbb{F}^n$
+
+
+- compute $f_0(x)=\sum a_ix^i\in \mathbb{F}_{q^n}$ 
+- compute $f_1,\cdots,f_{m-1}$ where $f_i(x)=f_0(x)^{h^i}$
+- evaluate $f_i(x_j)$ for any $i,j$
+  - notice $(f_0(x_i),\cdots,f_{m-1}(x_i))\in\mathbb{F}_q^m\cong \mathbb{F}_{q^m}$ for any $i$
+- return all evaluations as an element in $\mathbb{F}_{q^m}^q$
+
+
+specs
+
+- rate is $n/mq$
+
+</details>
+
+
+## Extractor
+
+<details class="definition" open>
+<summary>min entropy</summary>
+
+for random variable $X:\{0,1\}^n\to\mathbb{R}$
+
+- the **min entropy** of $X$ is $k=H_\infty (X)$ where $k$ is largest st (for any $x\in\operatorname{ran}X$)
+
+$$
+\forall x\quad \operatorname*{Pr}[X=x]\le 2^{-k}
+$$
+
+- $X$ with $H_\infty (X)\ge k$ is a **k-source**
+</details>
+
+<details class="theorem" open>
+<summary>properties about min entropy</summary>
+
+for $X$ over $\{0,1\}^n$
+
+- $H_\infty (X)\le n$
+- $H_\infty (X)=n\iff X$ is distributed on $U_n$, that is, uniform
+</details>
+
+
+<details class="definition" open>
+<summary>close</summary>
+
+RV/distribution $X$ and $Y$ are **ε-close** iff
+
+$$
+\Delta(X,Y)\le \varepsilon
+$$
+
+where the *statistical distance* is
+
+$$
+\Delta(X,Y)=\max_{T\subseteq\Omega}|\operatorname{Pr}[X\in T]-\operatorname{Pr}[Y\in T]|
+$$
+
+</details>
+
+<details class="definition" open>
+<summary>extractor</summary>
+
+> extractor transforms a distribution with large $H_\infty$ into close uniform 
+
+a $\htmlClass{color}{{(k,\varepsilon)}}$ **extractor** is $E:\{0,1\}^n\times\{0,1\}^d\to\{0,1\}^m$ where
+
+- for any $k$-source $X$
+
+<div class="flex justify-center">
+
+$E(X,U_d)$ is $\varepsilon$-close to $U_m$
+</div>
+
+where $U_l$ is uniformly distributed over $\{0,1\}^l$ for any $l$
+
+- $\{0,1\}^n$ is weak random source
+- $d$ is seed length (impossible to extract weak in general)
+- $\{0,1\}^m$ is better random source
+
+good extractor
+
+- short seed: 
+  - $d=\mathcal{O} (\log n)$ is optimal, can enumerate $\{0,1\}^d$
+  - $d\ge m$ is trivial, just return seed
+- long output
+</details>
+
+<details class="definition" open>
+<summary>condenser</summary>
+
+a $\htmlClass{color}{k\to_\varepsilon k'}$ **condenser** is $C:\{0,1\}^n\times\{0,1\}^d\to\{0,1\}^m$ where
+
+- for any $k$-source $X$
+
+<div class="flex justify-center">
+
+$C(X,U_d)$ is $\varepsilon$-close to some distribution $D$ on $\{0,1\}^m$ with $H_\infty(D)=k'$
+</div>
+
+condenser is **lossless** iff is $k\to_\varepsilon k+d$
+
+- **entropy rate** is $k'/m$
+</details>
+
+<details class="theorem" open>
+<summary>extractors are condensers</summary>
+
+
+any $(k,\varepsilon)$ extractor is a $k\to_\varepsilon m$ condenser
+
+<details class="list-none" open>
+<summary>**Proof.**</summary>
+
+the distribution on $\{0,1\}^m$ with min entropy $m$ is uniform
+</details>
+</details>
+
+

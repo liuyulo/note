@@ -1,0 +1,311 @@
+---
+title: Group
+---
+
+> Contemporary Abstract Algebra 10ed -- Joseph A. Gallian
+
+$$
+U(n)=\{k:1\le k\le n\enspace\gcd(k,n)=1\}
+$$
+
+- under multiplication
+- identity is $1$
+- $U(p)=\{1,\cdots,p-1\}$ for prime $p$
+
+## Properties of Groups
+
+<details class="theorem" open>
+<summary>unique identity</summary>
+<details>
+<summary>**Proof.** wts $e,e'\in G$ identity $\implies e=e'$</summary>
+
+- $\therefore \forall a\in G\enspace ae=a$ and $\forall a\in G\enspace a=e'a$
+- in particular, $e'e=e'$ and $e=e'e$
+- $\therefore e'=e'e=e\quad\square$
+
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>can right/left cancel</summary>
+<details>
+<summary>**Proof.** wts $ba=ca\implies b=c$</summary>
+let $a'$ be inverse of $a$
+
+$$
+\begin{aligned}
+  \because&& ba&=ca\\
+  \therefore&& (ba)a'&=(ca)a'\\
+  \therefore&& b(aa')&=c(aa')\\
+  \therefore&& be&=ce\\
+  \therefore&& b&=c\quad\square
+\end{aligned}
+$$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>unique inverse, denote as $a^{-1}$</summary>
+<details>
+<summary>**Proof.** wts $b,c$ inverse of $a\implies b=c$</summary>
+$$
+\begin{aligned}
+  \because&& ab&=e=ac\\
+  \therefore&&b&=c\\
+\end{aligned}
+$$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>for any $a\in G$ and $n\in\mathbb Z^+$</summary>
+- $a^0=e$
+- $a^{-1}$ denotes inverse
+- $a^n$ denotes $aa\cdots a$ (by $n$)
+- $a^{-n}$ denotes $(a^{-1})^n$
+</details>
+
+<details class="definition" open>
+<summary>for additive group</summary>
+- $e=0$
+- $ab=a+b$
+- $a^{-1}=-a$
+- $a^n=na$
+- $ab^{-1}=a-b$
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+- $(ab)^n=ababab\cdots ab$
+- $(ab)^{-1}=b^{-1}a^{-1}$
+</details>
+
+<details class="example">
+<summary>$ab=ca\implies b=c$ implies abelian</summary>
+let any $a,b\in G$
+
+- let $c=aba^{-1}$
+
+$$
+\begin{aligned}
+  \therefore&& ab&=ab(a^{-1}a)=(aba^{-1})a=ca=ba\\
+\end{aligned}
+$$
+
+- $\therefore$ abelian
+</details>
+<details class="example">
+<summary>$\forall a,b\in G\enspace(ab)^{-1}=a^{-1}b^{-1}\iff$ abelian</summary>
+- let any $a,b\in G$, assume $(ab)^{-1}=a^{-1}b^{-1}$
+
+$$
+\begin{aligned}
+  \therefore&& ab&=((ab)^{-1})^{-1}\tag{\sf unique inverse}\\
+  &&&=(a^{-1}b^{-1})^{-1}\\
+  &&&=(b^{-1})^{-1}(a^{-1})^{-1}\\
+  &&&=ba
+\end{aligned}
+$$
+
+- assume abelian
+
+$$
+\begin{aligned}
+\therefore&&(ab)^{-1}&=b^{-1}a^{-1}=a^{-1}b^{-1}\quad\square\\
+\end{aligned}
+$$
+</details>
+<details class="example">
+<summary>$\forall a,b\in G\enspace(ab)^2=a^2b^2\implies$ abelian</summary>
+
+let any $a,b\in G$, assume $(ab)^2=a^2b^2$
+$$
+\begin{aligned}
+  \therefore ab&=a^{-1}a^2b^2b^{-1}=a^{-1}(ab)^2b^{-1}\\
+  &=a^{-1}ababb^{-1}=ba\quad\square
+\end{aligned}
+$$
+</details>
+<details class="example">
+<summary>$\forall a\in G\enspace a^2=e\implies$ abelian</summary>
+$$
+\begin{aligned}
+  ab&=a^{-1}a^2b^2b^{-1}\\
+  &=a^{-1}eeb^{-1}\\
+  &=a^{-1}eb^{-1}\\
+  &=a^{-1}(ab)^2b^{-1}\\
+  &=a^{-1}ababb^{-1}\\
+  &=ba\quad\square
+\end{aligned}
+$$
+</details>
+
+<details class="example list-none">
+<summary>$|G|=3\implies$ abelian</summary>
+let $G=\{e,a,b\}$ where $e\ne a\ne b$
+
+wts $ab=e$
+
+- BWOC assume $ab=a$
+  - $\therefore b=a^{-1}ab=a^{-1}a=e$, contradicts that $b\ne e$
+- BWOC assume $ab=b$
+  - $\therefore a=abb^{-1}=bb^{-1}=e$, contradicts that $a\ne e$
+
+$\therefore ab=e$
+
+$\therefore ab=e=babb^{-1}=ba$
+
+$\therefore$ cayley table is symmetric, thus abelian
+</details>
+
+<details class="example list-none">
+<summary>$A$ has closed asso operator, right iden, right inv $\implies A$ is group</summary>
+<details>
+<summary>**Proof.** wts $\forall a\in A\enspace a^2=a\implies a=e$</summary>
+let any $a\in A$ st $a^2=a$
+
+- $\therefore\exists b\in A$ st $ab=e$
+- $\therefore a=a(ab)=(aa)b=ab=e$ as wanted
+</details>
+
+let any $a\in A$
+
+- $\therefore\exists b\in A$ st $ab=e$
+- $\therefore (ba)^2=(ba)(ba)=b(ab)a=ba$
+- $\therefore ba=e=ab$ (1)
+- $\therefore ea=(ab)a=a(ba)=ae=a$ (2)
+
+$\therefore$ closed, assoc, iden, inv
+
+$\therefore$ is group $\quad\square$
+</details>
+
+## Groups
+
+<details class="definition" open>
+<summary>dihedral group $D_n$ with rotation and reflections on polygons</summary>
+$$
+D_n=\{e,\rho_1,\cdots,\rho_{n-1},\mu_1,\cdots,\mu_n\}
+$$
+
+- $\rho_i$ is rotation $i\cdot2\pi/n$ clockwise
+- $\mu_i$ is reflection on $i$th vertex
+</details>
+
+<details class="definition" open>
+<summary>general linear group $GL(n,F)$ with matrix mul for $n\in\mathbb Z^+$ over field $F$</summary>
+
+$$
+GL(n,F)=\{A\in \mathcal M(F^{n\times n}):|A|\ne0\}
+$$
+
+- nonabelian
+</details>
+
+<details class="definition" open>
+<summary>special linear group $SL(n,F)$ with matrix mul</summary>
+$$
+SL(n,F)=\{A\in\mathcal M(F^{nn}):|A|=1\}
+$$
+</details>
+
+<details class="definition" open>
+<summary></summary>
+- $\mathbb Z=(\mathbb Z,+)$
+</details>
+
+### Cayley Table
+
+<details class="example two" open>
+<summary>cayley table of $D_3$</summary>
+
+- apply column, then apply row
+- $ab$ means apply $b$, then apply $a$
+
+||||||||
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| | $e$ | $\rho_1$ | $\rho_2$ | $\mu_1$ | $\mu_2$ | $\mu_3$ |
+|$e$| $e$ | $\rho_1$ | $\rho_2$ | $\mu_1$ | $\mu_2$ | $\mu_3$|
+|$\rho_1$| $\rho_1$ | $\rho_2$ | $e$ | $\mu_2$ | $\mu_3$ | $\mu_0$ |
+|$\rho_2$| $\rho_2$ | $e$ | $\rho_1$ | $\mu_3$ | $\mu_1$ | $\mu_2$ |
+|$\mu_1$|$\mu_1$|$\mu_3$|$\mu_2$|$e$|$\rho_2$|$\rho_1$
+|$\mu_2$|$\mu_2$|$\mu_1$|$\mu_3$|$\rho_1$|$e$|$\rho_2$
+|$\mu_3$|$\mu_3$|$\mu_2$|$\mu_1$|$\rho_2$|$\rho_1$|$e$
+</details>
+
+
+## Notation
+
+<details class="definition" open>
+<summary>multiplicative vs additive group</summary>
+
+| name | mul | add
+|:-:|:-:|:-:|
+| composition | $ab$ | $a+b$
+| identity | $e$ | $0$
+| inverse | $a^{-1}$ | $-a$
+| exponent | $a^n$ | $na$
+
+</details>
+
+
+## Group Definition
+
+<details class="definition" open>
+<summary>let set $G$ with binary operation $G\times G\to G;(a,b)\mapsto ab$</summary>
+$G$ is a group iff
+
+|||
+|-:|-|
+| closure | $a,b\in G\implies ab\in G$
+| associativity | $\forall a,b,c\in G\quad (ab)c=a(bc)$
+  identity | $\exists e\in G\enspace\forall a\in G\quad ae=ea=a$
+  inverse | $\forall a\in G\enspace\exists b\in G\quad ab=ba=e$
+</details>
+
+<details class="definition" open>
+<summary>abelian</summary>
+group $G$ is abelian iff $\forall a,b\in G\enspace ab=ba$
+</details>
+
+## Equivalence
+
+<details class="definition" open>
+<summary>an equivalence relation on set $S$ is $R\sube S\times S$ such that</summary>
+for any $a,b,c\in S$
+- $(a,a)\in R$ (reflexive)
+- $(a,b)\in R\implies(b,a)\in R$ (symmetric)
+- $(a,b)\in R$ and $(b,c)\in R\implies(a,c)\in R$ (transitive)
+
+denote $(a,b)\in R$ as $a\sim b$
+</details>
+
+<details class="definition" open>
+<summary>equivalence class</summary>
+for $a\in S$, the **equivalence class** of $S$ containing $a$ is 
+$$
+[a]=\{b\in S:b\sim a\}
+$$
+</details>
+
+<details class="theorem" open>
+<summary>partitions</summary>
+the collection of $[a]$ for any $a\in S$ forms a partition of $S$
+</details>
+
+<details class="example list-none" open>
+<summary>$|G|=2k\implies\exists a\ne e\in G$ st $a^2=e$</summary>
+
+let $A=\{a\in G:a=a^{-1}\}$ and $B=\{b\in G:b\ne b^{-1}\}$
+
+$\because$ for any $b\ne b^{-1}\in G$, we have $b\in B\iff b^{-1}\in B$\
+$\therefore|B|$ is even\
+$\because A$ and $B$ partition $G$ and $|G|$ even\
+$\therefore|A|=|G|-|B|$ is even\
+$\because e\in A$ since $e=e^{-1}$\
+$\therefore|A|\ge1$, thus $|A|\ge2$ since $|A|$ even\
+$\therefore\exists a\ne e\in A$, thus $a=a^{-1}$, thus $a^2=e\quad\square$
+
+</details>
+
+

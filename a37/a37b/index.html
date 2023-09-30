@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>A37 Post-Midterm | Calculus II</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style>
+  @charset "UTF-8";
+  .hidden {
+    display: none;
+  }
+
+  html {
+    font-family: "source sans pro", "iosevka custom extended", "UD Digi Kyokasho NK-R", sans-serif;
+    font-size: 20px;
+    background: #000000;
+    color: #f1f1f1;
+  }
+  html body {
+    padding-bottom: 30em;
+  }
+  html header#title-block-header {
+    display: flex;
+    justify-content: center;
+  }
+  html h1:not(.title) {
+    border-bottom: 1px solid;
+  }
+  html h1, html h2, html h3 {
+    color: #ffe666;
+    margin: 0.5em 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  html a {
+    color: #ffe666;
+    text-decoration: none;
+  }
+  html a:visited {
+    color: #ffe666;
+  }
+  html a:hover {
+    color: #f1f1f1;
+    text-decoration: underline;
+    background: #0f0f0f;
+  }
+  html blockquote {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ffe666;
+    background: rgba(255, 230, 102, 0.1);
+    color: #f1f1f1 !important;
+  }
+  html p, html header {
+    margin: 0;
+  }
+  html ul {
+    padding-left: 2em;
+  }
+  html table {
+    border-collapse: collapse;
+  }
+  html table tbody > tr:not(:first-child) {
+    border-top: 1px solid #5e5e5e;
+  }
+  html table thead {
+    border-bottom: 1px solid #f1f1f1 !important;
+  }
+  html table td, html table th {
+    padding: 0.5em;
+  }
+  html pre {
+    background: #0f0f0f;
+  }
+  html pre code {
+    color: #f1f1f1;
+  }
+  html code {
+    color: #ff6680;
+    font-family: "iosevka custom extended";
+  }
+
+  details.theorem {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #39c5bb;
+    background: rgba(57, 197, 187, 0.1);
+    padding-top: 0;
+  }
+  details.theorem strong {
+    color: #39c5bb;
+  }
+  details.theorem summary {
+    cursor: pointer;
+  }
+  details.theorem > summary {
+    padding: 0.5em 1em;
+    background: rgba(57, 197, 187, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.theorem > summary::before {
+    content: "theorem.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #39c5bb;
+  }
+  details.example {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff9966;
+    background: rgba(255, 153, 102, 0.1);
+    padding-top: 0;
+  }
+  details.example strong {
+    color: #ff9966;
+  }
+  details.example summary {
+    cursor: pointer;
+  }
+  details.example > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 153, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.example > summary::before {
+    content: "example.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff9966;
+  }
+  details.definition {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #66ccff;
+    background: rgba(102, 204, 255, 0.1);
+    padding-top: 0;
+  }
+  details.definition strong {
+    color: #66ccff;
+  }
+  details.definition summary {
+    cursor: pointer;
+  }
+  details.definition > summary {
+    padding: 0.5em 1em;
+    background: rgba(102, 204, 255, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.definition > summary::before {
+    content: "definition.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #66ccff;
+  }
+  details.algorithm {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.algorithm strong {
+    color: #ff6680;
+  }
+  details.algorithm summary {
+    cursor: pointer;
+  }
+  details.algorithm > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.algorithm > summary::before {
+    content: "algorithm.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff6680;
+  }
+
+  .inference + ul > li {
+    list-style-type: decimal;
+  }
+  .inference + ul > li:last-child {
+    border-top: solid 1px #f1f1f1;
+    list-style-type: "∴ ";
+  }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">A37 Post-Midterm | Calculus II</h1>
+</header>
+<h1 id="intergals">Intergals</h1>
+<h2 id="definite-integral">Definite Integral</h2>
+<h3 id="darboux">Darboux</h3>
+<blockquote>
+<p>more points in <span class="math inline">P\implies</span> more
+accurate the approx is</p>
+</blockquote>
+<details class="definition">
+<summary>
+Darboux Sum: given <span class="math inline">a\lt b\quad n\in\Z^+</span>
+</summary>
+let any <span class="math inline">P=\{x_i\}\textsf{ st }a=x_0\lt
+x_1\lt\cdots\lt x_n=b</span><br> then <span class="math inline">\forall
+i\in\Z^+</span> st <span class="math inline">i\le n</span> <span
+class="math display">\begin{align*}
+    M_i&amp;=\sup\{f(x):x_{i-1}\le x\le x_i\}\\
+    m_i&amp;=\inf\{f(x):x_{i-1}\le x\le x_i\}\\
+    U(f,P)&amp;=\sum(x_i-x_{i-1})M_i=M_i(b-a)\\
+    L(f,P)&amp;=\sum(x_i-x_{i-1})m_i=m_i(b-a)\\
+\end{align*}</span>
+</details>
+<details class="definition">
+<summary>
+Darboux Definition of Integral
+</summary>
+<p><span class="math display">\begin{align*}
+    U_f&amp;=\sup\{U(f,P):P\textsf{ partition of }[a,b]\}\\
+    L_f&amp;=\inf\{L(f,P):P\textsf{ partition of }[a,b]\}\\
+\end{align*}</span></p>
+<span class="math inline">f</span> is <strong>integrable</strong> on
+<span class="math inline">[a,b]\iff U_f=L_f</span>
+</details>
+<details class="definition">
+<summary>
+Integrability Reformulation
+</summary>
+<p><span class="math inline">f</span> is <strong>NOT integrable</strong>
+on <span class="math inline">[a,b]</span> iff <span
+class="math display">\exist\varepsilon\gt0\enspace\forall P\textsf{ of
+}[a,b]\textsf{ st }U(f,P)-L(f,P)\ge\varepsilon</span></p>
+<ul>
+<li>just choose <span
+class="math inline">\varepsilon=U(f,P)-L(f,P)</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+show Dirichlet function <span class="math inline">2_{\mathbb
+Q}(x)</span> in <strong>NOT integrable</strong> by definition
+</summary>
+<p>given <span class="math inline">a\lt b</span></p>
+<ul>
+<li>rationals and irrationals are <strong>dense</strong> in <span
+class="math inline">\R</span></li>
+<li><span class="math inline">\forall I\subset\R\enspace I</span>
+contains rationals and irrationals</li>
+</ul>
+<p><span class="math inline">\because</span> rationals and irrationals
+are <strong>dense</strong> in <span class="math inline">\R</span><br>
+<span class="math inline">\therefore\forall I\subset\R\enspace I</span>
+contains rationals and irrationals</p>
+<span class="math display">\begin{align*}
+    \therefore\textsf{let any }P&amp;=\{x_i\}\textsf{ st }a=x_0\lt
+x_1\lt\cdots\lt x_n=b\\
+    \forall1\le i&amp;\le n\\
+    M_i&amp;=\sup\{f(x):x\in[x_{i-1},x_i]\}=\sup\{2,0\}=2\\
+    m_i&amp;=\inf\{f(x):x\in[x_{i-1},x_i]\}=\inf\{2,0\}=0\\
+    \therefore
+U(f,P)&amp;=\sum(x_i-x_{i-1})M_i=\sum2(x_i-x_{i-1})=2(b-a)\\
+    L(f,P)&amp;=\sum(x_i-x_{i-1})m_i=\sum0(x_i-x_{i-1})=0\\
+    \therefore U_f&amp;=\sup\{U(f,P):P\textsf{ partition of }[a,b]\}\\
+    &amp;=\sup\{2(b-a)\}=2(b-a)\\
+    L_f&amp;=\inf\{L(f,P):P\textsf{ partition of }[a,b]\}\\
+    &amp;=\inf{0}=0\\
+    \because b&amp;\lt a\\
+    \therefore U_f&amp;\ne L_f\implies\int_a^b 2_{\mathbb
+Q}(x)\,dx\textsf{ DNE}\quad\blacksquare
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+show again with <strong>reformulation</strong>
+</summary>
+<p>repeat steps from above but <strong>stop after</strong> <span
+class="math inline">U(f,P)\enspace L(f,P)</span></p>
+<ul>
+<li>choose <span class="math inline">\varepsilon=2(b-a)\gt0</span></li>
+<li>let any partition <span class="math inline">P</span> of <span
+class="math inline">[a,b]</span> <span
+class="math display">\begin{align*}
+&amp;\therefore U(f,P)-L(f,P)=2(b-a)-0=2(b-a)\ge\varepsilon\\
+&amp;\therefore\textsf{not integrable}\quad\blacksquare
+\end{align*}</span>
+</details></li>
+</ul>
+<h1 id="techniques">Techniques</h1>
+<h2 id="substitution">Substitution</h2>
+<details class="example">
+<summary>
+show <span class="math inline">\displaystyle\int_0^{\pi/2}f(\sin
+x)\,dx=\int_0^{\pi/2}f(\cos x)\,dx</span> for all continuous <span
+class="math inline">f</span>
+</summary>
+<span class="math display">\begin{align*}
+    \textsf{let }u&amp;=\pi/2-x&amp;&amp;du=-dx&amp;&amp;\sin x=\cos u\\
+    &amp;&amp;&amp;u(\pi/2)=0&amp;&amp;u(0)=\pi/2
+\end{align*}</span> <span class="math display">\int_0^{\pi/2}f(\sin
+x)\,dx=-\int_{\pi/2}^0f(\cos u)\,du=\int_0^{\pi/2}f(\cos u)\,du</span>
+</details>
+<h2 id="partial-fraction">Partial Fraction</h2>
+<h3 id="dont-partfrac">Don’t PartFrac</h3>
+<details class="example">
+<summary>
+<span
+class="math inline">\displaystyle\int\frac{x+1}{(x-1)^2}\,dx=I</span>
+</summary>
+let <span class="math inline">u=x-1\quad du=dx\quad x+1=u+2</span> <span
+class="math display">\begin{align*}
+  I&amp;=\int\frac{u+2}{u^2}\,du=\int\frac{du}u+2\int\frac{du}{u^2}\\
+  &amp;=\ln|u|-\frac2{u}+C=\ln|x-1|-\frac2{x-1}+C
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">\displaystyle\int\frac{dx}{x(x^4-1)}=\int
+f(x)\,dx</span>
+</summary>
+<span class="math display">\int f(x)\,dx=\frac{dx}{x^5(1-x^{-4})}</span>
+let <span class="math inline">u=1-x^{-4}\quad du=4x^{-5}dx</span> <span
+class="math display">\int
+f(x)\,dx=\frac14\int\frac{du}u=\frac{\ln|u|}4+C=\frac{\ln|1-x^{-4}|}4+C</span>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">\displaystyle\int\frac{dx}{e^{8x}-1}=\int
+f(x)\,dx</span>
+</summary>
+<p><span
+class="math display">f(x)=\frac1{e^{8x}(1-e^{-8x})}=\frac{e^{-8x}}{1-e^{-8x}}</span>
+let <span class="math inline">u=1-e^{-8x}\quad du=8e^{-8x}dx</span>
+<span class="math display">\int
+f(x)\,dx=\frac18\int\frac{du}u=\frac{\ln|u|}8+C=\frac{\ln|1-e^{-8x}|}8+C</span></p>
+</details>
+<h2 id="trigonometry-substitution">Trigonometry Substitution</h2>
+<details class="theorem">
+<summary>
+</summary>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Expression</th>
+<th style="text-align: center;">Substitution</th>
+<th style="text-align: center;">Range</th>
+<th style="text-align: center;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\sqrt{u^2-a^2}</span></td>
+<td style="text-align: center;"><span
+class="math inline">u=a\sec\theta</span></td>
+<td style="text-align: center;"><span
+class="math inline">\begin{cases}\theta\in[0,\pi/2)&amp;u\ge
+a\\\theta\in(\pi/2,\pi]&amp;u\le-a\end{cases}</span></td>
+<td style="text-align: center;"><span
+class="math inline">a\tan\theta</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\sqrt{a^2-u^2}</span></td>
+<td style="text-align: center;"><span
+class="math inline">u=a\sin\theta</span></td>
+<td style="text-align: center;"><span
+class="math inline">|\theta|\le\pi/2\quad|u|\le a</span></td>
+<td style="text-align: center;"><span
+class="math inline">a\cos\theta</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\sqrt{a^2+u^2}</span></td>
+<td style="text-align: center;"><span
+class="math inline">u=a\tan\theta</span></td>
+<td style="text-align: center;"><span
+class="math inline">|\theta|&lt;\pi/2</span></td>
+<td style="text-align: center;"><span
+class="math inline">a\sec\theta</span></td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="example">
+<summary>
+Complete the square <span
+class="math inline">\displaystyle\int\frac{dx}{\sqrt{x^2-6x+13}}=\int
+f(x)\,dx</span>
+</summary>
+<p><span class="math display">
+f(x)=\frac1{\sqrt{(x-3)^2+4}}\\
+\begin{array}{ll}
+    \text{for }|\theta|&lt;\pi/2&amp;\text{let }u=x-3\\
+    u=2\tan\theta&amp;\tan\theta=\frac u2\\
+    dx=2\sec^2\,d\theta&amp;\sqrt{u^2+4}=\sqrt{4\tan^2\theta+4}=2\sec\theta
+\end{array}\\
+\begin{aligned}
+    \therefore\int f(x)\,dx&amp;=\int \frac{2\sec^2\theta
+d\theta}{2\sec\theta}=\int\sec\theta\,d\theta\\
+    &amp;=\ln|\tan\theta+\sec\theta|+C
+\end{aligned}
+</span> <strong>draw triangle</strong> to find out <span
+class="math inline">\sec\theta=\frac{\sqrt{u^2+4}}2</span></p>
+<span class="math display">\begin{align*}
+    \therefore\int f(x)\,dx&amp;=\ln\left|\frac
+u2+\frac{\sqrt{u^2+4}}2\right|+C\\
+    &amp;=\ln|x-3+\sqrt{(x-3)^2+4}|-\ln2+C\\
+    &amp;=\ln|x-3+\sqrt{(x-3)^2+4}|+C\\
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+trig transformation <span class="math inline">\displaystyle\int(\cos
+x)\sqrt{5-\cos^2(x)}\,dx=\int f(x)\,dx</span>
+</summary>
+<span class="math display">
+f(x)=(\cos x)\sqrt{5-(1-\sin^2x)}=(\cos x)\sqrt{\sin^2x+4}\\
+u=\sin x\quad du=\cos x\,dx\\
+I=\int \sqrt{u^2+4}\,du
+</span>
+</details>
+<h1 id="sequences">Sequences</h1>
+<blockquote>
+<p><span class="math inline">\{a_i\}</span> is defined as <span
+class="math inline">a:\Z^+\to\R</span></p>
+</blockquote>
+<h2 id="by-definition">By Definition</h2>
+<details class="definition">
+<summary>
+<span class="math inline">\displaystyle\lim_{n\to\infty}a_n=L</span> if
+</summary>
+<span class="math display">\forall\varepsilon&gt;0\enspace\exists
+N&gt;0\text{ st }n&gt;N\implies|a_n-L|&lt;\varepsilon</span>
+</details>
+<details class="definition">
+<summary>
+<span
+class="math inline">\displaystyle\lim_{n\to\infty}a_n=\infty</span> if
+</summary>
+<span class="math display">\forall M&gt;0\enspace\exists N&gt;0\text{ st
+}n&gt;N\implies a_n&gt;M</span>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">\displaystyle
+a_n=\frac{2-2n}{(n^2+n)(n^2-3)}</span> converges
+</summary>
+<details>
+<summary>
+draft
+</summary>
+<span class="math display">\begin{align*}
+    \left|\frac{2-2n}{(n^2+n)(n^2-3)}\right|&amp;=\frac{2n-2}{(n^2+n)(n^2-3)}&lt;\frac{2n-2+2}{(n^2+n)(n^2-3)}\\
+    &amp;&lt;\frac{2n}{(n^2+n)(4-3)}=\frac{2n}{n^2+n}\tag{\sf let
+$n&gt;2$}\\
+    &amp;&lt;\frac{2n}{n^2+n-n}=\frac2n
+\end{align*}</span>
+</details>
+<p>wts <span class="math inline">\forall\varepsilon&gt;0\enspace\exist
+N&gt;0</span> st <span class="math inline">n\in\Z^+\enspace n\gt
+N\implies |a_n-0|=|a_n|&lt;\varepsilon</span></p>
+<ul>
+<li>aside 1: assume <span class="math inline">n&gt;2</span> <span
+class="math display">\begin{align*}
+    \left|\frac{2-2n}{(n^2+n)(n^2-3)}\right|&amp;=\frac{|2-2n|}{|n^2+n||n^2-3|}\qquad\qquad\qquad\tag{\sf
+abs prop}\\
+    &amp;=\frac{2n-2}{(n^2+n)(n^2-3)}\tag{$\because n&gt;2$}\\
+    &amp;&lt;\frac{2n-2+2}{(n^2+n)(2^2-3)}\tag{\sf same above}\\
+    &amp;=\frac{2n}{n^2+n}&lt;\frac{2n}{n^2}=\frac2n\tag{\sf same}
+\end{align*}</span></li>
+<li>aside 2: assume <span class="math inline">n\gt N</span> <span
+class="math display">\begin{align*}
+  \therefore&amp;&amp;1/n&amp;\lt1/N\\
+  \implies&amp;&amp;2/n&amp;\lt2/N=\varepsilon\\
+  \implies&amp;&amp;N&amp;=2/\varepsilon
+\end{align*}</span></li>
+<li>proof: given <span class="math inline">\varepsilon&gt;0</span> let
+<span
+class="math inline">N=\mathrm{max}\{3,2/\varepsilon\}=2/\varepsilon&gt;0</span>
+<span class="math display">\therefore n\in\Z^+\enspace n\gt N\implies
+|a_n|\lt\frac2n\lt\frac2N=\frac2{2/\varepsilon}=\varepsilon\quad\blacksquare</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">\displaystyle
+a_n=\frac{(-1)^n\ln(n)}{n^2e^n}</span> converges
+</summary>
+aside 1: assume <span class="math inline">n&gt;0</span> and <span
+class="math inline">n\in\Z^+</span> <span
+class="math display">\begin{align*}
+    \left|\frac{(-1)^n\ln(n)}{n^2e^n}\right|&amp;=\left|\frac{\ln(n)}{n^2e^n}\right|\tag*{$|(-1)^n|=1$}\\
+    &amp;=\frac{\ln(n)}{n^2e^n}\tag*{$\ln(n),n^2,e^n&gt;0$}\\
+    &amp;&lt;\frac{n^2}{n^2e^n}\tag*{$\ln(n)&lt;n^2\enspace\forall
+n\ge1$}\\
+    &amp;=\frac1{e^n}\\
+\end{align*}</span> aside 2: assume <span
+class="math inline">n&gt;N</span> <span
+class="math display">\begin{align*}
+    \therefore&amp;&amp;e^n&amp;&gt;e^N\\
+    \implies&amp;&amp;\frac1{e^n}&amp;&lt;\frac1{e^N}&lt;\varepsilon\\
+    \implies&amp;&amp;N&amp;&gt;-\ln(\varepsilon)\\
+\end{align*}</span> proof: given <span
+class="math inline">\varepsilon&gt;0</span>, let <span
+class="math inline">N\in\Z^+</span> and <span
+class="math inline">N&gt;-\ln(\varepsilon)</span> <span
+class="math display">\begin{align*}
+    &amp;n&gt;N\\
+    \implies&amp;|a_n-0|=\frac{\ln(n)}{n^2e^n}&lt;\frac1{e^n}&lt;\frac1{e^N}&lt;\frac1{e^{-\ln(\varepsilon)}}=\varepsilon\quad\blacksquare
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">a_n=1+(-1)^n</span> diverges (oscillate)
+</summary>
+<p>assume <span class="math inline">\exist L</span> st <span
+class="math inline">\forall\varepsilon&gt;0\enspace n&gt;N\implies
+|a_n-L|&lt;\varepsilon</span></p>
+<ul>
+<li>case <span class="math inline">n</span> odd: <span
+class="math display">\begin{align*}
+      a_n&amp;=1+(-1)^n=1-1=0\\
+      &amp;\implies|a_n-L|=|0-L|=|L|&lt;\varepsilon\\
+      &amp;\implies L\in(-\varepsilon,\varepsilon)
+  \end{align*}</span></li>
+<li>case <span class="math inline">n</span> even: <span
+class="math display">\begin{align*}
+      a_n&amp;=1+(-1)^n=1+1+2\\
+      &amp;\implies|a_n-L|=|2-L|&lt;\varepsilon\\
+      &amp;\implies L\in(2-\varepsilon,2+\varepsilon)
+  \end{align*}</span></li>
+</ul>
+<span class="math inline">\therefore
+L\in(-\varepsilon,\varepsilon)\cap(2-\varepsilon,2+\varepsilon)</span>
+<span class="math display">\begin{align*}
+    \because\varepsilon=1\implies&amp;L\in(-1,1)\cap(2-1,2+1)\\
+    \iff&amp;L\in(-1,1)\cap(1,3)=\empty\\
+    &amp;\therefore\text{contradiction}
+\end{align*}</span> <span class="math inline">\therefore\nexists
+L</span><br> <span class="math inline">\therefore</span> diverges <span
+class="math inline">\quad\blacksquare</span>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">\{a_n\}</span> and <span
+class="math inline">\{b_n\}</span> converges <span
+class="math inline">\implies\{a_nb_n\}</span> converges
+</summary>
+<ul>
+<li>given <span class="math display">\exists
+a,b\in\R\enspace\forall\varepsilon_1,\varepsilon_2&gt;0\enspace\exists
+N_1,N_2&gt;0\text{ st}\\
+n\in\Z^+\enspace
+n&gt;\mathrm{max}\{N_1,N_2\}\implies|a_n-a|&lt;\varepsilon_1\quad|b_n-b|&lt;\varepsilon_2</span></li>
+<li>wts <span
+class="math display">\forall\varepsilon&gt;0\enspace\exists N&gt;0\text{
+st}\\
+n\in\Z^+\enspace n&gt;N\implies|a_nb_n-ab|&lt;\varepsilon</span></li>
+<li>aside 1: given <span class="math inline">\{b_n\}</span> converges
+<span class="math inline">\therefore\{b_n\}</span> is bounded <span
+class="math display">\therefore\exists k&gt;0\text{ st }\forall
+n\in\Z^+\quad|b_n|\le k</span></li>
+<li>aside 2: given <span class="math inline">\{a_n\}</span> and <span
+class="math inline">\{b_n\}</span> converges <span
+class="math display">\begin{align*}
+  |a_nb_n-ab|&amp;=|a_nb_n-ab_n+ab_n-ab|\\
+  &amp;=|b_n(a_n-a)+a(b_n-b)|\\
+  &amp;\le|b_n(a_n-a)|+|a(b_n-b)|\tag{$\triangle$ ineq}\\
+  &amp;=|b_n||a_n-a|+|a||b_n-b|\\
+  &amp;&lt;|b_n|\varepsilon_1+|a|\varepsilon_2\tag{given}\\
+  &amp;\le k\varepsilon_1+|a|\varepsilon_2\tag{aside 1}\\
+\end{align*}</span></li>
+<li>proof:
+<ul>
+<li>given <span class="math inline">\varepsilon&gt;0</span></li>
+<li>choose <span class="math inline">N=\mathrm{max}\{N_1,N_2\}</span>
+and <span
+class="math inline">\varepsilon_1=\frac\varepsilon{2k+1}\quad\varepsilon_2=\frac\varepsilon{2|a|+1}</span>
+<span class="math display">\begin{align*}
+  \therefore n\in\Z^+\quad n&amp;&gt;N\\
+  \implies|a_nb_n-ab|&amp;\le k\varepsilon_1+|a|\varepsilon_2\tag{aside
+2}\\
+  &amp;=k\frac\varepsilon{2k+1}+|a|\frac\varepsilon{2|a|+1}&lt;\frac\varepsilon2+\frac\varepsilon2=\varepsilon\quad\blacksquare
+\end{align*}</span></li>
+</ul></li>
+</ul>
+</details>
+<h2 id="bounded-monotonic-sequence-theorem">Bounded Monotonic Sequence
+Theorem</h2>
+<blockquote>
+<p>if <span class="math inline">\{a_n\}</span> is <em>bounded</em> and
+<em>monotonic</em>, then <span class="math inline">\{a_n\}</span>
+converges</p>
+</blockquote>
+<details class="example">
+<summary>
+<span class="math inline">a_1=\sqrt7\enspace
+a_{n+1}=\sqrt{2a_n+6}\enspace</span> find limit of <span
+class="math inline">\{a_n\}</span>
+</summary>
+<details>
+<summary>
+draft
+</summary>
+<ul>
+<li>check decrease/increase (<strong>assume increase</strong>) <span
+class="math display">\begin{align*}
+    a_1=\sqrt7&amp;&lt;\sqrt{2\sqrt7+6}=a_2\\
+    7&amp;&lt;2\sqrt7+6\\
+    1&amp;&lt;2\sqrt7\implies1/2&lt;\sqrt7\\
+    1/4&amp;&lt;7\tag{\sf works}\\
+\end{align*}</span></li>
+<li>found increase, now check <strong>upper bound</strong>
+<ul>
+<li>find <span class="math inline">a_n</span> st <span
+class="math inline">\sqrt{2a_n+6}\in\N\implies a_n=5</span></li>
+<li>then <span class="math inline">\sqrt{2\cdot5+6}=4\lt5</span></li>
+<li>verify <span
+class="math inline">a_1=\sqrt7&lt;\sqrt{25}=5</span></li>
+<li><span class="math inline">\therefore a_1\lt5\enspace
+a_2\lt\sqrt{2\cdot5+6}\lt5</span></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+formal proof
+</summary>
+<ul>
+<li>wts <span class="math inline">\{a_n\}</span> converges
+<ul>
+<li>wts <span class="math inline">\forall n\in\Z^+\enspace
+a_n\le5</span> i.e. bounded above
+<ul>
+<li>base <span class="math inline">n=1\implies
+a_n=\sqrt7\le\sqrt{25}=5</span> (√ is monotone)</li>
+<li>IH: <span class="math inline">\forall n\in\Z^+\enspace
+a_n\le5\implies a_{n+1}\le5</span><br> assume <span
+class="math inline">a_n\le4</span>,then <span
+class="math display">a_{n+1}=\underbrace{\sqrt{2a_n+6}\le\sqrt{2\cdot5+6}}_{\textsf{IH}}=4\le5</span>
+<span class="math inline">\therefore</span> by induction <span
+class="math inline">\forall n\in\Z^+\enspace a_n\le5</span> i.e. bounded
+above</li>
+</ul></li>
+<li>wts <span class="math inline">\forall n\in\Z^+\enspace a_n\lt
+a_{n+1}</span> i.e. increases
+<ul>
+<li>base <span class="math inline">n=1\implies a_n=\sqrt7\enspace
+a_{n+1}=\sqrt{2\sqrt7+6}</span> <span
+class="math display">\begin{align*}
+  \because 1/4&amp;&lt;7\tag{\sf draft}\\
+  \therefore 1/2&amp;&lt;\sqrt7\tag{\sf √ is monotone}\\
+  \implies1=7-6&amp;&lt;2\sqrt7\\
+  \implies7&amp;&lt;2\sqrt7+6\\
+  \implies\sqrt7&amp;&lt;\sqrt{2\sqrt7+6}\quad\quad\tag{\sf √ mono}\\
+\end{align*}</span></li>
+<li>IH <span class="math inline">\forall n\in\Z^+\enspace a_n\lt
+a_{n+1}\implies a_{n+1}\le a_{n+1}</span><br> <span
+class="math display">\begin{align*}
+  a_n&amp;&lt;a_{n+1}\tag{\sf IH}\\
+  \implies 2a_n+6&amp;&lt;2a_{n+1}+6\\
+  \implies \sqrt{2a_n+6}&amp;&lt;\sqrt{2a_{n+1}+6}\tag{\sf √ mono}\\
+  \implies a_{n+1}&amp;&lt;a_{n+2}\tag{\sf def of $a_n$}
+\end{align*}</span> <span class="math inline">\therefore</span> by
+induction <span class="math inline">\forall n\in\Z^+\enspace a_n\le
+a_{n+1}</span> i.e. inceases</li>
+</ul></li>
+<li><span class="math inline">\therefore\{a_n\}</span> bounded above and
+increases <span class="math inline">\therefore</span> converges</li>
+</ul></li>
+<li>find limit <span class="math inline">\because</span> converges <span
+class="math inline">\therefore\exists a\in\R</span> st <span
+class="math inline">\displaystyle\lim_{n\to\infty}a_n=a</span> <span
+class="math display">\begin{align*}
+  \because\lim_{n\to\infty}a_n&amp;=\lim_{n\to\infty}a_{n+1}\\
+  \therefore a&amp;=\lim_{n\to\infty}\sqrt{2a_n+6}\tag{\sf def}\\
+  \implies a^2&amp;=\lim_{n\to\infty}(2a_n+6)=2a+6\\
+  \implies a^2-2a-6&amp;=0\implies a=1\pm\sqrt7\\
+  \because 1-\sqrt7&amp;&lt;0\\
+  \therefore a&amp;=1+\sqrt7\\
+\end{align*}</span> <span class="math inline">\therefore</span>
+converges to <span class="math inline">1+\sqrt7</span></li>
+</ul>
+</details>
+</details>
+<h2 id="trivials">Trivials</h2>
+<details class="theorem">
+<summary>
+</summary>
+<ul>
+<li>uniqueness <span class="math inline">a_k\to L</span> and <span
+class="math inline">a_k\to M\implies L=M</span></li>
+<li>absolute value <span class="math inline">|a_k|\to 0\implies
+a_k\to0</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">\{a_n\}</span> <span
+class="math inline">\{b_n\}</span> div <span
+class="math inline">\not\Rarr\{a_nb_n\}</span> div
+</summary>
+<ul>
+<li><span class="math inline">a_n=b_n=(-1)^n</span> div, but <span
+class="math inline">a_nb_n=(-1)^{2n}=1</span> conv</li>
+<li><span class="math inline">a_n=b_n=1</span> div, and <span
+class="math inline">a_nb_n=1</span> div</li>
+</ul>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">\sum a_n</span> <span class="math inline">\sum
+b_n</span> conv <span class="math inline">\not\Rarr\sum a_nb_n</span>
+conv
+</summary>
+<p>let <span class="math inline">\displaystyle
+a_n=b_n=\frac{(-1)^n}{\sqrt n}</span></p>
+<ul>
+<li><span class="math inline">\sum a_n</span> and <span
+class="math inline">\sum b_n</span> conv by AST</li>
+<li>but <span class="math inline">\sum a_nb_n=\sum 1/n</span> div by
+p-series</li>
+</ul>
+</details>
+<h1 id="series">Series</h1>
+<blockquote>
+<p><span class="math inline">\displaystyle\sum a_n</span> means <span
+class="math inline">\displaystyle\sum_{n=1}^\infty a_n\qquad\sum
+a_i</span> means <span class="math inline">\displaystyle\sum_{i=1}^n
+a_i</span></p>
+</blockquote>
+<details class="theorem">
+<summary>
+Tail Convergence
+</summary>
+<span class="math display">\sum a_n\text{ converges
+}\implies\sum_{n=k}^\infty a_n\text{ converges }\forall k\ge1</span>
+</details>
+<details class="definition">
+<summary>
+</summary>
+<span class="math display">\sum_{n=1}^\infty
+a_n=\lim_{n\to\infty}\sum_{i=1}^n a_i=\lim_{n\to\infty}S_n</span> where
+<span class="math inline">\{S_n\}</span> is a sequence of <span
+class="math inline">a_n</span> partial sums
+</details>
+<h2 id="absolute-vs-conditional-convergence">Absolute vs Conditional
+Convergence</h2>
+<details class="definition">
+<summary>
+a series can be 1 of the these types
+</summary>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Absolutely Convergent</th>
+<th>Conditionally Convergent</th>
+<th>Divergent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\sum|a_n|</span> converges</td>
+<td><span class="math inline">\sum a_n</span> converges but <span
+class="math inline">\sum|a_n|</span> diverges</td>
+<td><span class="math inline">\sum a_n</span> diverges</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>absolutely convegent <span class="math inline">\implies</span>
+convergent</li>
+</ul>
+</details>
+<h2 id="divergence-test">Divergence Test</h2>
+<blockquote>
+<p>nothing is easier than this</p>
+</blockquote>
+<details class="theorem">
+<summary>
+</summary>
+<span class="math display">\lim_{n\to\infty} a_n\ne0\implies\sum
+a_n\textsf{ diverges}</span>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">\displaystyle\sum\frac1{1+(3/n)^n}=\sum
+a_n</span>
+</summary>
+assume <span class="math inline">n\gt0</span> <span
+class="math display">\begin{align*}
+    &amp;\because 0\le3/n\\
+    &amp;\therefore 0\le(3/n)^n\tag{$a\ge0\implies a^x\ge0$}\\
+    &amp;\because 3/n\le1\\
+    &amp;\therefore(3/n)^n=\frac{3^n}{n^n}=\underbrace{\frac3n\cdot\frac3n\cdots\frac3n}_n\le\frac3n\\
+    &amp;\therefore 0\le(3/n)^n\le3/n\\
+    &amp;\therefore0\le\lim_{n\to\infty}(3/n)^n\le\lim_{n\to\infty}3/n=0\\
+    &amp;\therefore\lim_{n\to\infty}(3/n)^n=0\tag{\sf sandwich}\\
+    &amp;\therefore\lim_{n\to\infty}a_n=\lim_{n\to\infty}\frac1{1+\underbrace{(3/n)^n}_0}=1\ne0\\
+    &amp;\therefore\textsf{ diverges}\tag{\sf div test}
+\end{align*}</span>
+</details>
+<h2 id="telescope">Telescope</h2>
+<blockquote>
+<p>for <code>ln()</code> and partial fractions</p>
+</blockquote>
+<details class="example">
+<summary>
+find <span class="math inline">\displaystyle\sum\frac1{n(n+1)}</span>
+</summary>
+<span class="math display">\begin{align*}
+    \sum\frac1{n(n+1)}&amp;=\sum\left(\frac1n-\frac1{n+1}\right)=\lim_{n\to\infty}S_n\\
+    \therefore
+S_n&amp;=\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\cdots+\left(\frac1n-\frac1{n+1}\right)\\
+    &amp;=1-\frac1{n+1}\\
+    \therefore\lim_{n\to\infty}S_n&amp;=\lim_{n\to\infty}\left(1-\frac1{n+1}\right)=1
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+compute <span
+class="math inline">\displaystyle\sum_{n=2}^\infty\ln\left(\frac1{n^2-1}\right)</span>
+</summary>
+</details>
+<h2 id="geometric-series">Geometric Series</h2>
+<blockquote>
+<p>aka ratio test but simpler</p>
+</blockquote>
+<details class="theorem">
+<summary>
+for <span class="math inline">S_n=\sum ar^{n-1}</span> where <span
+class="math inline">r\ne0</span> and <span class="math inline">a</span>
+is <strong>the first term</strong>
+</summary>
+<ul>
+<li><span class="math inline">\displaystyle|r|&lt;1\implies\sum
+ar^{n-1}=\frac{a_1}{1-r}</span></li>
+<li><span class="math inline">\displaystyle|r|\ge1\implies</span>
+diverges</li>
+</ul>
+</details>
+<details class="example">
+<summary>
+find <span
+class="math inline">\displaystyle\sum_{n=0}^\infty\frac{(-3)^{n+1}}{4^{n-2}}=\lim_{n\to\infty}S_n</span>
+</summary>
+<span class="math display">\begin{align*}
+    \sum_{n=0}^\infty\frac{(-3)^{n+1}}{4^{n-2}}&amp;=\sum_{n=0}^\infty\frac{-3(-3)^n4^2}{4^n}=\sum_{n=0}^\infty-48\left(\frac{-3}4\right)^n\\
+    &amp;=\sum_{n=0}^\infty ar^n\quad\text{ for }a=-48\quad r=-3/4\\
+    \because |r|=3/4&amp;&lt;1\\
+    \therefore\lim_{n\to\infty}S_n&amp;=\frac
+a{1-r}=\frac{-48}{1-(-3/4)}=-\frac{192}7\tag{geometric}
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+find <span
+class="math inline">\displaystyle\lim_{n\to\infty}S_n=\frac{80}3-\frac{20}3+\frac53-\frac5{12}\cdots</span>
+</summary>
+<span class="math display">\begin{align*}
+    \frac{a_2}{a_1}&amp;=\frac{-20\cdot3}{3\cdot80}=-\frac14\qquad\frac{a_3}{a_2}=\frac{5\cdot3}{3\cdot-20}=-\frac14\\
+    \frac{a_4}{a_3}&amp;=\frac{-5\cdot3}{12\cdot5}=-\frac14\\
+    \therefore S_n&amp;=\sum_{n=0}^\infty ar^n\quad\text{ for
+}a=a_1\quad r=-1/4\\
+    \because |r|&amp;=|-1/4|=1/4&lt;1\\
+    \therefore\lim_{n\to\infty}S_n&amp;=\frac
+a{1-r}=\frac{80}{3(1-(-1/4))}=\frac{64}3\tag{geometric}
+\end{align*}</span>
+</details>
+<h2 id="comparasion-test">Comparasion Test</h2>
+<blockquote>
+<p>let you abuse other geometric and p-series</p>
+</blockquote>
+<details class="theorem">
+<summary>
+if <span class="math inline">0\le a_n\le b_n\quad\forall n\in\Z^+</span>
+</summary>
+<ul>
+<li><span class="math inline">\sum b_n</span> converges <span
+class="math inline">\implies\sum a_n</span> converges</li>
+<li><span class="math inline">\sum a_n</span> diverges <span
+class="math inline">\implies\sum b_n</span> diverges</li>
+</ul>
+</details>
+<details class="example">
+<summary>
+find <span
+class="math inline">\displaystyle\sum\frac{\mathrm{atan}(n)}{\sqrt
+n+4^n}=\sum a_n</span>
+</summary>
+<ul>
+<li>wts <span class="math inline">a_n</span> is
+<strong>positive</strong> <span class="math display">\begin{align*}
+    &amp;\because \mathrm{atan}(x),\sqrt x,4^x&gt;0\quad\forall x\ge1\\
+    &amp;\therefore
+a_n=\frac{\overbrace{\mathrm{atan}(n)}^+}{\underbrace{\sqrt
+n}_++\underbrace{4^n}_+}\ge0\quad\forall n\ge1
+\end{align*}</span></li>
+<li>wts <span class="math inline">a_n</span> is <strong>bounded
+above</strong> by <span class="math inline">b_n</span> <span
+class="math display">\begin{align*}
+    &amp;\because\mathrm{atan}(x)\le\pi/2\lt2\quad\forall x\ge1\\
+    &amp;\therefore a_n\le\frac 2{\sqrt n+4^n}\quad\forall n\ge1\\
+    &amp;\because0\ge\sqrt{x}\quad\forall x\ge1\\
+    &amp;\therefore a_n\le\frac2{4^n}=b_n\quad\forall n\ge1\tag{$1/\sqrt
+n$ won&#39;t work}\\
+\end{align*}</span></li>
+<li>wts <span class="math inline">\sum b_n</span> converges <span
+class="math display">\begin{align*}
+    &amp;\because\sum
+b_n=\sum\frac2{4^n}=\sum_{n=0}^\infty\frac2{4^{n+1}}=\sum_{n=0}^\infty\frac12\left(\frac14\right)^n=\sum_{n=0}^\infty
+ar^n\\
+    &amp;\therefore|r|=|1/4|=1/4&lt;1\quad\therefore\sum b_n\text{
+converges }\tag{geometric}
+\end{align*}</span></li>
+<li>wts <span class="math inline">a_n</span> converges <span
+class="math display">\begin{align*}
+    &amp;\because0\le a_n\le b_n\quad\forall n\ge1\\
+    &amp;\because\sum b_n\text{ converges}\\
+    &amp;\therefore\sum a_n\text{ converges}\tag{CT}
+\end{align*}</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">\forall n\enspace a_n&gt;0</span> and
+<span class="math inline">\sum a_n</span> conv <span
+class="math inline">\implies\sum\sin(a_n)</span> conv
+</summary>
+<p><span class="math display">\begin{align*}
+    &amp;\because\sum a_n\textsf{ conv}\\
+    &amp;\therefore\lim_{n\to\infty}a_n=0\\
+    &amp;\therefore\exist N\in\R\textsf{ st }\forall
+n&gt;N\enspace|a_n|\lt\pi/2=\varepsilon\\
+    &amp;\because a_n&gt;0\\
+    &amp;\therefore n&gt;N\implies 0&lt;a_n&lt;\pi/2\\
+    &amp;\because 0&lt;\sin(x)&lt;x\enspace\forall x\in(0,\pi/2)\\
+    &amp;\therefore n&gt;N\implies 0&lt;\sin(a_n)&lt;a_n&lt;\pi/2\\
+    &amp;\because\sum a_n\textsf{ conv}\\
+    &amp;\therefore\sum\sin(a_n)\textsf{
+conv}\quad\blacksquare\tag{CT}\\
+\end{align*}</span></p>
+</details>
+<h2 id="integral-test">Integral Test</h2>
+<blockquote>
+<p>use it when you want to kys</p>
+</blockquote>
+<details class="theorem">
+<summary>
+if <span class="math inline">a(x)</span> is <strong>continuous</strong>,
+<strong>positive</strong>, <strong>decreasing</strong> for <span
+class="math inline">n\ge k</span>, then
+</summary>
+<center>
+<span class="math inline">\displaystyle\sum_{n=k}^\infty a_n</span> and
+<span class="math inline">\displaystyle\int_k^\infty a(x)\,dx</span>
+</center>
+both diverges or converges
+</details>
+<details class="example">
+<summary>
+find <span class="math inline">\displaystyle\sum\frac n{e^n}</span>
+</summary>
+<ul>
+<li>wts <span class="math inline">\sum_{n=2} a_n</span> (the tail)
+converges
+<ul>
+<li>wts <span class="math inline">(x)</span> <strong>positive</strong>
+<span class="math inline">\forall x\ge2</span> <span
+class="math display">\begin{align*}
+     \because x&amp;\ge2\implies x\gt0\\
+    x&amp;\ge2\implies e^{-x}\gt0\\
+    \therefore xe^{-1}&amp;\gt0\text{ as their product}
+\end{align*}</span></li>
+<li>wts <span class="math inline">a(x)</span> <strong>decrease</strong>
+and <strong>continuous</strong> <span class="math inline">\forall
+x\ge2</span> <span class="math display">\begin{align*}
+    \because
+a&#39;(x)&amp;=\overbrace{e^{-x}}^+\overbrace{(1-x)}^-\lt0\enspace\forall
+x\ge2\\
+    \therefore a(x)&amp;\text{ is diffable and decreasing }\forall
+x\ge2\\
+    \therefore a(x)&amp;\text{ is cont }\forall x\ge2\tag{diffable
+$\implies$ cont}\\
+\end{align*}</span></li>
+<li>wts <span class="math inline">\displaystyle\int_2^\infty
+a(x)\,dx</span> converges <span class="math display">\begin{align*}
+     \int_2^\infty a(x)\,dx&amp;=\lim_{n\to\infty}\int_2^n a(x)\,dx\\
+     &amp;=\lim_{n\to\infty}\int xe^{-x}\,dx\Big|_2^n\tag{FTOCI}\\
+     &amp;=\lim_{n\to\infty}\left[-\frac{x+1}{e^x}\right]_2^n\tag{IBP}\\
+     &amp;=\frac{2+1}{e^2}-\lim_{n\to\infty}\frac{n+1}{e^n}\\
+     &amp;=\frac3{e^2}\enspace\therefore\text{ converges
+}\tag{L&#39;Hôpital}
+\end{align*}</span></li>
+</ul></li>
+<li><span class="math inline">\therefore \sum_{n=2}a_n</span> (tail)
+converges</li>
+<li><span class="math inline">\therefore\sum a_n</span> converges (tail
+converges <span class="math inline">\implies</span> series
+converges)</li>
+</ul>
+</details>
+<h2 id="p-series">P-Series</h2>
+<blockquote>
+<p>aka Integral Test + Comparasion Test with <span
+class="math inline">1/n</span></p>
+</blockquote>
+<details class="theorem">
+<summary>
+for any <span class="math inline">p\in\R</span>
+</summary>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">p\lt1</span></th>
+<th><span class="math inline">p=1</span></th>
+<th><span class="math inline">p\gt1</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\displaystyle\sum\frac1{n^p}</span></td>
+<td>diverges</td>
+<td>diverges</td>
+<td>converges</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="example">
+<summary>
+find all <span class="math inline">b&gt;0</span> st <span
+class="math inline">\displaystyle\sum b^{\ln n}=\sum a_n</span>
+converges
+</summary>
+<p><span class="math display">b^{\ln n}=e^{(\ln b)(\ln n)}=n^{\ln
+b}=\frac1{n^{-\ln b}}</span></p>
+<p><span class="math inline">\therefore a_n</span> converges iff <span
+class="math display">-\ln b&gt;1\implies\ln b&lt;-1\implies 0\lt b\lt
+e^{-1}</span></p>
+</details>
+<h2 id="ratio-test">Ratio Test</h2>
+<blockquote>
+<p>works almost everytime</p>
+</blockquote>
+<details class="theorem">
+<summary>
+let <span class="math inline">\displaystyle\sum a_n</span> with all
+positive terms, and <span class="math inline">\displaystyle
+r=\lim_{n\to\infty}\frac{a_{n+1}}{a_n}</span> exists
+</summary>
+<ul>
+<li><span class="math inline">p&lt;1\implies</span> converges</li>
+<li><span class="math inline">p&gt;1\implies</span> diverges</li>
+<li><span class="math inline">p=1\implies</span> you wasted a lot of
+time</li>
+</ul>
+</details>
+<h2 id="ast">AST</h2>
+<details class="theorem">
+<summary>
+for <span class="math inline">\displaystyle\sum(-1)^nb_n</span> and
+<span class="math inline">\sum(-1)^{n+1}b_n</span>
+</summary>
+if <span class="math inline">b_n</span> <strong>decreases</strong> and
+<strong>approaches to <span class="math inline">0</span></strong> i.e.
+<span class="math display">\lim_{n\to\infty}b_n=0\quad\textsf{ and
+}\quad0\lt b_{n+1}\lt b_n</span> then both converges (or use div test to
+show diverges)
+</details>
+<h1 id="power-series">Power Series</h1>
+<blockquote>
+<p><span class="math inline">\displaystyle\sum a_nx^n</span> means <span
+class="math inline">\displaystyle\sum_{n=0}^\infty a_nx^n</span></p>
+</blockquote>
+<details class="definition">
+<summary>
+let <span class="math inline">\{a_n\}\subset\R</span>, a <strong>power
+series in</strong> <span class="math inline">x</span> centered at <span
+class="math inline">c</span> is
+</summary>
+<p><span class="math display">\sum a_n(x-c)^n</span></p>
+<span class="math inline">\sum a_nx^n</span> <strong>converges</strong>
+at <span class="math inline">c</span> iff <span class="math inline">\sum
+a_nc^n</span> converges
+</details>
+<h2 id="radius-interval-of-convergence">Radius &amp; Interval of
+Convergence</h2>
+<details class="definition">
+<summary>
+Radius of Convergence
+</summary>
+<p><span class="math inline">\exists R\in\R</span> st <span
+class="math inline">\sum a_n(x-c)^n</span></p>
+<ul>
+<li>AC <span class="math inline">\forall x</span> st <span
+class="math inline">|x-c|\lt R</span></li>
+<li>div <span class="math inline">\forall x</span> st <span
+class="math inline">|x-c|\gt R</span></li>
+</ul>
+</details>
+<details class="definition">
+<summary>
+Interval of Convergence
+</summary>
+<p><span class="math display">I=\left\{x\in\R:\sum a_n(x-c)^n\textsf{
+converges}\right\}</span></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Interval</th>
+<th style="text-align: left;">Radius</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span
+class="math inline">I=\R</span></td>
+<td style="text-align: left;"><span
+class="math inline">R=\infty</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span
+class="math inline">I=\{c\}</span></td>
+<td style="text-align: left;"><span class="math inline">R=0</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span
+class="math inline">I=(c-R,c+R)</span><br> and check endpont</td>
+<td style="text-align: left;"><span
+class="math inline">R\ne0\in\R</span></td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="algorithm">
+<summary>
+Find Interval of Convergence for <span class="math inline">f(x)</span>
+</summary>
+<ol start="0" type="1">
+<li>find <span class="math inline">a\ne x</span></li>
+<li><span class="math inline">\displaystyle
+R=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|</span></li>
+<li>check conv/div at <span class="math inline">x=a\pm R</span></li>
+<li>find interval <span class="math inline">I</span> using <span
+class="math inline">R</span></li>
+</ol>
+</details>
+<details class="example">
+<summary>
+find <span class="math inline">R</span> and <span
+class="math inline">I</span> for <span
+class="math inline">\displaystyle\sum_{n=2}^\infty\frac{(x-1)^n}{n\sqrt{\ln
+n}}=\sum a_n</span>
+</summary>
+<ol type="1">
+<li><p>find <strong>radius of convergence</strong> <span
+class="math display">\begin{align*}
+\because\frac{a_{n+1}}{a_n}&amp;=\frac{(x-1)^{n+1}}{(n+1)\sqrt{\ln(n+1)}}\cdot\frac{n\sqrt{\ln
+n}}{(x-1)^n}\\
+&amp;=\frac n{n+1}\cdot\sqrt{\frac{\ln n}{\ln(n+1)}}(x-1)\\
+\because\lim_{n\to\infty}\frac
+n{n+1}&amp;=\lim_{n\to\infty}\frac1{1+1/n}=1\\
+\lim_{n\to\infty}\frac{\ln n}{\ln(n+1)}&amp;=\lim_{n\to\infty}\frac{\ln
+n}{\ln n+\ln(1+n^{-1})}=\lim_{n\to\infty}\frac{\ln n}{\ln n}=1\\
+\therefore|r|=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|&amp;=1\cdot1\cdot|x-1|=|x-1|\tag{\sf
+ratio test}\\
+\sum a_n&amp;\textsf{ converges }\implies|r|=|x-1|&lt;1=R\\
+\end{align*}</span></p></li>
+<li><p>find <strong>interval of convergence</strong></p></li>
+</ol>
+<ul>
+<li>check <span class="math inline">x=a-R=1-R=0</span> <span
+class="math display">\begin{align*}
+  x=1\implies\sum a_n&amp;=\sum\frac{(-1)^n}{n\sqrt{\ln
+n}}=\sum(-1)^nb_n\\
+  \end{align*}</span>
+<ul>
+<li>wts <span class="math inline">b_n</span> <strong>positive</strong>
+and <strong>decreases</strong>
+<details>
+<summary>
+draft (assume <span class="math inline">n\ge2</span>)
+</summary>
+<span class="math display">\begin{align*}
+  \frac1{(n+1)\sqrt{\ln(n+1)}}&amp;&lt;\frac1{n\sqrt{\ln n}}\\
+  n\sqrt{\ln n}&amp;&lt;(n+1)\sqrt{\ln(n+1)}\\
+  n\sqrt{\ln n}&amp;&lt;n\sqrt{\ln(n+1)}\\
+  \ln n&amp;&lt;\ln(n+1)=\ln n+\ln\left(1+n^{-1}\right)\\
+  0&amp;&lt;\ln\left(1+n^{-1}\right)\tag{\sf works}\\
+\end{align*}</span>
+</details></li>
+<li>formal proof <span class="math display">\begin{align*}
+    \because n&amp;&gt;2\implies 1+n^{-1}&gt;1\qquad\qquad\qquad\\
+    \therefore0&amp;&lt;\ln\left(1+n^{-1}\right)\\
+    \implies \ln n&amp;&lt;\ln n+\ln\left(1+n^{-1}\right)\\
+    \implies \ln n&amp;&lt;\ln(n+1)\\
+    \implies \sqrt{\ln n}&amp;&lt;\sqrt{\ln(n+1)}\tag{\sf √ is
+monotone}\\
+    \implies n\sqrt{\ln n}&amp;&lt;n\sqrt{\ln(n+1)}\tag{$n&gt;0$}\\
+    \implies n\sqrt{\ln n}&amp;&lt;(n+1)\sqrt{\ln(n+1)}\\
+    \because n&amp;&gt;1\implies \ln n&gt;0\\
+    \therefore n&amp;&gt;0\quad\sqrt{\ln n}&gt;0\\
+    \implies0&amp;&lt;n\sqrt{\ln n}&lt;(n+1)\sqrt{\ln(n+1)}\\
+    \implies0&amp;&lt;\frac1{(n+1)\sqrt{\ln(n+1)}}&lt;\frac1{n\sqrt{\ln
+n}}\\
+    \implies0&amp;&lt;a_{n+1}&lt;a_n\tag{\sf def}\\
+\end{align*}</span></li>
+<li>wts <span class="math inline">b_n\to0</span> as <span
+class="math inline">n\to\infty</span> <span
+class="math display">\lim_{n\to\infty}b_n=\lim_{n\to\infty}\frac1{\underbrace{n\sqrt{\ln
+n}}_\infty}=0</span></li>
+<li><span class="math inline">\therefore\sum a_n</span> converges (AST)
+at <span class="math inline">x=0</span></li>
+</ul></li>
+<li>check <span class="math inline">x=a+R=1+1=2</span> <span
+class="math display">x=2\implies\sum a_n=\sum\frac{1^n}{n\sqrt{\ln
+n}}=\sum\frac1{n\sqrt{\ln n}}</span>
+<ul>
+<li>wts div, let <span class="math inline">\displaystyle
+a(x)=\frac1{x\sqrt{\ln x}}</span> <span
+class="math display">\begin{align*}
+  \int_2^\infty a(x)\,dx&amp;=\int_2^\infty\frac{dx}{x\sqrt{\ln
+x}}=\lim_{n\to\infty}I\big|_2^n\tag{\sf FToCI}\\
+  \textsf{let }u&amp;=\ln x\quad du=dx/x\\
+  I&amp;=\int\frac{du}{\sqrt u}=2\sqrt u=2\sqrt{\ln x}+C\\
+  \therefore\lim_{n\to\infty}I\big|_2^n&amp;=2\sqrt{\lim_{n\to\infty}\ln
+x}-2\sqrt{\ln2}=\infty\\
+\end{align*}</span></li>
+<li><span class="math inline">\displaystyle\therefore\int_2^\infty
+a(x)\,dx</span> diverges <span class="math inline">\implies\sum
+a_n</span> diverges at <span class="math inline">x=2</span></li>
+</ul></li>
+<li><span class="math inline">\therefore I=[0,2)</span></li>
+</ul>
+<ol start="3" type="1">
+<li><span class="math inline">\therefore R=1\quad I=[0,2)</span></li>
+</ol>
+</details>
+<h2 id="maclaurin-taylor-series">Maclaurin &amp; Taylor Series</h2>
+<details class="definition">
+<summary>
+let <span class="math inline">f</span> with derivatives of all orders at
+<span class="math inline">a</span>
+</summary>
+<ul>
+<li><strong>Taylor series</strong> for <span
+class="math inline">f</span> at <span class="math inline">a</span>:
+<span
+class="math display">\sum_{n=0}^\infty\frac{f^{(n)}(a)}{n!}(x-a)^n</span></li>
+<li><strong>Maclaurin series</strong> for <span
+class="math inline">f</span> is when <span
+class="math inline">a=0</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+find Maclaurin <span class="math inline">f(x)=2^x</span>
+</summary>
+<p><span class="math display">\begin{align*}
+    \because f&#39;(x)&amp;=(2^x)&#39;=2^x\ln 2\\
+    f&#39;&#39;(x)&amp;=\ln2(2^x)&#39;=2^x(\ln2)^2\\
+    f&#39;&#39;&#39;(x)&amp;=(\ln2)^2(2^x)&#39;=2^x(\ln2)^3\\
+    \therefore f^{(n)}(x)&amp;=2^x(\ln2)^n\implies f^{(n)}(0)=(\ln2)^n\\
+    \therefore 2^x&amp;=\sum\frac{(\ln2)^n}{n!}x^n
+\end{align*}</span></p>
+</details>
+<script>
+const headers = ['h1', 'h2', 'h3'];
+const hidden = ' hidden';
+const isheader = tag => /h\d/.test(tag);
+
+function cmp(a,b){ // assume h1 > h2
+	// same header level
+	if(a === b) return 0;
+	// h1 > h2 => 1    h2 < h1 => -1
+	return (+a[1] < +b[1]) * 2 - 1;
+}
+
+function toggle(tag, element, hide){
+	if(!element) return;
+
+	const t = element.tagName.toLowerCase();
+	if(isheader(t) && cmp(tag, t) <= 0) return;
+
+	if(hide){
+		element.className += hidden;
+	}else{
+		element.className = element.className.replace(hidden, '');
+	}
+	toggle(tag, element.nextElementSibling, hide);
+}
+
+// open all details
+document.querySelectorAll('details:not(.example)').forEach(e => e.open = true);
+// click on header will hide all following elements until next header of same level
+headers.forEach(
+	tag => document.querySelectorAll(tag + ':not(.title)').forEach(
+		element => element.onclick = ({target: { nextElementSibling } }) => {
+			toggle(tag, nextElementSibling, !nextElementSibling.className.includes('hidden'))
+		}
+	)
+);
+// click on title to toggle all h1
+document.querySelector('h1.title').onclick = () => document.querySelectorAll('h1:not(.title)').forEach(h1 => h1.click());
+
+</script>
+</body>
+</html>

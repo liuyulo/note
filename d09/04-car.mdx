@@ -1,0 +1,255 @@
+---
+title: Cardinality
+---
+
+## Cantor-Berstein
+
+<details class="definition" open>
+<summary>equipotence</summary>
+
+$A$ and $B$ **equipotence**, denoted $|A|=|B|$
+
+$$
+|A|=|B|\iff\exists f:A\stackrel\sim\to B
+$$
+
+**Corollary.** equipotence is equivalence *relation*
+</details>
+
+<details class="definition" open>
+<summary>less cardinality</summary>
+
+$$
+|A|\le|B|\iff\exists f:A\hookrightarrow B
+$$
+
+**Corollary.** *reflexive, transitive, antisymmetric*
+</details>
+
+<details class="theorem" open>
+<summary>Cantor Berstein</summary>
+
+for sets $A,B$
+
+$$
+|A|\le|B|\text{ and }|B|\le|A|\implies |A|=|B|
+$$
+
+<details class="list-none">
+<summary>**Lemma.** $A_1\subseteq B\subseteq A$ and $|A_1|=|A|\implies |A|=|B|$</summary>
+
+let $f:A\stackrel\sim\to A_1$
+
+let $A_0,A_1,\cdots$ and $B_0,B_1,\cdots$ defined by Recursion Theorem
+
+- let $A_0=A$ and $B_1=B$
+- for any $n\in\mathbb{N}$
+
+$$
+A_{n+1}=f[A_n]\quad B_{n+1}=f[B_n]\quad C_n=A_n-B_n
+$$
+
+- let 
+
+$$
+C=\bigcup_{n=0}^\infty C_n\quad D=A-C
+$$
+
+thus
+
+$$
+\begin{align*}
+    \because&&f[C_n]&=f[A_n-B_n]=f[A_n]-f[B_n]=A_{n+1}-B_{n+1}=C_{n+1}\\
+    \therefore&&f[C]&=f\left[\bigcup_{n=0}^\infty C_n\right]=\bigcup_{n=0}^\infty f[C_n]=\bigcup_{n=1}^\infty C_n
+\end{align*}
+$$
+
+let $g:A\to B$ where
+
+$$
+\begin{align*}
+    g(x)&=f(x) && x\in C\\
+    g(x)&=x&& x\in D
+\end{align*}
+$$
+
+$\therefore g\upharpoonright C$ inj, and $g\upharpoonright D$ inj
+
+$\because g[C]=f[C]\sube C$ disjoints $A-C=D=g[D]$
+
+$\therefore g=g\upharpoonright C\sqcup g\upharpoonright D$ inj
+
+$\therefore g:A\stackrel\sim\to\operatorname{ran}g=f[C]\cup D=B\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let $f:A\hookrightarrow B$ and $g:B\hookrightarrow A$
+
+$\therefore(g\circ f)[A]\subseteq g[B]\subseteq A$ where $|A|=(g\circ f)[A]$ since $g\circ f$ injective
+
+$\therefore|B|=|g[B]|=|A|\enspace\square$
+</details>
+
+**Corollary** $|X|\lt|\mathcal{P} (X)|$ for any nonempty $X$
+</details>
+
+<details class="definition" open>
+<summary>cardinal number</summary>
+
+for any set $X$, there is a unique **cardinal number** for $|X|$
+</details>
+
+## At Most Countable
+
+<details class="definition" open>
+<summary>finite</summary>
+
+set $X$ **finite** $\iff |X|=n$ for some $n\in\mathbb{N}$
+
+- **infinite** $\iff$ not finite
+</details>
+
+<details class="definition" open>
+<summary>countable</summary>
+
+set $X$ **countable** $\iff|X|=|\mathbb{N}|$ (i.e. has enumeration $(a_n)=f:\mathbb{N}\twoheadrightarrow A$)
+
+set $X$ **at most** countable $\iff|X|\le|\mathbb{N}|$
+
+
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+- infinite subset of countable is countable
+- at most contable $\iff$ finite or countable
+- countable union of countable is countable (axiom of choice)
+- $A,B$ countable $\implies A\times B$ countable (axiom of choice)
+
+<details class="list-none">
+<summary>**Proof.** any system of nonempty disjoint open intervals is at most countable</summary>
+
+let $\mathcal{C}\subseteq\mathcal{P}(\mathbb{R})$ be such system
+
+let $f:\mathcal{C}\to \mathcal{P}(\mathbb{Q})$ be
+
+$$
+f(I)=I\cap\mathbb{Q}
+$$
+
+$\because\mathcal{C}$ mutually disjoint
+
+$\therefore f[\mathcal{C}]$ mutually disjoint
+
+$\because I\cap\mathbb{Q}$ nonempty for any $I\in\mathcal{C}$<span class="float-right">($\mathbb{Q}$ dense and $|I|\ge\aleph_0$)</span>
+
+$\therefore f:\mathcal{C}\hookrightarrow \mathcal{P}(\mathbb{Q})$<span class="float-right">($\mathcal{C}$ mutually disjoint)</span>
+
+$\therefore f:\mathcal{C}\stackrel\sim\to f[\mathcal{C}]$
+
+$\because\exists g:f[\mathcal{C}]\to \mathbb{Q}$ such that<span class="float-right">(Choice)</span>
+
+$$
+g(f(I))\in f(I)\subseteq\mathbb{Q}
+$$
+
+$\because f[\mathcal{C}]=\{f(I):I\in\mathcal{C}\}$ mutually disjoint
+
+$\therefore g:f[C]\hookrightarrow \mathbb{Q}$
+
+$\therefore g\circ f:\mathcal{C}\hookrightarrow \mathbb{Q}$, thus $|\mathcal{C}|\le|\mathbb{Q}|=\aleph_0\enspace\square$
+
+</details>
+
+</details>
+
+
+## Cardinal Arithmetic
+
+<details class="definition" open>
+<summary>addition</summary>
+
+for disjoint sets $X,Y$
+
+$$
+|X|+|Y|=|X\cup Y|
+$$
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+
+- $0$ is additive identity
+- associative, commutative, nondecreasing
+
+$$
+\kappa\le\mu\implies \kappa+\nu\le\mu+\nu
+$$
+under AoC, for $\kappa$ or $\mu$ infinite
+
+$$
+\kappa+\mu=\max\{\kappa,\mu\}
+$$
+</details>
+
+<details class="definition" open>
+<summary>multiplication</summary>
+
+for sets $X,Y$
+
+$$
+|X||Y|=|X\times Y|
+$$
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+- $\kappa0=0\kappa=0$
+- $\kappa\mu=0\implies\kappa=0\lor\mu=0$
+- $1$ is multiplicative identity
+- associative, commutative, nondecreasing
+- distributive over addition
+
+under AoC, for $\kappa$ or $\mu$ infinite and both nonzero
+
+$$
+\kappa\mu=\max\{\kappa,\mu\}
+$$
+
+</details>
+
+<details class="definition" open>
+<summary>exponentiation</summary>
+
+for sets $X,Y$
+
+$$
+|X|^{|Y|}=|X^Y|
+$$
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+- $\kappa^0=1$, in particular $0^0=1$ (the empty function)
+- for $\mu\ge1\quad 0^\mu=0$
+- $1^\mu=1$
+- $\kappa^1=\kappa$
+- $\kappa^{\mu+\nu}=\kappa^\mu\kappa^\nu$
+- $(\kappa\lambda)^\mu=\kappa^\mu\lambda^\mu$
+- nondecreasing
+
+$$
+\begin{align*}
+  1\le\kappa\text{ and }\nu\le\mu&\implies \kappa^\nu\le\kappa^\mu\\
+  \kappa\le\lambda&\implies \kappa^\nu\le\lambda^\nu
+\end{align*}
+$$
+
+under AoC
+</details>

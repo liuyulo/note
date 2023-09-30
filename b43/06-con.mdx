@@ -1,0 +1,237 @@
+---
+title: Continuity
+---
+
+<details class="definition" open>
+<summary>continuity</summary>
+
+function $f:A\to B$ continuous iff
+
+$$
+\forall U\in\mathcal{T}_B\quad f^{-1}[U]\in\mathcal{T}_A
+$$
+
+on metric space, $f:A\to B$ continuous iff
+
+
+$$
+\forall x\in A\quad \forall \varepsilon\gt0\quad\exists\delta\gt0\quad f[B(x,\varepsilon)]\subseteq B(f(x),\varepsilon)
+$$
+
+<details class="list-none">
+<summary>**Proof.** pullback iff ε-δ on metric spaces</summary>
+
+$(\implies )$ let any $x\in A$, any $\varepsilon\gt0$
+
+$\because f^{-1}[B(f(x),\varepsilon)]\in\mathcal{T}_A$ is neighbourhood of $x$
+
+$\therefore\exists\delta\gt0\quad B(x,\delta)\subseteq f^{-1}[B(f(x),\varepsilon)]$
+
+$\therefore f[B(x,\delta)]\subseteq B(f(x),\varepsilon)$ as wanted
+
+$(\impliedby )$ let any $U\in\mathcal{T}_B$, wts $f^{-1}[U]\subset f^{-1}[U]^\circ$
+
+let any $x\in f^{-1}[U]$
+
+$\therefore f(x)\in U$
+
+$\therefore\exists\varepsilon\gt0\quad B(f(x),\varepsilon)\subseteq U$
+
+$\therefore\exists \delta\gt0\quad f[B(x,\varepsilon)]\subseteq B(f(x),\varepsilon)\subseteq U$
+
+$\therefore x\in B(x,\delta)\subseteq f^{-1}[U]$, thus $x\in f^{-1}[U]^\circ$
+
+$\therefore f^{-1}[U]\in\mathcal{T}_A\enspace\square$
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary>continuous map perserves compactness</summary>
+
+for continuous $f:A\to B$
+
+<div class="flex justify-center">
+
+$K\subseteq A$ compact $\implies f[K]\subseteq B$ compact
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any open cover $\mathcal{C}$ of $f[K]$
+
+let $\mathcal{D}=\{f^{-1}[U]:U\in\mathcal{C}\}$, thus is open cover of $K$ where<span class="float-right">($f$ cont)</span>
+
+$$
+\bigcup\mathcal{D}=\bigcup_{U\in\mathcal{C}}f^{-1}[U]=f^{-1}\left[\bigcup\mathcal{C}\right]\supseteq f^{-1}[f[K]]\supseteq K
+$$
+
+$\therefore\exists\mathcal{D}_0\in[\mathcal{D}]^{\lt\aleph_0}$ covers $K$<span class="float-right">($K$ compact)</span>
+
+let $\mathcal{C}_0=\{f[U]:U\in\mathcal{D}_0\}\in[\mathcal{C}]^{\lt\aleph_0}$, thus is finite subcover of $f[K]$ where
+
+$$
+\bigcup\mathcal{C}_0=\bigcup_{U\in\mathcal{D}_0}f[U]=f\left[\bigcup\mathcal{D}_0\right]\supseteq f[K]
+$$
+
+$\therefore f[K]$ compact $\enspace\square$
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary>(metric space) map continuous iff map perserves limit</summary>
+
+for metric space $A,B$
+
+<div class="flex justify-center">
+
+$f:A\to B$ continuous $\iff (a_n\to a\implies f(a_n)\to f(a))$ 
+</div>
+
+for any convergent sequence $(a_n)\subseteq A$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$(\implies )$ assume $f:A\to B$ continuous, let any $a_n\to a$ in $A$
+
+let any $\varepsilon\gt0$
+
+$\therefore\exists\delta\gt0\quad f[B(a,\delta)]\subseteq B(f(a),\varepsilon)$ <span class="float-right">($f$ cont)</span>
+
+$\therefore\exists N\quad\forall n\gt N\quad a_n\in B(a,\delta)$<span class="float-right">($a_n\to a$)</span>
+
+$\therefore\forall n\gt N\quad f(a_n)\in B(f(a),\varepsilon)$
+
+$\therefore f(a_n)\to f(a)$ as wanted
+
+$(\impliedby )$ assume $f:A\to B$ not continuous
+
+$\therefore\exists a\in A\quad\exists\varepsilon\gt0$ such that
+
+$$
+\forall\delta\gt0\quad\exists x\in B(a,\delta)\quad f(x)\notin B(f(a),\varepsilon)
+$$
+
+$\therefore$ for any $n\in\mathbb{N}$, choose some $a_n\in B(a,1/n)$ such that $f(a_n)\notin B(f(a),\varepsilon)$
+
+$\therefore a_n\to a$<span class="float-right">($|a_n-a|\lt1/n$ )</span>
+
+$\because$ for any $N\in\mathbb{N}$
+
+$$
+f(a_N)\notin B(f(a),\varepsilon)
+$$
+
+$\therefore f(a_n)\not\to f(a)\enspace\square$
+</details>
+
+</details>
+
+## Uniform Continuity
+
+<details class="definition" open>
+<summary>uniformly continuous</summary>
+
+function $f:A\to\mathbb R$ **uniformly continuous** iff
+
+$$
+\forall\varepsilon\gt0\enspace\exists\delta\gt0\enspace\forall x,y\in D\enspace|x-y|\lt\delta\implies|f(x)-f(y)|\lt\varepsilon
+$$
+</details>
+
+<details class="example" open>
+<summary>$x\mapsto x^2$ is NOT uniformly continuous</summary>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let $\varepsilon=1\gt0$
+
+let any $\delta\gt0$
+
+let $x=1/\delta$ and $y=x+\delta/2$
+
+- $\therefore|x-y|=\delta/2\lt\delta$
+- but $|x^2-y^2|=|x-y||x+y|=\delta/2(2/\delta+\delta/2)=1+\delta^2/4\ge\varepsilon\quad\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>continuous function on closed interval is uniformly continuous</summary>
+for any $f:D\to\mathbb R$ 
+<div class="flex justify-center">
+$f$ continuous on $[a,b]\implies f$ uniformly continuous on $[a,b]$
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let $A=\{x\in[a,b]:f\text{ is unicont on }[a,x]\}$
+
+- $\because f$ is continous at $a$ and $x\le b$ for any $x\in A$
+- $\therefore a\in A$ and $b$ is upper bound of $A$
+- $\therefore\exists\beta\in\mathbb R$ st $\beta=\sup A\le b$ (completeness)
+
+wts $f$ unicont at $[a,\beta+\delta)$
+- let any $\varepsilon\gt0$
+  - $\because f$ continuous at $\beta$
+  - $\therefore\exists\delta\gt0\enspace\forall x\in (\beta-\delta,\beta+\delta)$, we have $|f(x)-f(\beta)|\lt\varepsilon/2$
+
+- let any $x,y\in(\beta-\delta,\beta+\delta)$
+  $$
+  \therefore|f(x)-f(y)|\le|f(x)-f(\beta)|+|f(\beta)+f(y)|\lt\varepsilon
+  $$
+
+- $\therefore f$ unicont at $(\beta-\delta,\beta+\delta)$
+- $\because f$ unicont at $[a,\beta-\delta)$ since $\beta-\delta\lt\beta=\sup A$
+- $\therefore f$ unicont at $[a,\beta+\delta)$
+
+wts $\beta=b$, BWOC assume $\beta\lt b$
+
+- $\therefore\exists q\in[a,b]$ st $\beta\lt q\lt\beta+\delta$ (density)
+- $\therefore f$ unicont at $[a,q]\sube[a,\beta+\delta)$, thus $q\in A$, contradicts that $\beta$ is upper bound
+
+$\therefore\beta=b$
+
+$\therefore f$ unicont at $[a,b]\sube[a,\beta+\delta)\quad\square$
+</details>
+</details>
+
+<details class="example" open>
+<summary>extend uniform continuity</summary>
+for any $f:D\to\mathbb R$  and $a\gt 0$
+
+<div class="flex justify-center">
+$f$ cont on $[0,\infty)$ and unicont on $[a,\infty)\implies f$ unicont on $[0,\infty)$
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+notice $f$ is unicont on $[0,a]$
+
+let any $\varepsilon\gt0$
+
+- $\therefore\exists\delta_1\gt0\quad\forall x,y\in[0,a]\quad|x-y|\lt\delta_1\implies|f(x)-f(y)|\lt\varepsilon/2$
+- $\phantom\therefore\exists\delta_2\gt0\quad\forall x,y\in[a,\infty)\quad|x-y|\lt\delta_2\implies|f(x)-f(y)|\lt\varepsilon/2$
+
+let $\delta=\min\{\delta_1,\delta_2\}\gt0$
+
+let any $x,y\in[0,\infty)$
+
+- case $x,y\in[0,a]$ or $x,y\in[a,\infty)$
+  - $\therefore$ done, since $f$ unicont at $[0,a]$ and $[a,\infty)$
+
+- case otherwise, WLOG assume $0\le x\lt a\lt y$
+
+  - assume $|x-y|\lt\delta\le\delta_1,\delta_2$
+  $$
+  \begin{align*}
+    \therefore&&|x-a|&=a-x\lt y-x=|x-y|\lt\delta_1\\
+    &&|a-y|&=y-a\lt y-x=|x-y|\lt\delta_2\\
+    \therefore&&|f(x)-f(y)|&\le|f(x)-f(a)|+|f(a)-f(y)|\lt\varepsilon/2+\varepsilon/2=\varepsilon\quad\square
+  \end{align*}
+  $$
+</details>
+</details>

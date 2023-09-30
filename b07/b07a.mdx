@@ -1,0 +1,507 @@
+---
+layout: ../layouts/Main.astro
+title: B07
+---
+
+import Code from '../components/Code.astro';
+
+# 05 Design Patterns
+
+## Creational
+<details class="definition" open>
+<summary>Singleton</summary>
+want single entity that has access to resrcs
+
+```java
+final class Manager {
+    private static Manager manager;
+    private Manager(){}
+    public static getManager(){
+        if(this.manager == null){
+            this.manager = new Manager();
+        }
+        return this.manager;
+    }
+}
+```
+</details>
+
+<details class="definition" open>
+<summary>Factory Method</summary>
+meant to be implemented
+- `App -> AApp -> AModel`
+- `Model -> AModel`
+
+```java
+abstract class AbstractApp{
+    /** Factory method */
+    public abstract AbstractModel createModel();
+    public void useModel(){
+        Model item = this.createModel();
+        // use the object item
+    }
+}
+```
+
+</details>
+
+## Structural
+<details class="definition" open>
+<summary>Adapter</summary>
+make classes work together without code change
+- code works with `Target`
+- now, want code works with `Adaptee`
+
+```java
+interface Adaptee{ void sum(int a, int b); }
+interface Target{ void add(int a, int b); }
+class Adapter implements Target{
+    Adaptee adaptee;
+    public Adapter(Adaptee adaptee){
+        this.adaptee = adaptee;
+    }
+    public int add(int a, int b){
+        return this.adaptee.sum(a, b);
+    }
+}
+```
+</details>
+
+<details class="definition" open>
+<summary>Facade</summary>
+simplify (i.e. partially hide) the system
+- uses multiple (and complex) classes in the system, so the client doesn't have to
+
+```java
+class A{ public static void stuff(){} }
+class B{ public static void stuff(){} }
+class C{ public static void stuff(){} }
+class Facade{
+    public doStuff(){
+        A.stuff();
+        B.stuff();
+        C.stuff();
+    }
+}
+
+class Client{
+    public doStuff(){
+        // no need to know about A, B, C
+        Facade f = new Facade();
+        f.doStuff();
+    }
+}
+```
+</details>
+
+## Behavioral
+<details class="definition" open>
+<summary>Observer</summary>
+observer gets notified when subject changes
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class Subject{
+    private int state;
+    List<Observer> observers;
+
+    public Subject(){
+        observers = new ArrayList<Observer>();
+    }
+
+    public void register(Observer o){
+        observers.add(o);
+    }
+
+    public int getState(){ return state; }
+    public void setState(int state){
+        this.state = state;
+        for(Observer o : observers){
+            o.update();
+        }
+    }
+}
+ 
+abstract class Observer{
+    Subject subject;
+    public abstract void update();
+}
+class O1 extends Observer{
+    public O1(Subject s){
+        subject = s;
+    }
+    public void update(){/* update */}
+}
+// similar code for O2
+
+class Main{
+    public static void main(){
+        Subject s = new Subject();
+        new O1(s);
+        new O2(s);
+        s.setState(69);
+    }
+}
+```
+</details>
+
+<details class="definition" open>
+<summary>Strategy</summary>
+abstraction of an algorithm
+- good for OCP
+
+```java
+interface Server{
+    public void compute(String input);
+}
+class Client{
+    Server server;
+    public Client(Server server){
+        this.server = server;
+    }
+}
+
+class S1 implements Server{ /* impl compute */ }
+class S2 implements Server{ /* impl compute */ }
+class S3 implements Server{ /* impl compute */ }
+```
+</details>
+
+# 04 SOLID Principles
+
+## SRP: Single Responsibility
+<details class="theorem" open>
+<summary>Class: has 1 responsibility</summary>
+- otherwise causes unecessary deps
+- happens when
+  - `A -> B <- C`
+
+  - but `A` or `C` doesnt use everything from `B`
+- **solution**:
+  - `B1 -> B <- B2    A -> B1    C -> B2`
+</details>
+
+## OCP: Open/Closed
+<details class="theorem" open>
+<summary>Software entities: open for extension, but closed for modification</summary>
+software entities: class, module, function, etc
+- otherwise causes code change when adding new features (e.g. support a new server)
+- happens when
+  - `A -> B1` but then we want to add `A -> B2`
+- **solution**:
+  - `B1 ┄⇢ B ⇠┄ B2    A ┄⇢ B`
+</details>
+
+## LSP: Liskov Substitution
+<details class="theorem" open>
+<summary>Subtype should be substitutable by their base types</summary>
+- happens when
+  - <Code code="class A extends B" lang="java"/>
+  - code works for <Code code="B" lang="java"/> but not for <Code code="A" lang="java"/>
+- **solution**:
+  - dont use inheritance, or `A ┄⇢ ABC ⇠┄ B`
+</details>
+
+## ISP: Interface Segregation
+<details class="theorem" open>
+<summary>The sub class should use everything from its interface (SRP)</summary>
+- **solution**: split into multiple interfaces
+</details>
+
+## DIP: Depndency Inversion
+<details class="theorem" open>
+<summary>`HighLevel` should depends on `ILowLevel`, not `LowLevel`</summary>
+- happens when `A -> B -> C`
+- **solution**: `A -> IB ⇠┄ B -> IC ⇠┄ C`
+</details>
+
+## Code Smells
+- bad OCP `==>` rigid
+- bad LSP or bad SRP `==>` fragile
+- bad DIP `==>` immobile (hard to migrate to other applications)
+- too SOLID `==>` needless complexity and opacity (i.e. hard to understand)
+
+# 03 OOP
+
+## Exception
+
+<details class="definition" open>
+<summary></summary>
+- <Code code="Exception" lang="java"/> and its subclasses are **checked exceptions**
+  - must be try-catched or declared in method header
+- <Code code="RuntimeException" lang="java"/> and its subclasses are **unchecked exceptions**
+</details>
+<details class="definition" open>
+<summary>try-catch and order of operation</summary>
+```java
+/*
+1. call first
+2. call second
+3. call third
+4. call last
+5. return third()
+*/
+try{
+    first();
+    throw new Exception("no");
+}catch(Exception e){
+    second();
+    return third();
+}finally{
+    last();
+}
+```
+
+</details>
+
+## Abstraction
+<details class="definition" open>
+<summary>Abstract class and Interface</summary>
+- <Code code="abstract class Abstract" lang="java"/>
+  - has <Code code="abstract" lang="java"/> method `==>` must be <Code code="abstract" lang="java"/> class
+  - abstract `===` not concrete
+  - use <Code code="class Concrete extends Abstract" lang="java"/>
+- <Code code="interface I" lang="java"/>
+  - all methods are <Code code="abstract" lang="java"/> or <Code code="public abstract" lang="java"/>
+  - all fields are <Code code="final" lang="java"/>
+  - the keywords <Code code="public" lang="java"/>, <Code code="abstract" lang="java"/>, <Code code="final" lang="java"/> are optional
+  - used for unrelated class but with same same method signatures (e.g. <Code code="Comparable<T>" lang="java"/>)
+  - use <Code code="class Concrete implements I1, I2" lang="java"/>
+</details>
+
+## Encapsulation
+<details class="definition" open>
+<summary>Encapsulation: controls access</summary>
+- <Code code="private" lang="java"/>: only within same class
+- package-private (default): only classes in the same package
+- <Code code="protected" lang="java"/>: only package-private and subclasses
+- <Code code="public" lang="java"/>: anywhere
+</details>
+
+## Polymorphism
+
+<details class="theorem" open>
+<summary>Polymorphism</summary>
+`o` is instance of `Subclass ==> o` is instance of `Superclass`
+
+i.e. object of subclass can be treated as object of its superclass
+</details>
+
+## Overload & Override
+<details class="definition" open>
+<summary>Method Signature</summary>
+a method's signature is defined by
+- sequence of parameter types
+- method name
+</details>
+<details class="sky" open>
+<summary>Method overload in the same class</summary>
+- same method name but a different sequence of parameter types
+</details>
+<details class="sky" open>
+<summary>Method override in subclasses</summary>
+- same signature and same return type but different implementation
+- variable calls the method in the **runtime type** (or its superclass)
+- <Code code="for(Object o: arr)" lang="java"/> the runtime type of `o` depends on iter
+- `@Override` is optional
+  - but compile error if ∄ the method signature in the superclass
+  - i.e. compile error if not overriding
+</details>
+
+## Cast
+
+<details class="sky" open>
+<summary>Declared Type vs Runtime Type</summary>
+```java
+Declared d = new Runtime();
+```
+- declared type: type of variable
+- runtime type: type that ctor returns
+</details>
+<details class="sky" open>
+<summary>Type Casting</summary>
+
+- <Code code="Super p = new Sub();" lang="java"/>
+  - <Code code="Sub" lang="java"/> upcasted to <Code code="Super" lang="java"/>
+  - data is not lost
+  - `p` has **declared** type <Code code="Super" lang="java"/> and **runtime** type <Code code="Sub" lang="java"/>
+- <Code code="Sub b = (Sub)p;" lang="java"/>
+  - <Code code="Super" lang="java"/> downcasted to <Code code="Sub" lang="java"/>
+  - <Code code="Sub b = p;" lang="java"/> causes Type Mismatch
+  - lhs declared must be superclass of (or same as) rhs declared
+- <Code code="a instanceof A" lang="java"/> checks if `a` has runtime/superclass of <Code code="A" lang="java"/>
+</details>
+
+## Inheritance
+<details class="sky" open>
+<summary>Inheritance</summary>
+- all class inherits <Code code="Object" lang="java"/>
+- use <Code code="class Sub extends Super" lang="java"/>  to specify superclass
+  - no multiple superclasses
+  - <Code code="class A" lang="java"/> `==>` <Code code="class A extends Object" lang="java"/>
+- use <Code code="super(args)" lang="java"/> to call ctor of **direct superclass**
+  - must be first statement in subclass ctor
+  - no <Code code="super(...)" lang="java"/> `==>` implicit <Code code="super()" lang="java"/>
+
+```java
+class Super{
+    int m;
+    public Super(){ m = 0; }
+    public Super(int m){ this.m = m; }
+}
+class Sub extends Super{
+    int n;
+    public Sub(int n, int m){
+        // calls super(); implicitly
+        this.n = n;
+        // this.n == n && this.m == 0;
+    }
+}
+```
+</details>
+
+# 02 Java
+
+<details class="teal" open>
+<summary>Override methods in <Code code="Object" lang="java"/></summary>
+
+<Code code="public boolean equals(Object o)" lang="java"/>
+- default: check if same reference address
+- for <Code code="x != null && y != null && z != null" lang="java"/>
+  - **reflexive**: <Code code="x == x" lang="java"/>
+  - **symmetric**: <Code code="x == y <==> y == x" lang="java"/>
+  - **transitive**: <Code code="x == y && y == z ==> x == z" lang="java"/>
+  - **consistent**: multiple calls of same variables should be consistent
+  - <Code code="x != null" lang="java"/>
+
+<Code code="public int hashCode()" lang="java"/>
+- default: return address
+- override <Code code="equals(Object o) ==>" lang="java"/> override <Code code="hashCode()" lang="java"/>
+- <Code code="x == y ==> x.hashCode() == y.hashCode()" lang="java"/>
+- good hash: (not necessary)
+  ```java
+  x != y ==> x.hashCode() != y.hashCode()
+  ```
+
+<Code code="public String toString()" lang="java"/>
+- default: <Code code="f'{className}@{address}'" lang="py"/>
+- these do <Code code="toString()" lang="java"/> implicitly
+  - <Code code="System.out.println(Object o)" lang="java"/>
+  - <Code code={'o + ""'} lang="java"/>
+
+<details>
+<summary>Boilerplate</summary>
+
+```java
+class A{
+    int n; Object obj;
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        A a = (A)o;
+        return n == a.n && Object.equals(obj, a.obj);
+    }
+
+    @Override
+    public int hashCode(){
+        return Object.hash(n, obj);
+    }
+
+    @Override
+    public String toString(){
+        return "A[n=" + n + ", obj=" + obj + "]";
+    }
+}
+```
+
+</details>
+</details>
+
+
+<details class="sky" open>
+<summary>Java Memory Model</summary>
+
+one stack per thread
+- stores local vars (in fn call stack)
+
+one heap per program
+- stores objects
+
+</details>
+<details class="teal" open>
+<summary>Source Code to Bytecode</summary>
+1. write source code `.java`
+2. `javac` compiles `.java` to `.class` (bytecode)
+3. `java` interprets and executes bytecode in **JVM**
+</details>
+<details class="sky" open>
+<summary>Data Types</summary>
+- 8 primitive types
+  ```java
+  byte char short int long float double boolean
+  ```
+  - local var is assigned with data stored in stack
+- others are objects (defined by a class)
+  - ∴ array of primitives is an object (and has <Code code="null" lang="java"/> as default value)
+  - local var is assigned with ref that points to data stored in heap
+- assignment <Code code="Object a = b;" lang="java"/>
+  - if Object is primitive, then copy by value
+  - if Object is object, then copy by reference
+</details>
+<details class="teal" open>
+<summary>Instantiation: creates an object/instance of a class</summary>
+```java
+Point p = new Point(1, 2);
+int[] a = new int[n]; // array of 0
+double[] l = new double[]{0.0, 1.0};
+```
+</details>
+<details class="teal" open>
+<summary>Default Values (for uninitialised class fields)</summary>
+**local variables** don't have default values
+- can use without init `==>` compile error
+
+| Type | Default Value | Type | Default Value |
+|-:|-|-:|-
+| reference | <Code code={`null`} lang="java"/> | number | <Code code={`0`} lang="java"/>
+| boolean | <Code code={`false`} lang="java"/> | char | <Code code={`'\\u0000'`} lang="java"/>
+</details>
+
+# 01 Version Control
+
+<details class="teal" open>
+<summary>features</summary>
+- merge conflict: ask user to resolve conflict
+- branch: divergent copies of dev lines
+</details>
+
+
+## Centralised vs Distributed
+
+<details class="sky" open>
+<summary>Centralised Version Control</summary>
+- structure
+  - **repository** on the server
+  - **copy** on local machines
+- actions
+  - **commit** pushes changes to server
+  - **update** pulls changes from server
+- storage
+  - svn stores incremental diffs between 2 versions
+</details>
+<details class="sky" open>
+<summary>Distributed Version Control</summary>
+- structure
+  - **remote repo** on the server
+  - **local repo**
+- actions
+  - **commit** **checkout** **push** **pull**
+- storeage
+  - git stores snapshots of each version
+    - if file is unchanged, stores link to previous version
+</details>
+

@@ -1,0 +1,109 @@
+---
+title: Reducibility
+---
+
+## Examples
+
+<details class="theorem" open>
+<summary>wts unrecognisable $\text{HALT}\le_m\overline L$</summary>
+
+```
+let F = "on input <M, w>
+  let M' = "on input <_>
+    (step 1)
+    run M on w
+    (step 2)"
+  return <M'>"
+```
+
+want
+
+-
+</details>
+
+<details class="example" open>
+<summary>wts $L=\{\langle M\rangle:\exists N\enspace\langle N\rangle\in\mathcal L(M)\textsf{ and }\varepsilon\in\mathcal L(N)\}$ recog and uncorecog</summary>
+
+<details>
+<summary>**Proof.** wts $\langle M\rangle\in L\iff\langle M\rangle\in\mathcal L(R)$</summary>
+
+let $\langle N_0\rangle,\langle N_1\rangle$ be an eff enum of TMs
+
+let $R=$"on input $\langle M\rangle$
+
+- for $s$ in $0..\infty$
+  - for $i$ in $0..s$
+    - run $M$ on $N_i$ for $s$ steps
+    - run $N_i$ on $\varepsilon$ for $s$ steps
+    - if both accept in $s$ steps
+      - accept"
+
+</details>
+
+<details open>
+<summary>**Proof.** wts</summary>
+</details>
+
+</details>
+
+## Mapping Reduction
+
+<details class="definition" open>
+<summary>partial function</summary>
+if a partial function $f$ is not defined on some input $w$, define $f(w)=\bot$
+</details>
+
+
+<details class="definition" open>
+<summary>computable function $f:\Sigma^*\to\Sigma^*$</summary>
+partial function $f$ is computable iff $\exists$ TM $M$ that halts on any $w$ with $f(w)$ as tape
+</details>
+
+<details class="definition" open>
+<summary>language $A$ is mapping reducible to $B$ iff </summary>
+$A\le_m B$ iff $\exists$ computable $f:\Sigma^*\to\Sigma^*$ st for any $w\in\Sigma^*$
+
+$$
+w\in A\iff f(w)\in B
+$$
+where $f$ is the **reduction** from $A$ to $B$
+</details>
+
+<details class="theorem" open>
+<summary>$A$ reducible to decidable $B\implies A$ decidable</summary>
+- i.e. undecidable $A\le_mB\implies B$ undecidable
+</details>
+
+<details class="theorem" open>
+<summary>$A$ reducible to recognisable $B\implies A$ recognisable</summary>
+- i.e. unrecognisable $A\le_mB\implies B$ unrecognisable
+</details>
+
+
+<details class="theorem" open>
+<summary>HALT is uncorecognsiable</summary>
+
+let $R$ on $\langle M,w\rangle$
+
+1. run $M$ on $w$
+2. ACC
+
+$\therefore R$ recognises HALT
+
+<details>
+<summary>**Proof.** BWOC assume $\exists$ TM $M_{\text{HALT}}$ that decides HALT</summary>
+
+let TM $D$ on input $\langle M\rangle$
+
+1. run $M_{\text{HALT}}$ on $\langle M,\langle M\rangle\rangle$
+2. if $M_{\text{HALT}}$ accepts $\langle M,\langle M\rangle\rangle$, LOOP
+2. if $M_{\text{HALT}}$ rejects $\langle M,\langle M\rangle\rangle$, ACC
+
+consider running $D$ on $\langle D\rangle$
+
+- $D$ halts on $\langle D\rangle$ iff $M_{\text{HALT}}$ rejects $\langle D,\langle D\rangle\rangle$ iff $D$ loops on $\langle D\rangle$
+- $D$ loops on $\langle D\rangle$ iff $M_{\text{HALT}}$ accpts $\langle D,\langle D\rangle\rangle$ iff $D$ halts on $\langle D\rangle$
+
+$\therefore$ contradiction $\square$
+</details>
+</details>

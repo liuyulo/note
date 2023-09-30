@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>STAB52</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: 1;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../a82/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script defer="defer" src="../a82/script.js"></script>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">STAB52</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#sampling-distributions" id="toc-sampling-distributions">4
+Sampling Distributions</a>
+<ul>
+<li><a href="#central-limit-theorem"
+id="toc-central-limit-theorem">Central Limit Theorem</a></li>
+<li><a href="#large-number-laws" id="toc-large-number-laws">Large Number
+Laws</a></li>
+<li><a href="#convergence" id="toc-convergence">4.2 Convergence</a></li>
+<li><a href="#definition" id="toc-definition">4.1 Definition</a></li>
+</ul></li>
+<li><a href="#expectation" id="toc-expectation">3 Expectation</a>
+<ul>
+<li><a href="#inequality" id="toc-inequality">3.6 Inequality</a></li>
+<li><a href="#conditional" id="toc-conditional">3.5 Conditional</a></li>
+<li><a href="#generating-functions" id="toc-generating-functions">3.4
+Generating Functions</a></li>
+<li><a href="#variance-sigma_x2" id="toc-variance-sigma_x2">3.3 Variance
+<span class="math inline">\sigma_X^2</span></a></li>
+<li><a href="#expectation-1" id="toc-expectation-1">Expectation</a></li>
+</ul></li>
+<li><a href="#random-variable-and-distribution"
+id="toc-random-variable-and-distribution">2 Random Variable and
+Distribution</a>
+<ul>
+<li><a href="#simulation" id="toc-simulation">2.10 Simulation</a></li>
+<li><a href="#conditional-distributions"
+id="toc-conditional-distributions">2.8 Conditional Distributions</a>
+<ul>
+<li><a href="#indep-rv" id="toc-indep-rv">2.8.3 Indep RV</a></li>
+<li><a href="#discreteac" id="toc-discreteac">Discrete/AC</a></li>
+</ul></li>
+<li><a href="#multivariate-distributions"
+id="toc-multivariate-distributions">2.7 Multivariate Distributions</a>
+<ul>
+<li><a href="#multivariate-discrete" id="toc-multivariate-discrete">2.7
+Multivariate Discrete</a></li>
+<li><a href="#multivariate-ac" id="toc-multivariate-ac">2.7 Multivariate
+AC</a></li>
+</ul></li>
+<li><a href="#d-change-of-variable" id="toc-d-change-of-variable">2.6 1D
+Change of Variable</a></li>
+<li><a href="#cumulative-distribution-functions"
+id="toc-cumulative-distribution-functions">2.5 Cumulative Distribution
+Functions</a></li>
+<li><a href="#continuous-distributions"
+id="toc-continuous-distributions">2.4 Continuous Distributions</a></li>
+<li><a href="#discrete-distribution" id="toc-discrete-distribution">2.3
+Discrete Distribution</a></li>
+<li><a href="#distribution-of-rv" id="toc-distribution-of-rv">2.2
+Distribution of RV</a></li>
+<li><a href="#random-variable" id="toc-random-variable">2.1 Random
+Variable</a></li>
+</ul></li>
+<li><a href="#probability-model" id="toc-probability-model">1
+Probability Model</a>
+<ul>
+<li><a href="#setevent-operations"
+id="toc-setevent-operations">Set/Event Operations</a></li>
+<li><a href="#properties-of-probability-models"
+id="toc-properties-of-probability-models">1.3 Properties of Probability
+Models</a></li>
+<li><a href="#uniform-probability" id="toc-uniform-probability">1.4
+Uniform Probability</a>
+<ul>
+<li><a href="#combinatorics"
+id="toc-combinatorics">Combinatorics</a></li>
+</ul></li>
+<li><a href="#conditional-probability-indep"
+id="toc-conditional-probability-indep">1.5 Conditional Probability &amp;
+Indep</a>
+<ul>
+<li><a href="#conditional-probability"
+id="toc-conditional-probability">1.5.1 Conditional Probability</a></li>
+<li><a href="#indep" id="toc-indep">1.5.2 Indep</a></li>
+<li><a href="#conditional-indep" id="toc-conditional-indep">Conditional
+Indep</a></li>
+</ul></li>
+<li><a href="#continuity" id="toc-continuity">1.6 Continuity</a></li>
+<li><a href="#discrete" id="toc-discrete">Discrete</a></li>
+<li><a href="#absolutely-continuous"
+id="toc-absolutely-continuous">Absolutely Continuous</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="sampling-distributions">4 Sampling Distributions</h1>
+<h2 id="central-limit-theorem">Central Limit Theorem</h2>
+<details class="theorem" open>
+<summary>
+CLT
+</summary>
+<p>for any <strong>iid</strong> <span class="math inline">(X_i)</span>
+with same <span class="math inline">|\mu|&lt;\infty</span> and same
+<span class="math inline">\sigma^2&lt;\infty</span></p>
+<p><span class="math display">Z_n=\frac{\overline X_n-\mu}{\sigma/\sqrt
+n}\stackrel D\to N(0,1)</span></p>
+<span class="math inline">\therefore\overline X_n\stackrel{appr}\sim
+N(\mu,\sigma^2/n)</span>
+</details>
+<h2 id="large-number-laws">Large Number Laws</h2>
+<details class="theorem" open>
+<summary>
+WLLN vs SLLN
+</summary>
+<p><strong>Weak</strong>: for any independent <span
+class="math inline">(X_i)</span> with common mean <span
+class="math inline">\mu</span> and <span
+class="math inline">\sigma_i^2&lt;\infty</span> <span
+class="math display">\overline X_n\stackrel P\rarr\mu</span></p>
+<strong>Strong</strong>: for any iid <span
+class="math inline">(X_i)</span> with common mean <span
+class="math inline">\mu</span> <span class="math display">\overline
+X_n\stackrel{a.s}\to\mu</span>
+</details>
+<h2 id="convergence">4.2 Convergence</h2>
+<details class="definition" open>
+<summary>
+Converges in Probability
+</summary>
+<dl>
+<dt><span class="math inline">(X_n)</span> <strong>converges in
+probability</strong> iff</dt>
+<dd>
+<span
+class="math inline">\displaystyle\forall\varepsilon&gt;0\enspace\lim_{n\to\infty}P(|X_n-X|\ge\varepsilon)</span>
+</dd>
+<dd>
+<span class="math inline">X_n\stackrel P\rarr X</span>
+</dd>
+</dl>
+Theorem: for any continuous <span class="math inline">g</span> <span
+class="math display">X_n\stackrel P\rarr X\implies g(X_n)\stackrel
+P\rarr g(X)</span>
+</details>
+<details class="definition" open>
+<summary>
+Converges in Distribution
+</summary>
+<p><span class="math display">\forall x\enspace
+P(X=x)=0\implies\lim_{n\to\infty}P(X_n\le x)=P(X\le x)</span></p>
+i.e. <span class="math inline">X_n\stackrel D\rarr X</span>
+</details>
+<details class="definition" open>
+<summary>
+Converges Almost Surely
+</summary>
+<p><span class="math display">P(\lim_{n\to\infty} X_n=X)=1</span></p>
+i.e. <span class="math inline">X_n\stackrel{a.s}\rarr X</span>
+</details>
+<details class="theorem" open>
+<summary>
+Implication of Convergences
+</summary>
+<span class="math display">X_n\stackrel{a.s}\rarr X\implies X_n\stackrel
+P\rarr X\implies X_n\stackrel D\rarr X</span>
+</details>
+<details class="definition" open>
+<summary>
+Average (Sample Mean)
+</summary>
+<p>for any <span class="math inline">(X_i)</span> with common mean <span
+class="math inline">\mu</span> and common variance <span
+class="math inline">\sigma^2</span></p>
+<p><span class="math display">\overline X_n=\frac1n\sum X_i</span></p>
+then <span class="math inline">E(\overline X_n)=\mu\quad V(\overline
+X_n)=\frac{\sigma^2}n</span>
+</details>
+<h2 id="definition">4.1 Definition</h2>
+<details class="definition" open>
+<summary>
+</summary>
+<ul>
+<li><strong>random sample</strong>: collection of iid RVs <span
+class="math inline">X_i</span></li>
+<li><strong>statistic</strong>: any fn <span
+class="math inline">h:\R^n\to\R</span> where <span
+class="math inline">h(X_1,\cdots,X_n)</span></li>
+<li><strong>sampling distribution</strong>: distribution of the
+statistic</li>
+</ul>
+</details>
+<h1 id="expectation">3 Expectation</h1>
+<h2 id="inequality">3.6 Inequality</h2>
+<details class="theorem" open>
+<summary>
+Markov’s Inequality (Markov’s Upper Bound)
+</summary>
+for any <span class="math inline">X\ge0</span> and <span
+class="math inline">a&gt;0</span> <span class="math display">P(X\ge
+a)\le\frac{E(X)}a</span>
+</details>
+<details class="theorem" open>
+<summary>
+Chebychev’s Inequality (Chebychev’s Upper Bound)
+</summary>
+<p>for any <span class="math inline">X</span> with <span
+class="math inline">|\mu_X|&lt;\infty</span> and <span
+class="math inline">a&gt;0</span></p>
+<span class="math display">P(|X-\mu_X|\ge a)\le\frac{V(X)}{a^2}</span>
+</details>
+<details class="theorem" open>
+<summary>
+Cauchy-Schwarts Inequality
+</summary>
+<span class="math display">E(XY)^2\le
+E(X^2)E(Y^2)\quad\textsf{Cov}(X,Y)^2\le V(X)V(Y)</span>
+</details>
+<details class="theorem" open>
+<summary>
+Jensen Inequality
+</summary>
+<p>for any convex <span class="math inline">g:\R\to\R</span> (i.e. <span
+class="math inline">\forall x\enspace g&#39;&#39;(x)&gt;0</span>)</p>
+<span class="math display">E(g(X))\ge g(E(X))</span>
+</details>
+<details class="example">
+<summary>
+Jensen: if concave, use negative to find upper
+</summary>
+<p>given <span class="math inline">X&gt;0</span> with <span
+class="math inline">E(X)=0</span><br> find upper of <span
+class="math inline">E(\ln\sqrt X)</span> with Jensen</p>
+<span class="math display">\begin{align*}
+  E(\ln\sqrt X)&amp;=E\left(\frac12\ln X\right)=-\frac12E(-\ln
+X)=-\frac12E(g(X))\\
+  &amp;\le-\frac12g(E(X))\tag{$-\ln X\textsf{ is convex}$}\\
+  &amp;=-\frac12g(10)=\frac12\ln10
+\end{align*}</span>
+</details>
+<h2 id="conditional">3.5 Conditional</h2>
+<details class="definition" open>
+<summary>
+Contitional Expectation
+</summary>
+<span class="math display">\begin{align*}
+  E(g(Y)|X=x)&amp;=\sum_yg(y)p_{Y|X}(y|x)\\
+  E(g(Y)|X=x)&amp;=\int_{-\infty}^\infty g(y)f_{Y|X}(y|x)\,dy
+\end{align*}</span>
+</details>
+<details class="definition" open>
+<summary>
+Conditional Variance
+</summary>
+<span class="math display">V(Y|X=x)=E(Y^2|X=x)-E(Y|X=x)^2</span>
+</details>
+<details class="example">
+<summary>
+recognise distributions: <span class="math inline">f(x,y)=6(1-y)\enspace
+0\le x\le y\le1</span>
+</summary>
+<span class="math display">\begin{align*}
+  &amp;\because f_{X|Y}(x|y)=1/y\enspace0\le x\le y\\
+  &amp;\therefore X|Y=y\sim\mathrm{Uni}[0,y]\\
+  &amp;\therefore E(X|Y=y)=y/2\quad V(X|Y=y)=y/12\\
+\end{align*}</span>
+</details>
+<details class="theorem" open>
+<summary>
+</summary>
+<span class="math display">\begin{align*}
+  X\perp Y&amp;\implies E(g(X)h(Y))=E(g(X))E(h(Y))\\
+  E(X)&amp;=E(E(X|Y))\\
+  V(X)&amp;=V(E(X|Y))+E(V(X|Y))\\
+\end{align*}</span>
+</details>
+<h2 id="generating-functions">3.4 Generating Functions</h2>
+<details class="definition" open>
+<summary>
+Unique PGT <span class="math inline">r_X:\R\to\R</span> and Unique MGT
+<span class="math inline">m_X:\R\to\R</span> for each dist
+</summary>
+<p>Probability Generating Function <span
+class="math inline">r_X(t)=E(t^X)=m_X(\ln t)</span></p>
+<dl>
+<dt>Moment Generating Function <span
+class="math inline">m_X(t)=E(e^{tX})=r_X(e^t)</span></dt>
+<dd>
+<span class="math inline">r_{X\sim\textsf{Bin}(n,p)}(t)=(q+pt)^n</span>
+</dd>
+<dd>
+<span
+class="math inline">r_{X\sim\textsf{Pois}(\lambda)}(t)=e^{\lambda(t-1)}</span>
+</dd>
+<dd>
+<span
+class="math inline">m_{X\sim\textsf{Exp}(\lambda)}(t)=\frac\lambda{\lambda-t}\quad
+t&lt;\lambda</span>
+</dd>
+<dd>
+<span class="math inline">m_{X\sim\textsf{Geo}(p)}(t)=\frac
+p{(1-qe^t)}\quad t&lt;-\ln q</span>
+</dd>
+<dd>
+<span
+class="math inline">m_{X\sim\textsf{Gam}(\alpha,\lambda)}(t)=\left(\frac\lambda{\lambda-t}\right)^\alpha\quad
+t&lt;\lambda</span>
+</dd>
+<dd>
+<span class="math inline">m_{X\sim N(\mu,\sigma^2)}(t)=e^{\mu
+t+\sigma^2t^2/2}</span>
+</dd>
+</dl>
+<details>
+<summary>
+<strong>Proof.</strong> <span class="math inline">m_{X\sim
+N(0,1)}(t)=e^{\frac12t^2}</span>
+</summary>
+<span class="math display">\begin{align*}
+  m_X(t)&amp;=E(e^{tX})=\int_{-\infty}^\infty
+e^{tx}\frac1{\sqrt{2\pi}}e^{-\frac12x^2}\,dx=\int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12x^2+tx}\,dx\\
+  &amp;=\int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12(x^2-2tx+t^2)+\frac12t^2}\,dx=\int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12(x-t)^2}e^{\frac12t^2}\,dx\\
+  &amp;=e^{\frac12t^2}\int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12(x-t)^2}\,dx=e^{\frac12t^2}\\
+\end{align*}</span>
+</details>
+</details>
+<details class="theorem" open>
+<summary>
+</summary>
+<dl>
+<dt><span class="math display">\begin{align*}
+r_X^{(k)}(0)&amp;=k!P(X=k)\\ m_X^{(k)}(0)&amp;=E(X^k)\\
+\end{align*}</span></dt>
+<dd>
+<span class="math inline">m_{a+bX}(t)=e^{at}m_X(bt)</span>
+</dd>
+<dd>
+<span class="math inline">(\perp X_i)\implies m_{\sum X_i}(t)=\prod
+m_X(t)</span>
+</dd>
+<dd>
+<span class="math inline">\forall 0&lt;i\le n\enspace X_i\sim\textsf{
+idd Exp}(\lambda)\implies \sum X_i\sim\textsf{Gamma}(n,\lambda)</span>
+</dd>
+<dd>
+<span class="math inline">\forall0&lt;i\le n\enspace X_i\sim
+N(\mu_i,\sigma_i^2)\implies\sum X_i\sim N(\sum
+\mu_i,\sum\sigma_i^2)</span>
+</dd>
+</dl>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">X\sim\textsf{Uni}(0,1)</span> recognise <span
+class="math inline">Y=-\ln X</span> by MGT
+</summary>
+<span class="math display">\begin{align*}
+  \because m_Y(t)&amp;=E(e^{tY})=E(e^{-t\ln X})=E\left(\left(e^{\ln
+X}\right)^{-t}\right)=E(X^{-t})\\
+  &amp;=\int_0^1
+x^{-t}\,dx=\left.\frac{x^{1-t}}{1-t}\right|^1_0=\frac1{1-t}\quad
+t&lt;1\\
+  \therefore Y&amp;\sim\textsf{Exp}(\lambda=1)
+\end{align*}</span>
+</details>
+<h2 id="variance-sigma_x2">3.3 Variance <span
+class="math inline">\sigma_X^2</span></h2>
+<details class="definition" open>
+<summary>
+Variance <span class="math inline">V(X)</span>
+</summary>
+<p><span
+class="math display">V(X)=E((X-E(X))^2)=E(X^2)-\mu_X^2=\sigma_X^2</span>
+where <span class="math inline">\mu_X=E(X)</span> and <span
+class="math inline">\sqrt{\sigma^2}=\sigma</span> is <strong>Standard
+Deviation</strong> (SD)</p>
+<ul>
+<li><span class="math inline">V(aX+b)=a^2V(X)+V(b)=a^2V(X)</span></li>
+<li><span class="math inline">X\perp Y\implies
+V(X+Y)=V(X)+V(Y)</span></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Covariance and Correlation
+</summary>
+<p>Covariance: <span
+class="math display">\mathrm{Cov}(X,Y)=E((X-\mu_X)(Y-\mu_y))=E(XY)-E(X)E(Y)</span></p>
+<ul>
+<li><span
+class="math inline">\mathrm{Cov}(aX+bY,c+Z)=a\mathrm{Cov}(X,Z)+b\mathrm{Cov}(Y,Z)</span></li>
+<li><span class="math inline">\mathrm{Cov}(X,X)=V(X)</span></li>
+<li><span class="math inline">\displaystyle V\left(\sum X_i\right)=\sum
+V(X_i)+2\sum_{i&lt;j}\mathrm{Cov}(X_i,X_j)</span></li>
+<li><span class="math inline">X\perp
+Y\implies\mathrm{Cov}(X,Y)=0</span></li>
+</ul>
+<p>Correlation: <span
+class="math display">\rho_{XY}=\dfrac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}\in[-1,1]</span></p>
+</details>
+<h2 id="expectation-1">Expectation</h2>
+<details class="definition" open>
+<summary>
+Expectations <span class="math inline">E(X)</span>
+</summary>
+<ul>
+<li><span class="math inline">E(aX+bY+c)=aE(X)+bE(Y)+c</span></li>
+<li><span class="math inline">X\perp Y\implies
+E(XY)=E(X)E(Y)</span></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+<span class="math inline">E(X)</span> AC
+</summary>
+<span class="math display">\begin{align*}
+  E(X)&amp;=\int_{-\infty}^\infty xf_X(x)\,dx\\
+  E(g(X))&amp;=\int_{-\infty}^\infty g(x)f_X(x)\,dx\\
+  E(g(X,Y))&amp;=\int_{-\infty}^\infty\int_{-\infty}^\infty
+g(x,y)f_{X,Y}(x,y)\,dx\,dy
+\end{align*}</span>
+</details>
+<details class="definition" open>
+<summary>
+<span class="math inline">E(X)</span> Discrete
+</summary>
+<p><span class="math display">\begin{align*}
+E(h(X))&amp;=\sum_{x\in\textsf{supp}(X)}h(x)p_X(x)\\
+E(h(X,Y))&amp;=\sum_x\sum_yf(x,y)p_{XY}(x,y)\\
+\end{align*}</span></p>
+</details>
+<h1 id="random-variable-and-distribution">2 Random Variable and
+Distribution</h1>
+<h2 id="simulation">2.10 Simulation</h2>
+<details class="definition" open>
+<summary>
+Generate random variables
+</summary>
+given <span class="math inline">F_Y(y)</span> and <span
+class="math inline">U\sim\rm{Uni}[0,1]</span>, then <span
+class="math display">Y=F^{-1}(U)</span>
+</details>
+<details class="example">
+<summary>
+Generate <span class="math inline">Y\sim\rm{Exp}(\lambda)</span> from
+<span class="math inline">U\sim\rm{Uni}[0,1]</span>
+</summary>
+<span class="math display">\begin{align*}
+  \textsf{let }F(y)&amp;=1-e^{-\lambda y}\\
+  \therefore F^{-1}(y)&amp;=-\frac1{\lambda}\ln(1-y)\\
+  \therefore
+Y&amp;=F^{-1}(u)=-\frac1{\lambda}\ln(1-u)\sim\rm{Exp}(\lambda)
+\end{align*}</span>
+</details>
+<h2 id="conditional-distributions">2.8 Conditional Distributions</h2>
+<h3 id="indep-rv">2.8.3 Indep RV</h3>
+<details class="theorem" open>
+<summary>
+<span class="math inline">X\perp Y</span> iff
+</summary>
+<p><span class="math display">\begin{align*}
+  P(a\le X\le b,c\le Y\le d)&amp;=P(a\le X\le b)P(c\le Y\le d)\\
+  p_{XY}(x,y)&amp;=p_X(x)p_Y(y)\quad f_{XY}(x,y)=f_X(x)f_Y(y)\\
+  p_{Y|X}(y|x)&amp;=p_Y(y)\quad f_{Y|X}(y|x)=f_Y(y)
+\end{align*}</span></p>
+<ul>
+<li><span class="math inline">X\perp Y\implies\forall
+f,g:\R\to\R\enspace f(X)\perp g(Y)</span></li>
+<li><span class="math inline">p_{XY}(x,y)=g(x)h(y)</span> or <span
+class="math inline">f_{XY}(x,y)=g(x)h(y)\implies X\perp Y</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+given <span class="math inline">X\sim\textsf{Exp}(\lambda_1)\perp
+Y\sim\textsf{Exp}(\lambda_2)</span>, find <span
+class="math inline">P(X&lt;Y)</span>
+</summary>
+<div style="width:50%">
+<p><img width="100%" height="100%" class="tikz" src="./db7abc1a5eb1e6b10cd4b70f5e275757a2bcf115.svg"></p>
+</div>
+<span class="math display">\begin{align*}
+  P(X&lt;Y)&amp;=\int_0^\infty\int_0^yf_{XY}(x,y)\,dx\,dy=\int_0^\infty\int_0^yf_X(x)f_Y(y)\,dx\,dy\\
+  &amp;=\int_0^\infty\int_0^y\lambda_1e^{-\lambda_1x}\underline{\lambda_2e^{-\lambda_2y}}\,dx\,dy\\
+  &amp;=\int_0^\infty\underline{\lambda_2e^{-\lambda_2y}}\int_0^y\lambda_1e^{-\lambda_1x}\,dx\,dy\\
+  &amp;=\int_0^\infty\lambda_2e^{-\lambda_2y}\left[-e^{-\lambda_1x}\right]_0^y\,dy=\int_0^\infty\lambda_2e^{-\lambda_2y}(1-e^{-\lambda_1y})\,dy\\
+  &amp;=\int_0^\infty\left(\lambda_2e^{-\lambda_2y}-\lambda_2e^{-(\lambda_1+\lambda_2)y}\right)\,dy\\
+  &amp;=1-\left[-\frac{\lambda_2}{\lambda_1+\lambda_2}e^{-(\lambda_1+\lambda_2)y}\right]_0^\infty=1-\frac{\lambda_2}{\lambda_1+\lambda_2}\\
+  &amp;=\frac{\lambda_1}{\lambda_1+\lambda_2}
+\end{align*}</span>
+</details>
+<h3 id="discreteac">Discrete/AC</h3>
+<details class="definition" open>
+<summary>
+<span class="math inline">P(a&lt;Y\le b|X=x)</span>
+</summary>
+<span class="math display">\begin{align*}
+  p_{Y|X}(y|x)&amp;=\frac{p_{XY}(x,y)}{p_X(x)}\\
+  P(a&lt;Y\le b|X=x)&amp;=\frac{P(a&lt;Y\le b,X=x)}{P(X=x)}\\
+  f_{Y|X}(y|x)&amp;=\frac{f_{XY}(x,y)}{f_X(x)}\\
+  P(a\le Y\le b|X=x)&amp;=\int_a^bf_{Y|X}(y,x)\,dy\\
+\end{align*}</span>
+</details>
+<h2 id="multivariate-distributions">2.7 Multivariate Distributions</h2>
+<h3 id="multivariate-discrete">2.7 Multivariate Discrete</h3>
+<details class="definition" open>
+<summary>
+Joint CDF <span class="math inline">F_{XY}:\R^2\to[0,1]</span> of <span
+class="math inline">X</span> and <span class="math inline">Y</span>
+</summary>
+<span class="math display">F_{XY}(x,y)=P(X\le x,Y\le y)=P(\{X\le
+x\}\cap\{Y\le y\})</span>
+</details>
+<details class="definition" open>
+<summary>
+Marginal CDF from joint CDF <span class="math inline">F_{XY}</span>
+</summary>
+<span class="math display">\begin{align*}
+  F_X(x)&amp;=\lim_{y\to\infty}F_{XY}(x,y)\\
+  F_X(y)&amp;=\lim_{x\to\infty}F_{XY}(x,y)\\
+\end{align*}</span>
+</details>
+<details class="definition" open>
+<summary>
+Marginal PMF from joint PMF
+</summary>
+<span class="math display">\begin{align*}
+  p_X(x)=\sum_yp_{XY}(x,y)=\sum_yP(X=x,Y=y)
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">p_{XY}(x,y)=p^2q^{x+y}</span> for <span
+class="math inline">x,y\in\mathbb N</span>
+</summary>
+<span class="math display">\begin{align*}
+  p_X(x)&amp;=\sum_{y=0}^\infty p_{XY}(x,y)=\sum_y p^2q^xq^y\\
+  &amp;=p^2q^x\sum_yq^y=\frac{p^2q^x}{1-q}=pq^x\quad y\in\mathbb N\\
+  F_{XY}(x,y)&amp;=P(X\le x,Y\le
+y)=\sum_{i=0}^x\sum_{i=0}^yp_{XY}(i,j)=\sum_i^x\sum_j^yp^2q^iq^j\\
+  &amp;=p^2\sum_i^xq^i\sum_j^yq^j=p^2\cdot\frac{1-q^{x+1}}{1-q}\cdot\frac{1-q^{y+1}}{1-q}\\
+  &amp;=\left(1-q^{x+1}\right)\left(1-q^{y+1}\right)\quad x,y\in\mathbb
+N\\\
+  P(X=Y)&amp;=\sum_{i=0}^\infty p_{XY}(i,i)=\sum
+p^2q^{2i}=\frac{p^2}{1-q^2}\\
+  &amp;=\frac{p^2}{(1-q)(1+q)}=\frac p{1+q}=\frac p{2-p}
+\end{align*}</span>
+</details>
+<h3 id="multivariate-ac">2.7 Multivariate AC</h3>
+<details class="definition" open>
+<summary>
+Joint PDF <span class="math inline">f:\R^2\to\R</span>
+</summary>
+<p><span class="math display">\begin{align*}
+  \int_{-\infty}^\infty\int_{-\infty}^\infty f(x,y)\,dx\,dy&amp;=1\quad
+f(x,y)\ge0\\
+  P(a\le X\le b,c\le Y\le d)&amp;=\int_c^d\int_a^bf(x,y)\,dx\,dy\\
+  F_{XY}(x,y)&amp;=\int_{-\infty}^x\int_{-\infty}^yf(s,t)\,dt\,ds\\
+  f(x,y)&amp;=\frac{\partial^2}{\partial x\partial y}F_{XY}(x,y)\\
+\end{align*}</span></p>
+<p>Geometry</p>
+<div style="font-size: 85%">
+<p><span class="math display">P(a\le X\le b,c\le Y\le
+d)=F_{XY}(b,d)+F_{XY}(a,c)-F_{XY}(a,d)-F_{XY}(b,c)</span></p>
+</div>
+</details>
+<details class="definition" open>
+<summary>
+Marginal PDF from joint PDF
+</summary>
+<span class="math display">\begin{align*}
+  f_X(x)&amp;=\int_{-\infty}^\infty f_{XY}(x,y)\,dy\\
+  f_Y(y)&amp;=\int_{-\infty}^\infty f_{XY}(x,y)\,dx\\
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">f_{XY}(x,y)=kxy\quad 0\le x,y\le1</span> find
+<span class="math inline">k</span>
+</summary>
+<div style="width: 50%">
+<p><img width="100%" height="100%" class="tikz" src="./214131f1bde9e23a5ad884713f78ce39274f2e54.svg"></p>
+</div>
+<span class="math display">\begin{align*}
+  \therefore1&amp;=\int_0^1\int_0^1
+kxy\,dx\,dy=k\int_0^1x\,dx\int_0^1y\,dy=\frac k4\\
+  \therefore k&amp;=4\\
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">f_{XY}(x,y)=4xy\quad0\le x,y\le1</span> (abuse
+Beta distribution)
+</summary>
+<p><span class="math display">\begin{align*}
+  P(X\le1/2,Y\le3/4)&amp;=\int_0^{3/4}\int_0^{1/2}4xy\,dx\,dy\\
+  &amp;=4\int_0^{1/2}x\,dx\int_0^{3/4}y\,dy=4\cdot\frac18\cdot\frac9{32}
+\end{align*}</span></p>
+<div style="display: flex">
+<div style="width: 50%">
+<img width="100%" height="100%" class="tikz" src="./240347f1794373341562385f95f28fd3eff07f12.svg">
+</div>
+<div style="width: 50%">
+<img width="100%" height="100%" class="tikz" src="./352736df95b324163edfc7504805afc3c2b54e50.svg">
+</div>
+</div>
+<span class="math display">\begin{align*}
+  P(X+Y\le1)&amp;=\int_0^1\int_0^{1-y}f_{XY}(x,y)\,dx\,dy\\
+  &amp;=4\int_0^1\underline{\int_0^{1-y}xy\,dx}\,dy=2\int_0^1\underline{y(1-y)^2}\,dy\\
+  &amp;=2\frac{\Gamma(2)\Gamma(3)}{\Gamma(2+3)}=\frac{2\cdot1!\cdot2!}{4!}=\frac16
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">f_{XY}(x,y)=k(1-y)\quad 0\le x\le y\le1</span>
+find <span class="math inline">k</span>
+</summary>
+<p><span class="math display">\begin{align*}
+  \therefore
+1&amp;=\int_0^1\underline{\int_0^yk(1-y)\,dx}\,dy=k\int_0^1\underline{y(1-y)}\,dy=k\frac{\Gamma(2)\Gamma(2)}{\Gamma(2+2)}=\frac
+k6\\
+  \therefore k&amp;=6\\
+\end{align*}</span></p>
+<div style="width: 60%">
+<p><img width="100%" height="100%" class="tikz" src="./d5a16c10ea518c3d154a19faec96d2d4a9ae7a8f.svg"></p>
+</div>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">f_{XY}(x,y)=6(1-y)\quad0\le x\le y\le1</span>
+divide sections
+</summary>
+<p><span class="math display">\begin{align*}
+  &amp;P(X\le3/4,Y\ge1/2)\\
+  &amp;=\int_{1/2}^{3/4}\int_0^yf_{XY}(x,y)\,dx\,dy+\int_{3/4}^1\int_0^{3/4}f_{XY}(x,y)\,dx\,dy\\
+  &amp;=\int_{1/2}^{3/4}6y(1-y)\,dy+\int_{3/4}^16\cdot3/4(1-y)\,dy\\
+\end{align*}</span></p>
+<div style="width: 50%">
+<p><img width="100%" height="100%" class="tikz" src="./f52d9626e16521041d2101eb5cb94be9db24ba97.svg"></p>
+</div>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">f_{XY}(x,y)=6(1-y)\quad 0\le x\le y\le1</span>
+find marginal
+</summary>
+<span class="math display">\rlap{$\overbrace{\phantom{0\le x\le
+y}}$}0\le\underbrace{x\le y\le 1}</span> <span
+class="math display">\begin{align*}
+  f_X(x)&amp;=\int_x^16(1-y)\,dy\quad 0\le x\le 1\\
+  f_Y(y)&amp;=\int_0^y6(1-y)\,dx\quad 0\le y\le1\\
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+uniform <span class="math inline">f_{XY}=k\quad 0\le x,y,x+y\le1</span>
+find area
+</summary>
+<p><span class="math display">\begin{align*}
+  P(X\le3/4,Y\le3/4)&amp;=\frac{S_R}{S_\triangle}=\frac{(3/4)^2-1/2(1/2)^2}{S_\triangle}\\
+  &amp;=\frac{1/2-1/16}{1/2}=7/8\\
+\end{align*}</span></p>
+<div style="width:60%">
+<p><img width="100%" height="100%" class="tikz" src="./a610fa0c1909e9270e7dea14987e18f37ae5cebc.svg"></p>
+</div>
+</details>
+<h2 id="d-change-of-variable">2.6 1D Change of Variable</h2>
+<details class="definition" open>
+<summary>
+Discrete <span class="math inline">Y=h(X)</span>
+</summary>
+<span class="math display">p_Y(y)=\sum_{x\in h^{-1}(y)}p_X(x)</span>
+where <span class="math inline">h^{-1}(y)=\{x:h(x)=y\}</span>
+</details>
+<details class="definition" open>
+<summary>
+Continuous <span class="math inline">Y=h(X)</span>
+</summary>
+<ul>
+<li>PDF method (only monotone and diffable <span
+class="math inline">h</span>) <span
+class="math display">f_Y(y)=\frac{f_X(h^{-1}(y))}{|h&#39;(h^{-1}(y))|}</span></li>
+<li>CDF method
+<ol type="1">
+<li>find</li>
+<li>find <span class="math inline">F_Y(y)</span> wrt <span
+class="math inline">F_X</span></li>
+<li>find <span class="math inline">f_Y(y)=\frac d{dy}F_Y(y)</span> wrt
+<span class="math inline">f_X</span></li>
+<li>use def of <span class="math inline">f_X(x)</span> and find
+domain</li>
+</ol></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">f_X(x)=2xe^{-x^2}</span> for <span
+class="math inline">x&gt;0</span>, find <span
+class="math inline">f_Y(y)</span> where <span
+class="math inline">Y=1/X</span>
+</summary>
+<ul>
+<li><p>CDF <span class="math display">\begin{align*}
+\because F_Y(y)&amp;=P(Y\le y)=P(1/X\le y)=P(X\ge 1/y)\\
+&amp;=1-F_X(1/y)\\
+\therefore f_Y(y)&amp;=\frac d{dy}(1-F_X(1/y))=-f_X(1/y)(1/y)&#39;\\
+&amp;=y^{-2}f_X\left(y^{-1}\right)=y^{-2}\left(2y^{-1}e^{-y^{-2}}\right)\\
+&amp;=2y^{-3}e^{-y^{-2}}\quad\forall 1/y&gt;0\implies\forall y&gt;0\\
+f_Y(y)&amp;=0\textsf{ otherwise}\\
+\end{align*}</span></p></li>
+<li><p>PDF <span class="math inline">\because Y=1/X=h(X)</span> is
+monotone on <span class="math inline">x&gt;0</span> i.e. supp<span
+class="math inline">(X)</span> <span class="math display">\begin{align*}
+\because h^{-1}(y)&amp;=y^{-1}\quad h&#39;(y)=-y^{-2}\implies
+|h&#39;(h^{-1}(y))|=y^2\\
+\therefore
+f_Y(y)&amp;=\frac{f_X(h^{-1}(y))}{|h&#39;(h^{-1}(y))|}=y^{-2}f_X\left(y^{-1}\right)=2y^{-3}e^{-y^{-2}}\quad\forall
+y&gt;0\\
+f_Y(y)&amp;=0\textsf{ otherwise}
+\end{align*}</span></p></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">f_X(x)=\dfrac3{665}x^2</span> for <span
+class="math inline">4&lt;x\le9</span>, and <span
+class="math inline">Y=4-3X</span>
+</summary>
+<ul>
+<li>find <span class="math inline">P(Y\le-20)</span> <span
+class="math display">\begin{align*}
+P(Y\le-20)&amp;=P(4-3X\le-20)=P(X\ge8)=\int_8^\infty f_X(x)\,dx\\
+&amp;=\int_8^9\frac3{665}x^2\,dx=\frac3{665}\left[\frac{x^3}3\right]_8^9=\frac{9^3-8^3}{665}\\
+\end{align*}</span></li>
+<li>find <span class="math inline">f_Y(y)</span> (CDF) <span
+class="math display">\begin{align*}
+\because F_Y(y)&amp;=P(X\le y)=P(4-3X\le
+y)=P\left(X\ge\frac{4-y}3\right)\\
+&amp;=1-P\left(X\le\frac{4-y}3\right)=1-F_X\left(\frac{4-y}3\right)\\
+\therefore f_Y(y)&amp;=\frac
+d{dy}\left(1-F_X\left(\frac{4-y}3\right)\right)=-f_X\left(\frac{4-y}3\right)\left(\frac{4-y}3\right)&#39;\\
+&amp;=\frac13f_X\left(\frac{4-y}3\right)=\frac13\frac3{665}\left(\frac{4-y}3\right)^2\quad
+4&lt;\frac{4-y}3\le9\\
+&amp;=\frac{(4-y)^2}{5985}\quad -23&lt;y\le-8\\
+f_Y(y)&amp;=0\textsf{ otherwise}
+\end{align*}</span></li>
+</ul>
+</details>
+<h2 id="cumulative-distribution-functions">2.5 Cumulative Distribution
+Functions</h2>
+<details class="definition" open>
+<summary>
+CDF of <span class="math inline">X</span> is <span
+class="math inline">F_X(x):\R\to[0,1]</span>
+</summary>
+<p><span class="math display">F_X(x)=P(X\le x)=\int_{-\infty}^x
+f_X(t)\,dt</span></p>
+<div class="line-block"><span class="math inline">P(a&lt; X\le
+b)=F_X(b)-F_X(a)</span><br />
+<span class="math inline">\displaystyle P(a\le X\le
+b)=\lim_{n\to\infty}P(a-1/n&lt;x\le b)=F_X(b)-F_X(a^-)</span></div>
+<ul>
+<li><span class="math inline">\forall x\in\R\enspace 0\le
+F_X(x)\le1</span></li>
+<li><span class="math inline">x\le y\implies F_X(x)\le F_X(y)</span>
+(nondecreases)</li>
+<li><span
+class="math inline">\displaystyle\lim_{n\to\infty}F_X(x)=1</span></li>
+<li><span
+class="math inline">\displaystyle\lim_{n\to-\infty}F_X(x)=0</span></li>
+</ul>
+</details>
+<h2 id="continuous-distributions">2.4 Continuous Distributions</h2>
+<details class="definition" open>
+<summary>
+Continuous <span class="math inline">\implies</span> uncountably
+infinite
+</summary>
+<p><span class="math inline">X</span> is <strong>continuous</strong> iff
+<span class="math display">\begin{align*}
+  \forall x\in\R\enspace P(X=x)&amp;=0\\
+  \forall a&lt;b\in\R\enspace P(X\in(a,b))&amp;=P(a&lt;X&lt;b)
+\end{align*}</span></p>
+(but <span class="math inline">P(X\in\R)=1</span>)
+</details>
+<details class="definition" open>
+<summary>
+Probability Density Function (PDF) <span
+class="math inline">f_X:\R\to\R</span>
+</summary>
+<span class="math inline">f_X:\R\to\R</span> is a <strong>density
+fn</strong> iff <span class="math display">\forall x\in\R\enspace
+f_X(x)\ge0\textsf{ and }\int_{-\infty}^\infty f_X(x)\,dx=1</span>
+</details>
+<details class="definition" open>
+<summary>
+Absolutely continuous
+</summary>
+<p><span class="math inline">X</span> is <strong>abs cont</strong> iff
+<span class="math display">\exist f_X:\R\to\R\textsf{ st }P(a\le X\le
+b)=\int_a^bf_X(x)\,dx</span></p>
+<ul>
+<li>abs cont <span class="math inline">\implies</span> cont</li>
+<li>interval bounds does not matter</li>
+<li><span class="math inline">f_X(x)=F&#39;_X(x)</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+use <span class="math inline">N(0,10^2)</span> to find <span
+class="math inline">k</span> for <span
+class="math inline">f(x)=ke^{-\frac1{200}x^2}\quad x\ge10</span>
+</summary>
+<span class="math display">\begin{align*}
+  \because 1&amp;=\int_{10}^\infty
+ke^{-\frac1{200}x^2}\,dx=k\int_{10}^\infty e^{-\frac1{200}x^2}\,dx\\
+  &amp;=k10\sqrt{2\pi}\int_{10}^\infty\frac1{10\sqrt{2\pi}}e^{-\frac12\left(\frac
+x{10}\right)^2}\,dx\\
+  &amp;=k10\sqrt{2\pi}P(X&gt;10)\quad\textsf{for }X\sim N(0,10^2)\\
+  \because
+P(X&gt;10)&amp;=\Phi(-z)=\Phi\left(-\frac{10-\mu}\sigma\right)=\Phi\left(-\frac{10-0}{10}\right)\\
+  &amp;=\Phi(-1)\\
+  \therefore1&amp;=k10\sqrt{2\pi}P(X&gt;10)=10\sqrt{2\pi}k\Phi(-1)\\
+  \therefore k&amp;=\frac1{10\sqrt{2\pi}\Phi(-1)}
+\end{align*}</span>
+</details>
+<h2 id="discrete-distribution">2.3 Discrete Distribution</h2>
+<details class="definition" open>
+<summary>
+Discrete <span class="math inline">X</span>
+</summary>
+<span class="math inline">X</span> is <strong>discrete</strong> iff
+<span class="math display">\sum_{x\in\mathbb R}P(X=x)=1</span>
+</details>
+<details class="definition" open>
+<summary>
+Probability Mass Function (PMF) of <span class="math inline">X</span> is
+<span class="math inline">p_X(x):\R\to[0,1]</span>
+</summary>
+<p><span class="math display">p_X(x)=P(X=x)=P(\{s\in
+S:X(s)=x\})</span></p>
+<ul>
+<li><span class="math inline">\displaystyle
+\sum_{x\in\textrm{im}X}p_X(x)=1</span></li>
+<li>PMF <span class="math inline">\to</span> CDF: <span
+class="math inline">\displaystyle F_X(x)=P(X\le x)=\sum_{x_i\le
+x}p_X(x_i)</span></li>
+</ul>
+</details>
+<h2 id="distribution-of-rv">2.2 Distribution of RV</h2>
+<details class="definition" open>
+<summary>
+Distribution: <span class="math inline">P(X\in B)\enspace\forall
+B\sube\mathbb R</span>
+</summary>
+(discrete) if <span class="math inline">S=\{s_i\}\quad P(s_i)=p_i\quad
+X(s_i)=x_i</span> then <span class="math display">\begin{align*}
+  P(X\in B\sube\mathbb R)&amp;=P(\{s:\in S:X(s)\in B\})\\
+  &amp;=\sum p_iI_B(x_i)
+\end{align*}</span>
+</details>
+<details class="definition" open>
+<summary>
+Support
+</summary>
+<span class="math display">\textrm{supp}(f)=\{x\in X:f(x)\ne0\}</span>
+</details>
+<h2 id="random-variable">2.1 Random Variable</h2>
+<details class="definition" open>
+<summary>
+Random varable is <span class="math inline">X</span> where
+</summary>
+<p><span class="math display">X:S\to\mathbb R</span></p>
+<ul>
+<li><span class="math inline">P(X=b)=P(\{s\in S:X(s)=b\})</span></li>
+<li><span class="math inline">Z=X+Y\implies\forall s\in S\enspace
+Z(s)=X(s)+Y(s)</span></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Indicator function <span class="math inline">I_A:A\to\{0,1\}</span>
+</summary>
+given an event <span class="math inline">A</span> <span
+class="math display">I_A(s)=\begin{cases}
+  1&amp;s\in A\\
+  0&amp;s\not\in A\\
+\end{cases}</span>
+</details>
+<h1 id="probability-model">1 Probability Model</h1>
+<details class="definition" open>
+<summary>
+</summary>
+<ul>
+<li><strong>Outcome</strong>: simplest result of experiment</li>
+<li><strong>Sample Space <span class="math inline">S</span></strong>:
+set of all outcomes</li>
+<li><strong>Event</strong>: subset of <span class="math inline">S</span>
+i.e. set of outcomes</li>
+<li><strong>Probability Measure</strong> <span
+class="math inline">P:\textsf{event}\to[0,1]</span> with the axioms</li>
+</ul>
+</details>
+<details class="theorem" open>
+<summary>
+Probability Axioms
+</summary>
+<ol type="1">
+<li><span class="math inline">0\leqslant P(A)\leqslant1\quad\forall
+A\sube S</span></li>
+<li><span class="math inline">P(S)=1</span></li>
+<li><span class="math inline">\{A_i\}_{i=1}^\infty</span> disjoint <span
+class="math inline">\displaystyle\implies P\left(\bigcup A_i\right)=\sum
+P(A_i)</span></li>
+</ol>
+</details>
+<details class="definition" open>
+<summary>
+Probability Model
+</summary>
+<p><span class="math display">(S,\{A_i\},P)</span></p>
+<dl>
+<dt>where</dt>
+<dd>
+<span class="math inline">S</span> is the <strong>sample space</strong>
+</dd>
+<dd>
+<span class="math inline">\{A_i\}</span> is the <strong>set of
+events</strong>
+</dd>
+<dd>
+<span class="math inline">P</span> is probability
+<strong>measure</strong>
+</dd>
+</dl>
+</details>
+<h2 id="setevent-operations">Set/Event Operations</h2>
+<blockquote>
+<p>use <span class="math inline">A^c</span> for <span
+class="math inline">\overline A</span></p>
+</blockquote>
+<details class="theorem" open>
+<summary>
+<span class="math inline">A\cap B\equiv AB\quad A\cup B</span>
+</summary>
+<ul>
+<li>commutative, associative, distributive</li>
+</ul>
+</details>
+<details class="theorem" open>
+<summary>
+<span class="math inline">\overline A=\{s:s\not\in A\}</span>
+<strong>Complement</strong>
+</summary>
+<ul>
+<li><span class="math inline">A\cap \overline A=\varnothing\quad A\cup
+\overline A=S\quad \overline S=\varnothing</span></li>
+<li><span class="math inline">\overline{A\cap B}=\overline A\cup
+\overline B\quad \overline{A\cup B}=\overline A\cap \overline
+B</span></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Partition
+</summary>
+<ul>
+<li><span class="math inline">\{A_i\}</span> is
+<strong>disjoint</strong>: <span class="math inline">A_i\cap
+A_j=\varnothing\quad\forall i\ne j</span></li>
+<li><span class="math inline">\{A_i\}</span> is
+<strong>paritition</strong> of <span class="math inline">S</span>: <span
+class="math inline">\bigcup A_i=S</span> and <span
+class="math inline">\{A_i\}</span> is disjoint</li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+<span class="math inline">A\setminus B=A\cap \overline B</span>
+<strong>Difference</strong>
+</summary>
+<ul>
+<li><span class="math inline">P(A\setminus B)=P(A)-P(A\cap B)</span>
+from LoFP</li>
+</ul>
+</details>
+<h2 id="properties-of-probability-models">1.3 Properties of Probability
+Models</h2>
+<details class="theorem" open>
+<summary>
+Law of Total Probability
+</summary>
+<p>let <span class="math inline">\{A_i\}</span> be a paritition of <span
+class="math inline">S</span>, for any <span class="math inline">B\sube
+S</span> <span class="math display">P(B)=\sum P(A_i\cap B)</span></p>
+<span class="math inline">\implies\sum P(A_i)=1</span><br> <span
+class="math inline">\implies P(A)+P(\overline A)=P(S)=1</span>
+</details>
+<details class="theorem" open>
+<summary>
+Principle of Inclusion-Exclusion
+</summary>
+<span class="math display">P(A\cup B)=P(A)+P(B)-P(A\cap B)</span>
+</details>
+<h2 id="uniform-probability">1.4 Uniform Probability</h2>
+<details class="definition" open>
+<summary>
+</summary>
+<span class="math inline">S=\{s_i\}_{i=1}^n</span> is
+<strong>uniform</strong> probability space iff <span
+class="math display">P(s_i)=1/|S|</span> <span
+class="math inline">\therefore P(A)=|A|/|S|</span> by additivity
+</details>
+<h3 id="combinatorics">Combinatorics</h3>
+<details class="theorem" open>
+<summary>
+Mulitplication Principle
+</summary>
+with <span class="math inline">\{a_1,\cdots,a_m\}</span> and <span
+class="math inline">\{b_1,\cdots,b_n\}</span><br> there are <span
+class="math inline">mn</span> possible <strong>ordered pairs</strong> of
+<span class="math inline">(a_i,b_j)</span>
+</details>
+<details class="theorem" open>
+<summary>
+Permutation
+</summary>
+<span class="math display">P^n_k=\frac{n!}{(n-k)!}</span>
+</details>
+<details class="theorem" open>
+<summary>
+Binomial Combination (divide into 2 groups)
+</summary>
+<span class="math display">\binom nk=\binom
+n{n-k}=\frac{n!}{k!(n-k)!}</span>
+</details>
+<details class="theorem" open>
+<summary>
+Multinomial Combination (divide into <span class="math inline">l</span>
+groups)
+</summary>
+<p>for <span class="math inline">\sum k_i=n</span></p>
+<p><span class="math display">\begin{align*}
+  \binom n{k_1k_2\cdots k_l}&amp;=\binom
+n{k_1}\binom{n-k_1}{k_2}\binom{n-k_1-k_2}{k_3}\cdots\binom{k_l}{k_l}\\
+  &amp;=\frac{n!}{k_1!k_2!\cdots k_l!}\\
+\end{align*}</span></p>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">E</span>: 4 people getting <span
+class="math inline">\{2,3,4,4\}\enspace\clubs</span> in 52 cards
+</summary>
+<dl>
+<dt>let</dt>
+<dd>
+<span class="math inline">A</span>: distribute <span
+class="math inline">\{2,3,4,4\}</span> <span
+class="math inline">\clubs</span> to 4 people
+</dd>
+<dd>
+<span class="math inline">B</span>: distribute <span
+class="math inline">\{11,10,9,9\}</span> not <span
+class="math inline">\clubs</span> to 4 people
+</dd>
+<dd>
+<span class="math inline">S</span>: distribute any 52 cards to 4 people
+</dd>
+</dl>
+<p><span
+class="math display">P(E)=\frac{|A||B|}{|S|}=\frac{\binom{13}{2\;3\;4\;4}\binom{34}{11\;10\;9\;9}}{\binom{52}{13\;13\;13\;13}}</span></p>
+</details>
+<h2 id="conditional-probability-indep">1.5 Conditional Probability &amp;
+Indep</h2>
+<h3 id="conditional-probability">1.5.1 Conditional Probability</h3>
+<details class="definition" open>
+<summary>
+given events <span class="math inline">A,B</span> st <span
+class="math inline">P(B)&gt;0</span>
+</summary>
+<p><span class="math display">P(A|B)=\frac{P(A\cap
+B)}{P(B)}=\frac{|A\cap B|}{|B|}</span></p>
+<span class="math inline">\iff P(A\cap B)=P(A)P(B|A)</span>
+</details>
+<details class="definition" open>
+<summary>
+<span class="math inline">P(A|BC)=P(A|B,C)=P(A|B\cap C)</span>
+</summary>
+<span class="math display">P(A|BC)=\frac{P(A\cap B\cap C)}{P(B\cap
+C)}</span>
+</details>
+<details class="theorem" open>
+<summary>
+Law of Total Probability
+</summary>
+given <span class="math inline">\{A_i\}</span> as
+<strong>partition</strong> of <span class="math inline">S</span> <span
+class="math display">\begin{align*}
+  \forall B\enspace P(B)&amp;=\sum P(A_i)P(B|A_i)\\
+  &amp;=P(A)P(B|A)+P(\overline A)P(B|\overline A)
+\end{align*}</span>
+</details>
+<details class="theorem" open>
+<summary>
+Bayes’ Theorem
+</summary>
+<span
+class="math display">P(A|B)=\frac{P(A)}{P(B)}P(B|A)=\frac{P(A)}{P(A)P(B|A)+P(\overline
+A)P(B|\overline A)}P(B|A)</span>
+</details>
+<details class="example">
+<summary>
+Draw Veinn to Save Life
+</summary>
+<dl>
+<dt>given</dt>
+<dd>
+<span class="math inline">P(A\cup B)\quad P(A\cap B)</span>
+</dd>
+<dd>
+<span class="math inline">E=(A\cap\overline B)\cup(\overline A\cap
+B)</span>
+</dd>
+</dl>
+<p>find <span class="math inline">P(E|A\cup B)</span></p>
+<ol type="1">
+<li><span class="math inline">\displaystyle P(E|(A\cup
+B))=\frac{P(E\cap(A\cup B))}{P(A\cup B)}</span></li>
+<li>draw veinn to see <span class="math inline">E\sube A\cup B</span>
+and <span class="math inline">P(E)=P(A\cup B)-P(A\cap B)</span></li>
+<li><span class="math inline">\displaystyle\therefore P(E|(A\cup
+B))=\frac{P(A\cup B)-P(A\cap B)}{P(A\cup B)}</span></li>
+</ol>
+</details>
+<h3 id="indep">1.5.2 Indep</h3>
+<details class="definition" open>
+<summary>
+(Mutual) Indep wrt <span class="math inline">P</span>
+</summary>
+<p><span class="math display">\begin{align*}
+  A\perp B&amp;\iff P(A\cap B)=P(A)P(B)\\
+  &amp;\iff P(A|B)=P(A)\\
+  (\perp A_i)&amp;\iff\forall B\sube A\enspace P(\cap B_i)=\prod P(B_i)
+\end{align*}</span></p>
+<ol type="a">
+<li><span class="math inline">\implies A\perp\overline B</span></li>
+<li><span class="math inline">\implies \overline A\perp\overline
+B</span></li>
+</ol>
+</details>
+<details class="definition" open>
+<summary>
+Pairwise Indep wrt <span class="math inline">P</span>
+</summary>
+<span class="math display">\forall i\ne j\enspace P(A_i\cap
+A_j)=P(A_i)P(A_j)</span>
+</details>
+<h3 id="conditional-indep">Conditional Indep</h3>
+<details class="definition" open>
+<summary>
+<span class="math inline">A</span> and <span
+class="math inline">B</span> are conditionally indep wrt <span
+class="math inline">P_C</span> iff
+</summary>
+<span class="math display">P(A\cap B|C)=P(A|C)P(B|C)</span>
+</details>
+<h2 id="continuity">1.6 Continuity</h2>
+<details class="definition" open>
+<summary>
+</summary>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">increases</th>
+<th style="text-align: left;">decreases</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">A_1\sube
+A_2\sube\cdots</span> and <span class="math inline">\cup
+A_n=A</span></td>
+<td style="text-align: left;"><span class="math inline">A_1\supe
+A_2\supe\cdots</span> and <span class="math inline">\cap
+A_n=A</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\{A_n\}\nearrow
+A</span></td>
+<td style="text-align: left;"><span class="math inline">\{A_n\}\searrow
+A</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span
+class="math inline">\displaystyle\lim_{n\to\infty}A_n=A</span></td>
+<td style="text-align: left;"><span
+class="math inline">\displaystyle\lim_{n\to\infty}A_n=A</span></td>
+</tr>
+</tbody>
+</table>
+<span class="math display">\begin{align*}
+  \lim_{n\to\infty}A_n=A\implies\lim_{n\to\infty}P(A_n)&amp;=P(A)\\
+\end{align*}</span>
+</details>
+<details class="theorem" open>
+<summary>
+</summary>
+<span class="math display">\begin{align*}
+  \{A_n\}\searrow A&amp;\implies\{\overline{A_n}\}\nearrow\overline A\\
+  \lim_{n\to\infty}P(\cup\overline{A_n})&amp;=\lim_{n\to\infty}P(\overline{\cap
+A_n})
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+Geometric series
+</summary>
+given <span class="math inline">S=\mathbb Z^+\quad\forall s\in S\enspace
+P(s)=2^{-s}</span><br> find <span
+class="math inline">P(A=\{5,6,7,8,\cdots\})</span> <span
+class="math display">\begin{align*}
+\textsf{let }A_n&amp;=\{5,6,\cdots,n\}\\
+\therefore\{A_n\}&amp;\nearrow A\\
+\therefore P(A)&amp;=\lim_{n\to\infty}P(A_n)\\
+  &amp;=\lim_{n\to\infty}P(\{5,6,\cdots,n\})\\
+  &amp;=\lim_{n\to\infty}(P(5)+P(6)+\cdots+P(n))\\
+  &amp;=\lim_{n\to\infty}\sum_{i=5}^n P(i)=\sum_{i=5}^\infty\frac
+1{2^i}=\frac{2^{-5}}{1-1/2}=2^{-4}\\
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+Make <span class="math inline">A_n</span> to find <span
+class="math inline">P(A)</span>
+</summary>
+<p>given <span class="math inline">\displaystyle
+P\left(\left[0,\frac8{4+n}\right]\right)=\frac{2+e^{-n}}6</span><br>
+find <span class="math inline">P(\{0\})</span></p>
+<span class="math display">\begin{align*}
+  \textsf{let }A_n&amp;=\left[0,\frac8{4+n}\right]\\
+  \therefore A_n&amp;\searrow\{0\}\\
+  \therefore P(\{0\})&amp;=\lim_{n\to\infty}P(A_n)\\
+  &amp;=\lim_{n\to\infty}\frac{2+e^{-n}}6=\frac13
+\end{align*}</span>
+</details>
+<details>
+<summary>
+Distributions
+</summary>
+<h2 id="discrete">Discrete</h2>
+<details class="definition" open>
+<summary>
+Discrete Distributions by description
+</summary>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Name</th>
+<th>Situation</th>
+<th><span class="math inline">X</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Ber<span
+class="math inline">(p)</span></td>
+<td>do once with <span class="math inline">p</span> success rate</td>
+<td>success count</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Bin<span
+class="math inline">(n,p)</span></td>
+<td>do <span class="math inline">n</span> indep times, each has <span
+class="math inline">p</span> success rate</td>
+<td>success count</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Geo<span
+class="math inline">(p)</span></td>
+<td>do indep times until one success</td>
+<td>failures count</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">NB<span
+class="math inline">(r,p)</span></td>
+<td>do indep times until <span class="math inline">r</span>th
+success</td>
+<td>failurs count</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Pois<span
+class="math inline">(\lambda)</span></td>
+<td>do indep</td>
+<td>success count</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Hyp<span
+class="math inline">(N,M,n)</span></td>
+<td>pick <span class="math inline">n</span> from <span
+class="math inline">N</span> with <span class="math inline">M</span>
+items as success</td>
+<td>success items picked count</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="definition" open>
+<summary>
+Discrete Distributions by PMF <span class="math inline">q=1-p</span>
+</summary>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>support</th>
+<th><span class="math inline">p_X(x)\equiv P(X=x)</span></th>
+<th><span class="math inline">E(X)</span></th>
+<th><span class="math inline">V(X)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ber<span class="math inline">(p)</span></td>
+<td><span class="math inline">\{0,1\}</span></td>
+<td><span class="math inline">p^xq^{1-x}</span></td>
+<td><span class="math inline">p</span></td>
+<td><span class="math inline">pq</span></td>
+</tr>
+<tr class="even">
+<td>Bin<span class="math inline">(n,p)</span></td>
+<td><span class="math inline">\mathbb N</span></td>
+<td><span class="math inline">\displaystyle\binom
+nxp^xq^{n-x}</span></td>
+<td><span class="math inline">np</span></td>
+<td><span class="math inline">npq</span></td>
+</tr>
+<tr class="odd">
+<td>Geo<span class="math inline">(p)</span></td>
+<td><span class="math inline">\mathbb N</span></td>
+<td><span class="math inline">pq^x</span></td>
+<td><span class="math inline">\dfrac{1-p}p</span></td>
+<td><span class="math inline">\dfrac{1-p}{p^2}</span></td>
+</tr>
+<tr class="even">
+<td>NB<span class="math inline">(r,p)</span></td>
+<td><span class="math inline">\mathbb N</span></td>
+<td><span
+class="math inline">\displaystyle\binom{x+r-1}xp^rq^x</span></td>
+<td><span class="math inline">\dfrac{pr}{1-p}</span></td>
+<td><span class="math inline">\dfrac{pr}{(1-p)^2}</span></td>
+</tr>
+<tr class="odd">
+<td>Pois<span class="math inline">(\lambda)</span></td>
+<td><span class="math inline">\mathbb N</span></td>
+<td><span
+class="math inline">\dfrac{\lambda^x}{x!}e^{-\lambda}</span></td>
+<td><span class="math inline">\lambda</span></td>
+<td><span class="math inline">\lambda</span></td>
+</tr>
+<tr class="even">
+<td>Hyp<span class="math inline">(N,M,n)</span></td>
+<td></td>
+<td><span class="math inline">\dfrac{\binom Mx\binom{N-M}{n-x}}{\binom
+Nn}</span></td>
+<td><span class="math inline">n\dfrac KN</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+<strong>Proof.</strong> <span class="math inline">E(X)</span>
+Binomial<span class="math inline">(n,p)</span>
+</summary>
+<span class="math display">\begin{align*}
+  E(X)&amp;=\sum_{x=0}^nxp_X(x)=\sum_{x=1}^nxp_X(x)\tag{$0p_X(0)=0$}\\
+  &amp;=\sum_{x=1}^nx\binom
+nxp^kq^{n-x}=\sum_{x=1}^n\frac{xn!}{x!(n-x)!}p^xq^{n-x}\\
+  &amp;=\sum_{x=1}^n\frac{n(n-1)!}{(x-1)!(n-x)!}p^xq^{n-x}=\sum_{x=1}^nn\binom{n-1}{x-1}p^xq^{n-x}\\
+  &amp;=n\sum_{i=0}^{n-1}\binom{n-1}ip^{i+1}q^{n-i-1}\tag{$i=x-1$}\\
+  &amp;=np\sum_{i=0}^m\binom mip^iq^{m-i}=np(p+q)^m=np\tag{$m=n-1$}\\
+\end{align*}</span>
+</details>
+<details>
+<summary>
+<strong>Proof.</strong> <span class="math inline">E(X)</span>
+Geometric<span class="math inline">(p)</span>
+</summary>
+<span class="math display">\begin{align*}
+  E(X)&amp;=\sum_{n=0}^\infty np_X(n)=\sum_{n=1}^\infty
+np_X(n)=p\sum_{n=1}^\infty nq^n\tag{1}\\
+  \therefore qE(X)&amp;=p\sum_{n=0}^\infty
+nq^{n+1}=p\sum_{n=1}^\infty(n-1)q^n\tag{2}\\
+  \therefore(1-q)E(X)&amp;=p\sum_{n=1}^\infty(n-(n-1))q^n\tag{$1)-(2$}\\
+  \therefore pE(X)&amp;=p\sum_{n=1}^\infty
+(1-p)^n=p\frac{1-p}1-(1-p)=1-p\\
+  \therefore E(X)&amp;=\frac{1-p}p\\
+\end{align*}</span>
+</details>
+<details>
+<summary>
+<strong>Proof.</strong> <span class="math inline">E(X)</span>
+Poisson<span class="math inline">(\lambda)</span>
+</summary>
+<span class="math display">\begin{align*}
+  E(X)&amp;=\sum_{n=0}^\infty np_X(n)=\sum_{n=1}^\infty
+np_X(n)=\sum_{n=1}^\infty n\frac{\lambda^n}{n!}e^{-\lambda}\\
+  &amp;=e^{-\lambda}\sum_{n=1}^\infty\frac{\lambda^n}{(n-1)!}=e^{-\lambda}\sum_{n=0}^\infty\frac{\lambda^{n+1}}{n!}=\lambda
+e^{-\lambda}\sum\frac{\lambda^n}{n!}\\
+  &amp;=\lambda e^{-\lambda}e^{-\lambda}=\lambda\\
+\end{align*}</span>
+</details>
+<details>
+<summary>
+<strong>Proof.</strong> <span class="math inline">V(X)</span>
+Bernoulli<span class="math inline">(p)</span>
+</summary>
+<span
+class="math display">V(X)=E(X^2)-\mu^2=1^2p^1q^0-p^2=p(1-p)=pq</span>
+</details>
+<details>
+<summary>
+<strong>Proof.</strong> <span class="math inline">V(X)</span>
+Geometric<span class="math inline">(p)</span>
+</summary>
+find <span class="math inline">E(X^2-X)=E(X(X-1))</span> <span
+class="math display">\begin{align*}
+  E(X(X-1))&amp;=\sum^\infty x(x-1)q^xp=p\sum x(x-1)q^x\\
+  &amp;=p\sum_{x=2}^\infty x(x-1)q^x=pq^2\sum_2 x(x-1)q^{x-2}\\
+  &amp;=pq^2\sum_2\frac{d^2}{dq^2}q^x=pq^2\frac{d^2}{dq^2}\sum_{x=2}^\infty
+q^x\\
+  &amp;=pq^2\frac{d^2}{dq^2}\left(\frac{q^2}{1-q}\right)\\
+  \because\frac{q^2}{1-q}&amp;=\frac{(1-q)^2+2q-1}{1-q}=1-q+\frac{2q}{1-q}-\frac1{1-q}\\
+  \because\frac q{1-q}&amp;=\frac{1-(1-q)}{1-q}=\frac1{1-q}-1\\
+  \therefore\frac{q^2}{1-q}&amp;=1-q+2\left(\frac1{1-q}-1\right)-\frac1{1-q}\\
+  &amp;=-1-q+\frac1{1-q}\\
+  \therefore
+E(X(X-1))&amp;=pq^2\frac{d^2}{dq^2}\left(-1-q+\frac1{1-q}\right)\\
+  &amp;=pq^22(1-q)^{-3}=2pq^2p^{-3}=2p^{-2}q^2\\
+  &amp;=E(X^2-X)
+\end{align*}</span> find <span
+class="math inline">V(X)=E(X^2+X-X)-\mu^2</span> <span
+class="math display">\begin{align*}
+  V(X)&amp;=E(X^2-X)+E(X)-\mu^2\\
+  &amp;=2\frac{q^2}{p^2}+\frac qp-\frac{q^2}{p^2}=\frac{q^2}{p^2}+\frac
+qp\\
+  &amp;=\frac{q^2+qp}{p^2}=\frac{q^2+q(1-q)}{p^2}=\frac q{p^2}
+\end{align*}</span>
+</details>
+</details>
+<details class="theorem" open>
+<summary>
+Formulas for Proofs
+</summary>
+<span class="math display">\begin{align*}
+  &amp;\sum_{n=1}^\infty\frac{x^n}{n!}=e^x&amp;&amp;\sum_{i=0}^nr^i=\frac{1-r^{n+1}}{1-r}\quad\quad\quad\quad\\
+  &amp;\sum_{i=0}^n\binom
+nix^iy^{n-i}=(x+y)^n&amp;&amp;\sum_{i=0}^n\binom ni=2^n\tag{$x=y=1$}\\
+\end{align*}</span>
+</details>
+<h2 id="absolutely-continuous">Absolutely Continuous</h2>
+<details class="definition" open>
+<summary>
+AC Distributions by PDF
+</summary>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th style="text-align: center;">support</th>
+<th><span class="math inline">f_X(x)</span></th>
+<th style="text-align: center;"><span
+class="math inline">E(X)</span></th>
+<th style="text-align: center;"><span
+class="math inline">V(X)</span></th>
+<th style="text-align: center;"><span class="math inline">F_X(x)=P(X\le
+x)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Uni<span class="math inline">[L,R]</span></td>
+<td style="text-align: center;"><span class="math inline">L\le x\le
+R</span></td>
+<td><span class="math inline">\dfrac1{R-L}</span></td>
+<td style="text-align: center;"><span
+class="math inline">\dfrac{R+L}2</span></td>
+<td style="text-align: center;"><span
+class="math inline">\dfrac{(R-L)^2}{12}</span></td>
+<td style="text-align: center;"><span
+class="math inline">\dfrac{x-L}{R-L}</span></td>
+</tr>
+<tr class="even">
+<td>Exp<span class="math inline">(\lambda)</span></td>
+<td style="text-align: center;"><span
+class="math inline">x\ge0</span></td>
+<td><span class="math inline">\lambda e^{\lambda x}</span></td>
+<td style="text-align: center;"><span
+class="math inline">\dfrac1\lambda</span></td>
+<td style="text-align: center;"><span
+class="math inline">\dfrac1{\lambda^2}</span></td>
+<td style="text-align: center;"><span class="math inline">1-e^{-\lambda
+x}</span></td>
+</tr>
+<tr class="odd">
+<td>G<span class="math inline">(\alpha,\lambda)</span></td>
+<td style="text-align: center;"><span
+class="math inline">x&gt;0</span></td>
+<td><span
+class="math inline">\dfrac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda
+x}</span></td>
+<td style="text-align: center;"><span
+class="math inline">\dfrac\alpha\lambda</span></td>
+<td style="text-align: center;"><span
+class="math inline">\dfrac\alpha{\lambda^2}</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>Beta<span class="math inline">(a,b)</span></td>
+<td style="text-align: center;"><span
+class="math inline">0&lt;x&lt;1</span></td>
+<td><span
+class="math inline">\dfrac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}</span></td>
+<td style="text-align: center;"><span class="math inline">\dfrac
+a{a+b}</span></td>
+<td style="text-align: center;"><span
+class="math inline">\dfrac{ab}{(a+b)^2(a+b+1)}</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>N<span class="math inline">(\mu,\sigma^2)</span></td>
+<td style="text-align: center;"><span class="math inline">\R</span></td>
+<td><span
+class="math inline">\dfrac1{\sigma\sqrt{2\pi}}e^{-\frac12\left(\frac{x-\mu}\sigma\right)^2}</span></td>
+<td style="text-align: center;"><span
+class="math inline">\mu</span></td>
+<td style="text-align: center;"><span
+class="math inline">\sigma^2</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>N<span class="math inline">(0,1^2)</span></td>
+<td style="text-align: center;"><span class="math inline">\R</span></td>
+<td><span
+class="math inline">\dfrac1{\sqrt{2\pi}}e^{-\frac12x^2}</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+<strong>Proof.</strong> <span class="math inline">E(X)</span>
+Exponontial with <strong>LIFE HACK</strong>
+</summary>
+<span class="math display">\begin{align*}
+  E(X)&amp;=\int_{-\infty}^\infty xf_X(x)\,dx=\int_0^\infty x\lambda
+e^{-\lambda x}\,dx\\
+  &amp;=\lambda\int_0^\infty x^{2-1}e^{-\lambda
+x}\,dx=\lambda\frac{\Gamma(2)}{\lambda^2}=1/\lambda\\
+\end{align*}</span>
+</details>
+<details>
+<summary>
+<strong>Proof.</strong> <span class="math inline">V(X)</span>
+Exponential<span class="math inline">(\lambda)</span>
+</summary>
+<span class="math display">\begin{align*}
+  V(X)&amp;=E(X^2)-\mu^2=\int_0^\infty x^2\lambda e^{-\lambda
+x}\,dx-1/\lambda^2\\
+  &amp;=\lambda\frac{\Gamma(3)}{\lambda^3}-\frac1{\lambda^2}=\frac1{\lambda^2}
+\end{align*}</span>
+</details>
+</details>
+<details class="theorem" open>
+<summary>
+Formulas
+</summary>
+<span class="math display">\begin{align*}
+  X\sim\textsf{Geo}&amp;\implies P(X&gt;x+g|X&gt;y)=P(X&gt;x)\\
+  \int_0^\infty
+x^{a-1}e^{-x}\,dx&amp;=\Gamma(a)\quad\quad\Gamma(a\in\mathbb N)=a!\\
+  \Gamma(1/2)&amp;=\sqrt\pi\quad\Gamma(a)=(a-1)\Gamma(a-1)\\
+  \int_0^\infty x^{a-1}e^{-\lambda
+x}\,dx&amp;=\frac{\Gamma(a)}{\lambda^a}\\
+  \int_0^1x^{a-1}(1-x)^{b-1}\,dx&amp;=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
+\end{align*}</span>
+</details>
+<details class="theorem" open>
+<summary>
+<span class="math inline">\Phi(z)</span> table for <span
+class="math inline">X\sim N(\mu,\sigma^2)\implies
+Z=\dfrac{X-\mu}\sigma\sim N(0,1)</span>
+</summary>
+<span class="math display">\begin{align*}
+  X\sim N(\mu,\sigma^2)&amp;\implies cX+d\sim N(c\mu+d,c^2\sigma^2)\\
+  z&amp;=\frac{x-\mu}\sigma\\
+  P(X&lt;x)&amp;=\Phi(z)=1-\Phi(-z)\\
+  P(X&gt;x)&amp;=1-\Phi(z)=\Phi(-z)
+\end{align*}</span>
+</details>
+</details>
+<p><span class="math display">\int_0^\infty e^{-\lambda
+x}\,dx=\frac1\lambda</span></p>
+</body>
+</html>

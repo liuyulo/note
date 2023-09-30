@@ -1,0 +1,260 @@
+---
+title: Extra
+---
+
+<details class="theorem" open>
+<summary>(metric) continuous on compact is ucont</summary>
+
+for any continuous $f:A\to B$ on metric spaces
+
+<div class="flex justify-center">
+
+$A$ compact $\implies f$ uniform continuous
+</div>
+
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any $\varepsilon\gt 0$
+
+$\therefore\forall x\in A\quad\exists \delta_x\gt0\quad f[B(x,\delta_x)]\subseteq B(f(x),\varepsilon)$
+
+let $\mathcal{C}=\{B(x,\delta_x/2)\}_{x\in A}$ be open cover of $A$
+
+$\therefore\exists\mathcal{C}_0=\{B(x_i,\delta_i/2)\}_{i=1}^n\subseteq\mathcal{C}$ covers $A$<span class="float-right">($A$ compact)</span>
+
+let $\delta=\min_i\{\delta_i/2\}\gt0$
+
+thus for any $a,b\in A$ where $d(a,b)\lt\delta$
+
+- $\therefore\exists i\quad a\in B(x_i,\delta_i/2)\subseteq B(x_i,\delta_i)$ and <span class="float-right">($C_0$ covers $A$)</span>
+
+$$
+\begin{align*}
+  d(b,x_i)&\le d(b,a)+d(a,x_i)\lt\delta+\delta_i/2\lt\delta_i
+\end{align*}
+$$
+
+- $\therefore a,b\in B(x_i,\delta_i/2)$, thus $f(a),f(b)\in B(f(x_i),\varepsilon/2)$
+
+- $\therefore d(f(a),f(b))\lt\varepsilon/2+\varepsilon/2=\varepsilon\enspace\square$
+</details>
+
+</details>
+
+<details class="example" open>
+<summary>continuous map preimage perseven't compact set</summary>
+
+for $x\mapsto 0$, preimage of $\{0\}$ is $\mathbb{R}$
+
+</details>
+
+<details class="example" open>
+<summary>pconv on compact but not uconv</summary>
+
+$x^n$ on $[0,1]$
+
+</details>
+
+<details class="example" open>
+<summary>all unbounded uconv to unbounded</summary>
+
+for $f_n\rightrightarrows f$
+
+<div class="flex justify-center">
+
+$f_n$ all unbounded $\implies  f$ unbounded
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+assume $f$ bounded by $M$
+
+$\therefore\exists N\gt 0\quad |f_N-f|\lt 1$, thus $|f_N|\lt 1+|f|\le 1+M$
+
+</details>
+
+</details>
+
+<details class="example" open>
+<summary>taylor series</summary>
+
+$$
+\begin{align*}
+\sin x&=\sum\frac{(-1)^n}{(2n+1)!}x^{2n+1}\\
+\cos x&=\sum\frac{(-1)^n}{(2n)!}x^{2n}\\
+e^x&=\sum\frac{x^n}{n!}\\
+\frac1{1-x}&=\sum x^n
+\end{align*}
+$$
+
+</details>
+
+<details class="example" open>
+<summary>compactly converge</summary>
+
+$f:\mathbb{R}\to \mathbb{R}$ **comapactly converge** iff $f_n\rightrightarrows f$ on every compact subset
+
+<details class="list-none">
+<summary>**Proof.** $x/n$ cconv, <s>uconv</s> on $\mathbb{R}$</summary>
+
+wts <s>uconv</s>
+
+$$
+\forall N\quad\frac{N+1}N\gt1
+$$
+
+wts cconv, let any compact $K\subseteq R$
+
+$\because |x|$ continuous on $K$
+
+$\therefore$ image of $|x|$ on $K$ is compact, thus bounded by some $M$
+
+thus
+
+$$
+\frac xn\le\frac{|x|}n\le\frac Mn
+$$
+
+</details>
+
+</details>
+
+<details class="example" open>
+<summary></summary>
+
+<details class="list-none">
+<summary>**Proof.** $1/(x^{2n}+1)$ conv, <s>uconv</s> on $\mathbb{R}$</summary>
+
+on $|x|\lt 1\quad x^{2n}\to 0$, thus $f_n(x)\to 1$
+
+on $|x|=1\quad x^{2n}\to 1$, thus $f_n(x)\to 1/2$
+
+on $|x|\gt0\quad x^{2n}\to \infty$, thus $f_n(x)\to 0$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $x/(1+nx^2)$ uconv on $\mathbb{R}$</summary>
+
+let $s=\sqrt nx$, thus
+
+$$
+\left|\frac x{1+nx^2}\right|=\left|\frac{\sqrt nx}{\sqrt n+\sqrt n(\sqrt nx)^2}\right|=\frac 1{\sqrt n}\left|\frac s{1+s}\right|\lt\frac 1{\sqrt n}
+$$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\sum x^{2n}/(n+x)^2$ uconv on $[0,1]$</summary>
+
+$$
+\because\frac{x^{2n}}{(n+x)^2}\le\frac 1{(n+x)^2}\le\frac 1{n^2}
+$$
+
+- where $\sum 1/n^2$ conv
+
+$\therefore\sum f_n$ uconv $\enspace\square$<span class="float-right">(WM)</span>
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\sum (1/n)\sqrt{|\sin nx|/n}$ uconv on $\mathbb{R}$</summary>
+
+
+$$
+\because\frac 1n\sqrt{\frac{|\sin nx|}n}\le\frac 1n\sqrt{\frac 1n}=\frac 1{n^{3/2}}
+$$
+
+- where $\sum\frac 1{n^{3/2}}$ conv
+
+$\therefore\sum f_n$ uconv $\enspace\square$<span class="float-right">(WM)</span>
+
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\sum 1/(nx)^2$ pconv, <s>uconv</s> on $\mathbb{R}$</summary>
+
+wts pconv, let any $\varepsilon\gt0$, any $x\in\mathbb{R}$
+
+$$
+\therefore\sum \frac 1{(nx)^2}=\frac 1{x^2}\sum \frac1{n^2}\lt\infty
+$$
+
+wts <s>uconv</s>, let any $N\in\mathbb{N}$
+
+$$
+\left|S_N\left(\frac 1{N+1}\right)-S_{N+1}\left(\frac 1{N+1}\right)\right|=\frac1{(N+1)^2(N+1)^{-2}}=1
+$$
+
+
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\sum 1/(nx)^2$ uconv on $[1,\infty)$</summary>
+
+$\because\forall n\quad 1/(nx)^2\gt0$ and decreases on $[1,\infty)$
+
+$\therefore\forall n\quad 1/(nx^2)\le 1/n^2$ on $[1,\infty)$ where $\sum 1/n^2\lt\infty$
+
+$\therefore\sum f_n$ uconv $\enspace\square$<span class="float-right">(WH)</span>
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\sum n^{-x}$ uconv on $(\sqrt 3,\infty)$</summary>
+
+$\because\forall n\quad n^{-x}\gt 0$ decreases
+
+$\therefore\forall n\gt 2\quad n^{-x}\le n^{-n}\le n^{-2}$ where $\sum 1/n^2\lt\infty$
+
+$\therefore \sum_{n=2}^\infty f_n$ uconv, thus $\sum f_n$ uconv $\enspace\square$<span class="float-right">(WH)</span>
+
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\sum x^2/n^2$ uconv on $[0,\sqrt 3]$</summary>
+
+$\because\forall n\quad x^2/n^2$ increases 
+
+$\therefore\forall n\quad x^2/n^2\le \sqrt{3}^2/n^2=3/n^2$ where $\sum 3/n^2\lt\infty$
+
+$\therefore\sum f_n$ uconv $\enspace\square$<span class="float-right">(WH)</span>
+
+
+</details>
+
+
+</details>
+
+<details class="example" open>
+<summary></summary>
+
+let topology
+
+$$
+\mathcal{T}=\{U\subseteq X:|X-U|\le\aleph_0\}\cup\{\varnothing\}
+$$
+
+<details class="list-none">
+<summary>**Proof.** only finite sets are compact</summary>
+
+let any infinite $A\subseteq X$
+
+$\therefore\exists A_1\subseteq A\quad |A|=\aleph_0$
+
+let $A=\{a_1,a_2,\cdots\}$
+
+for any $i$, let $U_i=X-\{a_i,a_{i+1},\cdots\}$
+
+$\therefore\mathcal{C}=\{U_i\}$ covers $A$, but has no finite subcover $\enspace\square$
+
+
+</details>
+
+</details>

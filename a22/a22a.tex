@@ -1,0 +1,867 @@
+\input{preamble}
+
+\lstset{
+  language=C++,
+  morekeywords={in},
+}
+\title{A22 | Linear Algebra}
+\begin{document}
+
+\maketitle
+\tableofcontents
+\section{Complex Numbers}
+    \subsection{Cartesian}
+		\begin{definition}
+			$z=a+bi\quad w=c+di$ for $a,b,c,d\in\mathbb{R}$
+			\begin{itemize}
+				\item $a=Re(z)=r\cos\theta$ is the \textbf{real} part of $z$
+				\item $b=Im(z)=r\sin\theta$ is the \textbf{imaginary} part of $z$
+				\item $z=w$ iff $a=c\land b=d$
+			\end{itemize}
+		\end{definition}
+	\subsection{Polar}
+	    \begin{definition}
+	    	$z=re^{i\theta}\quad w=se^{i\varphi}$ for $r,s,\theta,\varphi\in\mathbb{R}$
+			\begin{itemize}
+				\item $r=|z|=\sqrt{a^2+b^2}$ is the \textbf{modulus} of $z$
+				\item $\theta=\arg z=\mathrm{atan}(\sfrac ba)$ is \textbf{an argument} of $z$\\
+					$\theta\in(-\pi,\pi]$ is \textbf{the principle argument} of $z$\\
+					$\mathrm{atan}(\sfrac{-b}a)$ and $\mathrm{atan}(\sfrac b{-a})$ are not the same for $a,b>0$
+				\item $z=re^{i(\theta+2\pi k)}$ is the \textbf{general solution}
+			\end{itemize}
+	    \end{definition}
+	\subsection{Add}
+		\begin{definition}[$z+w=(a+c)+(c+d)i$]
+			 \begin{itemize}
+				\item commutativity, associativity
+				\item add-identity: $0$
+				\item add-inverse: $-a-bi=-re^{i\theta}$
+			 \end{itemize}
+		\end{definition}
+	\subsection{Mul}
+		\begin{definition}[$zw=rse^{i(\theta+\varphi)}$]
+			\begin{itemize}
+				\item commutativity, associativity, distributivity
+				\item mul-identity: $1$
+				\item mul-inverse: $\displaystyle\frac1z=\frac{\overline z}{|z|^2}$
+			\end{itemize}
+		\end{definition}
+	\subsection{Conjugate}    
+		\begin{definition}[$\overline z=a-bi$]
+			 \begin{itemize}
+				\item $\overline{z\pm w}=\overline z\pm\overline w$ 
+				\item $\overline{zw}=\bar z\bar w$
+				\item $\overline{(\bar z)}=z$
+				\item $\overline z=z$ iff $z\in\mathbb{R}$
+				\item $z\overline z=|z|^2=r^2=a^2+b^2$
+			 \end{itemize}
+		\end{definition}
+	\subsection{Modulus}
+		\begin{definition}
+			$|z|=\sqrt{a^2+b^2}=r$
+			\begin{itemize}
+				\item $|z|^2=z\overline z=a^2+b^2$
+				\item $|zw|=|z||w|$
+				\item $|z+w|\le|z|+|w|$ ($\Delta$ inequality)
+				\item $|z-w|=\sqrt{(a-c)^2+(b-d)^2}$ (distance)
+			\end{itemize}
+		\end{definition}
+		\begin{example}[Prove $|z|\le|a|+|b|\le\sqrt2|z|$ for $z=a+bi\in\mathbb{C}$]
+			\begin{align*}
+				|z|&\le|a|+|b|\\
+				|z|^2&\le |a|^2+|b|^2+2|a||b|\\
+				a^2+b^2&\le a^2+b^2+2|ab|\\
+				0&\le|ab|
+			\end{align*}
+			\begin{align*}
+				|a|+|b|&\le\sqrt2|z|=\sqrt{2a^2+2b^2}\\
+				|a|^2+|b|^2+2|a||b|&\le2a^2+2b^2\\
+				0&\le |a|^2+|b|^2-2|a||b|\\
+				0&\le(|a|-|b|)^2
+			\end{align*}
+		\end{example}
+		\begin{example}[Prove $zw\in\mathbb{R}\land z\ne0\implies\exists a\in\mathbb{R}$ st $w=a\overline z$]
+			assume $zw\in\mathbb{R}$ and $z\ne0$, let $z=re^{i\theta}\enspace w=se^{i\varphi}$
+			\begin{align*}
+				\therefore zw&=rse^{i(\theta+\varphi)}=rs\tag*{$zw\in\mathbb{R}\implies i=0$}\\
+				w&=\frac{rs}z=\frac{rs\overline z}{|z|^2}\tag*{$z\ne0\quad\frac1z=\frac{\overline z}{|z|^2}$}\\
+				 &=\frac{rs\overline z}{r^2}=\frac sr\overline z=az\quad\blacksquare\tag*{$z=ne0\implies r\ne0$}\\
+			\end{align*}
+		\end{example}
+	\subsection{Euler $\times$ De Moivre's}
+		\begin{theorem}[Euler's Formula]
+			\begin{align*}
+				e^{i\theta}&=\cos\theta+i\sin\theta\\
+				\implies e^{in\theta}&=\cos(n\theta)+i\sin(n\theta)
+			\end{align*}
+		\end{theorem}
+		\begin{theorem}[De Moivre's]
+			\begin{align*}
+				(e^{i\theta})^n&=e^{in\theta}\\
+				\implies (\cos\theta+i\sin\theta)^n&=\cos(n\theta)+i\sin(n\theta)\tag*{from Euler's}
+			\end{align*}
+		\end{theorem}
+		\begin{example}[$\cos2\theta=\cos^2\theta-\sin^2\theta\quad\sin3\theta=3\cos^2\theta\sin\theta-\sin^3\theta$]
+			\begin{align*}
+				\cos2\theta&=Re(\cos2\theta+i\sin2\theta)\\
+				&=Re((\cos\theta+i\sin\theta)^2)\tag*{De Moivre}\\
+				&=Re(\cos^2\theta-\sin^2\theta+2i\sin\theta\cos\theta)\\
+				&=\cos^2\theta-\sin^2\theta\\
+				\sin3\theta&=Im(\cos3\theta+i\sin3\theta)\\
+			    &=Im((\cos\theta+i\sin\theta)^3)\tag*{De Moivre}\\
+				&=3\cos^2\theta\sin\theta-\sin^3\theta\\
+			\end{align*}
+		\end{example}
+	\subsection{Roots}
+		\begin{theorem}[Roots]
+			\begin{itemize}
+			   \item if $z,q\in\mathbb{C},n\in\mathbb{Z}^+$ and $z^n=q$, then $z$ is \textbf{nth root} of $q$
+			   \item $z^n=r^ne^{ni(\theta+2k\pi)}$ has $n$ solutions for $0\le k\le n$
+			\end{itemize}
+		\end{theorem}
+		\begin{example}[Solve $z^6=-64$]
+			let $z=re^{i\theta}$
+			\begin{align*}
+				z^6&=(re^{i\theta})^6=r^6e^{6i\theta}=64e^{i\pi}\\
+				\therefore r^6&=64\implies r=2\\
+				6\theta&=\pi+2\pi k\quad 0\le k\le6\\
+				\theta&=\frac{\pi+2\pi k}6\\
+				\therefore z&=2e^{i(\sfrac{\pi}6)},2e^{i(\sfrac{3\pi}6)},2e^{i(\sfrac{5\pi}6)},2e^{i(\sfrac{7\pi}6)},2e^{i(\sfrac{9\pi}6)},2e^{i(\sfrac{11\pi}6)}
+			\end{align*}
+		\end{example}
+\section{Systems of Linear Equations}
+	\begin{definition}[System of $m$ Equations with $n$ Variables]
+		$$A\vec x=\vec b$$
+		where 
+		\begin{itemize}
+			\item $A\in\mathbb{R}^{m\times n}$ is the \textbf{coefficient} matrix
+			\item $\vec x\in\mathbb{R}^n$ are the vairables
+			\item $\vec b\in\mathbb{R}^m$ is the \textbf{constant vector}
+			\item $\mathrm{rank}\begin{mat}{cc}A&b\end{mat}=\mathrm{rank}(A)\implies$ system is consistent
+			\item $A$ is invertible $\implies$ system has unique solution $\forall\vec b$
+		\end{itemize}
+	\end{definition}
+    \subsection{Gaussian Elimination}
+	    \subsubsection{Elementary Row Operations}
+		    \begin{definition}
+				\begin{enumerate}
+					\item interchange two rows\quad\texttt{swap(ai, aj)}
+					\item multily a row by a nonzero number\quad\texttt{ai *= n}
+					\item add a multiple of one row to another\quad\texttt{ai += n * aj}
+				\end{enumerate}
+		    \end{definition}
+        \subsubsection{Row-Echelon Form}
+            \begin{definition}[REF]
+                \begin{itemize}
+                    \item pivot $\equiv$ leading 1
+                    \item each row has pivot $\oplus$ is all 0
+                    \item each pivot is to the right of all pivots in the rows above it
+					\item all zero-rows are at the bottom
+                \end{itemize}
+            \end{definition}
+            \begin{example}[Matrices in REF]
+                (I can't draw the stairs)
+                $$
+                \begin{mat}{ccc}1&*&*\\0&1&*\end{mat}
+                \begin{mat}{cccc}0&1&*&*\\0&0&1&*\\0&0&0&0\end{mat}
+                \begin{mat}{cccc}1&*&*&*\\0&1&*&*\\0&0&0&1\end{mat}
+                \begin{mat}{ccc}1&*&*\\0&1&*\\0&0&1\end{mat}\\
+                $$
+            \end{example}
+            \begin{definition}[Reduced Row-Echelon Form (RREF)]
+                \begin{itemize}
+                    \item is in REF
+                    \item all entries above a pivot is 0
+                \end{itemize}
+            \end{definition}
+        \subsubsection{Gaussian Elimination}
+            \begin{algorithm}
+                \begin{lstlisting}
+for c, col in a.cols.enumerate()
+    for r, row in a.rows.enumerate()
+        if col[r] == 0 
+            continue
+        r /= a[r,c] // make pivot
+        move row to top
+    for r, row in a.rows.enumerate().skip(1)
+        row -= a[r,c] * a.top // make zeros
+                \end{lstlisting}
+				\begin{itemize}
+					\item if has $\begin{mat}{ccc|c}
+						0 & \cdots & 0 & 1\\
+					\end{mat}$, then is inconsistent
+				\end{itemize}
+            \end{algorithm}
+            \begin{example}[No Solution]
+                \begin{align*}
+                    \begin{mat}{ccc|c}
+                        \textcolor{red}3 & \textcolor{red}1 & \textcolor{red}{-4} & \textcolor{red}{-1}\\
+                        \textcolor{lime}1 & \textcolor{lime}0 & \textcolor{lime}{10} & \textcolor{lime}5\\
+                        \textcolor{sky}4 & \textcolor{sky}1 & \textcolor{sky}6 & \textcolor{sky}1\\
+                    \end{mat}&\sim\begin{mat}{ccc|c}
+                        \textcolor{lime}1 & \textcolor{lime}0 & \textcolor{lime}{10} & \textcolor{lime}5\\
+                        \textcolor{red}0 & \textcolor{red}{-1} & \textcolor{red}{34} & \textcolor{red}{16}\\
+                        \textcolor{sky}0 & \textcolor{sky}{-1} & \textcolor{sky}{34} & \textcolor{sky}{19}\\
+                    \end{mat}\\
+                    &\sim\begin{mat}{ccc|c}
+                        \textcolor{lime}1 & \textcolor{lime}0 & \textcolor{lime}{10} & \textcolor{lime}5\\
+                        \textcolor{red}0 & \textcolor{red}{-1} & \textcolor{red}{34} & \textcolor{red}{16}\\
+                        \textcolor{sky}0 & \textcolor{sky}0 & \textcolor{sky}0 & \textcolor{sky}{-3}\\
+                    \end{mat}
+                \end{align*}
+                $0=-3\implies$has no solution, is inconsistent
+            \end{example}
+            \begin{example}[Has Parameters (General Solution)]
+                \begin{align*}
+                    \begin{mat}{cccc|c}
+                        1 & -2 & -1 & 3 & 1\\
+                        \textcolor{lime}2 & \textcolor{lime}{-4} & \textcolor{lime}1 & \textcolor{lime}0 & \textcolor{lime}5\\
+                        \textcolor{sky}1 & \textcolor{sky}{-2} & \textcolor{sky}2 & \textcolor{sky}{-3} & \textcolor{sky}4\\
+                    \end{mat}&\sim\begin{mat}{cccc|c}
+                        1 & -2 & -1 & 3 & 1\\
+                        \textcolor{lime}0 & \textcolor{lime}0 & \textcolor{lime}{-3} & \textcolor{lime}{-6} & \textcolor{lime}3\\
+                        \textcolor{sky}0 & \textcolor{sky}0 & \textcolor{sky}3 & \textcolor{sky}{-6} & \textcolor{sky}3\\
+                    \end{mat}\\
+                    &\sim\begin{mat}{cccc|c}
+                        1 & -2 & -1 & 3 & 1\\
+                        \textcolor{lime}0 & \textcolor{lime}0 & \textcolor{lime}1 & \textcolor{lime}{-2} & \textcolor{lime}1\\
+                        \textcolor{sky}0 & \textcolor{sky}0 & \textcolor{sky}0 & \textcolor{sky}0 & \textcolor{sky}0\\
+                    \end{mat}\\
+                    &\sim\begin{mat}{cccc|c}
+                        \textcolor{red}1 & \textcolor{red}{-2} & \textcolor{red}0 & \textcolor{red}1 & \textcolor{red}2\\
+                        0 & 0 & 1 & -2 & 1\\
+                        0 & 0 & 0 & 0 & 0\\
+                    \end{mat}
+                \end{align*}
+                no pivots for $x_2$ and $x_4\quad\implies x_2=s\quad x_4=t$
+                \begin{align*}
+                    x_1&=2+2s-t\\
+                    x_2&=s\\
+                    x_3&=1+2t\\
+                    x_4&=t
+                \end{align*}
+                for $s,t\in\mathbb{R}$
+            \end{example}
+            \begin{example}[Has Conditions]
+                \begin{align*}
+                    \begin{mat}{ccc|c}
+                        1 & 3 & 1 & a\\
+                        -1 & -2 & 1 & b\\
+                        3 & 7 & -1 & c\\
+                    \end{mat}&\sim\begin{mat}{ccc|c}
+                        1 & 3 & 1 & a\\
+                        0 & 1 & 2 & a+b\\
+                        0 & -2 & -4 & c-3a\\
+                    \end{mat}\\
+                    &\sim\begin{mat}{ccc|c}
+                        1 & 0 & -5 & -2a-3b\\
+                        0 & 1 & 2 & a+b\\
+                        0 & 0 & 0 & c-a+2b\\
+                    \end{mat}
+                \end{align*}
+                $0=c-a+2b\implies c=a-2b$\\
+                if $c=a-2b$, then
+                \begin{align*}
+                    x_1&=5t-2a-3b\\
+                    x_2&=a+b-2t\\
+                    x_3&=t
+                \end{align*}
+				for $t\in\mathbb{R}$
+            \end{example}
+        \subsubsection{Rank of a Matrix}\label{sec:rank}
+            \begin{definition}
+                number of pivots after being Gaussian Eliminated
+            \end{definition}\,\\
+            \begin{theorem}
+                if a $m\times n$ ($m$ rows $\times n$ cols) matrix is \textbf{consistent}, and it has rank $r$, then
+                \begin{itemize}
+                    \item the solution has $n-r$ parameters
+                    \item if $r<n$, has $\infty$ solutions
+                    \item if $r=n$ has a unique solution
+                \end{itemize}
+            \end{theorem}
+    \subsection{Homogeneous Equations}
+        \begin{definition}
+			$$A\vec x=\vec 0$$
+            \begin{itemize}
+                \item $x_i=0$ is the \textbf{trivial solution}
+                \item if parameter $\exists$, the system has a general \textbf{non trivial solution} ($\therefore$ inf solutions)
+            \end{itemize}
+        \end{definition}
+        \begin{theorem}[$A\vec x=\vec0$ for $A\in\mathbb{R}^{m\times n}$]
+            if $m<n$, then it has a nontrival solution\\
+            \textbf{Proof.} suppose a RREF augmented matrix $A$ has $m$ rows and $n$ cols, $n>m$
+            \begin{align*}
+                \text{suppose }&A\text{ has }r\text{ leading vars }(0\le r\le m)\\
+                &\therefore A\text{ has }n-r\text{ non leading vars (parameters)}\\
+                &\because m<n\\
+                &\therefore 0\le r<n\\
+                &\therefore n-r>0\\
+                &\therefore A\text{ has parameters}\quad\blacksquare
+            \end{align*}
+        \end{theorem}
+        \subsubsection{Solution as Linear Combination}
+            \begin{definition}
+				suppose $\vec x,\vec y,\vec z\in\mathbb{R}^n$, $\vec z$ is a \textbf{linear combination} of $x,y$ if
+				$$\vec z=s\vec x+t\vec y$$
+				for $s,t\in\mathbb{R}$
+				\begin{itemize}
+					\item $\vec 0$ is a linear combination of all vectors
+				\end{itemize}
+            \end{definition}
+            \begin{example}[Find general solution as linear comb of basic solutions]
+                $$A=\begin{mat}{cccc}
+                    1 & -2 & 3 & -2\\
+                    -3 & 6 & 1 & 0\\
+                    -2 & 4 & 4 & -2\\
+                \end{mat}$$
+                \begin{enumerate}
+                    \item convert to RREF augmented
+                        $$\begin{mat}{cccc|c}
+                            1 & -2 & 3 & -2 & 0\\
+                            -3 & 6 & 1 & 0 & 0\\
+                            -2 & 4 & 4 & -2 & 0\\
+                        \end{mat}\sim\begin{mat}{cccc|c}
+                            1 & -2 & 0 & -\sfrac15 & 0\\
+                            0 & 0 & 1 & -\sfrac35 & 0\\
+                            0 & 0 & 0 & 0 & 0\\
+                        \end{mat}$$
+                    \item general solution
+                        $$x_1=2s+\sfrac15t\quad x_2=s\quad x_3=\sfrac35t\quad x_4=t$$
+                        $$\vec x
+                        =\begin{mat}{c}
+                            2s+\sfrac15t\\ s\\ \sfrac35t\\ t\\
+                        \end{mat}
+                        =s\begin{mat}{c}
+                            2\\ 1\\ 0\\ 0\\
+                        \end{mat}+t\begin{mat}{c}
+                            \sfrac15\\ 0\\ \sfrac35\\ 1\\
+                        \end{mat}=s\vec x_1+t\vec x_2$$
+					\item $\vec x_1$ and $\vec x_2$ are basic solutions
+                \end{enumerate}
+            \end{example}
+		\subsubsection{Solution of Any System as $\vec x_p+\vec x_0$}
+			\begin{algorithm}[Solve $A\vec x=\vec b$ as $\vec x_p$ and $\vec x_0$]
+				\begin{itemize}
+					\item convert to RREF
+					\item $\vec x_p$ is solution when all parameters are $0$
+					\item $\vec x_0$ is the general solution when $\vec b=\vec0$
+				\end{itemize}
+			\end{algorithm}
+			\begin{example}
+					$$\begin{mat}{cccc|c}
+						2 & 1 & -1 & -1 & -1\\
+						3 & 1 & 1 & -2 & -2\\
+						-1 & -1 & 2 & 1 & 2\\
+						-2 & -1 & 0 & 2 & 3\\
+					\end{mat}\sim\begin{mat}{cccc|c}
+						1 & 0 & 0 & \textcolor{sky}1 & \textcolor{leek}3\\
+						0 & 1 & 0 & \textcolor{sky}{-4} & \textcolor{leek}{-9}\\
+						0 & 0 & 1 & \textcolor{sky}{-1} & \textcolor{leek}{-2}\\
+						0 & 0 & 0 & \textcolor{sky}0 & \textcolor{leek}0\\
+					\end{mat}$$
+					$$\vec x_p=\begin{mat}{c} \textcolor{leek}3\\\textcolor{leek}{-9}\\\textcolor{leek}{-2}\\\textcolor{leek}0\end{mat}\quad\vec x_0=\begin{mat}{c} \textcolor{sky}{-1}\\ \textcolor{sky}4\\ \textcolor{sky}1\\ \textcolor{sky}0\\ \end{mat}x_4$$
+					$$\vec x=\begin{mat}{c} 3\\ -9\\ -2\\ 0\\ \end{mat}+\begin{mat}{c} -1\\ 4\\ 1\\ 0\\ \end{mat}x_4$$
+			\end{example}
+
+
+
+\section{Matrix Algebra}
+    \begin{definition}
+        \begin{itemize}
+            \item $m\times n$ matrix means $m$ rows and $n$ cols
+            \item $a_{ij}$ means at row $i$ and col $j$
+        \end{itemize}
+    \end{definition}
+	\subsection{Properties}
+        \subsubsection{Identity}	
+			\begin{definition}[Identity Matrix]
+				$$I_1=\begin{mat}{c}1\end{mat}\quad 
+				I_2=\begin{mat}{cc}
+					1 & 0\\
+					0 & 1\\
+				\end{mat}\quad
+				I_n=[e_{ij}]\text{ where } e_{ij}=\begin{cases}
+					1&i=j\\
+					0&i\ne j\\
+				\end{cases}$$
+				\begin{itemize}
+					\item $IA = AI = A$
+				\end{itemize}
+			\end{definition}
+			\begin{definition}[Standard Basis of $R^n$]
+				$I_n=\begin{mat}{cccc} e_1 & e_2 & \cdots & e_n\\ \end{mat}\quad A=\begin{mat}{cccc} a_1 & a_2 & \cdots & a_n\end{mat}$
+				\begin{itemize}
+					\item $Ae_i=a_i$ 
+					\item useful for proofs in \hyperref[sec:standard-basis]{Mat-Vec Mul}
+				\end{itemize}
+			\end{definition}
+		\subsubsection{(Skew) Symmetry}
+			\begin{definition}
+				\begin{itemize}
+					\item $A$ is \textbf{symmetric} iif $A^T=A$
+					\item $A$ is \textbf{skew symmetric} iif $A^T=-A$
+				\end{itemize}
+			\end{definition}
+			\begin{example}[Prove $\forall A\in\mathbb{R}^{n\times n}\exists$ symmetric $S$ and skew symmetric $W$ st $A=S+W$ and are uniquely determined by $A$]
+				let $A=S+W$ where $S^T=S$ and $W^T=-W$
+				\begin{align*}
+					\therefore A^T&=S^T+W^T=S-W\\
+					A+A^T&=2S\implies S=\sfrac12(A+A^T)\\
+					A-A^T&=2W\implies W=\sfrac12(A-A^T)
+				\end{align*}
+			\end{example}
+		\subsubsection{Idempotent}
+		    \begin{definition}
+		    	for $A\in\mathbb{R}^{n\times n}$, $A$ is \textbf{idempotent} iif
+				$$A^2=A$$
+		    \end{definition}
+			\begin{example}[Prove $\forall A\in\mathbb{R}^{n\times n}$\\$P$ is idempotent $\implies Q=P+AP-PAP$ is idempotent]
+				assume $P=P^2$
+				\begin{align*}
+					Q&=P+AP-PAP\\
+					\because\textcolor{\colo}PQ&=\textcolor{\colo}{P^2}+\textcolor{\colo}PAP-\textcolor{\colo}{P^2}AP=P+PAP-PAP=P\\
+					\therefore Q^2&=P\textcolor{\colo}Q+AP\textcolor{\colo}Q-PAP\textcolor{\colo}Q=P+AP-PAP=Q\quad\blacksquare
+				\end{align*}
+			\end{example}
+	\subsection{Add}
+		\begin{definition}[\texttt{[m,n] * [m,n] -> [m,n]}]
+			if $A=[a_{ij}]$ and $B=[b_{ij}]$, then
+			$$A+B=[a_{ij}+b_{ij}]$$
+			\begin{itemize}
+				\item commutativity, associativity
+				\item add-identity: $0_{mn}$
+				\item add-inverse: $-A$
+			\end{itemize}
+		\end{definition}
+	\subsection{Transpose}
+		\begin{definition}[\texttt{[m,n]ᵀ -> [n,m]}]
+			$$A=[a_{ij}]\implies A^T=[a_{ji}]$$
+		\end{definition}
+		\begin{theorem}
+			\begin{itemize}
+				\item $(A^T)^T=A$
+				\item $(kA)^T=kA^T$
+				\item $(A+B)^T=A^T+B^T$
+				\item $(AB)^T=B^TA^T$
+				\item $\forall A\in\mathbb{R}^{1\times1}\quad A^T=A$
+			\end{itemize}
+		\end{theorem}
+	\subsection{Scalar Mul}
+		\begin{definition}[\texttt{[m,n] * k -> [m,n]}]
+			if $A=[a_{ij}]$ and $k\in\mathbb{R}$, then
+			$$kA=[ka_{ij}]$$
+			\begin{itemize}
+				\item commutativity, associativity, distributivity 
+				\item mul-identity: $1$
+			\end{itemize}
+		\end{definition}
+	\subsection{Matrix-Vector Mul}
+		\begin{definition}[Matrix written as columns]
+			a $m\times n$ matrix can be written as
+			$$A=\begin{mat}{cccc} \vec a_1 & \vec a_2 & \cdots & \vec a_n\\ \end{mat}$$
+			where $\vec a_i\in\mathbb{R}^m$
+		\end{definition}
+		\begin{definition}[\texttt{[m,n] * [n] -> [m]}]
+			if $m\times n$ matrix $A=\begin{mat}{cccc} \vec a_1 & \vec a_2 & \cdots & \vec a_n\\ \end{mat}$ and $\vec x$ is any n-vec, then
+			$$A\vec x=x_1\vec a_1+x_2\vec a_2+...+x_n\vec a_n$$
+			\begin{itemize}
+				\item associativity, distributivity 
+			\end{itemize}
+		\end{definition}
+		\begin{example}[Prove $\forall \vec x\in\mathbb{R}^n\quad A\vec x=B\vec x\implies A=B$]\label{sec:standard-basis}
+			for $A,B\in\mathbb{R}^{m\times n}$
+			\begin{align*}
+				\text{let }&A=\begin{mat}{cccc} a_1 & a_2 & \cdots & a_n \end{mat}\\
+				   &B=\begin{mat}{cccc} b_1 & b_2 & \cdots & b_n \end{mat}\\
+				   &\{e_i\}\text{ be standard basis of }\mathbb{R}^n
+			\end{align*}
+			\begin{align*}
+				\text{assume }&\forall\vec x\in\mathbb{R}^n\quad A\vec x=B\vec x\\
+				\therefore&\forall1\le i\le n\quad Ae_i=Be_i\implies a_i=b_i\implies A=B\quad\blacksquare
+			\end{align*}
+		\end{example}
+		\subsubsection{System of Equations}
+			\begin{theorem}[let $A\vec x=\vec{b}$ be a system of equations and rank $A=r$]
+				\begin{itemize}
+					\item rank $\begin{mat}{c|c}
+						A & b\\
+					\end{mat} = r \oplus r+1$
+					\item system is \textbf{consistent} iff rank is $r$
+					\item system is \textbf{inconsistent} iff rank is $r+1$
+				\end{itemize}
+			\end{theorem}
+	\subsection{Matrix-Matrix Mul}
+		\begin{definition}[\texttt{[m,n] * [n,k] -> [m,k]}]
+			if $A\in\mathbb{R}^{m\times\textcolor{sky}n}$ and $B=\begin{mat}{cccc}b_1&b_2&...&b_n\end{mat}\in\mathbb{R}^{\textcolor{sky}n\times k}$, then $AB\in\mathbb{R}^{m\times k}$ and
+			$$AB=A\begin{mat}{cccc}b_1&b_2&...&b_n\end{mat}=\begin{mat}{cccc}Ab_1&Ab_2&...&Ab_n\end{mat}=[c_{ij}]$$
+			where $\displaystyle c_{ij}=\sum_{k=1}^na_{ik}b_{kj}$
+		\end{definition}
+		\begin{theorem}[Assume $a\in\mathbb{R}\quad A,B,C\in\mathbb{R}^{m\times n}$]
+			\begin{itemize}
+				\item $(AB)^T=B^TA^T$
+				\item associativity, distributivity
+					\begin{align*}
+						A(BC)&=(AB)C\\
+						a(AB)&=(aA)B=A(aB)\\
+						ABCD&\not\equiv ACDB\\
+					\end{align*}
+				\item NO commutativity: $AB\not\equiv BA$\\
+					$A$ \textbf{commutes} with  $B$  iff $AB=BA$
+			\end{itemize}
+		\end{theorem}
+		\begin{example}[Prove $(AB)^T=B^TA^T$]
+            let $A=[a_{ij}]$ and $B=[b_{ij}]$
+            $$\therefore A^T=[a'_{ij}]\quad B^T=[b'_{ij}]\text{ where  }a'_{ij}=a_{ji}\quad b'_{ij}=b_{ji}$$
+            let $B^TA^T=[c_{ij}]$
+            $$\therefore c_{ij}=\sum_{k=1}^nb'_{ik}a'_{kj}=\sum_{k=1}^nb_{ki}a_{jk}=\sum_{k=1}^na_{jk}b_{ki}=(AB)_{ji}=(AB)^T_{ij}$$
+		\end{example}
+		\begin{example}[let $A\in\mathbb{R}^{m\times n}$ and $B\in\mathbb{R}^{n\times n}$\\Prove $A\ne0\land AB=0\implies\nexists C\in\mathbb{R}^{n\times n}$ st $BC=I$]
+			assume $A\ne0$ and $AB=0$, let $C\in\mathbb{R}^{n\times n}$
+			$$BC=I\implies 0=0C=(AB)C=A(BC)=AI=A$$
+			which contradicts the initial assumption \blacksquare
+		\end{example}
+		\subsubsection{Calculate Product}
+			\begin{definition}[Dot Product]
+				let $a,b\in\mathbb{R}^n$
+				$$a\cdot b=\sum a_ib_i$$
+			\end{definition}
+			\begin{algorithm}[$AB$]
+				represent $A$ as rows $a_i$ and $B$ as cols $b_i$
+				$$\begin{array}{c|c}
+					&B\\\hline
+					A&AB\\
+				\end{array}=\begin{array}{c|cccc}
+					&b_1&b_2&\cdots&b_n\\ \hline
+					a_1&a_1\cdot b_1 & a_1\cdot b_2 & \cdots & a_1\cdot b_n\\
+					a_2&a_2\cdot b_1 & a_2\cdot b_2 & \cdots & a_2\cdot b_n\\
+					\vdots&\vdots & \vdots & \ddots & \vdots\\
+					a_m&a_m\cdot b_1 & a_m\cdot b_2 & \cdots & a_m\cdot b_n\\
+				\end{array}$$
+			\end{algorithm}
+			\begin{example}[Prove $\forall B\in\mathbb{R}^{2\times2}\enspace A=\begin{mat}{cc} a&0\\ 0&a\\ \end{mat}$ commutes with $B$]
+				let $B=\begin{mat}{cc} b&c\\ d&e\\ \end{mat}$ for $b,c,d,e\in\mathbb{R}$
+				\begin{align*}
+					\begin{array}{cc|cc}
+						&&b&c\\
+						&&d&e\\\hline
+						a&0&ab&ac\\
+						0&a&ad&ae\\
+					\end{array}\qquad
+					\begin{array}{cc|cc}
+						&&a&0\\
+						&&0&a\\\hline
+						b&c&ab&ac\\
+						d&e&ad&ae\\
+					\end{array}\\
+					\therefore AB=BA=\begin{mat}{cc}
+						ab&ac\\
+						ad&ae\\
+					\end{mat}\quad\blacksquare
+				\end{align*}
+			\end{example}
+	\subsection{Trace}
+	    \begin{definition}
+			$$\mathrm{tr}(A)=\mathrm{tr}[a_{ij}]=\sum a_{ii}$$
+	    \end{definition}
+		\begin{theorem}
+			\begin{itemize}
+				\item $\mathrm{tr}(A+B)=\mathrm{tr}(A)+\mathrm{tr}(B)$ 
+				\item $\mathrm{tr}(kA)=k\mathrm{tr}(A)$
+				\item $\mathrm{tr}(A^T)=\mathrm{tr}(A)$
+				\item $\mathrm{tr}(AB)=\mathrm{tr}(BA)$
+				\item $\mathrm{tr}(AB)\not\equiv\mathrm{tr}(A)\mathrm{tr}(B)$
+				\item $\mathrm{tr}(A^TB)=\mathrm{tr}(AB^T)=\sum a_{ii}b_{ii}$
+			\end{itemize}
+		\end{theorem}
+		\begin{example}[Prove $\forall A\in\mathbb{R}^{m\times n},B\in\mathbb{R}^{n\times m}\quad\mathrm{tr}(AB)=\mathrm{tr}(BA)$]
+			let $AB=C$
+			\begin{align*}
+				\because C_{ii}&=\sum_{j=1}^nA_{ij}B_{ji}\\\
+				\therefore\mathrm{tr}(AB)=\sum_{i=1}^nC_{ii}&=\sum_{i=1}^m\sum_{j=1}^nA_{ij}B_{ji}\\
+				&=\sum_{j=1}^n\sum_{i=1}^nA_{ji}B_{ij}=\mathrm{tr}(BA)
+			\end{align*}
+		\end{example}
+	\subsection{Inverse}
+		\begin{definition}
+			if $A\in\mathbb{R}^{n\times n}$, then $A$ \textbf{is invertible} iff any:
+			\begin{itemize}
+				\item $A^T$ is invertible
+				\item $\exists B$ st $AB=I$ or $\exists C$ st $CA=I$
+				\item $\det A\ne0$
+				\item $A=\prod E_i\equiv A\sim I$\\i.e. $A\to I$ is possible by row operations 
+				\item $\ker(A)=\{0\}$\\i.e. $A\vec x=0$ has only the solution $\vec x=0$ 
+				\item $\forall\vec b\quad A\vec x=\vec b$ has solutions 
+				\item $\mathrm{rank}(A)=n$
+			\end{itemize}
+			if $AB=I=CA$ for all square matrices, then
+			$$B=C=A^{-1}$$
+		\end{definition}
+		\begin{theorem}
+			[Assume $A$ is invertible/has an inverse]
+			\begin{itemize}
+				\item $(A^T)^{-1}=(A^{-1})^T$ 
+				\item $(A_1A_2\cdots A_n)^{-1}=A_n^{-1}\cdots A_2^{-1}A_1^{-1}$
+				\item $(A^k)^{-1}=(A^{-1})^k$
+				\item $(aA)^{-1}=\sfrac1aA^{-1}$ for $a\ne0$
+			\end{itemize}
+		\end{theorem}
+		\begin{algorithm}[Find Inverse]
+			use Gaussian Algorithm to
+			$$\begin{mat}{c|c} A & I\\ \end{mat}\rightarrow\begin{mat}{c|c} I & A^{-1}\\ \end{mat}$$
+		\end{algorithm}
+		\begin{example}
+			[Prove if $A,B$ are invertible, then $(AB)^{-1}=B^{-1}A^{-1}$]
+			if $(L)^{-1}=R$, show $LR=I=RL$
+			\begin{align*}
+				(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AIA^{-1}=AA^{-1}=I\\
+				(B^{-1}A^{-1})(AB)=B^{-1}(A^{-1}A)B=B^{-1}IB=B^{-1}B=I\quad\blacksquare\\
+			\end{align*}
+		\end{example}
+		\begin{example}
+			[Prove $AB$ is invertible $\implies A$ and $B$ are both invertible] 
+			assume $AB\in\mathbb{R}^{n\times n}$ is invertible
+			\begin{align*}
+				\therefore\exists C\in\mathbb{R}^{n\times n}\text{ st }(AB)C&=C(AB)=I\\
+				A(BC)&=I\implies A\text{ is invertible }\\
+				(CA)B&=I\implies B\text{ is invertible }\\
+			\end{align*}
+		\end{example}
+		\subsubsection{Solution of a System}
+			\begin{theorem}[Find Unique Solution of a System]
+				if a system of $n$ eqns and  $n$ vars is written as
+				$$A\vec x=\vec b$$
+				then 
+				$$A\text{ is invertible }\implies \vec x=A^{-1}\vec b$$
+			\end{theorem}
+	\subsection{Elementary Matrices}
+		\begin{definition}
+			an $n\times n$ matrix $E$ is \textbf{elementary} if $E$ can be produced from a single elementary row operation on $I$
+		\end{definition}
+		\begin{theorem}[Lemma]
+			suppose an elementary operation \texttt{op()} and $A\in\mathbb{R}^{m\times n}$
+			\begin{itemize}
+				\item $\text{op}(A)=\text{op}(I_m)A=EA$
+				\item $\text{op}(E^{-1})=I$ where $E^{-1}$ is also elementary and is the reverse operation
+			\end{itemize}
+		\end{theorem}
+		\subsubsection{Theorem}
+			\begin{theorem}
+				[Suppose $A\in\mathbb{R}^{m\times n}$ and $A\to R$ by elem row ops]
+				\begin{itemize}
+					\item $A\to R\equiv\begin{mat}{cc} A&I_m\\ \end{mat}\to\begin{mat}{cc} R&U\\ \end{mat}$
+					\item $R=UA$ for $U\in\mathbb{R}^{m\times m}$ is invertible
+					\item $U=E_n\cdots E_2E_1$ where $E_i$ is the $i$th row operation
+					\item $B\in\mathbb{R}^{n\times n}$ is invertible iff $B=\prod E_i$
+					\item $A=UR\implies A\overset r\sim R$ \textbf{row equivalent}
+				\end{itemize}
+			\end{theorem} 
+			\begin{example}[Prove $A\overset r\sim B\Rightarrow B\overset r\sim A$ and $A\overset r\sim B\overset r\sim C\Rightarrow A\overset r\sim C$]
+				\begin{enumerate}
+					\item assume $A\overset r\sim B$
+						\begin{align*}
+							\therefore&A=UB\text{ for invertible }U\\
+							\therefore&B=U^{-1}A\implies B\overset r\sim A\quad\blacksquare\\
+						\end{align*}
+					\item assume $A\overset r\sim B\overset r\sim C$
+						\begin{align*}
+							\therefore&A=UB\quad B=VC\text{ for invertible }U,V\\
+							\therefore&A=UVC=(UV)C\implies A\overset r\sim C\quad\blacksquare
+						\end{align*}
+				\end{enumerate}
+			\end{example}
+			\begin{example}
+				[let $A\in\mathbb{R}^{m\times n}$ and $B\in\mathbb{R}^{n\times m}$\\Prove $m>n\implies AB$ is not invertible]
+				\begin{align*}
+					m>n\implies&B\vec x=0\text{ has nontrivial solution }\\
+					\therefore&\,\exists\vec x\ne0\text{ st }B\vec x=0\\
+					\therefore&\,A(B\vec x)=AB\vec x=0\text{ has nontrivial solution }\\
+					\therefore&\,AB\text{ is not invertible }\quad\blacksquare
+				\end{align*}
+			\end{example}
+	\subsection{Linear Map}
+	    \begin{definition}[$\forall x,y\in\mathbb{R}^n$]
+	    	\begin{itemize}
+				\item if $T$ is linear, then $T(x)=T_A(x)=Ax$ where
+					$$A=\begin{mat}{cccc}
+						T(e_1)&T(e_2)&\cdots&T(e_n)\\
+					\end{mat}$$
+				\item $T(x+y)=T(x)+T(y)$
+				\item $T(ax)=aT(x)$
+				\item $T=A\land S=B\implies(T\circ S)(x)=(AB)x$
+	    	\end{itemize}
+	    \end{definition}
+		\begin{theorem}[Linearity]
+			if $T:\mathbb{R}^n\to\mathbb{R}^m$ is a linear transformation, then
+			$$T\left(\sum a_i\vec{x_i}\right)=\sum a_iT(\vec{x_i})$$
+			proven using induction
+		\end{theorem}
+		\begin{definition}[Kernel and Image for $T:\mathbb{R}^n\to\mathbb{R}^m$]
+			\begin{align*}
+				\ker(T)&=\{x\in\mathbb{R}^n:T(x)=0\}\\
+				\mathrm{im}(T)&=\{T(x):x\in\mathbb{R}^n\}
+			\end{align*}
+			\begin{itemize}
+				\item $x_1,x_2\in\ker(T)\implies ax_1+bx_2\in\ker(T)$ 
+				\item $x_1,x_2\in\mathrm{im}(T)\implies ax_1+bx_2\in\mathrm{im}(T)$ 
+			\end{itemize}
+		\end{definition}
+		\begin{theorem}[Geometrical Linear Transformatins]
+			they are all $T:\mathbb{R}^2\to\mathbb{R}^2$
+			\begin{align*}
+				&R_\theta=\begin{mat}{cc}
+					\cos\theta&-\sin\theta\\
+					\sin\theta&\cos\theta\\
+				\end{mat}\tag*{(rotate anticlock-wise)}\\
+				&Q_m=\frac1{1+m^2}\begin{mat}{cc}
+					1-m^2&2m\\
+					2m&m^2-1\\
+				\end{mat}\tag*{(reflect on $y=mx$)}
+			\end{align*}
+		\end{theorem}
+	\subsection{Practice}
+		\begin{example}[let $A\in\mathbb{R}^{n\times n}$ st $\vec x\ne0\implies\vec x^TA\vec x>0$\\
+			Show $\forall $skew-symmetric $B\in\mathbb{R}^{n\times n},\vec b\in\mathbb{R}^n$
+			$$(A+B)\vec x=\vec b$$ as a unique solution]
+			\begin{align*}
+				\because\,&(A+B)\vec x=\vec b\text{ has a unique solution iff }(A+B)\vec x=0\implies\vec x=0\\
+				&(\vec x\ne0\implies\vec x^TA\vec x>0)\equiv(\vec x^TA\vec x\le0\implies\vec x=0)\\
+				\therefore\,&\text{given }\vec x^TA\vec x\le0\implies\vec x=0\text{ and }B^T=-B\\
+				&\text{show }(A+B)\vec x=0\implies\vec x=0\\
+			\end{align*}
+			\begin{enumerate}
+				\item show $\vec x^TB\vec x=0$
+				\begin{align*}
+					\vec x^TB\vec x&=(\vec x^TB\vec x)^T\tag*{($A^T=A\quad\forall A\in\mathbb{R}^{1\times1}$)}\\
+					\vec x^TB^T\vec x&=-\vec x^TB\vec x\\
+					\iff\vec x^TB\vec x&=-\vec x^TB\vec x\\
+					2\vec x^TB\vec x&=0\\
+					\vec x^TB\vec x&=0\\
+				\end{align*}
+				\item show $(A+B)\vec x=0\implies\vec x=0$
+				\begin{align*}
+					(A+B)\vec x=A\vec x+B\vec x&=0\tag*{(distributivity)}\\
+					\vec x^TA\vec x+\vec x^TB\vec x&=0\tag*{(left mul by $\vec x^T$)}\\
+					\vec x^TA\vec x&=0\tag*{(from 1)}\\
+					\vec x^TA\vec x&\le0\implies\vec x=0\tag*{(given)}
+				\end{align*}
+			\end{enumerate}
+		\end{example}
+\section{Eigenvectors}
+    \subsection{Cofactor Expansion}
+	    \begin{definition}[$\det(A)$ for $A\in\mathbb{R}^{2\times2}$ and $B\in\mathbb{R}^{3\times3}$]
+			\begin{align*}
+				\det(A)&=\begin{vmat}{cc}a&b\\c&d\end{vmat}=ad-bc\\
+				\det(B)&=\begin{vmat}{ccc} a&b&c\\ d&e&f\\ g&h&i\\ \end{vmat}=a\begin{vmat}{cc} e&f\\ h&i\\ \end{vmat}-b\begin{vmat}{cc} d&f\\ g&i\\ \end{vmat}+c\begin{vmat}{cc} d&e\\ g&h\\ \end{vmat}\\
+			\end{align*}
+	    \end{definition}
+		\begin{definition}[Cofactor expansion of $\det(A)$ along row $1$]
+			for $A=[a_{ij}]\in\mathbb{R}^{n\times n}$
+			\begin{align*}
+				\det(A)=|A|&=\sum a_{1i}c_{1i}(A)\\
+				c_{ij}(A)&=(-1)^{i+j}|A_{ij}|\\
+				A_{ij}\text{ is the matrix of }&A\text{ after removing row }i\text{ and col }j\\
+			\end{align*}
+		\end{definition}
+		\begin{theorem}[let $A\in\mathbb{R}^{n\times n}$ and $u\in\mathbb{R}$]
+			\begin{itemize}
+				\item if $\exists$ a row/col is a \textbf{linear combination} of any other rows/cols\\
+					then $\color{\colo}|A|=0$ 
+				\item if $B$ is $A$ but 2 rows/cols are swapped\\
+					then $\color{\colo}|B|=-|A|$
+				\item if $B$ is $A$ but a row/col\texttt{ *= c}\\
+					then $\color{\colo}|B|=c|A|$
+				\item \texttt{Aᵢ += c} $\implies$ $c|A|$
+				\item \texttt{Aᵢ += u * Aⱼ} for \texttt{i != j} $\implies$ \textbf{keeps} $|A|$
+			\end{itemize}
+		\end{theorem}
+
+	\subsection{Determinant and Matrix Inverse}
+	    \subsubsection{Determinant}
+		    \begin{theorem}
+				\begin{itemize}
+					\item $|I|=1$
+				    \item $|cA|=c^n|A|$
+				    \item $|A^T|=|A|$ for $A\in\mathbb{R}^{n\times n}$
+				    \item $|AB|=|A||B|$
+				    \item $|A^{-1}|=\frac1{|A|}$ for invertible $A$
+				\end{itemize}
+		    \end{theorem}
+			\begin{example}[find $|A|$ if $A^3=A$]
+				\begin{align*}
+					A^3&=A\implies|A^3|=|A|\implies|A|^3-|A|=0\\
+					|A|(|A|^2-1)&=0\\
+					\therefore |A|&=0,\pm1
+				\end{align*}
+			\end{example}
+		\subsubsection{Adjugate}
+		    \begin{definition}
+				\begin{align*}
+					\mathrm{adj}(A)&=[c_{ij}(A)]^T\\
+					A=\begin{mat}{cc} a&b\\ c&d\\ \end{mat}&\implies\mathrm{adj}(A)=\begin{mat}{cc} d&-b\\ -c&a\\ \end{mat}
+				\end{align*}
+		    \end{definition}
+			\begin{theorem}
+				\begin{itemize}
+					\item $A(\mathrm{adj}\,A)=|A|I=(\mathrm{adj}\,A)A$
+					\item $A^{-1}=\frac1{|A|}\mathrm{adj}\,A$
+				\end{itemize}
+			\end{theorem}
+	\subsection{Eigenvalue}
+	    \begin{definition}[$\lambda$]
+			$\lambda$ is \textbf{an eigenvalue} of $A\in\mathbb{R}^{n\times n}$ if for $\vec x\ne0\in\mathbb{R}^n$
+			$$A\vec x=\lambda\vec x\equiv|\lambda I-A|=0$$
+			and $\vec x$ is an $\lambda$-eigenvector
+	    \end{definition}
+		\begin{definition}[$c_A(\lambda)$]
+			the \textbf{characteristic polynomial} of $A$ is 
+			$$c_A(\lambda)=|\lambda I-A|=(\lambda-\lambda_1)(\lambda-\lambda_2)\cdots(\lambda-\lambda_n)$$
+			\begin{itemize}
+				\item \textbf{eigenvalues} of $A$ is $\lambda$ when
+					$$c_A(\lambda)=0$$
+				\item $\lambda$\textbf{-eignvectors} is $\vec x\ne0$ when
+					$$(\lambda I-A)\vec x=0$$
+			\end{itemize}
+		\end{definition}
+		\subsubsection{A-Invariance}
+		    \begin{definition}[for $A\in\mathbb{R}^{n\times n}$ and $\vec x\ne0\in\mathbb{R}^n$]
+				\begin{itemize}
+					\item $L_x=\{\lambda\vec x:\lambda\in\mathbb{R}\}$ is \textbf{$A$-invariant} if $\vec x\in L\implies A\vec x\in L$
+					\item $\vec x$ is an eigenvec of $A$ iff $L_x$ is $A$-invariant
+				\end{itemize}
+		    \end{definition}
+		\subsubsection{Multiplicity}
+		    \begin{definition}
+				an eigenval $\lambda$ has \textbf{multiplicity} $n$ if it occurs $n$ items as root of $c_A(x)$
+				\begin{itemize}
+					\item $(\lambda-1)^2\implies\lambda_1=1$ with multiplicity $2$
+				\end{itemize}
+		    \end{definition}
+		\subsubsection{Diagonalisation}
+		    \begin{definition}[Power of Matrix]
+		        if $A=PDP^{-1}$ then $A^k=PD^kP^{-1}$ for $k\in\mathbb{Z}^+$
+		    \end{definition}
+		    \begin{definition}[Diagonal Matrix]
+		        $$D=\mathrm{diag}(\lambda_1,\lambda_2,\cdots,\lambda_n)=\begin{mat}{cccc} \lambda_1e_1&\lambda_2e_2&\cdots&\lambda_ne_n\\ \end{mat}$$
+		    \end{definition}
+			\begin{definition}
+				$A\in\mathbb{R}^{n\times n}$ is \textbf{diagonalisable} if
+				$$\exists P\in\mathbb{R}^{n\times n}\text{ st }P^{-1}AP=D$$
+				where the invertible $P$ is a \textbf{diagonalising matrix} of $A$
+			\end{definition}
+			\begin{theorem}
+			    for $A\in\mathbb{R}^{n\times n}$
+				\begin{itemize}
+					\item $A$ is diagable iff $A$ has eigenvecs $\vec x_i$ st $P=\begin{mat}{c}\vec x_i\end{mat}$ is invertible
+					\item if diagable, $P^{-1}AP=\mathrm{diag}(\lambda_1,\cdots,\lambda_n)$ where $A\vec x_i=\lambda_i\vec x_i$
+				\end{itemize}
+			\end{theorem}
+			\begin{algorithm}[Diagonise $A\in\mathbb{R}^{n\times n}$]
+				\begin{enumerate}
+					\item find distinct eigenvals $\lambda$ of $A$
+					\item for each $\lambda$, find basic eigenvec $\vec x$ from $(\lambda I-A)\vec x=0$
+					\item $A$ is diagable iff $\exists n$ eigenvecs
+					\item if diagable, then $P=\begin{mat}{c}\vec x_i\end{mat}$ st $P^{-1}AP$ is diagonal
+				\end{enumerate}
+			\end{algorithm}
+\end{document}

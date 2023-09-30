@@ -1,0 +1,543 @@
+---
+title: Ordinal Numbers
+---
+
+## Well Order
+
+<details class="definition" open>
+<summary>initial segment</summary>
+
+for loset $(T,\lt)$
+
+<div class="flex justify-center">
+
+$S\subset T$ is an **initial segment** $\forall s\in S\quad\forall x\in T\quad x\lt s\implies x\in S$
+
+</div>
+
+for woset $(W,\lt)$
+
+- the **initial segment** given by $a\in W$ is
+
+
+$$
+W[a]=\{x\in W:x\lt a\}
+$$
+
+**Lemma.** $W[a]$ is also woset
+
+**Lemma.** any initial segment of woset $W$ is given by some $a\in W$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any initial segment $S$ of any woset $W$
+
+let $A=W-S$ be complement of $S$
+
+$\therefore A$ nonempty<span class="float-right">($S\subset W$)</span>
+
+$\therefore A$ has a least element $a\in W$<span class="float-right">($W$ well ordered)</span>
+
+let any $x\in W$
+
+- BWOC assume $x\lt a$ and $x\notin S$
+  - $\therefore x\in A$, contradicts that $a$ in least in $A$
+- BWOC assume $x\ge a$ and $x\in S$
+  - $\therefore a\in S$, contradicts that $a\in A=W-S$<span class="float-right">($S$ is initial segment)</span>
+
+$\therefore x\in S\iff x\lt a$, thus $S=W[a]\enspace\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>wosets are comparable</summary>
+
+for any woset $W_1,W_2$, only one holds:
+
+(a) $W_1\cong W_2$
+
+(b) $W_1[a]\cong W_2$ for some $a\in W_1$
+
+(c) $W_1\cong W_2[a]$ for some $a\in W_2$
+
+
+in any case, the isomorphism is unique
+
+<details>
+<summary>**Lemma.** $\varphi(x)\ge x$ for any endo<span title="increasing function">morphism</span> $\varphi$ on any woset $W$ at any $x\in W$</summary>
+
+let $A=\{x\in W:f(x)\lt x\}\subseteq W$
+
+BWOC assume $A$ nonempty
+
+$\therefore A$ has a least element $a\in A$<span class="float-right">($W$ well ordered)</span>
+
+$\therefore \varphi(a)\lt a$<span class="float-right">($a\in A$)</span>
+
+$\therefore \varphi(\varphi(a))\lt\varphi(a)$<span class="float-right">($\varphi$ homomorphism)</span>
+
+$\therefore\varphi(a)\in A$, thus contradicts that $a$ is least in $A$
+
+</details>
+
+<details>
+<summary>**Corollary.** (1) no woset is isomorphic to its initial segement</summary>
+
+BWOC assume $\varphi:W\stackrel\sim\to W[a]$ for some $a\in W$
+
+$\therefore \varphi(a)\in W[a]$, thus $\varphi(a)\lt a$<span class="float-right">($W[a]$ is initial segment given $a$)</span>
+
+$\therefore$ contradicts lemma<span class="float-right">($\varphi$ is homomorphism from $W$ to $W\supseteq W[a]$)</span>
+
+</details>
+
+<details>
+<summary>**Corollary.** (2) the only automorphism of any woset is identity</summary>
+
+let any $\varphi:W\stackrel\sim\to W$, notice $\varphi^{-1}:W\stackrel\sim\to W$
+
+let any $x\in W$
+
+$\therefore \varphi(x)\ge x$ and $\varphi^{-1}(x)\ge x$<span class="float-right">(lemma)</span>
+
+$\therefore\varphi(x)\ge x$ and $x\ge\varphi(x)$, thus $\varphi(x)=x$
+
+thus $\varphi=1_W\enspace\square$
+
+</details>
+
+<details>
+<summary>**Corollary.** (3) there is only one isomorphism between any isomorphic wosets</summary>
+
+let any $\varphi,\psi:W\stackrel\sim\to V$
+
+$\therefore\varphi^{-1}\circ\psi:W\stackrel\sim\to W$ is automorphism 
+
+$\therefore\varphi^{-1}\circ\psi=1_W$ , thus $\varphi=\psi\enspace\square$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+<details>
+<summary>**1.** (a) (b) (c) mutually exclusive</summary>
+
+BWOC assume $\varphi:W_1\stackrel\sim\to W_2[a_2]$ and $\psi:W_2\stackrel\sim\to W_1[a_1]$ for some $a_i\in W_i$
+
+$\therefore\psi\circ\varphi:W_1\stackrel\sim\to W_1[a_1]$, contradicts corollary 1
+
+</details>
+
+- **2.** uniqueness of isomorphism is show in Cor. 3
+
+let $\varphi\subseteq W_1\times W_2$ defined as
+
+$$
+\varphi=\{(a,b): W_1[a]\cong W_2[b]\}
+$$
+
+<details>
+<summary>**3.** wts $\varphi$ is function</summary>
+
+assume $a\varphi b$ and $a\varphi b'$ for any $(a,b),(a,b')\in\varphi$
+
+$\therefore W_2[b]\cong W_1[a]\cong W_2[b']$
+
+$\therefore b=b'$, otherwise one would be initial segment of the other, thus contradicts Cor. 1
+</details>
+
+<details>
+<summary>**4.** wts $\varphi$ injective</summary>
+
+assume $\varphi(a)=\varphi(a')$ for any $a,a'\in\operatorname{dom}\varphi$
+
+$\therefore W_1[a]\cong W_2[\varphi(a)]= W_2[\varphi(a')]\cong W_1[a']$
+
+$\therefore a=a'$ (otherwise contradicts Cor. 1)
+
+</details>
+
+<details>
+<summary>**5.** wts $\varphi$ is homomorphism (aka increases)</summary>
+
+let any $a,a'\in\operatorname{dom}\varphi$, assume $a\lt a'$
+
+let $\psi:W_1[a']\stackrel\sim\to W_2[\varphi(a')]$
+
+$\therefore\psi\upharpoonright W_1[a]:W_1[a]\stackrel\sim\to W_2[\psi(a)]$<span class="float-right">($W_1[a]\subseteq W_1[a']$)</span>
+
+$\therefore\psi(a)=\varphi(a)$ where $\psi(a)\lt\psi(a')$<span class="float-right">($\psi$ homomorphism)</span>
+
+$\therefore\varphi(a)\lt\varphi(a')$
+
+</details>
+
+$\therefore\varphi:\operatorname{dom}\varphi\stackrel\sim\to \operatorname{ran}\varphi$ where $\operatorname{dom}\varphi\subseteq W_1$ and $\operatorname{ran}\varphi\subseteq W_2$
+
+<details>
+<summary>**6.** wts not (a) and not (b) implies (c)</summary>
+
+assume $\operatorname{dom}\varphi\ne W_1$
+
+wts $\operatorname{dom}\varphi$ is initial segment of $W_1$
+
+- let any $a\in\operatorname{dom}\varphi$ and any $x\in W_1$ such that $x\lt a$
+- let $\psi:W_1[a]\stackrel\sim\to W_2[\varphi(a)]$
+- $\therefore\psi\upharpoonright W_1[x]\stackrel\sim\to W_2[\psi(x)]$
+- $\therefore (x,\psi(x))\in \varphi$, thus $x\in\operatorname{dom}\varphi$
+
+let $W_1[a]=\operatorname{dom}\varphi$ for some $a\in W_1$
+
+wts $\operatorname{ran}\varphi=W_2$, BWOC assume not
+
+- $\therefore\varphi:W_1[a]\stackrel\sim\to W_1[b]$ for some $b\in W_2$
+- $\therefore (a,b)\in\varphi$
+- $\therefore a\in\operatorname{dom}\varphi W_1[a]$, thus $a\lt a$, a contradiction $\enspace\square$
+</details>
+</details>
+</details>
+
+## Ordinal
+
+<details class="definition" open>
+<summary>ordinal</summary>
+
+set $\alpha$ is an **ordinal** number iff
+
+- $(\alpha,\in_\alpha)$ is woset
+- $\alpha$ is transitive
+  - $a\in \alpha\implies a\subseteq\alpha$
+  - $a\in b\in \alpha\implies a\in \alpha$
+
+<details class="list-none">
+<summary>**Proof.** any element of an ordinal is ordinal</summary>
+
+let any element $a$ in any any ordinal $\alpha$
+
+wts $a$ transitive, let any $u\lt v\lt a$, wts $u\lt a$
+
+- $\because a\subseteq\alpha$<span class="float-right">($\alpha$ transitive)</span>
+- $\therefore v\in \alpha$, thus $v\subseteq\alpha$<span class="float-right">($\alpha$ transitive)</span>
+- $\therefore u\in\alpha$
+- $\therefore u\lt a$<span class="float-right">($u,v,a\in\alpha$ where $\alpha$ is loset)</span>
+
+wts $a$ woset
+
+- $\because a\subseteq\alpha$ where $\alpha$ is woset
+- $\therefore a$ is woset
+
+$\therefore a$ ordinal $\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** no ordinal contains itself</summary>
+
+BWOC assume $\alpha\in\alpha$
+
+- $\therefore$ for $a=\alpha,b=\alpha\in \alpha$, we have that $a\in_\alpha b$ and $b\in_\alpha a$
+- $\therefore$ contradicts $\in_\alpha$ asymmetric
+</details>
+
+<details class="list-none">
+<summary>**Proof.**  any element of an ordinal is an initial segment</summary>
+
+let any element $\beta$ in any ordinal $\alpha$
+
+$\because\beta$ is ordinal
+
+$\therefore\beta=\{\gamma\in \alpha:\gamma\lt\beta\}=\alpha[\beta]$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** any strict subset of an ordinal is an element</summary>
+
+assume $\alpha\subset\beta$, wts $\alpha\in\beta$
+
+$\because \varnothing\subset\beta-\alpha\subset\beta$ where $\beta$ is woset
+
+$\therefore\beta-\alpha$ has some least element $\gamma\in\beta$
+
+wts $\alpha=\gamma$, thus $\alpha\in\beta$
+
+$(\subseteq)$ BWOC assume $\exists\delta\in\gamma-\alpha$
+
+- $\therefore\delta\in\beta$<span class="float-right">($\delta\in\gamma\in\beta$ where $\beta$ transitive)</span>
+- $\therefore\delta\in\beta-\alpha$ where $\delta\lt\gamma$
+- $\therefore$ contradicts $\gamma$ is least of $\beta-\alpha$
+
+$(\supseteq)$ BWOC assume $\exists\delta\in\alpha-\gamma$
+
+- $\therefore\delta\ge\gamma$<span class="float-right">($\delta,\gamma\in\beta$ where $\beta$ loset)</span>
+- $\therefore\gamma\lt\alpha$<span class="float-right">($\gamma\le\delta\lt\alpha$ where $\in_\beta$ transitive)</span>
+- $\therefore$ contradicts that $\gamma\in\beta-\alpha$, that is, $\gamma\notin\alpha\enspace\square$
+
+</details>
+
+omega
+
+$$
+\omega\stackrel{\text{def}}=\mathbb{N}
+$$
+
+less than
+
+$$
+\alpha\lt\beta\iff\alpha\in\beta
+$$
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+- every natural number is an ordinal
+- $\mathbb{N}$ is an ordinal
+</details>
+
+
+<details class="definition" open>
+<summary>successor</summary>
+
+the successor of ordinal $\alpha$ is
+
+$$
+\alpha+1\stackrel{\text{def}}=\mathbf S(\alpha)\stackrel{\text{def}}=\alpha\cup\{\alpha\}
+$$
+
+an ordinal is a **successor** ordinal iff its the successor of some ordinal
+
+an ordinal is a **limit** ordinal iff is not successor ordinal
+
+<details class="list-none">
+<summary>**Proof.** any successor of ordinal is ordinal</summary>
+
+let any ordinal $\alpha$
+
+① $\alpha+1$ is a set<span class="float-right">(Union)</span>
+
+② wts $\alpha+1$ transitive
+
+- let any $a\in\alpha+1$
+- $\therefore a\subseteq\alpha$<span class="float-right">($\alpha$ transitive)</span>
+- $\therefore a\subseteq\alpha+1$
+
+③ wts $\alpha+1$ woset
+
+- wts $\in_{\alpha+1}$ transitive, let any $a\in b\in c$ in $\alpha+1$
+  - $\therefore b\subseteq c$<span class="float-right">($c\in\alpha$ is ordinal, thus transitive)</span>
+  - $\therefore a\in c$<span class="float-right">($a\in b\subseteq c$)</span>
+
+- wts $\in_{\alpha+1}$ asymmetric, let any $a\in b$ is $\alpha+1$
+
+  - $\therefore b\subseteq\alpha$<span class="float-right">($\alpha$ transitive)</span>
+  - $\therefore a\in \alpha$<span class="float-right">($a\in b\subseteq\alpha$)</span>
+  - $\therefore a\subseteq\alpha$<span class="float-right">($\alpha$ transitive)</span>
+  - BWOC assume $b\in a$
+  - $\therefore b\in\alpha$<span class="float-right">($b\in a\subseteq\alpha$)</span>
+  - $\therefore$ contradicts asymmetry in $(\alpha,\in_\alpha)$
+- wts $\in_{\alpha+1}$ linear
+  - 1. any pair in $\alpha$ is comparable by $\in_\alpha$
+  - 2. any $a\in \alpha$ is comparable with $\alpha$, by $a\in \alpha$
+- wts $\in_{\alpha+1}$ well order
+  - let any nonempty $A\subseteq\alpha+1$
+  - case $A\subseteq\alpha$, thus has least element since $\alpha$ is woset
+  - case $A=\{\alpha\}$, thus $\alpha$ is least of $A$
+  - case $A=B\cup\{\alpha\}$ for some nonempty $B\subseteq \alpha$
+    - $\therefore B$ has some least element $\beta\in\alpha$
+    - $\therefore\beta$ is least of $A$<span class="float-right">($\beta\lt\alpha$)</span>
+
+$\therefore\alpha+1$ is woset $\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** ordinal is successor iff has greatest element</summary>
+
+$(\implies )$ any successor ordinal is in form $\beta+1$, where $\beta$ is the greatest element of $\beta+1=\beta\cup\{\beta\}$
+
+$(\impliedby )$ let $\beta$ be the greatest element of any ordinal $\alpha$
+
+wts $\alpha=\beta\cup\{\beta\}$
+
+$(\subseteq)$ let any $\delta\in\alpha$
+
+- $\therefore\delta\le\beta$, thus $\delta\in\beta$ or $\delta=\beta$<span class="float-right">($\beta$ is upper bound in $\alpha$)</span>
+
+- $\therefore\delta\in\beta\cup\{\beta\}$
+
+$(\supseteq)$ 
+
+- $\because\beta\in\alpha$
+- $\therefore\beta\subseteq\alpha$ <span class="float-right">($\alpha$ transitive)</span>
+- $\therefore\beta\cup\{\beta\}\subseteq\alpha\enspace\square$
+
+</details>
+</details>
+
+## Ordinals are Well Ordered
+
+<details class="theorem" open>
+<summary>$\in$ on ordinals is</summary>
+
+- *transitive*
+- *asymmetric*
+- *comparable*
+- *well-ordered*
+
+<details class="list-none">
+<summary>**Proof.** *transitive, asymmetric*</summary>
+
+1. $\alpha\lt\beta\lt\gamma\implies \alpha\lt\gamma$ since $\gamma$ is transitive
+
+2. BWOC assume $\alpha\lt\beta$ and $\beta\lt\alpha$
+
+   - $\therefore \alpha\lt\alpha$ by *transitivity*
+   - $\therefore\alpha\in\alpha$, contradicts $\alpha\notin\alpha$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** *comparable*</summary>
+
+let any ordinal $\alpha,\beta$
+
+$\therefore\alpha\cap\beta\subseteq\alpha$ and $\alpha\cap\beta\subseteq\beta$
+
+case $\alpha\cap\beta=\alpha$, thus $\alpha\subseteq\beta$ and $\alpha\le\beta$
+
+case $\alpha\cap\beta=\beta$, thus $\beta\subseteq\alpha$, thus $\alpha\le\beta$
+
+BWOC assume $\alpha\cap\beta\subset\alpha$ and $\alpha\cap\beta\subset\beta$
+
+- $\therefore\alpha\cap\beta\subset\alpha\cap\beta$ where $\alpha\cap\beta$ is ordinal
+
+- $\therefore \alpha\cap \beta\in\alpha\cap\beta$, contradicts $\alpha\cap\beta\notin\alpha\cap \beta$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** *well-ordered*</summary>
+
+let any nonempty set $A$ of ordinals
+
+$\therefore\exists \alpha\in A$
+
+case $\alpha\cap A$ empty, wts $\alpha$ is least of $A$
+
+- BWOC assume $\exists\beta\in A$ such that $\beta\lt \alpha$
+- $\therefore \beta\in \alpha$ and $\beta\in A$
+- $\therefore\beta\in\alpha\cap A$, contradicts $\alpha\cap A$ empty
+
+case $\alpha\cap A$ nonempty, thus has some least $\beta\in\alpha$
+
+- wts $\beta$ is least of $A$, BWOC assume $\exists\gamma\in A$ such that $\gamma\in\beta$
+- $\therefore\gamma\ge\alpha$, thus $\alpha\le\gamma\lt\beta$<span class="float-right">($\beta$ is least of $\alpha\cap A$)</span>
+- $\therefore\alpha\lt\beta$<span class="float-right">(*transitivity*)</span>
+- $\therefore$ contradicts *asymmetric*<span class="float-right">($\beta\lt\alpha$)</span>
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>no set of ordinals contains all ordinals</summary>
+
+<details class="list-none">
+<summary>**Lemma.** for any set $A$ of ordinals, its supremum is $\sup A=\bigcup A$</summary>
+
+1. for any $\alpha\in A$
+   - $\therefore \alpha\subseteq\bigcup A$, thus $\alpha\le\bigcup A$
+2. for any upper bound $\beta$ of $A$
+   - $\therefore\alpha\subseteq\beta$ for any $\alpha\in A$
+   - $\therefore\bigcup A\subseteq\beta$, thus $\bigcup A\le\beta$
+</details>
+
+<details class="list-none">
+<summary>**Lemma.** $\sup A=\bigcup A$ is ordinal</summary>
+
+wts $\bigcup A$ transitive
+
+- let any $a\in \bigcup A$
+- $\therefore\exists \alpha\in A$  such that $a\in \alpha$
+- $\therefore a\subseteq\alpha\subseteq\bigcup A$<span class="float-right">($\alpha$ ordinal)</span>
+- $\therefore a\subseteq\bigcup A$
+
+wts $\bigcup A$ woset
+
+- $\because\forall a\in\bigcup A\quad\exists\alpha\in A\quad a\in \alpha$ where $\alpha$ is ordinal, thus $a$ is ordinal
+- $\therefore\bigcup A$ is set of ordinals, thus woset
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\sup A+1\notin A$</summary>
+
+let $\alpha=\sup A+1\gt\sup A$
+
+BWOC assume $\alpha\in A$
+
+- $\therefore \alpha\subseteq\bigcup A$
+- $\therefore \alpha\le\sup A\lt\alpha$
+- $\therefore \alpha\lt\alpha$, contradicts *asymmetry*
+
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>any woset is isomorphic to an unique ordinal</summary>
+
+<details class="list-none">
+<summary>**Lemma.** isomorphic ordinals are equal</summary>
+
+BWOC assume $\alpha\cong\beta$ but $\alpha\ne\beta$
+
+WLOC assume $\alpha\lt\beta$<span class="float-right">(ordinal *comparable*)</span>
+
+$\therefore \alpha\in\beta$ is an initial segment of $\beta$, contradicts that $\alpha\cong\beta$
+
+- (no woset is isomorphic to its initial segment)
+
+$\therefore\alpha=\beta$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any woset $W$
+
+let $A$ be set of all $a\in W$ for which $W[a]$ is isomorphic to some ordinal
+
+$\therefore$ for any $a\in A$, there is an unique ordinal $\alpha_a$ isomorphic to $W[a]$<span class="float-right">(Lemma)</span>
+
+let $\alpha=\{\alpha_a\}_{a\in A}$<span class="float-right">(Replacement)</span>
+
+$\therefore(\alpha,\in_\alpha)$ is woset<span class="float-right">($\alpha$ is set of ordinals)</span>
+
+wts $\alpha$ transitive
+
+- let any $\beta\in\alpha_a\in\alpha$
+- let $\varphi:W[a]\stackrel\sim\to\alpha_a$ be isomophism<span class="float-right">($a\in A$)</span>
+
+<details>
+<summary>let $b=\varphi^{-1}(b)$, thus $W[b]\cong\beta$ by $\varphi\upharpoonright W[b]$</summary>
+
+let any $c\in W[b]$, that is, $c\lt b$
+
+$\therefore\varphi(c)\lt\varphi(b)=\beta$, where $\varphi(c),\beta\in\alpha_a$
+
+$\therefore\varphi(c)\in\beta$
+</details>
+
+$\therefore\alpha$ ordinal
+
+let isomorphism $\varphi:A\stackrel\sim\to\alpha$ by $\varphi(a)=\alpha_a$
+
+$\because A,W$ are wosets and $A\subseteq W$
+
+$\therefore A=W$ or $A=W[c]$ for some $c\in W$
+
+BWOC assume $A=W[c]$
+
+- $\therefore W[c]\cong\alpha$ by $\varphi$, thus $c\in A$, contradicts that $c\notin W[c]$<span class="float-right">(asymmetry)</span>
+
+$\therefore A=W$, thus $W\cong\alpha$ by $\varphi\enspace\square$
+</details>
+
+</details>

@@ -1,0 +1,284 @@
+---
+title: Sylow Theorems
+---
+
+## Class Equation
+
+<details class="definition" open>
+<summary>conjugacy class</summary>
+
+for group $G$ and $a\in G$
+
+$$
+\operatorname{cl}a=\{gag^{-1}:g\in G\}
+$$
+
+**Corollary.** conjugacy class is equivalence relation on $G$
+</details>
+
+<details class="theorem" open>
+<summary>conjugacy class equinumerous to index of centraliser</summary>
+
+for finite $G$ and $a\in G$
+
+$$
+|\operatorname{cl}a|=|G:C(a)|
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+this is bijective mapping
+
+$$
+gC(a)\mapsto gag^{-1}
+$$
+</details>
+
+**Corollary.** $|\operatorname{cl}a|$ divides $|G|$
+
+**Corollary.** class equation
+
+$$
+|G|=\sum|G:C(a)|
+$$
+
+where sums over each $a$ in a conjugacy class
+</details>
+
+<details class="theorem" open>
+<summary>better class equation</summary>
+
+$$
+|G|=|Z(G)|+\sum|G:C(a)|
+$$
+
+where sums over each $a\notin Z(G)$
+
+<details class="list-none" open>
+<summary>**Proof.** $a\in Z(G)\iff\operatorname{cl} a=\{a\}$</summary>
+
+</details>
+</details>
+
+<details class="example" open>
+<summary>prime squared order is abelian</summary>
+
+<div class="flex justify-center">
+
+$|G|=p^2\implies  G$ abelian
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$|Z(G)|=p\implies |G/Z(G)|=p$, thus $G/Z(G)$ cyclic, thus $G$ abelian
+
+$|Z(G)|=p^2\implies G=G/Z(G)$, thus $G$ cyclic, thus abelian $\square$
+</details>
+</details>
+
+## Sylow
+<details class="definition" open>
+<summary>p-group</summary>
+
+for prime $p$
+
+<div class="flex justify-center">
+group $G$ is a $p$-group iff $|G|=p^n$ for some power $n$
+</div>
+</details>
+
+<details class="theorem" open>
+<summary>p-groups have nontrivial centers</summary>
+
+for p-group $G$
+
+<div class="flex justify-center">
+
+$Z(G)$ is nontrivial, that is, has more than one element
+</div>
+</details>
+
+<details class="definition" open>
+<summary>sylow p-subgroup</summary>
+<div class="flex justify-center">
+p-subgroup $H\le G$ is **sylow p-subgroup** iff $H$ is maximal p-subgroup of $G$
+</div>
+
+let $\operatorname{Syl}_p(G)$ denote the set of sylow p-subgroups of $G$
+</details>
+
+<details class="theorem" open>
+<summary>sylow's first theorem</summary>
+for finite $G$ with order $n$ and any prime power $p^k$
+
+$$
+p^k|n\implies\exists H\le G\enspace|H|=p^k
+$$
+</details>
+
+<details class="theorem" open>
+<summary>sylow's second theorem</summary>
+for finite $G$ and $H\le G$, for any $p$
+
+<div class="flex justify-center">
+$H$ is p-subgroup of $G\implies\exists K\in\operatorname{Syl}_p(G)$ such that $H\le K\le G$
+</div>
+</details>
+
+<details class="theorem" open>
+<summary>sylow's third theorem</summary>
+for finite $G$ with order $p^km$ where $p\nmid m$
+- let $n_p=|\operatorname{Syl}_p(G)|$
+
+<div class="flex justify-center">
+
+$n_p\equiv 1\mod p$ and $n_p\mid m$
+</div>
+
+- and every sylow $p$-subgroups are conjugates
+
+**Corollary.** for any $H\in\operatorname{Syl}_p(G)$
+
+$$
+\operatorname{Syl}_p(G)=\{H\}\iff H\triangleleft G
+$$
+</details>
+
+<details class="example" open>
+<summary>cyclic groups order pq</summary>
+
+for $G$ with order $pq$ where $p\lt q$
+
+$$
+p\nmid q-1\implies G\cong\mathbb{Z}_{pq}
+$$
+</details>
+
+<details class="example" open>
+<summary>nonabelian group of order pq has exactly q+3 subgroups</summary>
+
+let nonabelian $G$ with order $pq$ where $p\lt q$ and 
+
+<div class="flex justify-center">
+
+$G$ has exactly $q+3$ subgroups
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+one trivial, one itself, wts has $q+1$ more subgroups (namely sylow subgroups)
+
+$\because n_p\equiv 1\mod p$ and $n_p|q$
+
+$\phantom\because n_q\equiv 1\mod q$ and $n_q|p$ 
+
+$\therefore n_q=1$<span class="float-right">($n_q\le p\lt q$)</span>
+
+$\phantom\therefore n_p=1$ or $n_p=q$
+
+BWOC assume $n_p\ne 1$ (thus found $q$ sylow p-subgroups and $1$ sylow q-subgroup)
+
+- let $H_p,H_q\triangleleft G$ be the unique sylow p-subgroup, sylow q-subgroup
+- $\therefore H_p,H_q$ intersects trivially (coprime order) and $|H_pH_q|=pq=G$
+
+- $\therefore G=H_p\times H_q\cong H_p\oplus H_q$, thus cyclic, contradicts that $G$ abelian $\square$
+
+</details>
+
+</details>
+
+<details class="example" open>
+<summary>order p(p+1) is not simple</summary>
+
+let any group $G$ with order $n=p(p+1)=p^2+p$
+<div class="flex justify-center">
+
+$G$ is not simple
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$\because n_p\equiv 1\mod p$ and $n_p\mid p+1$<span class="float-right">(sylow 3)</span>
+
+$\therefore n_p=1$ or $n_p=p+1$
+
+case $n_p=p$
+
+- $\therefore$ not simple<span class="float-right">(sylow 3 cor)</span>
+
+case $n_p=p+1$, that is, $p+1$ sylow p-subgroups
+
+- $\because$ any sylow-p subgroup has order $p$<span class="float-right">($p^2\nmid n$)</span>
+- $\therefore$ eath sylow p-subgroup contains $p-1$ elements of order $p$<span class="float-right">($p$ prime + lagrange)</span>
+- $\because$ each of the $p+1$ sylow p-subgroups are cyclic<span class="float-right">($p$ prime)</span>
+- $\therefore G$ has $(p-1)(p+1)$ elements of order $p$<span class="float-right">(cycilc subgroups intersect trivially)</span>
+- $\because$ none of these $p^2-1$ elements can be in a sylow (p+1) subgroup<span class="float-right">($p\nmid p+1$)</span>
+- $\therefore G$ has $p+1$ elements left, which forms the only sylow (p+1) subgroup<span class="float-right">(sylow 1)</span>
+- $\therefore$ not simple $\square$
+</details>
+
+</details>
+
+<details class="example" open>
+<summary></summary>
+
+let any group with order $p^nq^m$ st $H_p,H_q$ abelian (unique sylow subgroup)
+
+- that is, $n_p=n_q=1$
+
+<div class="flex justify-center">
+
+$G$ is abelian
+</div>
+
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+
+$\because H_p$ intersects $H_q$ trivially <span class="float-right">($|H_p|$ and $|H_q|$ coprime + Lagrange)</span>
+
+$\therefore |H_pH_q|=|H_p||H_q|/|H_p\cap H_q|=|H_p||H_q|=|G|$, thus $G=H_pH_q$
+
+$\because H_p,H_q$ normal<span class="float-right">(sylow 3 cor)</span>
+
+$\therefore G=H_p\times H_q\cong H_p\oplus H_q$
+
+$\because H_p$ and $H_q$ abelian
+
+$\therefore G$ abelian $\square$
+</details>
+
+</details>
+
+<details class="example" open>
+<summary>p-groups have normal subgroups of each prime power order</summary>
+
+for $G$ with order $p^n$
+
+$$
+\forall k\quad\exists N\triangleleft G\text{ st }|N|=p^k
+$$
+ 
+<details class="list-none" open>
+<summary>**Proof.** induction</summary>
+
+base $n=0$
+
+assume true for any $m\lt n$ as IH
+
+$\because Z(G)$ is nontrivial and $z|p^n$ for $z=|Z(G)|$
+
+$\therefore Z(G)$ has a subgroup $N_1$ of order $p$ <span class="float-right">(Sylow 1)</span>
+
+$\therefore N_1\triangleleft G$ <span class="float-right">($K\subseteq Z(G)$)</span>
+
+consider $G/K$ with order $p^{n-1}$
+
+$\therefore\exists H'_1,\cdots,H'_{n-1}\triangleleft G/K$ where $|H'_k|=p^k$
+</details>
+</details>

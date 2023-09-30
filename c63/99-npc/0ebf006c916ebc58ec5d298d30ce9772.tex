@@ -1,0 +1,35 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor, amsmath, amssymb}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+
+\newcommand\pa[2][]{
+    \foreach\a\b in{#2}{
+        \path[->,bend left=20pt,#1](\a)edge(\b) (\b)edge(\a);
+    }
+}
+\tikzset{->/.style={arrows={-latex[length=5pt]}}}
+\definecolor{r1}{HTML}{C63A44}
+\begin{tikzpicture}[every node/.style={draw,circle,minimum size=30pt,line width=1pt},scale=2]
+\node at(0,0)(v0){$v_0$};
+\node[draw=none] at(0,-5)(vv){$\vdots$};
+\node at(0,-6)(vm){$v_{n-1}$};
+\foreach\x\y in{1/1,2/3,n/7}{
+    \node[r1]at(-2,-\y)(x\x){$x_\x$};
+    \node[r1]at(2,-\y)(y\x){$\overline{x_\x}$};
+    \pgfmathsetmacro{\yy}{int(\y + 1)};
+    \node at(0,-\yy)(v\x){$v_\x$};
+    \node at(1,-\y)(c\x){};
+    \node at(-1,-\y)(a\x){};
+    \node[draw=none] at(0,-\y)(b\x){$\cdots$};
+    \pa{x\x/a\x,a\x/b\x,b\x/c\x,c\x/y\x}
+    \path[->](x\x)edge(v\x) (y\x)edge(v\x);
+}
+\path[->]
+    (v0)edge(x1)edge(y1)
+    (v1)edge(x2)edge(y2)
+    (vm)edge(xn)edge(yn)
+    (v2)edge(vv) (vv)edge(vm);
+\end{tikzpicture}
+
+\end{document}

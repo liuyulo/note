@@ -1,0 +1,261 @@
+---
+title: Pointful is Painful
+---
+
+## Interior and Closure
+
+<details class="definition" open>
+<summary>interior</summary>
+
+for space $(X,\mathcal T)$, the **interior** of $A\sube X$ is
+
+$$
+A^\circ=\bigcup\{U\in\mathcal T:U\sube A\}
+$$
+
+- that is, union of open sets contained in $A$
+
+
+<div class="flex justify-center">
+$a\in A^\circ\iff a$ has a neighborhood contained in $A$
+</div>
+</details>
+
+<details class="example" open>
+<summary>interior commutes with intersection</summary>
+
+let any $A,B\subseteq X$
+
+$$
+(A\cap B)^\circ=A^\circ\cap B^\circ
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$(\subseteq)$ let any $x\in (A\cap B)^\circ$
+
+$\therefore\exists x\in U\subseteq A\cap B$
+
+$\therefore x\in U\subseteq A$ and $x\in U\subseteq B$
+
+$\therefore x\in A^\circ$ and $x\in B^\circ$, thus $x\in A^\circ\cap B^\circ$
+
+$(\impliedby )$ let any $x\in A^\circ\cap B^\circ$
+
+$\therefore\exists x\in U_A\subseteq A$ and $\exists x\in U_B\subseteq B$
+
+$\therefore x\in U_A\cap U_B\subseteq A\cap B$ where $U_A\cap U_B$ open
+
+$\therefore  x\in (A\cap B)^\circ\enspace\square$
+</details>
+
+notice 
+- $A^\circ\cup B^\circ\subseteq(A\cup B)^\circ$
+- $[0,1]^\circ\cup[1,2]^\circ=(0,1)\cup(1,2)\subset(0,2)=[0,2]^\circ$
+</details>
+
+
+<details class="definition" open>
+<summary>closure</summary>
+for space $(X,\mathcal T)$, the **closure** of $A\sube X$ is
+
+$$
+\bar A=\bigcap\{U^c\supe A:U\in\mathcal T\}
+$$
+
+- that is, intersection of closed sets containing $A$
+
+<div class="flex justify-center">
+$a\in \overline A\iff$ any neighborhood of $a$ intersects with $A$\
+$a\in \overline A\iff$ any closed set containing $A$ contains $a$
+</div>
+
+</details>
+
+<details class="theorem" open>
+<summary>interior vs closure</summary>
+
+for any space $(X,\mathcal T)$ and $A\sube X$
+
+$$
+A^\circ\sube A\sube\bar A
+$$
+
+- $A^\circ=A\iff A$ is open
+- $A=\bar A\iff A$ is closed
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+wts $A^\circ=A\iff A\in\mathcal T$
+
+- $(\implies)A^\circ=A$ is union of open sets, thus open
+- $(\impliedby)$ notice $A^\circ\sube A$ by definition
+  - let any $a\in A$
+  - $\therefore A$ is a nei of $a$ contained in $A$
+  - $\therefore a\in A^\circ\quad\square$
+
+wts $A=\bar A\iff A^c\in\mathcal T$ 
+
+- $(\implies)A=\bar A$ is intersection of closed sets, thus closed
+- $(\impliedby)$ notice $A\sube\bar A$ by definition
+- BWOC assume $\exists a\in\bar A-A$
+- $\therefore a\in A^c$  where $A^c$ is nei of $a$
+- $\therefore$ contradicts that $A^c$ intersects $A$
+</details>
+</details>
+
+todo p95 thm 17.4 17.5
+
+## Boundary and Accumulation
+
+<details class="definition" open>
+<summary>boundary</summary>
+for space $(X,\mathcal T)$, the **boundary** of $A\sube X$ is
+
+$$
+\partial A=\overline A\cap\overline{A^c}
+$$
+
+or equivalently
+<div class="flex justify-center">
+$a\in\partial A\iff$ any neighborhood of $a$ intersects with $A$ and $A^c$
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+for any $x\in X$
+
+$$
+\begin{align*}
+    x\in\overline A\cap\overline{A^c}\iff&\forall U\in\mathcal T\enspace A\sube U^c\implies x\in U^c\tag{$x\in\overline A$}\\
+    &\forall U\in\mathcal T\enspace A^c\sube U^c\implies x\in U^c\tag{$x\in\overline{A^c}$}\\
+    \iff&\forall U\in\mathcal T\enspace A\sube U^c\text{ or }A^c\sube U^c\implies x\notin U\\
+    \iff&\forall U\in\mathcal T\enspace x\in U\implies A\not\sube U^c\text{ and }A^c\not\sube U^c\\
+    \iff&\forall U\in\mathcal T\enspace x\in U\implies A\cap U\ne\varnothing\text{ and }A^c\cap U\ne\varnothing\\
+    \iff&\text{any neighborhood of }x\text{ intersects }A\text{ and }A^c\enspace\square
+\end{align*}
+$$
+</details>
+</details>
+
+<details class="example" open>
+<summary>interior and boundary partitions closure</summary>
+
+for $A\sube X$
+$$
+\overline A=A^\circ\sqcup\partial A
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+wts disjoint, BWOC assume $\exists a\in A^\circ\cap\partial A$
+
+- $\because A^\circ$ is a neighborhood of $a$ and $a$ is a boundary point of $A$
+- $\therefore A^c\cap A^\circ\ne\varnothing$, contradicts that $A^\circ\sube A$
+
+$(\implies)$ let any $a\in\bar A-\partial A$
+
+- $\therefore a$ has some nei $U$ that disjoints $A$ or $A^c$
+- $\because$ any nei of $a$ intersects $A$
+- $\therefore U$ disjoints $A^c$, thus $a\in U\sube A$
+- $\therefore a\in A^\circ$
+
+$(\impliedby)$
+
+- notice $\partial A\sube\bar A$ by definition
+- let any $a\in A^\circ$
+  - $\therefore a\in A$
+  - $\therefore$ any nei of $a$ intersects with $A$ (namely, on $a$)
+</details>
+</details>
+
+<details class="example" open>
+<summary>empty boundary iff clopen</summary>
+for $A\sube X$
+
+$$
+\partial A=\varnothing\iff A,A^c\in\mathcal T
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+$(\implies)$ assume $\partial A=\varnothing$
+
+$$
+\begin{align*}
+  \therefore&&\bar A&=A^\circ\cup\partial A=A^\circ\\
+  \because&& A^\circ&\sube A\sube\bar A\\
+  \therefore&&A^\circ&=A=\bar A\\
+  \therefore&& A,A^c&\in\mathcal T
+\end{align*}
+$$
+
+$(\impliedby)$ assume $A,A^c\in\mathcal T$
+
+$$
+\begin{align*}
+  \therefore&& A&=\overline A=A^\circ\sqcup\partial A=A\sqcup\partial A\\
+  \therefore&&\partial A&=\varnothing\quad\square
+\end{align*}
+$$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>accumulation point</summary>
+
+for space $(X,\mathcal T)$, and $A\sube X$
+
+<div class="flex justify-center">
+
+$x\in X$ is a **accumulation** point of $A\iff U-\{x\}$ intersects $A$ for any neighborhood $U$ of $x$
+</div>
+
+- $A'$ denotes the set of accumulation points of $A$
+</details>
+
+<details class="theorem" open>
+<summary>closure is union with accumulation points</summary>
+
+for space $(X,\mathcal T)$ and $A\sube X$
+
+$$
+\overline A=A\cup A'
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+$(\implies)$ let any $a\in \bar A-A$
+
+- let any neighborhood $U$ of $a$
+- $\therefore U$ intersects $A$
+- $\because a\notin A$
+- $\therefore U-\{a\}$ intersects $A$
+- $\therefore a\in A'$
+
+$(\impliedby)$ notice $A\sube\bar A$
+
+- let any $a\in A'$ and any neighborhood $U$ of $a$
+- $\therefore U-\{a\}$ intersects $A$
+- $\therefore U$ intersects $A$
+- $\therefore a\in\bar A\quad\square$
+</details>
+
+**Corollary.** $A$ is closed $\iff A'\sube A$
+</details>
+
+<details class="definition" open>
+<summary>more accumulations</summary>
+
+for any $A;x\subseteq X$
+
+|||
+|-:|:-|
+| $x$ is **accumulation** point of $A$ | $\vert U^*\cap A\vert\gt0$ for any nei $U$ of $x$|
+| $x$ is **ω-accumulation** point of $A$ | $\vert U\cap A\vert=\aleph_0$ for any nei $U$ of $x$|
+| $x$ is **limit** point of $A$ | $\vert U\cap A\vert\ge\aleph_0$ for any nei $U$ of $x$|
+| $x$ is **complete-accumulation** point of $A$ | $\vert U\cap A\vert=\vert A\vert$ for any nei $U$ of $x$|
+
+</details>
+

@@ -1,0 +1,346 @@
+---
+title: Compactness
+---
+
+## Compactness (Open Cover)
+
+<details class="definition" open>
+<summary>open cover and compactness</summary>
+
+for space $(X,\mathcal T)$
+
+- collection $\mathcal{C} \subseteq\mathcal{T} $ is **open cover** of $X$ iff
+
+$$
+X\subseteq\bigcup\mathcal{C} 
+$$
+
+space $X$ is **compact** iff
+
+<div class="flex justify-center">
+
+every open cover has finite subcover
+</div>
+</details>
+
+
+<details class="theorem" open>
+<summary>closed subspace of compact space is compact</summary>
+
+for compact space $X$
+
+<div class="flex justify-center">
+
+subspace $A\sube X$ is closed $\implies A$ is compact
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let any open cover $\mathcal C_A=\{U_\alpha\cap A\}$ of $A$ where $ U_\alpha\in\mathcal T_X$
+
+- let $\mathcal C_X=\{U_\alpha\}\cup\{X-A\}$
+- $\therefore\mathcal C_X$ is open cover of $X$, thus has some finite subcover $\mathcal C_0$
+- $\therefore\{U\cap A:U\in\mathcal C_0\}$ is finite open cover of $A$
+- $\therefore A$ compact $\quad\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>compact subspace of Hausdorff space is closed</summary>
+for any $T_2$ space $X$
+
+<div class="flex justify-center">
+subspace $A\sube X$ is compact $\implies A$ is closed
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+wts $X-A\sube(X-A)^\circ$
+
+- let any $x\in X-A$
+- for any $a\in A$, let $U_a,V_a$ be disjoint neighborhoods of $x$ and $a$ respectively
+- $\therefore\{V_a\}_{a\in A}$ is cover of $A$, open in $X$, has some finite cover of $A$, say
+
+$$
+\{V_{a_1},\cdots,V_{a_n}\}\sube\{V_a\}_{a\in A}
+$$
+
+- $\therefore$ let $V=\bigcup_iV_{a_i}$, open in $X$ and contains $A$
+- $\phantom\therefore$ let $U=\bigcap_iU_{a_i}$, open in $X$ and disjoints $V$
+- $\therefore x\in U\sube X-A$, thus $x\in(X-A)^\circ$
+
+$\therefore X-A$ is open, thus $A$ is closed $\quad\square$
+</details>
+</details>
+
+<details class="example" open>
+<summary></summary>
+
+let decreasing $K_1\supseteq K_2\supseteq\cdots$ of nonempty compact sets
+
+
+<div class="flex justify-center">
+
+$\bigcap_iK_i$ nonempty
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+BWOC assume $K=\bigcap_iK_i$ empty
+
+let $U_i=K_i^c$ be open, thus $U_1\subseteq U_2\subseteq\cdots$
+
+let $\mathcal{C} =\{U_i:i\in\mathbb{N}\}$
+
+$\because\bigcup_iU_i=\bigcup_iK^c_i=\left(\bigcap_iK_i\right)^c=X$
+
+$\therefore\mathcal{C} $ is open covers  of $X$, thus covers $K_1$
+
+$\therefore\mathcal{C} $ has some finite subcover $\{U_{n_1},\cdots,U_{n_k}\}$ that covers $K_1$
+
+WLOG assume $U_{n_1}\subseteq\cdots\subseteq U_{n_k}$, thus $K_1\subseteq\bigcup\mathcal{C} =U_{n_k}$
+
+$\therefore K_{n_k}\subseteq K_1\subseteq U_{n_k}$ where $K_{n_k}$ nonempty
+
+$\therefore$ contradicts that $K_{n_k}$ disjoints $U_{n_k}\enspace\square$
+</details>
+
+</details>
+
+
+todo p166~
+
+## Limit Point Compactness
+
+<details class="definition" open>
+<summary>limit point compactness</summary>
+space $X$ is **limit point compact** iff
+
+<div class="flex justify-center">
+any infinite subset of $X$ has a accumulation point
+</div>
+</details>
+
+<details class="theorem" open>
+<summary>compact implies limit point compact</summary>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+assume space $X$ is compact, let any $A\sube X$
+
+- <span title="by way of contraposition">BWOP</span> assume $A$ has no limit point, that is, $A'=\varnothing$
+
+- $\therefore$ for any $a\in A$, there is some neighborhood $U_a$ of $a$ that only intersects $A$ at $a$ (*)
+- let $\mathcal C=\{U_a\}_{a\in A}$ by open cover of $A$
+- $\because A$ is closed, since $A'\sube A$
+- $\therefore A$ is compact, since $X$ is compact
+- $\therefore\mathcal C$ has some finite subcover $\mathcal C_0$ that covers $A$
+- $\because$ each $U\in\mathcal C_0\sube\mathcal C$ only has one point in $A$ (by *)
+- $\therefore A$ is finite as $\mathcal C_0$ is finite $\quad\square$
+</details>
+</details>
+
+## Compactness on Reals
+
+<details class="theorem" open>
+<summary>Heine-Borel</summary>
+
+for subspace $A\subseteq\mathbb{R}$
+
+<div class="flex justify-center">
+
+$A$ compact $\iff A$ closed and bounded
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$(\implies )$ assume $A$ compact
+
+<details>
+<summary>wts $A$ bounded</summary>
+
+let open cover $\mathcal{C} $ of $A$ be
+  $$
+  \mathcal{C} =\{(-n,n):n\in\mathbb{Z}^+\}
+  $$
+$\therefore\mathcal{C} $ has some finite subcover $\mathcal{C} _0=\{(-n_i,n_i)\}_{i=1}^N$
+
+$\therefore A\subseteq\bigcup\mathcal{C} _0=(-n_N,n_N)$ is bounded
+
+
+</details>
+
+
+<details>
+<summary>wts $A$ closed, that is, $A^c\subseteq(\mathbb{R}-A)^\circ$</summary>
+
+tl;dr $\mathbb{R}$ is T2
+
+- namely, any $x\in A^c$ and any $a\in A$ are separated by
+
+$$
+  U_a=N(x,|x-a|/2)\quad V_a=N(a,|x-a|/2)
+$$
+
+</details>
+
+$(\impliedby )$ assume $A$ closed and bounded (WLOG assume $A$ infinite)
+
+
+let $A$ bounded by $b\in\mathbb{R}^+$
+
+<details>
+<summary>wts $I=[-b,b]$ compact</summary>
+
+let any open cover $\mathcal{C} $ of $I=[-b,b]$
+
+let $B\subseteq I$ where
+
+<div class="flex justify-center">
+
+$x\in B\iff\mathcal{C} $ has some finite cover that covers $[-b,x]$
+</div>
+
+- notice $B$ is interval, that is, $x\in B\implies [a,x]\subseteq B$
+
+let $\beta=\sup B$<span class="float-right">(completenss: $-b\in B$ and $B\subseteq\mathbb{R}$ bounded)</span>
+
+$\therefore -b\le\beta\le b$ since $-b\in A\le b$
+
+$\therefore\mathcal{C} $ covers $\beta$, thus $\exists U\in\mathcal{C} $ st $\beta\in N(\beta,\varepsilon)\subseteq U$ for some $\varepsilon\gt0$
+
+wts $\beta\in B$
+
+- $\because\exists q\in\mathbb{R}$ st $\beta-\varepsilon\lt q\lt \beta$<span class="float-right">(density)</span>
+- $\because q\in B$<span class="float-right">($B$ is interval and $\beta$ is supremum)</span>
+
+- $\therefore\exists\mathcal{C} _0\in[\mathcal{C} ]^{\lt\aleph_0}$ that covers $[-b,q]$
+- $\therefore\mathcal{C} _0\cup\{U\}\in[\mathcal{C} ]^{\lt\aleph_0}$ covers $[-b,\beta+\varepsilon)$, thus covers $[-b,\beta]$
+
+wts $\beta=b$, BWOC assume $\beta\lt b$
+
+- $\therefore\exists q\in\mathbb{R}$ st $-b\le\beta\lt q\lt \min\{\beta+\varepsilon,b\}$<span class="float-right">(density)</span>
+- $\therefore \mathcal{C} _0\cup\{U\}$ covers $[-b,q]\subseteq[-b,b]$, thus $q\in B$ where $q\gt\beta$
+- $\therefore$ contradicts that $\beta$ is supremum
+
+$\therefore\mathcal{C} _0\cup\{U\}$ is finite subcover that covers $[-b,b]$
+</details>
+
+<details>
+<summary>wts $A\subseteq I$ is compact</summary>
+(tl;dr because $A$ is closed)
+
+- let any open cover $\mathcal{C} _A$ of $A$
+- $\therefore\mathcal{C}_I=\mathcal{C}_A\cup\{A^c\}$ is open cover of $I$
+- $\therefore\exists\mathcal{C}_0\in[\mathcal{C}_I]^{\lt\aleph_0}$ that covers $I$, thus covers $A\enspace\square$
+</details>
+
+</details>
+
+</details>
+
+
+<details class="theorem" open>
+<summary>Bolzano-Weierstrass</summary>
+
+for subspace $A\subseteq\mathbb{R}$
+
+<div class="flex justify-center">
+
+$A$ is infinite and bounded $\implies A$ has some accumulation point
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+BWOC assume $A'=\varnothing$
+
+- $\therefore A$ closed, since $A'\subseteq A$
+- $\therefore A$ compact (HB)
+- $\because\forall a\in A\quad\exists N^*(a,\varepsilon_a)$ that disjoints $A$ (that is, not accumulation point)
+- $\therefore$ every point in $A$ is isolated (since $N(a,\varepsilon_a)$ only intersects $A$ at $a$)
+- $\therefore$ the open cover $\mathcal{C} =\{N(a,\varepsilon_a):a\in A\}$ has no finite subcover (since $A$ infinite)
+- $\therefore$ contradicts that $A$ compact $\enspace\square$
+</details>
+</details>
+
+### Compactness vs Interesction Property
+
+<details class="definition" open>
+<summary>wat</summary>
+
+for set $I$
+
+$$
+[I]^{\lt\aleph_0}=\{I_0\subseteq I:|I_0|\lt\aleph_0\}
+$$
+- that is, system of finte subsets of $I$
+</details>
+
+<details class="definition" open>
+<summary>finite intersection property</summary>
+
+for system $\mathcal{S} $
+
+<div class="flex justify-center">
+
+$\mathcal{S} $ **FIP** $\iff\forall\mathcal{S} _0\in[\mathcal{S} ]^{\lt\aleph_0}\quad\bigcap\mathcal{S} _0\ne\varnothing$
+</div>
+
+- that is, every finite subset has nonempty intersection
+</details>
+
+<details class="theorem" open>
+<summary>compactness (finitely satisfiable implies satisfiable)</summary>
+
+for space $X$
+
+<div class="flex justify-center">
+
+$X$ compact $\iff$ any FIP collection of closed sets has nonempty intersection
+</div>
+
+<details class="list-none">
+<summary>**Proof.** contrapositive</summary>
+
+$(\implies )$ assume $\exists\mathcal{K} =\{K_\alpha\}_{\alpha\in I}$ st FIP but $\bigcap\mathcal{K} =\varnothing$
+
+- let $\mathcal{C} =\{U_\alpha\}$ where $U_\alpha=K_\alpha^c$
+- $\therefore\mathcal{C} $ is open cover of $X$, since $\bigcup\mathcal{C} =(\bigcap\mathcal{K} )^c=X$
+- let any finite subcollection $I_0\in[I]^{\lt\aleph_0}$
+- $\therefore\bigcap_{\alpha\in I_0}K_\alpha\ne\varnothing$ (FIP)
+- $\therefore\bigcup_{\alpha\in I_0}U_\alpha=(\bigcap_{\alpha\in I_0}K_\alpha)^c\subset X$, thus is not cover of $X$
+- $\therefore\mathcal{C} $ has no finite subcover, thus $X$ not compact
+
+$(\impliedby )$ assume $X$ not compact
+
+- $\therefore X$ has some open cover $\mathcal{C} =\{U_\alpha\}_{\alpha\in I}$ with no finite subcover
+- let $\mathcal{K} =\{K_\alpha\}_{\alpha\in I}$ where $K_\alpha=U_\alpha^c$
+- $\because\mathcal{C} $ has no finite subcover
+- $\therefore$ for any $I_0\in[I]^{\lt\aleph_0}\quad\bigcup_{\alpha\in I_0}U_\alpha\subset X$, thus
+
+$$
+\bigcap_{\alpha\in I_0}K_\alpha=\bigcap_{\alpha\in I_0}U_\alpha^c=\left(\bigcup_{\alpha\in I_0}U_\alpha\right)^c\ne\varnothing
+$$
+
+- $\therefore\mathcal{K} $ FIP, but $\bigcap\mathcal{K} =(\bigcup\mathcal{C} )^c=\varnothing\enspace\square$
+</details>
+
+**Corollary.** for any FIP collection $\{K_a\subseteq\mathbb{R}\}$ of compact sets
+
+<div class="flex justify-center">
+
+$\bigcap_\alpha K_\alpha$ is also compact
+</div>
+</details>
+
+<details class="example" open>
+<summary>reals no</summary>
+
+for $\mathbb{R}$, let $\mathcal{K} =\{[n,\infty)\}_{n\in\mathbb{N}}$
+
+- $\mathcal{K} $ is FIP collection of closed sets, but has empty intersection
+</details>
+
