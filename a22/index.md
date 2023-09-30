@@ -1,3 +1,3 @@
 
-- [premidterm](./a22a.pdf)
-- [postmidterm](./b/)
+- Premidterm [PDF](./a.pdf)
+- Postmidterm [HTML](./b/)

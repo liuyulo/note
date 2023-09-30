@@ -28,7 +28,7 @@ Cauchy Inequality
 </summary>
 $for $u,v\in V^n\quad\because ||u+v||^2=||u||^2+2(u\cdot v)+||v||^2$
 $$|u\cdot v|\leqslant||u||||v||$$
-$$|u\cdot v|=||u||||v||\iff\exist\lambda\in F\textsf{ st }u=\lambda v$$
+$$|u\cdot v|=||u||||v||\iff\exists\lambda\in F\textsf{ st }u=\lambda v$$
 </details>
 <details class="definition"><summary>
 Orthogonal Sets
@@ -80,7 +80,7 @@ let $\{v_i\}$ be orthogonal and suppose $a_1v_1+\cdots+a_nv_n=0$
 <details class="definition"><summary>
 for $A,B\in\mathcal L(V^n)$
 </summary>
-$$A\sim B\iff\exist P,P^{-1}\in\mathcal L(V^n)\enspace A=PBP^{-1}$$
+$$A\sim B\iff\exists P,P^{-1}\in\mathcal L(V^n)\enspace A=PBP^{-1}$$
 
 - $A\sim A$
 - commutativity transitivity
@@ -124,8 +124,8 @@ prove above (by contradiction)
 given $T\in\mathcal L(V^n)$ with $\lambda_1,\cdots,\lambda_m$ **distinct** eigenvals
 \begin{align*}
   &\textsf{suppose }v_1,\cdots,v_m\textsf{ is dep}\\
-  \therefore&\,\exist k\textsf{ st }v_k\in\mathrm{sp}\{v_i,\cdots,v_{k-1}\}\quad\{v_i\}_{i=1}^{k-1}\textsf{ is indep}\\
-  \therefore&\,\exist a_i\in F\textsf{ st }v_k=a_1v_1+\cdots+a_{k-1}v_{k-1}\tag{\sf def of span (1)}\\
+  \therefore&\,\exists k\textsf{ st }v_k\in\mathrm{sp}\{v_i,\cdots,v_{k-1}\}\quad\{v_i\}_{i=1}^{k-1}\textsf{ is indep}\\
+  \therefore&\,\exists a_i\in F\textsf{ st }v_k=a_1v_1+\cdots+a_{k-1}v_{k-1}\tag{\sf def of span (1)}\\
   \therefore&\,\lambda_kv_k=a_1\lambda_1v_1+\cdots+a_{k-1}\lambda_{k-1}v_{k-1}\tag{\sf apply $T$ (2)}\\
   &\,\lambda_kv_k=a_1\lambda_kv_k+\cdots+a_{k-1}\lambda_kv_{k-1}\tag{\sf apply $\lambda_k$ (3)}\\
   \therefore&\,\textsf{(3)}-\textsf{(2) gives }0=a_1(\lambda_k-\lambda_1)v_1+\cdots+a_{k-1}(\lambda_k-\lambda_{k-1})v_{k-1}\\
@@ -296,7 +296,7 @@ $$ST\in\mathcal L(U,W)\quad(ST)u=S(Tu)$$
 Map basis
 </summary>
 if $\{v_i\}$ is a basis of $V^n$ and $\{w_i\}$ is a basis of $W^n$, then
-$$\exist!T\in\mathcal L(V,W)\textsf{ st }Tv_i=w_i$$
+$$\exists!T\in\mathcal L(V,W)\textsf{ st }Tv_i=w_i$$
 </details>
 
 ## Null and Image Spaces
@@ -323,7 +323,7 @@ $$\mathrm{im}\,T=\{Tv:v\in V\}\subseteq W$$
 $T\in\mathcal L(V,W)$ is **surjective** iff any:
 </summary>
 - $\mathrm{im}\,T=W$
-- $\forall w\in W\enspace\exist v\in V\textsf{ st }Tv=w$
+- $\forall w\in W\enspace\exists v\in V\textsf{ st }Tv=w$
 </details>
 
 ### Finite Dimensional
@@ -371,7 +371,7 @@ Prove Fundamental Theorem of Linear Maps for $T\in\mathcal L(V,W)$
 		\therefore&\,Tv=\sum_{i=1}^m a_iTu_i+\sum_{i=1}^nb_iTv_i\tag{\sf $T$ is linear}\\
 		\because&\,u_i\in\mathrm{null}\,T\\
 		\therefore&\,Tv=0+\sum_{i=1}^nb_iTv_i=\sum_{i=1}^nb_iTv_i\\
-		\therefore&\,\forall Tv\in\mathrm{im}\,T\enspace\exist b_i\in F\textsf{ st }Tv=\sum_{i=1}^nb_iTv_i\\
+		\therefore&\,\forall Tv\in\mathrm{im}\,T\enspace\exists b_i\in F\textsf{ st }Tv=\sum_{i=1}^nb_iTv_i\\
 		\therefore&\,\mathrm{im}\,T=\mathrm{sp}\{Tv_i\}
 	\end{align*}
 	  - wts $\{Tv_i\}$ is indep
@@ -573,7 +573,7 @@ $$u\in U\implies Tu\in U$$
 <details class="definition"><summary>
 for $T\in\mathcal L(V)\quad\lambda\in F$ is an **eigenvalue** iff
 </summary>
-$$\exist v\ne0\in V\textsf{ st }Tv=\lambda v$$
+$$\exists v\ne0\in V\textsf{ st }Tv=\lambda v$$
 </details>
 <details class="theorem"><summary>
 for $T\in\mathcal L(V^n)\enspace\lambda\in F$, equiv:

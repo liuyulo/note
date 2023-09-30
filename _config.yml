@@ -1,6 +1,3 @@
-kramdown:
-  syntax_highlighter: coderay
-  syntax_highlighter_opts:
-    line_numbers: table
-plugins:
-  - jekyll-katex
+exclude:
+  - a08/
+  - a22/b/

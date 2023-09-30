@@ -14,9 +14,11 @@
 # Notes
 ## Memory Model
 > always create new places in memory when assigning
+
+
 <details><summary>variable assign</summary>
 
-```py
+```python
 a = 5
 # a: id1    id1: 5
 a = 3
