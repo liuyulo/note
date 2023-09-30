@@ -1,0 +1,2545 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CSCB36</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: 1;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #0f0f0f;
+        color: #f1f1f1;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #f1f1f1;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #ff6680; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #878787; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #66ccff; } /* DataType */
+    code span.dv { color: #a68cd9; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #ff6680; font-style: italic; } /* Keyword */
+    code span.op { color: #878787; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #ff6680; } /* Preprocessor */
+    code span.sc { color: #a68cd9; } /* SpecialChar */
+    code span.ss { color: #a68cd9; } /* SpecialString */
+    code span.st { color: #ffe666; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script defer="defer" src="./script.js"></script>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">CSCB36</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#practice" id="toc-practice">Practice</a></li>
+<li><a href="#extra-cfls" id="toc-extra-cfls">Extra CFLs</a>
+<ul>
+<li><a href="#count-occurences" id="toc-count-occurences">Count
+Occurences</a></li>
+</ul></li>
+<li><a href="#predicate-logic" id="toc-predicate-logic">6 Predicate
+Logic</a>
+<ul>
+<li><a href="#prenex-normal-form" id="toc-prenex-normal-form">6.9 Prenex
+Normal Form</a></li>
+<li><a href="#logical-impl-and-logical-equiv"
+id="toc-logical-impl-and-logical-equiv">6.5 Logical Impl and Logical
+Equiv</a></li>
+<li><a href="#fo-language-semantics" id="toc-fo-language-semantics">6.3
+FO Language Semantics</a></li>
+<li><a href="#first-order-language-syntax"
+id="toc-first-order-language-syntax">6.2 First-Order Language
+Syntax</a></li>
+<li><a href="#definition" id="toc-definition">6.1 Definition</a></li>
+</ul></li>
+<li><a href="#propositional-logic" id="toc-propositional-logic">5
+Propositional Logic</a>
+<ul>
+<li><a href="#proposition" id="toc-proposition">5.2 Proposition</a></li>
+<li><a href="#satisfiable-vs-falsifiable"
+id="toc-satisfiable-vs-falsifiable">5.4 Satisfiable vs
+Falsifiable</a></li>
+<li><a href="#normal-forms" id="toc-normal-forms">5.9 Normal
+Forms</a></li>
+<li><a href="#completeness" id="toc-completeness">5.11
+Completeness</a></li>
+</ul></li>
+<li><a href="#cfg-and-pda" id="toc-cfg-and-pda">8 CFG and PDA</a>
+<ul>
+<li><a href="#more-big-results" id="toc-more-big-results">More Big
+Results</a></li>
+<li><a href="#pda" id="toc-pda">8.5 PDA</a>
+<ul>
+<li><a href="#dpda-vs-pda" id="toc-dpda-vs-pda">DPDA vs PDA</a></li>
+</ul></li>
+<li><a href="#rlg-and-srlg" id="toc-rlg-and-srlg">8.4 RLG and
+SRLG</a></li>
+<li><a href="#cfg" id="toc-cfg">8.2 CFG</a>
+<ul>
+<li><a href="#parse-tree" id="toc-parse-tree">Parse Tree</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#fsa-and-regex" id="toc-fsa-and-regex">7 FSA and Regex</a>
+<ul>
+<li><a href="#the-pumping-lemma" id="toc-the-pumping-lemma">7.6 The
+Pumping Lemma</a></li>
+<li><a href="#the-big-result" id="toc-the-big-result">7.6 The Big
+Result</a></li>
+<li><a href="#closure-under-mathcal-l"
+id="toc-closure-under-mathcal-l">7.5 Closure under <span
+class="math inline">\mathcal L</span></a></li>
+<li><a href="#nfsa" id="toc-nfsa">7.4 NFSA</a></li>
+<li><a href="#dfsa" id="toc-dfsa">7.3 DFSA</a>
+<ul>
+<li><a href="#design-and-prove-dfsa"
+id="toc-design-and-prove-dfsa">7.3.3 Design and Prove DFSA</a></li>
+</ul></li>
+<li><a href="#regular-expression" id="toc-regular-expression">7.2
+Regular Expression</a>
+<ul>
+<li><a href="#shorthands" id="toc-shorthands">7.2.2 Shorthands</a></li>
+</ul></li>
+<li><a href="#language" id="toc-language">7.1 Language</a></li>
+<li><a href="#string" id="toc-string">7.1 String</a></li>
+</ul></li>
+<li><a href="#structural-induction" id="toc-structural-induction">4
+Structural Induction</a></li>
+<li><a href="#inductiverecursive-function"
+id="toc-inductiverecursive-function">3 Inductive/Recursive Function</a>
+<ul>
+<li><a href="#unwind-recurrence" id="toc-unwind-recurrence">3.2 Unwind
+Recurrence</a></li>
+</ul></li>
+<li><a href="#correctness" id="toc-correctness">2 Correctness</a>
+<ul>
+<li><a href="#binary-search" id="toc-binary-search">Binary
+Search</a></li>
+<li><a href="#recursive-program" id="toc-recursive-program">Recursive
+Program</a></li>
+<li><a href="#iterative-programs" id="toc-iterative-programs">Iterative
+Programs</a></li>
+</ul></li>
+<li><a href="#induction" id="toc-induction">1 Induction</a></li>
+</ul>
+</nav>
+<h1 id="practice">Practice</h1>
+<details class="example">
+<summary>
+(2018 Fall) PCI show <span class="math inline">\forall n\in\mathbb
+N\enspace f(n)\le n^2</span>
+</summary>
+<p>given <span class="math inline">f:\mathbb N\to\mathbb N</span></p>
+<ul>
+<li><span class="math inline">f(n)=n^2\quad</span> if <span
+class="math inline">0\le n\le 16</span></li>
+<li><span
+class="math inline">f(n)=f\lfloor\frac{2n}3\rfloor+4f\lceil\frac
+n3\rceil\quad</span> if <span class="math inline">n&gt;16</span></li>
+<li><span class="math inline">\forall n\in\mathbb N\enspace\lceil\frac
+n3\rceil\le\frac{n+2}3</span></li>
+</ul>
+<p>base: <span class="math inline">0\le n\le 16</span> <span
+class="math display">f(n)=n^2\le n^2</span></p>
+<p>IS: let any <span class="math inline">n&gt;16</span> (i.e. <span
+class="math inline">n\ge17</span>)</p>
+<ul>
+<li>assume <span class="math inline">\forall i\in[0,n)\enspace f(i)\le
+i^2</span> as IH</li>
+<li>wts <span class="math inline">f(n)\le n^2</span></li>
+</ul>
+<span class="math display">\small\begin{align*}
+  f(n)&amp;=f\left\lfloor\frac{2n}3\right\rfloor+4f\left\lceil\frac
+n3\right\rceil\tag{\sf def}\\
+  &amp;\le\left\lfloor\frac{2n}3\right\rfloor^2+4\left\lceil\frac
+n3\right\rceil^2\tag{\sf IH}\\
+  &amp;\le\left(\frac{2n}3\right)^2+4\left\lceil\frac
+n3\right\rceil^2\tag{$\lfloor n\rfloor\le n$}\\
+  &amp;\le\frac49n^2+4\left(\frac{n+2}3\right)^2\tag{\sf given}\\
+  &amp;=\frac89n^2+\frac{16}9n+\frac{16}9\le
+n^2\enspace\blacksquare\tag{\sf see right}
+\end{align*}\quad\begin{align*}
+  n&amp;\ge17\\
+  n-8&amp;\ge9\\
+  (n-8)^2&amp;\ge81\ge80\\
+  n^2-16n+64&amp;\ge80\\
+  n^2-16n&amp;\ge16\\
+  -n^2+16n+16&amp;\le0\\
+  8n^2+16n+16&amp;\le 9n^2\\
+\end{align*}</span>
+</details>
+<h1 id="predicate-logic">6 Predicate Logic</h1>
+<h2 id="prenex-normal-form">6.9 Prenex Normal Form</h2>
+<details class="definition" open>
+<summary>
+<code>F</code> as a FO formula is in <strong>PNF</strong> iff
+</summary>
+<p><span class="math display">F=Q_1x_1\dots Q_kx_x E</span></p>
+<dl>
+<dt>for some</dt>
+<dd>
+<span class="math inline">Q_i</span> as quantifiers
+</dd>
+<dd>
+<span class="math inline">E</span> as a FO formula without quantifiers
+</dd>
+</dl>
+</details>
+<details class="theorem" open>
+<summary>
+PNF Theorem
+</summary>
+Any predicate formula has a PNF equivalent
+</details>
+<h2 id="logical-impl-and-logical-equiv">6.5 Logical Impl and Logical
+Equiv</h2>
+<details class="definition" open>
+<summary>
+Analogy to Propositional Formulas
+</summary>
+<p>for <code>F</code> as a predicate</p>
+<ul>
+<li><code>F</code> is <strong>valid</strong> <code>&lt;=&gt;</code> all
+interpretations satisfies <code>F</code></li>
+<li><code>F</code> is <strong>satisfiable</strong>
+<code>&lt;=&gt;</code> some interpretations satisfies
+<code>F</code></li>
+<li><code>F</code> is <strong>falsifiable</strong>
+<code>&lt;=&gt;</code> some falsifies <code>F</code></li>
+<li><code>F</code> is <strong>unsatisfiable</strong>
+<code>&lt;=&gt;</code> all falsifies <code>F</code></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+LIMP and LEQV of Predicates
+</summary>
+<p>for any <code>A</code> and <code>B</code> as FO formulas</p>
+<ul>
+<li><code>A ==&gt; B</code> iff all interp that satisfies <code>A</code>
+also satisfies <code>B</code></li>
+<li><code>A &lt;=&gt; B</code> iff <code>A ==&gt; B</code> and
+<code>B ==&gt; A</code></li>
+</ul>
+</details>
+<details class="theorem" open>
+<summary>
+Logical Equivalences (same applies for <code>∃</code> with
+<code>∀</code>)
+</summary>
+<p>don’t make free variables quantified</p>
+<pre><code>   ¬∀x A &lt;=&gt; ∃x ¬A
+ ∀xA ∧ B &lt;=&gt; ∀x(A ∧ B)
+ ∀xA ∨ B &lt;=&gt; ∀x(A ∨ B)
+∀xA -&gt; B &lt;=&gt; ∃x(A -&gt; B)           (caution!)
+A -&gt; ∀xB &lt;=&gt; ∀x(A -&gt; B)</code></pre>
+can rename variables
+</details>
+<h2 id="fo-language-semantics">6.3 FO Language Semantics</h2>
+<details class="theorem" open>
+<summary>
+To determine an <strong>interpretation</strong> of a predicate, we need
+</summary>
+<p>predicate’s <em>interp</em> is analogous to propositional formula’s
+<em>truth assignment</em></p>
+<ul>
+<li>domain of discourse</li>
+<li>semantics of each predicate</li>
+<li>meaning of each constant</li>
+<li>meaning of each free variables</li>
+</ul>
+</details>
+<details class="yellow" open>
+<summary>
+<strong>Convention.</strong>
+</summary>
+<ul>
+<li>can’t redefine the predicate <code>=(x,y): x == y</code></li>
+</ul>
+</details>
+<h2 id="first-order-language-syntax">6.2 First-Order Language
+Syntax</h2>
+<details class="definition" open>
+<summary>
+</summary>
+<p>FO language consists of</p>
+<ul>
+<li><code>{ x, y, ... }</code> infinite set of
+<strong>variables</strong></li>
+<li><code>{ A, B, ... }</code> finite set of <strong>predicate
+symbols</strong> (each with arity)</li>
+<li><code>{ a, b, ... }</code> finite set of <strong>constant
+symbols</strong></li>
+<li><code>{ ¬, ∧, ∨, --&gt;, &lt;-&gt; }</code>
+<strong>connectives</strong></li>
+<li><code>{ ∀, ∃ }</code> <strong>quantifiers</strong></li>
+<li><code>{ (, ) }</code> <strong>parentheses</strong></li>
+</ul>
+<p>set <span class="math inline">\mathcal L</span> of FO formulas is the
+smallest set st (with unique parse tree)</p>
+<ul>
+<li>base: <strong>atomic formulas</strong> of <span
+class="math inline">\mathcal L\in\mathcal L</span></li>
+<li>IS: if <span class="math inline">F_1,F_2\in\mathcal L</span> and
+<span class="math inline">x</span> is a variable then
+<ul>
+<li><span class="math inline">\neg F_1,(F_1\land F_2),(F_1\lor
+F_2),(F_1\to F_2),(F_1\lrarr F_2)\in\mathcal L</span></li>
+<li><span class="math inline">\forall xF_1,\exists xF_i\in\mathcal
+L</span></li>
+</ul></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Free Variable wrt FO formula <code>F</code>
+</summary>
+<p>with respect to <code>F</code>, an occurence of var <code>x</code> is
+<strong>free</strong> iff <code>x</code> is not quantified in
+<code>F</code> towards the highest level of the parse tree</p>
+<ul>
+<li><strong>sentence</strong>: predicate without any free variables</li>
+</ul>
+<details open>
+<summary>
+think in <code>rust</code>
+</summary>
+<div class="sourceCode" id="cb8"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span><span class="dv">10</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    A(x)<span class="op">;</span> <span class="co">// this x is quantified</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>B(x)<span class="op">;</span> <span class="co">// this x is free</span></span></code></pre></div>
+</details>
+</details>
+<h2 id="definition">6.1 Definition</h2>
+<blockquote>
+<p>FO formula <code>===</code> predicate</p>
+</blockquote>
+<details class="definition" open>
+<summary>
+Predicate aka First-Order Logic
+</summary>
+<p><span class="math inline">P:D^n\to\{0,1\}</span> or <span
+class="math inline">P\sube D^n</span></p>
+<dl>
+<dt>where</dt>
+<dd>
+<span class="math inline">D\ne\varnothing</span> is domain of discource
+</dd>
+<dd>
+<span class="math inline">n&gt;0</span> is arity
+</dd>
+</dl>
+<p><span class="math display">\forall x\in D^n\enspace P(x)=0\iff x\in
+P</span></p>
+</details>
+<h1 id="propositional-logic">5 Propositional Logic</h1>
+<blockquote>
+<p><code>PV</code> is set of propositional variables<br>
+<code>{ ¬, ∨, ∧, --&gt;, &lt;-&gt; }</code> is set of connectives</p>
+</blockquote>
+<h2 id="proposition">5.2 Proposition</h2>
+<details class="definition" open>
+<summary>
+Propositional Formulas <span class="math inline">\mathcal
+F_{PV}\in(PV\cup\{\neg,\land,\lor,\rarr,\lrarr\})^\ast</span>
+</summary>
+<p>given <span class="math inline">PV</span>, define <span
+class="math inline">\mathcal F_{PV}</span> as the smallest set such
+that</p>
+<ul>
+<li>base: <span class="math inline">x\in PV\implies x\in\mathcal
+F</span></li>
+<li>IS: <span class="math inline">P_1,P_2\in\mathcal
+F_{PV}\implies</span>
+<ul>
+<li><span class="math inline">\neg P_1,(P_1\land P_2),(P_1\lor
+P_2)\in\mathcal F_{PV}</span></li>
+<li><span class="math inline">(P_1\rarr P_2),(P_1\lrarr P_2)\in\mathcal
+F_{PV}</span></li>
+</ul></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Truth Assignment to <span class="math inline">PV</span> is <span
+class="math inline">\tau:PV\to\{0,1\}</span>
+</summary>
+<p>given <span class="math inline">\tau:PV\to\{0,1\}</span>, define
+extended T.A. <span class="math inline">\tau^\ast:\mathcal
+F_{PV}\to\{0,1\}</span></p>
+<ul>
+<li>base: <span class="math inline">P\in
+PV\implies\tau^\ast(P)=\tau(P)</span></li>
+<li>IS: let any <span class="math inline">P\not\in PV</span>
+<ul>
+<li>assume <span class="math inline">\exist Q_1,Q_2\in\mathcal
+F_{PV}</span> such that <span class="math inline">\tau^\ast(Q_1)</span>
+and <span class="math inline">\tau^\ast(Q_2)</span> are defined</li>
+<li><span class="math inline">\tau^\ast(\neg
+Q_1)=1-\tau^\ast(Q_1)</span></li>
+<li><span class="math inline">\tau^\ast((Q_1\land
+Q_2))=\tau^\ast(Q_1)\tau^\ast(Q_2)</span></li>
+<li><span class="math inline">\tau^\ast((Q_1\lor
+Q_2))=\tau^\ast(Q_1)+\tau^\ast(Q_2)-\tau^\ast(Q_1)\tau^\ast(Q_2)</span></li>
+<li><span class="math inline">\tau^\ast((Q_1\rarr
+Q_2))=1-\tau^\ast(Q_1)+\tau^\ast(Q_1)\tau^\ast(Q_2)</span></li>
+<li><span class="math inline">\tau^\ast((Q_1\lrarr
+Q_2))=1-\tau^\ast(Q_1)+\tau^\ast(Q_2)</span></li>
+</ul></li>
+</ul>
+</details>
+<details class="theorem" open>
+<summary>
+5.3 Truth Table
+</summary>
+Used to determine <span class="math inline">\tau^\ast</span> for every
+possible T.A. <span class="math inline">\tau</span> of an <span
+class="math inline">P\in\mathcal F</span>
+</details>
+<details class="example">
+<summary>
+Fill columns in order of evaluation
+</summary>
+<pre><code>x y z ║ x ∨ y --&gt; ¬ x ∧ z
+──────╫──────────────────
+0 0 0 ║   0    1  1   0
+0 0 1 ║   0    1  3   1
+0 1 0 ║   1    0  1   0
+0 1 1 ║   1    1  1   1
+1 0 0 ║   1    0  0   0
+1 0 1 ║   1    0  0   0
+1 1 0 ║   1    0  0   0
+1 1 1 ║   1    0  0   0
+
+order:    3    4  1   2</code></pre>
+</details>
+<h2 id="satisfiable-vs-falsifiable">5.4 Satisfiable vs Falsifiable</h2>
+<details class="definition" open>
+<summary>
+Given <span class="math inline">P\in\mathcal F</span>
+</summary>
+<ul>
+<li><span class="math inline">\small\tau</span>
+<strong>satisfies</strong> <span class="math inline">\small
+P\iff\tau^\ast(P)=1\iff\tau^\ast(P)\ne0\iff</span> not
+<strong>falsifies</strong> <span class="math inline">\small
+P</span></li>
+<li><span class="math inline">P</span> is <strong>satisfiable</strong>
+<span class="math inline">\iff\exists\tau\enspace\tau</span> satisfies
+<span class="math inline">P</span></li>
+<li><span class="math inline">P</span> is <strong>tautology</strong>
+<span class="math inline">\iff\forall\tau\enspace\tau</span> satisfies
+<span class="math inline">P\iff P</span> is NOT
+<strong>falsifiable</strong></li>
+<li><span class="math inline">P</span> is <strong>unsatisfiable</strong>
+<span class="math inline">\iff\nexists\tau\enspace\tau</span> satisfies
+<span class="math inline">P\iff P</span> is NOT
+<strong>satisfiable</strong></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Logical Implication and Logical Equivalence
+</summary>
+<dl>
+<dt>for <span class="math inline">P,Q\in\mathcal F</span></dt>
+<dd>
+<code>(P ==&gt; Q)</code> iff <code>P -&gt; Q</code> is tautology
+</dd>
+<dd>
+<code>(P &lt;=&gt; Q)</code> iff <code>P ==&gt; Q</code> and
+<code>Q ==&gt; P</code>
+</dd>
+</dl>
+<ul>
+<li><code>P --&gt; Q</code> is a propositional formula</li>
+<li><code>P ==&gt; Q</code> is a proposition</li>
+</ul>
+</details>
+<details class="theorem" open>
+<summary>
+Logical Equivalences
+</summary>
+<ul>
+<li>Double Negation</li>
+<li>De Morgan’s x2</li>
+<li>Communatative x2</li>
+<li>Associative x2</li>
+<li>Distributive x2</li>
+<li>Identity x2</li>
+<li>Indempotency x2</li>
+<li><code>--&gt;</code> and <code>&lt;-&gt;</code> Laws</li>
+</ul>
+</details>
+<h2 id="normal-forms">5.9 Normal Forms</h2>
+<details class="definition" open>
+<summary>
+Restricted Types of Propositional Formulas
+</summary>
+<ul>
+<li><strong>literal</strong> <code>==&gt;</code> contains
+<code>PV</code> or <code>¬</code></li>
+<li><strong>term</strong> <code>==&gt;</code> contains conjuctions of
+literals</li>
+<li><strong>clause</strong> <code>==&gt;</code> contains disjuctions of
+literals</li>
+<li><strong>CNF</strong> <code>&lt;=&gt;</code> conjuction of clauses
+(i.e. a conj of disjs)</li>
+<li><strong>DNF</strong> <code>&lt;=&gt;</code> disjuction of terms
+(i.e. a disj of conjs)</li>
+</ul>
+</details>
+<details class="theorem" open>
+<summary>
+DNF/CNF Theorem
+</summary>
+<span class="math inline">\forall P\in\mathcal F\enspace\exists</span>
+DNF <span class="math inline">P_D</span> and CNF <span
+class="math inline">P_C</span> st <span class="math inline">P\iff
+P_D\iff P_C</span>
+</details>
+<details class="algorithm" open>
+<summary>
+Make DNF from Truth Table of <span class="math inline">P\in\mathcal
+F</span>
+</summary>
+<ul>
+<li>make truth table</li>
+<li>for each <span class="math inline">\tau_i</span> st <span
+class="math inline">\tau_i^\ast(P)=1</span>, make <strong>term</strong>
+<span class="math inline">F_i</span> st <span
+class="math inline">\tau_i</span> <strong>satisfies</strong> <span
+class="math inline">F_i</span></li>
+<li>make DNF as the disjuction of <span
+class="math inline">F_i</span></li>
+</ul>
+</details>
+<details class="algorithm" open>
+<summary>
+Make CNF from Truth Table of <span class="math inline">P\in\mathcal
+F</span>
+</summary>
+<ul>
+<li>make truth table</li>
+<li>for each <span class="math inline">\tau_i</span> st <span
+class="math inline">\tau_i^\ast(P)=0</span>, make
+<strong>clause</strong> <span class="math inline">F_i</span> st <span
+class="math inline">\tau_i</span> <strong>falsifies</strong> <span
+class="math inline">F_i</span></li>
+<li>make CNF as the conjuction of <span
+class="math inline">F_i</span></li>
+</ul>
+</details>
+<h2 id="completeness">5.11 Completeness</h2>
+<details class="definition" open>
+<summary>
+Boolean function <span class="math inline">f:\{0,1\}^n\to\{0,1\}</span>
+</summary>
+<dl>
+<dt><span class="math inline">P\in\mathcal F</span>
+<strong>represents</strong> <span
+class="math inline">f\iff\forall\tau\enspace\tau^\ast(F)=f(\tau(x_i))</span></dt>
+<dd>
+all boolean functions can be represented (from truth table)
+</dd>
+</dl>
+</details>
+<details class="definition" open>
+<summary>
+Completeness of a set of <strong>connectives</strong>
+</summary>
+a set of connectives is <strong>complete</strong> iff any bool fn can be
+represented by <span class="math inline">P\in\mathcal F</span> using
+only connectives (uoc) from the set
+</details>
+<details class="theorem" open>
+<summary>
+Complete Connectives
+</summary>
+<ul>
+<li><code>{ ¬, ∨ }</code> and <code>{ ¬, ∧ }</code> are complete</li>
+</ul>
+</details>
+<details class="algorithm" open>
+<summary>
+Prove <code>C</code> as set of connectives is Complete
+</summary>
+<ol type="1">
+<li>(choose <code>{ ¬, ∨ }</code> xor <code>{ ¬, ∧ }</code>)</li>
+<li>(find a LEQV of <code>¬P</code> and a LEQV of <code>P ∧ Q</code>
+that uoc C)</li>
+<li>define <span class="math inline">\mathcal G_{PV}</span> as the
+smallest set such that
+<ul>
+<li>base: <code>x ∈ PV ==&gt; x ∈ G</code></li>
+<li>IS: <code>P, Q ∈ G ==&gt; ¬P, (P ∧ Q) ∈ G</code></li>
+</ul></li>
+<li>structural induction on def of
+<code>∀F uoc G, ∃F' uoc C st F &lt;=&gt; F'</code>
+<ul>
+<li>base: <code>F = x ∈ PV</code> let <code>F' = x uoc C</code></li>
+<li>IS: let any <code>P,Q ∈ G - PV</code>
+<ul>
+<li>assume <code>∃P',Q' uoc C</code> and <code>P &lt;=&gt; P'</code> and
+<code>Q &lt;=&gt; Q'</code> as IH</li>
+<li>case <code>F = ¬P</code>, let
+<code>F' = {something with P' uoc C}</code>
+<ul>
+<li><code>∴ F' uoc C [IH]</code></li>
+<li><code>∴ {F' &lt;=&gt; F} [IH]</code> as wanted</li>
+</ul></li>
+<li>case <code>F = (P ∧ Q)</code>, let
+<code>F' = {sth with P' and Q' uoc C}</code>
+<ul>
+<li><code>∴ F' uoc C [IH]</code></li>
+<li><code>∴ {F' &lt;=&gt; F} [IH]</code> as wanted</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><code>∵ { ¬, ∧ }</code> is complete<br><code>∴ C</code> is
+complete</li>
+</ol>
+</details>
+<details class="algorithm" open>
+<summary>
+Prove <code>C</code> as a set of connectives is NOT complete
+</summary>
+<ol type="1">
+<li>(choose <code>{ ¬, ∨ }</code> xor <code>{ ¬, ∧ }</code>)</li>
+<li>(find <code>P(F)</code> that is true <code>∀F</code> uoc C, but
+falsifiable by <code>F uoc { ¬, ∧ }</code>)</li>
+<li>define <span class="math inline">\mathcal G_{PV}</span> as the
+smallest set that uoc C</li>
+<li>define <code>P(F)</code></li>
+<li>structural induction on def of <code>F uoc C</code> to show
+<code>∀F ∈ G, P(F)</code></li>
+<li>find <code>F uoc { ¬, ∧ }</code> that falsifies
+<code>P(F)</code></li>
+<li><code>∴ C</code> is not complete</li>
+</ol>
+</details>
+<details class="example" open>
+<summary>
+<code>{ ↓ } = { NOR }</code> is complete
+</summary>
+<ul>
+<li><code>¬P &lt;=&gt; P ↓ P</code></li>
+<li><code>P ∨ Q &lt;=&gt; ¬(P ↓ Q) &lt;=&gt; (P ↓ Q) ↓ (P ↓ Q)</code></li>
+</ul>
+</details>
+<h1 id="cfg-and-pda">8 CFG and PDA</h1>
+<blockquote>
+<p>define <span class="math inline">\#(x,y)=|\{(u,v):x=uyv\}|</span></p>
+</blockquote>
+<h2 id="more-big-results">More Big Results</h2>
+<details class="theorem" open>
+<summary>
+The Big Result II
+</summary>
+<p>for a language <span class="math inline">L</span> then equiv:</p>
+<ul>
+<li><span class="math inline">\exists\textsf{CFG }G\enspace L=\mathcal
+L(G)</span></li>
+<li><span class="math inline">\exists\textsf{PDA }M\enspace L=\mathcal
+L(M)</span></li>
+</ul>
+</details>
+<h2 id="pda">8.5 PDA</h2>
+<blockquote>
+<p>NFSA but with a stack</p>
+</blockquote>
+<details class="definition" open>
+<summary>
+PDA <span class="math inline">M=(Q,\Sigma,\Gamma,\delta,s,F)</span>
+</summary>
+<dl>
+<dt>where</dt>
+<dd>
+<span class="math inline">Q</span> finite set of states
+</dd>
+<dd>
+<span class="math inline">\Sigma</span> finite set of input alphabets
+</dd>
+<dd>
+<span class="math inline">\Gamma</span> finite set of stack alphabets
+</dd>
+<dd>
+<span class="math inline">\delta</span> transition function
+</dd>
+<dd>
+<span class="math inline">s\in Q</span> start state
+</dd>
+<dd>
+<span class="math inline">F\sube Q</span> accepting states
+</dd>
+</dl>
+<p><span
+class="math display">\delta:Q\times(\Sigma\cup\{\varepsilon\})\times(\Gamma\cup\{\varepsilon\})\to\mathcal
+P(Q\times(\Gamma\cup\{\varepsilon\}))</span></p>
+<dl>
+<dt>transition function <span class="math inline">\delta</span> at state
+<span class="math inline">q\in Q</span></dt>
+<dd>
+reads a char and pops a symbol from the stack
+</dd>
+<dd>
+returns next state in and pushes a symbol to the stack
+</dd>
+</dl>
+</details>
+<details class="definition" open>
+<summary>
+Configuration <span class="math inline">C=(p,x,\alpha)\in
+Q\times\Sigma^\ast\times\Gamma^\ast</span> of <span
+class="math inline">M</span>
+</summary>
+<dl>
+<dt>where</dt>
+<dd>
+<span class="math inline">p</span> current state
+</dd>
+<dd>
+<span class="math inline">x</span> suffix of input to read
+</dd>
+<dd>
+<span class="math inline">\alpha=X_1X_2\dots X_n</span> current stack
+represented as string
+</dd>
+</dl>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Math</th>
+<th style="text-align: left;">Signature in Rust</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span
+class="math inline">C\vdash_MC&#39;</span></td>
+<td style="text-align: left;"><code
+class="sourceCode rust"><span class="kw">fn</span> moves(C<span class="op">,</span> Cp) <span class="op">-&gt;</span> <span class="dt">bool</span></code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">C\vdash_M^\ast
+C&#39;</span></td>
+<td style="text-align: left;"><code
+class="sourceCode rust"><span class="kw">fn</span> computes(C<span class="op">,</span> Cp) <span class="op">-&gt;</span> <span class="dt">bool</span></code></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt>in diagram, each transition is labeled by <span
+class="math inline">a:X\to Y</span> where</dt>
+<dd>
+<span class="math inline">a\in\Sigma^\ast</span> and <span
+class="math inline">X,Y\in\Gamma\cup\{\varepsilon\}</span>
+</dd>
+<dd>
+read <span class="math inline">a</span>, pop <span
+class="math inline">X</span> from stack, push <span
+class="math inline">Y</span> to stack
+</dd>
+</dl>
+<details>
+<summary>
+Definition.
+</summary>
+<span class="math display">\begin{align*}
+  (p,ax,X\alpha)\vdash(q,x,Y\alpha)\iff&amp;\,(q,Y)\in\delta(p,a,X)\\
+  C\vdash^\ast C&#39;\iff&amp;\,\exists(C_i)_{i=1}^n\textsf{ st }\\
+  &amp;C_1=C\quad C_n=C&#39;\\
+  &amp;\forall1\le i&lt;n\enspace C_i\vdash C_{i+1}\\
+\end{align*}</span> <span class="math display">\mathcal
+L(M)=\{x\in\Sigma^\ast:\exist q\in F\textsf{ st
+}(s,x,\varepsilon)\vdash_M^\ast(q,\varepsilon,\varepsilon)\}</span>
+</details>
+</details>
+<h3 id="dpda-vs-pda">DPDA vs PDA</h3>
+<details class="theorem" open>
+<summary>
+PDA accepts more languages that DPDA
+</summary>
+e.g. unions
+</details>
+<details class="example">
+<summary>
+<span class="math inline">L=\{0^a1^b0^c:a=b\textsf{ or }b=c\}</span> has
+no DPDA
+</summary>
+<pre><code> &lt;S&gt; -&gt; &lt;AB&gt;&lt;C&gt; | &lt;A&gt;&lt;BC&gt;
+&lt;AB&gt; -&gt; 0&lt;AB&gt;1 | ε
+&lt;BC&gt; -&gt; 1&lt;BC&gt;0 | ε
+ &lt;A&gt; -&gt; a&lt;A&gt; | ε
+ &lt;C&gt; -&gt; c&lt;C&gt; | ε</code></pre>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">L=\{x\in\Sigma^\ast:\#(x,0)=\#(x,0)\}</span>
+PDA vs DPDA
+</summary>
+DPDA
+<img width="100%" height="100%" class="tikz" src="./a9e8307fe279786a8fc068087f4c84afac0397ec.svg">
+Nondeterministic PDA that does the same thing
+<img width="100%" height="100%" class="tikz" src="./cbeb05b3db086924404559663c09a305df5b65e9.svg">
+</details>
+<h2 id="rlg-and-srlg">8.4 RLG and SRLG</h2>
+<details class="definition" open>
+<summary>
+Right-Linear CFG
+</summary>
+<p>CFG <span class="math inline">G=(V,\Sigma,P,S)</span> is
+<strong>right-linear</strong> iff <span class="math inline">\forall
+(\_,\alpha)\in P</span> <span class="math display">\begin{align*}
+\alpha=\varepsilon\textsf{ or }\alpha=xB\tag{$x\in\Sigma^\ast\enspace
+B\in V$}
+\end{align*}</span></p>
+is <strong>strict right-linear</strong> iff <span
+class="math inline">\forall(\_,\alpha)\in P</span> <span
+class="math display">\alpha=\varepsilon\textsf{ or }\alpha=B\textsf{ or
+}\alpha=aB\tag{$a\in\Sigma\enspace B\in V$}</span>
+</details>
+<details class="theorem" open>
+<summary>
+The Big Result++
+</summary>
+<p>for a language <span class="math inline">L</span>, then equiv:</p>
+<ul>
+<li><span class="math inline">\exists R\in\mathcal RE\enspace L=\mathcal
+L(R)</span></li>
+<li><span class="math inline">\exists\textsf{DFSA }M\enspace L=\mathcal
+L(M)</span></li>
+<li><span class="math inline">\exists\textsf{NFSA }M\enspace L=\mathcal
+L(M)</span></li>
+<li><span class="math inline">\exists\textsf{RL }G\enspace L=\mathcal
+L(G)</span></li>
+<li><span class="math inline">\exists\textsf{SRL }G\enspace L=\mathcal
+L(G)</span></li>
+</ul>
+</details>
+<h2 id="cfg">8.2 CFG</h2>
+<details class="definition" open>
+<summary>
+CFG <span class="math inline">G=(V,\Sigma,P,S)</span>
+</summary>
+<dl>
+<dt>where</dt>
+<dd>
+<span class="math inline">V</span> set of variables
+</dd>
+<dd>
+<span class="math inline">\Sigma</span> set of terminals
+</dd>
+<dd>
+<span class="math inline">P\in V\times(V\cup\Sigma)^\ast</span> set of
+productions
+</dd>
+<dd>
+<span class="math inline">S</span> start symbol
+</dd>
+<dt>properties</dt>
+<dd>
+<span class="math inline">V\cap\Sigma=\varnothing</span>
+</dd>
+<dd>
+for <span class="math inline">(A,\alpha)\in P\quad A\to\alpha</span> is
+a production
+</dd>
+</dl>
+</details>
+<details class="definition" open>
+<summary>
+Language <span class="math inline">\mathcal L(G)</span> from derivation
+for <span class="math inline">\alpha,\beta\in(V\cup\Sigma)^\ast</span>
+</summary>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Math</th>
+<th style="text-align: left;">Signature in Rust</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span
+class="math inline">\alpha\Rarr\beta</span></td>
+<td style="text-align: left;"><code
+class="sourceCode rust"><span class="kw">fn</span> direct_yields(α<span class="op">,</span> β) <span class="op">-&gt;</span> <span class="dt">bool</span></code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span
+class="math inline">\alpha\Rarr^\ast\beta</span></td>
+<td style="text-align: left;"><code
+class="sourceCode rust"><span class="kw">fn</span> yields(α<span class="op">,</span> β) <span class="op">-&gt;</span> <span class="dt">bool</span></code></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Definition.
+</summary>
+<span class="math display">\begin{align*}
+  \alpha\Rarr_G\beta\iff&amp;\,\exist\alpha_1,\alpha_2\in(V\cup\Sigma)^\ast\enspace
+A\to\gamma\in P\textsf{ st }\\
+  &amp;\alpha=\alpha_1A\alpha_2\quad\beta=\alpha_1\gamma\alpha_2\\
+  \alpha\Rarr_G^\ast\beta\iff&amp;\,\exist (\alpha_i)_{i=1}^n\textsf{ st
+}\\
+  &amp;\alpha_1=\alpha\quad\alpha_n=\beta\\
+  &amp;\forall 1\le i&lt;k\enspace \alpha_i\Rarr_G\alpha_{i+1}\\
+\end{align*}</span> <span class="math display">\mathcal
+L(G)=\{x\in\Sigma^\ast:S\Rarr_G^\ast x\}\textsf{ is a CFL}</span>
+</details>
+</details>
+<details class="algorithm" open>
+<summary>
+Design CFG Left-to-Right
+</summary>
+<ol type="1">
+<li>find variables and what they should produce</li>
+<li>for each variable
+<ol type="1">
+<li>fix each char from <span
+class="math inline">\{\varepsilon,0,1\}</span> as prefix</li>
+<li>find necessary conditions for the rest</li>
+<li>avoid restrictions on the suffix</li>
+</ol></li>
+</ol>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">L=\{x\in\Sigma^\ast:\#(x,00)=\#(x,11)\}</span>
+</summary>
+<dl>
+<dt>Intuitions</dt>
+<dd>
+<span class="math inline">\varepsilon\in L\quad\therefore
+S\Rarr\varepsilon</span>
+</dd>
+<dd>
+L2R: <span class="math inline">0\color{orange}A</span> can be <span
+class="math inline">0\color{orange}0B</span> or <span
+class="math inline">0{\color{orange}1B}\quad\therefore\#(x,00)</span>
+varies
+</dd>
+<dd>
+<span class="math inline">\therefore</span> need to generate new <span
+class="math inline">\color{orange}11</span> in <span
+class="math inline">\color{orange}A</span>
+</dd>
+<dd>
+<span class="math inline">\implies</span> most general way: concat <span
+class="math inline">\color{orange}x1</span> and <span
+class="math inline">\color{orange}1y</span>
+</dd>
+<dd>
+<span class="math inline">\therefore</span> need prefix and suffix <span
+class="math inline">\implies</span> 4 vars
+</dd>
+<dd>
+notice <code>&lt;A10&gt;&lt;A11&gt; === &lt;A11&gt;</code>
+</dd>
+<dt>Variables: let <span
+class="math inline">P:\#(x,00)=\#(x,11)</span></dt>
+<dd>
+<span class="math inline">S:\{x:P(x)\}</span>
+</dd>
+<dd>
+<span class="math inline">A_{00}:\{x:P(x)\textsf{ and }\exists
+y,z\in\Sigma^\ast\enspace x=0y\textsf{ and }x=z0\}</span>
+</dd>
+<dd>
+<span class="math inline">A_{01}:\{x:P(x)\textsf{ and }\exists
+y,z\in\Sigma^\ast\enspace x=0y\textsf{ and }x=z1\}</span>
+</dd>
+<dd>
+<span class="math inline">A_{10}:\{x:P(x)\textsf{ and }\exists
+y,z\in\Sigma^\ast\enspace x=1y\textsf{ and }x=z0\}</span>
+</dd>
+<dd>
+<span class="math inline">A_{11}:\{x:P(x)\textsf{ and }\exists
+y,z\in\Sigma^\ast\enspace x=1y\textsf{ and }x=z1\}</span>
+</dd>
+</dl>
+<p>Productions</p>
+<pre><code>  &lt;S&gt; -&gt; ε | &lt;A00&gt; | &lt;A01&gt; | &lt;A10&gt; | &lt;A11&gt;
+&lt;A00&gt; -&gt; 0 | 0&lt;A01&gt;&lt;A10&gt; | 0&lt;A10&gt;
+&lt;A01&gt; -&gt; 0&lt;A01&gt;&lt;A11&gt; | 0&lt;A11&gt;
+&lt;A10&gt; -&gt; 1&lt;A00&gt; | 1&lt;A10&gt;&lt;A01&gt;
+&lt;A11&gt; -&gt; 1 | 1&lt;A01&gt; | 1&lt;A10&gt;&lt;A01&gt;</code></pre>
+</details>
+<h3 id="parse-tree">Parse Tree</h3>
+<details class="definition" open>
+<summary>
+Ambiguous CFG
+</summary>
+<dl>
+<dt>Ambiguity</dt>
+<dd>
+ambiguous CFG: ParseTree <span class="math inline">\to</span> string is
+not injective
+</dd>
+<dd>
+inheriently ambiguous CFL: <span class="math inline">\exist G</span> st
+<span class="math inline">\mathcal L(G)=L</span> and <span
+class="math inline">G</span> is ambiguous
+</dd>
+</dl>
+</details>
+<details class="example">
+<summary>
+Ambiguous CFG <span class="math inline">S\to\varepsilon,0S1S,1S0S</span>
+for <span class="math inline">S\Rarr^\ast0101</span>
+</summary>
+<pre><code>   0 1 0 1ε   good                       0ε1 0 1   good
+   ↑ ▔▔▔ ↑▔                              ↑▔↑ ▔▔▔
+            S                                 S
+┌─────────┬─┴───────┬───┐            ┌───┬───┬┴────────┐
+0         S         1   S            0   S   1         S
+    ┌───┬─┴─┬───┐       │                │       ┌───┬─┴─┬───┐
+    1   S   0   S       ε                ε       0   S   1   S
+        │       │                                    │       │
+        ε       ε                                    ε       ε
+
+0   1       0       1                0       1   0       1    </code></pre>
+</details>
+<h1 id="fsa-and-regex">7 FSA and Regex</h1>
+<blockquote>
+<p><span class="math inline">\mathcal P</span> is powerset</p>
+</blockquote>
+<h2 id="the-pumping-lemma">7.6 The Pumping Lemma</h2>
+<details class="theorem" open>
+<summary>
+The Pumping Lemma
+</summary>
+<dl>
+<dt>if <span class="math inline">L\sube\Sigma^\ast</span> is a regular
+lang, then <span class="math inline">\exist n&gt;0</span> st <span
+class="math inline">\forall x\in L\enspace\exist
+u,v,w\in\Sigma^\ast</span> st all</dt>
+<dd>
+<span class="math inline">x=uvw</span>
+</dd>
+<dd>
+<span class="math inline">v\ne\varepsilon</span>
+</dd>
+<dd>
+<span class="math inline">|uv|\le n</span>
+</dd>
+<dd>
+<span class="math inline">\forall k\in\mathbb N\enspace uv^kw\in
+L</span>
+</dd>
+</dl>
+</details>
+<details class="example">
+<summary>
+choose good string: <span class="math inline">\small
+L=\{x:\texttt{x.count(1) == x.count(0)}\}</span>
+</summary>
+<dl>
+<dt>by way of contradiction, assume <span class="math inline">L</span>
+is regular</dt>
+<dd>
+<span class="math inline">\therefore\exists n\in\mathbb N</span> as in
+the Pumping Lemma
+</dd>
+<dt>let <span class="math inline">x=0^n1^n</span></dt>
+<dd>
+<span class="math inline">\therefore x\in L</span> and <span
+class="math inline">|x|=2n\ge n</span> by def of <span
+class="math inline">L</span>
+</dd>
+<dt><span class="math inline">\therefore</span> by Pumping Lemma, <span
+class="math inline">\exists u,v,w\in\Sigma^\ast</span> st</dt>
+<dd>
+<ol type="1">
+<li><span class="math inline">x=uvw</span></li>
+</ol>
+</dd>
+<dd>
+<ol start="2" type="1">
+<li><span class="math inline">v\ne\varepsilon</span></li>
+</ol>
+</dd>
+<dd>
+<ol start="3" type="1">
+<li><span class="math inline">|uv|\le n</span></li>
+</ol>
+</dd>
+<dd>
+<ol start="4" type="1">
+<li><span class="math inline">\forall k\in\mathbb N\enspace uv^kw\in
+L</span></li>
+</ol>
+</dd>
+</dl>
+<span class="math display">\begin{align*}
+  \because&amp;\, uv=0^m\quad 0\le m\le n\tag{\sf by 1 3}\\
+  \therefore&amp;\, v=0^k\quad 0&lt;k\le n\tag{\sf by 2}\\
+  \therefore&amp;\,uv^2w=uvvw=0^{n+k}1^n\\
+  \therefore&amp;\, uv^2w\not\in L\tag{$k&gt;0\implies n+k\ne n$}\\
+  \therefore&amp;\,\textsf{contradicts (4)}\\
+  \therefore&amp;\, L\textsf{ is not regular}
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+by cases and choose good <span class="math inline">k</span>: <span
+class="math inline">L=\{10^k1:k\textsf{ is prime}\}</span>
+</summary>
+<p>by the way of contradiction, assume <span
+class="math inline">L</span> is regular<br> <span
+class="math inline">\therefore\exists n&gt;0</span> as in Pumping
+Lemma<br> let <span class="math inline">x=10^p1</span> where <span
+class="math inline">p&gt;n</span> is a prime<br> <span
+class="math inline">\therefore x\in L</span> by def and <span
+class="math inline">|x|=p+2&gt;p&gt;n</span><br></p>
+<dl>
+<dt><span class="math inline">\therefore\exists
+u,v,w\in\Sigma^\ast</span> st</dt>
+<dd>
+<ol type="1">
+<li><span class="math inline">x=uvw</span></li>
+</ol>
+</dd>
+<dd>
+<ol start="2" type="1">
+<li><span class="math inline">v\ne\varepsilon</span></li>
+</ol>
+</dd>
+<dd>
+<ol start="3" type="1">
+<li><span class="math inline">|uv|\le n</span></li>
+</ol>
+</dd>
+<dd>
+<ol start="4" type="1">
+<li><span class="math inline">\forall k\in\mathbb N\quad uv^kw\in
+L</span></li>
+</ol>
+</dd>
+</dl>
+<ul>
+<li><p>case <span class="math inline">u=\varepsilon</span>: <span
+class="math display">\begin{align*}
+&amp;\therefore\exists i&lt;n\textsf{ st }v=10^i\quad w=0^{p-i}1\\
+&amp;\because uv^0w\in L\tag{\sf by 4}\\
+\textsf{but }&amp;uv^0w=w=0^{p-i}1\not\in L\tag{$\nexists x\in L$ st
+$\#_1(x)=1$}\\
+&amp;\therefore\textsf{contradicts }L\textsf{ is regular}
+\end{align*}</span></p></li>
+<li><p>case <span class="math inline">u\ne\varepsilon</span> <span
+class="math display">\begin{align*}
+&amp;\therefore\exists0&lt;j&lt;i&lt;n\textsf{ st }u=10^{i-j}\quad
+v=0^j\quad w=0^{p-i}1\\
+&amp;\because uv^{j(p+1)}w\in L\tag{\sf by 4}\\
+&amp;\textsf{but }uv^{j(p+1)}w=1^{i-j+j(p+1)+p-i}=10^{p(j+1)}1=10^k1\\
+&amp;\textsf{where }k\textsf{ is not prime}\\
+&amp;\therefore uv^{j(p+1)}w\not\in L\\
+&amp;\therefore\textsf{contradicts }L\textsf{ is regular}
+\end{align*}</span></p></li>
+</ul>
+</details>
+<h2 id="the-big-result">7.6 The Big Result</h2>
+<details class="theorem" open>
+<summary>
+The Big Result
+</summary>
+<p>for a language <span class="math inline">L</span>, then equiv:</p>
+<ul>
+<li><span class="math inline">\exist R\in\mathcal RE\enspace L=\mathcal
+L(R)</span></li>
+<li><span class="math inline">\exists\textsf{DFSA }M\enspace L=\mathcal
+L(M)</span></li>
+<li><span class="math inline">\exists\textsf{NFSA }M\enspace L=\mathcal
+L(M)</span></li>
+</ul>
+</details>
+<details class="theorem" open>
+<summary>
+NFSA<span class="math inline">\implies</span>DFSA
+</summary>
+<p>given NFSA <span
+class="math inline">M=(Q,\Sigma,\delta,s,F)</span></p>
+<dl>
+<dt>define DFSA <span
+class="math inline">M&#39;=(Q&#39;,\Sigma&#39;,\delta&#39;,s&#39;,F&#39;)</span>
+where</dt>
+<dd>
+<span class="math inline">Q&#39;=\mathcal P(Q)</span>
+</dd>
+<dd>
+<span class="math inline">s&#39;=\mathcal E(s)</span>
+</dd>
+<dd>
+<span class="math inline">F&#39;=\{q&#39;\in Q&#39;:q&#39;\cap
+F\ne\varnothing\}</span> (i.e. states containing an accepted <span
+class="math inline">q</span>)
+</dd>
+<dd>
+<span class="math inline">\delta&#39;(q&#39;,a)=\bigcup_{q\in
+q&#39;}\left(\bigcup_{q&#39;&#39;\in\delta(q,a)}\mathcal
+E(q&#39;&#39;)\right)</span>
+</dd>
+</dl>
+<details>
+<summary>
+informal explanation
+</summary>
+<ul>
+<li><p><span class="math inline">Q&#39;</span>: all subsets of <span
+class="math inline">Q</span> (i.e. has <span
+class="math inline">2^{|Q|}</span> states)</p></li>
+<li><p><span class="math inline">s&#39;</span>: reachable states from
+<span class="math inline">s</span> by <span
+class="math inline">\varepsilon</span></p></li>
+<li><p><code
+class="sourceCode rust">Fp <span class="op">=</span> Qp<span class="op">.</span>filter(<span class="op">|</span>qp<span class="op">|</span> <span class="op">!</span>qp<span class="op">.</span>is_disjoint(<span class="op">&amp;</span>F))</code></p></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode rs"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> δp(qp<span class="op">:</span> <span class="op">&amp;</span>State<span class="op">&lt;</span>HashSet<span class="op">&lt;</span>Symbol<span class="op">&gt;&gt;,</span> a<span class="op">:</span> <span class="op">&amp;</span>Symbol)<span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    qp<span class="op">.</span>iter()<span class="op">.</span>map(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">|</span>q<span class="op">|</span> δ(q<span class="op">,</span> a)<span class="op">.</span>map(<span class="op">|</span>qpp<span class="op">|</span> 𝓔(qpp))<span class="op">.</span>flatten()</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    )<span class="op">.</span>flatten()<span class="op">.</span><span class="pp">collect::</span><span class="op">&lt;</span>HashSet<span class="op">&lt;</span>_<span class="op">&gt;&gt;</span>()</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">\mathcal L(M)=\mathcal
+L(((\varepsilon+0+1)0(0+\varepsilon))^\ast)\enspace</span>
+<code>NFSA ==&gt; DFSA</code>
+</summary>
+<p>NFSA <code>==&gt;</code> DFSA
+<img width="100%" height="100%" class="tikz" src="./176b6d3973b10ba5124342be39f094d5e8e7098e.svg"></p>
+<p>same DFSA but refactored</p>
+<div style="width: 50%">
+<p><img width="100%" height="100%" class="tikz" src="./04ddd714223eeca49d8b6a7fd1e44be023edd4b9.svg"></p>
+</div>
+</details>
+<details class="theorem" open>
+<summary>
+Regex<span class="math inline">\implies</span>FSA
+</summary>
+</details>
+<h2 id="closure-under-mathcal-l">7.5 Closure under <span
+class="math inline">\mathcal L</span></h2>
+<details class="algorithm" open>
+<summary>
+Prove <span class="math inline">f</span> is closed under <span
+class="math inline">\mathcal P(\Sigma^\ast)</span> (Regex)
+</summary>
+<dl>
+<dt>define for <span class="math inline">R\in\mathcal{RE}</span></dt>
+<dd>
+<span class="math inline">P(R):\exist R&#39;</span> st <span
+class="math inline">f(\mathcal L(R))=\mathcal L(R&#39;)</span>
+</dd>
+<dt>base</dt>
+<dd>
+<span
+class="math inline">P(\varnothing),P(\varepsilon),P(a)\enspace\forall
+a\in\Sigma</span>
+</dd>
+<dt>IS let any <span class="math inline">S,T\in\mathcal{RE}</span></dt>
+<dd>
+assume <span class="math inline">\exist S&#39;,T&#39;</span> st <span
+class="math inline">f(\mathcal L(S))=\mathcal L(S&#39;)\enspace
+f(\mathcal L(T))=\mathcal L(T&#39;)</span>
+</dd>
+<dd>
+wts <span class="math inline">P(S+T)\enspace P(ST)\enspace
+P(S^\ast)</span>
+</dd>
+</dl>
+</details>
+<details class="algorithm" open>
+<summary>
+Prove <span class="math inline">f</span> is closed under <span
+class="math inline">\mathcal P(\Sigma^\ast)</span> (FSA)
+</summary>
+<dl>
+<dt>define for DFSA <span class="math inline">M</span></dt>
+<dd>
+<span class="math inline">P(M):\exist</span> FSA <span
+class="math inline">M&#39;</span> st <span
+class="math inline">f(\mathcal L(M))=\mathcal L(M&#39;)</span>
+</dd>
+</dl>
+</details>
+<details class="theorem" open>
+<summary>
+Known Closures
+</summary>
+<p>if <span class="math inline">L</span> and <span
+class="math inline">L&#39;</span> are regular, then these are also
+regular</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\overline
+L</span></td>
+<td style="text-align: center;"><span class="math inline">L\cup
+L&#39;</span></td>
+<td style="text-align: center;"><span class="math inline">L\cap
+L&#39;</span></td>
+<td style="text-align: center;"><span
+class="math inline">LL&#39;</span></td>
+<td style="text-align: center;"><span
+class="math inline">L^\ast</span></td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">f(L)=\overline L=\Sigma^\ast-L</span>
+</summary>
+<dl>
+<dt>WLOG let any DFSA <span
+class="math inline">M=(Q,\Sigma,\delta,s,F)</span></dt>
+<dd>
+choose DFSA <span class="math inline">\overline
+M=(Q,\Sigma,\delta,s,Q-F)</span>
+</dd>
+</dl>
+<span class="math display">\begin{align*}
+  \therefore x\in\mathcal L(\overline M)&amp;\iff\delta^\ast(s,x)\in
+Q-F\tag{\sf def of AC}\\
+  &amp;\iff\delta^\ast(s,x)\not\in F\tag{\sf def of $\overline M$}\\
+  &amp;\iff x\not\in\mathcal L(M)\tag{\sf def of AC}\\
+  \therefore \mathcal L(\overline M)&amp;=\overline{\mathcal
+L(M)}=\overline L\textsf{ as wanted}
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+<span class="math inline">f(L)=\{u0v:u,v\in\Sigma^\ast,uv\in L\}</span>
+</summary>
+<dl>
+<dt>let <span class="math inline">\Sigma=\{0,1\}</span></dt>
+<dd>
+define <span class="math inline">f(L)=\{u0v:u,v\in\Sigma^\ast,uv\in
+L\}</span>
+</dd>
+<dd>
+wts <span class="math inline">P(R):\exist R&#39;</span> st <span
+class="math inline">\mathcal L(R&#39;)=f(\mathcal L(R))</span>
+</dd>
+<dt><strong>base</strong></dt>
+<dd>
+case <span class="math inline">R=\varnothing</span>: let <span
+class="math inline">R&#39;=\varnothing</span> <span
+class="math display">\begin{align*}
+  \therefore\mathcal L(R)&amp;=\varnothing\\
+  \therefore f(\mathcal L(R))&amp;=\varnothing\tag{\sf def of $f$}\\
+  &amp;=\mathcal L(R&#39;)\textsf{ as wanted}
+\end{align*}</span>
+</dd>
+<dd>
+<p>case <span class="math inline">R=\varepsilon</span>: let <span
+class="math inline">R&#39;=0</span> <span
+class="math display">\begin{align*}
+  \therefore\mathcal L(R)&amp;=\{\varepsilon\}\\
+  \therefore f(\mathcal L(R))&amp;=\{0\}\tag{\sf def of $f$}\\
+  &amp;=\mathcal L(R&#39;)\textsf{ as wanted}
+\end{align*}</span></p>
+</dd>
+<dd>
+<p>case <span class="math inline">R=b\enspace\forall b\in\Sigma</span>:
+let <span class="math inline">R&#39;=0b+b0</span> <span
+class="math display">\begin{align*}
+  \therefore\mathcal L(R)&amp;=\{b\}\\
+  \therefore f(\mathcal L(R))&amp;=\{0b,b0\}\tag{\sf def of $f$}\\
+  &amp;=\mathcal L(R&#39;)\textsf{ as wanted}
+\end{align*}</span></p>
+</dd>
+<dt><strong>IS</strong>: let any <span
+class="math inline">S,T\in\mathcal{RE}</span></dt>
+<dd>
+assume <span class="math inline">\exist S&#39;,T&#39;</span> st <span
+class="math inline">\mathcal L(S&#39;)=f(\mathcal L(S))</span> and <span
+class="math inline">\mathcal L(T&#39;)=f(\mathcal L(T))</span> as IH
+</dd>
+<dd>
+case <span class="math inline">R=S+T</span>: let <span
+class="math inline">R&#39;=S&#39;+T&#39;</span> <span
+class="math display">\begin{align*}
+  \therefore f(\mathcal L(R))&amp;=f(\mathcal L(S+T))\\
+  &amp;=f(\mathcal L(S)\cup\mathcal L(T))\tag{\sf prop of $\mathcal
+L$}\\
+  &amp;=f(\mathcal L(S))\cup f(\mathcal L(T))\tag{\sf maturity}\\
+  &amp;=\mathcal L(S&#39;)\cup\mathcal L(T&#39;)\tag{\sf IH}\\
+  &amp;=\mathcal L(S&#39;+T&#39;)=\mathcal L(R&#39;)\textsf{ as wanted}
+\end{align*}</span>
+</dd>
+<dd>
+case <span class="math inline">R=ST</span>: let <span
+class="math inline">R&#39;=S&#39;T+ST&#39;</span> <span
+class="math display">\begin{align*}
+  \therefore f(\mathcal L(R))&amp;=f(\mathcal L(ST))\\
+  &amp;=f(\mathcal L(S)\mathcal L(T))\tag{\sf prop of $\mathcal L$}\\
+  &amp;=f(\mathcal L(S))\mathcal L(T)\cup\mathcal L(S)f(\mathcal
+L(T))\tag{\sf maturity}\\
+  &amp;=\mathcal L(S&#39;)\mathcal L(T)\cup\mathcal L(S)\mathcal
+L(T&#39;)\tag{\sf IH}\\
+  &amp;=\mathcal L(S&#39;T+ST&#39;)=\mathcal L(R&#39;)\textsf{ as
+wanted}\\
+\end{align*}</span>
+</dd>
+<dd>
+case <span class="math inline">R=S^\ast</span>: let <span
+class="math inline">R&#39;=0+S^\ast S&#39;S^\ast</span>
+</dd>
+</dl>
+<p><span class="math display">\begin{align*}
+  \therefore f(\mathcal L(R))&amp;=f(\mathcal L(S^\ast))=f(\mathcal
+L(S)^\ast)\tag{\sf prop of $\mathcal L$}\\
+  &amp;=f(\{\varepsilon\})\cup\mathcal L(S)^\ast f(\mathcal
+L(S))\mathcal L(S)^\ast\tag{\sf maturity}\\
+  &amp;=\{0\}\cup\mathcal L(S^\ast)\mathcal L(S&#39;)\mathcal
+L(S^\ast)\tag{\sf IH}\\
+  &amp;=\mathcal L(0)\cup\mathcal L(S^\ast S&#39;S^\ast)\tag{$\mathcal
+L(0)=\{0\}$}\\
+  &amp;=\mathcal L(0+S^\ast S&#39;S^\ast)=\mathcal L(R&#39;)\textsf{ as
+wanted}
+\end{align*}</span></p>
+<span class="math inline">\therefore</span> by structural induction
+<span class="math inline">P(R)</span> holds for any regex <span
+class="math inline">R\quad\blacksquare</span>
+</details>
+<h2 id="nfsa">7.4 NFSA</h2>
+<details class="definition" open>
+<summary>
+NFSA <span class="math inline">M=(Q,\Sigma,\delta,s,F)</span>
+</summary>
+<dl>
+<dt>where</dt>
+<dd>
+<span class="math inline">Q</span> finite set of states
+</dd>
+<dd>
+<span class="math inline">\Sigma</span> finite input alphabet (set of
+symbols)
+</dd>
+<dd>
+<span
+class="math inline">\delta:Q\times(\Sigma\cup\{\varepsilon\})\to\mathcal
+P(Q)</span> transition function <span
+class="math inline">\delta(q,a)=q&#39;</span>
+</dd>
+<dd>
+<span class="math inline">s\in Q</span> initial/start state
+</dd>
+<dd>
+<span class="math inline">F\sube Q</span> accepting states
+</dd>
+</dl>
+<p>tl;dr its DFSA but</p>
+<ul>
+<li>a state and a symbol maps to a set of states</li>
+<li><span class="math inline">\varepsilon</span> is allowed as a symbol
+(instant transition)</li>
+<li><span class="math inline">\delta^\ast:Q\times\Sigma^\ast\to\mathcal
+P(Q)</span></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Extended Transition Function <span
+class="math inline">\delta:\Sigma:Q\times\Sigma^\ast\to\mathcal
+P(Q)</span>
+</summary>
+<p>define <span class="math inline">\mathcal E:Q\to\mathcal P(Q)</span>
+<br></p>
+<dl>
+<dt>where <span class="math inline">\mathcal E(q)</span> is set of
+states reachable from <span class="math inline">q</span></dt>
+<dd>
+<strong>with only <span
+class="math inline">\varepsilon</span>-transitions</strong> (<span
+class="math inline">\mathcal E(q)\not\equiv\delta(q,\varepsilon)</span>)
+</dd>
+</dl>
+<span class="math display">\delta^\ast(q,x)=\begin{cases}
+  \mathcal E(q)&amp;x=\varepsilon\\
+  \bigcup_{q&#39;\in\delta^\ast(q,y)}\left(\bigcup_{q&#39;&#39;\in\delta(q&#39;,a)}\mathcal
+E(q&#39;&#39;)\right)&amp;x=ya\\
+\end{cases}</span> (it’s just brute-force)
+</details>
+<details class="definition" open>
+<summary>
+Acceptance vs Rejection
+</summary>
+<center>
+<span class="math inline">x\in\Sigma^\ast</span> is
+<strong>accepted</strong><span
+class="math inline">\iff\delta^\ast(s,x)\cap F\ne\varnothing</span>
+</center>
+<ul>
+<li>same definition of <span class="math inline">\mathcal
+L(M)</span></li>
+<li><span
+class="math inline">\delta^\ast(q,x)=\varnothing\implies</span> dead
+state</li>
+</ul>
+</details>
+<h2 id="dfsa">7.3 DFSA</h2>
+<details class="definition" open>
+<summary>
+DFSA <span class="math inline">M=(Q,\Sigma,\delta,s,F)</span>
+</summary>
+<dl>
+<dt>where</dt>
+<dd>
+<span class="math inline">Q</span> finite set of states
+</dd>
+<dd>
+<span class="math inline">\Sigma</span> finite input alphabet (set of
+symbols)
+</dd>
+<dd>
+<span class="math inline">\delta:Q\times\Sigma\to Q</span> transition
+function <span class="math inline">\delta(q,a)=q&#39;</span>
+</dd>
+<dd>
+<span class="math inline">s\in Q</span> initial/start state
+</dd>
+<dd>
+<span class="math inline">F\sube Q</span> accepting states
+</dd>
+</dl>
+</details>
+<details class="definition" open>
+<summary>
+Extended transition function <span
+class="math inline">\delta^\ast:Q\times\Sigma^\ast\to Q</span>
+</summary>
+<p>(takes a string and returns final state)</p>
+<p><span class="math display">\delta^\ast(q,x)=\begin{cases}
+  q&amp;x=\varepsilon\\
+  \delta(\delta^\ast(q,y),a)&amp;x=ya\quad y\in\Sigma^\ast\;
+a\in\Sigma\\
+\end{cases}</span></p>
+</details>
+<details class="definition" open>
+<summary>
+Acceptance vs Rejection
+</summary>
+<center>
+<span class="math inline">x\in\Sigma^\ast</span> is
+<strong>accepted</strong> by <span
+class="math inline">M\iff\delta^\ast(s,x)\in F</span>
+</center>
+<p><span class="math display">\mathcal
+L(M)=\{x\in\Sigma^\ast:\delta^\ast(s,x)\in F\}</span></p>
+P.S. missing transitions also implies rejection
+</details>
+<details class="example">
+<summary>
+Omitted dead states: dead in accepting state is rejected
+</summary>
+<img width="100%" height="100%" class="tikz" src="./e72768562ab928aa2b80eb8b9faa5f80bb6c29b9.svg">
+</details>
+<h3 id="design-and-prove-dfsa">7.3.3 Design and Prove DFSA</h3>
+<details class="algorithm" open>
+<summary>
+Design DFSA given a language defined in English
+</summary>
+<ol type="1">
+<li>find all possible states as <strong>state invariant</strong>
+<ul>
+<li>no need for dead state</li>
+<li>can use <code
+class="sourceCode python"><span class="kw">and</span></code>, don’t use
+<code class="sourceCode python"><span class="kw">or</span></code></li>
+</ul></li>
+<li>find transitions by testing all symbols (that can be appeneded)</li>
+<li>draw and label initial state, accepted states, etc.</li>
+</ol>
+</details>
+<details class="example">
+<summary>
+<code>L(M) = { x ∈ Σ* : x.count(1) is odd &lt;=&gt; x.endswith(1) }</code>
+</summary>
+<ol type="1">
+<li>define SI (that covers all possibilities)</li>
+</ol>
+<p style="font-size: 0.8em">
+<span class="math display">P(x):\delta^\ast(q_0,x)=\begin{cases}
+  q_0&amp;\texttt{if x.count(1) is odd and x.endswith(1)}\\
+  q_1&amp;\texttt{if x.count(1) is odd and not x.endswith(1)}\\
+  q_2&amp;\texttt{if x.count(1) is even and x.endswith(1)}\\
+  q_3&amp;\texttt{if x.count(1) is even and not x.endswith(1)}\\
+\end{cases}</span>
+</p>
+<ol start="2" type="1">
+<li><p>trace (for each symbol in <span
+class="math inline">\Sigma</span>) <span
+class="math display">\begin{align*}
+  \delta(q_0,0)&amp;=q_1&amp;&amp;\delta(q_0,1)=q_2\\
+  \delta(q_1,0)&amp;=q_1&amp;&amp;\delta(q_1,1)=q_2\\
+  \delta(q_2,0)&amp;=q_3&amp;&amp;\delta(q_2,1)=q_0\\
+  \delta(q_3,0)&amp;=q_3&amp;&amp;\delta(q_3,1)=q_0\\
+\end{align*}</span></p></li>
+<li><p>make graph</p></li>
+</ol>
+<p><img width="100%" height="100%" class="tikz" src="./0fe7556221f4bacfa91e5b34466e74a8cf1321e7.svg"></p>
+</details>
+<h2 id="regular-expression">7.2 Regular Expression</h2>
+<details class="definition" open>
+<summary>
+Regex of <span class="math inline">\Sigma</span> (<span
+class="math inline">\varnothing,\varepsilon,a</span> are strings of
+symbols)
+</summary>
+<dl>
+<dt><strong>syntax</strong>: <span
+class="math inline">\mathcal{RE}</span> over <span
+class="math inline">\Sigma\cup\{+,\ast,\varnothing,\varepsilon,(,)\}</span>
+is the <strong>smallest</strong> set of strings st:</dt>
+<dd>
+base: <span
+class="math inline">\varnothing,\varepsilon,a\in\mathcal{RE}\enspace\forall
+a\in\Sigma</span>
+</dd>
+<dd>
+IS: <span class="math inline">R,S\in\mathcal{RE}\implies
+(R+S),(RS),R^\ast\in\mathcal{RE}</span>
+</dd>
+<dt><strong>semantics</strong>:</dt>
+<dd>
+<span class="math inline">(R+S)</span> matches <span
+class="math inline">R</span> or <span class="math inline">S</span>
+</dd>
+<dd>
+<span class="math inline">(RS)</span> matches <span
+class="math inline">RS</span>
+</dd>
+<dd>
+<span class="math inline">R^\ast</span> matches <span
+class="math inline">R^k\quad\forall k\in\mathbb N</span>
+</dd>
+</dl>
+<p><span class="math inline">L</span> is <strong>regular</strong> <span
+class="math inline">\iff\exist R\in\mathcal{RE}</span> st <span
+class="math inline">L=\mathcal L(R)</span></p>
+</details>
+<details class="definition" open>
+<summary>
+<span class="math inline">\mathcal L:\mathcal{RE}\to\mathcal
+P(\Sigma^\ast)</span> returns set of strings that matches <span
+class="math inline">R</span>
+</summary>
+<dl>
+<dt>base (using base cases of <span
+class="math inline">\mathcal{RE}</span>)</dt>
+<dd>
+<span class="math inline">\mathcal L(\varnothing)=\varnothing</span>
+</dd>
+<dd>
+<span class="math inline">\mathcal L(\varepsilon)=\{\varepsilon\}</span>
+</dd>
+<dd>
+<span class="math inline">\mathcal L(a)=\{a\}\enspace\forall
+a\in\Sigma</span>
+</dd>
+<dt>IS: for any <span class="math inline">S,T\in\mathcal
+L(R)</span></dt>
+<dd>
+<span class="math inline">\mathcal L(S+T)=\mathcal L(S)\cup\mathcal
+L(T)</span>
+</dd>
+<dd>
+<span class="math inline">\mathcal L(ST)=\mathcal L(S)\mathcal
+L(T)</span>
+</dd>
+<dd>
+<span class="math inline">\mathcal L(S^\ast)=\mathcal L(S)^\ast</span>
+</dd>
+</dl>
+</details>
+<details class="definition" open>
+<summary>
+Equivalence
+</summary>
+<p><span class="math display">R\equiv S\iff\mathcal L(R)=\mathcal
+L(S)</span></p>
+<table>
+<tbody>
+<tr class="odd">
+<td>comm (union)</td>
+<td><code>R + S === S + R</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>asso (union/concat)</td>
+<td><code>(R+S)+T === R+(S+T)</code></td>
+<td><code>(RS)T === R(ST)</code></td>
+</tr>
+<tr class="odd">
+<td>dist (left/right)</td>
+<td><code>R(S+T) === RS + RT</code></td>
+<td><code>(R+S)T === RS + ST</code></td>
+</tr>
+<tr class="even">
+<td>identity (union/concat)</td>
+<td><code>R + Ø === R</code></td>
+<td><code>Rε === εR === R</code></td>
+</tr>
+<tr class="odd">
+<td>annihilator (concat)</td>
+<td><code>RØ === ØR === Ø</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Idenpotence (star)</td>
+<td><code>R** === R*</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="shorthands">7.2.2 Shorthands</h3>
+<details class="definition" open>
+<summary>
+Less parentheses
+</summary>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Full</th>
+<th style="text-align: left;">Abbrev</th>
+<th style="text-align: right;">Not the Same as</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>((0+1)(11)*)</code></td>
+<td style="text-align: left;"><code>(0+1)(11)*</code></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>((RS*) + T)</code></td>
+<td style="text-align: left;"><code>RS* + T</code></td>
+<td style="text-align: right;"><code>R(S*+T)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>(1(0(11)))</code></td>
+<td style="text-align: left;"><code>1011</code></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>(11+(01+(10+11)))</code></td>
+<td style="text-align: left;"><code>11+01+10+11</code></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h2 id="language">7.1 Language</h2>
+<details class="definition" open>
+<summary>
+Formal Language (over <span class="math inline">\Sigma</span>) is <span
+class="math inline">L\sube\Sigma^*</span>
+</summary>
+<ul>
+<li><span class="math inline">\varnothing\ne\{\varepsilon\}</span></li>
+</ul>
+<p>operations</p>
+<ul>
+<li><span class="math inline">\overline
+L=\Sigma^*-L=\{x\in\Sigma^\ast:x\not\in L\}</span></li>
+<li><span class="math inline">L\cup L&#39;\quad L\cap L&#39;</span></li>
+<li><span class="math inline">L\circ L&#39;=LL&#39;=\{xy:x\in L\enspace
+y\in L&#39;\}</span>
+<ul>
+<li><span class="math inline">\varnothing
+L=\varnothing=L\varnothing</span></li>
+</ul></li>
+<li><span class="math inline">L^R=\{(x)^R:x\in L\}</span></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Kleene star <span class="math inline">L^\ast</span> (set of all possible
+concat of any <span class="math inline">x,y\in L</span>)
+</summary>
+<dl>
+<dt><span class="math inline">L^\ast</span> defined by structural
+induction (should be a circled <span
+class="math inline">\ast</span>)</dt>
+<dd>
+base: <span class="math inline">\varepsilon\in L^\ast</span>
+</dd>
+<dd>
+IS: <span class="math inline">x\in L^\ast\enspace y\in L\implies xy\in
+L^\ast</span>
+</dd>
+</dl>
+<ul>
+<li><span
+class="math inline">\varnothing^\ast=\{\varepsilon\}</span></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Language exponentiation <span class="math inline">L^k</span>
+</summary>
+<span class="math display">L^k=\begin{cases}
+  \{\varepsilon\}&amp;k=0\\
+  L^{k-1}L&amp;k&gt;0
+\end{cases}</span>
+</details>
+<h2 id="string">7.1 String</h2>
+<details class="definition" open>
+<summary>
+</summary>
+<ul>
+<li><strong>alphabet</strong> <span class="math inline">\Sigma</span> is
+set of <em>atomic symbols</em></li>
+<li><strong>string</strong> (over <span
+class="math inline">\Sigma</span>) is finite sequence of symbols <span
+class="math inline">\in\Sigma</span>
+<ul>
+<li><span class="math inline">\varepsilon</span> is empty string</li>
+<li><span class="math inline">\Sigma^*</span> set of all strings over
+<span class="math inline">\Sigma</span></li>
+</ul></li>
+<li>notation
+<ul>
+<li><span class="math inline">a,b,c</span> for symbols <span
+class="math inline">\in\Sigma</span></li>
+<li><span class="math inline">x,y,z</span> for strings <span
+class="math inline">\in\Sigma^*</span></li>
+</ul></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+String operations
+</summary>
+<p>for any <span class="math inline">x\in\Sigma^*</span> (<code
+class="sourceCode rust">x<span class="op">:</span> <span class="dt">String</span></code>)</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span
+class="math inline">x\in\Sigma^*</span></th>
+<th style="text-align: left;"><code
+class="sourceCode rust">x<span class="op">:</span> <span class="dt">String</span></code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">|x|</span></td>
+<td style="text-align: left;"><code
+class="sourceCode rust">x<span class="op">.</span>len()</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">x\circ y</span>
+or <span class="math inline">xy</span></td>
+<td style="text-align: left;"><code
+class="sourceCode rust">x <span class="op">+</span> y</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span
+class="math inline">(x)^R</span></td>
+<td style="text-align: left;"><code
+class="sourceCode rust">x<span class="op">.</span>chars()<span class="op">.</span>rev()<span class="op">.</span>collect()</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">x^k</span></td>
+<td style="text-align: left;"><code
+class="sourceCode rust"><span class="cf">if</span> k <span class="op">==</span> <span class="dv">0</span> <span class="op">{</span> ε <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span> x<span class="op">.</span>repeat(k) <span class="op">}</span></code></td>
+</tr>
+</tbody>
+</table>
+<!-- -->
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span
+class="math inline">x,y\in\Sigma*</span></th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">x=y</span></td>
+<td style="text-align: left;"><span class="math inline">|x|=|y|</span>
+and <span class="math inline">\forall0\le i&lt;|x|\enspace
+x[i]=y[i]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">x</span> is
+<strong>sub</strong> of <span class="math inline">y</span></td>
+<td style="text-align: left;"><span class="math inline">\exist
+x&#39;,x&#39;&#39;\in\Sigma^*</span> st <span
+class="math inline">x&#39;xx&#39;&#39;=y</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">x</span> is
+<strong>proper</strong> sub of <span class="math inline">y</span></td>
+<td style="text-align: left;"><span class="math inline">x</span> is sub
+of <span class="math inline">y</span> and <span class="math inline">x\ne
+y</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">x</span> is
+<strong>prefix</strong> of <span class="math inline">y</span></td>
+<td style="text-align: left;"><span class="math inline">\exist
+x&#39;\in\Sigma^*</span> st <span
+class="math inline">x&#39;x=y</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">x</span> is
+<strong>proper</strong> prefix of <span
+class="math inline">y</span></td>
+<td style="text-align: left;"><span class="math inline">\exist
+x&#39;\ne\varepsilon</span> st <span
+class="math inline">x&#39;x=y</span></td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="example">
+<summary>
+Structural induction: <span class="math inline">(xy)^R=(y)^R(x)^R</span>
+</summary>
+<dl>
+<dt>definition of reverse</dt>
+<dd>
+base: <span class="math inline">x=\varepsilon\implies
+(x)^R=\varepsilon</span>
+</dd>
+<dd>
+IS: <span class="math inline">x=ya\implies (x)^R=a(y)^R</span> <br><br>
+</dd>
+</dl>
+<p>let <span class="math inline">P(y):\forall x\enspace
+(x,y)^R=(y)^R(x)^R</span><br> wts <span class="math inline">\forall
+y\enspace P(y)</span></p>
+<ul>
+<li><p>base: <span class="math inline">y=\varepsilon</span> <span
+class="math display">\begin{align*}
+\therefore (xy)^R&amp;=(x\varepsilon)^R\tag{$y=\varepsilon$}\\
+&amp;=(x)^R\tag{$\forall w\enspace w\varepsilon=w$}\\
+&amp;=\varepsilon(x)^R\tag{$\forall w\enspace \varepsilon w=w$}\\
+&amp;=(y)^R(x)^R\textsf{ as wanted}\tag{$(y)^R=\varepsilon$}\\
+\end{align*}</span></p></li>
+<li><p>IS: let any str <span class="math inline">y&#39;</span></p>
+<ul>
+<li>assume <span class="math inline">P(y&#39;)</span> holds as IH</li>
+<li>wts <span class="math inline">\forall a\in\Sigma\enspace
+y=y&#39;a\implies P(y)</span> <span class="math display">\begin{align*}
+(xy)^R&amp;=(xy&#39;a)^R\tag{$y=y&#39;a$}\\
+&amp;=a(xy&#39;)^R\tag{\sf def of rev}\\
+&amp;=a((y&#39;)^R(x)^R)\tag{\sf IH}\\
+&amp;=(a(y&#39;)^R)(x)^R\tag{\sf associativity}\\
+&amp;=(y&#39;a)^R(x)^R\tag{\sf def of rev}\\
+&amp;=(y)^R(x)^R\textsf{ as wanted}\tag{$y=y&#39;a$}\\
+\end{align*}</span></li>
+</ul></li>
+<li><p><span class="math inline">\therefore</span> by structural
+induction <span class="math inline">P(y)</span> holds for any <span
+class="math inline">y</span></p></li>
+</ul>
+</details>
+<h1 id="structural-induction">4 Structural Induction</h1>
+<details class="definition" open>
+<summary>
+Sets Defined Inductively
+</summary>
+<p>let <span class="math inline">\mathcal E</span> be the
+<strong>smallest</strong> set st</p>
+<ul>
+<li>basis: (elements) <span class="math inline">\in\mathcal
+E</span></li>
+<li>IS: <span class="math inline">e_1,e_2\in\mathcal E\implies</span>
+(operation) <span class="math inline">\in\mathcal E</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+Fully Parenthesised Algebraic Expression
+</summary>
+<p>let <span class="math inline">\mathcal E</span> be the
+<strong>smallest</strong> set st</p>
+<ul>
+<li>(basis) <span class="math inline">x,y,z\in\mathcal E</span></li>
+<li>(IS) <span class="math inline">e_1,e_2\in\mathcal E\implies
+(e_1+e_2), (e_1-e_2)\in\mathcal E</span></li>
+</ul>
+<dl>
+<dt>let <span
+class="math inline">P(e):\mathrm{vr}(e)=\mathrm{op}(e)+1</span>
+where</dt>
+<dd>
+<span class="math inline">\mathrm{vr}(e)</span> is number of variables
+in string <span class="math inline">e</span>
+</dd>
+<dd>
+<span class="math inline">\mathrm{op}(e)</span> is number of operators
+in string <span class="math inline">e</span>
+</dd>
+</dl>
+<p>wts <span class="math inline">\forall e\in\mathcal E\enspace
+P(e)</span></p>
+<ul>
+<li><p>base: <span class="math inline">e=x\enspace e=y\enspace
+e=z</span> <span class="math display">\begin{align*}
+\because&amp;\,\mathrm{vr}(e)=1\quad\mathrm{op}(e)=0\\
+\therefore&amp;\,\mathrm{vr}(e)=\mathrm{op}(e)+1\textsf{ as wanted}
+\end{align*}</span></p></li>
+<li><p>IS: let any <span class="math inline">e_1,e_2\in\mathcal
+E</span></p>
+<ul>
+<li>assume <span class="math inline">P(e_1)\land P(e_2)</span> i.e.
+<span
+class="math display">\mathrm{vr}(e_1)=\mathrm{op}(e_1)+1\quad\mathrm{vr}(e_2)=\mathrm{op}(e_2)+1</span></li>
+<li>wts <span class="math inline">P(e)</span> where <span
+class="math inline">e=(e_1+e_2)</span> or <span
+class="math inline">e=(e_1-e_2)</span> <span
+class="math display">\begin{align*}
+\because\mathrm{vr}(e)&amp;=\mathrm{vr}(e_1)+\mathrm{vr}(e_2)\\
+\mathrm{op}(e)&amp;=\mathrm{op}(e_1)+\mathrm{op}(e_2)+1\tag{1}\\
+\therefore\mathrm{vr}(e)&amp;=(\mathrm{op}(e_1)+1)+(\mathrm{op}(e_2)+1)\qquad\tag{\textsf{IH}}\\
+&amp;=(\mathrm{op}(e_1)+\mathrm{op}(e_2))+2\\
+&amp;=(\mathrm{op}(e)-1)+2\tag{\textsf{by (1)}}\\
+&amp;=\mathrm{op}(e)+1\textsf{ as wanted}
+\end{align*}</span></li>
+</ul></li>
+</ul>
+</details>
+<h1 id="inductiverecursive-function">3 Inductive/Recursive Function</h1>
+<h2 id="unwind-recurrence">3.2 Unwind Recurrence</h2>
+<details class="definition" open>
+<summary>
+Divide-and-Conquer recurrence
+</summary>
+<p><span class="math display">T(n)\begin{cases}
+  c&amp;1\leqslant n&lt;b\\
+  a_1T(\lceil\frac nb\rceil)+a_2T(\lfloor\frac
+nb\rfloor)+dn^l&amp;n\geqslant b\\
+\end{cases}</span></p>
+<dl>
+<dt>where</dt>
+<dd>
+<span class="math inline">a_1,a_2\in\N</span> st <span
+class="math inline">a_1+a_2\geqslant1</span>
+</dd>
+<dd>
+<span class="math inline">b\in\N</span> st <span
+class="math inline">b&gt;1</span>
+</dd>
+<dd>
+<span class="math inline">c,d,l\in\R</span> st <span
+class="math inline">c,d,l\geqslant0</span>
+</dd>
+</dl>
+</details>
+<details class="algorithm" open>
+<summary>
+DaC recurrence upper bound
+</summary>
+let <span class="math inline">n=b^k</span> for <span
+class="math inline">k\in\N</span> <span class="math display">\therefore
+T(n)=\begin{cases}
+  c&amp;1\leqslant n&lt;b\\
+  (a_1+a_2)T\left(\frac nb\right)+dn^l&amp;n\geqslant b\\
+\end{cases}</span>
+</details>
+<details class="example">
+<summary>
+find <span class="math inline">\mathcal O(g(n))</span> (informally)
+</summary>
+<ul>
+<li><p>given <span class="math inline">f(n)</span> (assigment in
+Mergesort) <span class="math display">f(n)=\begin{cases}
+0&amp;n=1\\
+f(\lceil n/2\rceil)+f(\lfloor n/2\rfloor)+2n&amp;n&gt;1
+\end{cases}</span></p></li>
+<li><p>let <span class="math inline">n=2^k</span> for some LARGE <span
+class="math inline">k\in\N</span> <span
+class="math display">\begin{align*}
+\because n/2&amp;=\lceil n/2\rceil=\lfloor n/2\rfloor\tag{$n=2^k$}\\
+\therefore f(n)&amp;=2f(n/2)+2n\tag{\textsf{1st iter}}\\
+&amp;=2(2f(n/4)+n)+2n\\
+&amp;=4f(n/4)+4n\tag{\textsf{2nd iter}}\\
+&amp;=4(2f(n/8)+n/2)+4n\\
+&amp;=8f(n/8)+6n\tag{\textsf{3rd iter}}\\
+&amp;=2^kf(n/2^k)+2kn\tag{\textsf{kth iter}}\\
+&amp;=2^kf(1)+2kn\tag{$n=2^k$}\\
+&amp;=2kn=2n\log_2n\tag{$f(1)=0$}
+\end{align*}</span></p></li>
+</ul>
+</details>
+<h1 id="correctness">2 Correctness</h1>
+<details class="definition" open>
+<summary>
+Terminology
+</summary>
+<ul>
+<li>program is <strong>correct</strong> means <code
+class="sourceCode python">precond <span class="op">==&gt;</span> (termination <span class="kw">and</span> postcond)</code></li>
+<li><strong>termination</strong>: prove <code
+class="sourceCode python">precond <span class="op">==&gt;</span> termination</code></li>
+<li><strong>partial correctness</strong>: prove <code
+class="sourceCode python">(precond <span class="kw">and</span> term) <span class="op">==&gt;</span> postcon</code></li>
+</ul>
+<span class="math inline">\therefore</span> <strong>correct</strong> iff
+(partial correctness and termination)
+</details>
+<h2 id="binary-search">Binary Search</h2>
+<details class="definition" open>
+<summary>
+unimodal slice
+</summary>
+<p>given</p>
+<ul>
+<li><code
+class="sourceCode rust"><span class="kw">let</span> v<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span></code></li>
+<li><code
+class="sourceCode rust"><span class="kw">let</span> (a<span class="op">,</span> b)<span class="op">:</span> (<span class="dt">usize</span><span class="op">,</span> <span class="dt">usize</span>)</code>
+st <code
+class="sourceCode rust"><span class="dv">0</span> <span class="op">&lt;=</span> a <span class="op">&lt;</span> b <span class="op">&lt;=</span> v<span class="op">.</span>len()</code></li>
+</ul>
+<p><code class="sourceCode rust">v[a<span class="op">..</span>b]</code>
+is <strong>unimodal</strong> iff <code
+class="sourceCode rust">∃ m<span class="op">:</span> <span class="dt">usize</span></code>
+st</p>
+<ul>
+<li><code
+class="sourceCode rust">a <span class="op">&lt;=</span> m <span class="op">&lt;</span> b</code></li>
+<li><code
+class="sourceCode rust">v[a<span class="op">..</span>m <span class="op">+</span> <span class="dv">1</span>]</code>
+increases</li>
+<li><code class="sourceCode rust">v[m<span class="op">..</span>q]</code>
+decreases</li>
+</ul>
+<p>then <code
+class="sourceCode rust">mode(v[p<span class="op">..</span>q]) <span class="op">==</span> m</code></p>
+<ul>
+<li><code>v</code> is unimodal <code>&lt;=&gt;</code> <code
+class="sourceCode rust">v[<span class="dv">0</span><span class="op">..</span>v<span class="op">.</span>len()]</code>
+is unimodal</li>
+<li><code class="sourceCode rust">v[a<span class="op">..</span>b]</code>
+increases <code>==&gt;</code> <code
+class="sourceCode rust">m <span class="op">==</span> b <span class="op">-</span> <span class="dv">1</span></code></li>
+<li><code class="sourceCode rust">v[a<span class="op">..</span>b]</code>
+decreases <code>==&gt;</code> <code
+class="sourceCode rust">m <span class="op">==</span> a</code></li>
+<li><code
+class="sourceCode rust">mode(v[a<span class="op">..</span>a <span class="op">+</span> <span class="dv">1</span>]) <span class="op">==</span> a</code></li>
+<li>any subslice of unimodal slice is unimodal</li>
+<li><code
+class="sourceCode rust">v<span class="op">.</span>max() <span class="op">==</span> v[m]</code></li>
+</ul>
+</details>
+<details class="theorem" open>
+<summary>
+Python Lemma 2.2
+</summary>
+<span class="math display">\forall a,b\in\mathbb Z\enspace
+a+1&lt;b\implies a&lt;\left\lfloor\frac{a+b}2\right\rfloor&lt;b</span>
+</details>
+<details class="example">
+<summary>
+Prove iter correct
+</summary>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode numberSource rs numberLines"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">fn</span> max(s<span class="op">:</span> <span class="op">&amp;</span>[<span class="dt">i32</span>]<span class="op">,</span> st<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span> ed<span class="op">:</span><span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>    <span class="co">// precond: 0 &lt;= st &lt; ed &lt;= s.len()</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>    <span class="co">//          s[st..ed] is unimodal</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>    <span class="co">// postcond: return s.max()</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>    <span class="kw">let</span> (<span class="kw">mut</span> a<span class="op">,</span> <span class="kw">mut</span> b) <span class="op">=</span> (st<span class="op">,</span> ed)<span class="op">;</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>    <span class="cf">while</span> a <span class="op">+</span> <span class="dv">1</span> <span class="op">&lt;</span> b<span class="op">{</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>        <span class="kw">let</span> m<span class="op">:</span> <span class="dt">usize</span> <span class="op">=</span> (a <span class="op">+</span> b) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>        <span class="cf">if</span> s[m <span class="op">-</span> <span class="dv">1</span>] <span class="op">&lt;</span> s[m] <span class="op">{</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>            a <span class="op">=</span> mid<span class="op">;</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a>            b <span class="op">=</span> mid<span class="op">;</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>        <span class="op">}</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a>    <span class="op">}</span></span>
+<span id="cb14-14"><a href="#cb14-14"></a>    s[a]</span>
+<span id="cb14-15"><a href="#cb14-15"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>LI</strong></p>
+<ol type="1">
+<li><code
+class="sourceCode python">st <span class="op">&lt;=</span> a <span class="op">&lt;</span> b <span class="op">&lt;=</span> ed</code>
+<ul>
+<li><span class="math inline">\therefore</span> <code
+class="sourceCode python">s[a:b]</code> is unimodal</li>
+</ul></li>
+<li><code
+class="sourceCode python">mode(s[a:b]) <span class="op">==</span> mode(s[st:ed])</code></li>
+</ol>
+<details>
+<summary>
+<span class="y">Prove LI</span>
+</summary>
+<ul>
+<li><p>base: on loop entry <span class="math display">\begin{align*}
+\because&amp;\,a=\mathrm{st}\enspace b=\mathrm{ed}\tag{\sf line 5}\\
+\therefore&amp;\,s[a:b]=s[\mathrm{st}:\mathrm{ed}]\\
+\therefore&amp;\,\textrm{mode }s[a:b]=\textrm{mode
+}s[\textrm{st}:\textrm{ed}]\\
+\therefore&amp;\,\textsf{LI2 holds}\\
+\\
+\because&amp;\,\textrm{st}&lt;\textrm{ed}\tag{\sf precond}\\
+\therefore&amp;\,\textrm{st}\le a&lt;b\le\textrm{ed}\\
+\therefore&amp;\,\textsf{LI1 holds}
+\end{align*}</span></p></li>
+<li><p>IS: for any iter</p>
+<ul>
+<li>assume LI holds before iter as IH</li>
+<li>wts LI holds after iter
+<ul>
+<li>case <code
+class="sourceCode python">s[m <span class="op">-</span> <span class="dv">1</span>] <span class="op">&lt;</span> s[m]</code>
+<span class="math display">\begin{align*}
+\because a&#39;=m&amp;=\left\lfloor\frac{a+b}2\right\rfloor\quad
+b&#39;=b\tag{\sf line 3,4}\\
+\therefore\textrm{mode }&amp;s[\textrm{st}:\textrm{ed}]=\textrm{mode
+}s[a:b]\tag{\sf IH LI2}\\
+&amp;=\textrm{mode }s[m:b]\tag{\sf unimodal}\\
+&amp;=\textrm{mode }s[a&#39;:b&#39;]\\
+\therefore&amp;\,\textsf{LI2 holds as wanted}\\
+\\
+\because a&amp;&lt;m=a&#39;&lt;b&#39;=b\tag{\sf PL}\\
+\because\textrm{st}&amp;\le a&lt;b&lt;\textrm{ed}\tag{\sf IH LI1}\\
+\therefore\textrm{st}&amp;\le a&lt;a&#39;&lt;b&#39;=b&lt;\textrm{ed}\\
+\therefore&amp;\,\textsf{LI1 holds as wanted}
+\end{align*}</span></li>
+<li>case <code
+class="sourceCode python">s[m <span class="op">-</span> <span class="dv">1</span>] <span class="op">&gt;</span> s[m]</code>:
+same structure</li>
+<li>case <code
+class="sourceCode python">s[m <span class="op">-</span> <span class="dv">1</span>] <span class="op">==</span> s[m]</code>:
+impossible because <code>s</code> is unimodal</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+<span class="y">Partial Correctness</span>
+</summary>
+<ul>
+<li>assume termination and LI</li>
+<li>wts postcond <span class="math display">\begin{align*}
+\because a+1&amp;\le b\tag{\sf LI1}\\
+a+1\ge b\tag{\sf line 6}\\
+\therefore a+1&amp;=b\\
+\therefore \textrm{mode }s[\textrm{st}:\textrm{ed}]&amp;=\textrm{mode
+}s[a:b]\tag{\sf LI2}\\
+&amp;=\textrm{mode }s[a:a+1]\\
+&amp;=a\tag{\sf prop of modal}\\
+\therefore\textrm{max}(s)&amp;=s[a]\tag{\sf prop of modal}\\
+&amp;\textsf{is returned as wanted}\tag{\sf line 14}
+\end{align*}</span></li>
+</ul>
+</details>
+<details>
+<summary>
+<span class="y">Termination</span>
+</summary>
+<p>let <span class="math inline">e=b-a</span></p>
+<ul>
+<li>wts <span class="math inline">e\in\mathbb N</span> <span
+class="math display">\begin{align*}
+  \because a&amp;&lt;b\tag{\sf LI1}\\
+  \therefore e&amp;=b-a&gt;0\\
+  \therefore e&amp;\in\mathbb N\textsf{ as wanted}
+\end{align*}</span></li>
+<li>wts <span class="math inline">e&#39;&lt;e</span>
+<ul>
+<li>for any iter
+<ul>
+<li>case <code>s[m - 1] &lt; s[m]</code> (line 8) <span
+class="math display">\begin{align*}
+e&#39;&amp;=b&#39;-a&#39;\tag{\sf def of $e$}\\
+&amp;=b-m\tag{\sf by (Prove LI)}\\
+&amp;&lt;b-a\tag{\sf PL}\\
+&amp;=e\tag{\sf def of $e$}\\
+\end{align*}</span></li>
+<li>(similar to other cases)</li>
+</ul></li>
+</ul></li>
+<li><span class="math inline">\therefore</span> program terminates</li>
+</ul>
+</details>
+</details>
+<h2 id="recursive-program">Recursive Program</h2>
+<details class="algorithm" open>
+<summary>
+Prove recursive program is correct
+</summary>
+<ol type="1">
+<li>find <span class="math inline">P(k)</span> for <span
+class="math inline">k\in\N</span> as input size
+<ul>
+<li><span class="math inline">P(k): n\in\N\land k=n\implies f(n)</span>
+terminates and postcond</li>
+</ul></li>
+<li>use PCI to prove <span class="math inline">\forall n\in\N\enspace
+P(n)</span></li>
+</ol>
+</details>
+<h2 id="iterative-programs">Iterative Programs</h2>
+<details class="theorem" open>
+<summary>
+Corollary of PWO for sequence <span class="math inline">A\sub\N</span>
+</summary>
+<span class="math display">A\sub\N\textsf{ decreases}\implies A\textsf{
+is finite}</span>
+</details>
+<details class="definition" open>
+<summary>
+Loop invariant (LI)
+</summary>
+<p>statements (about each variable) that hold true</p>
+<ul>
+<li>before loop entry</li>
+<li>after each iteration if precond holds</li>
+</ul>
+</details>
+<details class="algorithm" open>
+<summary>
+Prove iterative program is correct
+</summary>
+<ol type="1">
+<li>write (can be incomplete) LI
+<ul>
+<li>need to understand code first (through tracing variables)</li>
+<li>need to describe each variable</li>
+</ul></li>
+<li>use induction to prove LI
+<ul>
+<li>base: prove LI holds on loop entry</li>
+<li>IS: for any iter
+<ul>
+<li>assume LI holds before the iter as IH</li>
+<li>prove LI holds after the iter</li>
+</ul></li>
+</ul></li>
+<li>prove partial correctness
+<ul>
+<li>aka prove <code
+class="sourceCode python">(LI <span class="kw">and</span> termination) <span class="op">=&gt;</span> postcond</code></li>
+<li>(might find new LIs to add to step 1)</li>
+</ul></li>
+<li>prove termination
+<ul>
+<li>aka find expression <span class="math inline">e</span> such that
+<ul>
+<li><span class="math inline">e\in\N</span> from LI</li>
+<li>for any iter, <span class="math inline">e&#39;&lt;e</span></li>
+</ul></li>
+<li>then program will terminate by <strong>PWO</strong></li>
+</ul></li>
+</ol>
+</details>
+<h1 id="induction">1 Induction</h1>
+<blockquote>
+<p><span class="math inline">0\in\N</span></p>
+</blockquote>
+<details class="definition" open>
+<summary>
+Principle of Simple Induction (<strong>PSI</strong>)
+</summary>
+<p>to prove <span class="math inline">\forall n\geqslant b\enspace
+P(n)</span></p>
+<ul>
+<li>base <span class="math inline">P(b)</span></li>
+<li>induction step <span class="math inline">\forall n\geqslant
+b\enspace P(n)\implies P(n+1)</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">\forall n\geqslant18\enspace\exist
+a,b\in\N</span> st <span class="math inline">4a+7b=n</span>
+</summary>
+<p>let <span class="math inline">P(n):\exist a,b\in\N\textsf{ st
+}4a+7b=n</span><br></p>
+<dl>
+<dt>base: <span class="math inline">P(18)</span></dt>
+<dd>
+let <span class="math inline">a=1\enspace b=2</span>
+</dd>
+<dd>
+<span class="math inline">\therefore 4a+7b=4\cdot1+7\cdot2=18</span>
+</dd>
+<dd>
+<span class="math inline">\therefore P(18)</span> holds
+</dd>
+<dt>IS: let <span class="math inline">n\geqslant18</span></dt>
+<dd>
+assume <span class="math inline">P(n)</span> i.e. <span
+class="math inline">\exist a,b\in\N</span> st <span
+class="math inline">4a+7b=n</span> (IH)
+</dd>
+<dd>
+wts <span class="math inline">P(n+1)</span> i.e. <span
+class="math inline">\exist c,d\in\N</span> st <span
+class="math inline">4c+7d=n+1</span>
+</dd>
+</dl>
+<ul>
+<li>case <span class="math inline">b&gt;0</span> <span
+class="math display">\begin{align*}
+\textsf{let }&amp;c=a+2\enspace d=b-1\in\N\\
+\therefore&amp;\,4c+7d=4(a+2)+7(b-1)=4a+8+7b-7\\
+&amp;=4a+7b+1=n+1\textsf{ as wanted}\tag{\textsf{IH}}\\
+\end{align*}</span></li>
+<li>case <span class="math inline">b=0</span> <span
+class="math display">\begin{align*}
+\therefore&amp;\,4a=n\geqslant18\tag{\textsf{IH}}\\
+\therefore&amp;\,a\geqslant\lceil18/4\rceil=5\tag{$a\in\N$}\\
+\textsf{let }&amp;c=a-5\in\N\enspace d=b+3\\
+\therefore&amp;\, 4c+7d=4(a-5)+7(b+3)=4a-20+7b+21\\
+&amp;=4a+7b+1=n+1\textsf{ as wanted}\tag{\textsf{IH}}
+\end{align*}</span></li>
+<li><span class="math inline">\therefore\forall n\geqslant18\enspace
+P(n)</span> by PSI <span
+class="math inline">\quad\blacksquare</span></li>
+</ul>
+</details>
+<details class="definition" open>
+<summary>
+Principle of Complete Induction (<strong>PCI</strong>)
+</summary>
+<p>to prove <span class="math inline">\forall n\geqslant b\enspace
+P(n)</span></p>
+<ul>
+<li>base <span class="math inline">P(b)\enspace P(b+1)\cdots</span>
+(prove <span class="math inline">k</span> base cases)</li>
+<li>IS <span class="math inline">\forall n\geqslant b+k\enspace (\forall
+b\leqslant i&lt;n\enspace P(i))\implies P(n)</span></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">\forall n\geqslant18\enspace\exist
+a,b\in\N</span> st <span class="math inline">4a+7b=n</span>
+</summary>
+<p>let <span class="math inline">P(n):\exist a,b\in\N</span> st <span
+class="math inline">4a+7b=n</span><br></p>
+<dl>
+<dt>base (show <span class="math inline">k=4</span> base cases)</dt>
+<dd>
+show <span class="math inline">P(18)\enspace P(19)\enspace P(20)\enspace
+P(21)</span> holds
+</dd>
+<dt>IS let any <span class="math inline">n\geqslant 18+4=22</span></dt>
+<dd>
+assume <span class="math inline">\forall 18\leqslant i&lt;n\enspace
+P(i)</span> holds
+</dd>
+<dd>
+wts <span class="math inline">P(n)</span> holds i.e. <span
+class="math inline">\exist c,d\in\N</span> st <span
+class="math inline">4c+7d=n</span>
+</dd>
+</dl>
+<p><span class="math display">\begin{align*}
+  \because&amp;\,n\geqslant22\\
+  \therefore&amp;\,18\leqslant n-4\leqslant n\\
+  \therefore&amp;\,P(n-4)\textsf{ holds}\tag{\textsf{IH}}\\
+  \therefore&amp;\,\exist a,b\in\N\textsf{ st }4a+7b=n-4\\
+  \textsf{let }&amp;c=a+1\enspace d=b\\
+  \therefore&amp;\,4c+7d=4(a+1)+7b\\
+  &amp;=4a+7b+4=n-4+4=n\textsf{ as wanted}\tag{\textsf{IH}}
+\end{align*}</span></p>
+<span class="math inline">\therefore\forall n\geqslant18\enspace
+P(n)</span> by PCI <span class="math inline">\quad\blacksquare</span>
+</details>
+</body>
+</html>

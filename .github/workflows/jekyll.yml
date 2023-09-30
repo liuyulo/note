@@ -1,10 +1,10 @@
 name: Builld Jekyll
 
 on:
-    push:
-    branches: ["main"]
+  push:
+  branches: ["main"]
 
-    workflow_dispatch:
+  workflow_dispatch:
 
 permissions:
   contents: read
