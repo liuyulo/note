@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Continuity</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Continuity</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="continuity">Continuity</h1>
+<ul>
+<li><a href="#definition">Definition</a></li>
+<li><a href="#proof">Proof</a>
+<ul>
+<li><a href="#continuous-at-a-point">Continuous at a Point</a></li>
+<li><a href="#continuous-on-a-domain">Continuous on a Domain</a>
+<ul>
+<li><a href="#example-">Example ∆</a></li>
+<li><a href="#example-a2">Example |a|/2</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#continuity-of-functions">Continuity of Functions</a>
+<ul>
+<li><a href="#constant">Constant</a></li>
+<li><a href="#linear">Linear</a></li>
+<li><a href="#sin-sandwich"><code>sin()</code> (Sandwich)</a></li>
+<li><a href="#exponential">Exponential</a></li>
+</ul></li>
+<li><a href="#eivt">E/IVT</a>
+<ul>
+<li><a href="#ivt-proof">IVT Proof</a></li>
+</ul></li>
+<li><a href="#infimum-and-supremum">Infimum and Supremum</a>
+<ul>
+<li><a href="#axioms">Axioms</a></li>
+<li><a href="#sup-ε-theorem">Sup-ε Theorem</a></li>
+<li><a href="#inf-ε-theorem">Inf-ε Theorem</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="definition">Definition</h1>
+<blockquote>
+<p><span class="math inline">f</span> is <em>continuous</em> at <span
+class="math inline">x=c</span> if <span
+class="math inline">\lim\limits_{x\to c}f(x)=f(c)</span><br> <span
+class="math inline">f</span> is <em>left</em> continuous at <span
+class="math inline">x=c</span> if <span
+class="math inline">\lim\limits_{x\to c^-}f(x)=f(c)</span> <br>(<span
+class="math inline">c^+</span> for <em>right</em>)</p>
+</blockquote>
+<ul>
+<li><em>removable discontinuity</em>
+<ul>
+<li><span class="math inline">\exists\lim\limits_{x\to c}f(x)\neq
+f(c)</span></li>
+</ul></li>
+<li><em>jump discontinuity</em>
+<ul>
+<li><span class="math inline">\exists\lim\limits_{x\to
+c^-}f(x)\neq\lim\limits_{x\to c^+}f(x)</span></li>
+</ul></li>
+<li><em>infinite discontinuity</em>
+<ul>
+<li><span class="math inline">\lim\limits_{x\to
+c^\pm}f(x)=\pm\infty</span></li>
+</ul></li>
+</ul>
+<h1 id="proof">Proof</h1>
+<h2 id="continuous-at-a-point">Continuous at a Point</h2>
+<ol type="1">
+<li>plugin <span class="math inline">a</span> in <span
+class="math inline">\lim\limits_{x\to a}f(x)=f(a)</span></li>
+<li>prove <span
+class="math inline">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st }|x-a|&lt;\delta\Rarr|f(x)-f(a)|&lt;\varepsilon</span></li>
+</ol>
+<h2 id="continuous-on-a-domain">Continuous on a Domain</h2>
+<ol type="1">
+<li>state <span class="math inline">\lim\limits_{x\to
+a}f(x)=f(a),\;\forall a\in\text{Dom}(f)</span></li>
+<li>prove <span
+class="math inline">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st }|x-a|&lt;\delta\Rarr|f(x)-f(a)|&lt;\varepsilon</span></li>
+</ol>
+<h3 id="example">Example ∆</h3>
+<p><span class="math inline">\lim\limits_{x\to a}x^3=a^3\quad\forall
+a\in\R</span> <span
+class="math display">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st }|x-a|&lt;\delta\Rarr|x^3-a^3|&lt;\varepsilon</span></p>
+<ul>
+<li>aside <span
+class="math display">|x^3-a^3|=|x-a||x^2+xa+a^2|\le|x-a|(|x|^2+|x||a|+|a|^2)\\
+\begin{aligned}
+  \text{assume }&amp;|x-a|&lt;1\\
+  \therefore\;&amp;|x|=|x-a+a|\le|x-a|+|a|&lt;1+|a|\quad(\Delta)\\
+\end{aligned}\\
+\begin{aligned}
+    \therefore\;|x|^2+|x||a|+|a|^2&amp;\le(1+|a|)^2+\textcolor{aqua}{|a|(1+|a|)}+\textcolor{lime}{|a|^2}\\
+    &amp;&lt;(1+|a|)^2+\textcolor{aqua}{(1+|a|)^2}+\textcolor{lime}{(1+|a|)^2}\\
+    &amp;=3(1+|a|)^2\\
+\end{aligned}\\
+\begin{aligned}
+    \therefore\;|x-a|(|x|^2+|x||a|+|a|^2)\le|x-a|\cdot3(1+|a|)^2&amp;&lt;\varepsilon\\
+    |x-a|&amp;&lt;\frac\varepsilon{3(1+|a|)^2}=\delta
+\end{aligned}</span></li>
+<li>proof <span class="math display">\text{given
+}\varepsilon&gt;0,\text{ let
+}\delta=\text{min}\left\{1,\frac\varepsilon{3(1+|a|)^2}\right\}\\
+\begin{aligned}
+\therefore\;|x-a|&lt;\delta\Rarr|x^3-a^3|=|x-a||x^2+xa+a^2|&amp;&lt;3(1+|a|)^2|x-a|\\
+&amp;=3(1+|a|^2)\delta\\
+&amp;=\frac{3\varepsilon(1+|a|)^2}{3(1+|a|)^2}=\varepsilon\quad\blacksquare
+\end{aligned}</span></li>
+</ul>
+<h3 id="example-a2">Example |a|/2</h3>
+<p><span class="math inline">\lim\limits_{x\to
+a}\frac1x=\frac1a</span></p>
+<p><span
+class="math display">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st
+}|x-a|&lt;\delta\Rarr\left|\frac1x-\frac1a\right|&lt;\varepsilon</span></p>
+<ul>
+<li>aside <span
+class="math display">\left|\frac1x-\frac1a\right|=\frac{|x-a|}{|x||a|}&lt;\varepsilon\Rarr|x-a|&lt;\varepsilon|x||a|\\
+\begin{aligned}
+    \text{assume }|x-a|&amp;&lt;\frac{|a|}2\\
+     |x|-|a|\le|x-a|&amp;&lt;\frac{|a|}2\\
+     |x|-|a|&amp;&lt;\frac{|a|}2\\
+     |x|&amp;&lt;\frac{3|a|}2\\
+\end{aligned}\\
+\therefore\;|x-a|&lt;\varepsilon|x||a|&lt;\frac{3a^2}2\varepsilon=\delta</span></li>
+<li>proof <span class="math display">\text{given
+}\varepsilon&gt;0,\text{ let
+}\delta=\text{min}\left\{\frac{|a|}2,\frac{3a^2}2\varepsilon\right\}\\
+\therefore\;|x-a|&lt;\delta\Rarr\left|\frac1x-\frac1a\right|=\frac{|x-a|}{|x||a|}&lt;\frac\delta{|x||a|}&lt;\frac{2\delta}{3a^2}=\frac{2(3a^2/2)\varepsilon}{3a^2}=\varepsilon\quad\blacksquare</span></li>
+</ul>
+<h1 id="continuity-of-functions">Continuity of Functions</h1>
+<h2 id="constant">Constant</h2>
+<p><span class="math inline">\lim\limits_{x\to
+c}k=k\qquad\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{ st
+}0&lt;|x-c|&lt;\delta\Rarr|k-k|&lt;\varepsilon</span></p>
+<p><span class="math display">\text{given
+}\varepsilon&gt;0\\|k-k|=0&lt;\varepsilon\quad\blacksquare</span></p>
+<h2 id="linear">Linear</h2>
+<p><span class="math inline">\lim\limits_{x\to c}(mx+b)=mc+b</span></p>
+<p><span
+class="math display">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st }0&lt;|x-c|&lt;\delta\Rarr|(mx+b)-(mc+b)|&lt;\varepsilon</span></p>
+<ul>
+<li>aside: <span class="math display">\begin{aligned}
+    |(mx+b)-(mc+b)|=|m||x-c|&amp;&lt;\varepsilon\\
+    |x-c|&amp;&lt;\frac\varepsilon{|m|}=\delta
+\end{aligned}</span></li>
+<li>proof: <span class="math display">\begin{aligned}
+    \text{given }\varepsilon&gt;0\text{ let
+}\delta=\frac\varepsilon{|m|}\\
+\therefore\;0&lt;|x-c|&lt;\delta\Rarr|(mx+b)-(mc+b)|&amp;=|m||x-c|=|m|\delta\\
+&amp;=|m|\frac\varepsilon{|m|}=\varepsilon\quad\blacksquare
+\end{aligned}</span>
+</details></li>
+</ul>
+<h2 id="sin-sandwich"><code>sin()</code> (Sandwich)</h2>
+<p><span class="math inline">\lim\limits_{x\to c}\sin x=\sin
+c</span></p>
+<p><img src="assets/limsin.png" /> 1. prove <span
+class="math inline">\lim\limits_{\theta\to0}\sin\theta=0</span> <span
+class="math display">\begin{aligned}
+       \because\;&amp;|\text{arc}AC|=\theta\quad|AB|=\sin\theta\\
+       \therefore\;&amp;0\le|AB|\le|\text{arc}AC|\\
+       &amp;0\le\sin\theta\le\theta\\
+       \therefore\;&amp;\lim\limits_{\theta\to0}0\le\lim\limits_{\theta\to0}\sin\theta\le\lim\limits_{\theta\to0}\theta\\
+       &amp;0\le\lim\limits_{\theta\to0}\sin\theta\le0\\
+       \therefore\;&amp;\lim\limits_{\theta\to0}\sin\theta=0
+   \end{aligned}</span> 2. prove <span
+class="math inline">\lim\limits_{\theta\to0}\cos\theta=1</span> <span
+class="math display">\begin{aligned}
+       \because\;&amp;|AC|^2=|AB|^2+|BC|^2=\sin^2\theta+(1-\cos\theta)^2\\
+       \therefore\;&amp;|AC|=\sqrt{\sin^2\theta+(1-\cos\theta)^2}=\sqrt{2-2\cos\theta}\\
+       \because\;&amp;0\le|AC|\le\theta\\
+       \therefore\;&amp;0\le\sqrt{2-2\cos\theta}\le\theta\\
+       &amp;-2\le-2\cos\theta\le\theta^2-2\\
+       &amp;1-\frac{\theta^2}2\le\cos\theta\le1\\
+       \therefore\;&amp;\lim\limits_{\theta\to0}{1-\frac{\theta^2}2}\le\lim\limits_{\theta\to0}\cos\theta\le\lim\limits_{\theta\to0}1\\
+       &amp;1\le\lim\limits_{\theta\to0}\cos\theta\le1\\
+       \therefore\;&amp;\lim\limits_{\theta\to0}\cos\theta=1
+   \end{aligned}</span> 3. prove <span
+class="math inline">\lim\limits_{x\to c}\sin x=\sin c</span> <span
+class="math display">\begin{aligned}
+       \lim\limits_{x\to c}\sin
+x&amp;=\lim\limits_{h\to0}\sin(h+c)=\lim\limits_{h\to0}(\sin h\cos
+c+\sin c\cos h)\\
+       &amp;=0\cdot\cos c+\sin c\cdot1=\sin c\quad\blacksquare
+   \end{aligned}</span></p>
+<h2 id="exponential">Exponential</h2>
+<p><span class="math inline">\lim\limits_{x\to c}e^x=e^c</span> -
+prerequisite <span class="math display">\begin{aligned}
+      \lim\limits_{h\to0}(1+h)^{\frac1h}&amp;=\lim\limits_{n\to\infty}(1+\frac1n)^n=e\\
+      \lim\limits_{h\to0}\frac{e^h-1}h&amp;=1
+  \end{aligned}</span> - proof <span
+class="math display">\begin{aligned}
+      \lim\limits_{x\to
+c}e^x&amp;=\lim\limits_{h\to0}e^{h+c}=\lim\limits_{h\to0}e^c\cdot\lim\limits_{h\to0}e^h=e^c\lim\limits_{h\to0}\left(\frac{e^h-1}h\cdot
+h+1\right)\\
+      &amp;=e^c(1\cdot0+1)=e^c\quad\blacksquare
+  \end{aligned}</span></p>
+<h1 id="eivt">E/IVT</h1>
+<ul>
+<li><strong>E</strong>xtreme <strong>V</strong>alue
+<strong>T</strong>heorem<br> if <span class="math inline">f</span> is
+continuous on <span class="math inline">[a,b]\implies\exist
+M,m\in[a,b]\text{ st }f(M)</span> is the <em>max</em> value and <span
+class="math inline">f(m)</span> is the <em>min</em> value of <span
+class="math inline">f(x)</span> for <span
+class="math inline">x\in[a,b]</span></li>
+<li><strong>I</strong>nterediate <strong>V</strong>alue
+<strong>T</strong>heorem<br> if <span class="math inline">f</span> is
+continuous on <span class="math inline">[a,b]\implies\forall
+f(a)&lt;K&lt;f(b)\enspace\exist c\in(a,b)\text{ st }f(c)=K</span>
+<ul>
+<li><span class="math inline">f</span> can change sign at <span
+class="math inline">x=c\text{ iff }\textcolor{aqua}{f(c)=0}\lor
+\textcolor{lime}{f(c)\text{ DNE}}\lor\textcolor{coral}{f(c)\text{
+discontinues}}</span></li>
+</ul></li>
+</ul>
+<h2 id="ivt-proof">IVT Proof</h2>
+<p><span class="math display">\text{let }g(x)=f(x)-K\\
+\begin{aligned}
+    &amp;\therefore\;\forall f(a)&lt;K&lt;f(b)\Rarr\begin{cases}
+        g(a)=f(a)-K&lt;0\\
+        g(b)=f(b)-K&gt;0
+    \end{cases}\\
+    &amp;\therefore\;\text{(lemma)}\exist c\in(a,b)\text{ st
+}g(c)=f(c)-K=0\\
+    &amp;\therefore\;f(c)=K\quad\blacksquare\\
+\end{aligned}</span></p>
+<h1 id="infimum-and-supremum">Infimum and Supremum</h1>
+<ul>
+<li>for finite sets
+<ul>
+<li><span class="math inline">\text{Inf }S=\text{min}\{S_n\}</span></li>
+<li><span class="math inline">\text{Sup }S=\text{max}\{S_n\}</span></li>
+</ul></li>
+<li>for infinite sets
+<ul>
+<li><span class="math inline">\text{Inf
+}S=\lim\limits_{n\to-\infty}S_n</span></li>
+<li><span class="math inline">\text{Sup
+}S=\lim\limits_{n\to\infty}S_n</span></li>
+</ul></li>
+</ul>
+<h2 id="axioms">Axioms</h2>
+<blockquote>
+<p>every nonempty set of real numbers that is bounded from above has a
+Supremum<br> every nonempty set of real numbers that is bounded from
+below has a Infimum</p>
+</blockquote>
+<h2 id="sup-ε-theorem">Sup-ε Theorem</h2>
+<blockquote>
+<p>let <span class="math inline">M=\text{Sup }S</span> and <span
+class="math inline">\varepsilon&gt;0\quad\therefore\;\exist s\in S\text{
+st }M-\varepsilon&lt;s\le M</span></p>
+</blockquote>
+<ul>
+<li>proof <span class="math display">\begin{aligned}
+    &amp;\because\;\text{Sup }S=M\\
+    &amp;\therefore\;s\le M
+\end{aligned}\\
+\begin{aligned}
+    \text{assume }&amp;\neg\exist s\in S\text{ st }M-\varepsilon&lt;s\\
+    \therefore\;&amp;\forall s\in S\enspace s\le M-\varepsilon\\
+    \therefore\;&amp;\text{Sup }S=M-\varepsilon\\
+    &amp;\text{contradicts the initial assumption that }\text{Sup }S=M\\
+    \therefore\;\exist s\in&amp;S\text{ st }M-\varepsilon&lt;s\le M
+\end{aligned}</span></li>
+</ul>
+<h2 id="inf-ε-theorem">Inf-ε Theorem</h2>
+<blockquote>
+<p>let <span class="math inline">m=\text{Inf }S</span> and <span
+class="math inline">\varepsilon&gt;0\quad\therefore\;\exist s\in S\text{
+st }m\le s&lt;m+\varepsilon</span></p>
+</blockquote>
+<ul>
+<li>proof $$
+<span class="math display">\begin{aligned}
+    &amp;\because\;\text{Inf }S=m\\
+    &amp;\therefore\;s\ge m
+\end{aligned}</span>
+\
+<span class="math display">\begin{aligned}
+    \text{assume }&amp;\neg\exist s\in S\text{ st }s&lt;m+\varepsilon\\
+    \therefore\;&amp;\forall s\in S\enspace m+\varepsilon\le s\\
+    \therefore\;&amp;\text{Inf }S=m+\varepsilon\\
+    &amp;\text{contradicts the initial assumption that }\text{Inf }S=M\\
+    \therefore\;\exist s\in&amp;S\text{ st }m\le s&lt;m+\varepsilon
+\end{aligned}</span>
+\</li>
+</ul>
+</body>
+</html>

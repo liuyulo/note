@@ -1,3 +1,9 @@
+---
+title: Application of Derivative
+---
+
+
+
 <div id="left">
 
 <!-- omit in toc -->
@@ -80,7 +86,7 @@
   - assume $f$ is cont on $[a,b]$ and diffable on $(a,b)$
   - let $l$ be the secant line from $(a,f(a))$ to $(b,f(b))$
     $$l=\frac{f(b)-f(a)}{b-a}(x-a)+f(a)$$
-  - let $g=f-l$  
+  - let $g=f-l$
     $$g=f(x)-\frac{f(b)-f(a)}{b-a}(x-a)+f(a)$$
   - $\because f$ and $l$ are both cont on $[a,b]$ and diffable on $(a,b)$<br>
     $\therefore g$ is cont on $[a,b]$ and diffable on $(a,b)$
@@ -151,7 +157,7 @@ $$\begin{aligned}
       │f(1) < 0                    │f(4) > 0
    f  │             neg            │  pos
    ───┼──────────────────────┼─────┴────────
-      │f'(1) < 0             │f(4) > 0      
+      │f'(1) < 0             │f(4) > 0
    f' │          ↘          min      ↗
    ───┼──────────────┼───────┴──────────────
       │f''(1) < 0    │f''(3) > 0
@@ -160,7 +166,7 @@ $$\begin{aligned}
 
                               🭿
    0 ─── 2.12 ─── 3 ─── 3.87 ───>
-      🭾        🭼     🭿        
+      🭾        🭼     🭿
    ```
 7. draw graph (with left side mirrored)<br>
    ![](assets/curve.png)

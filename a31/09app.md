@@ -1,3 +1,9 @@
+---
+title: Application
+---
+
+
+
 <div id="left">
 
 <!-- omit in toc -->
@@ -77,9 +83,9 @@
 	- $+20$ sells implies $-10$\$ price
 - find revenue function and deriv (no cost mentioned)
   $$\begin{aligned}
-  p(x)&=350-\frac{10(x-200)}{20}=350-\frac{x-200}2=450-\frac x2\\ 
+  p(x)&=350-\frac{10(x-200)}{20}=350-\frac{x-200}2=450-\frac x2\\
   R(x)&=xp(x)=450x-\frac{x^2}2\quad x\in\R^+\\
-  R'(x)&=450-x\\  
+  R'(x)&=450-x\\
   \end{aligned}$$
 - find cp<br>
   $R'(x)=0$ when $x=450$ <br>
@@ -103,10 +109,10 @@ given $\frac{dV}{dt}$, find $\frac{dy}{dt}$ where $y=6$
 </center>
 
 $$\begin{aligned}
-	\frac{dV}{dt}&=9\\ 
-	V&=\frac{\pi r^2h}3=\frac{\pi x^2y}3\\ 
+	\frac{dV}{dt}&=9\\
+	V&=\frac{\pi r^2h}3=\frac{\pi x^2y}3\\
 	\frac xy&=\frac rh=\frac12\Rarr x=\frac y2\\
-	\therefore V&=\frac{\pi y}{3}\cdot\frac{y^2}4=\frac\pi{12}y^3\\ 
-	\frac{dV}{dt}&=\frac{\pi}4y^2\frac{dy}{dt}=9\\ 
+	\therefore V&=\frac{\pi y}{3}\cdot\frac{y^2}4=\frac\pi{12}y^3\\
+	\frac{dV}{dt}&=\frac{\pi}4y^2\frac{dy}{dt}=9\\
 	\frac{dy}{dt}&=\frac{36}{\pi y^2}=\frac1\pi
 \end{aligned}$$

@@ -1,3 +1,9 @@
+---
+title: Derivative
+---
+
+
+
 <div id="left">
 
 <!-- omit in toc -->
@@ -95,7 +101,7 @@ approx root of $f(x)=x^3-2x-5$ (3 decimals)
 2. to choose $x_0$ for $\cos x-x=0$
    - $\cos x=x$<br>
      ![](assets/cosxx.png)
-   - $\because$ intersection in $(0,\pi/2)$  
+   - $\because$ intersection in $(0,\pi/2)$
    - $\therefore$ choose $x_0=1\in(0,\pi/2)$
 
 # Rules
@@ -381,10 +387,10 @@ $$\begin{aligned}
   \end{aligned}$$
 - if $x=\ln(\sec\theta+\tan\theta)$ then $\sec\theta=\cosh x$
   $$\begin{aligned}
-    \cosh x&=\frac{e^x+e^{-x}}2=\frac12\left(e^{\ln(\sec\theta+\tan\theta)}+e^{-\ln(\sec\theta+\tan\theta)}\right)\\ 
-    &=\frac12\left(\sec\theta+\tan\theta+\frac1{\sec\theta+\tan\theta}\right)\\ 
-    &=\frac12\left(\sec\theta+\tan\theta+\frac{\sec\theta-\tan\theta}{\sec^2\theta-\tan^2\theta}\right)\\ 
-    &=\frac12(\sec\theta+\tan\theta+\sec\theta-\tan\theta)\\ 
+    \cosh x&=\frac{e^x+e^{-x}}2=\frac12\left(e^{\ln(\sec\theta+\tan\theta)}+e^{-\ln(\sec\theta+\tan\theta)}\right)\\
+    &=\frac12\left(\sec\theta+\tan\theta+\frac1{\sec\theta+\tan\theta}\right)\\
+    &=\frac12\left(\sec\theta+\tan\theta+\frac{\sec\theta-\tan\theta}{\sec^2\theta-\tan^2\theta}\right)\\
+    &=\frac12(\sec\theta+\tan\theta+\sec\theta-\tan\theta)\\
     &=\sec\theta
   \end{aligned}$$
 

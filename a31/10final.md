@@ -1,3 +1,7 @@
+---
+title: Final Review
+---
+
 <div id="left">
 
 <!-- omit in toc -->
@@ -65,7 +69,7 @@ approx root of $f(x)=x^3-2x-5$ (3 decimals)
 2. to choose $x_0$ for $\cos x-x=0$
    - $\cos x=x$<br>
      ![](assets/cosxx.png)
-   - $\because$ intersection in $(0,\pi/2)$  
+   - $\because$ intersection in $(0,\pi/2)$
    - $\therefore$ choose $x_0=1\in(0,\pi/2)$
 
 # Deriv
@@ -101,10 +105,10 @@ $$(\text{asinh }u)'=\frac{u'}{\sqrt{u^2+1}}\quad(\text{acosh }u)'=\frac{u'}{\sqr
   \end{aligned}$$
 - if $x=\ln(\sec\theta+\tan\theta)$ then $\sec\theta=\cosh x$
   $$\begin{aligned}
-    \cosh x&=\frac{e^x+e^{-x}}2=\frac12\left(e^{\ln(\sec\theta+\tan\theta)}+e^{-\ln(\sec\theta+\tan\theta)}\right)\\ 
-    &=\frac12\left(\sec\theta+\tan\theta+\frac1{\sec\theta+\tan\theta}\right)\\ 
-    &=\frac12\left(\sec\theta+\tan\theta+\frac{\sec\theta-\tan\theta}{\sec^2\theta-\tan^2\theta}\right)\\ 
-    &=\frac12(\sec\theta+\tan\theta+\sec\theta-\tan\theta)\\ 
+    \cosh x&=\frac{e^x+e^{-x}}2=\frac12\left(e^{\ln(\sec\theta+\tan\theta)}+e^{-\ln(\sec\theta+\tan\theta)}\right)\\
+    &=\frac12\left(\sec\theta+\tan\theta+\frac1{\sec\theta+\tan\theta}\right)\\
+    &=\frac12\left(\sec\theta+\tan\theta+\frac{\sec\theta-\tan\theta}{\sec^2\theta-\tan^2\theta}\right)\\
+    &=\frac12(\sec\theta+\tan\theta+\sec\theta-\tan\theta)\\
     &=\sec\theta
   \end{aligned}$$
 ## Curve Sketching
@@ -156,7 +160,7 @@ $$\begin{aligned}
       │f(1) < 0                    │f(4) > 0
    f  │             neg            │  pos
    ───┼──────────────────────┼─────┴────────
-      │f'(1) < 0             │f(4) > 0      
+      │f'(1) < 0             │f(4) > 0
    f' │          ↘          min      ↗
    ───┼──────────────┼───────┴──────────────
       │f''(1) < 0    │f''(3) > 0
@@ -165,7 +169,7 @@ $$\begin{aligned}
 
                               🭿
    0 ─── 2.12 ─── 3 ─── 3.87 ───>
-      🭾        🭼     🭿        
+      🭾        🭼     🭿
    ```
 7. draw graph (with left side mirrored)<br>
    ![](assets/curve.png)
@@ -199,14 +203,14 @@ $$\begin{aligned}
 
 - proof
   $$\begin{aligned}
-      &\because\;\text{Sup }S=M\\ 
+      &\because\;\text{Sup }S=M\\
       &\therefore\;s\le M
-  \end{aligned}\\ 
+  \end{aligned}\\
   \begin{aligned}
-      \text{assume }&\neg\exist s\in S\text{ st }M-\varepsilon<s\\ 
-      \therefore\;&\forall s\in S\enspace s\le M-\varepsilon\\ 
-      \therefore\;&\text{Sup }S=M-\varepsilon\\ 
-      &\text{contradicts the initial assumption that }\text{Sup }S=M\\ 
+      \text{assume }&\neg\exist s\in S\text{ st }M-\varepsilon<s\\
+      \therefore\;&\forall s\in S\enspace s\le M-\varepsilon\\
+      \therefore\;&\text{Sup }S=M-\varepsilon\\
+      &\text{contradicts the initial assumption that }\text{Sup }S=M\\
       \therefore\;\exist s\in&S\text{ st }M-\varepsilon<s\le M
   \end{aligned}$$
 
@@ -216,16 +220,16 @@ $$\begin{aligned}
 
 - proof
   $$\begin{aligned}
-      &\because\;\text{Inf }S=m\\ 
+      &\because\;\text{Inf }S=m\\
       &\therefore\;s\ge m
-  \end{aligned}\\ 
+  \end{aligned}\\
   \begin{aligned}
-      \text{assume }&\neg\exist s\in S\text{ st }s<m+\varepsilon\\ 
+      \text{assume }&\neg\exist s\in S\text{ st }s<m+\varepsilon\\
       \therefore\;&\forall s\in S\enspace m+\varepsilon\le s\\
       \therefore\;&\text{Inf }S=m+\varepsilon\\
-      &\text{contradicts the initial assumption that }\text{Inf }S=M\\ 
+      &\text{contradicts the initial assumption that }\text{Inf }S=M\\
       \therefore\;\exist s\in&S\text{ st }m\le s<m+\varepsilon
-  \end{aligned}\\ 
+  \end{aligned}\\
 
 
 # Cont
@@ -235,11 +239,11 @@ $\lim\limits_{x\to c}e^x=e^c$
 - prerequisite
   $$\begin{aligned}
       \lim\limits_{h\to0}(1+h)^{\frac1h}&=\lim\limits_{n\to\infty}(1+\frac1n)^n=e\\
-      \lim\limits_{h\to0}\frac{e^h-1}h&=1  
+      \lim\limits_{h\to0}\frac{e^h-1}h&=1
   \end{aligned}$$
 - proof
   $$\begin{aligned}
-      \lim\limits_{x\to c}e^x&=\lim\limits_{h\to0}e^{h+c}=\lim\limits_{h\to0}e^c\cdot\lim\limits_{h\to0}e^h=e^c\lim\limits_{h\to0}\left(\frac{e^h-1}h\cdot h+1\right)\\ 
+      \lim\limits_{x\to c}e^x&=\lim\limits_{h\to0}e^{h+c}=\lim\limits_{h\to0}e^c\cdot\lim\limits_{h\to0}e^h=e^c\lim\limits_{h\to0}\left(\frac{e^h-1}h\cdot h+1\right)\\
       &=e^c(1\cdot0+1)=e^c\quad\blacksquare
   \end{aligned}$$
 

@@ -1,3 +1,7 @@
+---
+title: Proof Techniques
+---
+
 <div id="left">
 
 <!-- omit in toc -->
@@ -28,7 +32,7 @@ example definitions
 
 
 ## Quantifiers
-> for all upside-down A, there exists a backwards E 
+> for all upside-down A, there exists a backwards E
 
 - **$\forall x, P$** property $P$ holds for all possible values of $x$
 - **$\exist x\text{ st }P$** property $P$ is true for at least one value of $x$
@@ -61,44 +65,44 @@ example definitions
 ## Calculational
 prove that for all real numbers $a$ and $b$, $a^3-b^3=(a-b)(a^2+ab+b^2)$
 $$\begin{aligned}
-    (a-b)(a^2+ab+b^2)&=a^3+a^2b+ab^2-a^2b-ab^2-b^3\\ 
-    &=a^3-b^3\quad\forall a,b\in\R\\ 
-\end{aligned}\\ 
+    (a-b)(a^2+ab+b^2)&=a^3+a^2b+ab^2-a^2b-ab^2-b^3\\
+    &=a^3-b^3\quad\forall a,b\in\R\\
+\end{aligned}\\
 \therefore\; a^3-b^3=(a-b)(a^2+ab+b^2)\qquad\text{QED}$$
 
 ## Direct
 prove that $f(x)=\frac{x-3}{x+2}$ is **one-to-one** function
 $$\begin{aligned}
-    \text{Given: }&f(x)=\frac{x-3}{x-2}\\ 
+    \text{Given: }&f(x)=\frac{x-3}{x-2}\\
     \text{Show: }&f(x)\text{ is one-to-one}\\
 \end{aligned}\\
 \,\\
-\text{Definition: }f\text{ is one-to-one if }\exist a,b\text{ st }f(a)=f(b)\Rarr a=b\quad a,b\in\text{Dom}(f)\\ 
+\text{Definition: }f\text{ is one-to-one if }\exist a,b\text{ st }f(a)=f(b)\Rarr a=b\quad a,b\in\text{Dom}(f)\\
 \begin{aligned}
-    f(a)&=f(b)\\ 
-    \frac{a-3}{a+2}&=\frac{b-3}{b+2}\\ 
-    (b+2)(a-3)&=(b-3)(a+2)\\ 
-    ab-3b+2a-6&=ab-3a+2b-6\\ 
-    2a-3b&=2b-3a\\ 
-    5a&=5b\\ 
+    f(a)&=f(b)\\
+    \frac{a-3}{a+2}&=\frac{b-3}{b+2}\\
+    (b+2)(a-3)&=(b-3)(a+2)\\
+    ab-3b+2a-6&=ab-3a+2b-6\\
+    2a-3b&=2b-3a\\
+    5a&=5b\\
     a&=b
-\end{aligned}\\ 
+\end{aligned}\\
 \begin{aligned}
-    \therefore\;&f(a)=f(b)\Rarr a=b\\ 
+    \therefore\;&f(a)=f(b)\Rarr a=b\\
     \therefore\;&f(x)\text{ is one-to-one}\qquad\text{QED}
 \end{aligned}$$
 
 ## Contradiction
 prove that the sum of a rational number and an irrational number is irrational
 $$\begin{aligned}
-    \text{Given: }&r\in\Bbb{Q}, x\not\in\Bbb{Q}\\ 
+    \text{Given: }&r\in\Bbb{Q}, x\not\in\Bbb{Q}\\
     \text{Show: }&r+x\not\in\Bbb{Q}\\
-\end{aligned}\\\,\\ 
+\end{aligned}\\\,\\
 \begin{aligned}
-    \text{Assume }&r+x\in\Bbb{Q}\\ 
-    \therefore\;&\exist s\in\Bbb{Q}\text{ st }r+x=s\\ 
-    \because\;&s,r\in\Bbb{Q}\\ 
-    \therefore\;&x=s-r\in\Bbb{Q}\\ 
-    &\text{which contradicts the initial assumption that }x\not\in\Bbb{Q}\\ 
+    \text{Assume }&r+x\in\Bbb{Q}\\
+    \therefore\;&\exist s\in\Bbb{Q}\text{ st }r+x=s\\
+    \because\;&s,r\in\Bbb{Q}\\
+    \therefore\;&x=s-r\in\Bbb{Q}\\
+    &\text{which contradicts the initial assumption that }x\not\in\Bbb{Q}\\
     \therefore\;&r+x\not\in\Bbb{Q}\qquad\text{QED}
 \end{aligned}$$

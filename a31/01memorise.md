@@ -1,12 +1,15 @@
+---
+title: To Memorise
+---
 
 # Algebra
 
 ## Square Both Sides
 > when see abs on both sides
 $$\begin{aligned}
-    |x-3|&\gt|2x+1|\\ 
-    (x-3)^2&\gt(2x+1)^2\\ 
-    (x-2/3)(x+4)&\lt0\\ 
+    |x-3|&\gt|2x+1|\\
+    (x-3)^2&\gt(2x+1)^2\\
+    (x-2/3)(x+4)&\lt0\\
     x&\in(-4,2/3)
 \end{aligned}$$
 
@@ -59,7 +62,7 @@ $$\sin^2x+\cos^2x=1\\\tan^2x+1=\sec^2x\\\cot^2x+1=\csc^2x$$
 $$\sin(-x)=-\sin(x)\\\cos(-x)=\cos(x)$$
 
 ### Sum/Diff
-$$\textcolor{aqua}{\sin}(x\pm y)=\textcolor{aqua}{\sin} x\textcolor{lime}{\cos} y\textcolor{coral}{\pm}\textcolor{lime}{\cos} x\textcolor{aqua}{\sin} y\\ 
+$$\textcolor{aqua}{\sin}(x\pm y)=\textcolor{aqua}{\sin} x\textcolor{lime}{\cos} y\textcolor{coral}{\pm}\textcolor{lime}{\cos} x\textcolor{aqua}{\sin} y\\
 \textcolor{lime}{\cos}(x\pm y)=\textcolor{lime}{\cos} x\textcolor{lime}{\cos} y\textcolor{coral}{\mp}\textcolor{aqua}{\sin} x\textcolor{aqua}{\sin} y$$
 
 ### Double Angle

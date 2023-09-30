@@ -1,3 +1,7 @@
+---
+title: Precalculus
+---
+
 <div id="left">
 
 <!-- omit in toc -->
@@ -37,7 +41,7 @@
 *(lecture)*
 ## (Non)Pos vs (Non)Neg
 $$\begin{aligned}
-    \text{positive: }x\gt0&\quad\text{nonpositive: }x\le0\\ 
+    \text{positive: }x\gt0&\quad\text{nonpositive: }x\le0\\
     \text{negative: }x<0&\quad\text{nonnegative: }x\ge0
 \end{aligned}$$
 
@@ -61,14 +65,14 @@ $$\begin{aligned}
 
 ## Absolute Value
 > $|a|=\begin{cases}
-    a&\text{if }a\ge0\\ 
+    a&\text{if }a\ge0\\
     -a&\text{if }a\lt0
 \end{cases}$
 - distance between 2 real numbers is $\text{dist}(a,b)=|b-a|$
 - distance between $P$ and $Q$ is $\text{dist}(P,Q)=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$
 
 ## Punctured Interval
-punctured interval of radius $\delta$ around $a$ 
+punctured interval of radius $\delta$ around $a$
 |           |              Open              |         Closed          |
 | :-------: | :----------------------------: | :---------------------: |
 | Geometric | $(a-\delta,a)\cup(a,a+\delta)$ |  $(a-\delta,a+\delta)$  |
@@ -79,8 +83,8 @@ punctured interval of radius $\delta$ around $a$
 ## Rational
 **don't cross multiply**
 $$\begin{aligned}
-    \frac pq&<\frac rs\\ 
-    \frac pq-\frac rs&<0\\ 
+    \frac pq&<\frac rs\\
+    \frac pq-\frac rs&<0\\
     \frac{ps-rq}{qs}&<0
 \end{aligned}$$
 - then find critical points and test values
@@ -101,21 +105,21 @@ split $|f(x)|\lt a$ to
 *(lecture)*
 $$f:\R\to\R\text{ defined by }f(x)=x^2\\
 \begin{aligned}
- \text{Domain}(f)&=\{x\in\R\}\\ 
- \text{Range}(f)&=\{y\in\R|y\ge0\}\\ 
- \text{Codomain}(f)&=\{x\in\R\}\\    
+ \text{Domain}(f)&=\{x\in\R\}\\
+ \text{Range}(f)&=\{y\in\R|y\ge0\}\\
+ \text{Codomain}(f)&=\{x\in\R\}\\
 \end{aligned}$$
 - example
 $$f(x)=\frac1{\sqrt{x^2-1}}\\
 f(x)\text{ is defined if}\begin{cases}
-    \sqrt{x^2-1}&\neq0\\ 
+    \sqrt{x^2-1}&\neq0\\
     x^2-1&\ge0
-\end{cases}\Rarr x^2-1\gt0\\ 
+\end{cases}\Rarr x^2-1\gt0\\
 \begin{aligned}
-    x^2-1&\gt0\\ 
-    x^2&\gt1\\ 
-    |x|&\gt1\\ 
-    x&\in(-\infty,1)\cup(1,\infty)=\text{Dom}(f)\\ 
+    x^2-1&\gt0\\
+    x^2&\gt1\\
+    |x|&\gt1\\
+    x&\in(-\infty,1)\cup(1,\infty)=\text{Dom}(f)\\
 \end{aligned}$$
 
 ## Vertical Line Test
@@ -136,11 +140,11 @@ two functions are equal iff
 </blockquote>
 
 $$\begin{aligned}
-    f(x)&=\frac{x^2-1}{x-1}&g(x)&=x+1\\ 
-    \text{Dom}(f)&=\R\setminus\{1\}&\text{Dom}(g)&=\R\\ 
+    f(x)&=\frac{x^2-1}{x-1}&g(x)&=x+1\\
+    \text{Dom}(f)&=\R\setminus\{1\}&\text{Dom}(g)&=\R\\
 \end{aligned}\\
 \begin{aligned}
-    \because&\text{Dom}(f)\neq\text{Dom}(g)\\ 
+    \because&\text{Dom}(f)\neq\text{Dom}(g)\\
     \therefore&f(x)\neq g(x)
 \end{aligned}$$
 
@@ -150,8 +154,8 @@ $$\begin{aligned}
 > even if $f(-x)=f(x)$<br>
 > odd if $f(-x)=-f(x)$
 
-$$f(x)=x^3+3\\ 
-f(-x)=-x^3-3\neq f(x)\neq-f(x)\\ 
+$$f(x)=x^3+3\\
+f(-x)=-x^3-3\neq f(x)\neq-f(x)\\
 \therefore\text{neither}$$
 
 ### Inverse
@@ -185,7 +189,7 @@ $$-2(3^x)=\left(e^{\ln-2}\right)\left(e^{\ln3^x}\right)=-\left(e^{\ln-2}\right)\
 ### Inequality
 $$\begin{aligned}
     \ln\left(\frac{x-1}2\right)&\gt0\\
-    \frac{x-1}2&\gt1\quad\text{(}f(x)=e^x\text{both side)}\\ 
+    \frac{x-1}2&\gt1\quad\text{(}f(x)=e^x\text{both side)}\\
     x&\gt3\quad\text{Answer: }x\in(3,\infty)
 \end{aligned}$$
 
@@ -195,51 +199,51 @@ $$\begin{aligned}
 ### Solve `sin()`
 $\sin(x)=\textcolor{lime}{\sin(\pm\pi-x)}+2\pi n$
 $$\begin{aligned}
-    4\sin^2x&=1\\ 
-    4\sin^2x-1&=0\\ 
-    (2\sin x-1)(2\sin x+1)&=0\\ 
+    4\sin^2x&=1\\
+    4\sin^2x-1&=0\\
+    (2\sin x-1)(2\sin x+1)&=0\\
 \end{aligned}\\
 \,\\
 \begin{aligned}
-    2\sin x-1&=0&2\sin x+1&=0\\ 
-    2\sin x&=1&\sin x&=-\frac12\\ 
-    \sin x&=\frac12&\sin(-x)&=\frac12\\ 
-    x_1&=\frac\pi6+\textcolor{lime}{2\pi n}&x_1&=-\frac\pi6+\textcolor{lime}{2\pi n}\\ 
+    2\sin x-1&=0&2\sin x+1&=0\\
+    2\sin x&=1&\sin x&=-\frac12\\
+    \sin x&=\frac12&\sin(-x)&=\frac12\\
+    x_1&=\frac\pi6+\textcolor{lime}{2\pi n}&x_1&=-\frac\pi6+\textcolor{lime}{2\pi n}\\
     x_2&=\left(\textcolor{aqua}{\pi-\frac\pi6}\right)+\textcolor{lime}{\textcolor{lime}{2\pi n}}\quad\because\text{odd}&x_2&=\left(\textcolor{aqua}{\frac\pi6-\pi}\right)+\textcolor{lime}{2\pi n}\quad\because\text{odd}
-\end{aligned}\\ 
+\end{aligned}\\
 \begin{aligned}
-    \therefore x_1&=\pm\frac\pi6+\textcolor{lime}{2\pi n}\\ 
-    x_2&=\pm\frac{5\pi}6+\textcolor{lime}{2\pi n}\\ 
+    \therefore x_1&=\pm\frac\pi6+\textcolor{lime}{2\pi n}\\
+    x_2&=\pm\frac{5\pi}6+\textcolor{lime}{2\pi n}\\
     n&\in\Z
 \end{aligned}$$
 
 ### Solve `cos()`
 $\cos(x)=\textcolor{lime}{\cos(-x)}+2\pi n$
 $$\begin{aligned}
-    \cos x&=\frac{\sqrt3}2\\ 
-    x_1&=\pi/6+\textcolor{lime}{2\pi n}\\ 
-    x_2&=\textcolor{aqua}{-\pi/6}+\textcolor{lime}{2\pi n}\quad\because\text{even}\\ 
+    \cos x&=\frac{\sqrt3}2\\
+    x_1&=\pi/6+\textcolor{lime}{2\pi n}\\
+    x_2&=\textcolor{aqua}{-\pi/6}+\textcolor{lime}{2\pi n}\quad\because\text{even}\\
     \therefore x&=\pm\pi/6+\textcolor{lime}{2\pi n},n\in\Z
 \end{aligned}$$
 
 ### Solve `cot()` (or `tan()`)
 $\tan(x)=\textcolor{lime}{\tan(x)+\pi n}$
 $$\begin{aligned}
-    \sqrt3\cot(3x)+1&=0\\ 
-    \cot(3x)&=-\frac1{\sqrt3}\\ 
-    3x&=\text{atan}(-\sqrt3)+\textcolor{lime}{\pi n},n\in\Z\\ 
-    3x&=\frac{2\pi}3+\textcolor{lime}{\pi n}\\ 
-    x&=\frac{2\pi}9+\frac{\textcolor{lime}{\pi n}}3,n\in\Z 
+    \sqrt3\cot(3x)+1&=0\\
+    \cot(3x)&=-\frac1{\sqrt3}\\
+    3x&=\text{atan}(-\sqrt3)+\textcolor{lime}{\pi n},n\in\Z\\
+    3x&=\frac{2\pi}3+\textcolor{lime}{\pi n}\\
+    x&=\frac{2\pi}9+\frac{\textcolor{lime}{\pi n}}3,n\in\Z
 \end{aligned}$$
 
 ### Convert Angle Beforehand
 $$\begin{aligned}
-    \sin\left(-\frac{3\pi}4\right)&=\sin\left(\frac{3\pi}4-\pi\right)=\sin\left(-\frac\pi4\right)\\ 
+    \sin\left(-\frac{3\pi}4\right)&=\sin\left(\frac{3\pi}4-\pi\right)=\sin\left(-\frac\pi4\right)\\
     &=-\sin\left(\frac\pi4\right)=\frac{\sqrt2}2
 \end{aligned}$$
 
 ### Careful of aTrig Range
-$$\text{asin}(\sin(-2))=\text{asin}(\sin(2-\pi))=2-\pi\\ 
+$$\text{asin}(\sin(-2))=\text{asin}(\sin(2-\pi))=2-\pi\\
 \because-2\lt\textcolor{aqua}{-\pi/2}\lt2-\pi$$
 ![](assets/asinsin.png)
 

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Derivative</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Derivative</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#definition">Definition</a>
+<ul>
+<li><a href="#one-sided">One-Sided</a></li>
+<li><a href="#leibniz">Leibniz</a></li>
+</ul></li>
+<li><a href="#linearisation">Linearisation</a>
+<ul>
+<li><a href="#approximation">Approximation</a></li>
+<li><a href="#newtons-method">Newton’s Method</a>
+<ul>
+<li><a href="#example">Example</a></li>
+<li><a href="#caution">Caution</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#rules">Rules</a>
+<ul>
+<li><a href="#constant">Constant</a></li>
+<li><a href="#power">Power</a></li>
+<li><a href="#coefficient">Coefficient</a></li>
+<li><a href="#sum">Sum</a></li>
+<li><a href="#product">Product</a></li>
+<li><a href="#quotient">Quotient</a></li>
+<li><a href="#chain">Chain</a></li>
+<li><a href="#implicit">Implicit</a>
+<ul>
+<li><a href="#linearisation-1">Linearisation</a></li>
+</ul></li>
+<li><a href="#exponential">Exponential</a></li>
+<li><a href="#logarithmic">Logarithmic</a></li>
+<li><a href="#trigonometric">Trigonometric</a>
+<ul>
+<li><a href="#arctrig">ArcTrig</a></li>
+</ul></li>
+<li><a href="#hyperbolic">Hyperbolic</a>
+<ul>
+<li><a href="#archyp">ArcHyp</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#strategies">Strategies</a>
+<ul>
+<li><a href="#use-ln-for-factorised">Use <code>ln()</code> for
+Factorised</a></li>
+<li><a href="#double-derivative">Double Derivative</a></li>
+<li><a href="#piece-wise">Piece-wise</a></li>
+<li><a href="#root">Root</a></li>
+<li><a href="#abuse-variables">(Ab)Use Variables</a></li>
+<li><a href="#simplify-hyperbolic">Simplify Hyperbolic</a></li>
+<li><a href="#hyp-algebra">Hyp Algebra</a></li>
+</ul></li>
+<li><a href="#normal-line">Normal Line</a></li>
+</ul>
+</div>
+<h1 id="definition">Definition</h1>
+<blockquote>
+<p><span
+class="math display">f&#39;(x)=\lim\limits_{h\to0}\frac{f(x+h)-f(x)}h=\lim\limits_{x\to
+a}\frac{f(x)-f(a)}{x-a}</span></p>
+</blockquote>
+<ul>
+<li><span class="math inline">f&#39;(a)</span> exists <span
+class="math inline">\implies f</span> is <em>differentiable</em> at
+<span class="math inline">x=a\implies f</span> is <em>continuous</em> at
+<span class="math inline">x=a</span></li>
+</ul>
+<h2 id="one-sided">One-Sided</h2>
+<blockquote>
+<p><span
+class="math display">f&#39;_-(x)=\lim\limits_{h\to0^-}\frac{f(x+h)-f(x)}h\quad
+f&#39;_+(x)=\lim\limits_{h\to0^+}\frac{f(x+h)-f(x)}h</span></p>
+</blockquote>
+<h2 id="leibniz">Leibniz</h2>
+<blockquote>
+<p>given <span class="math inline">f(x)</span>, <span
+class="math inline">x</span>, <span class="math inline">\Delta x</span>,
+find <span class="math inline">\Delta y</span> and <span
+class="math inline">dy</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  f&#39;(x)&amp;=\frac{dy}{dx}\approx\frac{\Delta y}{\Delta
+x}=\frac{f(x+\Delta x)-f(x)}{\Delta x}\\
+  \therefore\;\Delta y&amp;=f(x+\Delta x)-f(x)\\
+  dy&amp;=f&#39;(x)dx\\
+\end{aligned}</span></p>
+<h1 id="linearisation">Linearisation</h1>
+<blockquote>
+<p>the <em>tangent line</em> of <span class="math inline">f</span> at
+<span class="math inline">x=a</span> is <span
+class="math display">L(x)=f(a)+f&#39;(a)(x-a)</span></p>
+</blockquote>
+<h2 id="approximation">Approximation</h2>
+<ul>
+<li>approx <span class="math inline">\sqrt{16.1}</span> <span
+class="math display">(\sqrt{x})&#39;=\lim\limits_{h\to0}\frac{\sqrt{x+h}-\sqrt
+x}h=\lim\limits_{h\to0}\frac{x+h-x}{h(\sqrt{x+h}+\sqrt x)}=\frac1{2\sqrt
+x}\\
+\therefore\;L(x)=\sqrt a+\frac1{2\sqrt a}(x-a)\\
+\text{let }a=16\\
+\therefore\;L(16.1)=4+\frac18(16.1-16)=4.0125</span></li>
+</ul>
+<h2 id="newtons-method">Newton’s Method</h2>
+<p><img src="assets/newton.png" /> &gt; <span
+class="math display">x_{n+1}=x_n-\frac{f(x_n)}{f&#39;(x_n)}</span></p>
+<ol type="1">
+<li>choose <span class="math inline">x_0</span> by
+<strong>IVT</strong></li>
+<li>find <span class="math inline">f&#39;(x)</span></li>
+<li>do iterations until accuracy reached</li>
+</ol>
+<h3 id="example">Example</h3>
+<p>approx root of <span class="math inline">f(x)=x^3-2x-5</span> (3
+decimals) 1. IVT <span class="math display">\begin{aligned}
+       \because\;&amp;f(1)=-6&lt;0\quad f(3)=15&gt;0\\
+       \therefore\;&amp;\text{let }x_0=2\in(1,3)
+   \end{aligned}</span> 2. find derivative <span
+class="math display">f&#39;=\lim\limits_{h\to0}\frac{f(x+h)-f(x)}h=...=3x^2-2</span>
+3. iterate (need to find same decimals twice) <span
+class="math display">\begin{aligned}
+       &amp;x_1=x_0-\frac{f(x_0)}{f&#39;(x_0)}=...\approx2.1000\\
+       &amp;x_2=x_1-\frac{f(x_1)}{f&#39;(x_1)}=...\approx2.0946\\
+       &amp;x_3=x_2-\frac{f(x_2)}{f&#39;(x_2)}=...\approx\textcolor{aqua}{2.0946}
+   \end{aligned}</span></p>
+<h3 id="caution">Caution</h3>
+<ol type="1">
+<li>make sure IVT works</li>
+<li>to choose <span class="math inline">x_0</span> for <span
+class="math inline">\cos x-x=0</span>
+<ul>
+<li><span class="math inline">\cos x=x</span><br> <img
+src="assets/cosxx.png" /></li>
+<li><span class="math inline">\because</span> intersection in <span
+class="math inline">(0,\pi/2)</span></li>
+<li><span class="math inline">\therefore</span> choose <span
+class="math inline">x_0=1\in(0,\pi/2)</span></li>
+</ul></li>
+</ol>
+<h1 id="rules">Rules</h1>
+<h2 id="constant">Constant</h2>
+<blockquote>
+<p><span class="math display">\forall c\in\R\quad(c)&#39;=0</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  f(x)&amp;=c\\
+  f&#39;(x)&amp;=\lim\limits_{x\to c}\frac{c-c}{x-c}\\
+  &amp;=\lim\limits_{x\to c}\frac0{x-c}=0\quad\blacksquare
+\end{aligned}</span></p>
+<h2 id="power">Power</h2>
+<blockquote>
+<p><span class="math display">\forall n\in\N\quad
+(x^n)&#39;=nx^{n-1}</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  (x^n)&#39;&amp;=\lim\limits_{x\to a}\frac{x^n-a^n}{x-a}\\
+  &amp;=\lim\limits_{x\to
+a}\frac{(x-a)(x^{n-1}+x^{n-2}a+x^{n-3}a^2+...+a^{n-1})}{x-a}\\
+  &amp;=\lim\limits_{x\to
+a}(\overbrace{x^{n-1}+x^{n-2}a+x^{n-3}a^2+...+a^{n-1}}^n)\\
+  &amp;=x^{n-1}+x^{n-2}x+x^{n-3}x^2+...+x^{n-1}\\
+  &amp;=nx^{n-1}\quad\blacksquare
+\end{aligned}</span></p>
+<h2 id="coefficient">Coefficient</h2>
+<blockquote>
+<p><span class="math display">(cf)&#39;=cf&#39;</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  (cf)&#39;(x)&amp;=\lim\limits_{x\to a}\frac{cf(x)-cf(a)}{x-a}\\
+  &amp;=\lim\limits_{x\to a}c\frac{f(x)-f(a)}{x-a}\\
+  &amp;=c\lim\limits_{x\to a}\frac{f(x)-f(a)}{x-a}\\
+  &amp;=cf(x)&#39;
+\end{aligned}</span></p>
+<h2 id="sum">Sum</h2>
+<blockquote>
+<p><span class="math display">(f+g)&#39;=f&#39;+g&#39;</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  (f+g)&#39;(x)&amp;=\lim\limits_{x\to
+a}\frac{f(x)+g(x)-f(a)-g(a)}{x-a}\\
+  &amp;=\lim\limits_{x\to a}\frac{f(x)-f(a)+g(x)-g(a)}{x-a}\\
+  &amp;=\lim\limits_{x\to
+a}\left(\frac{f(x)+f(a)}{x-a}+\frac{g(x)-g(a)}{x-a}\right)\\
+  &amp;=\lim\limits_{x\to a}\frac{f(x)-f(a)}{x-a}+\lim\limits_{x\to
+a}\frac{g(x)-g(a)}{x-a}\\
+  &amp;=f&#39;(x)+g&#39;(x)
+\end{aligned}</span></p>
+<h2 id="product">Product</h2>
+<blockquote>
+<p><span
+class="math display">(fg)&#39;=f&#39;g+fg&#39;\\(uvw)&#39;=u&#39;vw+uv&#39;w+uvw&#39;</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  (fg)&#39;(x)&amp;=\lim\limits_{x\to
+a}\frac{\textcolor{aqua}{f(x)g(x)-f(a)g(a)}}{x-a}\\
+  &amp;=\lim\limits_{x\to
+a}\frac{\textcolor{aqua}{f(x)g(x)}\textcolor{lime}{-f(a)g(x)+f(a)g(x)}\textcolor{aqua}{-f(a)g(a)}}{x-a}\\
+  &amp;=\lim\limits_{x\to
+a}\frac{(f(x)-f(a))g(x)+f(a)(g(x)-g(a))}{x-a}\\
+  &amp;=\lim\limits_{x\to a}\frac{f(x)-f(a)}{x-a}\lim\limits_{x\to
+a}g(x)+\lim\limits_{x\to a}f(a)\lim\limits_{x\to
+a}\frac{g(x)-g(a)}{x-a}\\
+  &amp;=f&#39;(x)g(x)+f(x)g&#39;(x)\quad\blacksquare
+\end{aligned}</span></p>
+<h2 id="quotient">Quotient</h2>
+<blockquote>
+<p><span class="math display">\left(\frac
+fg\right)&#39;=\frac{f&#39;g-fg&#39;}{g^2}</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  \left(\frac
+fg\right)&#39;&amp;=\left(f\cdot\frac1g\right)&#39;=\frac{f&#39;}g+f\left(\frac1g\right)&#39;=\frac{f&#39;}g-\frac
+{fg&#39;}{g^2}=\frac{f&#39;g-fg&#39;}{g^2}
+\end{aligned}</span></p>
+<h2 id="chain">Chain</h2>
+<blockquote>
+<p><span class="math display">(f\circ
+u)&#39;=f&#39;(u)u&#39;\quad\frac{df}{dx}=\frac{df}{du}\frac{du}{dx}</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  (f\circ g)&#39;(x)&amp;=\lim\limits_{x\to
+a}\frac{f(g(x))-f(g(a))}{x-a}\\
+  &amp;=\lim\limits_{x\to
+a}\frac{f(g(x))-f(g(a))}{g(x)-g(a)}\frac{g(x)-g(a)}{x-a}\\
+  \because\;&amp;g(x)\text{ is continuous}\\
+  \therefore\;&amp;=\lim\limits_{g(x)\to
+g(a)}\frac{f(g(x))-f(g(a))}{g(x)-g(a)}\lim\limits_{x\to
+a}\frac{g(x)-g(a)}{x-a}\\
+  &amp;=f&#39;(g(x))g&#39;(x)\quad\blacksquare
+\end{aligned}</span></p>
+<h2 id="implicit">Implicit</h2>
+<blockquote>
+<ol type="1">
+<li>diff each term <em>in terms of <span
+class="math inline">x</span></em></li>
+<li>put all <span class="math inline">y&#39;</span> on one side</li>
+<li>isolate <span class="math inline">y&#39;</span> (optional)</li>
+</ol>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  x^2+xy-y^3&amp;=4\\
+  (x^2+xy-y^3)&#39;&amp;=(4)&#39;\\
+  2x+y+xy&#39;-3y^2y&#39;&amp;=0\\
+  y&#39;(x-3y^2)&amp;=-2x-y\\
+  y&#39;&amp;=\frac{2x+y}{3y^2-x}
+\end{aligned}</span></p>
+<h3 id="linearisation-1">Linearisation</h3>
+<blockquote>
+<p><span class="math display">L(x)=b+y&#39;(a,b)(x-a)\quad
+b=y(a)</span></p>
+</blockquote>
+<p>find tangent lines for <span class="math inline">y^2=x^3-4x</span>
+where <span class="math inline">x=a=-1</span> 1. find <span
+class="math inline">b=y(a)</span> <span
+class="math display">\begin{aligned}
+    (y(-1))^2&amp;=(-1)^3-4(-1)=3\\
+    y(-1)&amp;=\pm\sqrt3=b\\
+  \end{aligned}</span> 2. find <span class="math inline">y&#39;</span>
+<span class="math display">\begin{aligned}
+    (y^2)&#39;&amp;=(x^3-4x)&#39;\\
+    2yy&#39;&amp;=3x^2-4\\
+    y&#39;&amp;=\frac{3x^2-4}{2y}\\
+  \end{aligned}</span> 3. find <span
+class="math inline">y&#39;(a,b)</span> and <span
+class="math inline">L(x)</span> <span
+class="math display">\begin{aligned}
+    y&#39;(-1,\sqrt3)&amp;=\frac{3(-1)^2-4}{2\sqrt3}=\frac{-1}{2\sqrt3}\\
+    \textcolor{aqua}{L_1(x)}&amp;=\sqrt3-\frac1{2\sqrt3}(x+1)\\
+    y&#39;(-1,-\sqrt3)&amp;=\frac{3(-1)^2-4}{-2\sqrt3}=\frac1{2\sqrt3}\\
+    \textcolor{aqua}{L_2(x)}&amp;=-\sqrt3+\frac1{2\sqrt3}(x+1)\\
+  \end{aligned}</span></p>
+<h2 id="exponential">Exponential</h2>
+<blockquote>
+<p><span class="math display">(a^u)=(\ln
+a)a^uu&#39;\quad\textcolor{aqua}{a&gt;0}</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  \because\;&amp;\lim\limits_{h\to0}\frac{e^h-1}h=1\\
+  \therefore\;&amp;(e^x)&#39;=\lim\limits_{h\to0}\frac{e^{x+h}-e^x}h=e^x\lim\limits_{h\to0}\frac{e^h-1}h=e^x\quad\blacksquare
+\end{aligned}\\
+\begin{aligned}
+  (a^x)&#39;=(e^{x\ln a})&#39;=e^{x\ln a}(x\ln a)&#39;=(\ln a)a^x
+\end{aligned}</span></p>
+<h2 id="logarithmic">Logarithmic</h2>
+<blockquote>
+<p><span class="math display">(\log_au)&#39;=\frac{u&#39;}{(\ln
+a)u}\quad(\ln
+u)&#39;=(\ln|u|)&#39;=\frac{u&#39;}u\quad\textcolor{aqua}{1\ne
+a&gt;0}</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  x&amp;=a^{\log_ax}\\
+  1&amp;=a^{\log_ax}(\ln a)(\log_ax)&#39;\\
+  1&amp;=x\ln a(\log_ax)&#39;\\
+  (\log_ax)&#39;&amp;=\frac1{(\ln a)x}
+\end{aligned}</span></p>
+<p><span class="math display">\begin{aligned}
+  x&amp;=e^{\ln x}\\
+  1&amp;=e^{\ln x}(\ln x)&#39;\\
+  1&amp;=x(\ln x)&#39;\\
+  (\ln x)&#39;&amp;=\frac 1x
+\end{aligned}</span></p>
+<h2 id="trigonometric">Trigonometric</h2>
+<blockquote>
+<p><span class="math display">\begin{aligned}
+  (\sin x)&#39;&amp;=\cos x&amp;&amp; (\cos x)&#39;=-\sin
+x&amp;&amp;(\tan x)&#39;=\sec^2x\\
+(\csc x)&#39;&amp;=-\csc x\cot x&amp;&amp;(\sec x)&#39;=\sec x\tan
+x&amp;&amp;(\cot x)&#39;=-\csc^2x\\
+\end{aligned}</span></p>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+  (\cos x)&#39;&amp;=\lim\limits_{h\to0}\frac{\cos(x+h)-\cos
+x}h=\lim\limits_{h\to0}\frac{\cos x\cos h-\sin x\sin h-\cos x}h\\
+  &amp;=\cos x\lim\limits_{h\to0}\frac{\cos h-1}h-\sin
+x\lim\limits_{h\to0}\frac{\sin h}h\\
+  &amp;=\cos x\cdot0-\sin x\cdot1=-\sin x
+\end{aligned}</span></p>
+<h3 id="arctrig">ArcTrig</h3>
+<blockquote>
+<p><span class="math display">\begin{aligned}
+  (\text{asin
+}u)&#39;&amp;=\frac{u&#39;}{\sqrt{1-u^2}}&amp;&amp;(\text{atan
+}u)&#39;=\frac{u&#39;}{1+u^2}&amp;&amp;(\text{asec
+}u)&#39;=\frac{u&#39;}{|u|\sqrt{u^2-1}}\\
+  (\text{acos }u)&#39;&amp;=-(\text{asin }u)&#39;&amp;&amp;(\text{acot
+}u)&#39;=-(\text{atan }u)&#39;&amp;&amp;(\text{acsc
+}u)&#39;=-(\text{asec }u)&#39;
+\end{aligned}</span></p>
+</blockquote>
+<ul>
+<li><p><span class="math inline">(\arcsin x)&#39;</span> (inverse) <span
+class="math display">\begin{aligned}
+  \sin(\text{asin }x)&amp;=x\\
+  (\sin(\text{asin }x))&#39;&amp;=1\\
+  \cos(\text{asin }x)(\text{asin }x)&#39;&amp;=1\\
+  (\text{asin }x)&#39;&amp;=\frac1{\cos(\text{asin }x)}\\
+  &amp;=\frac1{\sqrt{1-\sin^2(\text{asin }x)}}\\
+  &amp;=\frac1{\sqrt{1-x^2}}
+\end{aligned}</span></p></li>
+<li><p><span class="math inline">(\arctan x)&#39;</span> (impl) <span
+class="math display">\begin{aligned}
+  y=\text{atan }x\implies x&amp;=\tan y\\
+  1&amp;=\sec^2yy&#39;\\
+  y&#39;&amp;=\frac1{\sec^2y}=\frac1{1+\tan^2y}=\frac1{1+x^2}
+\end{aligned}</span></p></li>
+<li><p><span class="math inline">(\text{arcsec }x)&#39;</span> (draw
+graph) | <code>sec(x)</code> | <code>tan(x)</code> | | :—————–: |
+:—————–: | | <img src="assets/sec.png" /> | <img src="assets/tan.png" />
+|</p>
+<p><span class="math display">\begin{aligned}
+  y=\text{asec }x\implies x=&amp;\sec y,\quad
+y\in[0,\pi]\setminus\{\pi/2\}\\
+  1=&amp;\sec(y)\tan(y)y&#39;\\
+  y&#39;=&amp;\frac1{\sec y\tan y}=\frac1{x\tan y}\\
+  \because\;\tan^2y=\sec^2y-1\implies\tan y=&amp;\pm\sqrt{\sec^2y-1}\\
+  \tan y=&amp;\pm\sqrt{x^2-1}\\
+  \therefore\;y\in[0,\pi/2)\Rarr\tan y&gt;0\implies
+y&#39;=&amp;\frac1{x\sqrt{x^2-1}}\\
+  y\in(\pi/2,\pi]\Rarr\tan y&lt;0\implies
+y&#39;=&amp;\frac1{-x\sqrt{x^2-1}}\\
+  \therefore\;y&#39;=&amp;\frac1{|x|\sqrt{x^2-1}}
+\end{aligned}</span></p></li>
+</ul>
+<h2 id="hyperbolic">Hyperbolic</h2>
+<blockquote>
+<p><span
+class="math display">\sinh(x)=\frac{e^x-e^{-x}}2\quad\cosh(x)=\frac{e^x+e^{-x}}2\quad\tanh(x)=\frac{\sinh(x)}{\cosh(x)}\\
+\cosh^2x-\sinh^2x=1\\\,\\
+\begin{aligned}
+(\sinh x)&#39;&amp;=\cosh(x)&amp;&amp;(\text{csch }x)&#39;=-\text{csch
+}(x)\text{ coth}(x)\\
+(\cosh x)&#39;&amp;=\sinh(x)&amp;&amp;(\text{sech }x)&#39;=-\text{sech
+}(x)\tanh(x)\\
+(\tanh x)&#39;&amp;=\text{sech}^2(x)&amp;&amp;(\text{coth
+}x)&#39;=-\text{csch}^2(x)\\
+\end{aligned}</span></p>
+</blockquote>
+<ul>
+<li><span class="math inline">(\cosh x)&#39;</span> (ez) <span
+class="math display">(\cosh
+x)&#39;=\left(\frac{e^x+e^{-x}}2\right)&#39;=\frac{e^x-e^{-x}}2=\sinh(x)</span></li>
+</ul>
+<h3 id="archyp">ArcHyp</h3>
+<blockquote>
+<p><span class="math display">(\text{asinh
+}u)&#39;=\frac{u&#39;}{\sqrt{u^2+1}}\quad(\text{acosh
+}u)&#39;=\frac{u&#39;}{\sqrt{u^2-1}}\quad(\text{atanh
+}u)&#39;=\frac{u&#39;}{1-u^2}</span></p>
+</blockquote>
+<ul>
+<li><span class="math inline">(\text{asinh }x)&#39;</span> inverse, same
+steps as <span class="math inline">(\text{asin }x)&#39;</span></li>
+</ul>
+<h1 id="strategies">Strategies</h1>
+<h2 id="use-ln-for-factorised">Use <code>ln()</code> for Factorised</h2>
+<p><span class="math display">\begin{aligned}
+  y&amp;=\frac{\textcolor{aqua}{(x+2)^3}\textcolor{lime}{(x^2-1)^4}}{\textcolor{aqua}{(x+5)}\textcolor{lime}{(x-7)^3}\textcolor{aqua}{(x^2+x+1)^5}}\\
+  \ln|y|&amp;=\textcolor{aqua}{3\ln|x+2|}+\textcolor{lime}{4\ln|x^2-1|}-\textcolor{aqua}{\ln|x+5|}-\textcolor{lime}{3\ln|x-7|}-\textcolor{aqua}{5\ln|x^2+x+1|}\\
+  \frac{y&#39;}y&amp;=\frac3{x+2}+\frac{4(x^2-1)&#39;}{x^2-1}-\frac1{x+5}-\frac3{x-7}-\frac{5(x^2+x+1)&#39;}{x^2+x+1}\\
+  y&#39;&amp;=y\left(\frac3{x+2}+\frac{8x}{x^2-1}-\frac1{x+5}-\frac3{x-7}-\frac{5(2x+1)}{x^2+x+1}\right)
+\end{aligned}</span></p>
+<h2 id="double-derivative">Double Derivative</h2>
+<p><span class="math display">\begin{aligned}
+  (x+x^2+x^3)&#39;&#39;=(1+2x+3x^2)&#39;=2+6x
+\end{aligned}</span></p>
+<h2 id="piece-wise">Piece-wise</h2>
+<p><span class="math display">y=\begin{cases}
+  x^2&amp; x&lt;1\\
+  1+\ln x&amp; x\ge1
+\end{cases}</span></p>
+<ol type="1">
+<li>is <span class="math inline">y</span> continuous
+<ul>
+<li><span class="math inline">x^2</span> is polynomial
+<ul>
+<li><span class="math inline">\therefore\;y=x^2</span> continuous for
+<span class="math inline">x&lt;1</span></li>
+</ul></li>
+<li><span class="math inline">\ln x</span> is continuous for <span
+class="math inline">x&gt;0</span>
+<ul>
+<li><span class="math inline">\therefore\;y=1+\ln x</span> is continuous
+for <span class="math inline">x\ge1</span></li>
+</ul></li>
+<li><span
+class="math inline">\lim\limits_{x\to1^-}x^2=1;\lim\limits_{x\to1^+}(1+\ln
+x)=1=y(x)</span>
+<ul>
+<li><span class="math inline">\therefore\;y(x)</span> is continuous at
+<span class="math inline">x=1</span></li>
+</ul></li>
+</ul></li>
+<li>is <span class="math inline">y</span> diffable
+<ul>
+<li><span class="math inline">y&#39;(x^-)=2x\implies
+y&#39;(1^-)=2</span></li>
+<li><span class="math inline">y&#39;(x^+)=1/x\implies
+y&#39;(1^+)=1</span></li>
+<li><span class="math inline">\therefore\;y&#39;(x^-)\ne
+y&#39;(x^+)</span><br> <span
+class="math inline">\therefore\;y&#39;(1)\text{ DNE}</span></li>
+</ul></li>
+<li>conclude <span class="math display">y&#39;=\begin{cases}
+  2x&amp;x&lt;1\\
+  \text{DNE}&amp;x=1\\
+  1/x&amp;x&gt;1
+\end{cases}</span></li>
+</ol>
+<h2 id="root">Root</h2>
+<p><span class="math display">\begin{aligned}
+  y&amp;=\sqrt{x\ln|2^x+1|}\\
+  y&#39;&amp;=\frac{(x\ln|\overbrace{2^x+1}^u|)&#39;}{2y}=\frac1{2y}\left(\ln
+u+\frac{xu&#39;}u\right)\\
+  &amp;=\frac{u\ln u+xu&#39;}{2uy}=\frac{u\ln u+x2^x\ln 2}{2uy}\\
+  &amp;=\frac{2^x+1\ln(2^x+1)+(\ln 2)2^xx}{2(2^x+1)\sqrt{x\ln(2^x+1)}}
+\end{aligned}</span></p>
+<h2 id="abuse-variables">(Ab)Use Variables</h2>
+<p><span class="math display">\begin{aligned}
+  y&amp;=\sin^2(\cos\sqrt{\text{atan
+}(yx)})&amp;&amp;A=2\sin(\cos\sqrt{\text{atan }(yx)})\\
+  y&#39;&amp;=A(\sin(\cos\sqrt{\text{atan
+}(yx)}))&#39;&amp;&amp;B=\cos(\cos\sqrt{\text{atan }(yx)})\\
+  &amp;=AB(\cos\sqrt{\text{atan
+}(yx)})&#39;&amp;&amp;C=-\sin\sqrt{\text{atan }(yx)}\\
+  &amp;=ABC(\sqrt{\text{atan
+}(yx)})&#39;&amp;&amp;D=\frac1{2\sqrt{\text{atan }(yx)}}\\
+  &amp;=ABCD(\text{atan }(yx))&#39;&amp;&amp;E=\frac1{y^2x^2+1}\\
+  &amp;=ABCDE(yx)&#39;&amp;&amp;(yx)&#39;=y&#39;x+y\\
+  y&#39;&amp;=ABCDExy&#39;+ABCDEy\\
+  &amp;=\frac{ABCDEy}{1-ABCDEx}
+\end{aligned}</span></p>
+<h2 id="simplify-hyperbolic">Simplify Hyperbolic</h2>
+<p><span class="math display">\begin{aligned}
+    y&amp;=\sqrt[4]{\frac{1+\tanh x}{1-\tanh x}}\\
+    \frac{1+\tanh x}{1-\tanh x}&amp;=\frac{1+\frac{\sinh x}{\cosh
+x}}{1-\frac{\sinh x}{\cosh x}}=\frac{\cosh x+\sinh x}{\cosh x-\sinh
+x}=\frac{e^x+e^{-x}+e^x-e^{-x}}{e^x+e^{-x}-e^x+e^{-x}}=e^{2x}\\
+    y&#39;&amp;=\left(\sqrt[4]{e^{2x}}\right)&#39;=(e^{x/2})&#39;=\frac{e^{x/2}}2
+\end{aligned}</span></p>
+<h2 id="hyp-algebra">Hyp Algebra</h2>
+<ul>
+<li><span class="math inline">\text{asinh }x=\ln(x+\sqrt{x^2+1})</span>
+<span class="math display">\begin{aligned}
+  \text{asinh }x=y\implies x&amp;=\sinh(y)=\frac{e^y-e^{-y}}2\\
+  2x&amp;=e^y-e^{-y}\\
+  e^y-2x-e^{-y}&amp;=0\\
+  e^{2y}-2xe^y-1&amp;=0\\
+  e^y&amp;=\frac{2x\pm\sqrt{4x^2+4}}2=x\pm\sqrt{x^2+1}\\
+  \because\;e^y&amp;&gt;0\implies x\pm\sqrt{x^2+1}&gt;0\\
+  x&amp;&lt;\sqrt{x^2+1}\\
+  \therefore\;e^y&amp;=x+\sqrt{x^2+1}\\
+  y&amp;=\ln(x+\sqrt{x^2+1})
+\end{aligned}</span></li>
+<li>if <span class="math inline">x=\ln(\sec\theta+\tan\theta)</span>
+then <span class="math inline">\sec\theta=\cosh x</span> <span
+class="math display">\begin{aligned}
+  \cosh
+x&amp;=\frac{e^x+e^{-x}}2=\frac12\left(e^{\ln(\sec\theta+\tan\theta)}+e^{-\ln(\sec\theta+\tan\theta)}\right)\\
+  &amp;=\frac12\left(\sec\theta+\tan\theta+\frac1{\sec\theta+\tan\theta}\right)\\
+  &amp;=\frac12\left(\sec\theta+\tan\theta+\frac{\sec\theta-\tan\theta}{\sec^2\theta-\tan^2\theta}\right)\\
+  &amp;=\frac12(\sec\theta+\tan\theta+\sec\theta-\tan\theta)\\
+  &amp;=\sec\theta
+\end{aligned}</span></li>
+</ul>
+<h1 id="normal-line">Normal Line</h1>
+<blockquote>
+<p><span class="math display">y=f(a)-\frac{x-a}{f&#39;(a)}</span></p>
+</blockquote>
+</body>
+</html>
