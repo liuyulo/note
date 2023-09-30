@@ -12,3 +12,5 @@
 - [MATB41](./b41/)
 - [STAB52](./b52/)
 - [LINA01](./lina01/)
+- [PHLA10](./phla10/)
+- [PSYA01](./psya01/)

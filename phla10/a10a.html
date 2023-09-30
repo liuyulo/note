@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>a10a</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style>
+  @charset "UTF-8";
+  .hidden {
+    display: none;
+  }
+
+  html {
+    font-family: "source sans pro", "iosevka custom extended", "UD Digi Kyokasho NK-R", sans-serif;
+    font-size: 20px;
+    background: #000000;
+    color: #f1f1f1;
+  }
+  html body {
+    padding-bottom: 30em;
+  }
+  html header#title-block-header {
+    display: flex;
+    justify-content: center;
+  }
+  html h1:not(.title) {
+    border-bottom: 1px solid;
+  }
+  html h1, html h2, html h3 {
+    color: #ffe666;
+    margin: 0.5em 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  html a {
+    color: #ffe666;
+    text-decoration: none;
+  }
+  html a:visited {
+    color: #ffe666;
+  }
+  html a:hover {
+    color: #f1f1f1;
+    text-decoration: underline;
+    background: #0f0f0f;
+  }
+  html blockquote {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ffe666;
+    background: rgba(255, 230, 102, 0.1);
+    color: rgba(241, 241, 241, 0.75) !important;
+  }
+  html p, html header {
+    margin: 0;
+  }
+  html ul {
+    padding-left: 2em;
+  }
+  html table {
+    border-collapse: collapse;
+  }
+  html table tbody > tr:not(:first-child) {
+    border-top: 1px solid #5e5e5e;
+  }
+  html table thead {
+    border-bottom: 1px solid #f1f1f1 !important;
+  }
+  html table td, html table th {
+    padding: 0.5em;
+  }
+  html pre {
+    background: #0f0f0f;
+    margin: 0;
+  }
+  html pre > code {
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  html code {
+    color: #f1f1f1;
+    padding: 0 5px;
+    line-height: 1.3;
+    font-family: "iosevka custom extended";
+  }
+
+  details.theorem {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #39c5bb;
+    background: rgba(57, 197, 187, 0.1);
+    padding-top: 0;
+  }
+  details.theorem strong, details.theorem .textbf {
+    color: #39c5bb;
+  }
+  details.theorem summary {
+    cursor: pointer;
+  }
+  details.theorem > summary {
+    padding: 0.5em 1em;
+    background: rgba(57, 197, 187, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.theorem > summary::before {
+    content: "theorem.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #39c5bb;
+  }
+  details.example {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff9966;
+    background: rgba(255, 153, 102, 0.1);
+    padding-top: 0;
+  }
+  details.example strong, details.example .textbf {
+    color: #ff9966;
+  }
+  details.example summary {
+    cursor: pointer;
+  }
+  details.example > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 153, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.example > summary::before {
+    content: "example.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff9966;
+  }
+  details.definition {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #66ccff;
+    background: rgba(102, 204, 255, 0.1);
+    padding-top: 0;
+  }
+  details.definition strong, details.definition .textbf {
+    color: #66ccff;
+  }
+  details.definition summary {
+    cursor: pointer;
+  }
+  details.definition > summary {
+    padding: 0.5em 1em;
+    background: rgba(102, 204, 255, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.definition > summary::before {
+    content: "definition.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #66ccff;
+  }
+  details.algorithm {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.algorithm strong, details.algorithm .textbf {
+    color: #ff6680;
+  }
+  details.algorithm summary {
+    cursor: pointer;
+  }
+  details.algorithm > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.algorithm > summary::before {
+    content: "algorithm.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff6680;
+  }
+  details.leek {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #39c5bb;
+    background: rgba(57, 197, 187, 0.1);
+    padding-top: 0;
+  }
+  details.leek strong, details.leek .textbf {
+    color: #39c5bb;
+  }
+  details.leek summary {
+    cursor: pointer;
+  }
+  details.leek > summary {
+    padding: 0.5em 1em;
+    background: rgba(57, 197, 187, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.orange {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff9966;
+    background: rgba(255, 153, 102, 0.1);
+    padding-top: 0;
+  }
+  details.orange strong, details.orange .textbf {
+    color: #ff9966;
+  }
+  details.orange summary {
+    cursor: pointer;
+  }
+  details.orange > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 153, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.sky {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #66ccff;
+    background: rgba(102, 204, 255, 0.1);
+    padding-top: 0;
+  }
+  details.sky strong, details.sky .textbf {
+    color: #66ccff;
+  }
+  details.sky summary {
+    cursor: pointer;
+  }
+  details.sky > summary {
+    padding: 0.5em 1em;
+    background: rgba(102, 204, 255, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.pink {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.pink strong, details.pink .textbf {
+    color: #ff6680;
+  }
+  details.pink summary {
+    cursor: pointer;
+  }
+  details.pink > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.yellow {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ffe666;
+    background: rgba(255, 230, 102, 0.1);
+    padding-top: 0;
+  }
+  details.yellow strong, details.yellow .textbf {
+    color: #ffe666;
+  }
+  details.yellow summary {
+    cursor: pointer;
+  }
+  details.yellow > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 230, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+
+  .inference + ul > li {
+    list-style-type: decimal;
+  }
+  .inference + ul > li:last-child {
+    border-top: solid 1px #f1f1f1;
+    list-style-type: "∴ ";
+  }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#bank" id="toc-bank">0 Bank</a></li>
+<li><a href="#what-is-phl" id="toc-what-is-phl">1 What is PHL</a>
+<ul>
+<li><a href="#main-branches-4" id="toc-main-branches-4">Main Branches
+(4)</a></li>
+<li><a href="#characteristics-of-phl-questions"
+id="toc-characteristics-of-phl-questions">Characteristics of PHL
+Questions</a></li>
+<li><a href="#nature-of-phl-changes-hstorically"
+id="toc-nature-of-phl-changes-hstorically">Nature of PHL Changes
+Hstorically</a></li>
+</ul></li>
+<li><a href="#deductive-reasoning" id="toc-deductive-reasoning">2
+Deductive Reasoning</a>
+<ul>
+<li><a href="#validity" id="toc-validity">Validity</a></li>
+<li><a href="#limitation" id="toc-limitation">Limitation</a></li>
+<li><a href="#circularity-fallacy"
+id="toc-circularity-fallacy">Circularity (Fallacy)</a></li>
+</ul></li>
+<li><a href="#inductive-reasoning" id="toc-inductive-reasoning">3
+Inductive Reasoning</a>
+<ul>
+<li><a href="#influence-strength" id="toc-influence-strength">Influence
+Strength</a></li>
+</ul></li>
+<li><a href="#abductive-reasoning" id="toc-abductive-reasoning">3
+Abductive Reasoning</a>
+<ul>
+<li><a href="#true-vs-false-predictions"
+id="toc-true-vs-false-predictions">True vs False Predictions</a></li>
+<li><a href="#example-to-deduce-theory-is-true"
+id="toc-example-to-deduce-theory-is-true">Example to Deduce Theory is
+True</a></li>
+<li><a href="#surprise-principle" id="toc-surprise-principle">Surprise
+Principle</a>
+<ul>
+<li><a href="#sp-discrimination" id="toc-sp-discrimination">SP
+Discrimination</a></li>
+</ul></li>
+<li><a href="#only-game-in-town-fallacy"
+id="toc-only-game-in-town-fallacy">“Only Game in Town Fallacy”</a></li>
+</ul></li>
+<li><a href="#aquinas-first-4-proofs-that-god"
+id="toc-aquinas-first-4-proofs-that-god">4 Aquina’s first 4 Proofs that
+God ∃</a>
+<ul>
+<li><a href="#concept-of-god" id="toc-concept-of-god">Concept of
+God</a></li>
+<li><a href="#argument-1-motion" id="toc-argument-1-motion">Argument 1:
+Motion</a>
+<ul>
+<li><a href="#background" id="toc-background">Background</a></li>
+<li><a href="#counterargument"
+id="toc-counterargument">Counterargument</a></li>
+</ul></li>
+<li><a href="#argument-2-causality"
+id="toc-argument-2-causality">Argument 2: Causality</a>
+<ul>
+<li><a href="#conterargement-same-for-argument-1"
+id="toc-conterargement-same-for-argument-1">Conterargement (same for
+argument 1)</a></li>
+</ul></li>
+<li><a href="#birthday-fallacy" id="toc-birthday-fallacy">Birthday
+Fallacy</a>
+<ul>
+<li><a href="#from-aquinas" id="toc-from-aquinas">From Aquinas</a></li>
+<li><a href="#example-birthday" id="toc-example-birthday">Example
+Birthday</a></li>
+</ul></li>
+<li><a href="#argument-3-contingency"
+id="toc-argument-3-contingency">Argument 3: Contingency</a>
+<ul>
+<li><a href="#counterargument-1"
+id="toc-counterargument-1">Counterargument</a></li>
+</ul></li>
+<li><a href="#necessarycontigent-propositions"
+id="toc-necessarycontigent-propositions">Necessary/Contigent
+Propositions</a>
+<ul>
+<li><a href="#theories-of-truth" id="toc-theories-of-truth">Theories of
+Truth</a></li>
+<li><a href="#mathematical-truths"
+id="toc-mathematical-truths">Mathematical Truths</a></li>
+</ul></li>
+<li><a href="#argument-4-properties-with-degrees"
+id="toc-argument-4-properties-with-degrees">Argument 4: Properties with
+Degrees</a></li>
+</ul></li>
+<li><a href="#the-design-argument-5th-argument"
+id="toc-the-design-argument-5th-argument">5 The Design Argument (5th
+Argument)</a>
+<ul>
+<li><a href="#goal-directed-systems" id="toc-goal-directed-systems">Goal
+Directed Systems</a></li>
+<li><a href="#kinds-of-design-argument"
+id="toc-kinds-of-design-argument">Kinds of Design Argument</a>
+<ul>
+<li><a href="#global-design" id="toc-global-design">Global
+Design</a></li>
+<li><a href="#local-design" id="toc-local-design">Local Design</a></li>
+<li><a href="#design-hypothesis" id="toc-design-hypothesis">Design
+Hypothesis</a></li>
+</ul></li>
+<li><a href="#analogy" id="toc-analogy">Analogy</a></li>
+<li><a href="#humes-critisim-of-dearg"
+id="toc-humes-critisim-of-dearg">Hume’s Critisim of DeArg</a></li>
+<li><a href="#base-rate-fallacy" id="toc-base-rate-fallacy">Base Rate
+Fallacy</a></li>
+</ul></li>
+<li><a href="#evolution-creationism" id="toc-evolution-creationism">6
+Evolution &amp; Creationism</a>
+<ul>
+<li><a href="#creationism-defenders-of-dearg"
+id="toc-creationism-defenders-of-dearg">Creationism: Defenders of
+DeArg</a>
+<ul>
+<li><a href="#second-law-of-thermodynamics"
+id="toc-second-law-of-thermodynamics">Second Law of
+Thermodynamics</a></li>
+</ul></li>
+<li><a href="#evolution-darwins-two-part-theory"
+id="toc-evolution-darwins-two-part-theory">Evolution: Darwin’s Two-Part
+Theory</a>
+<ul>
+<li><a href="#speciation" id="toc-speciation">Speciation</a></li>
+</ul></li>
+<li><a href="#correlation" id="toc-correlation">Correlation</a>
+<ul>
+<li><a href="#principle-of-common-cause"
+id="toc-principle-of-common-cause">Principle of Common Cause</a></li>
+</ul></li>
+<li><a href="#irreducible-complexity-refutes-natsel"
+id="toc-irreducible-complexity-refutes-natsel">Irreducible Complexity:
+Refutes NatSel</a></li>
+<li><a href="#predictive-equivalence"
+id="toc-predictive-equivalence">Predictive Equivalence</a></li>
+<li><a href="#evolution-imperfect-adaptations"
+id="toc-evolution-imperfect-adaptations">Evolution: Imperfect
+Adaptations</a></li>
+<li><a href="#accommodation"
+id="toc-accommodation">Accommodation</a></li>
+</ul></li>
+<li><a href="#can-science-explain-everything"
+id="toc-can-science-explain-everything">7 Can Science Explain
+Everything?</a>
+<ul>
+<li><a href="#was-ist-scientific-explanation"
+id="toc-was-ist-scientific-explanation">Was Ist Scientific
+Explanation?</a></li>
+<li><a href="#local-vs-global-questions"
+id="toc-local-vs-global-questions">Local vs Global Questions</a></li>
+<li><a href="#principle-of-sufficient-reason"
+id="toc-principle-of-sufficient-reason">Principle of Sufficient
+Reason</a></li>
+</ul></li>
+<li><a href="#ontological-argument" id="toc-ontological-argument">8
+Ontological Argument</a>
+<ul>
+<li><a href="#a-posteriori-vs-a-priori"
+id="toc-a-posteriori-vs-a-priori">A Posteriori vs A Priori</a>
+<ul>
+<li><a href="#with-contigent-and-necessary"
+id="toc-with-contigent-and-necessary">With Contigent and
+Necessary</a></li>
+</ul></li>
+<li><a href="#onarg-structure-by-anselm"
+id="toc-onarg-structure-by-anselm">OnArg Structure by Anselm</a>
+<ul>
+<li><a href="#gaunilos-island" id="toc-gaunilos-island">Gaunilo’s
+Island</a></li>
+<li><a href="#island-vs-god" id="toc-island-vs-god">Island vs
+God</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#testability-of-gods-existence"
+id="toc-testability-of-gods-existence">9 Testability of God’s
+Existence</a>
+<ul>
+<li><a href="#testability-theory-of-meaning"
+id="toc-testability-theory-of-meaning">Testability Theory of
+Meaning</a></li>
+<li><a href="#analytical-vs-synthetic-truth"
+id="toc-analytical-vs-synthetic-truth">Analytical vs Synthetic
+Truth</a></li>
+</ul></li>
+<li><a href="#pascal-and-irrationality"
+id="toc-pascal-and-irrationality">10 Pascal and Irrationality</a>
+<ul>
+<li><a href="#prudential-and-evidential-reasons"
+id="toc-prudential-and-evidential-reasons">Prudential and Evidential
+Reasons</a></li>
+<li><a href="#pascals-argument-and-criticisms"
+id="toc-pascals-argument-and-criticisms">Pascal’s Argument (and
+Criticisms)</a>
+<ul>
+<li><a href="#criticism-belief-action"
+id="toc-criticism-belief-action">Criticism: Belief ∉ Action</a></li>
+<li><a href="#criticism-assumption-of-outcome"
+id="toc-criticism-assumption-of-outcome">Criticism: Assumption of
+Outcome</a></li>
+</ul></li>
+<li><a href="#psychological-argument-prudent"
+id="toc-psychological-argument-prudent">Psychological Argument
+(Prudent)</a></li>
+<li><a href="#pragmatism" id="toc-pragmatism">Pragmatism</a></li>
+</ul></li>
+<li><a href="#argument-from-evil" id="toc-argument-from-evil">11
+Argument from Evil</a>
+<ul>
+<li><a href="#logical-no-evil" id="toc-logical-no-evil">Logical: No
+Evil</a>
+<ul>
+<li><a href="#explanation" id="toc-explanation">Explanation</a></li>
+<li><a href="#problems" id="toc-problems">Problems</a></li>
+<li><a href="#theodicy-soul-building-evils"
+id="toc-theodicy-soul-building-evils">Theodicy: Soul-Building
+Evils</a></li>
+</ul></li>
+<li><a href="#logical-no-above-soul-building"
+id="toc-logical-no-above-soul-building">Logical: No Above
+Soul-Building</a>
+<ul>
+<li><a href="#theodicy-free-will" id="toc-theodicy-free-will">Theodicy:
+Free Will</a></li>
+</ul></li>
+<li><a href="#logical-no-above-sb-freedom"
+id="toc-logical-no-above-sb-freedom">Logical: No Above SB + Freedom</a>
+<ul>
+<li><a href="#defence-amount-of-evil"
+id="toc-defence-amount-of-evil">Defence: Amount of Evil</a></li>
+</ul></li>
+<li><a href="#evidential-arguments"
+id="toc-evidential-arguments">Evidential Arguments</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="bank">0 Bank</h1>
+<details>
+<summary>
+<em>deductive validity</em> and <em>inductive strength</em> difference
+</summary>
+<ul>
+<li>∵ deductive reasoning is using one or more premises to reach a
+logical conclusion</li>
+<li>inductive reasoning is making inferences using a sample of a
+population</li>
+<li>∴ a deductively valid argument can give absolute guarantee</li>
+<li>the strength of an inductive argument only makes the conclusion more
+or less plausible and does not provide absolute guarantee</li>
+</ul>
+</details>
+<details>
+<summary>
+<em>logic of confirmation</em> vs <em>disconformation</em>
+</summary>
+<ul>
+<li>the logic of confirmation is to use an observation to confirm what a
+theory predicts</li>
+<li>the logic of disconfirmation is to use an observation that doesnt
+follow what the theory predicts to falsify it</li>
+<li>the logic of disconfirmation is deductively valid because the
+counterexample creates a contradiction, which implies that the theory is
+false.</li>
+</ul>
+</details>
+<details>
+<summary>
+<em>argument</em> definition &amp; structure
+</summary>
+<ul>
+<li>a structure of statement that is designed to prove a point</li>
+<li>consists of premises and a conclusion</li>
+</ul>
+</details>
+<details>
+<summary>
+if design argument is inductive, then it’s weak
+</summary>
+<ul>
+<li>if show the universe is the product of design using induction</li>
+<li>then need to make this conclusion by observing a large number of
+universes in order to have a large sample</li>
+<li>but we don’t have other universes to observe</li>
+<li>∴ the sample size is zero</li>
+<li>∴ this inductive argument is weak.</li>
+</ul>
+</details>
+<h1 id="what-is-phl">1 What is PHL</h1>
+<h2 id="main-branches-4">Main Branches (4)</h2>
+<blockquote>
+<p>they can be connected</p>
+</blockquote>
+<ul>
+<li><strong>value theory</strong>: study of ethics</li>
+<li><strong>logic</strong>: reason and argument (premise → conclusion)
+<ul>
+<li>good form means internally valid (logical)</li>
+<li>good contents means externally valid (meaningful)</li>
+</ul></li>
+<li><strong>metaphysics</strong>: deals with ontology(what ∃) and
+being(what is existance)
+<ul>
+<li>God ∃?</li>
+<li>electrons ∃?</li>
+<li>what is time?</li>
+</ul></li>
+<li><strong>epistemology</strong>
+<ul>
+<li>what is knowledge?</li>
+<li>knowledge &amp; true belief difference?</li>
+<li>do humans have knowledge? (<em>philosophical skepticism</em>)</li>
+</ul></li>
+</ul>
+<p>knowledge contributes to understanding</p>
+<ul>
+<li>belief <code>!==</code> knowledge</li>
+<li>people <em>believed</em> earth was flat but they didn’t know it</li>
+<li>true belief <code>!==</code> knowledge</li>
+<li>at 3pm, see a broken clock showing 3pm, it’s true belief but not
+knowledge</li>
+<li>∴ true belief doesn’t imply knowledge</li>
+</ul>
+<h2 id="characteristics-of-phl-questions">Characteristics of PHL
+Questions</h2>
+<ul>
+<li><strong>Fundamental</strong> Questions of Justification
+<ul>
+<li>PHL examines the fundamental assumptions we make and tries to
+determine wether they are rationally defensible</li>
+</ul></li>
+<li>More <strong>General</strong> Than Science
+<ul>
+<li>science <em>assume</em> ∃ things outside our mind</li>
+<li>PHL asks if ∃ things outside our mind</li>
+</ul></li>
+<li>Enterprise of Clarifying Concepts: <strong>Conceptual
+Analysis</strong>
+<ul>
+<li>PHL and science use different ways of <em>reasoning and
+observation</em> to help answer questions</li>
+</ul></li>
+</ul>
+<h2 id="nature-of-phl-changes-hstorically">Nature of PHL Changes
+Hstorically</h2>
+<ul>
+<li>many PHL questions in the past now moved to science
+(e.g. physics)</li>
+<li>the shifting historical nature of what counts as PHL make it
+difficule to say anything precise about what PHL is</li>
+</ul>
+<h1 id="deductive-reasoning">2 Deductive Reasoning</h1>
+<blockquote>
+<p>use one or more premises to reach a logical conclusion</p>
+</blockquote>
+<p>good arguments are</p>
+<ul>
+<li>rationally persuasive</li>
+<li>have true premises: a <strong>sound</strong> argument</li>
+<li>premise and conclusion are related</li>
+<li>deductively valid ⊕ abductively strong ⊕ inductively strong</li>
+</ul>
+<h2 id="validity">Validity</h2>
+<blockquote>
+<p>premise is true <code>=&gt;</code> conclusion must be true</p>
+</blockquote>
+<ul>
+<li>has a <strong>logical form</strong></li>
+<li>doesn’t have to have true premises: can have implausible
+statements</li>
+<li><strong>ONLY ARGUMENTS CAN BE VALID</strong></li>
+</ul>
+<h2 id="limitation">Limitation</h2>
+<ul>
+<li>deductive validity gives <strong>absolute guarantee ∴ very
+conservative</strong></li>
+<li>but prohibits from reaching conclusions beyond the information given
+in the premises</li>
+<li>nondeductive inference gives a weaker guarantee, but it makes the
+conclusion <em>plausible</em> ∴ has risks</li>
+</ul>
+<h2 id="circularity-fallacy">Circularity (Fallacy)</h2>
+<blockquote>
+<p>An premise that is assumed to be true occurs again in the
+conclusion</p>
+</blockquote>
+<ul>
+<li>e.g. my fav color is black ∵ it’s black</li>
+</ul>
+<h1 id="inductive-reasoning">3 Inductive Reasoning</h1>
+<blockquote>
+<p>inference using a sample of a population</p>
+</blockquote>
+<ul>
+<li>deductive validity is (abs) true/false, but inductive strength can
+be stronger/weaker</li>
+</ul>
+<h2 id="influence-strength">Influence Strength</h2>
+<ul>
+<li>more sample ⇒ stronger</li>
+<li>less biased ⇒ stronger</li>
+</ul>
+<h1 id="abductive-reasoning">3 Abductive Reasoning</h1>
+<blockquote>
+<p>inference to the best explanation</p>
+</blockquote>
+<ul>
+<li>try to find a plausible explanation to a phenomenon</li>
+</ul>
+<h2 id="true-vs-false-predictions">True vs False Predictions</h2>
+<blockquote>
+<p>successful predictions <em>confirms</em> but dont prove a theory, but
+counterexample can disprove a theory</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Prediction</th>
+<th style="text-align: center;"><code>true</code></th>
+<th style="text-align: center;"><code>false</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Result</td>
+<td style="text-align: center;">Only supports the theory</td>
+<td style="text-align: center;">Disproves a theory</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-to-deduce-theory-is-true">Example to Deduce Theory is
+True</h2>
+<div class="inference">
+
+</div>
+<ul>
+<li><code>T₁ ∨ T₂</code></li>
+<li><code>T₁ -&gt; P</code></li>
+<li><code>T₂ -&gt; ¬P</code></li>
+<li><code>P</code></li>
+<li><code>T₁</code></li>
+</ul>
+<h2 id="surprise-principle">Surprise Principle</h2>
+<blockquote>
+<p>O favors H1 over H2 only if when H1 is true, O is expected, and when
+H2 is true, O is not expected<br> aka relative probability</p>
+</blockquote>
+suppose observation <code>O</code> and hypothesis <code>H1</code> and
+<code>H2</code>
+<div class="inference">
+
+</div>
+<ul>
+<li><code>H1 -&gt; O</code> expected</li>
+<li><code>H2 -&gt; ¬O</code> expected</li>
+<li><code>O</code> is strongly favor <code>H1</code> voer
+<code>H2</code></li>
+</ul>
+<p>example: <code>H1</code> = has heartattack, <code>H2</code> =
+<code>¬H1</code></p>
+<ul>
+<li>bad <code>O</code> = has a heart
+<div class="inference">
+
+</div>
+<ul>
+<li><code>H1 -&gt; O</code> expected</li>
+<li><code>H2 -&gt; O</code> expected</li>
+<li><code>O</code> is not a <strong>strong evidence</strong> of
+<code>H1</code></li>
+</ul></li>
+<li>good <code>O</code> = erratic ECG
+<div class="inference">
+
+</div>
+<ul>
+<li><code>H1 -&gt; O</code> expected</li>
+<li><code>H2 -&gt; O</code> not expected</li>
+<li><code>O</code> is a <strong>strong evidence</strong> of
+<code>H1</code></li>
+</ul></li>
+</ul>
+<h3 id="sp-discrimination">SP Discrimination</h3>
+<blockquote>
+<p>always think about alternative hypetheses for an observation</p>
+</blockquote>
+<p>example: <code>O</code> = buys philosophy books</p>
+<ul>
+<li><code>H1</code>: is PHL major (expect true)</li>
+<li><code>H2</code>: is engineering major (expect false)</li>
+<li><code>H3</code>: not PHL major, but interested in PHL (expect
+true)</li>
+</ul>
+<p><em>dosen’t discriminate between <code>H1</code> and
+<code>H3</code></em></p>
+<h2 id="only-game-in-town-fallacy">“Only Game in Town Fallacy”</h2>
+<blockquote>
+<p>the fact that you can’t think of a more plausible explanation of the
+observation doesnt oblige you to accept the other explanation</p>
+</blockquote>
+<h1 id="aquinas-first-4-proofs-that-god">4 Aquina’s first 4 Proofs that
+God ∃</h1>
+<h2 id="concept-of-god">Concept of God</h2>
+<p>if God exists, then God is:</p>
+<ul>
+<li><strong>personal</strong>: is a person</li>
+<li><strong>omnipotent</strong>: all-powerful</li>
+<li><strong>omniscient</strong>: all-knowing</li>
+<li><strong>omnibenevolent</strong>: entirely good</li>
+</ul>
+<h2 id="argument-1-motion">Argument 1: Motion</h2>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>1</em> in the natural world, ∃ objects that are in motion</li>
+<li><em>2</em> itnw, objects in motion are always sent into motion by
+objects other than themselves</li>
+<li><em>3</em> itnw, cause must precede their effects</li>
+<li><em>4</em> itnw, ∄ infinite cause/effect chains</li>
+<li><em>5</em> ∃ an entity outside of the natural world which cause the
+motion of the first object in the natural world</li>
+</ul>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>6</em> ∃ God</li>
+</ul>
+<h3 id="background">Background</h3>
+<ul>
+<li>(1,2) idea from Aristotle’s physics
+<ul>
+<li>if an object continues to move, its motion must be sustained by a
+force</li>
+<li>no force <code>-&gt;</code> no change position</li>
+</ul></li>
+</ul>
+<h3 id="counterargument">Counterargument</h3>
+<ul>
+<li><strong>1,2</strong> Newton/modern physics <code>F = ma</code>
+<ul>
+<li>no force <code>-&gt;</code> no acc <code>-&gt;</code> remain at
+<em>uniform motion</em></li>
+<li>Newton’s laws includes ∃! one object in the universe that is in
+uniform motion</li>
+</ul></li>
+</ul>
+<h2 id="argument-2-causality">Argument 2: Causality</h2>
+<blockquote>
+<p>generalisation of argument 1</p>
+</blockquote>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>1</em> in the natural world, events occur</li>
+<li><em>2</em> itnw, ∀ event has a cause ∧ ∄ event causes itself</li>
+<li><em>3</em> itnw, causes must precede their effects</li>
+<li><em>4</em> itnw, ∄ infinite cause/effect chains</li>
+<li><em>5</em> ∃ an entity outside of nature that causes the first event
+itnw</li>
+</ul>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>6</em> ∃ God</li>
+</ul>
+<h3 id="conterargement-same-for-argument-1">Conterargement (same for
+argument 1)</h3>
+<ul>
+<li><strong>2</strong>: why must <em>every</em> event occured in nature
+have a cause?</li>
+<li><strong>4</strong>: Aquina’s invalid argument on why cause/effect
+chains must be finite
+<div class="inference">
+
+</div>
+<ul>
+<li>you are doing a thing rn</li>
+<li>a causal chain that extends from this present event infinitely into
+the past, which by definition, lacks a 1st member</li>
+<li><span class="pink">✕</span> if a causal chain lacks a 1st member,
+then all subsequent events in the chain could not occur</li>
+<li>causal chain leading up to the present event must be finite</li>
+</ul></li>
+<li><strong>5,6</strong>: 5 doesnt implies 6</li>
+</ul>
+<h2 id="birthday-fallacy">Birthday Fallacy</h2>
+<blockquote>
+<p>the argument try to show ∃! where it can only show ∃</p>
+</blockquote>
+<h3 id="from-aquinas">From Aquinas</h3>
+<ul>
+<li><span class="lime">✓</span> ∀ events itnw trace back to an event
+that occurs outside nature</li>
+<li><span class="pink">✕</span> ∃! event ouside nature to which ∀ event
+in the nature traces back</li>
+</ul>
+<h3 id="example-birthday">Example Birthday</h3>
+<ul>
+<li><span class="lime">✓</span> ∀ people have a birthday</li>
+<li><span class="pink">✕</span> ∃! day that is everyone’s birthday</li>
+</ul>
+<h2 id="argument-3-contingency">Argument 3: Contingency</h2>
+<blockquote>
+<p>contigent ≡ ¬necessary</p>
+<ul>
+<li>contigent existance depends on something or something happening</li>
+<li>necessary being exists no matter what</li>
+</ul>
+</blockquote>
+try to show ∃ necessary being, namely God
+<div class="inference">
+
+</div>
+<ul>
+<li><em>1</em> ∃ contigent things</li>
+<li><em>2</em> ∀ contigent things ∃ a time at which it fails to
+exist</li>
+<li><em>3</em> ∀ things are contigent <code>-&gt;</code> ∃ time where
+nothing exists (call it <em>empty time</em>)</li>
+</ul>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>4</em> ∃ empty time <code>-&gt;</code> it would have been in the
+past</li>
+<li><em>5</em> empty time was in the past <code>-&gt;</code> world would
+be empty forever</li>
+</ul>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>6</em> ∀ things are contigent <code>-&gt;</code> nothing would
+exist now</li>
+<li><em>7</em> but <em>1</em> and <em>6</em> contradicts
+(<em>reductio</em>)</li>
+<li><em>8</em> God ∃</li>
+</ul>
+<h3 id="counterargument-1">Counterargument</h3>
+<ul>
+<li><strong>2</strong>: why contigent things cant be eternal
+<ul>
+<li>current physics doesnt support that atoms are indestructible, as
+mass may by destroyed and be converted ynto energy</li>
+<li>but it doesnt mean all contigently existing particle <em>will</em>
+be destroyed</li>
+</ul></li>
+<li><strong>3</strong>: fallacy
+<ul>
+<li>contigent things can ∃ in alternation (u r a osu player, u know what
+i mean)</li>
+</ul></li>
+</ul>
+<h2 id="necessarycontigent-propositions">Necessary/Contigent
+Propositions</h2>
+<ul>
+<li>a <em>necessary</em> proposition retains its truth value across all
+possible worlds</li>
+<li>a <em>contigent</em> proposition doesnt have a fixed truth value
+across all possible worlds</li>
+</ul>
+<h3 id="theories-of-truth">Theories of Truth</h3>
+<ol type="1">
+<li>correspondence theory</li>
+</ol>
+<ul>
+<li>the sentence is true if it corresponds with reality
+<ul>
+<li>problem: what exactly defines the <em>correspondence</em></li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li>coherenc theory</li>
+</ol>
+<ul>
+<li>true if it’s part of the biggest/largest consistent part of the
+sentences that can be contructed
+<ul>
+<li>problem: if alternative worlds exist, then what happened in our
+world could have happened differently in another and still be coherent,
+which implies there may be more than one largest system of
+sentences</li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li>redundacy theory:</li>
+</ol>
+<ul>
+<li>there is nothing to truth at all
+<ul>
+<li>saying something is true the redundant since it only repeats what
+the sentence says</li>
+</ul></li>
+</ul>
+<h3 id="mathematical-truths">Mathematical Truths</h3>
+<blockquote>
+<p>considered necessarily true</p>
+</blockquote>
+<ul>
+<li><code>7 + 3 == 10</code>
+<ul>
+<li>the propos is <em>necessary</em> fact</li>
+<li>but the symbols (<code>+</code>, <code>7</code>, <code>==</code>)
+are <em>contigent</em> fact</li>
+</ul></li>
+</ul>
+<h2 id="argument-4-properties-with-degrees">Argument 4: Properties with
+Degrees</h2>
+<blockquote>
+<p><em>2</em> is clearly implausible</p>
+</blockquote>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>1</em> objects have props to greater or lesser extents</li>
+<li><em>2</em> ∃ obj with prop to a lesser extent <code>-&gt;</code> ∃
+obj with that prop to the max degree</li>
+<li><em>3</em> ∃ an entity that has all props to the max degree</li>
+</ul>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>4</em> God ∃</li>
+</ul>
+<h1 id="the-design-argument-5th-argument">5 The Design Argument (5th
+Argument)</h1>
+<blockquote>
+<p><em>2</em> → <em>3</em> is Birthday Fallacy</p>
+</blockquote>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>1</em> ∀ goal-directed objects, some have minds and others do
+not</li>
+<li><em>2</em> ∀ objects, is goal-directed ∧ ¬have a mind
+<code>-&gt;</code> is designed by a being that has a mind</li>
+<li><em>3</em> ∃ a being with a mind who designed all mindless
+goal-directed objects</li>
+</ul>
+<div class="inference">
+
+</div>
+<ul>
+<li><em>4</em> God ∃</li>
+</ul>
+<h2 id="goal-directed-systems">Goal Directed Systems</h2>
+<ul>
+<li>humans
+<ul>
+<li>goal-directed (act for an end) by <em>desires</em></li>
+<li>have minds</li>
+</ul></li>
+<li>homing missiles
+<ul>
+<li>goal-directed</li>
+<li>dont have minds</li>
+<li><em>artifacts</em>: devices build by creaturs with minds</li>
+</ul></li>
+<li>(implausible now, but was ideas from Aristotle)
+<ul>
+<li>rocks are hard to “resiste destruction”</li>
+<li>rock fall toward the center of the Earth to “attain the location
+that is in their nature to seek”</li>
+</ul></li>
+</ul>
+<h2 id="kinds-of-design-argument">Kinds of Design Argument</h2>
+<blockquote>
+<p>basically abductive reasoning</p>
+</blockquote>
+<h3 id="global-design">Global Design</h3>
+<ul>
+<li>general feature of the whole universe</li>
+<li>explains it’s the product of intelligent design</li>
+<li>e.g. Newton: simplicity of natural laws ∃ <code>-&gt;</code> an
+intelligent + perfect God designed them</li>
+</ul>
+<h3 id="local-design">Local Design</h3>
+<ul>
+<li>specific feature</li>
+<li>explains God ∃ is the best/only plausible explanation of that
+fact</li>
+<li>e.g. organisms</li>
+</ul>
+<h3 id="design-hypothesis">Design Hypothesis</h3>
+<blockquote>
+<p>surprise principle says design hypothesis is more plausible than
+random hypothesis</p>
+</blockquote>
+<ul>
+<li>designed to happen is more plausible than just happened
+randomly</li>
+</ul>
+<h2 id="analogy">Analogy</h2>
+<blockquote>
+<p>can used to prove 2 things are not analogous i.e. revelant</p>
+</blockquote>
+<div class="inference">
+
+</div>
+<ul>
+<li>A has property P</li>
+<li>A and B are similar to degree n</li>
+<li>T probably has property P to the degren n</li>
+</ul>
+<h2 id="humes-critisim-of-dearg">Hume’s Critisim of DeArg</h2>
+<ul>
+<li>analogy
+<ul>
+<li>bad ∵ an item and an universe are irrevelant ### Sober’s Critisim of
+Hume</li>
+</ul></li>
+</ul>
+<p>dearg is abduction, not analogy</p>
+<ul>
+<li>as induction: bad ∵ no other universes to observe</li>
+<li>as abduction: good ∵ surprise principle</li>
+</ul>
+<h2 id="base-rate-fallacy">Base Rate Fallacy</h2>
+<blockquote>
+<p>effect is attributed to an incorrect cause because the basic
+statistical ratio have not been taken into account</p>
+</blockquote>
+<ul>
+<li>e.g. 90% of murderers are right-handed, ∴ right-handed people are
+more evil</li>
+</ul>
+<h1 id="evolution-creationism">6 Evolution &amp; Creationism</h1>
+<h2 id="creationism-defenders-of-dearg">Creationism: Defenders of
+DeArg</h2>
+<blockquote>
+<p>rejects Darwin’s natural selection as correct explaination of O</p>
+</blockquote>
+<p>relations between <em>God (G)</em>, <em>mindless evolutionary
+processes (E)</em>, <em>observations on complex organisms (O)</em></p>
+<ul>
+<li>theistic evolutionism: <em>G</em> set <em>E</em> in motion,
+<em>E</em> explains <em>O</em>
+<ul>
+<li>believes in God and evolution
+<ul>
+<li>G creates the world, and let evolution takes the rest</li>
+</ul></li>
+</ul></li>
+<li>atheistic evolutionism: <em>E</em> explains <em>O</em>
+<ul>
+<li>God ∄
+<ul>
+<li>only physical processes lead to evolution</li>
+</ul></li>
+</ul></li>
+<li>creationism: <em>E</em> cant make <em>O</em>, but <em>G</em> makes
+both <em>E</em> and <em>O</em>
+<ul>
+<li>G created the world
+<ul>
+<li>G intervenes</li>
+<li>disagree speciation</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="second-law-of-thermodynamics">Second Law of Thermodynamics</h3>
+<blockquote>
+<p>a <em>closed system</em> will move from states of greater order to
+states of lesser order</p>
+</blockquote>
+<ul>
+<li>but the earth is not closed ∵ the sun is a constant energy
+input</li>
+</ul>
+<h2 id="evolution-darwins-two-part-theory">Evolution: Darwin’s Two-Part
+Theory</h2>
+<ol type="1">
+<li>all present-day living things are genealogically related
+<ul>
+<li>didnt say why</li>
+</ul></li>
+<li>natural selection
+<ul>
+<li>if
+<ol type="1">
+<li>a characterstic of a population <em>varies</em></li>
+<li>the variation is <em>inheritable</em></li>
+<li>the variation affects the population’s <em>fitness</em> (change of
+survive and reproduce)</li>
+</ol></li>
+<li>then the freq of this characteristic will change</li>
+</ul></li>
+</ol>
+<h3 id="speciation">Speciation</h3>
+<blockquote>
+<p>small changes within a species can lead to the creation of a new
+species (∵ diff envs)</p>
+</blockquote>
+<ul>
+<li>creationists disagrees on that</li>
+</ul>
+<h2 id="correlation">Correlation</h2>
+<ol type="1">
+<li>accidental: random association</li>
+<li>casual: has a cause/effect relationship</li>
+<li>common-cause: the 2 things have the same cause</li>
+</ol>
+<h3 id="principle-of-common-cause">Principle of Common Cause</h3>
+<blockquote>
+<p>direct consequence of the Surprise Principle</p>
+</blockquote>
+<p><code>A</code> causes <code>B</code> and <code>C</code>, ∴
+<code>B</code> and <code>C</code> are probly correlated</p>
+<ul>
+<li>more plausible than separate cause</li>
+</ul>
+<p>e.g. humans have tail bones</p>
+<ul>
+<li>using SP and PoCC: humans might share common ancestors with
+monkeys</li>
+</ul>
+<h2 id="irreducible-complexity-refutes-natsel">Irreducible Complexity:
+Refutes NatSel</h2>
+<blockquote>
+<p>Behe: a irreducible complex system</p>
+<ul>
+<li>has 1 function</li>
+<li>made of many parts</li>
+<li>if any of the parts removed, wont function</li>
+</ul>
+</blockquote>
+<ul>
+<li>problem: what counts as parts
+<ul>
+<li><span class="pink">✕</span> horses have to evolve their 4 legs one
+at a time</li>
+</ul></li>
+</ul>
+<h2 id="predictive-equivalence">Predictive Equivalence</h2>
+<blockquote>
+<p><code>H1</code> and <code>H2</code> lead to the same predictions</p>
+</blockquote>
+<ul>
+<li>cant be tested scientifically since no observations can tell them
+apart</li>
+<li>but has conditions of palusibility</li>
+</ul>
+<h2 id="evolution-imperfect-adaptations">Evolution: Imperfect
+Adaptations</h2>
+<p>organisms often have highly <em>imperfect</em> adaptations</p>
+<ul>
+<li>organisms will <strong>gradually</strong> become better adapted to
+the env</li>
+<li>e.g. human eye has blind spots</li>
+</ul>
+<h2 id="accommodation">Accommodation</h2>
+<blockquote>
+<p>adbuctive theories shouldnt <em>merely accommodate</em> the
+observations, it should make some novel predictions</p>
+</blockquote>
+<h1 id="can-science-explain-everything">7 Can Science Explain
+Everything?</h1>
+<ul>
+<li>it’s possible to explain something without explaining why it ∃
+<ul>
+<li>e.g. before Newton’s time, sailors had good evidence that the waves
+are correlated with the phases of the Moon, but dk why</li>
+</ul></li>
+</ul>
+<h2 id="was-ist-scientific-explanation">Was Ist Scientific
+Explanation?</h2>
+<blockquote>
+<p>science tries to explain <em>particular events</em> and
+<em>generalisations</em></p>
+</blockquote>
+<h2 id="local-vs-global-questions">Local vs Global Questions</h2>
+<blockquote>
+<p>same logic as local/global design arguments</p>
+</blockquote>
+<ul>
+<li><strong>local</strong>: explains specific feature</li>
+<li><strong>global</strong>: explain the entire nature
+<ul>
+<li>science cant explain, but God can explain</li>
+</ul></li>
+</ul>
+<h2 id="principle-of-sufficient-reason">Principle of Sufficient
+Reason</h2>
+<blockquote>
+<p>eveything that happens has an explaination/reason</p>
+</blockquote>
+<ul>
+<li>science assume it’s true</li>
+<li>but if it’s true, then ∄ contigent facts</li>
+</ul>
+<h1 id="ontological-argument">8 Ontological Argument</h1>
+<blockquote>
+<p>an a priori argument to prove God ∃</p>
+</blockquote>
+<h2 id="a-posteriori-vs-a-priori">A Posteriori vs A Priori</h2>
+<ul>
+<li><strong>a posteriori</strong>: requires sence experience to be
+justified
+<ul>
+<li>e.g. water exists (need observation)</li>
+</ul></li>
+<li><strong>a priori</strong>: knowable independently from existance
+(can be dis/proven by just thinking)
+<ul>
+<li>e.g. mathematical truths/definitions, water is liquid (by
+definition)
+<ul>
+<li>if understand the concepts involved, then <em>reason</em> will
+suffice to (dis)prove the proposition</li>
+<li>mathematical definitions are a priori</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="with-contigent-and-necessary">With Contigent and Necessary</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Necessary</th>
+<th style="text-align: center;">Contigent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>A Priori</strong></td>
+<td style="text-align: center;"><code>2 + 3 = 5</code></td>
+<td style="text-align: center;">I ∃</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>A Posteriori</strong></td>
+<td style="text-align: center;">Perpetual motion machines are
+impossible</td>
+<td style="text-align: center;">Saturn has 56 moons</td>
+</tr>
+</tbody>
+</table>
+<h2 id="onarg-structure-by-anselm">OnArg Structure by Anselm</h2>
+<div class="inference">
+
+</div>
+<ul>
+<li>God has maximum possible perfection</li>
+<li>if God doesnt ∃, then one can imagine a being greater than God</li>
+<li>but God is by definition the greatest</li>
+<li>God exists by contradiction</li>
+</ul>
+<br>
+<div class="inference">
+
+</div>
+<ul>
+<li>God is greater than which none can be conceived</li>
+<li>A contigent being is less perfect than a necessary being</li>
+<li>God ∃ necessarily</li>
+</ul>
+<h3 id="gaunilos-island">Gaunilo’s Island</h3>
+<div class="inference">
+
+</div>
+<ul>
+<li>the perfect island is by definition the most perfect i.e. better
+than anything else</li>
+<li>an island that ∄ is less perfect than an island that ∃</li>
+<li><span class="pink">✕</span> the perfect island must ∃</li>
+</ul>
+<p>problems</p>
+<ul>
+<li><em>1</em> is circular</li>
+<li><em>2</em> existence shouldnt be a feature of perfection, it should
+be a precondition of perfection</li>
+</ul>
+<h3 id="island-vs-god">Island vs God</h3>
+<ul>
+<li>∵ the validity of an argument depends on the form, not the
+content</li>
+<li>∴ Gaunilo says that island argument is invalid iff onarg is
+invalid</li>
+</ul>
+<h1 id="testability-of-gods-existence">9 Testability of God’s
+Existence</h1>
+<h2 id="testability-theory-of-meaning">Testability Theory of
+Meaning</h2>
+<blockquote>
+<p>if <code>S</code> is a meaningful sentence, then it is possible to
+figure out whether <code>S</code> is true<br></p>
+</blockquote>
+<p>i.e. if <code>S</code> is <em>a priori</em> or <em>a posteriori</em>,
+then <code>S</code> is meaningful</p>
+<ul>
+<li>positivists: “God ∃” is neither a priori nor a posteriori, ∴ the
+claim is meaningless</li>
+</ul>
+<h2 id="analytical-vs-synthetic-truth">Analytical vs Synthetic
+Truth</h2>
+<ul>
+<li><strong>analytical truth</strong> are decidable from definition
+alone (truth is contained within the definition of the terms in it)
+<ul>
+<li>e.g. people die if they are killed, people are born on their
+birthday</li>
+<li>positivists: all a priori truth are analytical</li>
+</ul></li>
+<li><strong>synthetic truth</strong> is not analytical truth
+<ul>
+<li>e.g. I got 4.0 in PHLA10
+<ul>
+<li>positivists: all a posteriori truth are synthetic</li>
+</ul></li>
+</ul></li>
+<li>positivists:
+<ul>
+<li>“God ∃” cant be decided from definition alone ∴ not analytical</li>
+<li>“God ∃” makes no predictions, ∴ not testable ∴ not synthetic</li>
+<li>if a theory make a prediction that can be checked observationally,
+then it runs the risk of being refuted by observations</li>
+</ul></li>
+</ul>
+<h1 id="pascal-and-irrationality">10 Pascal and Irrationality</h1>
+<blockquote>
+<p>prudent reason <code>=&gt;</code> justification to irrationality</p>
+</blockquote>
+<h2 id="prudential-and-evidential-reasons">Prudential and Evidential
+Reasons</h2>
+<ul>
+<li>belief with <strong>prudential</strong> reasons: believe because
+self-interest</li>
+<li>belief with <strong>evidential</strong> reasons: believe because
+evidences exist</li>
+</ul>
+<p>Pascal tries to give a <em>prudential</em> reason for believing in
+God (as long as you think that the existence of God is possible)</p>
+<h2 id="pascals-argument-and-criticisms">Pascal’s Argument (and
+Criticisms)</h2>
+<p>suppose the following outcomes of “belive God ∃” vs “God actually
+∃”</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">God ∃</th>
+<th style="text-align: center;">God ∄</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Believe God ∃</td>
+<td style="text-align: center;"><code>+infinite</code></td>
+<td style="text-align: center;"><code>-finite</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Believe God ∄</td>
+<td style="text-align: center;"><code>-infinite</code></td>
+<td style="text-align: center;"><code>+finite</code></td>
+</tr>
+</tbody>
+</table>
+<p>Pascal:</p>
+<ul>
+<li>all possible outcomes:
+<ul>
+<li>believe in God while God ∃ will get infinite reward (e.g. goto
+heaven)</li>
+<li>believe in God while God ∄ will get finite punishment (e.g. waste
+time during religious practices)</li>
+<li>not believe in God while God ∃ will get infinite punishment
+(e.g. goto hell)</li>
+<li>not believe in God while God ∄ will get finite punishment (e.g. not
+waste time)</li>
+</ul></li>
+<li>∴ by reasonable gambling, the expected value is higher for believe
+in God no matter how low the chances are
+<ul>
+<li>∴ its better to believe than not</li>
+</ul></li>
+</ul>
+<h3 id="criticism-belief-action">Criticism: Belief ∉ Action</h3>
+<ul>
+<li>we cant decide to believe a proposition ∵ it isnt an action we can
+control</li>
+<li>objection: treat belief as a problem of decision theory is a
+mistake</li>
+<li>Pascal: reformulate argument into “decide doing things under control
+that leads to believe in God”</li>
+</ul>
+<h3 id="criticism-assumption-of-outcome">Criticism: Assumption of
+Outcome</h3>
+<ul>
+<li>Pascal assumes God would send believers to heaven and nonbelievers
+to hell
+<ul>
+<li>i.e. assumes God’s nature that not all religious traditions
+necessary have</li>
+<li>i.e. assumes what God would be like if God ∃</li>
+</ul></li>
+</ul>
+<h2 id="psychological-argument-prudent">Psychological Argument
+(Prudent)</h2>
+<div class="inference">
+
+</div>
+<ul>
+<li>believe in God <code>=&gt;</code> have happy and productive
+life</li>
+<li>not believe in God <code>=&gt;</code> have depressive and
+unproductive life</li>
+<li>want to have a better life <code>=&gt;</code> become theist</li>
+</ul>
+<p>cmp with Pascal:</p>
+<ul>
+<li>is prudential</li>
+<li>no assumption on the nature of God</li>
+</ul>
+<h2 id="pragmatism">Pragmatism</h2>
+<blockquote>
+<p>we should believe propositions that are useful to us</p>
+</blockquote>
+<p>Clifford:</p>
+<ul>
+<li>opponent of pragmatism</li>
+<li>prudential considerations are always irrelevant</li>
+<li>only believe evidentially</li>
+<li>believe prudentially <code>=&gt;</code> lost of habit of testing
+&amp; inquiring things <code>=&gt;</code> returns to savagery</li>
+</ul>
+<h1 id="argument-from-evil">11 Argument from Evil</h1>
+<blockquote>
+<p>evil ∃ <code>=&gt;</code> God ∄</p>
+</blockquote>
+<h2 id="logical-no-evil">Logical: No Evil</h2>
+<div class="inference">
+
+</div>
+<ul>
+<li>God ∃ <code>=&gt;</code> God is omniscience, omnipotence,
+omnibenevolence</li>
+<li>∃ being that is omni <code>=&gt;</code> ∄ evil</li>
+<li>∃ evil</li>
+<li>God ∄</li>
+</ul>
+<h3 id="explanation">Explanation</h3>
+<ol type="1">
+<li>definition of God</li>
+<li>an omnibenevolence (all-good) God would want to prevent evil
+<ul>
+<li>an omniscience (all-knowing) God would know how to prevent evil</li>
+<li>an omnipontent (all-powerful) God would be able to prevent evil</li>
+<li>∴ an all-pkg will prevent the existence of evil</li>
+</ul></li>
+<li>two kinds of evil
+<ul>
+<li>by human actions (e.g. conflict, wars, etc)</li>
+<li>by nature that makes human suffer (e.g. natural disasters)</li>
+</ul></li>
+</ol>
+<h3 id="problems">Problems</h3>
+<ol start="2" type="1">
+<li>theodicy and defence
+<ul>
+<li>theodicy (explain why it’s false)
+<ul>
+<li>why an omni God would allow evil to exist</li>
+</ul></li>
+<li>defence (no good reason to think the premise is true)</li>
+</ul></li>
+<li>assumes evil exists
+<ul>
+<li>assumes murders/tortures/brutalites is morally bad</li>
+<li>assumes world would be a better place if some natural disaters didnt
+occur</li>
+</ul></li>
+</ol>
+<h3 id="theodicy-soul-building-evils">Theodicy: Soul-Building Evils</h3>
+<ul>
+<li><strong>soul-building</strong>: evils that make us better people,
+strengthen our character
+<ul>
+<li>not all evils/suffers make a person stronger</li>
+<li>some suffers weaken a person, but make other people stronger</li>
+</ul></li>
+<li>assume (1) and (3) are true
+<ul>
+<li>why couldnt a omnipontent God make us stronger directly?</li>
+<li>“to let us feel achievement, get credit”</li>
+<li>why need to get credit?</li>
+<li>why get credit for enduring suffer &gt; just become stronger by
+God?</li>
+</ul></li>
+</ul>
+<h2 id="logical-no-above-soul-building">Logical: No Above
+Soul-Building</h2>
+<div class="inference">
+
+</div>
+<ul>
+<li>God ∃ <code>=&gt;</code> God is omni</li>
+<li>∃ omni being <code>=&gt;</code> amount of evil <code>&lt;=</code>
+soul-building minimum</li>
+<li>amount of evil <code>&gt;</code> a soul-building min</li>
+<li>God ∄</li>
+</ul>
+<h3 id="theodicy-free-will">Theodicy: Free Will</h3>
+<ol start="2" type="1">
+<li>God made us free, ∴ ∃ people who do evil without soul-building
+<ul>
+<li>why God dont make us free and only do what is right</li>
+<li>why free <code>=&gt;</code> ∃ people who perform evil actions?</li>
+</ul></li>
+</ol>
+<h2 id="logical-no-above-sb-freedom">Logical: No Above SB + Freedom</h2>
+<div class="inference">
+
+</div>
+<ul>
+<li>God ∃ <code>=&gt;</code> God is omni</li>
+<li>∃ omni being <code>=&gt;</code> amount of evil <code>&lt;=</code>
+sould-building min + consequence of freedom</li>
+<li>amount of evil exceeds</li>
+<li>God ∄</li>
+</ul>
+<h3 id="defence-amount-of-evil">Defence: Amount of Evil</h3>
+<ol start="2" type="1">
+<li>attempts to specify an upper bound of evilness
+<ul>
+<li>how measure?</li>
+<li>God can allow more evil to get some greater good of which we are
+unaware</li>
+</ul></li>
+</ol>
+<h2 id="evidential-arguments">Evidential Arguments</h2>
+<blockquote>
+<p>uses surprise principle</p>
+</blockquote>
+<div class="inference">
+
+</div>
+<ul>
+<li>omni God ∃ <code>=&gt;</code> expect <code>E</code> to be false</li>
+<li>omni God ∄ <code>=&gt;</code> expect <code>E</code> to be true</li>
+<li>(surprise priniple)</li>
+<li><code>E</code> is strong evidence that omni God ∄</li>
+</ul>
+<script>
+const headers = ['h1', 'h2', 'h3'];
+const hidden = ' hidden';
+const isheader = tag => /h\d/.test(tag);
+
+function cmp(a,b){ // assume h1 > h2
+	// same header level
+	if(a === b) return 0;
+	// h1 > h2 => 1    h2 < h1 => -1
+	return (+a[1] < +b[1]) * 2 - 1;
+}
+
+function toggle(tag, element, hide){
+	if(!element) return;
+
+	const t = element.tagName.toLowerCase();
+	if(isheader(t) && cmp(tag, t) <= 0) return;
+
+	if(hide){
+		element.className += hidden;
+	}else{
+		element.className = element.className.replace(hidden, '');
+	}
+	toggle(tag, element.nextElementSibling, hide);
+}
+
+// open all details
+document.querySelectorAll('details:not(.example)').forEach(e => e.open = true);
+// click on header will hide all following elements until next header of same level
+headers.forEach(
+	tag => document.querySelectorAll(tag + ':not(.title)').forEach(
+		element => element.onclick = ({target: { nextElementSibling } }) => {
+			toggle(tag, nextElementSibling, !nextElementSibling.className.includes('hidden'))
+		}
+	)
+);
+// click on title to toggle all h1
+document.querySelector('h1.title').onclick = () => document.querySelectorAll('h1:not(.title)').forEach(h1 => h1.click());
+
+</script>
+</body>
+</html>

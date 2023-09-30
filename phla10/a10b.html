@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PHLA10 Post-Midterm</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #131313;
+        color: #eaeaea;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #eaeaea;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #ff6680; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #787878; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #66ccff; } /* DataType */
+    code span.dv { color: #a68cd9; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #ff6680; font-style: italic; } /* Keyword */
+    code span.op { color: #787878; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #ff6680; } /* Preprocessor */
+    code span.sc { color: #a68cd9; } /* SpecialChar */
+    code span.ss { color: #a68cd9; } /* SpecialString */
+    code span.st { color: #ffe666; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style>
+  .hidden {
+    display: none;
+  }
+
+  html {
+    font-family: "source sans pro", arial, "iosevka custom extended", consolas, "UD Digi Kyokasho NK-R", sans-serif;
+    font-size: 20px;
+    background: #000000;
+    color: #f1f1f1;
+  }
+  html body {
+    padding-bottom: 30em;
+  }
+  html header#title-block-header {
+    display: flex;
+    justify-content: center;
+  }
+  html h1:not(.title) {
+    border-bottom: 1px solid;
+  }
+  html h1, html h2, html h3 {
+    color: #ffe666;
+    margin: 0.5em 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  html a {
+    color: #ffe666;
+    text-decoration: none;
+  }
+  html a:visited {
+    color: #ffe666;
+  }
+  html a:hover {
+    color: #f1f1f1;
+    text-decoration: underline;
+    background: #0f0f0f;
+  }
+  html blockquote {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ffe666;
+    background: rgba(255, 230, 102, 0.1);
+    color: rgba(241, 241, 241, 0.95) !important;
+  }
+  html p, html header, html dl {
+    margin: 0;
+  }
+  html ul, html ol {
+    padding-left: 2em;
+    margin: 0;
+  }
+  html table {
+    border-collapse: collapse;
+  }
+  html table tbody > tr:not(:first-child) {
+    border-top: 1px solid #5e5e5e;
+  }
+  html table thead {
+    border-bottom: 1px solid #f1f1f1 !important;
+  }
+  html table td, html table th {
+    padding: 0.5em;
+  }
+  html pre {
+    background: #0f0f0f;
+    margin: 0;
+  }
+  html pre > code {
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  html code {
+    color: #f1f1f1;
+    padding: 0 5px;
+    line-height: 1.3;
+    font-family: "iosevka custom extended", consolas;
+  }
+
+  .\32 d > table tr td:first-child, .\32 d > table tr th:first-child {
+    border-right: 1px solid #f1f1f1;
+    font-weight: bold;
+  }
+
+  details.theorem {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #39c5bb;
+    background: rgba(57, 197, 187, 0.1);
+    padding-top: 0;
+  }
+  details.theorem strong, details.theorem .textbf {
+    color: #39c5bb;
+  }
+  details.theorem summary {
+    cursor: pointer;
+  }
+  details.theorem > summary {
+    padding: 0.5em 1em;
+    background: rgba(57, 197, 187, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.theorem > summary::before {
+    content: "theorem.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #39c5bb;
+  }
+  details.example {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #a68cd9;
+    background: rgba(166, 140, 217, 0.1);
+    padding-top: 0;
+  }
+  details.example strong, details.example .textbf {
+    color: #a68cd9;
+  }
+  details.example summary {
+    cursor: pointer;
+  }
+  details.example > summary {
+    padding: 0.5em 1em;
+    background: rgba(166, 140, 217, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.example > summary::before {
+    content: "example.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #a68cd9;
+  }
+  details.definition {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #66ccff;
+    background: rgba(102, 204, 255, 0.1);
+    padding-top: 0;
+  }
+  details.definition strong, details.definition .textbf {
+    color: #66ccff;
+  }
+  details.definition summary {
+    cursor: pointer;
+  }
+  details.definition > summary {
+    padding: 0.5em 1em;
+    background: rgba(102, 204, 255, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.definition > summary::before {
+    content: "definition.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #66ccff;
+  }
+  details.algorithm {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.algorithm strong, details.algorithm .textbf {
+    color: #ff6680;
+  }
+  details.algorithm summary {
+    cursor: pointer;
+  }
+  details.algorithm > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.algorithm > summary::before {
+    content: "algorithm.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff6680;
+  }
+  details.argument {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.argument strong, details.argument .textbf {
+    color: #ff6680;
+  }
+  details.argument summary {
+    cursor: pointer;
+  }
+  details.argument > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.argument > summary::before {
+    content: "argument.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff6680;
+  }
+  details.leek {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #39c5bb;
+    background: rgba(57, 197, 187, 0.1);
+    padding-top: 0;
+  }
+  details.leek strong, details.leek .textbf {
+    color: #39c5bb;
+  }
+  details.leek summary {
+    cursor: pointer;
+  }
+  details.leek > summary {
+    padding: 0.5em 1em;
+    background: rgba(57, 197, 187, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.orange {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff9966;
+    background: rgba(255, 153, 102, 0.1);
+    padding-top: 0;
+  }
+  details.orange strong, details.orange .textbf {
+    color: #ff9966;
+  }
+  details.orange summary {
+    cursor: pointer;
+  }
+  details.orange > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 153, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.sky {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #66ccff;
+    background: rgba(102, 204, 255, 0.1);
+    padding-top: 0;
+  }
+  details.sky strong, details.sky .textbf {
+    color: #66ccff;
+  }
+  details.sky summary {
+    cursor: pointer;
+  }
+  details.sky > summary {
+    padding: 0.5em 1em;
+    background: rgba(102, 204, 255, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.pink {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.pink strong, details.pink .textbf {
+    color: #ff6680;
+  }
+  details.pink summary {
+    cursor: pointer;
+  }
+  details.pink > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.yellow {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ffe666;
+    background: rgba(255, 230, 102, 0.1);
+    padding-top: 0;
+  }
+  details.yellow strong, details.yellow .textbf {
+    color: #ffe666;
+  }
+  details.yellow summary {
+    cursor: pointer;
+  }
+  details.yellow > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 230, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.argument ul > li {
+    list-style-type: decimal;
+  }
+
+  span.lime {
+    color: #66ff99;
+  }
+  span.pink {
+    color: #ff6680;
+  }
+  span.true::before {
+    content: "true";
+    color: #66ff99;
+  }
+  span.false::before {
+    content: "false";
+    color: #ff6680;
+  }
+
+  #TOC {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    display: none;
+    direction: rtl;
+    overflow-y: scroll;
+    background: rgba(0, 0, 0, 0.875);
+  }
+  #TOC > ul {
+    margin: 1em;
+    direction: ltr;
+  }
+  #TOC.show {
+    display: unset;
+  }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PHLA10 Post-Midterm</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#philosphy-of-religion"
+id="toc-philosphy-of-religion">Philosphy of Religion</a>
+<ul>
+<li><a href="#aquinas-first-four-ways"
+id="toc-aquinas-first-four-ways">04 Aquinas: First Four Ways</a>
+<ul>
+<li><a href="#aquinas-motion" id="toc-aquinas-motion">Aquinas:
+Motion</a></li>
+<li><a href="#aquinas-causality" id="toc-aquinas-causality">Aquinas:
+Causality</a></li>
+<li><a href="#birthday-fallacy" id="toc-birthday-fallacy">Birthday
+Fallacy</a></li>
+<li><a href="#aquinas-contigency" id="toc-aquinas-contigency">Aquinas:
+Contigency</a></li>
+<li><a href="#aquinas-degree" id="toc-aquinas-degree">Aquinas:
+Degree</a></li>
+</ul></li>
+<li><a href="#aquinas-design-argument"
+id="toc-aquinas-design-argument">05 Aquinas: Design Argument</a>
+<ul>
+<li><a href="#types-of-design-argument"
+id="toc-types-of-design-argument">Types of Design Argument</a></li>
+<li><a href="#argument-by-analogy" id="toc-argument-by-analogy">Argument
+by Analogy</a></li>
+<li><a href="#criticism-of-design-argument"
+id="toc-criticism-of-design-argument">Criticism of Design
+Argument</a></li>
+<li><a href="#base-rate-fallacy" id="toc-base-rate-fallacy">Base Rate
+Fallacy</a></li>
+</ul></li>
+<li><a href="#evolution-and-creationism"
+id="toc-evolution-and-creationism">06 Evolution and Creationism</a>
+<ul>
+<li><a href="#versions-of-creationism-with-problems"
+id="toc-versions-of-creationism-with-problems">Versions of Creationism
+(with Problems)</a></li>
+<li><a href="#darwin-two-part-theory"
+id="toc-darwin-two-part-theory">Darwin: Two-Part Theory</a></li>
+<li><a href="#princple-of-common-cause"
+id="toc-princple-of-common-cause">Princple of Common Cause</a></li>
+</ul></li>
+<li><a href="#scientific-explanation" id="toc-scientific-explanation">07
+Scientific Explanation</a>
+<ul>
+<li><a href="#only-game-in-town-fallacy"
+id="toc-only-game-in-town-fallacy">Only Game in Town Fallacy</a></li>
+</ul></li>
+<li><a href="#ontological-argument" id="toc-ontological-argument">08
+Ontological Argument</a>
+<ul>
+<li><a href="#a-posteriori-vs-a-priori"
+id="toc-a-posteriori-vs-a-priori">A Posteriori vs A Priori</a></li>
+<li><a href="#aslem-god-as-greatest-being"
+id="toc-aslem-god-as-greatest-being">Aslem: God as Greatest
+Being</a></li>
+<li><a href="#gaunilos-island-counterargument"
+id="toc-gaunilos-island-counterargument">Gaunilo's Island
+(Counterargument)</a></li>
+<li><a href="#sobers-criticism" id="toc-sobers-criticism">Sober's
+Criticism</a></li>
+</ul></li>
+<li><a href="#testablitiy-of-god" id="toc-testablitiy-of-god">09
+Testablitiy of God ∃</a>
+<ul>
+<li><a href="#logical-positivism" id="toc-logical-positivism">Logical
+Positivism</a></li>
+<li><a href="#analytical-vs-synthetic-truth"
+id="toc-analytical-vs-synthetic-truth">Analytical vs Synthetic
+Truth</a></li>
+<li><a href="#need-auxiliary-assumptions"
+id="toc-need-auxiliary-assumptions">Need Auxiliary Assumptions</a></li>
+</ul></li>
+<li><a href="#pascal-irrationality" id="toc-pascal-irrationality">10
+Pascal: Irrationality</a>
+<ul>
+<li><a href="#prudential-vs-evidential-reasons"
+id="toc-prudential-vs-evidential-reasons">Prudential vs Evidential
+Reasons</a></li>
+<li><a href="#pascal-prudential-reason"
+id="toc-pascal-prudential-reason">Pascal: Prudential Reason</a></li>
+<li><a href="#criticisms-to-pascal"
+id="toc-criticisms-to-pascal">Criticisms to Pascal</a></li>
+<li><a href="#psychological-argument-prudent-pragmatism"
+id="toc-psychological-argument-prudent-pragmatism">Psychological
+Argument (Prudent + Pragmatism)</a></li>
+<li><a href="#criticisms-to-pragmatism"
+id="toc-criticisms-to-pragmatism">Criticisms to Pragmatism</a></li>
+</ul></li>
+<li><a href="#argument-from-evil" id="toc-argument-from-evil">11
+Argument from Evil</a>
+<ul>
+<li><a href="#logical-evil-implies-god"
+id="toc-logical-evil-implies-god">Logical: Evil ∃ <span
+class="math inline">\implies</span> God ∄</a></li>
+<li><a href="#criticisms" id="toc-criticisms">Criticisms</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#theory-of-knowledge" id="toc-theory-of-knowledge">Theory
+of Knowledge</a>
+<ul>
+<li><a href="#was-ist-knowledge" id="toc-was-ist-knowledge">12 Was Ist
+Knowledge?</a>
+<ul>
+<li><a href="#jtb-theory" id="toc-jtb-theory">JTB Theory</a></li>
+<li><a href="#jtb-inductive-counterexample"
+id="toc-jtb-inductive-counterexample">JTB Inductive
+Counterexample</a></li>
+<li><a href="#philosophical-skepticism"
+id="toc-philosophical-skepticism">Philosophical Skepticism</a></li>
+</ul></li>
+<li><a href="#descartes-foundationalism"
+id="toc-descartes-foundationalism">13 Descartes: Foundationalism</a>
+<ul>
+<li><a href="#indubitability-method-of-doubt"
+id="toc-indubitability-method-of-doubt">Indubitability: Method of
+Doubt</a></li>
+<li><a href="#我思うゆえに我あり"
+id="toc-我思うゆえに我あり">我思う、ゆえに我あり</a></li>
+<li><a href="#clear-distinct" id="toc-clear-distinct">Clear &amp;
+Distinct</a></li>
+<li><a href="#cartesian-circle" id="toc-cartesian-circle">Cartesian
+Circle</a></li>
+</ul></li>
+<li><a href="#reliability-theory-of-knowledge"
+id="toc-reliability-theory-of-knowledge">14 Reliability Theory of
+Knowledge</a>
+<ul>
+<li><a href="#three-types-of-impossibility"
+id="toc-three-types-of-impossibility">Three Types of
+Impossibility</a></li>
+</ul></li>
+<li><a href="#hume-pun" id="toc-hume-pun">15 Hume: PUN</a></li>
+<li><a href="#refute-humes-skepticism"
+id="toc-refute-humes-skepticism">16 Refute Hume's Skepticism</a>
+<ul>
+<li><a href="#humes-argument-without-pun"
+id="toc-humes-argument-without-pun">Hume's Argument without PUN</a></li>
+</ul></li>
+<li><a href="#nonfoundational" id="toc-nonfoundational">17
+Nonfoundational</a>
+<ul>
+<li><a href="#hume-descartes" id="toc-hume-descartes">Hume &amp;
+Descartes</a></li>
+<li><a href="#standards-of-justifications-depends-on-audience"
+id="toc-standards-of-justifications-depends-on-audience">Standards of
+Justifications Depends on Audience</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#philosophy-of-mind" id="toc-philosophy-of-mind">Philosophy
+of Mind</a>
+<ul>
+<li><a href="#descartes-dualism" id="toc-descartes-dualism">19
+Descartes: Dualism</a></li>
+<li><a href="#logical-behaviorism" id="toc-logical-behaviorism">20
+Logical Behaviorism</a></li>
+<li><a href="#methodologial-behaviorism"
+id="toc-methodologial-behaviorism">21 Methodologial Behaviorism</a>
+<ul>
+<li><a href="#skinner-operant-conditioning"
+id="toc-skinner-operant-conditioning">Skinner: Operant
+Conditioning</a></li>
+</ul></li>
+<li><a href="#mindbrain-identity-theory"
+id="toc-mindbrain-identity-theory">22 Mind/Brain Identity Theory</a>
+<ul>
+<li><a href="#a-posteriori-vitalism" id="toc-a-posteriori-vitalism">A
+Posteriori: Vitalism</a></li>
+<li><a href="#parsimony" id="toc-parsimony">Parsimony</a></li>
+</ul></li>
+<li><a href="#functionalism" id="toc-functionalism">23 Functionalism</a>
+<ul>
+<li><a href="#mulitple-realisability"
+id="toc-mulitple-realisability">Mulitple Realisability</a></li>
+</ul></li>
+<li><a href="#freedomdeterminismcasuality"
+id="toc-freedomdeterminismcasuality">24
+Freedom/Determinism/Casuality</a>
+<ul>
+<li><a href="#definitions-of-free-act-and-behavior"
+id="toc-definitions-of-free-act-and-behavior">Definitions of Free Act
+and Behavior</a></li>
+<li><a href="#basic-arguments-against-free-actions"
+id="toc-basic-arguments-against-free-actions">Basic Arguments against
+Free Actions</a></li>
+<li><a href="#implication-vs-causality"
+id="toc-implication-vs-causality">Implication vs Causality</a></li>
+<li><a href="#indeterminism"
+id="toc-indeterminism">(In)Determinism</a></li>
+<li><a href="#determinism-vs-fatalism"
+id="toc-determinism-vs-fatalism">Determinism vs Fatalism</a></li>
+</ul></li>
+<li><a href="#positions-on-free-will" id="toc-positions-on-free-will">25
+Positions on Free Will</a>
+<ul>
+<li><a href="#incompatibilism"
+id="toc-incompatibilism">(In)Compatibilism</a></li>
+<li><a href="#descriptive-vs-normative-on-freedom"
+id="toc-descriptive-vs-normative-on-freedom">Descriptive vs Normative on
+Freedom</a></li>
+<li><a href="#libtard-hume" id="toc-libtard-hume">Libtard: Hume</a></li>
+<li><a href="#soft-d-hume" id="toc-soft-d-hume">Soft <span
+class="math inline">D</span>: Hume</a></li>
+<li><a href="#soft-d-second-order-desires"
+id="toc-soft-d-second-order-desires">Soft <span
+class="math inline">D</span>: Second-Order Desires</a></li>
+</ul></li>
+<li><a href="#compatibilism" id="toc-compatibilism">26 Compatibilism</a>
+<ul>
+<li><a href="#weather-vane-analogy"
+id="toc-weather-vane-analogy">Weather Vane Analogy</a></li>
+<li><a href="#function" id="toc-function">Function</a></li>
+<li><a href="#generating-devices" id="toc-generating-devices">Generating
+Devices</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="philosphy-of-religion">Philosphy of Religion</h1>
+<h2 id="aquinas-first-four-ways">04 Aquinas: First Four Ways</h2>
+<details class="definition">
+<summary>
+God
+</summary>
+<p>God ∃ <span class="math inline">\implies</span> God is all:</p>
+<ul>
+<li><strong>personal</strong> (is a person)</li>
+<li><strong>omnipotent</strong> (all-powerful)</li>
+<li><strong>omniscient</strong> (all-knowing)</li>
+<li><strong>omnibenevolent</strong> (all-good)</li>
+</ul>
+</details>
+<h3 id="aquinas-motion">Aquinas: Motion</h3>
+<details class="argument">
+<summary>
+Aquina: Motion
+</summary>
+<ul>
+<li>in the natural world, ∃ objects in motion</li>
+<li>ItNW, objects in motions are always sent into motion by other
+objects</li>
+<li>ItNW, cause always precede their effects</li>
+<li>ItNW, ∄ infinite cause-effect chains</li>
+<li>∴ ∃ entity outside NW that caused the motion of the first object
+itNW</li>
+<li>∴ ∃ God</li>
+</ul>
+</details>
+<ul>
+<li>counterargument: 2
+<ul>
+<li>Newton's laws includes possibility of ∃! object in uniform
+motion</li>
+</ul></li>
+</ul>
+<h3 id="aquinas-causality">Aquinas: Causality</h3>
+<details class="argument">
+<summary>
+Aquina: Causality
+</summary>
+<ul>
+<li>ItNW, events happen</li>
+<li>ItNW, ∀ events hawes a cause that is not itself</li>
+<li>ItNW, cause must precede their effect</li>
+<li>ItNW, ∄ infinite cause-effect chains</li>
+<li>∴ ∃! entity outside NW that caused the first event in NW (<a
+href="#birthday-fallacy">Birthday Fallacy</a>)</li>
+<li>∴ ∃ God</li>
+</ul>
+</details>
+<ul>
+<li>counterargument: (you wrote an A<sup>+</sup> essay on this
+dude)</li>
+</ul>
+<h3 id="birthday-fallacy">Birthday Fallacy</h3>
+<details class="definition">
+<summary>
+Birthday Fallacy
+</summary>
+Error in reasoning for thinking
+<center>
+Everyone has a birthday
+</center>
+deductively implies
+<center>
+∃! day that is everyone's birthday
+</center>
+</details>
+<h3 id="aquinas-contigency">Aquinas: Contigency</h3>
+<details class="definition">
+<summary>
+Necessary
+</summary>
+<ul>
+<li>necessary <strong>being</strong> ∃ in all possible worlds</li>
+<li>necessary <strong>proposition</strong> is true in all possible
+worlds</li>
+<li><strong>contigent</strong> <span
+class="math inline">\equiv\lnot</span> necessary</li>
+</ul>
+</details>
+<details class="argument">
+<summary>
+Aquinas: Contigency
+</summary>
+<ul>
+<li>∃ contigent things</li>
+<li>thing is contigent <span class="math inline">\implies</span> ∃ a
+time where it fails to exist</li>
+<li>∴ ∃ time where nothing exists (<em>empty time</em>) (<a
+href="#birthday-fallacy">Birthday Fallacy</a>)</li>
+<li>empty time is in the past</li>
+<li>empty time in the past <span class="math inline">\implies</span>
+world is empty forever after</li>
+<li>∴ ∄ necessary being <span class="math inline">\implies</span> world
+is empty now</li>
+<li>world is not empty</li>
+<li>∴ ∃ necessary being</li>
+<li>∴ ∃ God</li>
+</ul>
+</details>
+<h3 id="aquinas-degree">Aquinas: Degree</h3>
+<details class="argument">
+<summary>
+Aquinas: Properties with Degree
+</summary>
+<ul>
+<li>objects have props to greater/lesser extents</li>
+<li>∃ object with lesser extent <span
+class="math inline">\implies</span> ∃ object that has max degree</li>
+<li>∴ ∃ entity st it has all props to the max degree (<a
+href="#birthday-fallacy">Birthday Fallacy</a>)</li>
+<li>∴ ∃ God</li>
+</ul>
+</details>
+<h2 id="aquinas-design-argument">05 Aquinas: Design Argument</h2>
+<details class="argument">
+<summary>
+Aquinas: Design (<strong>a posteriori</strong>)
+</summary>
+<ul>
+<li>∀ goal-directd objects ∃ objects without mind</li>
+<li>∀ mindlenn goal-directed object ∃ being with a mind who designed
+it</li>
+<li>∃ being with a mind that designed all mindless goal-direct objects
+(<a href="#birthday-fallacy">BF</a>)</li>
+</ul>
+</details>
+<h3 id="types-of-design-argument">Types of Design Argument</h3>
+<blockquote>
+<p>abductive reasoning</p>
+</blockquote>
+<details class="definition">
+<summary>
+</summary>
+<dl>
+<dt><strong>Global Design</strong></dt>
+<dd>
+general feat of the whole universe
+</dd>
+<dd>
+explained as product of intelligent design
+</dd>
+<dt><strong>Local Design</strong></dt>
+<dd>
+specific feat
+</dd>
+<dd>
+explained as God ∃ is the best/only plausible reason of its ∃
+</dd>
+</dl>
+</details>
+<details class="theorem">
+<summary>
+By Surprise Principle
+</summary>
+<center>
+designed to happen is more plausible than randomly happened
+</center>
+</details>
+<h3 id="argument-by-analogy">Argument by Analogy</h3>
+<details class="argument">
+<summary>
+</summary>
+<ul>
+<li><code>A</code> has property <code>P</code></li>
+<li><code>A</code> and <code>B</code> are similar to degree
+<code>n</code></li>
+<li>∴ <code>B</code> probably has property <code>P</code> to the degree
+<code>n</code></li>
+</ul>
+</details>
+<h3 id="criticism-of-design-argument">Criticism of Design Argument</h3>
+<details class="argument">
+<summary>
+</summary>
+<dl>
+<dt><strong>Hume</strong></dt>
+<dd>
+bad because an <em>item</em> (goal-directed object) and the
+<em>universe</em> are not similar
+</dd>
+<dt><strong>Sober</strong></dt>
+<dd>
+design argument is <em>abduction</em>, not analogy
+</dd>
+<dd>
+as induction: bad ∵ no other universe to observe
+</dd>
+<dd>
+as abduction: good ∵ surprise principle
+</dd>
+</dl>
+</details>
+<h3 id="base-rate-fallacy">Base Rate Fallacy</h3>
+<details class="definition">
+<summary>
+</summary>
+effect is attributed to an incorrect cause because the base ratio have
+not been taken into account
+</details>
+<h2 id="evolution-and-creationism">06 Evolution and Creationism</h2>
+<details class="definition">
+<summary>
+Hypothesis of Evolution
+</summary>
+<dl>
+<dt><strong>Theistic Evolutionism</strong></dt>
+<dd>
+God caused evolutionary process
+</dd>
+<dd>
+EP caused complex adaptations
+</dd>
+<dt><strong>Atheistic Evolutionism</strong></dt>
+<dd>
+∄ God
+</dd>
+<dd>
+EP caused complex adaptations that organisms have
+</dd>
+<dt><strong>Creationism</strong></dt>
+<dd>
+God designed adaptations
+</dd>
+<dd>
+God casued evolutionary process
+</dd>
+<dd>
+evolutionary process causen't adaptations
+</dd>
+</dl>
+</details>
+<h3 id="versions-of-creationism-with-problems">Versions of Creationism
+(with Problems)</h3>
+<details class="argument">
+<summary>
+God made perfect organisms adapted to their environments
+</summary>
+<strong>Problems:</strong> doesn't match with what we observe (human eye
+has blind spots)
+</details>
+<details class="argument">
+<summary>
+Earth is young
+</summary>
+<strong>Problem:</strong> conflict with scientific findings in geology
+and physics
+</details>
+<details class="argument">
+<summary>
+God made orgasims to look exactly like from natural selection
+</summary>
+<strong>Problem:</strong> predicitive equivalent to evolutionism <span
+class="math inline">\implies</span> no observation can discriminate them
+</details>
+<details class="argument">
+<summary>
+God made impact on the traits of creatures
+</summary>
+<strong>Problem:</strong> can't make false predictions <span
+class="math inline">\implies</span> not falsifiable <span
+class="math inline">\implies</span> not testable
+</details>
+<h3 id="darwin-two-part-theory">Darwin: Two-Part Theory</h3>
+<details class="theorem">
+<summary>
+Darwin Part 1: Common Ancestry
+</summary>
+<dl>
+<dt>∃! tree of life</dt>
+<dd>
+idea is supported by <strong>Priciple of Common Cause</strong>
+</dd>
+</dl>
+</details>
+<details class="theorem">
+<summary>
+Darwin Part 1: Natural Selection
+</summary>
+<dl>
+<dt>if</dt>
+<dd>
+a charasteristic of a population <strong>varies</strong>
+</dd>
+<dd>
+the variation is <strong>inheritable</strong>
+</dd>
+<dd>
+the varation affects the population's <strong>fitnss</strong> (change of
+survive and reproduce)
+</dd>
+<dt>then</dt>
+<dd>
+the frequency of the characterstic will change
+</dd>
+</dl>
+</details>
+<h3 id="princple-of-common-cause">Princple of Common Cause</h3>
+<details class="theorem">
+<summary>
+(used with Surprise Principle)
+</summary>
+<span class="math inline">A</span> caused <span
+class="math inline">P</span> and <span class="math inline">Q\implies
+P</span> and <span class="math inline">Q</span> are probably correlated
+</details>
+<h2 id="scientific-explanation">07 Scientific Explanation</h2>
+<h3 id="only-game-in-town-fallacy">Only Game in Town Fallacy</h3>
+<details class="definition">
+<summary>
+</summary>
+Error of thinking that
+<center>
+∃! explanation to an observation <span
+class="math inline">\implies</span> it is obliged to believe it's true
+</center>
+</details>
+<h2 id="ontological-argument">08 Ontological Argument</h2>
+<h3 id="a-posteriori-vs-a-priori">A Posteriori vs A Priori</h3>
+<details class="definition">
+<summary>
+</summary>
+<dl>
+<dt><strong>a posteriori</strong> proposition</dt>
+<dd>
+can be known/justified only by sense of experience
+</dd>
+<dt><strong>a priori</strong> proposition</dt>
+<dd>
+can be known/justified only by reason
+</dd>
+</dl>
+</details>
+<details class="example" open>
+<summary>
+a poster/priori with necessary/contigent
+</summary>
+<div class="2d">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;">Necessary</th>
+<th style="text-align: center;">Contigent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">A Priori</td>
+<td style="text-align: center;"><span
+class="math inline">\Z\sub\R</span></td>
+<td style="text-align: center;">I think</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">A Posteriori</td>
+<td style="text-align: center;">Perpetual motion<br>machines are
+impossible</td>
+<td style="text-align: center;">It rains</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<h3 id="aslem-god-as-greatest-being">Aslem: God as Greatest Being</h3>
+<details class="argument">
+<summary>
+Aslem's Ontologocial Argument
+</summary>
+<ul>
+<li>God is by def the greatest being possible</li>
+<li>∄ is less perfect than ∃</li>
+<li>∴ God ∃ necessarily</li>
+</ul>
+</details>
+<h3 id="gaunilos-island-counterargument">Gaunilo's Island
+(Counterargument)</h3>
+<details class="argument">
+<summary>
+</summary>
+<ul>
+<li>define P-island as the greatest possible island</li>
+<li>an island contigently exists is less perfect than necessarily
+exists</li>
+<li>∴ P-island exists <!----></li>
+</ul>
+<dl>
+<dt><strong>Gaunilo:</strong></dt>
+<dd>
+P-island argument is NOT deductively valid
+</dd>
+<dd>
+∴ Aslem's ontological argument is NOT deductively valid
+</dd>
+</dl>
+</details>
+<h3 id="sobers-criticism">Sober's Criticism</h3>
+<details class="argument">
+<summary>
+Existence is part of the concept
+</summary>
+<ul>
+<li>God is by def the greatest being possible</li>
+<li>necessary existence is a perfection</li>
+<li>∴ existence is part of the concept of God</li>
+</ul>
+<dl>
+<dt><strong>Sober:</strong></dt>
+<dd>
+part of the concept <code>==/==&gt;</code> it applies
+</dd>
+</dl>
+</details>
+<h2 id="testablitiy-of-god">09 Testablitiy of God ∃</h2>
+<h3 id="logical-positivism">Logical Positivism</h3>
+<details class="theorem">
+<summary>
+Testability Theory of Meaning
+</summary>
+<center>
+<span class="math inline">S</span> is <strong>a priori</strong> or
+<strong>a posteriori</strong> proposition <span
+class="math inline">\implies S</span> is meaningful
+</center>
+</details>
+<details class="argument">
+<summary>
+Positivism:
+</summary>
+<ul>
+<li>a priori <span class="math inline">\implies</span> analytical</li>
+<li>a posteriori <span class="math inline">\implies</span>
+synthetic</li>
+<li>"God ∃" cant be decided by definition alone</li>
+<li>∴ "God ∃" is NOT analytical</li>
+<li>∴ "God ∃" is NOT a priori</li>
+<li>"God ∃" makes no observable predictions</li>
+<li>∴ "God ∃" is NOT synthetic</li>
+<li>∴ "God ∃" is NOT a posteriori</li>
+<li>∴ "God ∃" is meaningless</li>
+</ul>
+</details>
+<h3 id="analytical-vs-synthetic-truth">Analytical vs Synthetic
+Truth</h3>
+<details class="definition">
+<summary>
+</summary>
+<dl>
+<dt><strong>Analytic Truth</strong></dt>
+<dd>
+truth value is deductively entailed by definitions
+</dd>
+<dt><strong>Synthetic Truth</strong></dt>
+<dd>
+not analytic
+</dd>
+</dl>
+</details>
+<h3 id="need-auxiliary-assumptions">Need Auxiliary Assumptions</h3>
+<details class="argument">
+<summary>
+Sober:
+</summary>
+<ul>
+<li>all propositions of "<span class="math inline">S</span> ∃" needs
+auxiliary assumptions</li>
+<li>AAs need to testable/falsifiable</li>
+</ul>
+</details>
+<h2 id="pascal-irrationality">10 Pascal: Irrationality</h2>
+<h3 id="prudential-vs-evidential-reasons">Prudential vs Evidential
+Reasons</h3>
+<details class="definition">
+<summary>
+</summary>
+<ul>
+<li>believe by <strong>prudential</strong> reasons <span
+class="math inline">\iff</span> by <strong>self-interest</strong></li>
+<li>believe by <strong>evidential</strong> reasons <span
+class="math inline">\iff\because</span> <strong>evidence ∃</strong></li>
+</ul>
+</details>
+<h3 id="pascal-prudential-reason">Pascal: Prudential Reason</h3>
+<details class="argument">
+<summary>
+Pascal: you should believe in God because
+</summary>
+<div class="2d">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Amount of Benefit You Get</th>
+<th style="text-align: center;">God ∃</th>
+<th style="text-align: center;">God ∄</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Believe God ∃</td>
+<td style="text-align: center;"><span
+class="math inline">+\infty</span></td>
+<td style="text-align: center;"><span class="math inline">-N</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Believe God ∄</td>
+<td style="text-align: center;"><span
+class="math inline">-\infty</span></td>
+<td style="text-align: center;"><span class="math inline">+N</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<h3 id="criticisms-to-pascal">Criticisms to Pascal</h3>
+<details class="pink">
+<summary>
+Criticisms
+</summary>
+<ul>
+<li><strong>belief <span class="math inline">\not\in</span>
+action</strong>: we cant decide to believe a proposition</li>
+<li><strong>assumption of outcome</strong>: who knows what God
+likes</li>
+</ul>
+</details>
+<h3 id="psychological-argument-prudent-pragmatism">Psychological
+Argument (Prudent + Pragmatism)</h3>
+<details class="argument">
+<summary>
+</summary>
+<ul>
+<li>believe in God <span class="math inline">\implies</span> have better
+life</li>
+<li>not believe in God <span class="math inline">\implies</span> have
+sad life</li>
+<li>∴ want to have better life <span class="math inline">\implies</span>
+become theist</li>
+</ul>
+</details>
+<h3 id="criticisms-to-pragmatism">Criticisms to Pragmatism</h3>
+<details class="argument">
+<summary>
+Clifford:
+</summary>
+<dl>
+<dt>believe prudentially</dt>
+<dd>
+<span class="math inline">\implies</span> lose habit of testing &amp;
+inquiring things
+</dd>
+<dd>
+<span class="math inline">\implies</span> returns to savagery
+</dd>
+</dl>
+</details>
+<h2 id="argument-from-evil">11 Argument from Evil</h2>
+<h3 id="logical-evil-implies-god">Logical: Evil ∃ <span
+class="math inline">\implies</span> God ∄</h3>
+<details class="argument">
+<summary>
+</summary>
+<ul>
+<li>God ∃ <span class="math inline">\implies</span> God is omni x3</li>
+<li>∃ omni x3 being <span class="math inline">\implies</span> ∄
+evil</li>
+<li>∃ evil</li>
+<li>∴ God ∄</li>
+</ul>
+</details>
+<h3 id="criticisms">Criticisms</h3>
+<ul>
+<li><strong>Theodicy:</strong> explain why it's false
+<ul>
+<li>soul-building evil</li>
+<li>evil caused by free will</li>
+</ul></li>
+<li><strong>Defense:</strong> explain why there's no good reason to
+believe it's true
+<ul>
+<li>can't measure evil</li>
+<li>don't know God's plan</li>
+</ul></li>
+</ul>
+<h1 id="theory-of-knowledge">Theory of Knowledge</h1>
+<h2 id="was-ist-knowledge">12 Was Ist Knowledge?</h2>
+<details class="definition">
+<summary>
+Three kinds of Knowledge
+</summary>
+<ul>
+<li><strong>propositional:</strong> expressed as a declarative
+sentence</li>
+<li><strong>object:</strong> awareness of the existence of an
+object</li>
+<li><strong>procedural:</strong> ability to do something</li>
+</ul>
+</details>
+<details class="definition">
+<summary>
+Necessary Conditions of Knowledge
+</summary>
+<span class="math display">S\textsf{ knows }P\implies (S\textsf{
+believes }P)\land(P\textsf{ is true})</span>
+</details>
+<h3 id="jtb-theory">JTB Theory</h3>
+<details class="theorem">
+<summary>
+Justified-True-Belief Theory
+</summary>
+<p><span class="math display">\begin{align*}
+S\textsf{ knows } P\iff&amp;\,P\textsf{ is true }\land S\textsf{
+believes }P\\
+&amp;\land S\textsf{\textbf{ is justified in believing }}P\\
+\end{align*}</span></p>
+<dl>
+<dt>justification</dt>
+<dd>
+not necessarily an <strong>argument</strong> (no need to argue I have
+pain peko)
+</dd>
+<dd>
+not necessarily an <strong>observation</strong> (hallucinations can
+happen)
+</dd>
+</dl>
+</details>
+<h3 id="jtb-inductive-counterexample">JTB Inductive Counterexample</h3>
+<details class="argument">
+<summary>
+suppose I buy a lottery that have 1/million chance of winning
+</summary>
+<ul>
+<li>I justify that I believe I won't win by
+<strong>induction</strong></li>
+<li>in fact, I didn't win</li>
+</ul>
+<dl>
+<dt>problem:</dt>
+<dd>
+I believe I won't win, I justify I won't win, I didn't win
+</dd>
+<dd>
+but I can't say I KNOW I won't win
+</dd>
+</dl>
+</details>
+<h3 id="philosophical-skepticism">Philosophical Skepticism</h3>
+<details class="argument">
+<summary>
+Skeptic Argument
+</summary>
+<ul>
+<li><span class="math inline">S</span> knows <span
+class="math inline">P\implies</span> impossible that <span
+class="math inline">S</span> is mistaken in believing <span
+class="math inline">P</span></li>
+<li>is possible that <span class="math inline">S</span> is mistaken in
+believing <span class="math inline">P</span><br> (Descartes: allow me to
+introduce myself)</li>
+<li>∴ <span class="math inline">S</span> doesn't know <span
+class="math inline">P</span></li>
+</ul>
+</details>
+<h2 id="descartes-foundationalism">13 Descartes: Foundationalism</h2>
+<details class="definition">
+<summary>
+Foundationalism
+</summary>
+<ul>
+<li><strong>foundational</strong> belief: perfectly solid,
+<strong>indubitable</strong></li>
+<li><strong>superstructural</strong> belief: build upon foundational, is
+<strong>knowledge</strong></li>
+</ul>
+</details>
+<h3 id="indubitability-method-of-doubt">Indubitability: Method of
+Doubt</h3>
+<details class="theorem">
+<summary>
+Dubitable
+</summary>
+<center>
+can construct a story where it's false <span
+class="math inline">\implies</span> dubitable
+</center>
+<ul>
+<li>a posteriori beliefs: hallucinations</li>
+<li>a priori beliefs: evil demon can deceive you</li>
+</ul>
+</details>
+<h3 id="我思うゆえに我あり">我思う、ゆえに我あり</h3>
+<details class="argument">
+<summary>
+Descartes:
+</summary>
+<ul>
+<li>believe <span class="math inline">\implies</span> think</li>
+<li>cant contruct story where you are not thinking</li>
+<li>"I think, I exist" are <strong>indubitable</strong></li>
+<li>any <strong>first-person</strong> psychological propositions are
+<strong>indubitable</strong></li>
+</ul>
+</details>
+<h3 id="clear-distinct">Clear &amp; Distinct</h3>
+<details class="definition">
+<summary>
+Descartes: Rule of Truth
+</summary>
+<center>
+<strong>clear</strong> <span class="math inline">\land</span>
+<strong>distinct</strong> <span class="math inline">\implies</span> is
+true
+</center>
+<ul>
+<li><strong>clear</strong> belief: present and apparent to the mind</li>
+<li><strong>distinct</strong> belief: every feature of the idea is
+clear</li>
+</ul>
+Descartes: all first-person propositions are clear and distinct
+</details>
+<h3 id="cartesian-circle">Cartesian Circle</h3>
+<details class="argument">
+<summary>
+Descartes wants to show God ∃
+</summary>
+<ul>
+<li>used God ∃ to show <strong>rule of truth</strong> is valid</li>
+<li>used <strong>rule of truth</strong> to show God ∃</li>
+<li>∴ <strong>circular reasoning</strong></li>
+</ul>
+</details>
+<h2 id="reliability-theory-of-knowledge">14 Reliability Theory of
+Knowledge</h2>
+<details class="theorem">
+<summary>
+Reliability Theory of Knowledge
+</summary>
+<span class="math display">\begin{align*}
+  S\textsf{ knows P}\iff&amp;\,P\textsf{ is true}\land S\textsf{
+believes }P\\
+  &amp;\land S\textsf{ believes }P\implies P\textsf{ is true}\tag{\sf
+reliable}\\
+  &amp;\textsf{(in the circumstance where $S$ is in)}
+\end{align*}</span>
+</details>
+<details class="example" open>
+<summary>
+Thermometer
+</summary>
+<ul>
+<li>in a given circumstance (<strong>right environment</strong> and
+<strong>correct interal makeup</strong>)<br> a thermometer is
+reliable</li>
+<li><span class="math inline">\therefore</span> if <span
+class="math inline">P</span> is not true<br>then I won't believe <span
+class="math inline">P</span> is true through the
+<strong>reliable</strong> thermometer</li>
+</ul>
+</details>
+<h3 id="three-types-of-impossibility">Three Types of Impossibility</h3>
+<details class="definition">
+<summary>
+Sober:
+</summary>
+<ul>
+<li><strong>logically</strong> impossible (a priori) (e.g. dead people
+can't speak)</li>
+<li><strong>nomologically</strong> impossible (a posteriori) (e.g. I
+can't run faster than light)</li>
+<li><strong>circumstantially</strong> impossible (right now) (e.g. I
+can't pass PHL final rn)</li>
+</ul>
+</details>
+<h2 id="hume-pun">15 Hume: PUN</h2>
+<details class="argument">
+<summary>
+Hume: beliefs about <strong>prediction/generalisation</strong> CANT be
+rationally justified
+</summary>
+<ul>
+<li>all inductions needs <strong>Principle of the Uniformity of the
+Nature</strong> (PUN)</li>
+<li>PUN can't be justified without circular reasoning</li>
+<li>∴ all inductions can't be rationally justified</li>
+</ul>
+</details>
+<h2 id="refute-humes-skepticism">16 Refute Hume's Skepticism</h2>
+<h3 id="humes-argument-without-pun">Hume's Argument without PUN</h3>
+<details class="argument">
+<summary>
+Hume: Reliability of Induction is Circular
+</summary>
+<ul>
+<li>induction was reliable in the past</li>
+<li>∴ by induction, induction will be reliable in the future<br> (Hume:
+see? circular) <br></li>
+</ul>
+<p><strong>Proof.</strong> suppose induction argument is not circular,
+then</p>
+<ol type="1">
+<li>counterinduction was unreliable in the past</li>
+<li>∴ by counterinduction, counterinduction will be reliable in the
+future<br> (Sober: workn't ∴ induction argument is circular)</li>
+</ol>
+</details>
+<details class="argument">
+<summary>
+Hume again
+</summary>
+<ul>
+<li>can't show induction is reliable using <strong>deductive</strong>
+arguments (using the past)</li>
+<li>can't show induction is reliable using <strong>inductive</strong>
+argument (circular)</li>
+<li>∴ can't show induction is reliable</li>
+<li>∴ can't rationally justify induction<br> (Hume: didn't use PUN)</li>
+</ul>
+</details>
+<h2 id="nonfoundational">17 Nonfoundational</h2>
+<h3 id="hume-descartes">Hume &amp; Descartes</h3>
+<details class="argument">
+<summary>
+</summary>
+<div class="2d">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Level</th>
+<th style="text-align: center;">Belief</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Prediction &amp; Generalisation</td>
+<td>The sun will rise tomorrow</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Present &amp; Past Observation</td>
+<td>The sun rose in the past and rises now</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Indubitable Beliefs</td>
+<td>I now seem to see a sunrise</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong>Descartes:</strong> wants to use level 1 to justify level
+2</li>
+<li><strong>Hume:</strong> we can't use level 2 to justify level 3</li>
+<li><strong>Sober:</strong> we can't go from lower to upper level
+<strong>deductively</strong><br> we need <strong>additional
+assumption</strong> to go from lower to upper</li>
+</ul>
+</details>
+<h3 id="standards-of-justifications-depends-on-audience">Standards of
+Justifications Depends on Audience</h3>
+<details class="pink">
+<summary>
+<strong>Repair a Raft</strong>
+</summary>
+<ul>
+<li>to rationally justify to someone, we can use any premise that we
+both agree on to start the argument</li>
+<li>nonfoundationalist approach: we can't reconstruct the entire
+base<br> we can repair our beliefs</li>
+</ul>
+</details>
+<h1 id="philosophy-of-mind">Philosophy of Mind</h1>
+<details class="theorem">
+<summary>
+Leibniz's Law
+</summary>
+<span class="math display">A=B\iff A\sube B\land B\sube A\tag*{\sf
+$\forall$ properties}</span>
+</details>
+<h2 id="descartes-dualism">19 Descartes: Dualism</h2>
+<details class="argument">
+<summary>
+Descartes 1: Indubitable
+</summary>
+<ul>
+<li>I can doubt that I have a body</li>
+<li>I can't doubut that I have a mind</li>
+<li>∴ mind <code>!==</code> body by LLaw</li>
+</ul>
+<p><strong>Counterargument.</strong> only shows that the propositions
+are different</p>
+<ul>
+<li>I can doubt that <code>{student name}</code> is a UofT student</li>
+<li>I can't doubt that a student with id <code>{student id}</code> is a
+UofT student</li>
+<li>(but they point to the same person)</li>
+</ul>
+</details>
+<details class="argument">
+<summary>
+Descartes 2: Divisibility &amp; Extension
+</summary>
+<ul>
+<li>body can be <strong>divided</strong> and takes space (<strong>has
+extension</strong>)</li>
+<li>mind can't be divided and taken't space</li>
+<li>∴ mind <code>!==</code> body by LLaw</li>
+</ul>
+<p><strong>Counterargument.</strong> circular</p>
+<ul>
+<li>no reason to believe the premises are true unless the conclusion is
+true</li>
+</ul>
+</details>
+<details class="argument">
+<summary>
+Descartes 3: Conceivability
+</summary>
+<ul>
+<li>I can conceive my mind exist without my body</li>
+<li>∴ mind can exist without body</li>
+<li>∴ mind <code>!==</code> body by LLaw</li>
+</ul>
+<strong>Counterargument.</strong> dude you wrote a whole essay about
+this
+</details>
+<h2 id="logical-behaviorism">20 Logical Behaviorism</h2>
+<blockquote>
+<p>mentalistic concepts can be analysed in purely behavioral terms</p>
+</blockquote>
+<details class="argument">
+<summary>
+LB: mental states are not inner causes of bhvr
+</summary>
+<ul>
+<li>mental states are inner causes of bhvr <span
+class="math inline">\implies</span> we wont have knowledge of other's
+mental states</li>
+<li>we have knowledge of other's mental states (abduction/analogy)</li>
+<li>∴ mental states are not inner causes of bhvr</li>
+<li>∴ mentalistic terminology describen't inner causes of outward
+bhvr</li>
+</ul>
+<p><strong>Counterargument.</strong> 1 is false</p>
+<ul>
+<li>when I produce bhvr <span class="math inline">B</span>, I'm in
+mental state <span class="math inline">M</span></li>
+<li>I observe others are producing <span
+class="math inline">B</span></li>
+<li>∴ (analogy/abduction/<strong>not induction</strong>) other probly in
+<span class="math inline">M</span></li>
+</ul>
+</details>
+<details class="argument">
+<summary>
+LB's Analysis of Mentalistic Vocabulary
+</summary>
+<center>
+<span class="math inline">S</span> wants to do
+<code>===</code><sub>def</sub> <span class="math inline">S</span> is
+disposed to do
+</center>
+<p><strong>Counterargument.</strong></p>
+<dl>
+<dt>wants to drink water<br></dt>
+<dd>
+but not disposed to drink water even I give a cup of water
+</dd>
+</dl>
+<p>∵ believen't ∃ water in cup<br> ∴ the definition should be</p>
+<center>
+wants to drink water <code>===</code><sub>def</sub> disposed to drink
+what believes is water
+</center>
+∴ RHS is <strong>NOT</strong> purely behavior (not what LB wants)
+</details>
+<h2 id="methodologial-behaviorism">21 Methodologial Behaviorism</h2>
+<blockquote>
+<p>recommendation for how psychology should be studied</p>
+<ul>
+<li>accepts mental states as inner causes of bhvr</li>
+<li>mental states can't be studied scientifically</li>
+</ul>
+</blockquote>
+<h3 id="skinner-operant-conditioning">Skinner: Operant Conditioning</h3>
+<details class="argument">
+<summary>
+Skinner
+</summary>
+<ul>
+<li>present bhvr can be explained with (1) past env and (2) present
+env</li>
+</ul>
+<dl>
+<dt><strong>Objection 1:</strong> Novel Behavior</dt>
+<dd>
+first time being robbed, how explain the reaction?
+</dd>
+<dt><strong>Objection 2:</strong> assumes Environmental Determinism is
+true</dt>
+<dd>
+rejects genetic causes
+</dd>
+</dl>
+</details>
+<h2 id="mindbrain-identity-theory">22 Mind/Brain Identity Theory</h2>
+<blockquote>
+<p>each mental states is identical to a physical state</p>
+</blockquote>
+<h3 id="a-posteriori-vitalism">A Posteriori: Vitalism</h3>
+<details class="argument">
+<summary>
+A Posteriori
+</summary>
+<ul>
+<li>vitalism: ∃ nonphysical substance that distinguishes living vs
+non-living</li>
+<li>but rejected by molecular chemstry</li>
+<li>∴ dualism will also be rejected by science one day</li>
+</ul>
+</details>
+<h3 id="parsimony">Parsimony</h3>
+<details class="theorem">
+<summary>
+Principle of Parsimony
+</summary>
+<p>we should prefer simpler theories over complex ones if they both have
+consistent observations</p>
+</details>
+<details class="argument">
+<summary>
+Parisimony: it's easier
+</summary>
+<ul>
+<li>MBIT is more parsimonious</li>
+<li>∴ should believe in MBIT (by <strong>Principle of
+Parsimony</strong>)</li>
+</ul>
+<dl>
+<dt><strong>Objection:</strong></dt>
+<dd>
+uses prudiential reasoning, not evidential
+</dd>
+</dl>
+</details>
+<h2 id="functionalism">23 Functionalism</h2>
+<details class="definition">
+<summary>
+Token and Types
+</summary>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Type</th>
+<th style="text-align: center;">Token</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">kinds/properties</td>
+<td style="text-align: center;">physical object</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">aka <code
+class="sourceCode rust"><span class="kw">struct</span></code></td>
+<td style="text-align: center;">instance of a type</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="theorem">
+<summary>
+All Theories
+</summary>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Proposition</th>
+<th style="text-align: center;">LBhvr</th>
+<th style="text-align: center;">MBhvr</th>
+<th style="text-align: center;">Du</th>
+<th style="text-align: center;">Fn</th>
+<th style="text-align: center;">MBIT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Mental states are
+<strong>inner</strong>?</td>
+<td style="text-align: center;"><span class="false"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Need inner states to
+<strong>explain</strong> bhvr?</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="false"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Mind is <strong>material</strong>
+substance?</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="false"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">mental <strong>tokens</strong>
+<code>===</code> physical <strong>tokens</strong>?</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="false"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+<td style="text-align: center;"><span class="false"></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">mental <strong>types</strong>
+<code>===</code> physical <strong>types</strong>?</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="false"></span></td>
+<td style="text-align: center;"><span class="false"></span></td>
+<td style="text-align: center;"><span class="true"></span></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="mulitple-realisability">Mulitple Realisability</h3>
+<details class="argument">
+<summary>
+Functionism
+</summary>
+<ul>
+<li>a mental type can be <strong>realised</strong> in many physical
+ways</li>
+<li>e.g. ∃ many physical ways to have minds</li>
+<li>∴ computer can have minds</li>
+</ul>
+</details>
+<h2 id="freedomdeterminismcasuality">24
+Freedom/Determinism/Casuality</h2>
+<h3 id="definitions-of-free-act-and-behavior">Definitions of Free Act
+and Behavior</h3>
+<details class="definition">
+<summary>
+Free Act
+</summary>
+<center>
+free action <span class="math inline">\iff</span> caused by our own
+beliefs/desires
+</center>
+or
+<center>
+free action <span class="math inline">\iff</span> agent could have done
+otherwise
+</center>
+</details>
+<details class="theorem">
+<summary>
+Behavior
+</summary>
+<center>
+genes/environment <strong>causes</strong> mental state
+<strong>causes</strong> action
+</center>
+</details>
+<h3 id="basic-arguments-against-free-actions">Basic Arguments against
+Free Actions</h3>
+<details class="argument">
+<summary>
+Distant Causation Argument
+</summary>
+<ul>
+<li>action is <span class="math inline">A</span>'s free action <span
+class="math inline">\implies A</span> is responsible for it</li>
+<li>action caused by factors outside of <span
+class="math inline">A</span>'s control <span
+class="math inline">\implies A</span> is not responsible for it</li>
+<li>∀ action has a distant cause outside the agent's control</li>
+<li>∴ ∀ action, <span class="math inline">A</span> is not responsible
+for it</li>
+<li>∴ ∄ <span class="math inline">A</span>'s free action</li>
+</ul>
+<dl>
+<dt><strong>Objection 1:</strong></dt>
+<dd>
+assumes causation is transitive
+</dd>
+<dt><strong>Objection 2:</strong></dt>
+<dd>
+tries to make it look as if agents have nothing to do with the action
+they perform (Sober: <strong>absurd</strong>)
+</dd>
+</dl>
+</details>
+<details class="argument">
+<summary>
+Could Not Have Done Otherwise
+</summary>
+<ul>
+<li>agent freely perform <span class="math inline">A\implies</span>
+agent could have done otherwise</li>
+<li>people can't perform actions other than the ones they do</li>
+<li>people don't perform actions freely</li>
+</ul>
+<dl>
+<dt><strong>Objection 1:</strong></dt>
+<dd>
+premise 1 is critised by Locke's Locked Room
+</dd>
+<dt><strong>Objection 2:</strong></dt>
+<dd>
+premise 2 is ambiguous
+</dd>
+<dd>
+possible 1: given the exact b/ds and a rational deliberation, agent
+can't do othewise (<strong>deteriminism</strong>)
+</dd>
+<dd>
+possible 2: even if agent's b/ds change, agent can't do otherwise
+(<strong>fatalism</strong>)
+</dd>
+</dl>
+</details>
+<h3 id="implication-vs-causality">Implication vs Causality</h3>
+<details class="argument">
+<summary>
+not Sufficient and not Necessary
+</summary>
+<p><span class="math display">C_1\land C_2\implies E_1\land
+E_2</span></p>
+<dl>
+<dt><span class="math inline">C_1</span> is a <strong>cause</strong> of
+<span class="math inline">E_1</span></dt>
+<dd>
+but <span class="math inline">C_1\not\Rarr E_1</span> and <span
+class="math inline">E_1\not\Rarr C_1</span>
+</dd>
+<dd>
+∴ not sufficient and not necessary
+</dd>
+</dl>
+</details>
+<h3 id="indeterminism">(In)Determinism</h3>
+<details class="definition">
+<summary>
+Given a <em>complete</em> description of the causal facts
+</summary>
+<dl>
+<dt><strong>Deteriminism</strong></dt>
+<dd>
+one can guarantee what will happen next
+</dd>
+<dt><strong>Indeterminism</strong></dt>
+<dd>
+can't guarantee what will happen next
+</dd>
+</dl>
+</details>
+<details class="argument">
+<summary>
+<code class="sourceCode lua"><span class="cf">if</span></code> matter is
+deterministic and a person's mind is made of matter, <code
+class="sourceCode lua"><span class="cf">then</span></code> human bhvr is
+physically determined
+</summary>
+<ul>
+<li><strong>Newton:</strong> physic is determininstic</li>
+<li><strong>Quantum Physics:</strong> is indeterministic</li>
+</ul>
+</details>
+<details class="theorem">
+<summary>
+Determinism vs Probability
+</summary>
+<ul>
+<li><code class="sourceCode lua"><span class="cf">if</span></code>
+<strong>determinism</strong> is true <code
+class="sourceCode lua"><span class="cf">then</span></code> talking about
+probability describes surjectively the lack of knowledge</li>
+<li><code class="sourceCode lua"><span class="cf">if</span></code>
+<strong>indeterminism</strong> is true <code
+class="sourceCode lua"><span class="cf">then</span></code> talking about
+probability describes objective fact about the world</li>
+</ul>
+</details>
+<details class="argument">
+<summary>
+Sober
+</summary>
+<p>Both <strong>determinism</strong> and <strong>indeterminism</strong>
+rob your free will</p>
+<ul>
+<li>indeteriminism: your free will is robbed by <em>chance</em></li>
+</ul>
+<p><strong>Cauasation can happen in intederminstic system</strong></p>
+<ul>
+<li>I spin indeterministic wheel (1/million change to land on
+trigger)</li>
+<li>the wheel lands on trigger, shoots gun</li>
+<li>∵ the gun shot can be traced back to me spinning the wheel</li>
+<li>∴ I caused the gun to shoot</li>
+</ul>
+</details>
+<h3 id="determinism-vs-fatalism">Determinism vs Fatalism</h3>
+<details class="definition">
+<summary>
+</summary>
+<dl>
+<dt><strong>Determinism</strong></dt>
+<dd>
+what happens in the future depends on what happens now
+</dd>
+<dt><strong>Fatalism</strong></dt>
+<dd>
+what happens in the future dependn't on what happens now
+</dd>
+</dl>
+</details>
+<h2 id="positions-on-free-will">25 Positions on Free Will</h2>
+<h3 id="incompatibilism">(In)Compatibilism</h3>
+<details class="definition">
+<summary>
+Compability
+</summary>
+<p>aka not <strong>disjoint</strong></p>
+<span class="math inline">A</span> and <span
+class="math inline">B</span> are compatible <span
+class="math inline">\iff A</span> and <span class="math inline">B</span>
+can happen at the same time<br> <span class="math inline">A</span> and
+<span class="math inline">B</span> are incompatible <span
+class="math inline">\iff(A\veebar B)\lor(\neg A\land\neg B)</span>
+</details>
+<details class="definition">
+<summary>
+Incompatibilism
+</summary>
+<span class="math display">D\implies\neg F</span> where <span
+class="math inline">D</span> is determinism and <span
+class="math inline">F</span> is free
+</details>
+<details class="definition">
+<summary>
+Positions on Free Will (based on Compactibilism vs Deteriminsm)
+</summary>
+<div class="2d">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+<th style="text-align: center;"><span class="math inline">\neg
+D</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">C</span></td>
+<td style="text-align: center;">Soft Deteriminism</td>
+<td style="text-align: center;">Sober's view</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\neg
+C</span></td>
+<td style="text-align: center;">Hard Deteriminism</td>
+<td style="text-align: center;">Libertarianism</td>
+</tr>
+</tbody>
+</table>
+</div>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Hard Deteriminism</th>
+<th style="text-align: center;">Libertarianism</th>
+<th style="text-align: center;">Soft Determinism</th>
+<th style="text-align: center;">Sober</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math display">\begin{align*}&amp;D\implies\neg
+F\\&amp;D\\\therefore&amp;\,\neg F\end{align*}</span></td>
+<td style="text-align: center;"><span
+class="math display">\begin{align*}&amp;D\implies\neg
+F\\&amp;F\\\therefore&amp;\,\neg D\end{align*}</span></td>
+<td style="text-align: center;"><span
+class="math display">\begin{align*}&amp;F\\&amp;D\\\therefore&amp;\,F\land
+D\\\therefore&amp;\,\textsf{Compatible}\end{align*}</span></td>
+<td style="text-align: center;"><span
+class="math display">\begin{align*}&amp;F\\&amp;\neg
+D\\\therefore&amp;\,F\land \neg
+D\\\therefore&amp;\,\textsf{Compatible}\end{align*}</span></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="descriptive-vs-normative-on-freedom">Descriptive vs Normative on
+Freedom</h3>
+<details class="definition">
+<summary>
+in terms of freedom
+</summary>
+<ul>
+<li><strong>Descriptive:</strong> do we have freedom?</li>
+<li><strong>Normative:</strong> is freedom good?</li>
+</ul>
+</details>
+<h3 id="libtard-hume">Libtard: Hume</h3>
+<details class="argument">
+<summary>
+Campbell: by introspection
+</summary>
+<ul>
+<li>by introspection, we perform actions <strong>out of
+character</strong></li>
+<li>∴ some actions are not caused by desires/beliefs</li>
+</ul>
+<dl>
+<dt><strong>Objection 1:</strong></dt>
+<dd>
+introspection is not trustworthy &amp; can be inacurrate (supported by
+PSY)
+</dd>
+<dt><strong>Objection 2:</strong></dt>
+<dd>
+out of character can be <strong>caused</strong> by a combination of
+unusual circumstances that the person is currently in
+</dd>
+<dd>
+∴ no problem with <span class="math inline">D</span>
+</dd>
+<dd>
+∴ introspection is weak against <span class="math inline">\neg C</span>
+</dd>
+<dt><strong>Objection 3</strong></dt>
+<dd>
+assumes <span class="math inline">\neg C</span>
+</dd>
+</dl>
+</details>
+<h3 id="soft-d-hume">Soft <span class="math inline">D</span>: Hume</h3>
+<details class="argument">
+<summary>
+Hume: <span class="math inline">F</span> and <span
+class="math inline">D</span>
+</summary>
+<ul>
+<li>under causal control of agent's <strong>desires</strong> <span
+class="math inline">\implies</span> free action</li>
+<li>∴ agent could've done otherwise</li>
+</ul>
+<dl>
+<dt><strong>Objection 1:</strong> Compulsive Behavior
+(kleptomaniac)</dt>
+<dd>
+kleptomaniacs wants to steal even though they may be completety
+convinced that they will caught and punished
+</dd>
+<dd>
+Sober: kleptomaniacs stealing is <strong>controlled by desire</strong>
+and <strong>not free</strong>
+</dd>
+<dt><strong>Objection to Objection</strong></dt>
+<dd>
+but kleptomanic stealing is not caused by <strong>belief</strong>?
+</dd>
+<dt><strong>Objection 2:</strong> Locke's Locked Room</dt>
+<dd>
+e.g. a man freely decides to stay in the room to talke to his friend
+</dd>
+<dd>
+but the room is locked
+</dd>
+<dd>
+∴ he couldn't leave if he had chosen to not stay (but he stays freely)
+</dd>
+<dt><strong>Objection to Objection:</strong> Knowledge</dt>
+<dd>
+free action <span class="math inline">\iff</span> agent
+<strong>thinks</strong> couldve done otherwise if decides to
+</dd>
+</dl>
+</details>
+<h3 id="soft-d-second-order-desires">Soft <span
+class="math inline">D</span>: Second-Order Desires</h3>
+<details class="argument">
+<summary>
+</summary>
+<center>
+2nd-order can change 1st-order if want to <span
+class="math inline">\implies</span> free
+</center>
+<dl>
+<dt><strong>Objection:</strong></dt>
+<dd>
+what if you can't control your 2nd-order?
+</dd>
+<dd>
+e.g. drug that controls your 2nd-order
+</dd>
+</dl>
+</details>
+<h2 id="compatibilism">26 Compatibilism</h2>
+<h3 id="weather-vane-analogy">Weather Vane Analogy</h3>
+<details class="argument">
+<summary>
+</summary>
+<ul>
+<li>a weather vane is free because it functions well</li>
+<li>a weather vane is stuck because it malfunctions</li>
+</ul>
+</details>
+<h3 id="function">Function</h3>
+<details class="definition">
+<summary>
+</summary>
+<dl>
+<dt><strong>Function of Artifacts</strong></dt>
+<dd>
+depends on the intentions of their designers
+</dd>
+<dt><strong>Function of Not Artifacts</strong> (humans?)</dt>
+<dd>
+Sober: depends on it's history and evolution (<strong>survival &amp;
+reproduction</strong>)
+</dd>
+</dl>
+</details>
+<h3 id="generating-devices">Generating Devices</h3>
+<details class="argument">
+<summary>
+Belief-Generating Device &amp; Desire-Generating Device
+</summary>
+<p><span class="math display">
+\begin{rcases}
+  \textsf{evidence}&amp;\overset{\textsf{BGD}}\longrightarrow
+&amp;\textsf{beliefs}\\
+  ?&amp;\overset{\textsf{DGD}}\longrightarrow&amp;\textsf{desires}
+\end{rcases}\overset{\textsf{deliberation}}\longrightarrow\textsf{intention}\to\textsf{action}
+</span></p>
+<p>∴ person is free <span class="math inline">\iff</span> the system
+functions well</p>
+<dl>
+<dt>According to <strong>Weather Vane Theory</strong></dt>
+<dd>
+function of <strong>DGD</strong>: generate desires that represent what
+is good for the agent
+</dd>
+<dt><strong>Obejction:</strong> rational self-sacrifice</dt>
+<dd>
+freely decide to self-sacrifice
+</dd>
+<dd>
+<span class="math inline">\implies</span> not good for agent themselves
+</dd>
+<dd>
+<span class="math inline">\implies</span> DGD malfunctions <span
+class="math inline">\implies</span> not free?
+</dd>
+</dl>
+</details>
+<script>
+const headers = ['h1', 'h2', 'h3'];
+const hidden = ' hidden';
+const toc = document.querySelector('#TOC');
+const isheader = tag => /h\d/.test(tag);
+
+function cmp(a,b){ // assume h1 > h2
+	// same header level
+	if(a === b) return 0;
+	// h1 > h2 => 1    h2 < h1 => -1
+	return (+a[1] < +b[1]) * 2 - 1;
+}
+
+function toggle(tag, element, hide){
+	if(!element) return;
+
+	const t = element.tagName.toLowerCase();
+	if(isheader(t) && cmp(tag, t) <= 0) return;
+
+	if(hide){
+		element.className += hidden;
+	}else{
+		element.className = element.className.replace(hidden, '');
+	}
+	toggle(tag, element.nextElementSibling, hide);
+}
+
+// open all details
+document.querySelectorAll('details:not(.example)').forEach(e => e.open = true);
+
+// hide/show table of contents
+headers.forEach(
+	tag => document.querySelectorAll(tag + ':not(.title)').forEach(
+		element => element.onclick = () => toc.classList.toggle('show')
+	)
+);
+
+// no colgroup
+document.querySelectorAll('colgroup').forEach(col => col.remove());
+
+// click on header will hide all following elements until next header of same level
+// headers.forEach(
+// 	tag => document.querySelectorAll(tag + ':not(.title)').forEach(
+// 		element => element.onclick = ({target: { nextElementSibling } }) => {
+// 			toggle(tag, nextElementSibling, !nextElementSibling.className.includes('hidden'))
+// 		}
+// 	)
+// );
+// click on title to toggle all h1
+document.querySelector('h1.title').onclick = () => document.querySelectorAll('h1:not(.title)').forEach(h1 => h1.click());
+
+</script>
+</body>
+</html>
