@@ -32,6 +32,9 @@ jobs:
           source: ./
           destination: ./_site
 
+      - name: Move HTML files to directory
+        run: sudo ./directory.sh
+
       - name: List files
         run: tree ./_site
 
