@@ -8,7 +8,7 @@
         - [Tuple](#tuple)
 - [Documentation](#documentation)
     - [String](#string)
-    - [List)](#list)
+    - [List](#list)
         - [Methods](#methods)
 
 # Notes
@@ -17,9 +17,9 @@
 <details><summary>variable assign</summary>
 
 ```py
-a = 5 
+a = 5
 # a: id1    id1: 5
-a = 3 
+a = 3
 # a: id2    id2: 3
 b = a
 # a: id2    id2: 3
@@ -47,30 +47,34 @@ l = [12, 23]
 #           id3: 23
 #           id1: { 0: id2, 1: id3 }
 ```
+
 ```py
 l[1] = 34
 # l: id1    id2: 12
 #           id1: { 0: id2, 1: id4 }
-#           id4: 34 
+#           id4: 34
 ```
+
 ```py
 l += [56] # create new list
 # l: id6    id2: 12
-#           id4: 34 
+#           id4: 34
 #           id7: 56
 #           id6: { 0: id2, 1: id4 }
 ```
+
 ```py
 a = l # copy reference aka alias
 # l: id6    id2: 12
-# a: id6    id4: 34 
+# a: id6    id4: 34
 #           id7: 56
 #           id6: { 0: id2, 1: id4 }
 ```
+
 ```py
 b = l + [78] # copy by value
 # l: id6    id2: 12
-# b: id9    id4: 34 
+# b: id9    id4: 34
 #           id7: 56
 #           id8: { 0: id2, 1: id4 }
 #           id9: { 0: id2, 1: id4, 2: id10 }
@@ -145,7 +149,7 @@ float('45.0') == 45.0
   - *start* and *end*: in slice notation
   Return `-1` if sub is not found.
   - should only be used to get the position
-  
+
 ## [List]((https://docs.python.org/3/tutorial/datastructures.html))
 - slicing always return `list`
 - `b = a` copies **reference**
