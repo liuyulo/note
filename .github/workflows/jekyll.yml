@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-    build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,8 +28,6 @@ jobs:
         with:
           source: ./
           destination: ./_site
-
-
 
       - name: List files
         run: tree ./_site
