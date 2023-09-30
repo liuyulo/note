@@ -1,0 +1,35 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor, amsmath, amssymb}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+
+\tikzset{->/.style={arrows={-latex[length=5pt]}}}
+\definecolor{r1}{HTML}{003399}
+\definecolor{r2}{HTML}{C63A44}
+\newcommand\pa[2][]{
+    \foreach\a\b in{#2}{
+        \path[->,bend left=20pt,#1](\a)edge(\b) (\b)edge(\a);
+    }
+}
+\begin{tikzpicture}[every node/.style={draw,circle,minimum size=32pt,line width=1.5pt},scale=2]
+\node at (6,1)(v){$v_{i-1}$};
+\node at (6,-5)(u){$v_i$};
+\node[r2]at(0,-2)(0){$x_i$};
+\node at(9,-2)(e"){$u_{ik-1}$};
+\node[draw=none] at(8,-2)(i){$\cdots$};
+\node at(1,-2)(0"){$u_{i0}$};
+\node[r2]at(13,-2)(0'){$\overline{x_i}$};
+\foreach\c\k in{2/1,5/2,10/k}{
+    \pgfmathsetmacro{\dd}{int(\c - 1)};
+    \pgfmathsetmacro{\d}{int(\c + 1)};
+    \pgfmathsetmacro{\u}{int(\c + 2)};
+    \node[r1]at(\c,-2)(\k){$c_{i\k}$};
+    \node[r1]at(\d,-2)(\k'){$c'_{i\k}$};
+    \node at(\u,-2)(\k"){$u_{i\k}$};
+    \pa{\k"/\k'}\pa[r1]{\k/\k'}
+}
+\pa{0/0",0"/1,1"/2,2"/i,i/e",e"/k,k"/0'}
+\path[->] (v)edge(0)edge(0') (0)edge(u) (0')edge(u);
+\end{tikzpicture}
+
+\end{document}

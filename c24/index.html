@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="../c01/favicon.png">
+    <meta name="generator" content="Astro v2.10.9">
+    <title>Cheatsheet</title>
+    <link rel="stylesheet" href="../c01/assets/_slug_.705f9097.css" />
+    <link rel="stylesheet" href="../c01/assets/_slug_.918a4414.css" />
+    <link rel="stylesheet" href="../c01/assets/_slug_.45bf7ea7.css" />
+</head>
+
+<body>
+    <main>
+        <h1><a href="../">Cheatsheet</a></h1>
+        <h2 id="syntax">Syntax</h2>
+        <div class="grid grid-cols-2">
+            <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+                tabindex="0"><code><span class="line"><span style="color:#F1F1F1">f1 x y </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> b</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">+</span><span style="color:#F1F1F1"> y</span></span>
+<span class="line"><span style="color:#F1F1F1">    b </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">-</span><span style="color:#F1F1F1"> y</span></span></code></pre>
+            <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+                tabindex="0"><code><span class="line"><span style="color:#F1F1F1">f2 x y </span><span style="color:#FF6680">=</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">+</span><span style="color:#F1F1F1"> y</span></span>
+<span class="line"><span style="color:#F1F1F1">        b </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">-</span><span style="color:#F1F1F1"> y</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> b</span></span></code></pre>
+        </div>
+        <h3 id="patterns">Patterns</h3>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#66FF99">fac0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">Eq</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Num</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a</span></span>
+<span class="line"><span style="color:#F1F1F1">fac0 n </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">if</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">then</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">else</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> f </span><span style="color:#878787">(</span><span style="color:#F1F1F1">n </span><span style="color:#FF6680">-</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#878787">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">fac1 </span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span></span>
+<span class="line"><span style="color:#F1F1F1">fac1 n </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> fac1 </span><span style="color:#878787">(</span><span style="color:#F1F1F1">n </span><span style="color:#FF6680">-</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- don&#39;t $</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">fac2 n </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">of</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span></span>
+<span class="line"><span style="color:#F1F1F1">    _ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> fac2 </span><span style="color:#878787">(</span><span style="color:#F1F1F1">n </span><span style="color:#FF6680">-</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- wildcard</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">fac3 n</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- guards</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> otherwise </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> fac3 </span><span style="color:#878787">(</span><span style="color:#F1F1F1">n </span><span style="color:#FF6680">-</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#878787">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">f s</span><span style="color:#FF6680">@</span><span style="color:#878787">(</span><span style="color:#F1F1F1">x </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> xs</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> s </span><span style="color:#7F7F7F;font-style:italic">-- &quot;as&quot; pattern</span></span></code></pre>
+        <h3 id="list">List</h3>
+        <ul>
+            <li>producers
+                <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+                    tabindex="0"><code><span class="line"><span style="color:#F1F1F1">  </span><span style="color:#878787">[</span><span style="color:#A68CD9">0</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[]</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#878787">[</span><span style="color:#A68CD9">0</span><span style="color:#FF6680">..</span><span style="color:#A68CD9">3</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#A68CD9">0</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">2</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">3</span><span style="color:#878787">]</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#878787">[</span><span style="color:#A68CD9">10</span><span style="color:#FF6680">..</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#A68CD9">10</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">11</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">...</span><span style="color:#878787">]</span></span>
+<span class="line"><span style="color:#878787">[</span><span style="color:#A68CD9">0</span><span style="color:#878787">,</span><span style="color:#A68CD9">2</span><span style="color:#FF6680">..</span><span style="color:#A68CD9">7</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#A68CD9">0</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">2</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">4</span><span style="color:#878787">]</span></span></code></pre>
+            </li>
+            <li>comprehension
+                <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+                    tabindex="0"><code><span class="line"><span style="color:#878787">[(</span><span style="color:#F1F1F1">i</span><span style="color:#878787">,</span><span style="color:#F1F1F1">j</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> i </span><span style="color:#FF6680">&lt;-</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#A68CD9">1</span><span style="color:#878787">,</span><span style="color:#A68CD9">2</span><span style="color:#878787">],</span><span style="color:#F1F1F1"> j </span><span style="color:#FF6680">&lt;-</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#A68CD9">1</span><span style="color:#FF6680">..</span><span style="color:#A68CD9">3</span><span style="color:#878787">]]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- cartesian product</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- [(1,1),(1,2),(1,3),(2,1),(2,2),(2,3)]</span></span>
+<span class="line"><span style="color:#878787">[(</span><span style="color:#F1F1F1">i</span><span style="color:#878787">,</span><span style="color:#F1F1F1">j</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> i </span><span style="color:#FF6680">&lt;-</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#A68CD9">1</span><span style="color:#878787">,</span><span style="color:#A68CD9">2</span><span style="color:#878787">],</span><span style="color:#F1F1F1"> j </span><span style="color:#FF6680">&lt;-</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#A68CD9">1</span><span style="color:#FF6680">..</span><span style="color:#A68CD9">3</span><span style="color:#878787">],</span><span style="color:#F1F1F1"> i </span><span style="color:#FF6680">&lt;</span><span style="color:#F1F1F1"> j</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- guard</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- [(1,2),(1,3),(2,3)]</span></span>
+<span class="line"><span style="color:#878787">[(</span><span style="color:#F1F1F1">i</span><span style="color:#878787">,</span><span style="color:#F1F1F1">j</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> i </span><span style="color:#FF6680">&lt;-</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#A68CD9">1</span><span style="color:#878787">,</span><span style="color:#A68CD9">2</span><span style="color:#878787">],</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> k </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> i</span><span style="color:#FF6680">*</span><span style="color:#F1F1F1">i</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> j </span><span style="color:#FF6680">&lt;-</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#A68CD9">1</span><span style="color:#FF6680">..</span><span style="color:#F1F1F1">k</span><span style="color:#878787">]]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- let</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- [(1,1),(2,1),(2,2),(2,3),(2,4)]</span></span>
+<span class="line"><span style="color:#66FF99">catMaybes</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#66CCFF;font-style:italic">Maybe</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span></span>
+<span class="line"><span style="color:#F1F1F1">catMaybes xs </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">x </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> Just x </span><span style="color:#FF6680">&lt;-</span><span style="color:#F1F1F1"> xs</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- skip on no match</span></span></code></pre>
+            </li>
+        </ul>
+        <h2 id="lazy-evaluation">Lazy Evaluation</h2>
+        <ul>
+            <li>need to match patterns <code>-&gt;</code> evaluate</li>
+            <li>use same argument <code>-&gt;</code> shared reference</li>
+            <li>lazy can cause <code>O(n)</code> space when arith not used</li>
+        </ul>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#f1f1f1">seq :: a -&gt; b -&gt; b</span></span></code></pre>
+        <ul>
+            <li><code>seq x y</code> means evaluate <code>x</code> until WHNF, then continue with <code>y</code></li>
+            <li>WHNF means has constructor on top, e.g. <code>λ</code>, <code>10</code>, <code>(:)</code></li>
+        </ul>
+        <h2 id="typeclasses">Typeclasses</h2>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Eq</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">(</span><span style="color:#66FF99">==</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- or (/=)</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Eq</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Ord</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">compare</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Ordering</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- LT | EQ | GT</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Functor</span><span style="color:#F1F1F1"> f </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">fmap</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f b</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">(</span><span style="color:#66FF99">&lt;$</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f a </span><span style="color:#7F7F7F;font-style:italic">-- replace values with (x::a)</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Functor</span><span style="color:#F1F1F1"> f </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Applicative</span><span style="color:#F1F1F1"> f </span><span style="color:#FF6680">where</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- liftA3 *&gt; &lt;*</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">(</span><span style="color:#66FF99">&lt;*&gt;</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> f </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f b</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">pure</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f a</span></span>
+<span class="line"><span style="color:#878787">    </span><span style="color:#7F7F7F;font-style:italic">-- liftA2 f x y = f &lt;$&gt; x &lt;*&gt; y</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">liftA2</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> c</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f c</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Applicative</span><span style="color:#F1F1F1"> m </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Monad</span><span style="color:#F1F1F1"> m </span><span style="color:#FF6680">where</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- liftM5</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">(</span><span style="color:#66FF99">&gt;&gt;=</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> m a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> m b</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> m b</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Semigroup</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">(</span><span style="color:#66FF99">&lt;&gt;</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#7F7F7F;font-style:italic">-- associative</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Semigroup</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Monoid</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">mempty</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> a </span><span style="color:#7F7F7F;font-style:italic">-- identity</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Foldable</span><span style="color:#F1F1F1"> t </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">foldMap</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Monoid</span><span style="color:#F1F1F1"> m </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> m</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> t a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> m </span><span style="color:#7F7F7F;font-style:italic">-- right assoc</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">foldr</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> t a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b </span><span style="color:#7F7F7F;font-style:italic">-- foldr&#39; for seq</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">foldr1</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> t a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#7F7F7F;font-style:italic">-- not total</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Num</span><span style="color:#F1F1F1"> a </span><span style="color:#7F7F7F;font-style:italic">-- (+) (-) (*) abs</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Integral</span><span style="color:#F1F1F1"> a </span><span style="color:#7F7F7F;font-style:italic">-- div mod -- Int Integer</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Fractional</span><span style="color:#F1F1F1"> a </span><span style="color:#7F7F7F;font-style:italic">-- (/) recip -- Rational Float Double</span></span></code></pre>
+        <h3 id="types">Types</h3>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#FF6680">data</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> True </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> False</span></span>
+<span class="line"><span style="color:#FF6680">data</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Maybe</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Nothing </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> Just a</span></span>
+<span class="line"><span style="color:#FF6680">data</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Either</span><span style="color:#F1F1F1"> a b </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Left a </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> Right b</span></span></code></pre>
+        <h3 id="instances">Instances</h3>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#FF6680">data</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">MyList</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Empty </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> Cons a </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">MyList</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">deriving</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">Eq</span><span style="color:#F1F1F1">, </span><span style="color:#66CCFF;font-style:italic">Show</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#FF6680">instance</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Foldable</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">MyList</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    foldMap _ Empty </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> mempty</span></span>
+<span class="line"><span style="color:#F1F1F1">    foldMap f </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Cons x xt</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> f x </span><span style="color:#FF6680">&lt;&gt;</span><span style="color:#F1F1F1"> foldMap f xt</span></span>
+<span class="line"><span style="color:#66FF99">s</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Integer</span></span>
+<span class="line"><span style="color:#F1F1F1">s </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> foldr </span><span style="color:#878787">(</span><span style="color:#66FF99">+</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">$</span><span style="color:#F1F1F1"> Cons </span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Cons </span><span style="color:#A68CD9">1</span><span style="color:#F1F1F1"> Empty</span><span style="color:#878787">)</span></span></code></pre>
+        <h2 id="partial-order-theory-of-recursion">Partial Order Theory of Recursion</h2>
+        <p>N.B. <code>⊥ != B2 ⊥ ⊥</code></p>
+        <ul>
+            <li>
+                <pre class="shiki " style="background-color: #000000"
+                    tabindex="0"><code><span class="line"><span style="color: #FF6680">data</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF; font-style: italic">Unit</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> U</span></span></code></pre>
+                is <code>{⊥, U}</code>
+            </li>
+            <li>
+                <pre class="shiki " style="background-color: #000000"
+                    tabindex="0"><code><span class="line"><span style="color: #FF6680">data</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF; font-style: italic">Bool</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> F </span><span style="color: #FF6680">|</span><span style="color: #F1F1F1"> T</span></span></code></pre>
+                is <code>{⊥, F, T}</code>
+            </li>
+            <li>
+                <pre class="shiki " style="background-color: #000000"
+                    tabindex="0"><code><span class="line"><span style="color: #FF6680">data</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF; font-style: italic">B2</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> B2 </span><span style="color: #66CCFF; font-style: italic">Bool</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF; font-style: italic">Bool</span></span></code></pre>
+                is <code>{⊥, B b c | b, c ∈ Bool}</code>
+            </li>
+            <li><code>⊥: a -&gt; b</code> is <code>⊥ = λx.⊥</code></li>
+        </ul>
+        <p>evaluation</p>
+        <ul>
+            <li>(application) <code>⊥ x</code> is ⊥</li>
+            <li>(arithmetic) <code>⊥ * 0</code> is ⊥</li>
+            <li>(comparision) <code>⊥ &gt; 0</code> is ⊥</li>
+            <li>(pattern match) <code>(case ⊥ of ...)</code> is ⊥</li>
+            <li>(ifthenelse) <code>(if ⊥ then ...)</code> is ⊥</li>
+        </ul>
+        <p>recursion</p>
+        <ol>
+            <li>define f<sub>0</sub> as ⊥</li>
+            <li>evaluate f<sub>1</sub> where each recursive call uses f<sub>0</sub></li>
+            <li>evaluate f<sub>i+1</sub> where each recursive call uses f<sub>i</sub></li>
+            <li>find pattern to make a guess</li>
+        </ol>
+        <p>example
+        <pre class="shiki " style="background-color: #000000"
+            tabindex="0"><code><span class="line"><span style="color: #F1F1F1">f </span><span style="color: #A68CD9">0</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">0</span><span style="color: #F1F1F1">; f x </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">1</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">+</span><span style="color: #F1F1F1"> f </span><span style="color: #FF6680">$</span><span style="color: #F1F1F1"> x </span><span style="color: #FF6680">-</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">2</span></span></code></pre>
+        </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th align="right">x</th>
+                    <th align="center">…</th>
+                    <th align="center">-2</th>
+                    <th align="center">-1</th>
+                    <th align="center">0</th>
+                    <th align="center">1</th>
+                    <th align="center">2</th>
+                    <th align="center">3</th>
+                    <th align="center">4</th>
+                    <th align="center">5</th>
+                    <th align="center">6</th>
+                    <th align="center">…</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="right">f<sub>0</sub> x</td>
+                    <td align="center">…</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">…</td>
+                </tr>
+                <tr>
+                    <td align="right">f<sub>1</sub> x</td>
+                    <td align="center">…</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">0</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">…</td>
+                </tr>
+                <tr>
+                    <td align="right">f<sub>2</sub> x</td>
+                    <td align="center">…</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">0</td>
+                    <td align="center">⊥</td>
+                    <td align="center">1</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">…</td>
+                </tr>
+                <tr>
+                    <td align="right">f<sub>3</sub> x</td>
+                    <td align="center">…</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">0</td>
+                    <td align="center">⊥</td>
+                    <td align="center">1</td>
+                    <td align="center">⊥</td>
+                    <td align="center">2</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">…</td>
+                </tr>
+                <tr>
+                    <td align="right">f<sub>4</sub> x</td>
+                    <td align="center">…</td>
+                    <td align="center">⊥</td>
+                    <td align="center">⊥</td>
+                    <td align="center">0</td>
+                    <td align="center">⊥</td>
+                    <td align="center">1</td>
+                    <td align="center">⊥</td>
+                    <td align="center">2</td>
+                    <td align="center">⊥</td>
+                    <td align="center">3</td>
+                    <td align="center">…</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 id="parse">Parse</h2>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#F1F1F1">&lt;atom&gt; ::= &quot;0&quot; | &quot;1&quot; | &quot;(&quot; &lt;expr&gt; &quot;)&quot;</span></span>
+<span class="line"><span style="color:#F1F1F1">&lt;mul&gt;  ::= &lt;mul&gt; &quot;*&quot; &lt;mul&gt; | &lt;atom&gt;</span></span>
+<span class="line"><span style="color:#F1F1F1">&lt;expr&gt; ::= &lt;expr&gt; &quot;+&quot; &lt;mul&gt;   </span><span style="color:#7F7F7F;font-style:italic">(* left recursive *)</span></span>
+<span class="line"><span style="color:#F1F1F1">&lt;expr&gt; ::= &lt;mul&gt; &quot;+&quot; &lt;expr&gt;   </span><span style="color:#7F7F7F;font-style:italic">(* right recursive *)</span></span></code></pre>
+        <h3 id="ebnf">EBNF</h3>
+        <ul>
+            <li><code>{ &lt;expr&gt; }</code> for <code>*</code> occurrences</li>
+            <li><code>[ &lt;expr&gt; ]</code> for <code>?</code> occurrences</li>
+        </ul>
+        <h3 id="stages">Stages</h3>
+        <ol>
+            <li>lexical analysis (aka tokenisation): char steam to tokens</li>
+            <li>parse CFG on tokens</li>
+        </ol>
+        <h3 id="trees">Trees</h3>
+        <ul>
+            <li>parse/derivation tree: has non-terminal symbols</li>
+            <li>abstract sytax tree: only terminals</li>
+        </ul>
+        <h3 id="parsers">Parsers</h3>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#FF6680">data</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> MkParser </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">String</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Maybe</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">String</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">))</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- primitive</span></span>
+<span class="line"><span style="color:#66FF99">anyChar</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Char</span></span>
+<span class="line"><span style="color:#66FF99">char</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Char</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Char</span></span>
+<span class="line"><span style="color:#66FF99">satisfy</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">Char</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Char</span></span>
+<span class="line"><span style="color:#66FF99">eof</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#878787">()</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- expect no input</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- token</span></span>
+<span class="line"><span style="color:#66FF99">whitespaces</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">String</span></span>
+<span class="line"><span style="color:#66FF99">natural</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Integer</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- natural number</span></span>
+<span class="line"><span style="color:#66FF99">identifier</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#66CCFF;font-style:italic">String</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">String</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- avoid reserved</span></span>
+<span class="line"><span style="color:#66FF99">keyword</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Strign</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">String</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- read reserved</span></span>
+<span class="line"><span style="color:#66FF99">anyOperator</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">String</span></span>
+<span class="line"><span style="color:#66FF99">operator</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">String</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">String</span></span>
+<span class="line"><span style="color:#66FF99">openParen, closeParen</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Parser</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Char</span></span></code></pre>
+        <h3 id="example">Example</h3>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#F1F1F1">if&#39; </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> keyword </span><span style="color:#878787">&quot;</span><span style="color:#FFE666">if</span><span style="color:#878787">&quot;</span><span style="color:#F1F1F1">; else&#39; </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> keyword </span><span style="color:#878787">&quot;</span><span style="color:#FFE666">else</span><span style="color:#878787">&quot;</span></span>
+<span class="line"><span style="color:#F1F1F1">p0 </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> liftA3 f </span><span style="color:#878787">(</span><span style="color:#F1F1F1">arith </span><span style="color:#FF6680">&lt;*</span><span style="color:#F1F1F1"> if&#39;</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">expr </span><span style="color:#FF6680">&lt;*</span><span style="color:#F1F1F1"> else&#39;</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> p0</span></span>
+<span class="line"><span style="color:#F1F1F1">p1 </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> pure </span><span style="color:#878787">(</span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">a _ e _ p </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> f a e p</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">&lt;*&gt;</span><span style="color:#F1F1F1"> arith </span><span style="color:#FF6680">&lt;*&gt;</span><span style="color:#F1F1F1"> if&#39; </span><span style="color:#FF6680">&lt;*&gt;</span><span style="color:#F1F1F1"> expr </span><span style="color:#FF6680">&lt;*&gt;</span><span style="color:#F1F1F1"> else&#39; </span><span style="color:#FF6680">&lt;*&gt;</span><span style="color:#F1F1F1"> p1</span></span>
+<span class="line"><span style="color:#F1F1F1">p2 </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> arith </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> if&#39;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">*&gt;</span><span style="color:#F1F1F1"> expr </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">e </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> else&#39;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">*&gt;</span><span style="color:#F1F1F1"> p2 </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">p </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> pure </span><span style="color:#FF6680">$</span><span style="color:#F1F1F1"> f a e p</span></span></code></pre>
+
+        <h2 id="type-inference">Type Inference</h2>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#f1f1f1">env = Γ = { u1::T1, u2::T2, ... }</span></span></code></pre>
+        <ul>
+            <li><code>unify/uni</code>: subst types then match/equate them</li>
+            <li><code>unify_intern/uin</code>: mutates Γ, throws error if types don’t match</li>
+            <li><code>apply_subst/app</code>: apply substitution with the current Γ</li>
+        </ul>
+        <h3 id="unify">Unify</h3>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#F1F1F1">unify T1 T2 </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> unify_intern </span><span style="color:#878787">(</span><span style="color:#F1F1F1">apply_subst T1</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">apply_subst T2</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">unify_intern u T </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- or unify-intern T u where u is unknown</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> T </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> u </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> return</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> u occurs </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> T </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> infinite type error</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">else</span></span>
+<span class="line"><span style="color:#F1F1F1">        add u</span><span style="color:#FF6680">:=</span><span style="color:#F1F1F1">T to env</span></span>
+<span class="line"><span style="color:#F1F1F1">        replace u with T </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> Γ</span></span>
+<span class="line"><span style="color:#F1F1F1">unify_intern c1 c2 </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- type constants</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> c1 </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> c2 </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> return</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#FF6680">else</span><span style="color:#F1F1F1"> type mismatch error</span></span>
+<span class="line"><span style="color:#F1F1F1">unify_intern </span><span style="color:#878787">(</span><span style="color:#F1F1F1">f T1</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">f T2</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> unify_intern T1 T2 </span><span style="color:#7F7F7F;font-style:italic">-- functors</span></span>
+<span class="line"><span style="color:#F1F1F1">unify_intern </span><span style="color:#878787">(</span><span style="color:#F1F1F1">T1 </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> S1</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">T2 </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> S2</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- or (T1, S1) (T2, S2) etc</span></span>
+<span class="line"><span style="color:#F1F1F1">  unify_intern T1 T2</span></span>
+<span class="line"><span style="color:#F1F1F1">  unify_intern </span><span style="color:#878787">(</span><span style="color:#F1F1F1">apply_subst S1</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">apply_subst T2</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- throw type mismatch error otherwise</span></span></code></pre>
+        <h4 id="infer">Infer</h4>
+        <p><code>infer Γ term</code> infers type of <code>term</code> under <code>Γ</code>: monomorphic</p>
+        <p><code>infer-poly Γ term</code> infers type with polymorphism</p>
+        <ul>
+            <li>infer normally, then add polymorphism (e.g. <code>∀a.a-&gt;a</code>)</li>
+        </ul>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#7F7F7F;font-style:italic">--- literal: hardcoded types</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ True </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Bool</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ </span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Integer</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">--- variable: lookup (then instantiate)</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ x </span><span style="color:#FF6680">=</span></span>
+<span class="line"><span style="color:#F1F1F1">    T </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> lookup type </span><span style="color:#FF6680">of</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> env</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> T not found </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> variable not </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> scope error</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> T monomorphic </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> return </span><span style="color:#878787">(</span><span style="color:#F1F1F1">apply_subst T</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> T polymorphic </span><span style="color:#FF6680">-&gt;</span></span>
+<span class="line"><span style="color:#F1F1F1">        create new unknowns</span></span>
+<span class="line"><span style="color:#F1F1F1">        T&#39; </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> instantiate T with created unknowns</span></span>
+<span class="line"><span style="color:#F1F1F1">        return apply_subst T&#39;</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">--- lambda: unknown for arguments, then infer body</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ </span><span style="color:#878787">(</span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> body</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> u be unknown </span><span style="color:#878787">(</span><span style="color:#F1F1F1">for a</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    T </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> infer </span><span style="color:#878787">{</span><span style="color:#F1F1F1"> Γ</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> a</span><span style="color:#FF6680">::</span><span style="color:#F1F1F1">u </span><span style="color:#878787">}</span><span style="color:#F1F1F1"> body</span></span>
+<span class="line"><span style="color:#F1F1F1">    return apply_subst </span><span style="color:#878787">(</span><span style="color:#F1F1F1">u</span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1">T</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">--- application: infer lambda and arguments independently</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ </span><span style="color:#878787">(</span><span style="color:#F1F1F1">f x</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Tf</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> Tx</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">infer Γ f</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> infer Γ x</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> u be unknown; unify Tf </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Tx </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> u</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    return </span><span style="color:#878787">(</span><span style="color:#F1F1F1">apply_subst u</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- ifthenelse</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ </span><span style="color:#878787">(</span><span style="color:#FF6680">if</span><span style="color:#F1F1F1"> cond </span><span style="color:#FF6680">then</span><span style="color:#F1F1F1"> expr1 </span><span style="color:#FF6680">else</span><span style="color:#F1F1F1"> expr2</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    T </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> infer Γ cond; unify T Bool </span><span style="color:#7F7F7F;font-style:italic">-- cond::Bool</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">(</span><span style="color:#F1F1F1">T1</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> T2</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">infer Γ expr1</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> infer Γ expr2</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    unify T1 T2 </span><span style="color:#7F7F7F;font-style:italic">-- expr1 expr2 has same type</span></span>
+<span class="line"><span style="color:#F1F1F1">    return </span><span style="color:#878787">(</span><span style="color:#F1F1F1">apply_subst T1</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- abstract data type: pattern matching</span></span>
+<span class="line"><span style="color:#FF6680">data</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Maybe</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Nothing </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> Just a</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ Nothing</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> u be unknown</span></span>
+<span class="line"><span style="color:#F1F1F1">    return </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Maybe u</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Just expr</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    T </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> infer Γ expr</span></span>
+<span class="line"><span style="color:#F1F1F1">    return </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Maybe T</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ </span><span style="color:#878787">(</span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> expr </span><span style="color:#FF6680">of</span><span style="color:#F1F1F1"> </span><span style="color:#878787">{</span><span style="color:#F1F1F1"> Nothing </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> exprN</span><span style="color:#878787">;</span><span style="color:#F1F1F1"> Just x </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> exprJ</span><span style="color:#878787">})</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span></span>
+<span class="line"><span style="color:#F1F1F1">    T </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> infer Γ expr</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> u be unknown; unify T </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Maybe u</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">(</span><span style="color:#F1F1F1">TN</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> TJ</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">infer Γ exprN</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> infer </span><span style="color:#878787">{</span><span style="color:#F1F1F1"> Γ</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> x</span><span style="color:#FF6680">::</span><span style="color:#F1F1F1">u </span><span style="color:#878787">}</span><span style="color:#F1F1F1"> exprJ</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    unify TN TJ</span></span>
+<span class="line"><span style="color:#F1F1F1">    return </span><span style="color:#878787">(</span><span style="color:#F1F1F1">apply_subst TN</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- let</span></span>
+<span class="line"><span style="color:#F1F1F1">generalise Γ T </span><span style="color:#FF6680">=</span></span>
+<span class="line"><span style="color:#F1F1F1">    Δ </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Γ but updated </span><span style="color:#7F7F7F;font-style:italic">-- use apply-subst to solve unknowns first</span></span>
+<span class="line"><span style="color:#F1F1F1">    for each unknown ui </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> T</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> ui is not </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> Δ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> ai be new type variable</span></span>
+<span class="line"><span style="color:#F1F1F1">    return </span><span style="color:#FF6680">∀</span><span style="color:#F1F1F1">a1 a2 </span><span style="color:#FF6680">⋯</span><span style="color:#F1F1F1"> an</span><span style="color:#FF6680">.</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">T but replace ui by ai</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ </span><span style="color:#878787">(</span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> exprx </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> body</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- single def, nonrecursive</span></span>
+<span class="line"><span style="color:#F1F1F1">    Tx </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> infer Γ exprx</span></span>
+<span class="line"><span style="color:#F1F1F1">    Ux </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> generalise Γ Tx </span><span style="color:#7F7F7F;font-style:italic">-- generalise (e.g. function argument)</span></span>
+<span class="line"><span style="color:#F1F1F1">    return infer </span><span style="color:#878787">{</span><span style="color:#F1F1F1"> Γ</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> x</span><span style="color:#FF6680">::</span><span style="color:#66CCFF;font-style:italic">Ux</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span><span style="color:#F1F1F1"> body</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ </span><span style="color:#878787">(</span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> exprx </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> body</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- single definition, recursive</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> ux be unknown</span></span>
+<span class="line"><span style="color:#F1F1F1">    Tx </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> infer </span><span style="color:#878787">{</span><span style="color:#F1F1F1"> Γ</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> x</span><span style="color:#FF6680">::</span><span style="color:#F1F1F1">ux </span><span style="color:#878787">}</span><span style="color:#F1F1F1"> exprx</span></span>
+<span class="line"><span style="color:#F1F1F1">    Ux </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> generalise Γ Tx </span><span style="color:#7F7F7F;font-style:italic">-- no x::ux</span></span>
+<span class="line"><span style="color:#F1F1F1">    return infer </span><span style="color:#878787">{</span><span style="color:#F1F1F1"> Γ</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> x</span><span style="color:#FF6680">::</span><span style="color:#66CCFF;font-style:italic">Ux</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span><span style="color:#F1F1F1"> body</span></span>
+<span class="line"><span style="color:#F1F1F1">infer Γ </span><span style="color:#878787">(</span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">…</span><span style="color:#F1F1F1"> ; y </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">…</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> body</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">    make directed graph </span><span style="color:#7F7F7F;font-style:italic">-- if x uses y then x &lt;- y</span></span>
+<span class="line"><span style="color:#F1F1F1">    for each SCC </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1">  </span><span style="color:#7F7F7F;font-style:italic">-- if SCC A -&gt; SCC B, then do A first</span></span>
+<span class="line"><span style="color:#878787">        </span><span style="color:#7F7F7F;font-style:italic">-- suppose SCC is x1 = e1, …, xn = en</span></span>
+<span class="line"><span style="color:#F1F1F1">        make unknowns u1, </span><span style="color:#FF6680">…</span><span style="color:#F1F1F1">, un</span></span>
+<span class="line"><span style="color:#F1F1F1">        Ti </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> infer </span><span style="color:#878787">{</span><span style="color:#F1F1F1">x1</span><span style="color:#FF6680">::</span><span style="color:#F1F1F1">u1</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> …, xn</span><span style="color:#FF6680">::</span><span style="color:#F1F1F1">un</span><span style="color:#878787">}</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">ei</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- do for each i</span></span>
+<span class="line"><span style="color:#F1F1F1">        Ui </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> generalise </span><span style="color:#878787">{}</span><span style="color:#F1F1F1"> Ti</span></span>
+<span class="line"><span style="color:#878787">        </span><span style="color:#7F7F7F;font-style:italic">-- then use Ti Ui to for next iter of SCC</span></span>
+<span class="line"><span style="color:#F1F1F1">    infer </span><span style="color:#878787">{</span><span style="color:#F1F1F1"> ... </span><span style="color:#878787">}</span><span style="color:#F1F1F1"> body</span></span></code></pre>
+        <h3 id="mutually-recursive">Mutually Recursive</h3>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> x </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> use y    </span><span style="color:#7F7F7F;font-style:italic">-- f &lt;- xyz -&gt; hg -&gt; f</span></span>
+<span class="line"><span style="color:#F1F1F1">    y </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> use z</span></span>
+<span class="line"><span style="color:#F1F1F1">    z </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> use x</span></span>
+<span class="line"><span style="color:#F1F1F1">    g </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> use h, y</span></span>
+<span class="line"><span style="color:#F1F1F1">    h </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> use g, z</span></span>
+<span class="line"><span style="color:#F1F1F1">    f </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> use g, x</span></span>
+<span class="line"><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> body</span></span></code></pre>
+        <ul>
+            <li>First infer xs, ys, zs together.
+                <pre class="astro-code" style="background-color:#000000;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#f1f1f1">create unknowns ux, uy, uz for x, y, z</span></span>
+<span class="line"><span style="color:#f1f1f1">Tx := infer {x :: ux, y :: uy, z :: uz} (use y)</span></span>
+<span class="line"><span style="color:#f1f1f1">Ty := infer {x :: ux, y :: uy, z :: uz} (use z)</span></span>
+<span class="line"><span style="color:#f1f1f1">Tz := infer {x :: ux, y :: uy, z :: uz} (use x)</span></span>
+<span class="line"><span style="color:#f1f1f1">Txg := generalize {} Tx</span></span>
+<span class="line"><span style="color:#f1f1f1">Tyg := generalize {} Ty</span></span>
+<span class="line"><span style="color:#f1f1f1">Tzg := generalize {} Tz</span></span></code></pre>
+            </li>
+            <li>Then use that to infer g, h together.
+                <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+                    tabindex="0"><code><span class="line"><span style="color:#f1f1f1">create unknowns ug, uh for g, h</span></span>
+<span class="line"><span style="color:#f1f1f1">Tg := infer {g:ug, h:uh, x:Txg, y:Tyg, z:Tzg} (use h, y)</span></span>
+<span class="line"><span style="color:#f1f1f1">Th := infer {g:ug, h:uh, x:Txg, y:Tyg, z:Tzg} (use g, z)</span></span>
+<span class="line"><span style="color:#f1f1f1">Tgg := generalize {x :: Txg, y :: Tyg, z :: Tzg} Tg</span></span>
+<span class="line"><span style="color:#f1f1f1">Thg := generalize {x :: Txg, y :: Tyg, z :: Tzg} Th</span></span></code></pre>
+            </li>
+            <li>Then use the above to infer f.
+                <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+                    tabindex="0"><code><span class="line"><span style="color:#f1f1f1">Tf := infer {g:Tgg, h:Thg, x:Txg, y:Tyg, z:Tzg} (use g, x)</span></span>
+<span class="line"><span style="color:#f1f1f1">Tfg := generalize {g:Tgg, h:Thg, x:Txg, y:Tyg, z:Tzg} Tf</span></span></code></pre>
+            </li>
+            <li>Finally can infer body.
+                <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+                    tabindex="0"><code><span class="line"><span style="color:#f1f1f1">infer {f:Tfg, g:Tgg, h:Thg, x:Txg, y:Tyg, z:Tzg} body</span></span></code></pre>
+            </li>
+        </ul>
+        <h2 id="parametricity">Parametricity</h2>
+        <h3 id="the-abstraction-theorem">The Abstraction Theorem</h3>
+        <p>let <code>A₁</code> and <code>A₂</code> be implementations of abstract type <code>A</code></p>
+        <ol>
+            <li>let correspondence <code>a₁ ~ a₂</code> for <code>a₁ :: A₁</code> and <code>a₂ :: A₂</code></li>
+            <li>let <code>D₁</code> and <code>D₂</code> be domains:
+                <pre class="astro-code" style="background-color:#000000;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#f1f1f1">     D₁(A) = A₁                    D₂(A) = A₂</span></span>
+<span class="line"><span style="color:#f1f1f1">D₁(T -&gt; U) = D₁(T) -&gt; D₁(U)   D₂(T -&gt; U) = D₂(T) -&gt; D₂(U)</span></span>
+<span class="line"><span style="color:#f1f1f1">     D₁(T) = T                     D₂(T) = T</span></span></code></pre>
+            </li>
+            <li>let correspondence <code>x₁ ⟨T⟩ x2</code> for <code>x₁ :: D₁(T)</code> and <code>x₂ :: D₂(T)</code>
+                <pre class="astro-code" style="background-color:#000000;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#f1f1f1">a₁    ⟨A⟩   a₂   iff   a₁ ~ a₂</span></span>
+<span class="line"><span style="color:#f1f1f1">f₁ ⟨T -&gt; U⟩ f₂   iff   ∀x₁::D₁(T) x₂::D₂(T).</span></span>
+<span class="line"><span style="color:#f1f1f1">                           if x₁ ⟨T⟩ x₂ then f₁ x₁ ⟨T⟩ f₂ x₂</span></span>
+<span class="line"><span style="color:#f1f1f1">x₁    ⟨T⟩   x₂   iff   x₁ == x₂</span></span></code></pre>
+            </li>
+        </ol>
+        <p>The abstraction theorem: for an abstract type, if both impls are in corr, then any program using these impls
+            are also in corr</p>
+        <h3 id="the-parametricity-theorem">The Parametricity Theorem</h3>
+        <p>rephrase the abstract theorem on <code>A</code>: for any type <code>A₁</code> and <code>A₂</code> with corr
+            <code>h</code></p>
+        <ol>
+            <li>apply theorem with given program <code>p :: A -&gt; T</code></li>
+        </ol>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#f1f1f1">for any A₁, A₂, h :: A₁ -&gt; A₂</span></span>
+<span class="line"><span style="color:#f1f1f1">    let a₁ ⟨a⟩ a₂ iff h a₁ = a₂</span></span>
+<span class="line"><span style="color:#f1f1f1">    for any x₁ :: A₁, x₂ :: A₂ (i.e. inputs of p)</span></span>
+<span class="line"><span style="color:#f1f1f1">        if x₁ ⟨A⟩ x₂ (i.e. if all inputs correspond)</span></span>
+<span class="line"><span style="color:#f1f1f1">        then p x₁ ⟨T⟩ p x₂ (i.e. then all outputs correspond)</span></span></code></pre>
+        <ol start="2">
+            <li>
+                <p>let <code>h x = x₂</code> (for any <code>x</code>)<br />
+                    (if using test cases) let <code>x₁</code> be input of the test case, and <code>A₁</code> be its
+                    type<br />
+                    (if using given impl) let <code>x₁ = x₂</code> and <code>A₁ = A₂</code></p>
+            </li>
+            <li>
+                <p>rewrite theorem with the chosen specialisation and expand definitions</p>
+                <ul>
+                    <li><code>a₁ ⟨Functor A⟩ a₂ iff fmap h a₁ = a₂</code></li>
+                </ul>
+            </li>
+        </ol>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#f1f1f1">e :: forall b. (Int -&gt; b -&gt; b) -&gt; b -&gt; b</span></span>
+<span class="line"><span style="color:#f1f1f1">wts for all BR</span></span>
+<span class="line"><span style="color:#f1f1f1">            opR :: Int -&gt; BR -&gt; BR</span></span>
+<span class="line"><span style="color:#f1f1f1">            zR :: BR</span></span>
+<span class="line"><span style="color:#f1f1f1">    foldr opR zR (e (:) []) = e opR zR</span></span>
+<span class="line"><span style="color:#f1f1f1"></span></span>
+<span class="line"><span style="color:#f1f1f1">for all BL, BR, h :: BL -&gt; BR</span></span>
+<span class="line"><span style="color:#f1f1f1">    for all opL :: Int -&gt; BL -&gt; BL, zL  :: BL,</span></span>
+<span class="line"><span style="color:#f1f1f1">            opR :: Int -&gt; BR -&gt; BR, zR  :: BR</span></span>
+<span class="line"><span style="color:#f1f1f1">        if  h zL = zR  and (</span></span>
+<span class="line"><span style="color:#f1f1f1">            for all i :: Int, x :: BL, y :: BR</span></span>
+<span class="line"><span style="color:#f1f1f1">                if h x = y</span></span>
+<span class="line"><span style="color:#f1f1f1">                then h (opL i x) = opR i y)</span></span>
+<span class="line"><span style="color:#f1f1f1">        then h (e opL zL) = e opR zR</span></span>
+<span class="line"><span style="color:#f1f1f1"></span></span>
+<span class="line"><span style="color:#f1f1f1">Choose BL = [Int], opL = (:), zL = [], h = foldr opR zR</span></span>
+<span class="line"><span style="color:#f1f1f1"></span></span>
+<span class="line"><span style="color:#f1f1f1">Verify these two statements:</span></span>
+<span class="line"><span style="color:#f1f1f1"></span></span>
+<span class="line"><span style="color:#f1f1f1">* wts for all i::Int, x::[Int], y::BR</span></span>
+<span class="line"><span style="color:#f1f1f1">    if h x = y then h (opL i x) = opR i y</span></span>
+<span class="line"><span style="color:#f1f1f1"></span></span>
+<span class="line"><span style="color:#f1f1f1">    h (opL i x)</span></span>
+<span class="line"><span style="color:#f1f1f1">  = foldr opR zR (i : x)          h definition</span></span>
+<span class="line"><span style="color:#f1f1f1">  = opR i (foldr opR zR x)        foldr definition</span></span>
+<span class="line"><span style="color:#f1f1f1">  = opR i (h x)                   h definition</span></span>
+<span class="line"><span style="color:#f1f1f1">  = opR i y                       &quot;if h x = y&quot;</span></span>
+<span class="line"><span style="color:#f1f1f1"></span></span>
+<span class="line"><span style="color:#f1f1f1">* wts h zL = zR</span></span>
+<span class="line"><span style="color:#f1f1f1"></span></span>
+<span class="line"><span style="color:#f1f1f1">    h []</span></span>
+<span class="line"><span style="color:#f1f1f1">  = foldr opR zR []               h definition</span></span>
+<span class="line"><span style="color:#f1f1f1">  = zR                            foldr definition</span></span>
+<span class="line"><span style="color:#f1f1f1"></span></span>
+<span class="line"><span style="color:#f1f1f1">Conclude:</span></span>
+<span class="line"><span style="color:#f1f1f1"></span></span>
+<span class="line"><span style="color:#f1f1f1">for all BR</span></span>
+<span class="line"><span style="color:#f1f1f1">  for all opR :: Int -&gt; BR -&gt; BR, zR  :: BR</span></span>
+<span class="line"><span style="color:#f1f1f1">    foldr opR zR (e (:) []) = e opR zR</span></span></code></pre>
+        <h2 id="semantics">Semantics</h2>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#66FF99">interp</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Expr</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Map</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">String</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Value</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">ExprInterp</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Value</span></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Prim2 Plus e1 e2</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> interp e1 env</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> intOrDie a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">i </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> interp e2 env</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> intOrDie b </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">j </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> return </span><span style="color:#878787">(</span><span style="color:#F1F1F1">VN </span><span style="color:#878787">(</span><span style="color:#F1F1F1">i</span><span style="color:#FF6680">+</span><span style="color:#F1F1F1">j</span><span style="color:#878787">))</span></span>
+<span class="line"><span style="color:#66FF99">intOrDie</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Value</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">ExprInterp</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Integer</span></span>
+<span class="line"><span style="color:#F1F1F1">intOrDie </span><span style="color:#878787">(</span><span style="color:#F1F1F1">VN i</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> pure i</span></span>
+<span class="line"><span style="color:#F1F1F1">intOrDie _ </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> raise TypeError</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- short-circuit condititionals</span></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Cond test eThen eElse</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> interp test env</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">of</span></span>
+<span class="line"><span style="color:#F1F1F1">    VB True </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> interp eThen env</span></span>
+<span class="line"><span style="color:#F1F1F1">    VB False </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> interp eElse env</span></span>
+<span class="line"><span style="color:#F1F1F1">    _ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise TypeError</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- variable loockup</span></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Var v</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> Map.lookup v env </span><span style="color:#FF6680">of</span></span>
+<span class="line"><span style="color:#F1F1F1">  Just a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> pure a</span></span>
+<span class="line"><span style="color:#F1F1F1">  Nothing </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise VarNotFound</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- Let [(String, Expr)] Expr</span></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Let eqns evalMe</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span></span>
+<span class="line"><span style="color:#F1F1F1">    extend eqns env</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">env&#39; </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> interp evalMe env&#39;</span></span>
+<span class="line"><span style="color:#878787">    </span><span style="color:#7F7F7F;font-style:italic">-- Example:</span></span>
+<span class="line"><span style="color:#878787">    </span><span style="color:#7F7F7F;font-style:italic">--    let x=2+3; y=x+4 in x+y</span></span>
+<span class="line"><span style="color:#878787">    </span><span style="color:#7F7F7F;font-style:italic">-- -&gt; x+y   (with x=5, y=9 in the larger environment env&#39;)</span></span>
+<span class="line"><span style="color:#878787">    </span><span style="color:#7F7F7F;font-style:italic">-- &quot;extend env eqns&quot; builds env&#39;</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    extend </span><span style="color:#878787">[]</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> return env</span></span>
+<span class="line"><span style="color:#F1F1F1">    extend </span><span style="color:#878787">((</span><span style="color:#F1F1F1">v</span><span style="color:#878787">,</span><span style="color:#F1F1F1">rhs</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> eqns</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span></span>
+<span class="line"><span style="color:#F1F1F1">        interp rhs env</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> env&#39; </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Map.insert v a env</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> extend eqns env&#39;</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- closure</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- e.g. (let x=7 in \y -&gt; x + y) 10</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- =&gt; VClosure { x = VN 7 } &quot;y&quot; (x+y)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- =&gt; interp on e gives VN 10</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- =&gt; interp (x + y) { x = VN 7, y = VN 10 }</span></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Lambda v body</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> pure </span><span style="color:#878787">(</span><span style="color:#F1F1F1">VClosure env v body</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">App f e</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> interp f env</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">c </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> c </span><span style="color:#FF6680">of</span></span>
+<span class="line"><span style="color:#F1F1F1">      VClosure fEnv v body </span><span style="color:#FF6680">-&gt;</span></span>
+<span class="line"><span style="color:#F1F1F1">          interp e env </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">eVal </span><span style="color:#FF6680">-&gt;</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> bEnv </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Map.insert v eVal fEnv  </span><span style="color:#7F7F7F;font-style:italic">-- fEnv, not env</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> interp body bEnv</span></span>
+<span class="line"><span style="color:#F1F1F1">      _ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise TypeError</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- Y</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- (\f -&gt; \n -&gt; if n=0 then 1 else n * (f f) (n-1)) mkFac 2</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- (\n -&gt; if n=0 then 1 else n * (mkFac mkFac) (n-1)) 2</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- if 2=0 then 1 else 2 * (mkFac mkFac) (2-1)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * (mkFac mkFac) (2-1)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * (\f -&gt; \n -&gt; if n=0 then 1 else n * (f f) (n-1)) mkFac (2-1)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * (\n -&gt; if n=0 then 1 else n * (mkFac mkFac) (n-1)) (2-1)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * (\n -&gt; if n=0 then 1 else n * (mkFac mkFac) (n-1)) 1</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * if 1=0 then 1 else 1 * (mkFac mkFac) (1-1)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * 1 * mkFac mkFac (1-1)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * 1 * (\n -&gt; if n=0 then 1 else n * mkFac mkFac (n-1)) (1-1)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * 1 * (\n -&gt; if n=0 then 1 else n * mkFac mkFac (n-1)) 0</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * 1 * if 0=0 then 1 else 0 * ...</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- 2 * 1 * 1</span></span>
+<span class="line"><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> mkFac </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">f </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">n </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">if</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">then</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">else</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">f f</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">n</span><span style="color:#FF6680">-</span><span style="color:#A68CD9">1</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> mkFac mkFac </span><span style="color:#A68CD9">2</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- let f = \n -&gt; if n == 0 then 0 else 3 * f (n - 1) - g (n - 1)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">--     g = \n -&gt; if n == 0 then 1 else g (n - 1) + 2 * f (n - 1)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- in f x * g y</span></span>
+<span class="line"><span style="color:#F1F1F1">mkF </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> λfλgλn</span><span style="color:#FF6680">.</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">if</span><span style="color:#F1F1F1"> n</span><span style="color:#FF6680">=</span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">then</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">else</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">3</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">f f g</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">n</span><span style="color:#FF6680">-</span><span style="color:#A68CD9">1</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">g f g</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">n</span><span style="color:#FF6680">-</span><span style="color:#A68CD9">1</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">mkG </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> λfλgλn</span><span style="color:#FF6680">.</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">if</span><span style="color:#F1F1F1"> n</span><span style="color:#FF6680">=</span><span style="color:#A68CD9">0</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">then</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">else</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">g f g</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">n</span><span style="color:#FF6680">-</span><span style="color:#A68CD9">1</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">+</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">2</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">f f g</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">n</span><span style="color:#FF6680">-</span><span style="color:#A68CD9">1</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#878787">(</span><span style="color:#F1F1F1">mkF mkF mkG x</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">mkG mkF mkG y</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- recursion</span></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">App f e</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> interp f env</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">c </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> c </span><span style="color:#FF6680">of</span></span>
+<span class="line"><span style="color:#F1F1F1">      VClosure fEnv v body </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> interp e env</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">eVal </span><span style="color:#FF6680">-&gt;</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> bEnv </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Map.insert v eVal fEnv</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> interp body bEnv</span></span>
+<span class="line"><span style="color:#878787">      </span><span style="color:#7F7F7F;font-style:italic">-- env: maps fName to itself</span></span>
+<span class="line"><span style="color:#F1F1F1">      VRecClosure fEnv fName v body </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> interp e env</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">eVal </span><span style="color:#FF6680">-&gt;</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> bEnv </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> Map.insert v eVal </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Map.insert fName c fEnv</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> interp body bEnv</span></span>
+<span class="line"><span style="color:#F1F1F1">      _ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise TypeError</span></span></code></pre>
+        <h3 id="state">State</h3>
+        <ul>
+            <li>env maps to addresses <code>Int</code><br />
+                otherwise lose updated values on scope exit</li>
+            <li>state maps addresses to values<br />
+                otherwise removing local vars on scope exit is tricky (?)</li>
+            <li>∴ use env to track vars, use state to track current values</li>
+        </ul>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#7F7F7F;font-style:italic">-- Return the whole memory</span></span>
+<span class="line"><span style="color:#F1F1F1">getMem </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> MkMutM </span><span style="color:#878787">(</span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">s </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> Right </span><span style="color:#878787">(</span><span style="color:#F1F1F1">s</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> s</span><span style="color:#878787">))</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- Modify the memory by a function, i.e., change s to f s</span></span>
+<span class="line"><span style="color:#F1F1F1">modMem f </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> MkMutM </span><span style="color:#878787">(</span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">s </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> Right </span><span style="color:#878787">(</span><span style="color:#F1F1F1">f s</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#878787">()))</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- return new address</span></span>
+<span class="line"><span style="color:#66FF99">new</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Value</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">MutM</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Int</span></span>
+<span class="line"><span style="color:#F1F1F1">new v </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> fmap Map.size getMem </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">n </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> store n v </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">_ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> pure n</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- Read value at address.</span></span>
+<span class="line"><span style="color:#66FF99">load</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Int</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">MutM</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Value</span></span>
+<span class="line"><span style="color:#F1F1F1">load a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> fmap </span><span style="color:#878787">(</span><span style="color:#FF6680">!</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> getMem</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- Write value to address.</span></span>
+<span class="line"><span style="color:#66FF99">store</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Int</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Value</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">MutM</span><span style="color:#F1F1F1"> </span><span style="color:#878787">()</span></span>
+<span class="line"><span style="color:#F1F1F1">store a val </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> modMem </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Map.insert a val</span><span style="color:#878787">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Var v</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> Map.lookup v env </span><span style="color:#FF6680">of</span></span>
+<span class="line"><span style="color:#F1F1F1">  Just a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> load a</span></span>
+<span class="line"><span style="color:#F1F1F1">  Nothing </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise VarNotFound</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66FF99">interp</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Expr</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Map</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">String</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Int</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">MutM</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Value</span></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Assign v e</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> Map.lookup v env </span><span style="color:#FF6680">of</span></span>
+<span class="line"><span style="color:#F1F1F1">  Nothing </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise VarNotFound</span></span>
+<span class="line"><span style="color:#F1F1F1">  Just addr </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> interp e env</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">val </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> store addr val </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">_ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> pure VNone</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Let eqns expr</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span></span>
+<span class="line"><span style="color:#F1F1F1">    extend env eqns </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">env&#39; </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> interp expr env&#39;</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    extend env </span><span style="color:#878787">[]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> pure env</span></span>
+<span class="line"><span style="color:#F1F1F1">    extend env </span><span style="color:#878787">((</span><span style="color:#F1F1F1">v</span><span style="color:#878787">,</span><span style="color:#F1F1F1">rhs</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> eqns</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> interp rhs env</span></span>
+<span class="line"><span style="color:#878787">        </span><span style="color:#7F7F7F;font-style:italic">-- allocate memory to store val</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">val </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> new val</span></span>
+<span class="line"><span style="color:#878787">        </span><span style="color:#7F7F7F;font-style:italic">-- And the environment stores the address, not the value!</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">addr </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> extend </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Map.insert v addr env</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> eqns</span></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- pass by value</span></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">App f e</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> interp f env </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">c </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> c </span><span style="color:#FF6680">of</span></span>
+<span class="line"><span style="color:#F1F1F1">      VClosure fEnv v body </span><span style="color:#FF6680">-&gt;</span></span>
+<span class="line"><span style="color:#F1F1F1">          interp e env</span></span>
+<span class="line"><span style="color:#878787">          </span><span style="color:#7F7F7F;font-style:italic">-- allocate memory to store val.</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">eVal </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> new eVal</span></span>
+<span class="line"><span style="color:#878787">          </span><span style="color:#7F7F7F;font-style:italic">-- And the environment stores the address, not the value!</span></span>
+<span class="line"><span style="color:#F1F1F1">          </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">addr </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">in</span><span style="color:#F1F1F1"> interp body </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Map.insert v addr fEnv</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">      _ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise TypeError</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Seq es</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> go es</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    go </span><span style="color:#878787">[]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> pure VNone </span><span style="color:#7F7F7F;font-style:italic">-- if no expressions</span></span>
+<span class="line"><span style="color:#F1F1F1">    go </span><span style="color:#878787">[</span><span style="color:#F1F1F1">e</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> interp e env </span><span style="color:#7F7F7F;font-style:italic">-- return last expression</span></span>
+<span class="line"><span style="color:#F1F1F1">    go </span><span style="color:#878787">(</span><span style="color:#F1F1F1">e</span><span style="color:#FF6680">:</span><span style="color:#F1F1F1">es</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> interp e env </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">_ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> go es</span></span></code></pre>
+        <ul>
+            <li><code>foo + bar</code> evals left operand first</li>
+            <li><code>let x=0 in (\y -&gt; x:=y) 4</code> changes <code>x</code> to <code>4</code></li>
+            <li><code>f = (let x=0 in \y -&gt; x:=x+1; x)</code> then <code>f 0; f 0; f 0</code> evals to <code>3</code>
+            </li>
+        </ul>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#F1F1F1">interp </span><span style="color:#878787">(</span><span style="color:#F1F1F1">AppByRef f e</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> env </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> interp f env</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">&gt;&gt;=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">\</span><span style="color:#F1F1F1">c </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> c </span><span style="color:#FF6680">of</span></span>
+<span class="line"><span style="color:#F1F1F1">      VClosure fEnv v body </span><span style="color:#FF6680">-&gt;</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> e </span><span style="color:#FF6680">of</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- need e to be Var</span></span>
+<span class="line"><span style="color:#F1F1F1">          Var x </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">case</span><span style="color:#F1F1F1"> Map.lookup x env </span><span style="color:#FF6680">of</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- Find address of x</span></span>
+<span class="line"><span style="color:#F1F1F1">              Nothing </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise VarNotFound</span></span>
+<span class="line"><span style="color:#878787">              </span><span style="color:#7F7F7F;font-style:italic">-- map v to address of x</span></span>
+<span class="line"><span style="color:#F1F1F1">              Just addr </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> interp body </span><span style="color:#878787">(</span><span style="color:#F1F1F1">Map.insert v addr fEnv</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">          _ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise TypeError</span></span>
+<span class="line"><span style="color:#F1F1F1">      _ </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> raise TypeError</span></span></code></pre>
+        <h2 id="hoogle">Hoogle</h2>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto"
+            tabindex="0"><code><span class="line"><span style="color:#66FF99">cycle</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- infinite cycle</span></span>
+<span class="line"><span style="color:#66FF99">iterate</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- infinite repeated app</span></span>
+<span class="line"><span style="color:#66FF99">repeat</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- infinte list</span></span>
+<span class="line"><span style="color:#66FF99">replicate</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Int</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- repeat but finite</span></span>
+<span class="line"><span style="color:#66FF99">tails</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- longest first</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#7F7F7F;font-style:italic">-- scanl f z [1, 2, ...] == [z, z `f` 1, (z `f` 1) `f` 2, ...]</span></span>
+<span class="line"><span style="color:#66FF99">scanl</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">b</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- last is foldl</span></span>
+<span class="line"><span style="color:#66FF99">scanr</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">b</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- head is foldr</span></span>
+<span class="line"><span style="color:#66FF99">filter</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span></span>
+<span class="line"><span style="color:#66FF99">partition</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">([</span><span style="color:#F1F1F1">a</span><span style="color:#878787">],</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">])</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- (filt, filt not)</span></span>
+<span class="line"><span style="color:#66FF99">drop</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Int</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span></span>
+<span class="line"><span style="color:#66FF99">dropWhile</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- returns suffix</span></span>
+<span class="line"><span style="color:#66FF99">take</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Int</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span></span>
+<span class="line"><span style="color:#66FF99">takeWhile</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- returns prefix</span></span>
+<span class="line"><span style="color:#66FF99">splitAt</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Int</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">([</span><span style="color:#F1F1F1">a</span><span style="color:#878787">],</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">])</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- prefix at most given length</span></span>
+<span class="line"><span style="color:#66FF99">span</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">([</span><span style="color:#F1F1F1">a</span><span style="color:#878787">],</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">])</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- (takeW, dropW)</span></span>
+<span class="line"><span style="color:#66FF99">break</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1">  </span><span style="color:#878787">([</span><span style="color:#F1F1F1">a</span><span style="color:#878787">],</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">])</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- span . (not .)</span></span>
+<span class="line"><span style="color:#66FF99">zip</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">b</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[(</span><span style="color:#F1F1F1">a</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> b</span><span style="color:#878787">)]</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- zipWith (,)</span></span>
+<span class="line"><span style="color:#66FF99">zipWith</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> c</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">b</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">c</span><span style="color:#878787">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66FF99">length</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Foldable</span><span style="color:#F1F1F1"> t </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> t a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Int</span></span>
+<span class="line"><span style="color:#66FF99">maximum, minimum</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">Foldable</span><span style="color:#F1F1F1"> t</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Ord</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> t a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a</span></span>
+<span class="line"><span style="color:#66FF99">and, or</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Foldable</span><span style="color:#F1F1F1"> t </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> t </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- short circuit</span></span>
+<span class="line"><span style="color:#66FF99">all, any</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Foldable</span><span style="color:#F1F1F1"> t </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> t a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Bool</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66FF99">maybe</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Maybe</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> b </span><span style="color:#7F7F7F;font-style:italic">-- map with default</span></span>
+<span class="line"><span style="color:#66FF99">fromMaybe</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Maybe</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#7F7F7F;font-style:italic">-- unwrap_or</span></span></code></pre>
+        <h2 id="haskell">Haskell</h2>
+        <pre class="astro-code" style="background-color:#000000;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#66FF99">insertion</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">Ord</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span></span>
+<span class="line"><span style="color:#F1F1F1">insertion </span><span style="color:#878787">[]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[]</span></span>
+<span class="line"><span style="color:#F1F1F1">insertion </span><span style="color:#878787">(</span><span style="color:#F1F1F1">x </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> xs</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> insert x </span><span style="color:#878787">(</span><span style="color:#F1F1F1">insertion xs</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">  </span><span style="color:#FF6680">where</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F;font-style:italic">-- assume bs is sorted</span></span>
+<span class="line"><span style="color:#F1F1F1">    insert a </span><span style="color:#878787">[]</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#878787">[</span><span style="color:#F1F1F1">a</span><span style="color:#878787">]</span></span>
+<span class="line"><span style="color:#F1F1F1">    insert a bs</span><span style="color:#FF6680">@</span><span style="color:#878787">(</span><span style="color:#F1F1F1">b </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> bt</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">&lt;=</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> bs</span></span>
+<span class="line"><span style="color:#F1F1F1">                         </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> otherwise </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> b </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> insert a bt</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF6680">data</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">BST</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> E </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> N </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">BST</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> a </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">BST</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#66FF99">ins</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">::</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Ord</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=&gt;</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">BST</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">BST</span><span style="color:#F1F1F1"> a</span></span>
+<span class="line"><span style="color:#F1F1F1">ins k E </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> N E k E</span></span>
+<span class="line"><span style="color:#F1F1F1">ins k tree</span><span style="color:#FF6680">@</span><span style="color:#878787">(</span><span style="color:#F1F1F1">N left key right</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> k </span><span style="color:#FF6680">&lt;</span><span style="color:#F1F1F1"> key </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> N </span><span style="color:#878787">(</span><span style="color:#F1F1F1">ins k left</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> key right</span></span>
+<span class="line"><span style="color:#F1F1F1">                              </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> k </span><span style="color:#FF6680">&gt;</span><span style="color:#F1F1F1"> key </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> N left key </span><span style="color:#878787">(</span><span style="color:#F1F1F1">ins k right</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#F1F1F1">                              </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> otherwise </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> tree</span></span>
+<span class="line"><span style="color:#FF6680">data</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">T</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> E </span><span style="color:#FF6680">|</span><span style="color:#F1F1F1"> N </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">T</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> a </span><span style="color:#878787">(</span><span style="color:#66CCFF;font-style:italic">T</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">)</span></span>
+<span class="line"><span style="color:#FF6680">instance</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">Foldable</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF;font-style:italic">T</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">where</span></span>
+<span class="line"><span style="color:#F1F1F1">    foldr _ z E </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> z</span></span>
+<span class="line"><span style="color:#F1F1F1">    foldr f z </span><span style="color:#878787">(</span><span style="color:#F1F1F1">N lt n rt</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> foldr f </span><span style="color:#878787">(</span><span style="color:#F1F1F1">f n </span><span style="color:#FF6680">$</span><span style="color:#F1F1F1"> foldr f z rt</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> lt</span></span>
+<span class="line"><span style="color:#F1F1F1">    foldMap _ E </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> mempty</span></span>
+<span class="line"><span style="color:#F1F1F1">    foldMap f </span><span style="color:#878787">(</span><span style="color:#F1F1F1">N lt n rt</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> foldMap f lt </span><span style="color:#FF6680">&lt;&gt;</span><span style="color:#F1F1F1"> f n </span><span style="color:#FF6680">&lt;&gt;</span><span style="color:#F1F1F1"> foldMap f rt</span></span>
+<span class="line"></span></code></pre>
+    </main>
+    <footer class="flex justify-center print:hidden">
+        <p>2023-08-23 13:04:11</p>
+    </footer>
+</body>
+
+</html>

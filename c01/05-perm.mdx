@@ -1,0 +1,141 @@
+---
+title: Permutation
+---
+
+> hope that orbits won't be in exam, check [discord](https://discord.com/channels/@me/1108430834681249895/1116089564495364246)
+
+<details class="example" open>
+<summary>$\forall n\ge 3\enspace Z(S_n)=\{\varepsilon\}$</summary>
+let any $\pi\in Z(S_n)$, BWOC assume $\pi\ne e$
+
+$$
+\begin{aligned}
+  \therefore\,&\exists 1\le i,j\le n\textsf{ st }\pi(i)=j\ne i\\
+  \because\,&n\ge 3\\
+  \therefore\,&\exists1\le k\le n\textsf{ st }k\ne i\textsf{ and }k\ne j\\
+  \therefore\,&\textsf{let }\sigma=(jk)\in S_n\textsf{ thus }\sigma\textsf{ and }\sigma^{-1}\textsf{ fix }i\\
+  \therefore\,&(\sigma\pi)(i)=\sigma(j)=k\ne j=\pi(i)=(\pi\sigma)(i)\\
+  \therefore\,&\sigma\pi\ne\pi\sigma\textsf{ thus }\pi\not\in Z(S_n)\quad\square\\
+\end{aligned}
+$$
+</details>
+
+## Odds and Evens
+
+<details class="theorem" open>
+<summary>any permutation $\sigma\in S_n$ can be written as composition of 2-cycles</summary>
+
+- $\sigma=\sigma_1\sigma_2\cdots\sigma_n=\pi_1\pi_2\cdots\pi_m\implies n$ and $m$ both even or both odd
+
+<details open>
+<summary>**Proof.**  let any $\sigma\in S_n$</summary>
+
+$$
+\begin{aligned}
+  \sigma&=(a_1a_2\cdots a_n)\cdots(b_1b_2\cdots b_m)\\
+  &=(a_1a_n)(a_1a_{n-1})\cdots(a_1a_2)\cdots(b_1b_m)(b_1b_{m-1})\cdots(b_1b_2)
+\end{aligned}
+$$
+</details>
+
+</details>
+<details class="definition" open>
+<summary></summary>
+- permutation is **even** iff can decompose into even number of 2-cycles
+- permutation is **odd** iff can decompose into odd number of 2-cycles
+</details>
+
+<details class="definition" open>
+<summary>alternate group $A_n\le S_n$</summary>
+set of even permutations
+
+- $|A_n|=|S_n|/2=n!/2$
+</details>
+
+## Cycle Notation
+
+<details class="definition" open>
+<summary>cycle notation of $S_n$</summary>
+composition of $m$-cycles
+
+- any permutation can be written as composition of cycles
+
+<details class="h" open>
+<summary>example</summary>
+
+$$
+\pi=\begin{pmatrix}1&2&3&4&5&6\\5&3&1&6&2&4\\\end{pmatrix}=(2315)(64)
+$$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>disjoint cycles</summary>
+cycles $\sigma$ and $\pi$ are disjoint iff have no entries in common
+</details>
+
+<details class="theorem" open>
+<summary>disjoint cycles commute</summary>
+$(a_1a_2\cdots a_m)(b_1b_2\cdots b_n)=(b_1b_2\cdots b_n)(a_1a_2\cdots a_m)$
+</details>
+
+<details class="example">
+<summary>composition to disjoint cycle form</summary>
+let $\sigma=(13)(27)(456)$ and $\pi=(1237)(648)$
+
+$$
+\begin{aligned}
+  \because&&1&\stackrel{(648)}\longrightarrow1\stackrel{(1237)}\longrightarrow2\stackrel{(456)}\longrightarrow2\stackrel{(27)}\longrightarrow7\stackrel{(13)}\longrightarrow7\\
+  \therefore&&\sigma\pi&=(17\cdots)\cdots\\
+  \because&&7&\stackrel{(648)}\longrightarrow7\stackrel{(1237)}\longrightarrow1\stackrel{(456)}\longrightarrow1\stackrel{(27)}\longrightarrow1\stackrel{(13)}\longrightarrow3\\
+  \therefore&&\sigma\pi&=(173\cdots)\cdots\\
+  \because&&\cdots&\\
+  \therefore&&\sigma\pi&=(1732)(48)(56)
+\end{aligned}
+$$
+</details>
+
+<details class="theorem" open>
+<summary>order of permutation</summary>
+let $\sigma=(a_{1}a_{2}\cdots a_{n_1})\cdots(b_1b_2\cdots b_{n_k})$
+
+$$
+|\sigma|=\operatorname{lcm}(n_1,\cdots,n_k)
+$$
+</details>
+
+## Permutation
+
+<details class="definition" open>
+<summary>permutation</summary>
+a permutation of finite set $A$ is bijection $\sigma:A\to A$
+</details>
+
+<details class="definition" open>
+<summary>symmetric group $S_n$</summary>
+$S_n$ is set of all permutations of $[n]$
+
+$$
+\sigma=\begin{pmatrix}1&2&\cdots&n\\\sigma(1)&\sigma(2)&\cdots&\sigma(n)\\\end{pmatrix}\in S_n
+$$
+
+- $\varepsilon\in S_n$ is the identity
+</details>
+
+<details class="theorem" open>
+<summary>order of a permutation is the LCM of the cycle lengths</summary>
+<details>
+<summary>**Proof.** an $n$-cycle has order $n$</summary>
+let $\sigma,\pi$ be disjoint cycles of length $m$ and $n$
+
+- let $k=\operatorname{lcm}(m,n)$
+- $\therefore \sigma^k=\pi^k=\varepsilon$
+- $\therefore\varepsilon=\sigma^k\pi^k=(\sigma\pi)^k$ since $\sigma\pi=\pi\sigma$
+- $\therefore$ let $t=|\sigma\pi|$, we have $t|k$, thus $t\le k$
+- $\therefore \sigma^t\pi^t=(\sigma\pi)^t=\varepsilon$ since $t|t$
+- $\therefore\sigma^t=\pi^t=\varepsilon$ since disjoint
+- $\therefore t$ is common multiple of $m$ and $n$, thus $k\le t$
+- $\therefore k=t$
+</details>
+</details>
+

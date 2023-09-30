@@ -1,0 +1,279 @@
+---
+title: Homomorphism
+---
+
+## Examples
+
+<details class="example list-none" open>
+<summary>determine $\varphi:\mathbb Z_{50}\to\mathbb Z_{15}$ where $\varphi(7)=6$</summary>
+
+let $\varphi(1)=k$
+
+- $\therefore6=\varphi(7)=7\varphi(1)=7k\mod 15$
+- $\therefore k=3$
+- $\therefore\varphi(a)=a\varphi(1)=3a$
+</details>
+
+<details class="example list-none" open>
+<summary>$\varphi:A_4\twoheadrightarrow G$ and $G$ cyclic $\implies |G|=1$ or $3$</summary>
+- $\because A_4$ has exactly 
+  - one element of order $1$
+  - three elements of order $2$
+  - eight elements of order $3$
+- $\therefore$ elements of $G$ must have order $1$ or $2$ or $3$
+
+BWOC $|G|=2$
+
+- $\therefore|\ker\varphi|=|A_4|/|G|=6$ 
+- $\therefore\exists\pi\not\in\ker\varphi$ with $|\pi|=3$
+- $\therefore|\varphi(\pi)|$ divides $2$ and $3$, thus $\varphi(\pi)=\varepsilon$, contradicts that $\pi\not\in\ker\varphi\quad\square$
+</details>
+
+### No Homomorphism?
+
+<details class="example list-none" open>
+<summary>no hom $\varphi:\mathbb Z_{16}\oplus\mathbb Z_2\twoheadrightarrow\mathbb Z_4\oplus\mathbb Z_4$</summary>
+- $\because$ all elements in $\mathbb Z_4\oplus\mathbb Z_4$ have order $1$ or $2$ or $4$
+- $\therefore\varphi(4,0)=4\varphi(1,0)=(0,0)$
+- $\therefore(4,0)\in\ker\varphi$ with $|(4,0)|=4$
+- $\therefore$ contradicts that $|\ker\varphi|=2\quad\square$
+</details>
+
+<details class="example list-none" open>
+<summary>no hom $\varphi:\mathbb Z_4\oplus\mathbb Z_4\twoheadrightarrow\mathbb Z_8$</summary>
+BWOC assume
+
+- $\therefore\exists(a,b)\in\mathbb Z_4\oplus\mathbb Z_4$ st $|\varphi(a,b)|=8$
+- $\therefore 8$ divides $|(a,b)|$
+- $\because\forall g\in\mathbb Z_4\enspace|g|\le 4$
+- $\therefore|(a,b)|=\operatorname{lcm}(a,b)\le 4$, contradicts that $8$ divides $|\varphi(a,b)|\quad\square$
+</details>
+
+<details class="example list-none" open>
+<summary>no hom $\varphi:\mathbb Z_{16}\twoheadrightarrow\mathbb Z_2\oplus\mathbb Z_2$</summary>
+
+BWOC assume
+
+- $\therefore|\ker\varphi|=|\mathbb Z_{16}|/|\mathbb Z_2\oplus\mathbb Z_2|=16/4=4$
+- $\therefore\ker\varphi=\langle 4\rangle$ (the only subgroup of $\mathbb Z_{16}$ with order $4$)
+- $\because\varphi(1)\ne0$
+- $\therefore\varphi(1)\in\{(0,1),(1,0),(1,1)\}$
+- $\therefore\varphi(2)=2\varphi(1)=0$
+- $\therefore 2\in\ker\varphi$, contradicts that $\ker\varphi=\langle 4\rangle\quad\square$
+</details>
+
+<details class="example list-none" open>
+<summary>no hom $\varphi:S_3\twoheadrightarrow\mathbb Z_3$</summary>
+BWOC assume $\varphi$
+- $\therefore|\ker\varphi|=|S_3|/|\mathbb Z_3|=2$, thus $\varphi$ is 2-to-1 mapping
+- $\because\mathbb Z_3$ has two elements of order $3$, and elements in $S_3$ have order maximum $3$
+- $\therefore S_3$ needs to have $4$ elements of order $3$, thus contradicts $\quad\square$
+</details>
+
+## Homomorphism
+
+<details class="theorem" open>
+<summary>$\langle S\rangle=\bigcap\{H:S\sube H\le G\}$ for $\varnothing\ne S\sube G$</summary>
+
+by definition $\langle S\rangle$ is smallest subgroup that contains $S$
+
+<details>
+<summary>**Proof.** let $A=\{H:S\sube H\le G\}$ be collection of subgroups that contains $S$</summary>
+
+
+
+$\because G\in A$\
+$\therefore A\ne\varnothing$
+
+let $S'=\bigcap A\le G$
+
+wts $S'\sube\langle S\rangle$
+
+- $\because$ by definititon, $\langle S\rangle\in A$
+- $\therefore S'\sube\langle S\rangle$
+
+BWOC assume $\langle S\rangle\not\sube S'$
+
+- $\therefore \langle S\rangle\cap S'\le G$ but $|\langle S\rangle\cap S'|\lt|\langle S\rangle|$
+- $\therefore$ contradicts that $\langle S\rangle$ is smallest $\quad\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>second isomorphism theorem</summary>
+for $H\le G$ and $N\triangleleft G$
+
+$$
+H/(H\cap N)\cong HN/N
+$$
+
+<details>
+<summary>**Proof.** let $\varphi:H\to HN/N$ where $\varphi(h)=hN$</summary>
+
+- wts $HN\le G$
+- wts $N\triangleleft HN$
+- wts $\varphi$ hom and onto
+  - for any $hnN\in HN$, we have $hnN=hN=\varphi(h)$
+- wts $\ker\varphi=H\cap N$
+  - $\ker\varphi=\{h\in H:\varphi(h)=hN=N\}=\{h\in H:h\in N\}$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>third isomorphism theorem</summary>
+for $K,N\triangleleft G$ and $K\le N$
+
+$$
+(G/K)/(N/K)\cong G/N
+$$
+
+<details>
+<summary>**Proof.** let $\varphi:G/K\to G/N$ where $\varphi(aK)=aN$</summary>
+
+<details>
+<summary>wts well defined, let any $aK=bK$</summary>
+
+$$
+\begin{aligned}
+  \therefore&&b^{-1}a&\in K\le N\\
+  \therefore&&b^{-1}a&\in N\\
+  \therefore&&\varphi(aK)=aN&=bN=\varphi(bK)
+\end{aligned}
+$$
+
+</details>
+
+<details>
+<summary>wts hom</summary>
+
+$$
+\varphi(aK)\varphi(bK)=aNbN=abN=\varphi(abK)=\varphi(aKbK)
+$$
+</details>
+
+<details>
+<summary>wts $\ker\varphi=N/K$</summary>
+
+$$
+\begin{aligned}
+  \ker\varphi&=\{aK:\varphi(aK)=N\}=\{aK:aN=N\}\\
+  &=\{aK:a\in N\}=N/K\\
+\end{aligned}
+$$
+</details>
+
+- wts $\varphi$ onto
+
+$\therefore$ by 1st, $(G/K)/(N/K)\cong G/N\quad\square$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>kernel for $\varphi:G\to\overline G$</summary>
+
+$$
+\ker\varphi=\{a:\varphi(a)=e\}\le G
+$$
+</details>
+
+<details class="theorem" open>
+<summary>properties on elements</summary>
+
+- $|\varphi(g)|$ divides $|g|$ and $|\varphi(G)|$
+- $\varphi(a)=\varphi(b)\iff a\ker\varphi=b\ker\varphi$
+  <details>
+  <summary>**Proof.** assume $\varphi(a)=\varphi(b)$</summary>
+  $$
+  \begin{align*}
+    \because&&e&=\varphi(a)^{-1}\varphi(a)=\varphi(b)^{-1}\varphi(a)=\varphi(b^{-1})\varphi(a)=\varphi(b^{-1}a)\\
+    \therefore&&b^{-1}a&\in\ker\varphi\\
+    \therefore&&a\ker\varphi&=b\ker\varphi\\
+  \end{align*}
+  $$
+  </details>
+- (pullback) if $\varphi(a)=a'$ then $\varphi^{-1}(a')=a\ker\varphi$
+  <details class="list-none">
+  <summary>**Proof.** let $\varphi^{-1}(a')=\{g:\varphi(g)=\varphi(a)\}$</summary>
+
+  wts $\sube$, let any $g\in\varphi^{-1}(a')$
+
+  - $\therefore \varphi(g)=\varphi(a)$
+  - $\therefore g\ker\varphi=a\ker\varphi$
+  - $\therefore g\in a\ker\varphi$
+
+  wts $\supe$, let any $ak\in a\ker\varphi$
+
+  - $\therefore\varphi(ak)=\varphi(a)\varphi(k)=\varphi(a)$
+  - $\therefore ak\in\varphi^{-1}(a')\square$
+  </details>
+
+</details>
+
+<details class="theorem" open>
+<summary>properties on subgroups</summary>
+
+- $H\triangleleft G\implies\varphi(H)\triangleleft\varphi(G)$
+  <details class="list-none">
+  <summary>**Proof.** let any $h\in H$ and $a\in G$</summary>
+  $\therefore aha^{-1}\in H$\
+  $\therefore \varphi(a)\varphi(h)\varphi(a^{-1})=\varphi(aha^{-1})\in\varphi(H)\sube\varphi(G)$\
+  $\therefore\varphi(H)\triangleleft\varphi(G)\square$
+  </details>
+- $|\ker\varphi|=n\implies\varphi$ is $n$-to-$1$ onto $\varphi(G)$
+  - **Proof.** cosets of $\ker\varphi$ have same cardinality
+- $|\varphi(H)|$ divides $|H|$
+  - **Proof.** let $\varphi_H$ be hom restricted on $H$, then $|\varphi(H)||\ker\varphi_H|=|H|$
+- (pullback) $K'\triangleleft G'\implies\varphi^{-1}(K')\triangleleft G$
+  - $\ker\varphi\triangleleft G$
+  <details>
+  <summary>**Proof.** let any $aka^{-1}\in a\varphi^{-1}(K')a^{-1}$ for some $\varphi(k)\in K'$</summary>
+
+  $\because K'\triangleleft G'$\
+  $\therefore\varphi(aka^{-1})=\varphi(a)\varphi(k)\varphi(a)^{-1}\in K'$\
+  $\therefore aka^{-1}\in\varphi^{-1}(K')$\
+  $\therefore\varphi^{-1}(K')\triangleleft G\quad\square$
+  </details>
+
+</details>
+
+<details class="theorem" open>
+<summary>first isomorphism theorem</summary>
+for $\varphi:G\to G'$\
+$G/\ker\varphi\cong\varphi(G)$ by $\psi=g\ker\varphi\mapsto\varphi(g)$
+
+<details>
+<summary>**Proof.** $\psi$ hom</summary>
+
+$$
+\psi(a\ker\varphi b\ker\varphi)=\psi(ab\ker\varphi)=\varphi(ab)=\varphi(a)\varphi(b)=\cdots
+$$
+</details>
+
+- for $\varphi:G\to G'$\
+  $|\varphi(G)|$ divides $|G|$ and $|G'|$
+</details>
+
+<details class="theorem" open>
+<summary>normal subgroups are kernel</summary>
+for any $N\triangleleft G$
+
+$$
+N=\ker(g\mapsto gN)
+$$
+
+<details>
+<summary>**Proof.** let $\varphi:G\to G/N$</summary>
+wts hom
+
+$$
+\varphi(a)\varphi(b)=aNbN=abN=\varphi(ab)
+$$
+
+wts eq
+
+$$
+g\in\ker\varphi\iff gN=\varphi(g)=N
+$$
+</details>
+
+</details>
