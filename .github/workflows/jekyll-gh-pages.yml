@@ -37,8 +37,12 @@ jobs:
           source: ./
           destination: ./_site
 
+
       - name: Change file to directory
         run: sudo ./directory.sh
+
+      - name: List files
+        run: tree ./_site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
