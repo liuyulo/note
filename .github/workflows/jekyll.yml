@@ -24,7 +24,7 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Skip precompiled pages
-        run: find -name '*.html' | xargs -L1 dirname | sort | uniq | xargs -I {} find '{}' -name '*.md' | xargs rm -rf
+        run: find -name index.html | xargs -L1 dirname | sort | uniq | xargs -I {} find '{}' -name '*.md' | xargs rm -rf
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1

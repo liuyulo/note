@@ -1,3 +1,8 @@
+---
+title: Phonemes and Allophones
+---
+
+
 <div id="left">
 
 <!-- omit in toc -->

@@ -1,4 +1,7 @@
-<!-- omit in toc -->
+---
+title: Morphology I
+---
+
 # Table of Contents
 - [Introduction](#introduction)
 - [Words and Their Sturcture](#words-and-their-sturcture)
@@ -16,7 +19,7 @@
 - **morphology**: division of linguistics that looks at words and their formation
 
 # Words and Their Sturcture
-- human have the ability to **segment sounds** into meaningful **words** 
+- human have the ability to **segment sounds** into meaningful **words**
 - **words**: element whose position is flexible relative to neighboring units
     - **smallest** *free form* that can stand on its own without having to be attached to any other element
 
@@ -57,7 +60,7 @@ each of them is a different **allomorph**
 let base = word - affix;
 let first_base = root;
 // or affix + first_base
-let second_base = first_base + affix 
+let second_base = first_base + affix
 ```
 </blockquote>
 

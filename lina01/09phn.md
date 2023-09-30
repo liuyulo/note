@@ -1,3 +1,8 @@
+---
+title: Phonetics and Phonology
+---
+
+
 <div id="left">
 
 <!-- omit in toc -->
@@ -107,7 +112,7 @@
 - Labiodental: Labials
     - both teeth and lips
 - Interdental
-    - tip of tongue between teeth    
+    - tip of tongue between teeth
 - Alveolar
     - tongue touches *alveolar ridge*
 - Alveopalatal

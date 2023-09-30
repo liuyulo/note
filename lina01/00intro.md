@@ -1,4 +1,7 @@
-<!-- omit in toc -->
+---
+title: Introduction
+---
+
 # Table of Contents
 - [Introduction](#introduction)
 - [(Mental) Grammar](#mental-grammar)

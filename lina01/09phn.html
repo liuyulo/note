@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Phonetics and Phonology</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Phonetics and Phonology</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="phonetic-and-phonology">Phonetic and Phonology</h1>
+<ul>
+<li><a href="#consonants">Consonants</a>
+<ul>
+<li><a href="#places">Places</a></li>
+<li><a href="#manner">Manner</a></li>
+</ul></li>
+<li><a href="#vowels">Vowels</a>
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#diphthong">Diphthong</a></li>
+</ul></li>
+<li><a href="#speech-production">Speech Production</a>
+<ul>
+<li><a href="#assimilation">Assimilation</a>
+<ul>
+<li><a href="#voicing">Voicing</a></li>
+<li><a href="#devoicing">Devoicing</a></li>
+<li><a href="#nasalisation">Nasalisation</a></li>
+<li><a href="#flappingtapping">Flapping/Tapping</a></li>
+</ul></li>
+<li><a href="#dissimilation">Dissimilation</a>
+<ul>
+<li><a href="#deletion">Deletion</a></li>
+<li><a href="#epenthesisinsertion">Epenthesis/Insertion</a></li>
+</ul></li>
+<li><a href="#metathesis">Metathesis</a></li>
+<li><a href="#aspiration">Aspiration</a></li>
+<li><a href="#canadian-rising">Canadian Rising</a></li>
+<li><a href="#syllabic-consonants">Syllabic Consonants</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="consonants">Consonants</h1>
+<table>
+<thead>
+<tr style="font-weight: bold;">
+<td align="center" colspan="17">
+Top-Down: Manner, Left-Right: Place, <strong>Voiced</strong>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr style="font-weight: bold;">
+<td>
+</td>
+<td colspan="2">
+Bilabial
+</td>
+<td colspan="2">
+Labiodental
+</td>
+<td colspan="2">
+Interdental
+</td>
+<td colspan="2">
+Alveolar
+</td>
+<td colspan="2">
+Alveopalatal
+</td>
+<td colspan="2">
+Palatal
+</td>
+<td colspan="2">
+Velar
+</td>
+<td colspan="2">
+Glottal
+</td>
+</tr>
+<tr>
+<td>
+<b>Plosive</b>
+</td>
+<td>
+p
+</td>
+<td>
+<strong>b</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+t
+</td>
+<td>
+<strong>d</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+k
+</td>
+<td>
+<strong>g</strong>
+</td>
+<td>
+ʔ
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Nasal</b>
+</td>
+<td>
+</td>
+<td>
+<strong>m</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+<strong>n</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+<strong>ŋ</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Fricative</b>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+f
+</td>
+<td>
+<strong>v</strong>
+</td>
+<td>
+θ
+</td>
+<td>
+<strong>ð</strong>
+</td>
+<td>
+s
+</td>
+<td>
+<strong>z</strong>
+</td>
+<td>
+ʃ
+</td>
+<td>
+<strong>ʒ</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+h
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Affricate</b>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+tʃ
+</td>
+<td>
+<strong>dʒ</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Retroflex</b> Liquid
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+<strong>ɹ</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Lateral</b> Liquid
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+<strong>l</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Glide</b>
+</td>
+<td>
+</td>
+<td>
+<strong>w</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+<strong>j</strong>
+</td>
+<td>
+</td>
+<td>
+<strong>w</strong>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="places">Places</h2>
+<ul>
+<li>Bilabial: Labials
+<ul>
+<li>two lips</li>
+</ul></li>
+<li>Labiodental: Labials
+<ul>
+<li>both teeth and lips</li>
+</ul></li>
+<li>Interdental
+<ul>
+<li>tip of tongue between teeth</li>
+</ul></li>
+<li>Alveolar
+<ul>
+<li>tongue touches <em>alveolar ridge</em></li>
+</ul></li>
+<li>Alveopalatal
+<ul>
+<li>tongue touches behind alveolar ridge</li>
+</ul></li>
+<li>Palatal
+<ul>
+<li>tongue touches hard palate</li>
+</ul></li>
+<li>Velar
+<ul>
+<li>tongue touches <em>velum</em> (soft palate)</li>
+</ul></li>
+<li>Glottal
+<ul>
+<li>produced with vocal cords/folds as primary articulators</li>
+</ul></li>
+</ul>
+<h2 id="manner">Manner</h2>
+<ul>
+<li>Plosive/Stop: opposite to continuant
+<ul>
+<li>airflow is stopped</li>
+</ul></li>
+<li>Nasal: from nose, opposite to oral
+<ul>
+<li>lower velum, air passes through nasal cavity</li>
+</ul></li>
+<li>Fricative/Turbulence
+<ul>
+<li>makes friction</li>
+</ul></li>
+<li>Affricate
+<ul>
+<li>stop + fricative</li>
+</ul></li>
+<li>Strident/Sibilant: noisier fricative/affricate
+<ul>
+<li><code>/s/ /z/ /ʃ/ /ʒ/ /tʃ/ /dʒ/</code></li>
+</ul></li>
+<li>Liquid
+<ul>
+<li>air passes more freely</li>
+</ul></li>
+<li>Glides: semi-vowels
+<ul>
+<li>no obstruction of airflow</li>
+</ul></li>
+</ul>
+<h1 id="vowels">Vowels</h1>
+<table>
+<thead>
+<tr style="font-weight: bold">
+<td colspan="5">
+(rounded), <strong>tense</strong>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+</td>
+<td>
+Front
+</td>
+<td>
+Central
+</td>
+<td colspan="2">
+Back
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+High
+</td>
+<td>
+(i)
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(<strong>u</strong>)
+</td>
+</tr>
+<tr>
+<td>
+ɪ
+</td>
+<td>
+</td>
+<td>
+<strong>ʊ</strong>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td rowspan="3">
+Mid
+</td>
+<td>
+(ej)
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(<strong>ow</strong>)
+</td>
+</tr>
+<tr>
+<td>
+ɛ
+</td>
+<td>
+ə
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+ʌ
+</td>
+<td>
+(<strong>ɔj</strong>)
+</td>
+<td>
+<strong>ɔ</strong>
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+Low
+</td>
+<td>
+æ
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+(aj) (aw)
+</td>
+<td>
+</td>
+<td>
+ɑ
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="features">Features</h2>
+<ul>
+<li>Tongue Height</li>
+<li>Tongue Frontness/Backness</li>
+<li>Tenseness/Laxness</li>
+<li>Roundness/Unroundness</li>
+</ul>
+<h2 id="diphthong">Diphthong</h2>
+<blockquote>
+<p>vowel + glide</p>
+</blockquote>
+<ul>
+<li><em>major</em> diphthongs: large, noticeable change
+<ul>
+<li>toy <code>[tɔɪ]</code>, lie <code>[laɪ]</code>, cow
+<code>[kaʊ]</code></li>
+</ul></li>
+<li><em>minor</em> diphthongs: less noticeable
+<ul>
+<li>day <code>[deɪ]</code></li>
+</ul></li>
+</ul>
+<h1 id="speech-production">Speech Production</h1>
+<h2 id="assimilation">Assimilation</h2>
+<ul>
+<li>regressive affects the preceding word</li>
+<li>progressive affects the following word</li>
+</ul>
+<h3 id="voicing">Voicing</h3>
+<blockquote>
+<p>consonants become voiceless before voiceless stops</p>
+</blockquote>
+<ul>
+<li>have to <code>[v] --&gt; [t]</code></li>
+<li>has to <code>[z] --&gt; [s]</code></li>
+</ul>
+<h3 id="devoicing">Devoicing</h3>
+<blockquote>
+<p>vowels/voiced consonants become voiceless</p>
+</blockquote>
+<ul>
+<li>p<strong>l</strong>an <code>[pl̥æn]</code></li>
+<li>t<strong>r</strong>ick <code>[tr̥ɪk]</code></li>
+</ul>
+<h3 id="nasalisation">Nasalisation</h3>
+<blockquote>
+<p>lower the velum in anticipation of a nasal stops</p>
+</blockquote>
+<ul>
+<li><p>g<strong>o</strong>ne <code>[gɑ̃n]</code></p></li>
+<li><p>b<strong>o</strong>nd <code>[bõnd]</code> ### Flapping/Tapping
+&gt; alveolar stop turns into a flap <code>[ɾ]</code></p></li>
+<li><p>bu<strong>tt</strong>er
+<code>/bʌtə/ --&gt; /bʌɾə/</code></p></li>
+<li><p>be<strong>dd</strong>ing
+<code>/bedɪŋ/ --&gt; /beɾɪŋ/</code></p></li>
+</ul>
+<h2 id="dissimilation">Dissimilation</h2>
+<h3 id="deletion">Deletion</h3>
+<ul>
+<li>suppose <code>[səpowz] --&gt; [spowz]</code></li>
+<li>fifths <code>[fɪfθs] --&gt; [fɪfs]</code></li>
+</ul>
+<h3 id="epenthesisinsertion">Epenthesis/Insertion</h3>
+<blockquote>
+<p>add a sound to make it easier to pronounce</p>
+</blockquote>
+<h2 id="metathesis">Metathesis</h2>
+<blockquote>
+<p>segments are reordered to make it easier to articulate</p>
+</blockquote>
+<ul>
+<li><p><code>comfortable -&gt; comfterble</code></p></li>
+<li><p><code>prescription -&gt; perscription</code> ## Aspiration &gt;
+voiceless stops at the start of a <em>stressed syllable</em></p></li>
+<li><p>top <code>[tʰɑp]</code> peak <code>[pʰik]</code></p></li>
+<li><p><code>[tʰ]</code> and <code>[t]</code> cannot exist in the same
+env</p>
+<ul>
+<li>they are in <em>complementary distribution</em></li>
+</ul></li>
+</ul>
+<h2 id="canadian-rising">Canadian Rising</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Before <strong>voiced</strong> consonants</th>
+<th>Before <strong>voiceless</strong> consonants</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>rise <code>[rajz]</code></td>
+<td>rice <code>[rʌjs]</code></td>
+</tr>
+<tr class="even">
+<td>ride <code>[rajd]</code></td>
+<td>right <code>[rʌjt]</code></td>
+</tr>
+<tr class="odd">
+<td>tribe <code>[trajb]</code></td>
+<td>tripe <code>[trʌjp]</code></td>
+</tr>
+<tr class="even">
+<td>fly <code>[flaj]</code></td>
+<td>flight <code>[flʌjt]</code></td>
+</tr>
+<tr class="odd">
+<td>wives <code>[wajvz]</code></td>
+<td>wife <code>[wʌjf]</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>same for <code>/ʌw/</code> in about, doubt, mouse and
+<code>/aw/</code> in lound, arouse, how</li>
+</ul>
+<h2 id="syllabic-consonants">Syllabic Consonants</h2>
+<blockquote>
+<p>unstressed syllable gets ignored</p>
+</blockquote>
+<ul>
+<li>rhythm <code>/rɪðəm/ --&gt; /rɪðm̩/</code></li>
+<li>funnel <code>/fʌnəl/ --&gt; /fʌnl̩/</code></li>
+</ul>
+</body>
+</html>
