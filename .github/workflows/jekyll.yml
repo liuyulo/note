@@ -26,28 +26,32 @@ jobs:
       - name: Skip precompiled pages
         run: find -name index.html | xargs -L1 dirname | sort | uniq | xargs -I {} find '{}' -name '*.md' | xargs rm -rf
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-      - run: tree ./_site/c01
+      # - name: Build with Jekyll
+      #   uses: actions/jekyll-build-pages@v1
+      #   with:
+      #     source: ./
+      #     destination: ./_site
+      # - run: tree ./_site
 
       - name: Move HTML files to directory
         run: sudo ./directory.sh
-      - run: tree ./_site/c01
 
       - name: List files
-        run: tree ./_site
+        run: tree .
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v2
+      - uses: actions/upload-pages-artifact@v1
+        with: { name: github-pages, path: ./ }
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
