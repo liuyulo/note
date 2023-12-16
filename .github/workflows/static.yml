@@ -34,7 +34,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         uses: docker://pandoc/core
         with:
-          args: -s -o index.html README.md
+          args: -s --metadata title=note -o index.html README.md 
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
