@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="../../favicon.png"><meta name="generator" content="Astro v3.5.5"><title>Data Science Process</title><style>*,:before,:after{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.relative{position:relative}.m-1{margin:.25rem}.m-2{margin:.5rem}.flex{display:flex}.contents{display:contents}.w-2{width:.5rem}.w-full{width:100%}.grow{flex-grow:1}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.list-none{list-style-type:none}.justify-center{justify-content:center}.text-center{text-align:center}.capitalize{text-transform:capitalize}.ordinal{--tw-ordinal: ordinal;font-variant-numeric:var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)}.text-orange{--tw-text-opacity: 1;color:rgb(255 153 102 / var(--tw-text-opacity))}.underline{text-decoration-line:underline}.overline{text-decoration-line:overline}.invert{--tw-invert: invert(100%);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}@media print{.print\:hidden{display:none}}
+</style>
+<link rel="stylesheet" href="../../c09/assets/tmp.fa70a1e7.css" /></head> <body>  <main> <h1><a href="../">Data Science Process</a></h1> <details class="definition" open><summary>data science process</summary><ul>
+<li>domain understanding
+<ul>
+<li>what is the goal</li>
+</ul>
+</li>
+<li>data collection/cleaning
+<ul>
+<li>what is the dataset</li>
+<li>how was it sampled</li>
+<li>how to transform the dataset beforehand</li>
+</ul>
+</li>
+<li>data exploration
+<ul>
+<li>look at data</li>
+<li>make hypotheses about phenomenons</li>
+</ul>
+</li>
+<li>data modeling
+<ul>
+<li>build model to represent data</li>
+<li>fit/validate model</li>
+<li>make predictions</li>
+</ul>
+</li>
+<li>data visualisation
+<ul>
+<li>articulate findings with visuals</li>
+<li>make sense of the results</li>
+</ul>
+</li>
+<li>communication
+<ul>
+<li>describe what can be learned</li>
+<li>describe the story that the data tells</li>
+<li>describe limitation</li>
+</ul>
+</li>
+</ul></details>
+<h2 id="w2-data-collectioncleaning">W2 Data Collection/Cleaning</h2>
+<details class="definition" open><summary>data wrangling</summary><p>iterative process of data exploration and cleaning to make data useful</p><ul>
+<li>output
+<ul>
+<li>clean and useful data</li>
+<li>editable, auditable, reproducible transcript of transformations</li>
+<li>nuanced understanding of data organisation and quality issues</li>
+</ul>
+</li>
+</ul></details>
+<details class="definition" open><summary>stages: raw data</summary><p>collection of observations</p></details>
+<details class="definition" open><summary>stages: data representation</summary><p>types of models</p><ul>
+<li>structured: database</li>
+<li>unstructured: image/video/raw text</li>
+<li>semistructured: xml/csv/…
+<ul>
+<li>no guarentees on consistency, since no schema</li>
+</ul>
+</li>
+</ul><p>specifying a model to represent data</p><ul>
+<li>flat model: csv
+<ul>
+<li>only one type of thing with the same attributes</li>
+</ul>
+</li>
+<li>relational model: RDMS (pandas)
+<ul>
+<li>has many types of things, connected by relationships</li>
+</ul>
+</li>
+<li>hierarchical model: xml, json</li>
+<li>network model: graph</li>
+</ul></details>
+<details class="definition" open><summary>stages: clean data</summary><p>clean data</p><ul>
+<li>usable: can be parsed/manipulated by data analysis tools</li>
+<li>credible: suitably representitive of a phenomenon for analysis</li>
+<li>revelant</li>
+</ul></details>
+<details class="sky" open><summary>data problems</summary><ul>
+<li>missing, duplicated, incorrect, inconsistent</li>
+</ul><p>detect problems</p><ul>
+<li>visualisation</li>
+<li>basic description (min/max/mean/etc)</li>
+</ul><p>dealing with missing data</p><ul>
+<li>mark it zero</li>
+<li>interpolate (fill it) and pretend didnt happen</li>
+<li>omit</li>
+<li>interpolate and label as missing</li>
+</ul></details>
+<h2 id="w3-data-summerisation">W3 Data Summerisation</h2>
+<details class="definition" open><summary>descriptive statistics</summary><ul>
+<li>arithmetic mean: single number closest to all values</li>
+<li>variance: how spread out values are</li>
+<li>std deviation: amount of variation around mean (same unit as mean)</li>
+</ul><p>robust statistic (single data change won’t affect the stat)</p><ul>
+<li>median</li>
+<li>quartile</li>
+<li>interquartile range: between 25% and 75%</li>
+</ul><p>heavy-tailed distribution (not nomal)</p><ul>
+<li>follows power law, that is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mrow><mo>−</mo><mi>α</mi></mrow></msup></mrow><annotation encoding="application/x-tex">x^{-\alpha}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7713em"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.0037em">α</span></span></span></span></span></span></span></span></span></span></span></span></li>
+<li>unrobust stats (mean, var) are useless</li>
+</ul><p>use statistic tests to check if model fits with distribution</p><ul>
+<li>normality test: test if normal distribution</li>
+<li>KS-test: test if empirical data fits with model</li>
+</ul></details>
+<details class="definition" open><summary>quantifying uncertainty</summary><p>datasets are sample from a population</p><ul>
+<li>has variance: variation among samples</li>
+<li>has bias: systematic deviation from population</li>
+</ul><p>inductive reasoning</p><ul>
+<li>data <code>-&gt;</code> sample: measurement
+<ul>
+<li>reliable: consistent and repeatable</li>
+<li>valid: no systematic bias</li>
+</ul>
+</li>
+<li>sample <code>-&gt;</code> study population: internal validity
+<ul>
+<li>does the sample accurately reflect the population</li>
+<li>use random sampling</li>
+</ul>
+</li>
+<li>study population <code>-&gt;</code> target population: external validity</li>
+</ul><p>null hypothesis: if nothing interesting happens</p><ul>
+<li>p-value: probability of obtaining this result under the assumption that null is correct</li>
+<li>low p <code>-&gt;</code> small data <code>-&gt;</code> big effect
+<ul>
+<li>so any big data can have small p, even with small effect</li>
+</ul>
+</li>
+<li>statistically significant: likely to be detectable, but not necessarly large</li>
+</ul><p>confidence interval (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.05556em">γ</span></span></span></span> CI): <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>m</mi><mo>−</mo><mi>γ</mi><mo separator="true">,</mo><mi>m</mi><mo>+</mo><mi>γ</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[m-\gamma,m+\gamma]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">[</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.05556em">γ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal" style="margin-right:0.05556em">γ</span><span class="mclose">]</span></span></span></span> where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">m</span></span></span></span> is empirical estimate</p><ul>
+<li>range of estimates reasonable by the observed data</li>
+<li>reject the null “the true value is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\mu_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span>” for any <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>0</mn></msub><mo>∈</mo><mo stretchy="false">[</mo><mi>m</mi><mo>−</mo><mi>γ</mi><mo separator="true">,</mo><mi>m</mi><mo>+</mo><mi>γ</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\mu_0\in[m-\gamma,m+\gamma]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">[</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.05556em">γ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal" style="margin-right:0.05556em">γ</span><span class="mclose">]</span></span></span></span>
+<ul>
+<li>with significance level <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mi>γ</mi></mrow><annotation encoding="application/x-tex">1-\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.05556em">γ</span></span></span></span></li>
+</ul>
+</li>
+</ul></details>
+<h2 id="w4-data-visualisation">W4 Data Visualisation</h2>
+<details class="definition" open><summary>visualisation</summary><p>visually encodes complex information, to be decoded by audience</p><p>motivation</p><ul>
+<li>analysis: find relationship/structure</li>
+<li>communication: tell story visually</li>
+</ul><p>criteria</p><ul>
+<li>expressiveness: express all and only the facts in the data</li>
+<li>effectiveness: easily decodable</li>
+</ul><p>feature</p><ul>
+<li>dimension/feature: independent variable</li>
+<li>measure/outcome: dependent variable</li>
+<li>assign <em>data fields</em> (nominal/ordinal/quantitative) to <em>data channels</em> (x/y/color) to produce <em>graphical marks</em> (points/bars/lines)</li>
+</ul></details>
+<details class="definition" open><summary>visualisations by data types</summary><p>nominal (categorical, labels)</p><ul>
+<li>line chart: connecting points suggests there are stuff between points</li>
+<li>color/size: hard to decode</li>
+</ul><p>ordinal (has order)</p><p>quantitative (interval, ratio)</p><ul>
+<li>histogram: detects skew easily</li>
+<li>box plot: has quartiles, outliers
+<ul>
+<li>but different distrs can have same box plot</li>
+</ul>
+</li>
+<li>violin plot: box plot but shows distribution</li>
+</ul></details>
+<details class="definition" open><summary>multivariate</summary><ul>
+<li>
+<p>scatter plot: shows relationship between 2 vars</p>
+</li>
+<li>
+<p>line plot, stacked plot</p>
+</li>
+<li>
+<p>more than two: dimentionality reduction</p>
+<ul>
+<li>PCA: perserve global structure</li>
+<li>t-SNE: preserve local structure (nearest neighbors)</li>
+</ul>
+</li>
+</ul></details>
+<details class="definition" open><summary>principles</summary><ul>
+<li>use consistent axes</li>
+<li>use axes labels</li>
+<li>choose axis scale
+<ul>
+<li>option 1: clilp outliers and mention them</li>
+<li>option 2: log scale
+<ul>
+<li>for long tails, emphasize change, not linear change</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>color scale
+<ul>
+<li>sequential: ordinal/quantitative
+<ul>
+<li>increasing brightness</li>
+</ul>
+</li>
+<li>diverging: ratio
+<ul>
+<li>data has natural midpoint</li>
+<li>neutral color for midpoint, saturated for endpoint</li>
+</ul>
+</li>
+<li>categorical: nominal
+<ul>
+<li>lots of contrast between each adjacent color</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></details>
+<h2 id="w5-supervised-learning">W5 Supervised Learning</h2> </main> <footer class="flex justify-center print:hidden"> <p>2023-12-14 01:55:15</p> </footer>  </body></html>
