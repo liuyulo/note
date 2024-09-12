@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="../../favicon.png"><meta name="generator" content="Astro v3.5.5"><title>Causal Inference</title><style>*,:before,:after{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.relative{position:relative}.m-1{margin:.25rem}.m-2{margin:.5rem}.flex{display:flex}.contents{display:contents}.w-2{width:.5rem}.w-full{width:100%}.grow{flex-grow:1}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.list-none{list-style-type:none}.justify-center{justify-content:center}.text-center{text-align:center}.capitalize{text-transform:capitalize}.ordinal{--tw-ordinal: ordinal;font-variant-numeric:var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)}.text-orange{--tw-text-opacity: 1;color:rgb(255 153 102 / var(--tw-text-opacity))}.underline{text-decoration-line:underline}.overline{text-decoration-line:overline}.invert{--tw-invert: invert(100%);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}@media print{.print\:hidden{display:none}}
+</style>
+<link rel="stylesheet" href="../../c09/assets/tmp.fa70a1e7.css" /></head> <body>  <main> <h1><a href="../">Causal Inference</a></h1> <details class="definition" open><summary>causal diagram</summary><ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\to B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.05017em">B</span></span></span></span> means <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal">A</span></span></span></span> causes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.05017em">B</span></span></span></span></li>
+</ul><p>confounder: third variable that causes both</p></details>
+<details class="definition" open><summary>best practices: elaborate theories</summary><p>if there is causal, it should make several predictions</p><ul>
+<li>test them, if checks out, then more evidence</li>
+</ul></details>
+<h2 id="randomised-controlled-experiments">Randomised Controlled Experiments</h2>
+<details class="definition" open><summary>randomised controlled experiments</summary><ul>
+<li>breaks the connection between features of indivitual (i.e. covariate)</li>
+<li>covariates tend to balance by random chance
+<ul>
+<li>can check with a <em>balance check</em></li>
+<li>also balances <em>unobserved</em> covariates</li>
+</ul>
+</li>
+</ul></details>
+<details class="definition" open><summary>answer the causal question: does treatment affect outcome</summary><ul>
+<li>estimate average: sensitive to outlier</li>
+<li>randomised controlled is challenging
+<ul>
+<li>threats to <span title="stable unit treatment value assumption">SUTVA</span> (aka indep)</li>
+<li>unethical (i.e. do seat belts save lives)</li>
+</ul>
+</li>
+</ul></details>
+<details class="example" open><summary>does the new coupon UI makes more money</summary><p>define measure</p><ul>
+<li>“total revenue”, because num of user per group can vary</li>
+<li><em>revenue/user</em> is better</li>
+</ul><p>target population</p><ul>
+<li>“every one who visits site” valid but noisy</li>
+<li>“users who completed purchase” wrong, doesnt measure the propotion of purchase</li>
+<li>“users after start purchase” better</li>
+</ul></details>
+<details class="definition" open><summary>interpret result</summary><ul>
+<li>stat sig: p-values</li>
+<li>sta power: prob of rejecting null assuming has effect
+<ul>
+<li>“assume effect, does this exp detects it?”</li>
+<li>in practice, need 80% power</li>
+</ul>
+</li>
+<li>practical sig: depends on context</li>
+</ul><p>tips</p><ul>
+<li>use invariant metrics (shouldnt change between treatment and control)
+<ul>
+<li>dont change <code>=&gt;</code> more confidence</li>
+</ul>
+</li>
+<li>check sample ratio</li>
+<li>design analysis before collect data</li>
+</ul><p>avoid</p><ul>
+<li>dont peek, dont continuously monitor
+<ul>
+<li>can be insig in end even if sig in middle</li>
+</ul>
+</li>
+<li>dont survivorship bias</li>
+<li>dont SUTVA (e.g. social networks)</li>
+</ul></details>
+<h2 id="observational-study">Observational Study</h2>
+<details class="definition" open><p><summary>natural experiments</summary>
+use existing data to study causal relationships</p><ul>
+<li>researcher is observer</li>
+<li>less problem with ethics, cost, feasibility</li>
+<li>more problem with validity, sampling
+<ul>
+<li>e.g. treatment assignment can be caused by unobserved covariate (aka confounders)</li>
+</ul>
+</li>
+</ul></details>
+<h2 id="matching-studies">Matching Studies</h2>
+<details class="definition" open><p><summary>matching studies</summary>
+pick pairs of similar people, 1 treated and 1 control</p><ul>
+<li>
+<p>e.g. one lived, one died in same car</p>
+<ul>
+<li>controlled car, speed, serverity of accident, etc</li>
+</ul>
+</li>
+<li>
+<p>only combine matches with same prob of treatment</p>
+<ul>
+<li>otherwise result changes</li>
+</ul>
+</li>
+</ul></details>
+<details class="definition" open><summary>problems with matching</summary><ul>
+<li>match might not be possible
+<ul>
+<li>solution: propensity scores (a single number)</li>
+<li>well defined regardless how true model is</li>
+<li>if model true, then matching propensity as good as match with features</li>
+<li>(usually logistic regression on features)</li>
+</ul>
+</li>
+<li>model is rarely true
+<ul>
+<li>sensitivity analysis</li>
+<li>measures “how bad would the naive model have to be in order to change my conclusions”</li>
+</ul>
+</li>
+</ul></details> </main> <footer class="flex justify-center print:hidden"> <p>2023-12-14 01:55:15</p> </footer>  </body></html>

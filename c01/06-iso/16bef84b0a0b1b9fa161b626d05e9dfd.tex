@@ -1,0 +1,18 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor, amsmath, amssymb}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}[scale=2]
+\node at(0,0)(g1){$G$};
+\node at(1,0)(h1){$H$};
+\node at(0,-1)(g2){$G$};
+\node at(1,-1)(h2){$H$};
+%
+\path[->] 
+    (g1) edge node[right]{$\alpha$} (g2)
+    (g2) edge node[above]{$\varphi$} (h2)
+    (h1) edge node[above]{$\varphi^{-1}$} (g1);
+\path[->,dashed]
+    (h1) edge node[right]{$\varphi\alpha\varphi^{-1}$} (h2);
+\end{tikzpicture}
+\end{document}

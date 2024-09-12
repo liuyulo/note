@@ -1,0 +1,1023 @@
+---
+title: NP Complete Problems
+---
+
+import Tikz from '../../components/Tikz.astro'
+import "./_style.sass"
+
+todo PT 3D TS CS NN
+
+<details class="teal" open>
+<summary>**Lemma.** any 3CNF $\varphi$ can be converted to an equiv 3CNF $\varphi'$ such that</summary>
+
+$\varphi'$ uses a superset of $\varphi$'s variables
+$\varphi'$ has distinct variables in each clause
+for each satisfying $\tau$ of $\varphi$
+
+- $\exists!\tau'$ that satisfies $\varphi'$
+- $\tau'(x)=\tau(x)$ for any $\varphi$'s variable $x$
+
+<details>
+<summary>**Proof.** let 3CNF $\varphi$</summary>
+
+if $\varphi$ has unique variables in each clause, $\varphi'=\varphi$ done
+
+otherwise, construct $\varphi'$ as follows
+
+1. start with a copy of $\varphi$
+1. add $a,b,c$ as new variables
+1. add this to $\varphi'$, thus to satisfy, we need $\tau'(a)=\tau'(b)=\tau'(c)=F$
+  $$
+  \small(\overline a\lor\overline b\lor\overline c)\land(\overline a\lor\overline b \lor c)\land(\overline a\lor b\lor c)\land(a\lor\overline b\lor\overline c)\lor(a\lor\overline b\lor c)\land(a\lor b\lor \overline c)
+  $$
+4. replace each $(x\lor\overline x\lor y)$ with $(x\lor \overline a\lor y)$
+5. replace each $(x\lor x\lor y)$ with $(x\lor a\lor y)$
+6. replace each $(x\lor x\lor x)$ with $(x\lor a\lor b)$
+
+therefore
+
+- $\varphi'$ uses same vars as $\varphi$, with additional $a,b,c$
+- each satisfying $\tau$ corresponds to $\tau'$ with the same assigments and $a,b,c$ to $F$
+- $\varphi'$ has unique variables in each clause $\square$
+
+and construction is polytime
+
+</details>
+</details>
+
+
+<details class="definition" open>
+<summary>X1-3SAT</summary>
+Instance: 3CNF $\varphi$\
+Question: is there satisfying $\tau$ where only one literal is true in each clause
+
+<details>
+<summary>**Proof.** $3S\le_p X1$</summary>
+let $\varphi$ be an instance of $3S$, assume has unique variables\
+construct $\varphi'$ as conjuction of the following 3CNF $C'$s 
+
+- for each clause $C=(\ell_1\lor \ell_2\lor \ell_3)$ in $\varphi$
+  - let $a_1,a_2,a_3,b_1,b_2,b_3$ be new variables
+  - construct $C'$ that corresponds with $C$
+$$
+C'=(a_1\lor a_2\lor a_3)\land(a_1\lor\overline\ell_1\lor b_1)\land(a_2\lor\overline\ell_2\lor b_2)\land(a_3\lor\overline\ell_3\lor b_3)
+$$
+
+$(\implies)$ assume $\tau(\varphi)=T$
+- let $\tau'$ be a truth assignment of $\varphi'$, defined later
+- consider each satisfied clause $C$ in $\varphi$
+  - let $\ell_i$ be an true literal
+  - let $\tau(a_i)=T$  and $\tau(b_i)=F$, thus $(a_i\lor\overline\ell_i\lor b_i)$ is $X1$
+  - for each $j\ne i$
+    - let $\tau(a_j)=F$, thus $(a_1\lor a_2\lor a_3)$ is $X1$
+    - let $\tau(b)=\tau(\ell_1)$, thus $(a_j\lor\overline\ell_j\lor b_j)$ is $X1$
+- thus $\langle \varphi'\rangle\in X1$, with $\tau'$ as cert
+
+$(\impliedby)$ assume $\tau'(\varphi')=T$
+- let $\varphi$ be a TA for $\varphi$, defined as $\varphi'$ without assignment to $a_i$ and $b_i$
+- for each satisfied clause $C'$ in $\varphi'$
+  - let $a_i$ where $\varphi'(a_i)=T$
+  - $\therefore\tau(\overline\ell_i)=F$, i.e. $\tau(\ell_i)=T$ as per $(a_i\lor\overline\ell_i\lor b_i)$ in $C'$
+  - $\therefore\tau(\ell_i)=T$ in the corresponding $C$ in $\varphi$
+- $\therefore\tau(\varphi)=T$, thus $\langle \varphi\rangle\in 3S$
+
+let $n$ be number of clauses
+- $\varphi'$ has $4n$ clauses, $3n$ more variables 
+- $\therefore$ polytime $\square$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>NAE-3SAT (Not-All-Equal 3SAT)</summary>
+Instance: 3CNF $\varphi$\
+Question: is there satisfying $\tau$ where each clause has a $T$ literal and a $F$ literal
+
+<details>
+<summary>**Proof.** $3S\le_pN3$</summary>
+let $\varphi$ be an instance of $3S$, construct $\varphi'$ for $N3$ as follows:
+
+- $t$ is a new variable in $\varphi'$
+- $\varphi'$ is conjuction of the 3CNF $C'$s where
+- for each clause $C=(\ell_1\lor\ell_2\lor\ell_3)$ in $\varphi$
+  - let $a_1,a_2,a_3$ be new variables
+  - construct $C'$ to correspond with $C$
+
+$$
+C'=(\overline t\lor\ell_1\lor a_1)\land(\overline a_1\lor\ell_2\lor a_2)\land(\overline a_2\lor\ell_3\lor a_3)\land(a_3\lor t\lor t)
+$$
+
+$(\implies)$ let $\tau$ that satisfies $\varphi$
+
+- let $\tau'$ be truth assignment for $\varphi'$
+  - $\tau'(x)=\tau(x)$ and $\tau'(t)=T$
+- for each satisfied clause $C$ in $\varphi$
+  - let $\tau'(a_1)=\overline{\tau'(\ell_1)}$
+  - let $\tau'(a_2)=\overline{\tau'(\ell_2)}\land\tau'(a_1)$
+  - let $\tau'(a_3)=\overline{\tau'(\ell_3)}\land\tau'(a_2)$
+  - $\therefore\tau'(\ell_1)=T$ implies $\tau'$ assigns $C'$ to
+    $$
+    (F\lor T\lor F)\land(T\lor\ell_2\lor F)\land(T\lor\ell_3\lor F)\land(F\lor T\lor T)
+    $$
+    $\tau'(\ell_1)=F$ and $\tau'(\ell_2)=T$ implies $\tau'$ assigns $C'$ to
+    $$
+    (F\lor F\lor T)\land(F\lor T\lor F)\lor(T\lor\ell_3\lor F)\land(F\lor T\lor T)
+    $$
+    $\tau'(\ell_1)=\tau'(\ell_2)=F$ and $\tau'(\ell_3)=T$ implies $\tau'$ assigns $C'$ to 
+    $$
+    (F\lor F\lor T)\land(F\lor F\lor T)\land(F\lor T\lor F)\land(F\lor T\lor T)
+    $$
+  - $\therefore$ in any case, $C'$ is NAE
+- $\therefore\langle \varphi'\rangle\in N3$ with $\varphi'$ as cert
+
+$(\impliedby)$ let $\tau'$ satisfy $\varphi'$
+
+- $\therefore\tau'(\varphi')=T=\overline{\tau'}(\varphi')$ since $\tau'$ is NAE
+- $\therefore$ WLOG assume $\tau'(t)=T$, let $\tau$ be TA for $\varphi$ where $\tau(x)=\tau'(x)$ for any $x$
+- BWOC assume $\exists C$ in $\varphi$ such that $\tau(\ell_i)=F$ for any literal $\ell$
+  - $\therefore$ to ensure NAE, the corresponding $C'$ evaluates to
+    $$
+    (F\lor F\lor T)\land(F\lor F\lor T)\land(F\lor F\lor a_3)\land(a_3\lor T\lor T)
+    $$
+  - $\therefore\tau'$ can't assign $a_3$ to make NAE
+- $\therefore\tau(\varphi)=T$, thus $\langle \varphi\rangle\in 3S$
+
+let $n$ be number of clauses in $\varphi$
+- $\phi'$ has $4n$ clauses, thus polytime $\square$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>CLIQUE</summary>
+Instance: $\langle G,k\rangle$ for graph $G$ and $k\in\mathbb N$
+
+Question: does $G$ have a clique of size $k$
+
+<details>
+<summary>**Definition.** clique</summary>
+
+for graph $G$, set $C\sube V(G)$ is a clique iff
+
+$$
+\forall u,v\in V(G)\enspace u,v\in C\implies \{u,v\}\in E(G)
+$$
+</details>
+
+<details>
+<summary>**Proof.** $CL\in NP$</summary>
+
+*is decision*
+
+*cert exists*
+
+- for $\langle G,k\rangle\in CL$, let cert $C\sube V(G)$ be a clique of size at least $k$ in graph $G$
+
+*cert polysize*
+
+- since $C\sube V(G)$, we have $|C|\le |V(G)|$, thus polysize wrt $\langle G\rangle$
+
+*verifier*
+
+- let $V$ be on input $\langle G,k,c\rangle$
+  - let $c=\{v_1,v_2,\cdots,v_n\}$
+  - check $n\ge k$
+  - for any $(u,v)\in c\times c$ where $u\ne v$
+    - check $G$ has edge $(u,v)$
+  - if all check passes \{ acc \} else \{ rej \}
+
+*verifies polytime*
+
+- each "check" is $\mathcal O(1)$
+- the loop at most $|C|^2$ iters, which is at most $|G(V)|^2$, thus polytime
+</details>
+
+<details>
+<summary>**Proof.** $3S\le_p CL$</summary>
+let $F$ be on input $\langle \varphi\rangle$
+
+- let $k$ be number of clauses in $\varphi$
+- make graph $G$
+- for each clause, make 3 nodes in $G$
+- for the edges in $G$
+  -  no edge between nodes in the same clause
+  -  no edge between literals $x_i$ and $\overline{x_i}$
+  - add edge otherwise
+- return $\langle G,k\rangle$
+
+<details>
+<summary>e.g. $\varphi=(\overline{x_1} \lor \overline{x_2} \lor x_3)\land(x_1 \lor x_2 \lor \overline{x_3})\land(\overline{x_1} \lor \overline{x_2} \lor \overline{x_3})\land(x_1 \lor \overline{x_2} \lor \overline{x_3})$</summary>
+
+
+<Tikz>
+{String.raw`$$
+\begin{tikzpicture}
+\node at(-1,2)  (11){$\overline{x_1}$};
+\node at(0,2)   (12){$\overline{x_2}$};
+\node at(1,2)   (13){$x_3$};
+\node at(2,1)   (21){$x_1$};
+\node at(2,0)   (22){$x_2$};
+\node at(2,-1)  (23){$\overline{x_3}$};
+\node at(1,-2)  (31){$\overline{x_1}$};
+\node at(0,-2)  (32){$\overline{x_2}$};
+\node at(-1,-2) (33){$\overline{x_3}$};
+\node at(-2,-1) (41){$x_1$};
+\node at(-2,0)  (42){$\overline{x_2}$};
+\node at(-2,1)  (43){$\overline{x_3}$};
+\path
+    (11) edge (22) edge (23) edge (31) edge (32) edge (33) edge (42) edge (43)
+    (12) edge (21) edge (23) edge (31) edge (32) edge (33) edge (41) edge (42) edge (43)
+    (13) edge (21) edge (22) edge (31)  edge (32) edge (41) edge (42)
+    (21) edge (32) edge (33) edge (41) edge (42) edge (43)
+    (22) edge (31) edge (33) edge (41) edge (43)
+    (23) edge (31) edge (32) edge (33) edge (41) edge (42) edge (43)
+    (31) edge (42) edge (43)
+    (32) edge (41) edge (42) edge (43)
+    (33) edge (41) edge (43) edge (42);
+\path[dashed,red]
+    (11) edge (21) edge (41)
+    (12) edge (22)
+    (13) edge (23) edge (33) edge (43)
+    (21) edge (31)
+    (22) edge (32) edge (42)
+    (31) edge (41);
+\end{tikzpicture}
+$$`}
+</Tikz>
+</details>
+
+<details>
+<summary>wts polytime, let $n$ be number of clauses in $\varphi$</summary>
+
+- $G$ has $3k$ nodes, at most $9k/2$ edges
+- $\therefore\mathcal O(n)$ times, thus polytime
+</details>
+
+wts $\langle \varphi\rangle\in 3S\iff\langle G,k\rangle\in CL$
+- `(==>)` assume $\langle \varphi\rangle\in 3S$
+  - $\therefore\exists \tau$ that satisfies $\varphi$
+  - $\therefore$ let $C\sube V(G)$ be made by picking one true literal in each triple/clause
+  - $\therefore |C|=k$ and $C$ is clique, thus $\langle G,k\rangle\in CL$
+- `(<==)` assume $\langle G,k\rangle\in CL$
+  - $\therefore\exists C\sube V(G)$ as a $k$-clique
+  - $\because$ no edge between nodes in the same triple/clause
+  - $\therefore C$ contains only 1 node in each of $k$ clause
+  - $\therefore$ let $\tau$ assign the variables such that the literals in $C$ are true
+  - $\therefore\tau$ satisfies $\varphi$, thus $\langle \varphi\rangle\in 3S$
+</details>
+
+</details>
+
+
+<details class="definition" open>
+<summary>INDEPENDENT-SET</summary>
+Instance: graph $G$ and $k\in\mathbb N$\
+Question: does $G$ has an indepdent set of size $k$
+
+<details>
+<summary>**Definition.** indepdent set $I$ of size $k$</summary>
+
+- $I\sube V(G)$ 
+- $|I|=k$
+- $\forall u\ne v\in I\enspace \{u,v\}\not\in E$
+</details>
+
+<details>
+<summary>**Proof.** $CL\le_p IS$</summary>
+let $\langle G,k\rangle$ be instance of $CL$, construct $\langle \overline G,k\rangle$ as instance of $IS$, where
+- $\overline G=(V,\overline E)$
+- $\overline E=(V\times V)\setminus E$
+
+$(\iff)$ $G$ has a $k$ clique $C\sube V(G)$
+- $\iff\forall u\ne v\in C\enspace \{u,v\}\in E$
+- $\iff\forall u\ne v\in C\enspace\{u,v\}\not\in \overline E$
+- $\iff C$ is a $k$ IS in $\overline G$
+
+polytime, of course $\square$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>VERTEX-COVER</summary>
+Instance: graph $G$ and $k\in\mathbb N$\
+Question: does $G$ have a vertex cover of size $k$
+<details>
+<summary>**Definition.** vertex cover $V'\sube V$ of size $k$</summary>
+- $|V'|=k$
+- $\forall\{u,v\}\in E\enspace u\in V'$ or $v\in V'$
+</details>
+
+<details>
+<summary>**Proof.** $IS\le_p VC$</summary>
+let $\langle G,k\rangle$ be an instance of $IS$, construct $\langle G,n-k\rangle$ as an instance of $VC$, where
+
+- $n=|V(G)|$
+
+$G$ has a size $k$ IS $I$
+
+
+- $\iff\forall u\ne v\quad u\in I\textsf{ and }v\in I\implies\{u,v\}\not\in E$
+- $\iff\forall u\ne v\quad\{u,v\}\in E\implies u\not\in I\textsf{ or }v\not\in I$
+- $\iff\forall u\ne v\quad\{u,v\}\in E\implies u\in V\setminus I$ or $v\in V\setminus I$
+- $\iff V\setminus I$ is a $|V\setminus I|=n-k$ size VC of $G$
+
+and in polytime $\square$
+
+</details>
+</details>
+
+
+<details class="definition" open>
+<summary>3COL (colorability)</summary>
+Instance: graph $G=(V,E)$\
+Question: does $G$ has a $3$ coloring
+
+<details>
+<summary>**Proof.** $3S\le_p3C$</summary>
+let $\varphi$ be an instance of $3S$, construct $G$ as follows
+
+- include a $K_3$ as the palette, name the vertices as follows:
+
+<Tikz>
+{String.raw`$$
+\begin{tikzpicture}[every node/.style={circle,draw},scale=2]
+\node at(0,0)(r){$\#$};
+\node at(-0.57,-1)(t){$T$};
+\node at(0.57,-1)(f){$F$};
+\draw[-](r)--(t)--(f)--(r);
+\end{tikzpicture}
+$$`}
+</Tikz>
+
+- for each variable $x_i$ in $\varphi$, make this literal widget
+  - dashed node means reuse node from previous step
+
+<Tikz>
+{String.raw`
+\begin{tikzpicture}[every node/.style={circle,draw},scale=2,minimum size=20pt]
+\node[dashed] at(0,0)(r){$\#$};
+\node at(-0.57,-1)(t){$x_i$};
+\node at(0.57,-1)(f){$\overline x_i$};
+\draw(r)--(t)--(f)--(r);
+\end{tikzpicture}
+ `}
+</Tikz>
+
+- for each clause $C=\ell_1\lor\ell_2\lor\ell_3$, make this OR gates
+  - the literal nodes are reused from the literal widgets
+
+<Tikz>
+{String.raw`
+\begin{tikzpicture}[every node/.style={circle,draw},scale=2,minimum size=20pt]
+\node[dashed] at(-1.71,-1)(r){$\#$};
+\node[dashed] at(-1.71,0)(f){$F$};
+\node at(0.28,0)(123){};
+\node at(-0.57,-1)(i12){};
+\node at(1.14,-1)(i3){};
+\node at(-0.57,-2)(o12){};
+\node at(-1.14,-3)(i1){};
+\node at(0,-3)    (i2){};
+\node[dashed] at(-1.14,-4)(1){$\ell_1$};
+\node[dashed] at(0,-4)    (2){$\ell_2$};
+\node[dashed] at(1.14,-4) (3){$\ell_3$};
+\draw(f)--(123)--(i12)--(i3)--(123)--(r)--(o12)--(i1)--(i2)--(o12)--(i12);
+\path(1)edge(i1) (2)edge(i2) (3)edge(i3);
+\end{tikzpicture}
+`}
+</Tikz>
+
+$(\implies)$ assume $\tau(\varphi)=T$
+
+- $\therefore$ color the palette by the node names
+  - for each clause $C=\ell_1\lor\ell_2\lor\ell_3$
+    - color node $\ell_i$ to $\tau(\ell_i)$
+- $\therefore$ the rest of $G$ can be 3 colored
+
+<details>
+<summary>examples</summary>
+
+- if color $\ell_1$ or $\ell_2$ to $T$
+
+<Tikz>
+{String.raw`
+\begin{tikzpicture}[every node/.style={circle,draw},scale=2,minimum size=20pt]
+\node at(-1.71,-1)(r){$\#$};
+\node at(-1.71,0)(f){$F$};
+\node at(0.28,0)(123){$T$};
+\node at(-0.57,-1)(i12){$F$};
+\node at(1.14,-1)(i3){$\#$};
+\node at(-0.57,-2)(o12){$T$};
+\node at(-1.14,-3)(i1){$F$};
+\node at(0,-3)    (i2){$\#$};
+\node at(-1.14,-4)(1){$T$};
+\node at(0,-4)    (2){};
+\node at(1.14,-4) (3){};
+\draw(f)--(123)--(i12)--(i3)--(123)--(r)--(o12)--(i1)--(i2)--(o12)--(i12);
+\path(1)edge(i1) (2)edge(i2) (3)edge(i3);
+\end{tikzpicture}
+`}
+</Tikz>
+
+- if color $\ell_3$ to $T$
+
+<Tikz>
+{String.raw`
+\begin{tikzpicture}[every node/.style={circle,draw},scale=2,minimum size=20pt]
+\node at(-1.71,-1)(r){$\#$};
+\node at(-1.71,0)(f){$F$};
+\node at(0.28,0)(123){$T$};
+\node at(-0.57,-1)(i12){$\#$};
+\node at(1.14,-1)(i3){$F$};
+\node at(-0.57,-2)(o12){};
+\node at(-1.14,-3)(i1){};
+\node at(0,-3)    (i2){};
+\node at(-1.14,-4)(1){};
+\node at(0,-4)    (2){};
+\node at(1.14,-4) (3){$T$};
+\draw(f)--(123)--(i12)--(i3)--(123)--(r)--(o12)--(i1)--(i2)--(o12)--(i12);
+\path(1)edge(i1) (2)edge(i2) (3)edge(i3);
+\end{tikzpicture}
+`}
+</Tikz>
+</details>
+
+$(\impliedby)$ assume $G$ is 3 colored
+- WLOG assume palette is colored by its name
+- $\because$ literal nodes are corrected to $\#$
+- $\therefore$ literal nodes must be colored $T$ or $F$
+- $\because x_i$  is corrected to $\overline{x_i}$
+- $\therefore$ the literal nodes represents a valid truth assignment $\tau$
+- $\therefore\tau$ satisfies each clause in $\varphi$
+
+<details>
+<summary>otherwise...</summary>
+<Tikz>
+{String.raw`
+\begin{tikzpicture}[every node/.style={circle,draw},scale=2,minimum size=20pt]
+\node at(-1.71,-1)(r){$\#$};
+\node at(-1.71,0)(f){$F$};
+\node[red] at(0.28,0)(123){};
+\node at(-0.57,-1)(i12){$T$};
+\node at(1.14,-1)(i3){$\#$};
+\node at(-0.57,-2)(o12){$F$};
+\node at(-1.14,-3)(i1){$T$};
+\node at(0,-3)    (i2){$\#$};
+\node at(-1.14,-4)(1){$F$};
+\node at(0,-4)    (2){$F$};
+\node at(1.14,-4) (3){$F$};
+\draw(f)--(123)--(i12)--(i3)--(123)--(r)--(o12)--(i1)--(i2)--(o12)--(i12);
+\path(1)edge(i1) (2)edge(i2) (3)edge(i3);
+\end{tikzpicture}
+`}
+</Tikz>
+</details>
+
+- $\therefore\tau(\varphi)=T$
+
+assume $\varphi$ has $k$ clauses and $n$ variables
+
+- $\therefore G$ uses at most $3+2n+6k$ nodes, thus polytime $\square$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>HAMPATH</summary>
+Instance: $\langle G,s,t\rangle$ for directed graph $G=(V,E)$ and $s,t\in V$
+
+Question: is there a hampath from $s$ to $t$
+
+<details>
+<summary>**Definition.** hamiltonian path</summary>
+a hampath from $s$ to $t$ is a path that goes through every node only once
+</details>
+
+<details>
+<summary>**Proof.** $HP\in NP$</summary>
+*is decision*
+
+*cert exists*
+
+- for any $\langle G,s,t\rangle\in\text{HP}$, let certificate $c$ be a hampath of $G$ from $s$ to $t$, represented as a finite sequence $(s,v_1,v_2,\cdots,t)$
+
+*cert polysize*
+
+- the hampath as a sequence has length exactly $|V|$, thus $\langle c\rangle$ is polysize wrt the input
+
+*verifier*
+- let $V$ be on input $\langle G,s,t,c\rangle$
+  - let $(v_0,v_1,\cdots,v_n)=c$
+  - check $v_0=s$ and $v_n=t$
+  - for $i$ in $0$ to $n-1$
+    - check $(v_i,v_i+1)$ is an edge in $G$
+  - check every vertex in $G$ occurs only once in $c$
+  - if all checks pass \{ acc \} else \{ rej \}
+
+*verifier polytime*
+- each check is $\mathcal O(1)$ and the for loop iters $|V|$ times
+- ∴ $V$ runs in polytime
+</details>
+
+<details>
+<summary>**Proof.** $3S\le_p HP$</summary>
+
+let $F$ be on input $\langle \varphi\rangle$
+- let $c_1,\cdots,c_k$ be clauses and $x_1,\cdots,x_n$ be variables
+- make graph $G$ as follows:
+  - for each clause $c_i$ make a node
+  <Tikz>
+  {String.raw`
+  \definecolor{r1}{HTML}{993300}
+  \begin{tikzpicture}
+  \node[draw,r1,circle,line width=1.5pt,minimum size=30pt] at(0,0){$c_i$};
+  \end{tikzpicture}
+  `}
+  </Tikz>
+  - for each variable $x_i$ make this subgraph:
+  <Tikz>
+  {String.raw`
+  \tikzset{->/.style={arrows={-latex[length=5pt]}}}
+  \definecolor{r1}{HTML}{003399}
+  \definecolor{r2}{HTML}{C63A44}
+  \newcommand\pa[2][]{
+      \foreach\a\b in{#2}{
+          \path[->,bend left=20pt,#1](\a)edge(\b) (\b)edge(\a);
+      }
+  }
+  \begin{tikzpicture}[every node/.style={draw,circle,minimum size=32pt,line width=1.5pt},scale=2]
+  \node at (6,1)(v){$v_{i-1}$};
+  \node at (6,-5)(u){$v_i$};
+  \node[r2]at(0,-2)(0){$x_i$};
+  \node at(9,-2)(e"){$u_{ik-1}$};
+  \node[draw=none] at(8,-2)(i){$\cdots$};
+  \node at(1,-2)(0"){$u_{i0}$};
+  \node[r2]at(13,-2)(0'){$\overline{x_i}$};
+  \foreach\c\k in{2/1,5/2,10/k}{
+      \pgfmathsetmacro{\dd}{int(\c - 1)};
+      \pgfmathsetmacro{\d}{int(\c + 1)};
+      \pgfmathsetmacro{\u}{int(\c + 2)};
+      \node[r1]at(\c,-2)(\k){$c_{i\k}$};
+      \node[r1]at(\d,-2)(\k'){$c'_{i\k}$};
+      \node at(\u,-2)(\k"){$u_{i\k}$};
+      \pa{\k"/\k'}\pa[r1]{\k/\k'}
+  }
+  \pa{0/0",0"/1,1"/2,2"/i,i/e",e"/k,k"/0'}
+  \path[->] (v)edge(0)edge(0') (0)edge(u) (0')edge(u);
+  \end{tikzpicture}
+  `}
+
+  </Tikz>
+
+- connect the $x_i$ subgraphs as follows:
+
+<Tikz>
+{String.raw`
+\newcommand\pa[2][]{
+    \foreach\a\b in{#2}{
+        \path[->,bend left=20pt,#1](\a)edge(\b) (\b)edge(\a);
+    }
+}
+\tikzset{->/.style={arrows={-latex[length=5pt]}}}
+\definecolor{r1}{HTML}{C63A44}
+\begin{tikzpicture}[every node/.style={draw,circle,minimum size=30pt,line width=1pt},scale=2]
+\node at(0,0)(v0){$v_0$};
+\node[draw=none] at(0,-5)(vv){$\vdots$};
+\node at(0,-6)(vm){$v_{n-1}$};
+\foreach\x\y in{1/1,2/3,n/7}{
+    \node[r1]at(-2,-\y)(x\x){$x_\x$};
+    \node[r1]at(2,-\y)(y\x){$\overline{x_\x}$};
+    \pgfmathsetmacro{\yy}{int(\y + 1)};
+    \node at(0,-\yy)(v\x){$v_\x$};
+    \node at(1,-\y)(c\x){};
+    \node at(-1,-\y)(a\x){};
+    \node[draw=none] at(0,-\y)(b\x){$\cdots$};
+    \pa{x\x/a\x,a\x/b\x,b\x/c\x,c\x/y\x}
+    \path[->](x\x)edge(v\x) (y\x)edge(v\x);
+}
+\path[->]
+    (v0)edge(x1)edge(y1)
+    (v1)edge(x2)edge(y2)
+    (vm)edge(xn)edge(yn)
+    (v2)edge(vv) (vv)edge(vm);
+\end{tikzpicture}
+`}
+</Tikz>
+
+- for any $x_i$ and $c_j$
+  - if $x_i$ in $c_j$, add edges $\htmlClass{text-yellow}{c_{ij}}\to \htmlClass{text-sky}{c_j}\to \htmlClass{text-yellow}{c'_{ij}}$
+  - if $\overline{x_i}$ in $c_j$, add edges $\htmlClass{text-yellow}{c'_{ij}}\to \htmlClass{text-sky}{c_j}\to \htmlClass{text-yellow}{c_{ij}}$
+- return $\langle G,v_0,v_n\rangle$
+
+<details open>
+<summary>wts $\langle \varphi\rangle\in 3S\iff\langle G,v_0,v_n\rangle\in HP$</summary>
+`(==>)` assume $\langle \varphi\rangle\in 3S$, i.e. $\exists\tau$ that satisfies $\varphi$,
+
+- wts $G$ has hampath $v_0\leadsto v_n$
+- starting at $v_0$, on each subgraph $x_i$
+  - if $\tau(x_i)=T$, then go $v_{i-1}\to \htmlClass{text-teal}{x_i}\leadsto\htmlClass{text-teal}{\overline{x_i}}\to v_i$
+  - if $\tau(x_i)=F$, then go $v_{i-1}\to\htmlClass{text-teal}{\overline{x_i}}\leadsto \htmlClass{text-teal}{x_i}\to v_i$
+- to cover each $\htmlClass{text-sky}{c_j}$ node
+  - if $x_i$ in $c_j$ is $T$, then go $\htmlClass{text-teal}{x_i}\leadsto \htmlClass{text-yellow}{c_{ij}}\to \htmlClass{text-sky}{c_j}\to \htmlClass{text-yellow}{c'_{ij}}\leadsto\htmlClass{text-teal}{\overline{x_i}}$
+  - if $\overline{x_i}$ in $c_j$ is $T$, then go $\htmlClass{text-teal}{\overline{x_i}}\leadsto \htmlClass{text-yellow}{c'_{ij}}\to \htmlClass{text-sky}{c_j}\to \htmlClass{text-yellow}{c_{ij}}\leadsto \htmlClass{text-teal}{x_i}$
+- $\therefore$ has hampath, thus $\langle G,v_0,v_n\rangle\in HP$
+
+`(<==)` assume $\langle G,v_0,v_n\rangle\in HP$, i.e. $\exists$ hampath $v_0\stackrel{p}{\leadsto} v_n$
+
+- wts $\exists\tau$ satisfies $\varphi$
+- wts $\forall j$, if $p$ covers $\htmlClass{text-sky}{c_j}$, then $p$ must go (for some $i$)
+  - $\htmlClass{text-yellow}{c_{ij}}\to \htmlClass{text-sky}{c_j}\to \htmlClass{text-yellow}{c'_{ij}}$ or $\htmlClass{text-yellow}{c'_{ij}}\to \htmlClass{text-sky}{c_j}\to \htmlClass{text-yellow}{c_{ij}}$
+  - BWOC assume no, WLOG assume  $\htmlClass{text-yellow}{c_{aj}}\to\htmlClass{text-sky}{c_j}\to\htmlClass{text-yellow}{c_{bj}}$ for $a\ne b$
+  - then to cover $\htmlClass{text-yellow}{c'_{ij}}$, $p$ must go $u_{ij}\to\htmlClass{text-yellow}{c'_{ij}}$ because $\htmlClass{text-yellow}{c_{ij}}$ and $\htmlClass{text-sky}{c_i}$ are covered
+  - but going $u_{ij}\to\htmlClass{text-yellow}{c'_{ij}}$ leads to deadend, thus not hampath
+- thus path behaves
+  - if $\htmlClass{text-yellow}{c_{ij}}\to \htmlClass{text-sky}{c_j}\to \htmlClass{text-yellow}{c'_{ij}}$ (left to right), let $\tau(x_i)=T$
+  - if $\htmlClass{text-yellow}{c'_{ij}}\to \htmlClass{text-sky}{c_j}\to \htmlClass{text-yellow}{c_{ij}}$ (right to left), let $\tau(x_i)=F$
+- $\therefore\tau$ satisfies $\varphi$, thus $\langle \varphi\rangle\in 3S\quad\square$
+</details>
+</details>
+</details>
+
+<details class="definition" open>
+<summary>HAM-CYCLE</summary>
+Instance: directed graph $G$\
+Question: does $G$ has a hamiltonian cycle (passes each vertex only once)
+
+<details>
+<summary>**Proof.** $HP\le_p HC$</summary>
+let $\langle G,v_1,v_n\rangle$ be an instance of $HP$, construct $\langle G'\rangle$ as instance of $HC$ where
+
+- $V'=V(G')=V(G)\cup\{u\}$ for $u\not\in V$ (i.e. add a new vertex)
+- $E'=E(G')=E(G)\cup\{(v_n,u),(u,v_1)\}$
+
+$(\implies)$ assume $G$ has hampath $v_1{\leadsto} v_n$ 
+
+- $\therefore u\to v_1\leadsto v_n\to u$ is a hamcycle in $G'$
+- $\therefore\langle G'\rangle\in HC$
+
+$(\impliedby)$ assume $G'$ has hamcycle $p:u\leadsto u$
+- $\because u\to v_1$ is only out edge of $u$, $v_n\to u$ is only in edge of $$
+- $\therefore p:u\to v_1\leadsto v_n\to u$
+- $\therefore$ the sub path $v_1\leadsto v_n$ is a hampath of $G$, thus $G\in HP$
+
+and polytime $\square$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>3SAT</summary>
+Instance: $\langle \varphi\rangle$ where boolean formula $\varphi$ is in 3CNF
+
+Question: is there a truth assignment $\tau$ that satisfies $\varphi$
+
+<details>
+<summary>**Definition.** 3CNF and TA</summary>
+- $\varphi$ is the conjunction of 3-clauses
+  - 3-clause is disjunction of 3 literals
+  - literal is $x$ or $\overline x$ (not x) for $x\in PV$
+- $\tau:PV\to\{T,F\}$
+</details>
+
+<details>
+<summary>**Proof.** $3S\in NP$</summary>
+
+*is decision*, *cert exists and polysize*
+
+*verifier exists*
+
+- let $V$ be on input $\langle\varphi,\tau\rangle$
+  - set every variable of $\varphi$ according to $\tau$ and evaluate it
+  - if evals to $T$ \{ acc \} else \{ rej \}
+
+*verifies polytime*
+</details>
+</details>
+
+<details class="definition" open>
+<summary>INDUCED-PATH</summary>
+Instance: graph $G$ and $k\in\mathbb N$\
+Question: is there $V'\sube V$ such that $|V'|\ge k$ and the subgraph induced by $V'$ is a simple path of $|V'|$ vertices
+
+<details>
+<summary>**Proof.** $3S\le_p IP$</summary>
+let $\varphi$ be instance of $3S$ with $m$ clauses and $n$ variables
+
+- WLOG assume $\varphi$ has distinct vars in each clause, then construct $G$ as follows:
+- add vertices $\{v_0,\cdots, v_n=c_0,c_1,\cdots,c_m\}$
+- for $0\le i\lt n$, connect $v_i$ to $v_{i+1}$ with these literal widgets
+
+<Tikz>
+{String.raw`
+\begin{tikzpicture}[every node/.style={circle,draw},scale=2,minimum size=30pt]
+\node[dashed] at(0,1.71)(v){$v_i$};
+\node at(0,0.71)(u){$u_i$};
+\node at(0,-0.71)(u'){$u_{i+1}'$};
+\node[dashed] at(0,-1.71)(v'){$v_{i+1}$};
+\node at(-0.71,0)(x){$x_i$};
+\node at(0.71,0)(x'){$\overline{x_i}$};
+\path(u)edge(v)edge(x)edge(x')
+     (u')edge(v')edge(x)edge(x');
+\end{tikzpicture}
+`}
+</Tikz>
+</details>
+
+- for $0\le j\lt m$, connect $c_j$ to $c_{j+1}$ with these clause widgets
+  - connect each $\ell_i$ to $\overline{\ell_i}$ in the literal widget
+
+<Tikz>
+{String.raw`
+\begin{tikzpicture}[every node/.style={circle,draw},scale=3,minimum size=30pt]
+\node[dashed] at(0,1.71)(v){$c_j$};
+\node at(0,0.71)(u){$d_j$};
+\node at(0,-0.71)(u'){$d_{j+1}'$};
+\node[dashed] at(0,-1.71)(v'){$c_{j+1}$};
+\pgfmathsetmacro\s{ sqrt(2) / 2 }
+\foreach\i in{1,2,3}{
+    \pgfmathsetmacro{\x}{ \s * (\i-2) };
+    \pgfmathsetmacro{\xx}{ \s * \i  };
+    \node at(\x, 0)(l\i){$\ell_\i$};
+    \node[dashed] at(\xx, 0.71)(l\i'){$\overline{\ell_\i}$};
+    \path(l\i)edge(l\i');
+}
+\path(u)edge(v)edge(l1)edge(l2)edge(l3)
+    (u')edge(v')edge(l1)edge(l2)edge(l3);
+\end{tikzpicture}
+`}
+</Tikz>
+
+- let $k=3m+3n+(m+n+1)=4m+4n+1$
+
+
+$(\implies)$ assume $\tau(\varphi)=T$
+
+- let $V'$ be as follows: 
+  - contains $v_i,u_i,u_i',c_j,d_j,d_j'$ for any $i,j$ 
+  - in literal widgets, for each variable $x_i$
+    - $\tau(x_i)=T\implies x_i\in V'$
+    - $\tau(x_i)=F\implies \overline{x_i}\in V'$
+  - in clause widgets, for each literals $\ell_1,\ell_2,\ell_3$
+    - $\ell_i\in V'$ where $\tau(\ell_i)=T$ (which exists since $\tau(\varphi)=T$)
+- $\therefore|V'|=k$
+- consider graph $G'=(V',\cdots)$ induced by $V$ from $G'$
+- $\therefore G'$ is connected and is path $v_0\leadsto c_m$
+  - $\because x_i\in V'$  xor $\overline{x_i}\in V'$
+  - $\therefore$ each literal widget is a simple path
+  - $\because\overline{\ell_i}\not\in V'$ as $\tau(\ell_i)=T$
+  - $\therefore$ each clause widget is a simple path
+
+$(\impliedby)$ assume $V'\sube V$ induces path $p$ with $k=(3m+3n)+m+n+1$ vertices
+
+- consider each literal widget
+  - $\because$ choosing more that 3 vertices for $p$ causes a cycle
+  - $\therefore$ each literal widget must have at most 3 vertices in $p$
+- consider each clause widget
+  - $\because$ choosing more that 3 vertices for $p$ causes branches/claws or cycle
+  - $\therefore$ each clause widget must have at most 3 vertices in $p$
+- $\therefore$ the literal and clause widgets must contribute at most $3m+3n$ vertices in $p$
+- $\therefore p$ has $m+n+1$ vertices not in the widgets, which are exactly $\{v_0,\cdots,v_n=c_0,c_1,\cdots,c_m\}$
+- $\because v_0$ and $c_m$ have degree 1 in $G$, thus they must be the two ends of $p$
+- $\therefore$ WLOG assume $p$ is $v_0\leadsto c_m$
+  - $\therefore p$ must be $v_0\leadsto v_1\leadsto\cdots\leadsto v_n\leadsto c_1\leadsto\cdots\leadsto c_m$
+- $\therefore$ define $\tau$ as follows: consider each $v_i\leadsto v_{i+1}$ in $p$
+  - $v_i\to u_i\to x_i\to u'_{i+1}\to v_{i+1}\implies$ let $\tau(x_i)=T$
+  - $v_i\to u_i\to \overline{x_i}\to u'_{i+1}\to v_{i+1}\implies$ let $\tau(x_i)=F$
+  - $\therefore\tau$ is valid truth assignment since $x_i\in V'$ xor $\overline{x_i}\in V'$
+- consider each clause widget with $\ell_1,\ell_2,\ell_3$
+  - $\because c_j\leadsto c_{j+1}$ is in $p$, thus $\exists\ell_i\in V'$
+  - BWOC $\tau(\ell_i)=F$
+    - $\therefore\overline{\tau({\ell_i})}=T$
+    - $\therefore\overline{\ell_i}\in V'$ from the literal widgets 
+    - $\therefore p$ has cycle
+  - $\tau(\ell_i)=T$
+- $\therefore\tau$ satisfies each clause, thus $\tau(\varphi)=T$
+
+the construction of $G$ uses $4m+5n+(m+n+1)$ vertices
+
+- $\therefore$ polytime $\square$
+
+</details>
+
+<details class="definition" open>
+<summary>SUBSET-SUM</summary>
+Instance: $\langle S,t\rangle$ for multiset $S\sub\mathbb Z^+$ and $t\in\mathbb Z^+$
+
+Question: is there a subset $S'\sube S$ such that sum is $t$
+
+<details>
+<summary>**Proof.** $SS\in NP$</summary>
+
+1. is decision
+2. for any $\langle S,t\rangle\in SS$, the cert is a subset $S'$ st sum is $t$
+3. since $S'\sube S$, then $|\langle S'\rangle|$ is polysize wrt to the input
+4. let verifier $V$ be on input $\langle S,t,S'\rangle$
+    1. check $S'\sube S$
+    2. let $s$ be sum of $S'$
+    3. check $s=t$
+    4. if all checks pass \{ acc \} else \{ rej \}
+5. let $n$ be size of input
+    - line 1 is $\mathcal O(n^2)$
+    - line 2 is $\mathcal O(n)$
+    - rest is $\mathcal O(1)$
+    - thus $V$ runs on polytime
+</details>
+
+<details>
+<summary>**Proof.** $3S\le_p SS$</summary>
+
+given 3CNF $\varphi=c_1\land\cdots\land c_m$ with $n$ variables and $m$ clauses
+
+- as an example, let
+$$
+c_1=(x_1\lor\overline {x_2}\lor x_3)\quad c_2=(x_2\lor\overline {x_3}\lor x_n)\quad c_m=(\overline{x_1}\lor x_3\lor\overline{x_n})
+$$
+
+1. construct the following table (base 10)
+
+<div class="ss w-full flex justify-center">
+
+||||
+|:-:|:-:|:-:|
+|                |`x₁ x₂ .. xₙ`|`c₁ c₂ .. cₘ`
+|$x_1$           |`1  0  .. 0 `|`1  0  .. 0 `
+|$\overline{x_1}$|`1  0  .. 0 `|`0  0  .. 1 `
+|$x_2$           |`0  1  .. 0 `|`0  1  .. 0 `
+|$\overline{x_2}$|`0  1  .. 0 `|`1  0  .. 0 `
+|$\vdots$        |$\vdots$     |$\vdots$
+|$x_n$           |`0  0  .. 1 `|`0  1  .. 0 `
+|$\overline{x_n}$|`0  0  .. 1 `|`0  0  .. 1 `
+|$d_1$           |`0  0  .. 0 `|`1  0  .. 0 `
+|$d'_1$          |`0  0  .. 0 `|`1  0  .. 0 `
+|$d_2$           |`0  0  .. 0 `|`0  1  .. 0 `
+|$d'_2$          |`0  0  .. 0 `|`0  1  .. 0 `
+|$\vdots$        |$\vdots$     |$\vdots$
+|$d_m$           |`0  0  .. 0 `|`0  0  .. 1 `
+|$d'_m$          |`0  0  .. 0 `|`0  0  .. 1 `
+|$t$             |`1  1  .. 1 `|`3  3  .. 3 `
+</div>
+
+- make a table of $n+m$ colums and $2(n+m)$ rows
+- (row $x$ col $x$) for any $1\le i,j\le n$
+  - if $i=j$, then put $1$ at row $x_i$ and col $x_j$, else put $0$
+  - same for row $\overline{x_i}$
+- (row $x$ col $c$) for any $1\le i\le n$ and $1\le j\le m$
+  - if $x_i$ in $c_j$, then put $1$ at row $x_i$ col $c_j$, else put $0$
+  - same for now $\overline {x_i}$
+- (row $d$ col $x$) all $0$s
+- (row $d$ col $c$) for any $1\le i,j\le m$
+  - if $i=j$, then put $1$ at row $d_i$ and col $c_j$, else put $0$
+  - same for row $d'_i$
+- each row represents a integer where the entries are the digits
+- then construct multiset $S$ as each row $x_1,\overline{x_1},\cdots,x_n,\overline {x_n},d_1,d'_1,\cdots,d_m,d'_m$
+- $t\in\mathbb Z^+$ is the last row
+
+<details>
+<summary>wts polytime construction</summary>
+- each entry is 0 or 1 or 3, thus takes polytime to make
+- each number (i.e. row) has $n+m$ (i.e. polysize) digits, thus takes polytime to make
+- $\therefore t$ and each number in multiset $S$ takes polytime to make
+- $\because S$ has $2n+2m$ (i.e. polysize) numbers
+- $\therefore S$ takes polytime to make
+- $\therefore$ the construction takes polytime
+</details>
+
+<details>
+<summary>wts satisfy $\implies$ has subset</summary>
+assume $\exists\tau$ that satisfies $\varphi$
+
+- for each $1\le i\le n$
+  - if $\tau(x_i)=T$ \{ pick row $x_i$ \} else \{ pick row $\overline {x_i}$ \}
+- $\therefore$ in the picked rows,
+  - each digit $x_1$ to $x_n$ sums to $1$
+  - $\because$ for each $c_i$, at least one literal is assigned to $T$ by $\tau$
+  - each digit $c_1$ to $c_m$ sums between $1$ and $3$
+- $\therefore$ for each $c_i$, can pick $2$ to $0$ rows among $d_i,d'_i$ to add up to $3$ in each $c_1$ to $c_m$
+- $\therefore$ we can pick rows that sums to $t=1\cdots13\cdots3$ according  to the table
+</details>
+
+<details>
+<summary>wts has subset $\implies$ satisfy</summary>
+assume $S$ has subset $S'$ that sums to $t$
+
+- N.B. no carry can happen when summing since base 10
+
+- let $\tau:\{x_i\}_{i=1}^n\to\{T,F\}$ defined as follows
+  - for each $i$, if $S'$ has number/row $x_i$ then let $\tau(x_i)=T$, else let $\tau(x_i)=F$
+  - $\because t$ must have $1$ at every digit/col $x_1$ to $x_n$
+  - $\therefore S'$ never has both $x_i$ and $\overline {x_i}$
+  - $\therefore\tau$ is well defined
+- consider $D=\{d_i,d'_i\}_{i=1}^m$ and $A=S'\setminus D$
+  - $\therefore A$ only contains numbers/row $x_i$ or $\overline{x_i}$
+  - $\because$ sum of numbers in $D$ only has at most $2$ in digits/col $c_i$
+  - $\therefore$ sum of $A$ must has digit at least $1$ in those cols
+  - $\therefore\forall$ col $c_i\enspace\exists$ row $x_i\in S'$ (or $\overline{x_1}$) st the digit $c_i$ of row $x_i$ is $1$
+    - i.e. $\tau$ assigns that literal/row in $c_i$ to $T$
+- $\therefore\tau$ safisfies $\varphi$
+</details>
+
+</details>
+</details>
+
+<details class="definition">
+<summary>(todo) JOB-SEQUENCING</summary>
+
+Instance: let $[n]=\{1,\cdots,n\}$
+- execution times $T:\mathbb [n]\to\mathbb Z$
+- deadlines $D:\mathbb [n]\to\mathbb Z$
+- penalties $P:\mathbb [n]\to\mathbb Z$
+- $k\in\mathbb N$
+
+Question: is there a permutation $\pi:[n]\to[n]$ such that
+
+$$
+\sum_{i=1}^n (I_\pi P_\pi)(i)\le k
+$$
+where
+- $T_{\pi}=T\pi\quad D_\pi=D\pi\quad P_\pi=P\pi$
+- $I_\pi:[n]\to\{0,1\}$ where 
+$$
+I_\pi(i)=\begin{cases}
+1&\sum_{j=1}^i T_\pi(j)>D_\pi(i)\\
+0&\textsf{otherwise}
+\end{cases}
+$$
+
+<details>
+<summary>In English...</summary>
+have $n$ jobs, numbered $1$ to $n$
+
+- job $i$ takes $T(i)$ time, has deadline at $D(i)$, has penalty $P(i)$ if not done by $D(i)$
+- want to find sequence of jobs such that the total penalty is at most $k$
+</details>
+
+<details open>
+<summary>**Proof.** $SS\le_p JS$</summary>
+let $\langle S,t\rangle$ be an instance of $SS$, construct $\langle T,D,P,k\rangle$ as instace of $JS$, where
+
+- let $S=\{s_1,\cdots,s_n\}$, thus $n=|S|$
+- let $s_\pi:[n]\to S$ where $s_\pi(i)=s_{\pi(i)}$
+- $T(i)=P(i)=s_i$ and $D(i)=t$ for any $i\in[n]$
+- $k=\left(\sum s_i\right)-t$
+
+$(\implies)$ assume $S$ has subset $X$ that sums to $t$
+
+- let $i'=|X|\le n$ 
+- let $\pi:[n]\to[n]$ be some perm such that
+  - $\forall i\in[n]\enspace \pi(i)\in X\iff i\in[i']$
+- $\therefore$ for any $i\in[i']$
+  $$
+  \begin{aligned}
+  \sum_{j=1}^iT_\pi(j)&\le\sum_{j=1}^{i'}T_\pi(j)=\sum_{j=1}^{i'}s_\pi(j)=t=D_\pi(i)
+  \end{aligned}
+  $$
+- $\therefore I_\pi(i)=0$ for any $i\le i'$
+$$
+\therefore\sum_{i=1}^n (I_\pi P_\pi)(i)=\sum_{i=i'+1}^nP_\pi(i)=\left(\sum_{i=1}^ns_i\right)-t=k
+$$
+
+- $\therefore\langle T,D,P,k\rangle\in JS$
+
+$(\impliedby)$ assume $\langle T,D,P,k\rangle\in JS$ with cert $\pi$
+- $\therefore k=\left(\sum s_i\right)-t$ from the construction
+- let $X=\{s_\pi(i):I_\pi(i)=0\}$ and $i'=|X|$
+  - $X$ is set of jobs times that have no penalty in total, i.e. meets deadline
+- let $S=\{s_0,\cdots, s_{n-1}\}$ where $s_i\in X$ for any $0\le i\lt i'$
+  - i.e. order $S$ such that elements in $X$ comes first
+- $\therefore$ by def of $I_\pi$, for any $i\in[i']$ (aka meets deadline)
+$$
+\sum_{j=1}^iT_\pi(j)\le D_\pi(i)=t
+$$
+
+- $\therefore$ in the case $i=i'$
+
+$$
+\sum_{j=1}^{i'}T_\pi(j)\le t
+$$
+
+todo p41
+</details>
+
+</details>
+
+<details class="definition" open>
+<summary>TIMETABLE-SCHEDULING</summary>
+Instance:
+
+- available hours $H=\{1,\cdots,k\}$
+- teachers times $T=\{T_1,\cdots,T_n\}$ where $T_i\sube H$
+- class times $C=\{C_1,\cdots,C_m\}$ where $C_i\sube H$
+- required hours $R=(r_{ij})$
+  - $r_{ij}\in\mathbb Z^+$ is number of hours teacher $i$ needs to teach class $j$
+
+Question: is there a timetable $f:[n]\times[m]\times H\to\{0,1\}$ such that
+
+- $f(i,j,h)=1\implies h\in T_i\cap C_j$
+  - assign teacher $i$ to class $j$ at time $h$ only if time $h$ is available for both teacher and class
+- $\sum_{h=1}^kf(i,j,h)=r_{ij}$ for any $1\le i\le n$ and $1\le j\le m$
+  - assign teacher $i$ exactly $r_{ij}$ hours to teach class $j$
+- for any $1\le h\le k$ (i.e. any timeslot)
+  - $\sum_{i=1}^nf(i,j,h)\le 1$ for any $1\le j\le m$ 
+    - at most one teacher is assign to class $j$ 
+  - $\sum_{j=1}^mf(i,j,h)\le 1$ for any $1\le i\le n$
+    - at most one class is assigned to teacher $i$
+<details open>
+<summary>**Proof.** $3S\le_p TS$</summary>
+</details>
+</details>
+

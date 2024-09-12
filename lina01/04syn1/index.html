@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Syntax I</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Syntax I</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#syntatic-categories">Syntatic Categories</a></li>
+<li><a href="#identifying-lexical-categories">Identifying Lexical
+Categories</a>
+<ul>
+<li><a href="#nouns">Nouns</a>
+<ul>
+<li><a href="#morphological-distribution">Morphological
+Distribution</a></li>
+<li><a href="#syntactic-distribution">Syntactic Distribution</a></li>
+</ul></li>
+<li><a href="#verbs">Verbs</a>
+<ul>
+<li><a href="#types">Types</a></li>
+<li><a href="#morphological-distribution-1">Morphological
+Distribution</a></li>
+<li><a href="#syntactic-distribution-1">Syntactic Distribution</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="syntatic-categories">Syntatic Categories</h1>
+<ul>
+<li>categories
+<ul>
+<li><strong>lexical/open</strong>
+<ul>
+<li>noun (n)</li>
+<li>verb (v)</li>
+<li>adjective (adj)</li>
+<li>adverb (adv)</li>
+<li>preposition (prep)</li>
+</ul></li>
+<li><strong>functional/closed</strong>
+<ul>
+<li>determiner (det)</li>
+<li>negation (neg)</li>
+<li>degree word (deg)</li>
+<li>auxiliary verb (aux)</li>
+</ul></li>
+</ul></li>
+<li>reasons for this categorisation: | | inventory | productivity |
+semantics | | ———- | ——— | ———— | ————————— | | lexical | unlimited |
+yes | has association of meanings | | functional | limited | no |
+contentless |
+<ul>
+<li>inventory: the numbers of items</li>
+<li>productivity: the possibility of creating new words</li>
+<li>semantics: the meaning behind the items</li>
+</ul></li>
+</ul>
+<h1 id="identifying-lexical-categories">Identifying Lexical
+Categories</h1>
+<h2 id="nouns">Nouns</h2>
+<ul>
+<li>derivational affixes: <code>-ment</code>, <code>-tion</code>,
+<code>-ity</code>, <code>-ness</code></li>
+<li>inflectioal affixes: <code>-s</code> (plural)</li>
+</ul>
+<h3 id="morphological-distribution">Morphological Distribution</h3>
+<blockquote>
+<p>use affixes to prove a word is noun: <strong>morphological
+distribution/evidence</strong></p>
+</blockquote>
+<ul>
+<li>eg <em>developers</em>
+<ul>
+<li><code>-er</code> creates noun from verbs</li>
+<li><code>-s</code> plural marker and attaches to nouns</li>
+</ul></li>
+</ul>
+<h3 id="syntactic-distribution">Syntactic Distribution</h3>
+<ul>
+<li>preceded by a <em>determiner</em>
+<ul>
+<li>eg: <em>some</em> <strong>children</strong></li>
+</ul></li>
+<li><em>subject/object</em> of the sentence
+<ul>
+<li>eg: that <em>tired</em> <strong>student</strong> is applying to
+<em>law</em> <strong>school</strong></li>
+</ul></li>
+<li>sometimes come after <em>adjectives</em>
+<ul>
+<li>eg: two <em>constructive</em> <strong>comments</strong></li>
+</ul></li>
+<li>may be preceded by a <em>preposition</em>
+<ul>
+<li>eg: <em>by</em> <strong>noon</strong>, <em>during</em>
+<strong>class</strong></li>
+</ul></li>
+</ul>
+<h2 id="verbs">Verbs</h2>
+<blockquote>
+<p><strong>action</strong> verbs express action, <strong>state</strong>
+verbs express perception/state</p>
+</blockquote>
+<h3 id="types">Types</h3>
+<blockquote>
+<p><strong>main</strong> verbs or <strong>auxilaries/helping
+verbs</strong></p>
+</blockquote>
+<ul>
+<li><strong>main</strong>: express action or state</li>
+<li><strong>aux</strong>: support main and cannot occur independently
+<ul>
+<li><strong>regular</strong> aux (we <em>are</em> doing, i <em>have</em>
+done, you <em>do</em> not know)</li>
+<li><strong>modal</strong> aux (can, could, will, must, etc)</li>
+</ul></li>
+<li>order:
+<ul>
+<li>modal have be main</li>
+</ul></li>
+</ul>
+<h3 id="morphological-distribution-1">Morphological Distribution</h3>
+<blockquote>
+<p>derivational: <code>-ize</code><br> inflectional: <code>-ed</code>,
+<code>-ing</code>, etc</p>
+</blockquote>
+<h3 id="syntactic-distribution-1">Syntactic Distribution</h3>
+<ul>
+<li>preceded by an <em>aux</em>
+<ul>
+<li>he <em>were</em> <strong>playing</strong></li>
+</ul></li>
+<li>after the <em>subject</em> of the sentence
+<ul>
+<li><em>I</em> <strong>did</strong> it</li>
+</ul></li>
+<li>may come after <em>negation</em>
+<ul>
+<li>I did <em>not</em> <strong>do</strong> it</li>
+</ul></li>
+</ul>
+</body>
+</html>

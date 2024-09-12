@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-TBNDYO75">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="./favicon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" crossorigin="anonymous" class="astro-TBNDYO75">
+    <title>B07</title>
+<link rel="stylesheet" href="../index.8f2f0644.css" /><script type="module">const e=document.querySelector("aside");document.querySelectorAll('input[type="checkbox"]').forEach(c=>c.disabled=!1);e&&(e.onclick=()=>e.classList.toggle("hide"),document.querySelectorAll("h1,h2,h3").forEach(c=>c.onclick=()=>e.classList.toggle("hide")));
+</script></head>
+<body class="astro-TBNDYO75">
+    <aside class="hide astro-TBNDYO75"><ul>
+<li><a href="#ps2">PS2</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#software-testing">Software Testing</a>
+        <ul>
+<li><a href="#coverage-criterion">Coverage Criterion</a>
+        <ul>
+<li><a href="#logic-coverage">Logic Coverage</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#graph-coverage">Graph Coverage</a>
+        <ul>
+
+</ul>
+        </li>
+</ul>
+        </li><li><a href="#ripr-model">RIPR Model</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#bugs">Bugs</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#wbbb-testing">WB/BB Testing</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#levels">Levels</a>
+        <ul>
+
+</ul>
+        </li>
+</ul>
+        </li><li><a href="#android">Android</a>
+        <ul>
+<li><a href="#mock-testing">Mock Testing</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#testing">Testing</a>
+        <ul>
+<li><a href="#unit-testing">Unit Testing</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#integration-test">Integration Test</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#ui-test">UI Test</a>
+        <ul>
+
+</ul>
+        </li>
+</ul>
+        </li><li><a href="#mvp">MVP</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#file-structure">File Structure</a>
+        <ul>
+
+</ul>
+        </li>
+</ul>
+        </li><li><a href="#sdlc">SDLC</a>
+        <ul>
+<li><a href="#agile-methodologies-scrum">Agile Methodologies: Scrum</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#sdlc-impl">SDLC Impl</a>
+        <ul>
+
+</ul>
+        </li>
+</ul>
+        </li>
+</ul></aside>
+    <!-- <main><Load client:load><slot/></Load></main> -->
+    <main class="astro-TBNDYO75"><h1 id="ps2">PS2</h1>
+<ol start="9">
+<li>control flow graph: use line num as node
+<ul>
+<li><code>count = 0 -&gt; for</code></li>
+<li><code>for -&gt; if</code></li>
+<li><code>if (true) -&gt; count++</code></li>
+<li><code>count++ -&gt; for</code></li>
+<li><code>if (false) -&gt; for</code></li>
+<li><code>for -&gt; return</code></li>
+<li>ans: third one</li>
+</ul>
+</li>
+<li>all satisfied</li>
+<li></li>
+</ol>
+<ul>
+<li><code>1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6</code></li>
+<li><code>6 -&gt; 7 -&gt; 8 -&gt; 6 -&gt; 9</code></li>
+<li><code>9 -&gt; 10 -&gt; 3 -&gt; 11</code></li>
+<li>edge covered</li>
+</ul>
+<ol start="13">
+<li><code>1 -&gt; 2 -&gt; 3 -&gt; 4</code> and <code>3 -&gt; 5 -&gt; 2 -&gt; 6</code></li>
+</ol>
+<ul>
+<li>need 2 cases, e.g.
+<ul>
+<li><code>x = 1, A = { 1 }</code></li>
+<li><code>x = 0, A = { 1 }</code></li>
+</ul>
+</li>
+<li>assume node cov
+<ul>
+<li>show each edge must covered in order to reach all nodes</li>
+<li>each node must have edge to come from, and must take edge to go to (unless return)</li>
+</ul>
+</li>
+</ul>
+<ol start="18">
+<li><code>A = { 1 }, x = 0</code>
+<ul>
+<li>infection on <code>left</code></li>
+<li>output correct <code>-&gt;</code> no propagation</li>
+</ul>
+</li>
+<li>control flow</li>
+</ol>
+<ul>
+<li><code>1 -&gt; 2 -&gt; 3 -&gt; 4</code></li>
+<li><code>2 -&gt; 5 -&gt; 6(while) -&gt; 7 -&gt; 8 -&gt; 9</code></li>
+<li><code>7 -&gt; 9 (i++) -&gt; 6 -&gt; 10 -&gt; 11 -&gt; 12</code></li>
+<li><code>10 -&gt; 12</code></li>
+<li>b. (i) false, <code>10 -&gt; 11 -&gt; 12</code> wo <code>10 -&gt; 12</code></li>
+<li>(ii) false
+<ul>
+<li>a || b, (a,b) = (T,F) and (a,b) = (F,T) satisfied clause, but not predicate</li>
+<li>clause cov: all possible truth values for all PV are in test cases</li>
+<li>predicate cov: all possible truch values for all predications are in test cases</li>
+</ul>
+</li>
+<li>(iii) active clause cov =&gt; clause cov</li>
+<li>but active clause cov =/&gt; predicate cov</li>
+<li>(iv) true, e.g. A ∨ B: FF =&gt; F, TF =&gt; T, then predicate cov</li>
+<li>c.
+<ul>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">double</span><span style="color: #878787">[]</span><span style="color: #F1F1F1"> A </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">null</span></span></code></pre>
+
+</li>
+<li><code>A = { 0 }</code> to satisfy <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">A</span><span style="color: #878787">[</span><span style="color: #F1F1F1">index</span><span style="color: #878787">]</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">&gt;</span><span style="color: #F1F1F1"> max</span></span></code></pre>
+</li>
+<li><code>A = { 1 }</code> to satisfy <code>max == NEG</code></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>a(iii) b(iv) c(i) d(ii, product owner) e(iv) f(ii) g(iv) h(ii) i(ii) j(ii)</li>
+<li>bob and carol explains their choices, (then another round of poker)</li>
+<li>a(w) b(s) c(s) d(s)</li>
+<li>a(d) b(m) c(d) d(d)</li>
+<li>ye ye ye</li>
+<li>metadata, automate, ui test</li>
+<li>avoid hardcoding string literals</li>
+<li>passes</li>
+</ol>
+<ul>
+<li>not defined in stub <code>-&gt;</code> returns default value</li>
+<li><code>alreadyReg</code> returns false</li>
+</ul>
+<h1 id="software-testing">Software Testing</h1>
+<blockquote>
+<p>testing <code>==&gt;</code> execute code<br/>
+shows presence of bugs, not absence<br/>
+proof correctness is not scalable</p>
+</blockquote>
+<h2 id="coverage-criterion">Coverage Criterion</h2>
+<blockquote>
+<p>satisfying a cov crit gives confidence in</p>
+<ol>
+<li>covered edge cases</li>
+<li>low amount of overlap</li>
+</ol>
+</blockquote>
+<details class="definition" open><summary><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">C_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span> subsumes <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">C_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span> iff the test satisfies <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>1</mn></msub><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">C_1\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em"></span></span></span></span></span> satisfies <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">C_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span></summary></details>
+<h3 id="logic-coverage">Logic Coverage</h3>
+<blockquote>
+<p>let <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">B</mi><mo>=</mo><mo stretchy="false">{</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\mathbb B=\{0,1\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6889em"></span><span class="mord mathbb">B</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord">1</span><span class="mclose">}</span></span></span></span></span></p>
+</blockquote>
+<details class="definition" open><summary>given a boolean expression</summary><ul>
+<li>treat it as a <strong>propositional formula</strong> (F)</li>
+<li>each predicate is a <strong>propositional variable</strong> (PV)</li>
+<li>each test case corresponds to a <strong>truth assignment</strong> (<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi></mrow><annotation encoding="application/x-tex">\tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal" style="margin-right:0.1132em">τ</span></span></span></span></span>)</li>
+</ul></details>
+<details class="definition" open><p><summary>Predicate Coverage (covers F)</summary>
+<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span></span></span></span></span> is P coved iff <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>b</mi><mo>∈</mo><mi mathvariant="double-struck">B</mi><mspace width="0.5em"></mspace><mi mathvariant="normal">∃</mi><mi>τ</mi><mrow><mtext> </mtext><mtext mathvariant="sans-serif">st</mtext><mtext> </mtext></mrow><msup><mi>τ</mi><mo>∗</mo></msup><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\forall b\in\mathbb B\enspace\exists\tau\textsf{ st }\tau^\ast(F)=b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em"></span><span class="mord">∀</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathbb">B</span><span class="mspace" style="margin-right:0.5em"></span><span class="mord">∃</span><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="mord text"><span class="mord textsf"> st </span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em">F</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span></span></span></span></span></p><ul>
+<li>i.e. test cases produce all possible truth values of <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span></span></span></span></span></li>
+</ul></details>
+<details class="definition" open><p><summary>Clause Coverage (covers PV)</summary>
+<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span></span></span></span></span> is C coved iff <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>x</mi><mo>∈</mo><mi>P</mi><mi>V</mi><mspace width="0.5em"></mspace><mi mathvariant="normal">∀</mi><mi>b</mi><mo>∈</mo><mi mathvariant="double-struck">B</mi><mspace width="0.5em"></mspace><mi mathvariant="normal">∃</mi><mi>τ</mi><mrow><mtext> </mtext><mtext mathvariant="sans-serif">st</mtext><mtext> </mtext></mrow><mi>τ</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\forall x\in PV\enspace\forall b\in\mathbb B\enspace\exists\tau\textsf{ st }\tau(x)=b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em"></span><span class="mord">∀</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em"></span><span class="mord mathnormal" style="margin-right:0.13889em">P</span><span class="mord mathnormal" style="margin-right:0.22222em">V</span><span class="mspace" style="margin-right:0.5em"></span><span class="mord">∀</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathbb">B</span><span class="mspace" style="margin-right:0.5em"></span><span class="mord">∃</span><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="mord text"><span class="mord textsf"> st </span></span><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span></span></span></span></span></p><ul>
+<li>i.e. test cases contains all possible truth values of all PVs</li>
+</ul></details>
+<details class="definition" open><summary>Active Clause Coverage</summary><ul>
+<li>PV <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span></span></span></span></span> <strong>determines</strong> <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span></span></span></span></span> in <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi></mrow><annotation encoding="application/x-tex">\tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal" style="margin-right:0.1132em">τ</span></span></span></span></span> iff <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo mathvariant="normal">≠</mo><msub><mi>τ</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><msubsup><mi>τ</mi><mn>1</mn><mo>∗</mo></msubsup><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo><mo mathvariant="normal">≠</mo><msubsup><mi>τ</mi><mn>2</mn><mo>∗</mo></msubsup><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\tau_1(x)\ne\tau_2(x)\implies \tau_1^\ast(F)\ne\tau_2^\ast(F)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6887em"><span style="top:-2.4519em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em">F</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6887em"><span style="top:-2.4519em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em">F</span><span class="mclose">)</span></span></span></span></span></li>
+</ul><p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span></span></span></span></span> is AC coved iff</p><div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>x</mi><mo>∈</mo><mi>P</mi><mi>V</mi><mspace width="0.5em"></mspace><mi mathvariant="normal">∀</mi><mi>b</mi><mo>∈</mo><mi mathvariant="double-struck">B</mi><mspace width="0.5em"></mspace><mi mathvariant="normal">∃</mi><mi>τ</mi><mrow><mtext> </mtext><mtext mathvariant="sans-serif">st</mtext><mtext> </mtext></mrow><mi>τ</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>b</mi><mrow><mtext> </mtext><mtext mathvariant="sans-serif">and</mtext><mtext> </mtext></mrow><mi>x</mi><mrow><mtext> </mtext><mtext mathvariant="sans-serif">determines</mtext><mtext> </mtext></mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">\forall x\in PV\enspace\forall b\in\mathbb B\enspace\exist\tau\textsf{ st }\tau(x)=b\textsf{ and }x\textsf{ determines }F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em"></span><span class="mord">∀</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em"></span><span class="mord mathnormal" style="margin-right:0.13889em">P</span><span class="mord mathnormal" style="margin-right:0.22222em">V</span><span class="mspace" style="margin-right:0.5em"></span><span class="mord">∀</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathbb">B</span><span class="mspace" style="margin-right:0.5em"></span><span class="mord">∃</span><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="mord text"><span class="mord textsf"> st </span></span><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span><span class="mord text"><span class="mord textsf"> and </span></span><span class="mord mathnormal">x</span><span class="mord text"><span class="mord textsf"> determines </span></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span></span></span></span></span></div><ul>
+<li>AC cov subsumes C cov</li>
+</ul></details>
+<details class="example"><p><summary><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>a</mi><mo>&gt;</mo><mi>b</mi><mo stretchy="false">)</mo><mo>∨</mo><mi>c</mi><mo stretchy="false">)</mo><mo>∧</mo><mo stretchy="false">(</mo><mi>x</mi><mo>&lt;</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F=((a&gt;b)\lor c)\land (x&lt;y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">((</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal" style="margin-right:0.03588em">y</span><span class="mclose">)</span></span></span></span></span></summary>
+wts <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span></span></span></span></span> is P coved and C coved by these tests</p><ul>
+<li>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\tau_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span> <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">let</span><span style="color: #F1F1F1"> </span><span style="color: #878787">(</span><span style="color: #F1F1F1">a</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> b</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> c</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> x</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> y</span><span style="color: #878787">)</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> </span><span style="color: #878787">(</span><span style="color: #A68CD9">2</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">1</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">false</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">4</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">5</span><span style="color: #878787">);</span></span></code></pre>
+</p>
+</li>
+<li>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\tau_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span> <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">let</span><span style="color: #F1F1F1"> </span><span style="color: #878787">(</span><span style="color: #F1F1F1">a</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> b</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> c</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> x</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> y</span><span style="color: #878787">)</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> </span><span style="color: #878787">(</span><span style="color: #A68CD9">1</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">2</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">false</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">4</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">5</span><span style="color: #878787">);</span></span></code></pre>
+</p>
+</li>
+<li>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\tau_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span> <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">let</span><span style="color: #F1F1F1"> </span><span style="color: #878787">(</span><span style="color: #F1F1F1">a</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> b</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> c</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> x</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> y</span><span style="color: #878787">)</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> </span><span style="color: #878787">(</span><span style="color: #A68CD9">1</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">2</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">true</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">5</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">4</span><span style="color: #878787">);</span></span></code></pre>
+</p>
+</li>
+<li>
+<p>draw table</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="right"></th><th align="center"><code>a &gt; b</code></th><th align="center"><code>c</code></th><th align="center"><code>x &lt; y</code></th><th align="center"><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span></span></span></span></span></th></tr></thead><tbody><tr><td align="right"><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\tau_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span></td><td align="center">T</td><td align="center">F</td><td align="center">T</td><td align="center">T</td></tr><tr><td align="right"><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\tau_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span></td><td align="center">F</td><td align="center">F</td><td align="center">T</td><td align="center">F</td></tr><tr><td align="right"><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\tau_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span></td><td align="center">F</td><td align="center">T</td><td align="center">F</td><td align="center">F</td></tr></tbody></table><ul>
+<li>∴ <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.13889em">F</span></span></span></span></span> is P coved and C coved</li>
+</ul></details>
+<h3 id="graph-coverage">Graph Coverage</h3>
+<details class="definition" open><summary></summary><p>given code, define digraph <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mo stretchy="false">(</mo><mi>V</mi><mo separator="true">,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G=(V,E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em">V</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal" style="margin-right:0.05764em">E</span><span class="mclose">)</span></span></span></span></span> where</p><ul>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.22222em">V</span></span></span></span></span> is set of <strong>each statement</strong> in code</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>∈</mo><mi>E</mi><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">(u,v)\in E\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal" style="margin-right:0.03588em">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7073em;vertical-align:-0.024em"></span><span class="mord mathnormal" style="margin-right:0.05764em">E</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em"></span></span></span></span></span> code can reach from <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">u</span></span></span></span></span> to <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">e</span></span></span></span></span></li>
+</ul><p>patterns</p><ul>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">if</span></span></code></pre>
+: splits into 2 nodes</li>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">while</span></span></code></pre>
+ or <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">for</span></span></code></pre>
+: loop</li>
+</ul><p>coverages</p><ul>
+<li><strong>branch</strong> coverage: covers all edges</li>
+<li><strong>statement</strong> coverage: covers all nodes</li>
+</ul></details>
+<details class="theorem" open><summary>branch coverage subsumes statement coverage</summary></details>
+<h2 id="ripr-model">RIPR Model</h2>
+<details class="theorem" open><summary>For a Failure to be Observed</summary><ul>
+<li><strong>reachable</strong>: test reach the faulty code</li>
+<li><strong>infection</strong>: unexpected state after faulty code is executed</li>
+<li><strong>propagation</strong>: infected state propagates through the rest of the program</li>
+<li><strong>revealable</strong>: tester is able to observe the incorrect final state (i.e. test fails)</li>
+</ul></details>
+<h2 id="bugs">Bugs</h2>
+<details class="definition" open><summary>Given a line and the expected behavior of the program</summary><p>failure <code>==&gt;</code> error <code>==&gt; fault</code></p><ul>
+<li><strong>fault</strong>: semantic error (e.g. <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">let</span><span style="color: #F1F1F1"> </span><span style="color: #66FF99">add</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> </span><span style="color: #878787">(</span><span style="color: #FF9966">a</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #FF9966">b</span><span style="color: #878787">)</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">=&gt;</span><span style="color: #F1F1F1"> a </span><span style="color: #FF6680">*</span><span style="color: #F1F1F1"> b</span><span style="color: #878787">;</span></span></code></pre>
+)</li>
+<li><strong>error</strong> (given an input): wrong state (i.e. set of values assigned to each var)
+<pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#66CCFF">fn</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">square</span><span style="color:#878787">(</span><span style="color:#F1F1F1">n</span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">i32</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">-&gt;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">i32</span><span style="color:#F1F1F1"> </span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#7F7F7F">    //! returns the square of n</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">let</span><span style="color:#F1F1F1"> s </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">*</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">2</span><span style="color:#878787">;</span><span style="color:#7F7F7F"> // semantic fault</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">dbg</span><span style="color:#878787">(</span><span style="color:#F1F1F1">s</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> n</span><span style="color:#878787">);</span><span style="color:#7F7F7F"> // wrong state =&gt; error</span></span>
+<span class="line"><span style="color:#F1F1F1">    s</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre>
+<ul>
+<li><strong>coincidental correctness</strong>: e.g. input <code>n = 2</code></li>
+<li>have <strong>infection</strong> <code>&lt;==&gt;</code> have error <code>&lt;==&gt;</code> have unexpected state</li>
+</ul>
+</li>
+<li><strong>failure</strong>: wrong ouput</li>
+</ul></details>
+<h2 id="wbbb-testing">WB/BB Testing</h2>
+<details class="definition" open><summary>White Box vs Black Box Testing</summary><ul>
+<li><strong>BB</strong> uses external descriptions to make tests</li>
+<li><strong>WB</strong> uses internal src code to make tests (more expensive)</li>
+</ul></details>
+<h2 id="levels">Levels</h2>
+<details class="definition" open><summary></summary><ul>
+<li><strong>acceptance</strong>: test acceptable to the user (from user perspective)</li>
+<li><strong>system</strong>: test overall functionality of the system</li>
+<li><strong>integration</strong>: test interaction between modules</li>
+<li><strong>module</strong> (resp of prgmer): test modules in isolation and how the components interact with each other</li>
+<li><strong>unit</strong> (resp of prgmer): test units/methods individually</li>
+</ul></details>
+<h1 id="android">Android</h1>
+<h2 id="mock-testing">Mock Testing</h2>
+<details class="theorem" open><summary>Use mock objects to</summary><ul>
+<li>represents components not yet impled</li>
+<li>speed up testing</li>
+<li>reduce cost</li>
+<li>avoid unrecoverable actions</li>
+</ul></details>
+<h2 id="testing">Testing</h2>
+<details class="theorem" open><summary></summary><p>quantity: unit &gt; intergration &gt; UI<br/>
+cost: unit &lt; interaction &lt; UI</p></details>
+<h3 id="unit-testing">Unit Testing</h3>
+<ul>
+<li>test each <strong>public</strong> methods</li>
+</ul>
+<pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#878787">@</span><span style="color:#66CCFF">Test</span></span>
+<span class="line"><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">test1</span><span style="color:#878787">(){</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">assertTrue</span><span style="color:#878787">(</span><span style="color:#F1F1F1">cond</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#878787">    </span><span style="color:#7F7F7F">// calls Object.equals(o1, o2);</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">assertEquals</span><span style="color:#878787">(</span><span style="color:#F1F1F1">o1</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> o2</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#878787">    </span><span style="color:#7F7F7F">// assert throws exception</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">try</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">throw</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Exception</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#66FF99">fail</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span><span style="color:#FF6680">catch</span><span style="color:#878787">(</span><span style="color:#66CCFF">Exception</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">e</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#66FF99">assertTrue</span><span style="color:#878787">(</span><span style="color:#A68CD9">true</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre>
+<h3 id="integration-test">Integration Test</h3>
+<ul>
+<li>test interaction between M-V-P</li>
+<li>test interaction between MVPs</li>
+</ul>
+<h3 id="ui-test">UI Test</h3>
+<ul>
+<li>test user interaction with visual components</li>
+</ul>
+<h2 id="mvp">MVP</h2>
+<details class="definition" open><summary>Model-View-Presenter</summary><ul>
+<li><strong>model</strong> manages data to be displayed and uses database
+<ul>
+<li>fires event to P on data change</li>
+</ul>
+</li>
+<li><strong>presenter</strong> contains business logic
+<ul>
+<li>update M when V fires user event</li>
+<li>update V when data changes from M</li>
+</ul>
+</li>
+<li><strong>view</strong> defines the components for UI
+<ul>
+<li>receives update from P, fires user events to P</li>
+</ul>
+</li>
+</ul></details>
+<details class="theorem" open><summary>Advantages of MVP</summary><ul>
+<li>easy to test</li>
+<li>separates</li>
+</ul></details>
+<h2 id="file-structure">File Structure</h2>
+<details class="definition" open><summary>Android (as a framework)</summary><ul>
+<li>an app is a collection of <strong>screen</strong></li>
+<li>a screen consists of
+<ul>
+<li>a <strong>layout</strong>: appearance (<code>.xml</code>)</li>
+<li>an <strong>activity</strong>: manange user interaction (<code>.java</code>)</li>
+</ul>
+</li>
+<li>a layout can use multiple <strong>fragments</strong>
+<ul>
+<li>to promote modularity</li>
+</ul>
+</li>
+</ul></details>
+<h1 id="sdlc">SDLC</h1>
+<blockquote>
+<p>skipped SDLC from p18 (Scrum &amp; TDD), see sceenshots in laptop</p>
+</blockquote>
+<details class="definition" open><summary>Software Development Life Cycle</summary><ul>
+<li><strong>Planning</strong>: create concept</li>
+<li><strong>Analysis</strong>: analyse needs, create detailed requirements</li>
+<li><strong>Design</strong>: translate requirements to design (e.g. pseudocode, UML)</li>
+<li><strong>Implementation</strong>: develop and test the system</li>
+<li><strong>Maintenance</strong>: e.g. fix bugs</li>
+</ul></details>
+<h2 id="agile-methodologies-scrum">Agile Methodologies: Scrum</h2>
+<details class="definition" open><summary>Scrum</summary><ul>
+<li>requirements represented as user stories</li>
+<li><strong>Product Owner</strong>: provide requirements
+<ul>
+<li>participate in meetings before sprint, retrospective meetings</li>
+<li>need technical knowledge (comm with dev team)</li>
+<li>need business knowledge (comm with customers, stakeholders)</li>
+</ul>
+</li>
+<li><strong>Scrum Master</strong>: facilitate the tasks
+<ul>
+<li>remove impediments</li>
+</ul>
+</li>
+</ul></details>
+<details class="definition" open><summary>Sprint: 1-4 weeks</summary><ul>
+<li>period of time to impl a set of features to be demo’ed to the product owner</li>
+<li>takes some user stories and work on them</li>
+<li>after a sprint, hold retrospective meeting to discuss
+<ul>
+<li>the past sprint</li>
+<li>chance for improvement</li>
+</ul>
+</li>
+</ul></details>
+<details class="definition" open><summary>User Stories: “As a {actor}, I want to {action} so that {result}”</summary><ul>
+<li>represents a requirement</li>
+<li>pro: user friendly, uses simple language</li>
+<li>dev team: translate user story to code</li>
+</ul></details>
+<details class="definition" open><summary>Planning Poker</summary><ul>
+<li>everyone assigns a difficulty to a user story to estimate workload</li>
+<li>let the people who assigned the highest &amp; lowest difficulty to explain</li>
+<li>repeat until everyone ends up at the same difficulty</li>
+</ul></details>
+<details class="definition" open><summary>Planning Session</summary><ul>
+<li>before each sprint</li>
+<li>team decides
+<ul>
+<li>amount of work</li>
+<li>expected technical challenges</li>
+</ul>
+</li>
+<li>product owner is there to help with prioritisation</li>
+</ul></details>
+<details class="definition" open><summary>Standup Meeting <strong>Everyday</strong></summary><ul>
+<li>to check progress</li>
+<li>“what done since last standup”</li>
+<li>“what will do by the next standup”</li>
+<li>“what impediments I have”</li>
+</ul></details>
+<h2 id="sdlc-impl">SDLC Impl</h2>
+<details class="definition" open><summary>Agile: iterative</summary><ul>
+<li>accomodate changes</li>
+<li>no fixed time/cost</li>
+<li>always high frequency of interactions between people involved</li>
+<li>release after every sprint</li>
+</ul></details>
+<details class="definition" open><summary>Spiral: risk-driven and iterative</summary><ul>
+<li>before each iter: analyse risk</li>
+<li>pros
+<ul>
+<li>can accomodate changes</li>
+</ul>
+</li>
+<li>cons
+<ul>
+<li>need expert risk assessors</li>
+<li>hard to estimate cost</li>
+</ul>
+</li>
+</ul></details>
+<details class="definition" open><summary>Waterfall: rigid time &amp; budget</summary><ul>
+<li>do SDLC once (i.e. sequentially)</li>
+<li>workload starts heavy, gets ligter in the next stage</li>
+<li>pros
+<ul>
+<li>good for small project</li>
+<li>easy to estimate cost</li>
+</ul>
+</li>
+<li>cons
+<ul>
+<li>costly to accomodate changes</li>
+<li>can’t show prototype until after implementation</li>
+</ul>
+</li>
+</ul></details></main>
+
+</body>
+
+
+</html>

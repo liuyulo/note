@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Learning</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Learning</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="learning">Learning</h1>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#pavlovian-conditioning">Pavlovian Conditioning</a>
+<ul>
+<li><a href="#temporal-conditioning-methods">Temporal Conditioning
+Methods</a></li>
+<li><a href="#taste-aversion-learning">Taste Aversion Learning</a></li>
+<li><a href="#classical-extinction">Classical Extinction</a></li>
+<li><a href="#conditioned-inhibition">Conditioned Inhibition</a></li>
+<li><a href="#evaluative-conditioning">Evaluative Conditioning</a></li>
+<li><a href="#other-stimulus-principles">Other Stimulus Principles</a>
+<ul>
+<li><a href="#generelisation">Generelisation</a></li>
+<li><a href="#discrimination">Discrimination</a></li>
+<li><a href="#higher-order">Higher-Order</a></li>
+</ul></li>
+<li><a href="#behaviorism">Behaviorism</a>
+<ul>
+<li><a href="#little-albert">Little Albert</a></li>
+<li><a href="#systematic-desensitisation">Systematic
+Desensitisation</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#operant-conditioning">Operant Conditioning</a>
+<ul>
+<li><a href="#throndike">Throndike</a></li>
+<li><a href="#skinner">Skinner</a></li>
+<li><a href="#reinforcement">Reinforcement</a></li>
+<li><a href="#extinction">Extinction</a></li>
+<li><a href="#shaping">Shaping</a></li>
+<li><a href="#reinforcers">Reinforcers</a></li>
+<li><a href="#scheduling-conseq">Scheduling Conseq</a></li>
+</ul></li>
+<li><a href="#comparing-cc-and-oc">Comparing CC and OC</a></li>
+<li><a href="#cognitive-psychology">Cognitive Psychology</a>
+<ul>
+<li><a href="#latent-learning">Latent Learning</a></li>
+<li><a href="#social-learning">Social Learning</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="summary">Summary</h1>
+<ul>
+<li>There is a difference between learning and innate responses:
+Learning is when behavior changes as a result of experience, while
+innate responses are inborn</li>
+<li>Reflexes can be learned or innate and can be conditioned to occur in
+response to novel situations</li>
+<li>A stimulus can be any measurable and detectable part of the
+environment that can produce a response—a behavioral consequence of the
+stimulus. Unconditional stimuli and responses are produced without
+learning; that is, they are innate. Conditional stimuli, meanwhile, are
+signals that predict the occurrence of unconditional stimuli, and
+conditional responses are behavioral reflexes that occur in anticipation
+of these unconditional stimuli</li>
+<li>Pavlovian conditioning works to change neutral stimuli into
+conditional stimuli that predict the occurrence of unconditional stimuli
+and produce a conditional response</li>
+<li>The time course of conditioning matters: Excitatory conditioning
+occurs for short-delayed, long-delayed, and trace conditioning, while
+inhibitory conditioning occurs for simultaneous and backward
+conditioning</li>
+<li>Superstitions can often be the result of conditioning</li>
+<li>Taste aversion learning appears to be a special case of Pavlovian
+conditioning related to the relationship between the sense of taste and
+intestinal distress</li>
+<li>Pavlovian relationships can be unlearned through the process of
+extinction, although they can spontaneously recover</li>
+<li>Conditioned inhibition is a kind of Pavlovian conditioning related
+to learning about signals related to safety (the absence of an aversive
+stimulus)</li>
+<li>Evaluative conditioning helps us relate our positive and negative
+experiences to neutral stimuli in the environment and shapes the way we
+emotionally feel toward things based on our experiences; advertising
+companies often exploit this kind of learning.
+</li></li>
+<li>Stimulus generalization and stimulus discrimination are opposites,
+with the former helping us generalize what we’ve learned to similar
+circumstances and the latter helping us be more discerning about
+specific responses</li>
+<li>Higher-order conditioning occurs when neutral stimuli are paired
+with conditional stimuli we have already learned and is important for
+explaining phenomena such as the effectiveness of spokespeople in
+advertisements.
+</li></li>
+<li>John B. Watson was an influential figure in the history of
+psychology for his views about the extent to which conditioning shapes
+children into the people they eventually become as adults; the “Little
+Albert” study he and Rosalie Rayner conducted is a strong example of
+this</li>
+<li>Systematic desensitization is a therapeutic tool that uses the
+principles of Pavlovian conditioning to treat phobic responses</li>
+<li>Operant (instrumental) conditioning is a kind of learning that
+explains how we learn about the consequences of our behavior, and
+therefore, what to do (and what not to do) in certain circumstances</li>
+<li>E. L. Thorndike is famous for his foundational work on operant
+conditioning with cats in puzzle boxes and establishing the law of
+effect’s description of the relationship between a situation and the
+“stamping in” or “stamping out” of a behavior</li>
+<li>B. F. Skinner is the founder of radical behaviorism, which is a
+perspective that treats cognitive and affective processes (thinking and
+feeling) like any other physical behavior.
+</li></li>
+<li>Skinner’s work on operant conditioning described antecedents as
+signals that tell us about when our behavior will (or won’t) produce
+certain consequences.
+</li></li>
+<li>When consequences are differential, we learn about the relationship
+between an antecedent, our behavior, and the consequence more rapidly
+than when consequences are non-differential.
+</li></li>
+<li>There are four types of contingencies between responses and their
+consequences: positive reinforcement, negative reinforcement, positive
+punishment, and negative punishment</li>
+<li>Differentiating between these contingencies can be done by asking
+first whether a behavior is increased (reinforcement) or decreased
+(punishment), then by whether the consequence was added (positive) or
+removed (negative) after the behavior</li>
+<li>Escape and avoidance conditioning occur in response to negative
+reinforcement</li>
+<li>Positive reinforcement is the preferred operant process because it
+has longer-lasting effects on behavior, and it can be used to direct a
+person or animal to a “correct” response; punishment should be used as a
+last resort because it can lead to a host of negative outcomes</li>
+<li>Operant extinction has three behavioral effects: an extinction
+burst, emotional and aggressive responding, and (eventually) the
+cessation of responding</li>
+<li>Shaping can be employed to teach a person or animal a new response
+by rewarding successive approximations of the desired behavior and can
+result in the learning of complex behaviors, such as landmine-sniffing
+rats</li>
+<li>Reinforcer tests can determine whether a specific consequence is a
+reinforcer or a punisher; they are especially useful for evaluating
+secondary reinforcers.
+</li></li>
+<li>Consequences can be scheduled in different ways: The requirement for
+reinforcement can be fixed or variable and can be based on a number of
+responses (ratio schedules) or the amount of time that has passed
+between reinforcements (interval schedules)</li>
+<li>Different kinds of consequence schedules produce different rates of
+responding and resistance to extinction, with intermittent (variable)
+reinforcement being more effective in creating long-term behavioral
+change compared to continuous reinforcement 
+</li></li>
+<li>Pavlovian and operant conditioning often occur simultaneously; the
+most important difference is that in Pavlovian conditioning the
+unconditional stimulus will occur regardless of our behavior, while in
+operant conditioning the consequence is dependent on the production of
+the behavior</li>
+<li>Edward C. Tolman first demonstrated latent learning through his
+experiments with rats’ learning of cognitive maps; rats learned maze
+layouts, but their learning wasn’t demonstrated until they were
+motivated to run through the maze</li>
+<li>Albert Bandura demonstrated the process of social learning through
+his studies of kindergarten students’ tendency to imitate adults who
+modeled “beating up” a toy called a Bobo doll</li>
+<li>Biological constraints exist on learning, such as biological
+preparedness to learn specific relationships (such as certain
+phobias)</li>
+<li>Learned helplessness can occur when an organism learns that its
+behaviors in a situation are pointless or ineffective</li>
+</ul>
+<h1 id="intro">Intro</h1>
+<blockquote>
+<ul>
+<li>eugenics: how to artificially breed better human (nazi)
+<ul>
+<li>adult behavior is complex, children are simple, what happened</li>
+<li>learning study started 1900 to 1950, the era of nature</li>
+</ul></li>
+<li>learning: revenge of nurture</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>learning: permanent change in behavior not due to
+drugs/maturation/injury/disease</p>
+</blockquote>
+<ul>
+<li><em>innate</em> skills: we’re born with them, can’t be stopped
+<ul>
+<li>pull hands away from hot objects</li>
+<li>=&gt; <em>reflexes</em>: automatic and simple responses, but can be
+conditioned</li>
+</ul></li>
+<li>types of learning
+<ul>
+<li><em>classical/Pavlovian</em> conditioning</li>
+<li><em>operant</em> conditioning</li>
+<li><em>latent</em> learning</li>
+<li><em>social</em> learning</li>
+</ul></li>
+</ul>
+<h1 id="pavlovian-conditioning">Pavlovian Conditioning</h1>
+<blockquote>
+<ul>
+<li>stimulus/response are paired (eg wife/husband)</li>
+<li><em>unconditioned</em> stimulus/response: starting place (hardwired)
+<ul>
+<li>food (UCS) -→ digest (UCR)</li>
+</ul></li>
+<li><em>habituation</em>: UCS -→ UCR weakens
+<ul>
+<li>eg background noise</li>
+<li>eg dog with its reflection</li>
+</ul></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>init: UCS -→ UCR<br> conditioning trials: UCS + CS -→ UCR<br> result:
+CS -→ CR(UCR but less intense)<br></p>
+</blockquote>
+<ul>
+<li>stimulus: detectable, measurable, can evoke a response</li>
+</ul>
+<h2 id="temporal-conditioning-methods">Temporal Conditioning
+Methods</h2>
+<ul>
+<li><em>excitatory</em> conditioning: CS presented before the UCS
+<ul>
+<li><em>short-delayed</em>: CS, short delay, UCS</li>
+<li><em>long-delayed</em>: CS, long delay, UCS</li>
+<li><em>trace</em>: CS, a VERY LONG TIME, UCS</li>
+</ul></li>
+<li><em>inhibitory</em>: CR is suppressed
+<ul>
+<li><em>simultaneous</em>: CS+UCS</li>
+<li><em>backward</em>: UCS, UCR, CS</li>
+</ul></li>
+</ul>
+<h2 id="taste-aversion-learning">Taste Aversion Learning</h2>
+<ul>
+<li>for new food, trace(HUGE delay) works
+<ul>
+<li>UCS: bacteria</li>
+<li>UCR: sickness</li>
+<li>CS: taste</li>
+<li>CR: nausea</li>
+</ul></li>
+</ul>
+<h2 id="classical-extinction">Classical Extinction</h2>
+<blockquote>
+<p>present CS without UCS =&gt; loss of associative strength</p>
+</blockquote>
+<ul>
+<li>is not unlearning, if stopped for a while, and then present CS,
+<em>spontaneous recovery</em> will happen</li>
+</ul>
+<h2 id="conditioned-inhibition">Conditioned Inhibition</h2>
+<blockquote>
+<p>used in horror films/games</p>
+</blockquote>
+<ul>
+<li>find <em>safty signals</em>(conditioned inhibitors) to indicate
+something will not occur</li>
+</ul>
+<h2 id="evaluative-conditioning">Evaluative Conditioning</h2>
+<ul>
+<li>UCS can be <em>appetitive</em>(pleasant) or
+<em>aversive</em>(unpleasant)
+<ul>
+<li>people rather choose the pleasant stimulus (emotional)</li>
+</ul></li>
+<li>EC changes attitudes without aware that we are learning</li>
+</ul>
+<blockquote>
+<ul>
+<li>emotional persuasion message
+<ul>
+<li>central route
+<ul>
+<li>motivated audience</li>
+<li>high effort processing (rational)</li>
+<li>lasting change in attitude</li>
+</ul></li>
+<li>peripheral route (use appetitive CC to associate with positive
+emotion)
+<ul>
+<li>not motivated</li>
+<li>low effort (no need to be logical/reasonable)</li>
+<li>temporary change</li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<h2 id="other-stimulus-principles">Other Stimulus Principles</h2>
+<h3 id="generelisation">Generelisation</h3>
+<blockquote>
+<p>notice similarities between stimulus and respond the same</p>
+</blockquote>
+<ul>
+<li>assimilating something into a category ### Discrimination &gt;
+notices differences between stimulus and respond differently</li>
+</ul>
+<h3 id="higher-order">Higher-Order</h3>
+<blockquote>
+<p>already paired CS is paired with a neutral stimulus</p>
+</blockquote>
+<h2 id="behaviorism">Behaviorism</h2>
+<blockquote>
+<p><em>Watson</em> (influenced by Pavlov) states psychology should focus
+only on behavior under various stimilus</p>
+</blockquote>
+<h3 id="little-albert">Little Albert</h3>
+<ol type="1">
+<li>shows rat
+<ul>
+<li>likes rat</li>
+</ul></li>
+<li>shows rat with loud noise
+<ul>
+<li>scared of lound noise</li>
+</ul></li>
+<li>repeat
+<ul>
+<li>scared of rat</li>
+</ul></li>
+</ol>
+<h3 id="systematic-desensitisation">Systematic Desensitisation</h3>
+<blockquote>
+<p>develops <em>phobias</em> (irrational fear)</p>
+</blockquote>
+<h1 id="operant-conditioning">Operant Conditioning</h1>
+<blockquote>
+<p>operant/instrumental conditioning: the conseq of our behavior
+matter</p>
+</blockquote>
+<h2 id="throndike">Throndike</h2>
+<blockquote>
+<p>cats learned how to get rewards</p>
+</blockquote>
+<p><img src="assets/07ins.png" /> - <em>instrumental</em> process: -
+interacting with some response option has an effect on the env</p>
+<ul>
+<li><em>law</em> effect:
+<ul>
+<li>we tend to learn something that associates with what we like</li>
+<li>tend to not learn what we don’t like</li>
+<li>behavior that yielded satisfying conseq are more likely to
+recur</li>
+<li>result in discomfort =&gt; less likely</li>
+</ul></li>
+<li>conseq
+<ul>
+<li><em>satisfaction</em>: associate a situation with behavior that
+leads to pleasant</li>
+<li><em>discomfort</em>: leads to unpleasant</li>
+</ul></li>
+</ul>
+<h2 id="skinner">Skinner</h2>
+<blockquote>
+<p>founded behaivorism</p>
+</blockquote>
+<ul>
+<li><em>antecedents</em>: situation that makes it possible for us to
+respond/tells us what we might get for that response</li>
+<li><em>behavior</em>: observable repeatable action</li>
+<li><em>conseq</em>: outcome of behavior
+<ul>
+<li><em>differential</em> consequences: do 1 receives good, do 2
+don’t</li>
+<li><em>non-diff</em> conseq: receive the same</li>
+</ul></li>
+<li>Ogden Lindsley</li>
+<li><em>dead man test</em>: if a dead man can do it, it’s not a
+behavior</li>
+</ul>
+<h2 id="reinforcement">Reinforcement</h2>
+<blockquote>
+<p>Skinner deved 4 <em>contingencies</em>(if..then..)</p>
+</blockquote>
+<p><img src="assets/07rei.png" /> - eg PR - turn key, start engine -
+check email, receive message - eg NR - leave party, avoid people - turn
+off light, avoid electric cost - eg PP - touch metal surface, receive
+static shock - answer call, meet scammer - eg NP - drive drunk, lose
+license - lie to friend, lose friend</p>
+<p>type of NR - <em>escape</em>: something you want to stop is
+happenening because of your response, you will respond more - aversive
+stimulus present -→ operant response occur -→ stimulus removed - eg - go
+to doctor, get medicine (stop sick) - run to building, avoid rain (stop
+be wet) - <em>avoiddance</em>: dont want to happen will happen unless
+respond, therefore will respond more - warning stimulus present -→
+operant response-→ scheduled aversive event cancelled - eg - get
+vaccine, avoid <em>potential</em> flu - take umbrella, avoid
+<em>potential</em> rain</p>
+<p><img src="assets/07opc.png" /></p>
+<ul>
+<li>punishment alone doesnt teach what to do to get reinforcers</li>
+<li>punishment = aversive stimulus = pain</li>
+<li>person who uses punishment successfully once will use again</li>
+<li>person who got punished leans to use punishment to control
+others</li>
+<li>punishment only decrease behavior if applied <em>immediately</em>,
+<em>every time</em>, or <em>large aversive</em></li>
+</ul>
+<h2 id="extinction">Extinction</h2>
+<blockquote>
+<p>conseq previously followed behavior but not now -→ response less
+likely to occur</p>
+</blockquote>
+<ul>
+<li>res prod reinforcer -→ res no longer has effect -→ res
+decreases</li>
+<li>behavioral effects
+<ul>
+<li>temporary increase in responding: <em>extinction burst</em></li>
+<li>emotional/aggressive responding</li>
+<li>stop responding</li>
+</ul></li>
+<li><em>partial reinforcement extinction effect</em>
+<ul>
+<li>when extinct, behavior reinforced <em>occasionly</em> lasts longer
+without conseq than every time</li>
+</ul></li>
+</ul>
+<h2 id="shaping">Shaping</h2>
+<blockquote>
+<p>generate new behavior by breaking down a complex response into
+smaller steps, and reinforce approx</p>
+</blockquote>
+<ul>
+<li>typically use a combination of instruction/demostration/shaping to
+teach new responses</li>
+</ul>
+<h2 id="reinforcers">Reinforcers</h2>
+<blockquote>
+<p>event/stimuli that increases res</p>
+</blockquote>
+<ul>
+<li><em>reinforcer test</em>(contingency analysis) determine if the
+conseq is a reinforcer and increases res freq</li>
+<li><em>primary</em>(unconditioned): biologically important conseq
+<ul>
+<li>eg heat/pain</li>
+</ul></li>
+<li><em>secondary</em>(conditioned) paired with primary reinforcers</li>
+</ul>
+<h2 id="scheduling-conseq">Scheduling Conseq</h2>
+<blockquote>
+<p>when earn reinforcers</p>
+</blockquote>
+<p><img src="assets/07sco.png" /> <img src="assets/07sch.png" /></p>
+<h1 id="comparing-cc-and-oc">Comparing CC and OC</h1>
+<p><img src="assets/07cvo.png" /></p>
+<h1 id="cognitive-psychology">Cognitive Psychology</h1>
+<h2 id="latent-learning">Latent Learning</h2>
+<blockquote>
+<p>Tolman: learning that happened but hasn’t had an opportunity to be
+demonstrated</p>
+</blockquote>
+<ul>
+<li>rat run maze, develop <em>cognitive map</em>, then always use
+shortest path</li>
+</ul>
+<h2 id="social-learning">Social Learning</h2>
+<blockquote>
+<p>Bandura: <em>observational learning</em>, understand what to do by
+watching others</p>
+</blockquote>
+<ul>
+<li>phases
+<ul>
+<li><em>attential</em>: notice model’s behavior, might <em>imitate</em>
+the model</li>
+<li><em>retention</em>: think about performing model’s actions</li>
+<li><em>production</em>: perform the model’s action</li>
+<li><em>motivational</em>: imitated behavior produces same reward as the
+model -→ will do more</li>
+</ul></li>
+</ul>
+</body>
+</html>

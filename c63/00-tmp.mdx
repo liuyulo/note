@@ -1,0 +1,62 @@
+---
+title: TMP
+---
+
+import Tikz from '../../components/Tikz.astro'
+
+<details class="definition" open>
+<summary>PARTITION-TRANGLES</summary>
+Instance: graph $G=(V,E)$\
+Question: can $V$ be partitioned into subsets where each subset induces a $K_3$
+
+<details open>
+<summary>**Proof.** $3S\le_p PT$</summary>
+let $\varphi=C_1\land\cdots\land C_k$ be instance of $3S$
+
+
+construct $G$ as instance of $PT$ as follows:
+
+- for each variable $x_i$, let $n$ be number of clauses where $x_i$ or $\overline{x_i}$ appears
+  - construct variable widget of $4n$ nodes as follows:
+  - e.g. variable $x_i$ occurs in $C_1,C_2,C_3$
+
+todo
+<Tikz>
+{String.raw`
+\begin{tikzpicture}[scale=3,minimum size=25pt]
+\pgfmathsetmacro\r1
+\pgfmathsetmacro\n6
+\foreach\i[parse=true]in{0,...,\n - 1}{
+    % inner
+    \pgfmathsetmacro\a{ 360 / \n };
+    \pgfmathsetmacro\t{ \a * \i };
+    \pgfmathsetmacro\x{ \r * cos(\t) };
+    \pgfmathsetmacro\y{ \r * sin(\t) };
+    \node[circle,draw] at(\x,\y)(\i){};
+    % outer
+    \pgfmathsetmacro\aa{ \a / 2 };
+    \pgfmathsetmacro\tt{ \t + \aa };
+    \pgfmathsetmacro\s{ sqrt(3) };
+    \pgfmathsetmacro\rr{ \r * (cos(\aa) + \s * sin(\aa)) };
+    \pgfmathsetmacro\x{ \rr * cos(\tt) };
+    \pgfmathsetmacro\y{ \rr * sin(\tt) };
+    \pgfmathsetmacro\j{ div(\i + 2,2) };
+    \node[circle,draw] at(\x,\y)(\i'){$c_{i\j}$};
+    % variable
+    \pgfmathsetmacro\rr{ \r * (cos(\aa) + \s / 3 * sin(\aa)) };
+    \pgfmathsetmacro\x{ \rr * cos(\tt) };
+    \pgfmathsetmacro\y{ \rr * sin(\tt) };
+    \pgfmathsetmacro\v{ iseven(\i) ? "" : "\overline" };
+    \node at(\x,\y){$\v{x_i}$};
+}
+
+\foreach\i[parse=true]in{0,...,\n - 1}{
+    \pgfmathsetmacro\j{ int(mod(\i + 1, \n)) };
+    \draw(\j)--(\i')--(\i)--(\j);
+}
+\end{tikzpicture}
+`}
+</Tikz>
+
+</details>
+</details>

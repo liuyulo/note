@@ -1,0 +1,430 @@
+---
+title: Convergence of Functions
+---
+
+
+import Tikz from '../../components/Tikz.astro'
+
+
+## Pointwise Convergence
+
+<details class="definition" open>
+<summary>pointwise convergence</summary>
+
+real valued sequence $(f_n:A\to \mathbb{R})$ **pointwise converges** to $f$ on $A$ iff
+
+$$
+\forall a\in A\quad\forall\varepsilon\gt0\quad\exists N\in\mathbb{N}\quad\forall n\ge N\quad |f_n(a)-f(a)|\lt\varepsilon
+$$
+
+</details>
+
+<details class="example" open>
+<summary>$f_n(x)$ bounded, but limit unbonded</summary>
+
+on $(0,1)$
+
+$$
+\frac n{nx+1}\to \frac1x
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any $x\in(0,1)$, any $\varepsilon\gt0$
+
+$$
+\because\left|\frac n{nx+1}-\frac 1x\right|=\frac1{x(nx+1)}\gt\frac1{nx^2}
+$$
+
+thus choose (large) $N$ such that $1/N\lt\varepsilon x^2$<span class="float-right">(arch)</span>
+
+$\therefore$ for any $n\ge N$
+
+$$
+\left|\frac n{nx+1}-\frac 1x\right|\lt\frac 1{nx^2}\lt\frac 1{Nx^2}\lt\varepsilon\enspace\square
+$$
+</details>
+
+1. notice $|n/(nx+1)|$ is bounded by $n$, but $1/x$ is unbounded
+</details>
+
+<details class="example" open>
+<summary>$(f_n(x))$ unbounded, but limit bounded</summary>
+
+on $[0,1]$, let
+
+$$
+f_n(x)=\begin{cases}
+  n^2x&0\le x\lt 1/n\\
+  0&1/n\le x\le 1
+\end{cases}
+$$
+
+<Tikz>
+{String.raw`
+$$
+\begin{tikzpicture}
+    \draw[->] (0, 0) -- (0, 3.5);
+    \draw (0.1, 1) -- (-0.1, 1) node [anchor=east, align=right] {1};
+    \draw (0.1, 2) -- (-0.1, 2) node [anchor=east, align=right] {2};
+    \draw (0.1, 3) -- (-0.1, 3) node [anchor=east, align=right] {3};
+    \draw[->] (0, 0) -- (3.5, 0); 
+    \draw (1.5, 0.1) -- (1.5, -0.1) node [anchor=north, align=center] {$\frac12$};
+    \draw (3, 0.1) -- (3, -0.1) node [anchor=north, align=center] {1};
+    \draw (1, 0.1) -- (1, -0.1) node [anchor=north, align=center] {$\frac13$};
+    \draw[red] (0, 0) -- (3, 0.5) node [anchor=west] {$f_1$};
+    \node[red, circle, draw=red, inner sep=1, fill=white] at (3, 0.5) {};
+    \draw[blue] (0, 0) -- (1.5, 2) node [anchor=west] {$f_2$};
+    \node[blue, circle, draw=blue, inner sep=1, fill=white] at (1.5, 2) {};
+    \draw[green] (0, 0) -- (1, 3) node [anchor=west] {$f_3$};
+    \node[green, circle, draw=green, inner sep=1, fill=white] at (1, 3) {};    
+\end{tikzpicture}
+$$
+`}
+</Tikz>
+
+
+$\therefore f_n(x)\to 0$
+
+1. notice $f_n(x)$ is not uniformly bounded, but limit is bounded
+
+2. notice integral not commute
+
+$$
+\begin{align*}
+  \int_0^1\lim_{n\to\infty}f_n(x)dx&=\int_0^10dx=0\\
+  \lim_{n\to\infty}\int_0^1f_n(x)dx&=\lim_{n\to\infty}1/2=1/2
+\end{align*}
+$$
+
+</details>
+
+<details class="example" open>
+<summary>$f_n(x)$ continuous, but limit discontinuous</summary>
+
+$$
+\begin{align*}
+  x^n&\to 0\text{ on }[0,1)\\
+  x^n&\to 1\text{ on }1
+\end{align*}
+$$
+
+<Tikz>
+{String.raw`
+$$
+\begin{tikzpicture}
+    \draw[->] (0, 0) node[anchor=north]{0}-- (0, 3.5);
+    \draw (0.1, 3) -- (-0.1, 3) node [anchor=east, align=right] {1};
+    \draw[->] (0, 0) -- (3.5, 0);
+    \draw (3, 0.1) -- (3, -0.1) node [anchor=north, align=center] {1};
+    \draw [red,domain=0:3] plot (\x, \x);
+    \node[red] at (1.3, 1.7) {$x$};
+    \draw [green, domain=0:3] plot (\x, {3 * pow(\x / 3, 2)});
+    \node[green] at (1.5, 1.1) {$x^2$};
+    \draw [blue,domain=0:3] plot (\x, {3* pow(\x / 3, 3)});
+    \node[blue] at (2, 0.4) {$x^3$};
+    \node[circle, fill=blue, draw=blue, inner sep=0.3] at (3, 3) {};
+\end{tikzpicture}
+$$
+`}
+</Tikz>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any $x\in(0,1)$, any $\varepsilon\gt 0$
+
+$\therefore$ choose $N\gt\log_x\varepsilon$
+
+thus for any $n\gt N$
+
+$$
+|x^n|=x^n\gt x^N\gt x^{\log_x\varepsilon}=\varepsilon
+$$
+
+and notice $1^n=1$ for any $n$
+</details>
+
+1. notice $x^n$ continuous on $[0,1]$, but limit is not
+</details>
+
+<details class="example" open>
+<summary>$f_n(x)$ doesn't converge, but limit converges</summary>
+
+on $\mathbb{R}$
+
+$$
+\sin(nx)/n\to 0
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any $x\in\mathbb{R}$, any $\varepsilon\gt0$
+
+$\therefore\exists 1/N\lt\varepsilon$
+
+thus for any $n\gt N$
+
+$$
+|\sin(nx)/n|\le|\sin nx|/n\le 1/n\lt 1/N\lt \varepsilon\enspace\square
+$$
+</details>
+
+1. notice $\sin(nx)/n$ oscilates, but limit converges
+
+2. notice derivative not commute
+
+$$
+\begin{align*}
+  \frac d{dx}\lim_{n\to\infty}f_n(x)&=\frac d{dx}0=0\\
+  \lim_{n\to\infty}\frac d{dx}f_n(x)&=\lim_{n\to\infty}\cos x=\cos x
+\end{align*}
+$$
+</details>
+
+## Uniform Convergence
+
+<details class="definition" open>
+<summary>uniform convergence</summary>
+
+$(f_n:A\to \mathbb{R})$ **uniformly** convergence to $f$ on $A$, denoted $f_n\rightrightarrows f$ iff
+
+$$
+\forall\varepsilon\gt0\quad\exists N\in\mathbb{N}\quad\forall n\ge N\quad\forall x\in A\quad |f_n(x)-f(x)|\lt\varepsilon
+$$
+
+</details>
+
+<details class="theorem" open>
+<summary>uconv perserves continuity</summary>
+
+for $f_n$ continuous
+
+<div class="flex justify-center">
+
+$f_n\rightrightarrows f\implies f$ continuous
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any $x\in A$, any $\varepsilon\gt0$
+
+$\therefore\exists N\quad\forall y\in A\quad |f_N(y)-f(y)|\lt\varepsilon/3$<span class="float-right">($f_n\rightrightarrows f$)</span>
+
+$\therefore\exists\delta\gt0\quad f_N[B(x,\delta)]\subseteq B(f_N(x),\varepsilon/3)$<span class="float-right">($f_N$ continuous)</span>
+
+let any $y\in B(x,\delta)$, thus
+
+$$
+\begin{align*}
+  |f(x)-f(y)|&\le|f(x)-f_N(x)|+|f_N(x)-f_N(y)|+|f_N(y)-f(y)|\\
+  &\lt\varepsilon/3+\varepsilon/3+\varepsilon/3=\varepsilon\enspace\square
+\end{align*}
+$$
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary>uconv perserves bounded</summary>
+
+for $f_n$ bounded
+
+<div class="flex justify-center">
+
+$f_n\rightrightarrows f\implies f$ bounded and $f_n$ uniformly bounded
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+for any $n$, let $M_n$ be bound of $f_n$
+
+$\therefore\exists N\forall x$
+
+$$
+|f(x)|\lt|f_N(x)|+1\lt M_n+1
+$$
+
+$\therefore f$ bounded by $M_n+1$
+
+$\because$ for any $n\ge N$, any $x$
+
+$$
+|f_n(x)|\lt|f(x)|+1\lt M_n+2
+$$
+
+$\therefore$ let $M=\max\{M_1,\cdots, M_N,M_N+2\}$, we have for any $n$
+
+$$
+\forall x|f_n(x)|\le M\enspace\square
+$$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>uniform convergence iff cauchy</summary>
+
+for $(f_n:A\to \mathbb{R})$, $f_n\rightrightarrows f$ iff
+
+$$
+\forall\varepsilon\gt0\quad\exists N\gt0\quad\forall n,m\ge N\quad\forall x\in A\quad|f_n(x)-f_m(x)|\lt\varepsilon
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$(\implies )$ assume $f_n\rightrightarrows f$
+
+let any $\varepsilon\gt0$
+
+$\therefore\exists N\quad\forall n\ge N\quad\forall x\quad|f_n(x)-f(x)|\lt\varepsilon/2$ 
+
+$\therefore$ for any $n,m\ge N$
+
+$$
+|f_n(x)-f_m(x)|\le|f_n(x)-f(x)|+|f(x)-f_m(x)|\lt\varepsilon/2+\varepsilon/2=\varepsilon
+$$
+
+$(\impliedby )$ assume cauchy
+
+let any $\varepsilon\gt0$
+
+$\therefore\exists N$ st for any $n\ge N$, any $x\in A$
+
+$$
+\begin{align*}
+  &&\forall k\ge n\quad|f_n(x)-f_k(x)|\lt\varepsilon\\
+\therefore&&|f_n(x)-f(x)|=\lim_{k\to\infty}|f_n(x)-f_k(x)|\lt\varepsilon
+\end{align*}
+$$
+
+- where $f_k(x)\mapsto|f_n(x)-f_k(x)|$ is perserves limit
+
+$\therefore f_n\rightrightarrows f\enspace\square$
+</details>
+</details>
+
+## Series of Functions
+
+<details class="definition" open>
+<summary>pointwise/uniform convergence</summary>
+
+for $(f_n:A\to \mathbb{R})$
+
+<div class="flex justify-center">
+
+$\sum f_n$ converges p/u $\iff (s_k:A\to \mathbb{R})$ converges p/u where
+</div>
+
+$$
+s_k(x)=\sum_{n=i}^kf_n(x)
+$$
+
+</details>
+
+<details class="theorem" open>
+<summary>Weierstrass test</summary>
+
+for $(f_n:A\to \mathbb{R})$ where $f_n$ is bounded by $M_n\in\mathbb{R}^+$
+
+<div class="flex justify-center">
+
+$\sum M_n$ converges $\implies \sum f_n$ uniform converges
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let $m_k$ be $k$th partial sum of $(M_n)$
+
+$\therefore\exists N\quad\forall i\gt j\gt N\quad m_i-m_j=|m_i-m_j|\lt\varepsilon$<span class="float-right">(cauchy)</span>
+
+let any $i\gt j\ge N$, any $x\in A$
+
+$$
+\begin{align*}
+  \therefore&&|s_i(x)-s_j(x)|&=\left|\sum_{k=j+1}^if_n(x)\right|\le\sum_{k=j+1}^i|f_n(x)|\\
+  &&&\le\sum_{k=j+1}^iM_k=m_i-m_j\lt\varepsilon
+\end{align*}
+$$
+
+$\therefore (s_k)$ cauchy, thus $\sum f_n$ uconv $\enspace\square$
+</details>
+
+</details>
+
+<details class="example" open>
+<summary>power series</summary>
+
+let $f_n(x)=x^n/n!$
+
+
+
+<details class="list-none">
+<summary>**Proof.** $\sum f_n$ pconv on $\mathbb{R}$</summary>
+
+let any $x\in\mathbb{R}$
+
+by root test
+
+- let any $a_n=x^n/n!$
+
+$$
+\therefore\lim_{n\to\infty}\left|\frac{a_n}{a_{n-1}}\right|=\lim_{n\to\infty}\frac xn=0
+$$
+
+- $\therefore\sum a_n$ abs conv, thus conv $\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\sum f_n$ <s>uconv</s> on $\mathbb{R}$</summary>
+
+wts not cauchy
+
+let any $N\in\mathbb{N}$
+
+$\therefore |s_N(N)-s_{N+1}(N)|= N^{N+1}/(N+1)!\ge 1$, thus not cauchy
+
+$\therefore$ not uconv
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\sum f_n$ uconv on any compact $A\subseteq\mathbb{R}$</summary>
+
+$\because A$ bounded by some $M\gt 0$<span class="float-right">(HB)</span>
+
+$\because f_n$ is odd/even in increases on $[0,M]$
+
+$\therefore f_n$ is bounded by $f_n(M)$ on $A$
+
+$\because f_n(M)$ converges<span class="float-right">($\sum f_n$ pconv)</span>
+
+$\therefore (f_n)$ uconv<span class="float-right">(W)</span>
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>uconv perserves continuity</summary>
+
+for continuous $f_n:A\to \mathbb{R}$
+
+<div class="flex justify-center">
+
+$\sum f_n\rightrightarrows s\implies s:A\to \mathbb{R}$ continuous on $A$
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$\because \sum f_n\rightrightarrows s$
+
+$\therefore s_n\rightrightarrows s$ where $s_n=f_1+\cdots+f_n$ is finite sum of continuous function, thus continuous
+
+$\therefore s$ continuous $\enspace\square$
+</details>
+
+</details>

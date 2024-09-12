@@ -1,0 +1,346 @@
+---
+title: Polynomials
+---
+
+<details class="definition" open>
+<summary>ring of polynomial over $R$</summary>
+
+for commutative ring $R$, the ring of **polynomials** over $R$ is
+
+$$
+R[x]=\{a_nx^n+\cdots+a_1x+a_0:a_i\in R\enspace n\in\mathbb N\}
+$$
+
+<details>
+<summary><s>polynomial</s> sequence</summary>
+
+$a_0+a_1x+\cdots+a_nx^n$ can be technically represented as $(a_0,a_1,\cdots,a_n,0,0,\cdots)$
+
+- that is, sequence over $R$
+</details>
+
+altervatively
+
+$$
+R[x]=\left\{\sum_{i=0}^n a_0x^i:a_i\in R\right\}
+$$
+
+where
+
+- $a_0x^0$ denotes $a_0$
+- assume $a_i=0$ for any $i\gt n$
+
+<details>
+<summary>**Definition.** equality, addition, mulitplication</summary>
+equality
+
+$$
+\sum_{i=0}^na_ix^i=\sum_{i=0}^mb_i x^i\iff \forall i\in\mathbb{N}\enspace a_i=b_i
+$$
+
+addition
+
+$$
+\sum_{i=0}^na_ix^i+\sum_{i=0}^mb_ix^i=\sum_{i=0}^{\max\{n,m\}}(a_i+b_i)x^i
+$$
+
+multiplication
+
+$$
+\left(\sum_{i=0}^na_ix^i\right)\left(\sum_{i=0}^mb_ix^i\right)=\sum_{k=0}^{n+m}c_kx^k
+$$
+
+- where
+
+$$
+c_k=\sum_{i=0}^k a_{k-j}b_j=a_kb_0+a_{k-1}b_1+\cdots+a_1b_{k-1}+a_0b_k
+$$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>for polynomial $p(x)\in F[x]$</summary>
+
+<div class="flex justify-center">
+
+| | |
+|:-:|:-:|
+|$a_n\in F$ is the **leading coefficient**| $n$ is largest such that $a_n$ nonzero
+|$p(x)$ is **monic**|leading coefficient is $1$
+|$a\in F$ is **root/zero** of $p(x)=\sum a_ix^i$| $p(a)=\sum a_ia^i=0$ 
+|$a\in F$ is zero of $p(x)$ with multiplicity $k$|$(x-a)^k\mid p(x)$ and $(x-a)^{k+1}\nmid p(x)$
+</div>
+
+
+</details>
+
+<details class="definition" open>
+<summary>degree</summary>
+for polynomial $p(x)=a_nx^n+\cdots+a_1x+a_0$ where $a_n\ne0$
+
+- degree of $0$ is undefined
+- **degree** of $p(x)$ is $\deg p(x)=n$
+
+
+$$
+\begin{align*}
+  \deg (f(x)g(x))&=\deg f(x)+\deg g(x)\\
+  \deg (f(x)+g(x))&=\max\{\deg f(x),\deg g(x)\}
+\end{align*}
+$$
+</details>
+
+<details class="theorem" open>
+<summary>polynomial over integral domain is integeral domain</summary>
+if $D$ is integral domain, then $D[x]$ is integral domain
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let intdom $D$
+
+- $\therefore D$ comm, thes $D[x]$ comm
+- $\because 1$ is mul idenity of $D$
+- $\therefore p(x)=1$ is mul identity of $D[x]$
+
+wts $D[x]$ has no zero divisors, let any $p,q\in D[x]^*$
+
+- let $a_n,b_m\in D^*$ be leading coefficients of $p$ and $q$
+- $\therefore$ the leading coef of $p(x)q(x)$ is $a_nb_m\ne0$
+- $\therefore p(x)q(x)\ne0$ as wanted
+
+
+$\therefore D[x]$ is integral domain $\quad\square$
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary>division algorithm</summary>
+
+let field $F$ and $f(x),g(x)\ne 0\in F[x]$, then $\exists!q(x),r(x)\in F[x]$ where
+
+- $f(x)=q(x)g(x)+r(x)$
+- $r(x)=0$ or $\deg r(x)\lt \deg g(x)$
+
+**Corollary.** remainder theorem
+
+<div class="flex justify-center">
+
+$f(a)\in F\subseteq F[x]$ is remainder of $f(x)$ divided by $(x-a)$
+</div>
+
+**Corollary.** factor theorem: $a$ is zero $\iff (x-a)$ is factor
+<div class="flex justify-center">
+
+$f(a)=0\iff (x-a)|f(x)$ for any $a\in F$
+</div>
+</details>
+
+<details class="theorem" open>
+<summary>zeros</summary>
+for any $f(x)\in F[x]^*$
+<div class="flex justify-center">
+$\deg f(x)=n\implies f(x)$ has at most $n$ zeros (with mulitiplicity)
+</div>
+
+<details class="list-none">
+<summary>**Proof.** by induction</summary>
+
+base: $\deg f(x)=0\implies f(x)$ has no zeros (constant polynomial)
+
+let any $f(x)$ where $\deg f(x)=n\gt0$
+
+- case $f(x)$ has no zero, then it has at most $n$ zeros
+- case $f(x)$ has zero $a\in F$ with multiplicity $k$
+  - $\therefore f(x)=(x-a)^kq(x)$ for some $q\ne0$
+  - case $a$ is the only zero of $f(x)$
+  - $\therefore k=n-\deg f(x)\le n$ as wanted
+  - case let any other zero $b\ne a\in F$ of $f(x)$
+  - $\therefore 0=f(b)=(b-a)^kq(b)$
+  - $\because(b-a)^k\ne0$
+  - $\therefore q(b)=0$ since $F[x]$ is intdom
+  - $\therefore b$ is zero of $q(x)$
+  - $\therefore q(x)$ has at most $\deg q(x)=n-k$ zeros
+  - $\therefore f(x)$ has at most $k+(n-k)=n$ zeros $\quad\square$
+</details>
+
+a zero with multiplicity more than one is a **multiple zero**
+</details>
+
+<details class="theorem" open>
+<summary>polynomial over a field is principal ideal domain</summary>
+
+$F$ is field $\implies F[x]$ is principal ideal domain 
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let any field $F$
+
+- $\therefore F$ is intdom, thus $F[x]$ intdom
+
+let any ideal $I$ of $F[x]$
+
+- if $I=\{0\}$, then $I=\langle 0\rangle$, thus principal
+
+assume $I$ is not trivial
+
+- let $g\in I$ with minimum degree, thus $\langle g\rangle\sube I$
+- let any $f=gq+r\in I$ for some $q,r\in F[x]$ where $r=0$ or $\deg r\lt \deg g$
+- $\because r=f-gq\in I$ while $g\in I$ has min deg
+- $\therefore\deg r\not\lt\deg g$, thus $r=0$
+- $\therefore f=gq\in\langle g\rangle$
+- $\therefore I\sube\langle g\rangle$, thus principal
+
+$\therefore F[x]$ is principal ideal domain $\quad\square$
+
+</details>
+
+**Corollary.** PI $I=\langle g(x)\rangle$ iff $g(x)$ has minimum degree in $I$
+</details>
+
+## Evaluation Homomorphisms
+
+<details class="definition" open>
+<summary>evaluation homomorphism</summary>
+
+for ring $R$, let any $a\in R$, the **evaluation** homomorphism on $a$ is $\varphi_a:R[x]\to R$
+
+$$
+\varphi_a(f(x))=f(a)
+$$
+
+<details class="list-none">
+<summary>**Proof** (?) is homomorphism</summary>
+
+wts $h_1(a)=f(a)+g(a)$ where $h(x)=f(x)+g(x)$
+
+wts $h_2(a)=f(a)g(a)$ where $h_2(x)=f(x)g(x)$
+
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>$R[x]/\langle x\rangle\cong R$</summary>
+
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+consider evaluation homomorphism $\varphi_0:R[x]\to R$
+
+- $\therefore$ if $f(x)=\sum a_ix^i$, then $\varphi_0(f(x))=f(0)=a_0$
+- $\therefore f(x)\in\ker\varphi_0\iff a_0=0\iff f(x)\in\langle x\rangle$
+- $\therefore\ker\varphi_0=\langle x\rangle$ where $\operatorname{ran}\varphi_0=R$
+- $\therefore R[x]/\langle x\rangle\cong R\enspace\square$<span class="float-right">(1stiso)</span>
+
+
+</details>
+
+
+<details class="list-none">
+<summary>**Corolloary.** $\langle x\rangle$ is prime, not maximal ideal in $\mathbb{Z}[x]$</summary>
+
+$\because \mathbb{Z}[x]/\langle x\rangle\cong\mathbb{Z}$ where $\mathbb{Z}$ is ID, but not field
+
+$\therefore\langle x\rangle$ is prime, but not maximal $\enspace\square$
+</details>
+</details>
+
+## Factorisation of Polynomials over Fields
+
+
+<details class="theorem" open>
+<summary>degree 2/3 is reducible $\iff$ has zero</summary>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let $f(x)\in F[x]$ where $\deg f(x)\in\{2,3\}$
+
+$(\implies)$ assume $f(x)=p(x)q(x)$ for some $\deg p(x),\deg q(x)\lt\deg f(x)$
+- $\therefore 1\le\deg p(x),\deg q(x)$ and $\deg p(x)+\deg q(x)=\deg f(x)$
+- WLOG assume $\deg p(x)=1$, that is $p(x)=ax+b$ for some $a,b\in F$
+- $\therefore -b/a$ is zero of $p$, thus zero of $f(x)$ as wanted
+
+$(\impliedby)$ assume $f(x)$ has zero $a\in F$
+
+- $\therefore x-a$ is factor of $f(x)$ (factor theorem)
+- $\therefore f(x)$ is reducible over $F\quad\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary> principal ideal is maximal $\iff$ generator is irreducible</summary>
+for any $p(x)\in F[x]$
+
+<div class="flex justify-center">
+ $\langle p(x)\rangle$ is maximal $\iff p(x)$ is irreducible over $F$
+</div>
+
+
+<details class="list-none">
+<summary>**Proof.** </summary>
+$(\implies)$ assume $\langle p(x)\rangle$ is maximal 
+
+- case $p(x)=0$
+  - $\therefore\langle p(x)\rangle=\{0\}$
+  - case $F$ is trivial, thus $\langle p(x)\rangle=F[x]$, thus not maximal
+  - case $F$ is nontrivial, let nontrivial $a\in F$
+    - let ideal $I=\langle ax\rangle=\{axf(x):f(x)\in F[x]\}$
+    - $\therefore ax\in I$, thus $\langle p(x)\rangle\sub I$ since $I$ is ring (contains $0$)
+    - $\phantom\therefore a\notin I$, thus $I\sub F[x]$
+    - $\therefore\langle p(x)\rangle\sub I\sub F[x]$
+  - $\therefore\langle p(x)\rangle$ is not maximal
+- case $p(x)$ is unit
+  - $\therefore\langle p(x)\rangle=F[x]$, thus not maximal
+- $\therefore p(x)$ is nonzero and nonunit
+- let any factorisation $p(x)=g(x)h(x)$ over $F$
+- $\therefore\langle p(x)\rangle\sube\langle g(x)\rangle\sube F[x]$
+- $\therefore\langle p(x)\rangle=\langle g(x)\rangle$ or $\langle g(x)\rangle=F[x]$
+
+- case $\langle p(x)\rangle=\langle g(x)\rangle$
+  - $\therefore\exists a(x),a'(x)\in F[x]$ st $p(x)=g(x)a(x)$ and $g(x)=p(x)a'(x)$
+  $$
+  \begin{align*}
+  \deg p(x)&=\deg g(x)+\deg a(x)\ge\deg g(x)\\
+  \deg g(x)&=\deg p(x)+\deg a'(x)\ge\deg p(x)\\
+  \end{align*}
+  $$
+  - $\therefore\deg p(x)=\deg g(x)$
+- case $\langle g(x)\rangle=F[x]$
+  - $\therefore\deg g(x)=0$
+  - $\therefore\deg h(x)=\deg p(x)-\deg g(x)=\deg p(x)$
+- $\therefore p(x)$ irreducible in field $F$
+
+$(\impliedby)$ assume $p(x)$ is irreducible over $F$
+- let any ideal $I$ such that $\langle p(x)\rangle\sube I\sube F[x]$
+- $\because F[x]$ is principal ideal domain
+- $\therefore I$ is principal, let $f(x)\in F[x]$ be the generator of $I$
+- $\therefore\exists g(x)\in F[x]$ st $p(x)=f(x)g(x)$
+- $\because p(x)$ is irreducible
+- $\therefore f(x)$ is constant or $g(x)$ is constant
+- case $f(x)$ is constant
+  - $\therefore I=\langle f(x)\rangle=F[x]$
+- case $g(x)$ is constant, thus $\deg f(x)=\deg p(x)$
+  - $\therefore I=\langle f(x)\rangle=\langle p(x)\rangle$
+- $\therefore\langle p(x)\rangle$ is maximal $\quad\square$
+
+</details>
+
+**Corollary.** for any irreducible $p(x)$, the factor ring $F[x]/\langle p(x)\rangle$ is field
+
+**Corollary.** $p(x)|a(x)b(x)\implies p(x)|a(x)$ or $p(x)|b(x)$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$\because p(x)$ irreducible\
+$\therefore F[x]/\langle p(x)\rangle$ is field, thus integral domain\
+$\therefore\langle p(x)\rangle$ is prime ideal\
+$\because p(x)|a(x)b(x)$\
+$\therefore a(x)b(x)\in\langle p(x)\rangle$\
+$\therefore a(x)\in \langle p(x)\rangle$ or $b(x)\in\langle p(x)\rangle$\
+$\therefore p(x)|a(x)$ or $p(x)|b(x)\quad\square$
+</details>
+</details>
+
+

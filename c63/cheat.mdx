@@ -1,0 +1,52 @@
+---
+title: Cheatsheet
+---
+
+import tqbf from './_tqbf.png'
+
+## Time Complexity
+
+- CYCLE is P but #CYCLE is #PC
+- FP = #P $\implies$ P = NP
+
+**Closed under Concat**
+
+- P: for each way to split $w$ into $w_1w_2\quad\mathcal O(n)$
+- NP: cert is $\langle i,c_1,c_2\rangle$ with index to split, certs for $w_1$ and $w_2$
+- coNP: cert is $\langle c_0,c'_0,\cdots,c_{n+1},c'_{n+1}\rangle$
+  - $\overline{L_1},\overline{L_2}\in NP\implies\overline{L_1L_2}\in NP$
+  - verify $w_1\not\in L_1\lor w_2\not\in L_2$ for any $w_1w_2=w$
+
+**Lemma.** any 3CNF $\varphi$ can be converted to an equiv 3CNF $\varphi'$ such that
+- $\varphi'$ uses a superset of $\varphi$'s variables
+-  has distinct variables in each clause
+- for each satisfying $\tau$ of $\varphi$
+  - $\exists!\tau'$ that satisfies $\varphi'$
+  - $\tau'(x)=\tau(x)$ for any $\varphi$'s variable $x$
+
+**To show in NP**
+- show $L$ is decision
+- give certificate for each yes-instance
+- show certificate is polysize
+- give verifier of certificate
+- show verifier is polytime
+
+## Space Complexity
+
+$P\sube NP\sube PSP=NPSP$
+
+**TQBF to GG**
+
+$\footnotesize\forall x_1,x_2\exists x_3\forall x_4(x_1\lor x_2\lor\neg(\neg x_1\land(x_3\lor x_4)))\land\neg(\neg x_1\lor\neg x_2)\land(\neg x_3\lor x_4)$
+
+<img class="w-full" src={tqbf}/>
+
+**Planar GG**
+
+## Computability
+
+- $\mathrm{A}=\{\langle M,w\rangle:\exists k\langle M,w,k\rangle\in\mathrm{ACC}\}$
+- $\mathrm{HALT}=\{\langle M,w\rangle:\exists k\langle M,w,k\rangle\in\mathrm{H}\}$
+  - $L\le_m\mathrm{HALT}$ for any recognisable $L$ (i.e. complete in $\Sigma_1$)
+- $\mathrm E=\{\langle M\rangle: \forall w,k\langle M,w,k\rangle\not\in\mathrm{ACC}\}$
+- $\mathrm{ALL}=\{\langle M\rangle:\forall w\exists k\langle M,w,k\rangle\in\mathrm{ACC}\}$

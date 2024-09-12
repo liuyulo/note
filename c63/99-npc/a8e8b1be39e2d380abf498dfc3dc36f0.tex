@@ -1,0 +1,36 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor, amsmath, amssymb}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}
+\node at(-1,2)  (11){$\overline{x_1}$};
+\node at(0,2)   (12){$\overline{x_2}$};
+\node at(1,2)   (13){$x_3$};
+\node at(2,1)   (21){$x_1$};
+\node at(2,0)   (22){$x_2$};
+\node at(2,-1)  (23){$\overline{x_3}$};
+\node at(1,-2)  (31){$\overline{x_1}$};
+\node at(0,-2)  (32){$\overline{x_2}$};
+\node at(-1,-2) (33){$\overline{x_3}$};
+\node at(-2,-1) (41){$x_1$};
+\node at(-2,0)  (42){$\overline{x_2}$};
+\node at(-2,1)  (43){$\overline{x_3}$};
+\path
+    (11) edge (22) edge (23) edge (31) edge (32) edge (33) edge (42) edge (43)
+    (12) edge (21) edge (23) edge (31) edge (32) edge (33) edge (41) edge (42) edge (43)
+    (13) edge (21) edge (22) edge (31)  edge (32) edge (41) edge (42)
+    (21) edge (32) edge (33) edge (41) edge (42) edge (43)
+    (22) edge (31) edge (33) edge (41) edge (43)
+    (23) edge (31) edge (32) edge (33) edge (41) edge (42) edge (43)
+    (31) edge (42) edge (43)
+    (32) edge (41) edge (42) edge (43)
+    (33) edge (41) edge (43) edge (42);
+\path[dashed,red]
+    (11) edge (21) edge (41)
+    (12) edge (22)
+    (13) edge (23) edge (33) edge (43)
+    (21) edge (31)
+    (22) edge (32) edge (42)
+    (31) edge (41);
+\end{tikzpicture}
+\end{document}

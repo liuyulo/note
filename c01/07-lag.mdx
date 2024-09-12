@@ -1,0 +1,131 @@
+---
+title: Lagrange's Theorem
+---
+
+<details class="example" open>
+<summary>$|G|$ odd $\implies x^2=a$ has unique solution for any $a\in G$</summary>
+
+let $|G|=2n-1$, thus $a^{2n-1}=e$ by lagrange
+
+wts $a\mapsto a^2$ injective, assume $a^2=b^2$
+
+$$
+\therefore a=a\cdot a^{2n-1}=a^{2n}=(a^2)^n=(b^2)^n=b\cdot b^{2n-1}=b\\
+$$
+
+thus $a\mapsto a^2$ inj, thus solution unique $\square$
+</details>
+
+<details class="example" open>
+<summary>$|G|=105$ and has only one subgroup for each divisor, wts $G$ cyclic</summary>
+
+let $G_1,G_3,G_5,G_7,G_{15},G_{21},G_{35}\le G$ where $|G_i|=i$
+
+let $S=\bigcup G_i\sube G$
+
+$$
+\begin{aligned}
+  \because&&|S|&=\left|\bigcup G_i\right|\le\sum|G_i|=87\lt105=|G|\\
+  \therefore&&\exists a&\in G\setminus S\\
+  \because&&\langle a\rangle&\le G\textsf{ and }a\in\langle a\rangle\\
+  \therefore&&\langle a\rangle&=G\textsf{ thus cyclic }\quad\square
+\end{aligned}
+$$
+</details>
+
+<details class="example" open>
+<summary>$|G|=63\implies\exists a\in G$ st $|a|=3$</summary>
+
+- $\because |G|\ge2$, thus $\exists a\ne e\in G$
+- $\therefore$ by lagrange, $|a|=3,7,9,21,63$
+- case $|a|=63$, then $|a^{21}|=63/21=3$
+- case $|a|=21$, then $|a^7|=21/7=3$
+- case $|a|=9$, then $|a^3|=9/3=3$
+- case $|a|$, then done
+
+$\therefore$ let $S=G\setminus\{\varepsilon\}$ and BWOC assume $\forall a\in S\enspace|a|=7$
+- $\therefore\forall a,b\in S\enspace\langle a\rangle=\langle b\rangle$ or $\langle a\rangle\cap\langle b\rangle=\{\varepsilon\}$
+- $\therefore 63=|G|=|\bigcup\langle a\rangle|=6k+1$
+- but $6\nmid(63-1)$ thus $\square$
+
+</details>
+
+<details class="example" open>
+<summary>$|G|=10\implies\exists a\in G$ st $|a|=5$</summary>
+let $a\ne\varepsilon\in G$, thus by lagrange $|a|=2,5,10$
+
+- case $|a|=10,5$, then $|a^{|a|/5}|=2$
+
+$\therefore$ let $S=G\setminus\{\varepsilon\}$ and BWOC assume $\forall a\in S\enspace|a|=2$
+
+- $\therefore$ for any $a,b\in S$
+
+$$
+ab=(ab)^{-1}(ab)^2=(ab)^{-1}=b^{-1}a^{-1}=b^{-1}b^2a^2a^{-1}=ba
+$$
+
+- $\therefore H=\{e,a,b,ab\}\le G$ but $|H|=4\nmid 10=|G|$
+- thus contradicts lagrange $\square$
+</details>
+
+<details class="theorem" open>
+<summary>if $|G|\lt\infty$ and $H\le G$, then $|H|$ divides $|G|$</summary>
+- also, number of left/right coset of $H$ in $G$ is $|G|/|H|$
+
+<details class="list-none">
+<summary>**Proof.** let $A=\{aH:a\in G\}=\{a_iH\}_{i=1}^r$ for $r\in\mathbb N$</summary>
+
+- $\therefore$ any $a\in G$ belongs to $a_iH$ for some $i$
+- $\therefore G=\bigcup a_iH$
+- $\because a_iH$ are distinct, thus the union is disjoint
+- $\therefore |G|=\sum|a_iH|=\sum|H|=r|H|$ where $r\in\mathbb N$
+</details>
+
+<details open>
+<summary>converse is false, $A_4$ has no group of order $6$</summary>
+</details>
+</details>
+
+<details class="definition" open>
+<summary>index of a subgroup</summary>
+for $H\le G$, let $|G:H|$ be **index** of $H$
+
+- i.e. the nubmer of left cosets of $H$ in $G$
+- $|G:H|=|G|/|H|$
+</details>
+
+<details class="theorem" open>
+<summary>corollary for **finite** group $G$</summary>
+- $|a|$ divides $|G|$ since $\langle a\rangle\le G$
+- $|G|=p$ is prime $\implies G\cong Z_p$ (thus cyclic)
+<details>
+<summary>**Proof.** let some $a\ne e\in G$</summary>
+$\therefore |\langle a\rangle|$ divides $p=|G|$ and $|\langle a\rangle|\ne0$
+
+$\therefore|\langle a\rangle|=|G|$ since $p$ is prime
+
+$\therefore\langle a\rangle=G$ since $\langle a\rangle\le G$
+</details>
+</details>
+
+## Coset
+
+<details class="definition" open>
+<summary>coset in group $G$</summary>
+for $a\in G$ and $\varnothing\ne H\sube G$
+
+- $aH=\{ah:h\in H\}$ is the **left coset** of $H$ in $G$ containing $a$
+- $Ha$ is **right coset**
+- $aHa^{-1}=\{aha^{-1}:h\in H\}$
+</details>
+
+<details class="theorem" open>
+<summary>let $H\le G$ and $a,b\in G$</summary>
+- $(ab)H=a(bH)$ 
+- $aH=H\iff a\in H\iff aH\le G$
+  - $H$ **absorbs** $a$
+- $aH=bH\iff a\in bH\iff b^{-1}a\in H\iff aH\cap bH\ne\varnothing$
+  - two cosets are identical xor disjoint
+- $aH=Ha\iff H=aHa^{-1}$
+- $|aH|=|bH|$
+</details>

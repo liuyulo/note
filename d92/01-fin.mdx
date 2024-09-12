@@ -1,0 +1,243 @@
+---
+title: Finite Fields
+---
+
+
+
+## Extension Fields
+
+<details class="definition" open>
+<summary>extension field</summary>
+field $E$ is an **extension** of field $F$ iff $F$ (up to isomorphism) is a subfield of $E$
+</details>
+
+<details class="theorem" open>
+<summary>fundamental theorem of field theory</summary>
+for any nonconstant $f(x)$ over field $F$
+
+<div class="flex justify-center">
+there exists extension of $E$ in which $f(x)$ has a zero
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let any field $F$ and any nonconstant $f(x)\in F[x]$
+
+- $\because F[x]$ is UFD
+- $\therefore f(x)$ has some irreducible factor $p(x)$
+- let $E=F[x]/\langle p(x)\rangle$ be field
+- let homomorphism $\varphi:F\to E$ where $\varphi(a)=a+\langle p(x)\rangle$
+- $\therefore\varphi$ is injective, thus $F\cong\varphi(F)\sube E$ as wanted
+
+wts $p(x)$ has zero in $E$
+
+- let $p(x)=a_nx^n+\cdots+a_1x+a_0$
+
+$$
+\begin{align*}
+  \therefore p(x+\langle p(x)\rangle)&=a_n(x+p\langle x\rangle)^n+\cdots+a_1(x+p\langle x\rangle)+a_0\\
+  &=a_nx^n+\cdots+ax+a_0+\langle p(x)\rangle\\
+  &=p(x)+\langle p(x)\rangle=\langle p(x)\rangle=0_E
+\end{align*}
+$$
+
+- $\therefore x+\langle p(x)\rangle\in E$ is zero of $p(x)\quad\square$
+</details>
+</details>
+
+
+<details class="definition" open>
+<summary>splitting field</summary>
+
+- nonconstant $f(x)$ over field $F$ **splits** in extension $E$ iff
+
+$$
+\exists a\in F\enspace\exists a_i\in E\quad f(x)=a(x-a_1)\cdots(x-a_n)
+$$
+
+- extension $E$ is a **splitting field** for nonconstant $f(x)$ over field $F$ iff 
+
+<div class="flex justify-center">
+$E$ is the smallest extension of $F$ in which $f(x)$ splits (i.e. contains $a_i$)
+</div>
+
+</details>
+
+<details class="theorem" open>
+<summary>splitting field exists</summary>
+for any nonconstant $f(x)$ over field $F$
+<div class="flex justify-center">
+there exists a splitting field $E$ for $f(x)$ over $F$
+</div>
+
+<details class="list-none">
+<summary>**Proof.** (?)</summary>
+p369
+</details>
+</details>
+
+### Derivative
+
+<details class="definition" open>
+<summary>formal derivative (axiomatic)</summary>
+for ring $R$, the **formal derivative** is the map $(-)':R[x]\to R[x]$ such that
+
+- $r'=0$ for any $r\in R\sube R[x]$
+- $x'=1$
+- commutes with addition
+  $$
+  (a+b)'=a'+b'
+  $$
+- product rule wrt multiplication
+$$
+(ab)'=a'b+ab'
+$$
+</details>
+<details class="theorem" open>
+<summary>formal derivative (formula)</summary>
+$$
+\left(\sum_ia_ix_i\right)=\sum_iia_ix^{i-1}
+$$
+<details class="list-none">
+<summary>**Proof.**</summary>
+$$
+\begin{align*}
+\left(\sum_ia_ix_i\right)&=\sum(a_ix^i)'\\
+&=\sum a_i'x^i+a_i(x^i)'\\
+&=\sum\left(0x^i+a_i\left(\sum_{j=1}^ix^{j-1}(x')x^{i-j}\right)\right)\\
+&=\sum_i\sum_{j=1}^ia_ix^{i-1}\\
+&=\sum_iia_ix^{i-1}\quad\square
+\end{align*}
+$$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>has a multiple zero in extension $\iff$ not coprime with derivative</summary>
+for any polynomial $f(x)$ over field $F$
+
+$f(x)$ has a mult zero in some ext $E\iff f(x)$ and $f'(x)$ are not coprime in $F[x]$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+(not relative prime means has common factor of positive degree)
+
+$(\implies)$ assume $f(x)\in F[x]$ has a multiple zero $a$ in some extension $E$
+
+- $\therefore\exists g(x)\in E[x]$ st $f(x)=(x-a)^2g(x)$
+- $\therefore f'(x)=(x-a)^2g'(x)-2(x-a)g(x)$
+- $\therefore(x-a)$ is common factor of $f(x)$ and $f'(x)$ in $E[x]$
+- BWOC assume $f(x)$ and $f'(x)$ has no comm fac of pos deg in $F[x]$
+- $\therefore\exists h(x),k(x)\in F[x]$ st $f(x)h(x)+f'(x)k(x)=1$
+- $\because(x-a)$ is comm fac of $f(x)h(x)+f'(x)k(x)\in E[x]$ 
+- $\therefore$ contradicts that $(x-a)$ is not factor of $1\in E[x]$
+- $\therefore f(x)$ and $f'(x)$ not relative prime
+
+
+$(\impliedby)$ assume has common factor of positive degree
+- let $a\in F$ be zero of such common factor
+- $\therefore a$ is zero of $f(x)$ and $f'(x)$
+- $\therefore\exists q(x)\in F[x]$ st $f(x)=(x-a)q(x)$
+- $\therefore f'(x)=(x-a)q'(x)+q(x)$ and $0=f'(a)=q(a)$
+- $\therefore a$ is zero of $q(x)$, thus multiple zero of $f(x)=(x-a)q(x)\quad\square$
+</details>
+</details>
+
+## Algebraic Extensions
+
+<details class="definition" open>
+<summary>extension field is vector space</summary>
+for extension $E$ of field $F$
+
+<div class="flex justify-center">
+$E$ is a vector space over $F$
+</div>
+- $[E:F]=\dim E$ is the **degree** of extension
+- $E$ is a **finite** extension iff $E$ is finite dimensional
+</details>
+
+<details class="definition" open>
+<summary>algebraic extension</summary>
+for extension $E$ over field $F$
+
+- $a\in E$ is **algebraic** over $F\iff a$ is zero of some polynomial in $F[x]$
+  - otherwise *transcendental* (transcends the power of algebraic methods)
+- extension $E$ is **algebraic** over $F\iff$ every element in $E$ is algebraic over $F$
+</details>
+
+<details class="theorem" open>
+<summary>characterisations of extensions</summary>
+for extension $E$ over field $F$
+
+- $a\in E$ is algebraic over $F\implies F(a)\cong F[x]/\langle p(x)\rangle$ where $p(x)$ is minimum 
+- $a\in E$ is transcendental over $F\implies F(a)\cong F(x)$
+</details>
+<details class="definition" open>
+<summary>minimum polynomial for algebraic $a\in E$ over field $F$</summary>
+$p(x)\in F[x]$ is monic irreducible and $p(a)=0$
+</details>
+
+<details class="theorem" open>
+<summary>minimum polynomial is unique</summary>
+</details>
+
+<details class="theorem" open>
+<summary>minimum polynomial divides polynomials with same zero</summary>
+for minimum $p(x)\in F[x]$ for algebraic $a\in E$ over field $F$
+
+$$
+\forall f(x)\in F[x]\enspace f(a)=0\implies p(x)|f(x)
+$$
+</details>
+
+
+
+
+## Finite Fields
+
+<details class="theorem" open>
+<summary>finite fields of prime power order exists and unique up to isomorphism</summary>
+for any prime power $q=p^n$ there is a unique field of order $q$ up to isomorphism
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+wts exists, let any prime power $q=p^n$
+
+- let $E$ be splitting field of polynomial $f(x)=x^q-x$ over field $\mathbb Z_p$
+- $\therefore E$ contains all $q$ zeros of $f(x)$ with multiplicity
+- $\because f'(x)=p^nx^{q-1}-1=-1\in\mathbb Z_p[x]$ is coprime with $f(x)$
+- $\therefore f(x)$ has $q$ distinct zeros in $E$
+- let $K=\{a\in E:f(a)=0\}$ be field with order $q$
+- $\because K$ has a subfield isomorphic to $\mathbb Z_p$ generated by $1\in K$
+- $\therefore f(x)\in\mathbb Z_p[x]$ splits in extension field $K\sube E$
+- $\therefore K=E$ since $E$ is smallest, thus $|E|=q$
+
+wts unique, let any field $K$ of order $q$
+
+- $\therefore K$ is extension of $\mathbb Z_p$
+- $\because K^*$ is multiplicative group of order $q-1$
+- $\therefore x^{q-1}=1$ for any $x\in K^*$
+- $\therefore x^q=x$ for any $x\in K$
+- $\therefore K=\{a:f(a)=0\}$, thus is splitting field of $f(x)$ over $\mathbb Z_p$
+- $\therefore$ unique since all splitting fields are isomorphic $\quad\square$
+</details>
+
+let $\mathbb F_q$ denote THE field of order $q$
+</details>
+
+<details class="example" open>
+<summary>constructions for prime $p$</summary>
+
+$\mathbb F_p\cong\mathbb Z_p$
+- add mod $p$, mul mod $p$
+
+$\mathbb F_{p^n}\cong\mathbb F_p^n$ with $\dim\mathbb F_{p^n}=n$
+</details>
+
+<details class="theorem" open>
+<summary>vector space in addition, cyclic in multiplication</summary>
+$\mathbb F_{p^n}\cong\mathbb Z_p^n$  under addition\
+$\mathbb F_q^*\cong\mathbb Z_{q-1}$ under multiplication
+</details>
+

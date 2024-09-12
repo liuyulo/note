@@ -1,0 +1,679 @@
+---
+title: Cheatsheet
+---
+
+import Code from '../../components/Code.astro'
+
+## Syntax
+
+<div class="grid grid-cols-2">
+
+```hs
+f1 x y = a * b
+  where
+    a = x + y
+    b = x - y
+```
+
+```hs
+f2 x y =
+    let a = x + y
+        b = x - y
+    in a * b
+```
+</div>
+
+
+### Patterns
+
+```hs
+fac0 :: (Eq a, Num a) => a -> a
+fac0 n = if n == 0 then 1 else n * f (n - 1)
+
+fac1 0 = 1
+fac1 n = n * fac1 (n - 1) -- don't $
+
+fac2 n = case n of
+    0 -> 1
+    _ -> n * fac2 (n - 1) -- wildcard
+
+fac3 n
+    | n == 0 = 1 -- guards
+    | otherwise = n * fac3 (n - 1)
+
+f s@(x : xs) = x : s -- "as" pattern
+```
+
+### List
+
+- producers
+  ```hs
+    [0, 1] == 0 : 1 : []
+    [0..3] == [0, 1, 2, 3]
+    [10..] == [10, 11, ...]
+  [0,2..7] == [0, 2, 4]
+  ```
+- comprehension
+  ```hs
+  [(i,j) | i <- [1,2], j <- [1..3]] -- cartesian product
+  -- [(1,1),(1,2),(1,3),(2,1),(2,2),(2,3)]
+  [(i,j) | i <- [1,2], j <- [1..3], i < j] -- guard
+  -- [(1,2),(1,3),(2,3)]
+  [(i,j) | i <- [1,2], let k = i*i, j <- [1..k]] -- let
+  -- [(1,1),(2,1),(2,2),(2,3),(2,4)]
+  catMaybes :: [Maybe a] -> [a]
+  catMaybes xs = [x | Just x <- xs] -- skip on no match
+  ```
+
+
+## Lazy Evaluation
+
+- need to match patterns `->` evaluate
+- use same argument `->` shared reference
+- lazy can cause `O(n)` space when arith not used
+
+```
+seq :: a -> b -> b
+```
+- `seq x y` means evaluate `x` until WHNF, then continue with `y`
+- WHNF means has constructor on top, e.g. `λ`, `10`, `(:)`
+
+
+## Typeclasses
+
+```hs
+class Eq a where
+    (==) :: a -> a -> Bool -- or (/=)
+class Eq a => Ord a where
+    compare :: a -> a -> Ordering -- LT | EQ | GT
+
+class Functor f where
+    fmap :: (a -> b) -> f a -> f b
+    (<$) :: a -> f b -> f a -- replace values with (x::a)
+class Functor f => Applicative f where -- liftA3 *> <*
+    (<*>) :: f (a -> b) -> f a -> f b
+    pure :: a -> f a
+    -- liftA2 f x y = f <$> x <*> y
+    liftA2 :: (a -> b -> c) -> f a -> f b -> f c
+class Applicative m => Monad m where -- liftM5
+    (>>=) : m a -> (a -> m b) -> m b
+
+class Semigroup a where
+    (<>) :: a -> a -> a -- associative
+class Semigroup a => Monoid a where
+    mempty :: a -- identity
+class Foldable t where
+    foldMap :: Monoid m => (a -> m) -> t a -> m -- right assoc
+    foldr :: (a -> b -> b) -> b -> t a -> b -- foldr' for seq
+    foldr1 :: (a -> a -> a) -> t a -> a -- not total
+
+class Num a -- (+) (-) (*) abs
+class Integral a -- div mod -- Int Integer
+class Fractional a -- (/) recip -- Rational Float Double
+```
+
+### Types
+
+```hs
+data Bool = True | False
+data Maybe a = Nothing | Just a
+data Either a b = Left a | Right b
+```
+
+### Instances
+
+```hs
+data MyList a = Empty | Cons a (MyList a) deriving (Eq, Show)
+instance Foldable MyList where
+    foldMap _ Empty = mempty
+    foldMap f (Cons x xt) = f x <> foldMap f xt
+s :: Integer
+s = foldr (+) 1 $ Cons 0 (Cons 1 Empty)
+```
+
+## Partial Order Theory of Recursion
+
+N.B. `⊥ != B2 ⊥ ⊥`
+
+- <Code code="data Unit = U" lang="hs"/> is `{⊥, U}`
+- <Code code="data Bool = F | T" lang="hs"/> is `{⊥, F, T}`
+- <Code code="data B2 = B2 Bool Bool" lang="hs"/> is `{⊥, B b c | b, c ∈ Bool}`
+- `⊥: a -> b` is `⊥ = λx.⊥`
+
+evaluation
+- (application) `⊥ x` is ⊥
+- (arithmetic) `⊥ * 0` is ⊥
+- (comparision) `⊥ > 0` is ⊥
+- (pattern match) `(case ⊥ of ...)` is ⊥
+- (ifthenelse) `(if ⊥ then ...)` is ⊥
+
+recursion
+
+1. define f<sub>0</sub> as ⊥
+2. evaluate f<sub>1</sub> where each recursive call uses f<sub>0</sub>
+3. evaluate f<sub>i+1</sub> where each recursive call uses f<sub>i</sub>
+4. find pattern to make a guess
+
+example <Code code="f 0 = 0; f x = 1 + f $ x - 2" lang="hs"/>
+
+{/* $ */}
+
+|x              |...|-2|-1|0|1|2|3|4|5|6|...|
+|-:|:-:  |:-: |:-: |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|f<sub>0</sub> x|...|⊥ |⊥ |⊥|⊥|⊥|⊥|⊥|⊥|⊥|...
+|f<sub>1</sub> x|...|⊥ |⊥ |0|⊥|⊥|⊥|⊥|⊥|⊥|...
+|f<sub>2</sub> x|...|⊥ |⊥ |0|⊥|1|⊥|⊥|⊥|⊥|...
+|f<sub>3</sub> x|...|⊥ |⊥ |0|⊥|1|⊥|2|⊥|⊥|...
+|f<sub>4</sub> x|...|⊥ |⊥ |0|⊥|1|⊥|2|⊥|3|...
+
+## Parse
+
+```ebnf
+<atom> ::= "0" | "1" | "(" <expr> ")"
+<mul>  ::= <mul> "*" <mul> | <atom>
+<expr> ::= <expr> "+" <mul>   (* left recursive *)
+<expr> ::= <mul> "+" <expr>   (* right recursive *)
+```
+
+### EBNF
+
+- `{ <expr> }` for `*` occurrences
+- `[ <expr> ]` for `?` occurrences
+
+### Stages
+
+1. lexical analysis (aka tokenisation): char steam to tokens
+2. parse CFG on tokens
+
+### Trees
+
+- parse/derivation tree: has non-terminal symbols
+- abstract sytax tree: only terminals
+
+### Parsers
+
+```hs
+data Parser a = MkParser (String -> Maybe (String, a))
+-- primitive
+anyChar :: Parser Char
+char :: Char -> Parser Char
+satisfy :: (Char -> Bool) -> Parser Char
+eof :: Parser () -- expect no input
+-- token
+whitespaces :: Parser String
+natural :: Parser Integer -- natural number
+identifier :: [String] -> Parser String -- avoid reserved
+keyword :: Strign -> Parser String -- read reserved
+anyOperator :: Parser String
+operator :: String -> Parser String
+openParen, closeParen :: Parser Char
+```
+
+### Example
+
+```hs
+if' = keyword "if"; else' = keyword "else"
+p0 = liftA3 f (arith <* if') (expr <* else') p0
+p1 = pure (\a _ e _ p -> f a e p)
+    <*> arith <*> if' <*> expr <*> else' <*> p1
+p2 = arith >>= \a -> if'
+    *> expr >>= \e -> else'
+    *> p2 >>= \p -> pure $ f a e p
+```
+
+{/* $ */}
+
+## Type Inference
+```
+env = Γ = { u1::T1, u2::T2, ... }
+```
+
+- `unify/uni`: subst types then match/equate them
+- `unify_intern/uin`: mutates Γ, throws error if types don't match
+- `apply_subst/app`: apply substitution with the current Γ
+
+### Unify
+
+```hs
+unify T1 T2 = unify_intern (apply_subst T1) (apply_subst T2)
+unify_intern u T = -- or unify-intern T u where u is unknown
+    case T == u -> return
+    case u occurs in T -> infinite type error
+    else
+        add u:=T to env
+        replace u with T in Γ
+unify_intern c1 c2 = -- type constants
+  case c1 == c2 -> return
+  else type mismatch error
+unify_intern (f T1) (f T2) = unify_intern T1 T2 -- functors
+unify_intern (T1 -> S1) (T2 -> S2) = -- or (T1, S1) (T2, S2) etc
+  unify_intern T1 T2
+  unify_intern (apply_subst S1) (apply_subst T2)
+-- throw type mismatch error otherwise
+```
+
+#### Infer
+`infer Γ term` infers type of `term` under `Γ`: monomorphic
+
+`infer-poly Γ term` infers type with polymorphism
+
+- infer normally, then add polymorphism (e.g. `∀a.a->a`)
+
+```hs
+--- literal: hardcoded types
+infer Γ True = Bool
+infer Γ 0 = Integer
+--- variable: lookup (then instantiate)
+infer Γ x =
+    T = lookup type of x in env
+    case T not found -> variable not in scope error
+    case T monomorphic -> return (apply_subst T)
+    case T polymorphic ->
+        create new unknowns
+        T' = instantiate T with created unknowns
+        return apply_subst T'
+--- lambda: unknown for arguments, then infer body
+infer Γ (\a -> body) =
+    let u be unknown (for a)
+    T = infer { Γ, a::u } body
+    return apply_subst (u->T)
+--- application: infer lambda and arguments independently
+infer Γ (f x) =
+    (Tf, Tx) = (infer Γ f, infer Γ x)
+    let u be unknown; unify Tf (Tx -> u)
+    return (apply_subst u)
+-- ifthenelse
+infer Γ (if cond then expr1 else expr2)
+    T = infer Γ cond; unify T Bool -- cond::Bool
+    (T1, T2) = (infer Γ expr1, infer Γ expr2)
+    unify T1 T2 -- expr1 expr2 has same type
+    return (apply_subst T1)
+-- abstract data type: pattern matching
+data Maybe a = Nothing | Just a
+infer Γ Nothing
+    let u be unknown
+    return (Maybe u)
+infer Γ (Just expr)
+    T = infer Γ expr
+    return (Maybe T)
+infer Γ (case expr of { Nothing -> exprN; Just x -> exprJ}) =
+    T = infer Γ expr
+    let u be unknown; unify T (Maybe u)
+    (TN, TJ) = (infer Γ exprN, infer { Γ, x::u } exprJ)
+    unify TN TJ
+    return (apply_subst TN)
+-- let
+generalise Γ T =
+    Δ = Γ but updated -- use apply-subst to solve unknowns first
+    for each unknown ui in T
+        case ui is not in Δ -> let ai be new type variable
+    return ∀a1 a2 ⋯ an. (T but replace ui by ai)
+infer Γ (let x = exprx in body) = -- single def, nonrecursive
+    Tx = infer Γ exprx
+    Ux = generalise Γ Tx -- generalise (e.g. function argument)
+    return infer { Γ, x::Ux } body
+infer Γ (let x = exprx in body) -- single definition, recursive
+    let ux be unknown
+    Tx = infer { Γ, x::ux } exprx
+    Ux = generalise Γ Tx -- no x::ux
+    return infer { Γ, x::Ux } body
+infer Γ (let x = … ; y = … in body)
+    make directed graph -- if x uses y then x <- y
+    for each SCC =  -- if SCC A -> SCC B, then do A first
+        -- suppose SCC is x1 = e1, …, xn = en
+        make unknowns u1, …, un
+        Ti = infer {x1::u1, …, xn::un} (ei) -- do for each i
+        Ui = generalise {} Ti
+        -- then use Ti Ui to for next iter of SCC
+    infer { ... } body
+```
+
+### Mutually Recursive
+```hs
+let x = use y    -- f <- xyz -> hg -> f
+    y = use z
+    z = use x
+    g = use h, y
+    h = use g, z
+    f = use g, x
+in body
+```
+
+- First infer xs, ys, zs together.
+  ```
+  create unknowns ux, uy, uz for x, y, z
+  Tx := infer {x :: ux, y :: uy, z :: uz} (use y)
+  Ty := infer {x :: ux, y :: uy, z :: uz} (use z)
+  Tz := infer {x :: ux, y :: uy, z :: uz} (use x)
+  Txg := generalize {} Tx
+  Tyg := generalize {} Ty
+  Tzg := generalize {} Tz
+  ```
+- Then use that to infer g, h together.
+  ```
+  create unknowns ug, uh for g, h
+  Tg := infer {g:ug, h:uh, x:Txg, y:Tyg, z:Tzg} (use h, y)
+  Th := infer {g:ug, h:uh, x:Txg, y:Tyg, z:Tzg} (use g, z)
+  Tgg := generalize {x :: Txg, y :: Tyg, z :: Tzg} Tg
+  Thg := generalize {x :: Txg, y :: Tyg, z :: Tzg} Th
+  ```
+- Then use the above to infer f.
+  ```
+  Tf := infer {g:Tgg, h:Thg, x:Txg, y:Tyg, z:Tzg} (use g, x)
+  Tfg := generalize {g:Tgg, h:Thg, x:Txg, y:Tyg, z:Tzg} Tf
+  ```
+- Finally can infer body.
+  ```
+  infer {f:Tfg, g:Tgg, h:Thg, x:Txg, y:Tyg, z:Tzg} body
+  ```
+
+
+
+
+## Parametricity
+
+### The Abstraction Theorem
+
+let `A₁` and `A₂` be implementations of abstract type `A`
+
+1. let correspondence `a₁ ~ a₂` for `a₁ :: A₁` and `a₂ :: A₂`
+2. let `D₁` and `D₂` be domains:
+    ```
+         D₁(A) = A₁                    D₂(A) = A₂
+    D₁(T -> U) = D₁(T) -> D₁(U)   D₂(T -> U) = D₂(T) -> D₂(U)
+         D₁(T) = T                     D₂(T) = T
+    ```
+3. let correspondence `x₁ ⟨T⟩ x2` for `x₁ :: D₁(T)` and `x₂ :: D₂(T)`
+    ```
+    a₁    ⟨A⟩   a₂   iff   a₁ ~ a₂
+    f₁ ⟨T -> U⟩ f₂   iff   ∀x₁::D₁(T) x₂::D₂(T).
+                               if x₁ ⟨T⟩ x₂ then f₁ x₁ ⟨T⟩ f₂ x₂
+    x₁    ⟨T⟩   x₂   iff   x₁ == x₂
+    ```
+The abstraction theorem: for an abstract type, if both impls are in corr, then any program using these impls are also in corr
+
+### The Parametricity Theorem
+
+rephrase the abstract theorem on `A`: for any type `A₁` and `A₂` with corr `h`
+
+1. apply theorem with given program `p :: A -> T`
+```
+for any A₁, A₂, h :: A₁ -> A₂
+    let a₁ ⟨a⟩ a₂ iff h a₁ = a₂
+    for any x₁ :: A₁, x₂ :: A₂ (i.e. inputs of p)
+        if x₁ ⟨A⟩ x₂ (i.e. if all inputs correspond)
+        then p x₁ ⟨T⟩ p x₂ (i.e. then all outputs correspond)
+```
+
+2. let `h x = x₂` (for any `x`)\
+(if using test cases) let `x₁` be input of the test case, and `A₁` be its type\
+(if using given impl) let `x₁ = x₂` and `A₁ = A₂`
+
+3. rewrite theorem with the chosen specialisation and expand definitions
+    - `a₁ ⟨Functor A⟩ a₂ iff fmap h a₁ = a₂`
+
+
+```
+e :: forall b. (Int -> b -> b) -> b -> b
+wts for all BR
+            opR :: Int -> BR -> BR
+            zR :: BR
+    foldr opR zR (e (:) []) = e opR zR
+
+for all BL, BR, h :: BL -> BR
+    for all opL :: Int -> BL -> BL, zL  :: BL,
+            opR :: Int -> BR -> BR, zR  :: BR
+        if  h zL = zR  and (
+            for all i :: Int, x :: BL, y :: BR
+                if h x = y
+                then h (opL i x) = opR i y)
+        then h (e opL zL) = e opR zR
+
+Choose BL = [Int], opL = (:), zL = [], h = foldr opR zR
+
+Verify these two statements:
+
+* wts for all i::Int, x::[Int], y::BR
+    if h x = y then h (opL i x) = opR i y
+
+    h (opL i x)
+  = foldr opR zR (i : x)          h definition
+  = opR i (foldr opR zR x)        foldr definition
+  = opR i (h x)                   h definition
+  = opR i y                       "if h x = y"
+
+* wts h zL = zR
+
+    h []
+  = foldr opR zR []               h definition
+  = zR                            foldr definition
+
+Conclude:
+
+for all BR
+  for all opR :: Int -> BR -> BR, zR  :: BR
+    foldr opR zR (e (:) []) = e opR zR
+```
+
+
+## Semantics
+
+```hs
+interp :: Expr -> Map String Value -> ExprInterp Value
+interp (Prim2 Plus e1 e2) env = interp e1 env
+    >>= \a -> intOrDie a = \i -> interp e2 env
+    >>= \b -> intOrDie b = \j -> return (VN (i+j))
+intOrDie :: Value -> ExprInterp Integer
+intOrDie (VN i) = pure i
+intOrDie _ = raise TypeError
+-- short-circuit condititionals
+interp (Cond test eThen eElse) env = interp test env
+  >>= \a -> case a of
+    VB True -> interp eThen env
+    VB False -> interp eElse env
+    _ -> raise TypeError
+-- variable loockup
+interp (Var v) env = case Map.lookup v env of
+  Just a -> pure a
+  Nothing -> raise VarNotFound
+-- Let [(String, Expr)] Expr
+interp (Let eqns evalMe) env =
+    extend eqns env
+    >>= \env' -> interp evalMe env'
+    -- Example:
+    --    let x=2+3; y=x+4 in x+y
+    -- -> x+y   (with x=5, y=9 in the larger environment env')
+    -- "extend env eqns" builds env'
+  where
+    extend [] env = return env
+    extend ((v,rhs) : eqns) env =
+        interp rhs env
+        >>= \a ->
+        let env' = Map.insert v a env
+        in extend eqns env'
+-- closure
+-- e.g. (let x=7 in \y -> x + y) 10
+-- => VClosure { x = VN 7 } "y" (x+y)
+-- => interp on e gives VN 10
+-- => interp (x + y) { x = VN 7, y = VN 10 }
+interp (Lambda v body) env = pure (VClosure env v body)
+interp (App f e) env = interp f env
+    >>= \c -> case c of
+      VClosure fEnv v body ->
+          interp e env >>= \eVal ->
+          let bEnv = Map.insert v eVal fEnv  -- fEnv, not env
+          in interp body bEnv
+      _ -> raise TypeError
+-- Y
+-- (\f -> \n -> if n=0 then 1 else n * (f f) (n-1)) mkFac 2
+-- (\n -> if n=0 then 1 else n * (mkFac mkFac) (n-1)) 2
+-- if 2=0 then 1 else 2 * (mkFac mkFac) (2-1)
+-- 2 * (mkFac mkFac) (2-1)
+-- 2 * (\f -> \n -> if n=0 then 1 else n * (f f) (n-1)) mkFac (2-1)
+-- 2 * (\n -> if n=0 then 1 else n * (mkFac mkFac) (n-1)) (2-1)
+-- 2 * (\n -> if n=0 then 1 else n * (mkFac mkFac) (n-1)) 1
+-- 2 * if 1=0 then 1 else 1 * (mkFac mkFac) (1-1)
+-- 2 * 1 * mkFac mkFac (1-1)
+-- 2 * 1 * (\n -> if n=0 then 1 else n * mkFac mkFac (n-1)) (1-1)
+-- 2 * 1 * (\n -> if n=0 then 1 else n * mkFac mkFac (n-1)) 0
+-- 2 * 1 * if 0=0 then 1 else 0 * ...
+-- 2 * 1 * 1
+let mkFac = \f -> \n -> if n == 0 then 1 else n * (f f) (n-1)
+in mkFac mkFac 2
+-- let f = \n -> if n == 0 then 0 else 3 * f (n - 1) - g (n - 1)
+--     g = \n -> if n == 0 then 1 else g (n - 1) + 2 * f (n - 1)
+-- in f x * g y
+mkF = λfλgλn. if n=0 then 0 else 3 * (f f g) (n-1) - (g f g) (n-1)
+mkG = λfλgλn. if n=0 then 1 else (g f g) (n-1) + 2 * (f f g) (n-1)
+(mkF mkF mkG x) * (mkG mkF mkG y)
+-- recursion
+interp (App f e) env = interp f env
+    >>= \c -> case c of
+      VClosure fEnv v body -> interp e env
+          >>= \eVal ->
+          let bEnv = Map.insert v eVal fEnv
+          in interp body bEnv
+      -- env: maps fName to itself
+      VRecClosure fEnv fName v body -> interp e env
+          >>= \eVal ->
+          let bEnv = Map.insert v eVal (Map.insert fName c fEnv)
+          in interp body bEnv
+      _ -> raise TypeError
+```
+
+### State
+- env maps to addresses `Int`\
+  otherwise lose updated values on scope exit
+- state maps addresses to values\
+  otherwise removing local vars on scope exit is tricky (?)
+- ∴ use env to track vars, use state to track current values
+
+```hs
+-- Return the whole memory
+getMem = MkMutM (\s -> Right (s, s))
+-- Modify the memory by a function, i.e., change s to f s
+modMem f = MkMutM (\s -> Right (f s, ()))
+-- return new address
+new :: Value -> MutM Int
+new v = fmap Map.size getMem >>= \n -> store n v >>= \_ -> pure n
+-- Read value at address.
+load :: Int -> MutM Value
+load a = fmap (! a) getMem
+-- Write value to address.
+store :: Int -> Value -> MutM ()
+store a val = modMem (Map.insert a val)
+
+interp (Var v) env = case Map.lookup v env of
+  Just a -> load a
+  Nothing -> raise VarNotFound
+
+interp :: Expr -> Map String Int -> MutM Value
+interp (Assign v e) env = case Map.lookup v env of
+  Nothing -> raise VarNotFound
+  Just addr -> interp e env
+    >>= \val -> store addr val >>= \_ -> pure VNone
+
+interp (Let eqns expr) env =
+    extend env eqns >>= \env' -> interp expr env'
+  where
+    extend env [] = pure env
+    extend env ((v,rhs) : eqns) = interp rhs env
+        -- allocate memory to store val
+        >>= \val -> new val
+        -- And the environment stores the address, not the value!
+        >>= \addr -> extend (Map.insert v addr env) eqns
+-- pass by value
+interp (App f e) env = interp f env >>= \c -> case c of
+      VClosure fEnv v body ->
+          interp e env
+          -- allocate memory to store val.
+          >>= \eVal -> new eVal
+          -- And the environment stores the address, not the value!
+          >>= \addr -> in interp body (Map.insert v addr fEnv)
+      _ -> raise TypeError
+
+interp (Seq es) env = go es
+  where
+    go [] = pure VNone -- if no expressions
+    go [e] = interp e env -- return last expression
+    go (e:es) = interp e env >>= \_ -> go es
+```
+
+- `foo + bar` evals left operand first
+- `let x=0 in (\y -> x:=y) 4` changes `x` to `4`
+- `f = (let x=0 in \y -> x:=x+1; x)` then `f 0; f 0; f 0` evals to `3`
+
+```hs
+interp (AppByRef f e) env = interp f env
+    >>= \c -> case c of
+      VClosure fEnv v body ->
+        case e of -- need e to be Var
+          Var x -> case Map.lookup x env of -- Find address of x
+              Nothing -> raise VarNotFound
+              -- map v to address of x
+              Just addr -> interp body (Map.insert v addr fEnv)
+          _ -> raise TypeError
+      _ -> raise TypeError
+```
+
+
+
+## Hoogle
+
+```hs
+cycle :: [a] -> [a] -- infinite cycle
+iterate :: (a -> a) -> a -> [a] -- infinite repeated app
+repeat :: a -> [a] -- infinte list
+replicate :: Int -> a -> [a] -- repeat but finite
+tails :: [a] -> [[a]] -- longest first
+
+-- scanl f z [1, 2, ...] == [z, z `f` 1, (z `f` 1) `f` 2, ...]
+scanl :: (b -> a -> b) -> b -> [a] -> [b] -- last is foldl
+scanr :: (a -> b -> b) -> b -> [a] -> [b] -- head is foldr
+filter :: (a -> Bool) -> [a] -> [a]
+partition :: (a -> Bool) -> [a] -> ([a], [a]) -- (filt, filt not)
+drop :: Int -> [a] -> [a]
+dropWhile :: (a -> Bool) -> [a] -> [a] -- returns suffix
+take :: Int -> [a] -> [a]
+takeWhile :: (a -> Bool) -> [a] -> [a] -- returns prefix
+splitAt :: Int -> [a] -> ([a], [a]) -- prefix at most given length
+span :: (a -> Bool) -> [a] -> ([a], [a]) -- (takeW, dropW)
+break :: (a -> Bool) -> [a] ->  ([a], [a]) -- span . (not .)
+zip :: [a] -> [b] -> [(a, b)] -- zipWith (,)
+zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+
+length :: Foldable t -> t a -> Int
+maximum, minimum :: (Foldable t, Ord a) => t a -> a
+and, or :: Foldable t => t Bool -> Bool -- short circuit
+all, any :: Foldable t => (a -> Bool) -> t a -> Bool
+
+maybe :: b -> (a -> b) -> Maybe a -> b -- map with default
+fromMaybe :: a -> Maybe a -> a -- unwrap_or
+```
+
+## Haskell
+
+```hs
+insertion :: (Ord a) => [a] -> [a]
+insertion [] = []
+insertion (x : xs) = insert x (insertion xs)
+  where -- assume bs is sorted
+    insert a [] = [a]
+    insert a bs@(b : bt) | a <= b = a : bs
+                         | otherwise = b : insert a bt
+
+data BST a = E | N (BST a) a (BST a)
+ins :: Ord a => a -> BST a -> BST a
+ins k E = N E k E
+ins k tree@(N left key right) | k < key = N (ins k left) key right
+                              | k > key = N left key (ins k right)
+                              | otherwise = tree
+data T a = E | N (T a) a (T a)
+instance Foldable T where
+    foldr _ z E = z
+    foldr f z (N lt n rt) = foldr f (f n $ foldr f z rt) lt
+    foldMap _ E = mempty
+    foldMap f (N lt n rt) = foldMap f lt <> f n <> foldMap f rt
+
+```
+

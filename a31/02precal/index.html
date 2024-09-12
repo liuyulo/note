@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Precalculus</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Precalculus</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#number-and-sets">Number and Sets</a>
+<ul>
+<li><a href="#nonpos-vs-nonneg">(Non)Pos vs (Non)Neg</a></li>
+<li><a href="#set-notation">Set Notation</a></li>
+<li><a href="#set-category">Set Category</a></li>
+<li><a href="#absolute-value">Absolute Value</a></li>
+<li><a href="#punctured-interval">Punctured Interval</a></li>
+</ul></li>
+<li><a href="#inequality">Inequality</a>
+<ul>
+<li><a href="#rational">Rational</a></li>
+<li><a href="#absolute">Absolute</a></li>
+</ul></li>
+<li><a href="#function">Function</a>
+<ul>
+<li><a href="#domain--range">Domain &amp; Range</a></li>
+<li><a href="#vertical-line-test">Vertical Line Test</a></li>
+<li><a href="#one-to-one-function">One-to-One Function</a></li>
+<li><a href="#equality">Equality</a></li>
+<li><a href="#operation">Operation</a>
+<ul>
+<li><a href="#oddeven">Odd/Even</a></li>
+<li><a href="#inverse">Inverse</a></li>
+</ul></li>
+<li><a href="#composition">Composition</a></li>
+<li><a href="#exponential">Exponential</a>
+<ul>
+<li><a href="#convert-to-expx">Convert to <code>exp(x)</code></a></li>
+<li><a href="#inequality-1">Inequality</a></li>
+</ul></li>
+<li><a href="#trignometry-example">Trignometry Example</a>
+<ul>
+<li><a href="#solve-sin">Solve <code>sin()</code></a></li>
+<li><a href="#solve-cos">Solve <code>cos()</code></a></li>
+<li><a href="#solve-cot-or-tan">Solve <code>cot()</code> (or
+<code>tan()</code>)</a></li>
+<li><a href="#convert-angle-beforehand">Convert Angle
+Beforehand</a></li>
+<li><a href="#careful-of-atrig-range">Careful of aTrig Range</a></li>
+<li><a href="#draw-triangle">Draw Triangle</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="number-and-sets">Number and Sets</h1>
+<p><em>(lecture)</em> ## (Non)Pos vs (Non)Neg <span
+class="math display">\begin{aligned}
+    \text{positive: }x\gt0&amp;\quad\text{nonpositive: }x\le0\\
+    \text{negative: }x&lt;0&amp;\quad\text{nonnegative: }x\ge0
+\end{aligned}</span></p>
+<h2 id="set-notation">Set Notation</h2>
+<blockquote>
+<p><span
+class="math inline">S=\{x\in\text{category}|\text{condition}\}</span></p>
+</blockquote>
+<ul>
+<li><span class="math inline">A\cap B=A\text{ and }B</span></li>
+<li><span class="math inline">A\cup B=A\text{ or }B</span></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Set Notation</th>
+<th style="text-align: center;">Interval Notation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\{x\in\R\vert
+a\le x&lt;b\}</span></td>
+<td style="text-align: center;"><span
+class="math inline">[a,b)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\{x\in\R\vert
+a\le x\}</span></td>
+<td style="text-align: center;"><span
+class="math inline">[a,\infty)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="set-category">Set Category</h2>
+<p><span class="math display">\begin{aligned}
+    \R&amp;\quad\text{Real}&amp;&amp;\N&amp;\quad\text{Natural}\\
+    \Bbb{Q}&amp;\quad\text{Rational}&amp;&amp;\Bbb{C}&amp;\quad\text{Complex}\\
+    \Z&amp;\quad\text{Integers}&amp;&amp;\empty&amp;\quad\text{Empty}\\
+\end{aligned}</span></p>
+<h2 id="absolute-value">Absolute Value</h2>
+<blockquote>
+<p><span class="math inline">|a|=\begin{cases} a&amp;\text{if }a\ge0\\
+-a&amp;\text{if }a\lt0 \end{cases}</span> - distance between 2 real
+numbers is <span class="math inline">\text{dist}(a,b)=|b-a|</span> -
+distance between <span class="math inline">P</span> and <span
+class="math inline">Q</span> is <span
+class="math inline">\text{dist}(P,Q)=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}</span></p>
+</blockquote>
+<h2 id="punctured-interval">Punctured Interval</h2>
+<p>punctured interval of radius <span class="math inline">\delta</span>
+around <span class="math inline">a</span> | | Open | Closed | | :——-: |
+:—————————-: | :———————: | | Geometric | <span
+class="math inline">(a-\delta,a)\cup(a,a+\delta)</span> | <span
+class="math inline">(a-\delta,a+\delta)</span> | | Algebraic | <span
+class="math inline">0\lt\vert x-a\vert\lt\delta</span> | <span
+class="math inline">\vert x-a\vert&lt;\delta</span> |</p>
+<h1 id="inequality">Inequality</h1>
+<p><em>(lecture)</em> ## Rational <strong>don’t cross multiply</strong>
+<span class="math display">\begin{aligned}
+    \frac pq&amp;&lt;\frac rs\\
+    \frac pq-\frac rs&amp;&lt;0\\
+    \frac{ps-rq}{qs}&amp;&lt;0
+\end{aligned}</span> - then find critical points and test values</p>
+<h2 id="absolute">Absolute</h2>
+<p>split <span class="math inline">|f(x)|\lt a</span> to - <span
+class="math inline">f(x)\lt a</span> - <span class="math inline">-a\lt
+f(x)</span></p>
+<h1 id="function">Function</h1>
+<p><em>(textbook)</em> &gt; a function <span
+class="math inline">f</span> from a set <span
+class="math inline">A</span> to a set <span class="math inline">B</span>
+is an assignment <span class="math inline">f</span> that associates to
+each element <span class="math inline">x</span> of the
+<strong>domain</strong> set <span class="math inline">A</span> exactly 1
+element <span class="math inline">f(x)</span> of the
+<strong>codomain</strong> set <span class="math inline">B</span><br>
+&gt; <span class="math inline">f:A\to B</span></p>
+<h2 id="domain-range">Domain &amp; Range</h2>
+<p><em>(lecture)</em> <span class="math display">f:\R\to\R\text{ defined
+by }f(x)=x^2\\
+\begin{aligned}
+\text{Domain}(f)&amp;=\{x\in\R\}\\
+\text{Range}(f)&amp;=\{y\in\R|y\ge0\}\\
+\text{Codomain}(f)&amp;=\{x\in\R\}\\
+\end{aligned}</span> - example <span
+class="math display">f(x)=\frac1{\sqrt{x^2-1}}\\
+f(x)\text{ is defined if}\begin{cases}
+    \sqrt{x^2-1}&amp;\neq0\\
+    x^2-1&amp;\ge0
+\end{cases}\Rarr x^2-1\gt0\\
+\begin{aligned}
+    x^2-1&amp;\gt0\\
+    x^2&amp;\gt1\\
+    |x|&amp;\gt1\\
+    x&amp;\in(-\infty,1)\cup(1,\infty)=\text{Dom}(f)\\
+\end{aligned}</span></p>
+<h2 id="vertical-line-test">Vertical Line Test</h2>
+<blockquote>
+<p>Graph represents a <strong>explicit</strong> function iff every
+<em>vertical line</em> intersects the graph in <strong>at most 1
+point</strong></p>
+</blockquote>
+<h2 id="one-to-one-function">One-to-One Function</h2>
+<blockquote>
+<p><span class="math inline">f</span> is <em>one-to-one</em> if <span
+class="math inline">\forall a,b\in\text{Dom}(f), a\neq b\implies
+f(a)\neq f(b)</span></p>
+</blockquote>
+<h2 id="equality">Equality</h2>
+<p><em>(lecture)</em></p>
+<blockquote>
+<p>two functions are equal iff</p>
+<ol type="1">
+<li><span class="math inline">f(x)=g(x)\quad\forall
+x\in\text{Dom}(f)</span></li>
+<li><span class="math inline">f(x)</span> and <span
+class="math inline">g(x)</span> are defined on the same domain</li>
+</ol>
+</blockquote>
+<p><span class="math display">\begin{aligned}
+    f(x)&amp;=\frac{x^2-1}{x-1}&amp;g(x)&amp;=x+1\\
+    \text{Dom}(f)&amp;=\R\setminus\{1\}&amp;\text{Dom}(g)&amp;=\R\\
+\end{aligned}\\
+\begin{aligned}
+    \because&amp;\text{Dom}(f)\neq\text{Dom}(g)\\
+    \therefore&amp;f(x)\neq g(x)
+\end{aligned}</span></p>
+<h2 id="operation">Operation</h2>
+<h3 id="oddeven">Odd/Even</h3>
+<blockquote>
+<p>even if <span class="math inline">f(-x)=f(x)</span><br> odd if <span
+class="math inline">f(-x)=-f(x)</span></p>
+</blockquote>
+<p><span class="math display">f(x)=x^3+3\\
+f(-x)=-x^3-3\neq f(x)\neq-f(x)\\
+\therefore\text{neither}</span></p>
+<h3 id="inverse">Inverse</h3>
+<blockquote>
+<p><span class="math inline">f</span> is inverse of <span
+class="math inline">g</span> if<br> 1. <span class="math inline">f\circ
+g=x\quad\forall x\in\text{Dom}(f)</span> 2. <span
+class="math inline">g\circ f=x\quad\forall x\in\text{Dom}(g)</span></p>
+<span class="math inline">f</span> has an inverse iff <span
+class="math inline">f</span> is one-to-one
+</blockquote>
+<p>to find inverse 1. do <span class="math inline">y=f(x)</span> 2.
+interchange <span class="math inline">x</span> and <span
+class="math inline">y</span> 3. solve for <span
+class="math inline">y</span></p>
+<h2 id="composition">Composition</h2>
+<p><em>(lecture)</em></p>
+<blockquote>
+<p><span class="math inline">f\circ g=f(g(x))</span><br> <span
+class="math inline">\text{Dom}(f\circ
+g)=\{x\in\text{D}_g|g(x)\in\text{D}_f\}</span> where <span
+class="math inline">\text{D}_f=\text{Dom}(f)</span></p>
+</blockquote>
+<h2 id="exponential">Exponential</h2>
+<p><em>(lecture)</em></p>
+<h3 id="convert-to-expx">Convert to <code>exp(x)</code></h3>
+<p><span
+class="math display">-2(3^x)=\left(e^{\ln-2}\right)\left(e^{\ln3^x}\right)=-\left(e^{\ln-2}\right)\left(e^{x\ln3}\right)=-e^{\ln2+x\ln3}</span></p>
+<h3 id="inequality-1">Inequality</h3>
+<p><span class="math display">\begin{aligned}
+    \ln\left(\frac{x-1}2\right)&amp;\gt0\\
+    \frac{x-1}2&amp;\gt1\quad\text{(}f(x)=e^x\text{both side)}\\
+    x&amp;\gt3\quad\text{Answer: }x\in(3,\infty)
+\end{aligned}</span></p>
+<h2 id="trignometry-example">Trignometry Example</h2>
+<p><em>(lecture)</em></p>
+<h3 id="solve-sin">Solve <code>sin()</code></h3>
+<p><span
+class="math inline">\sin(x)=\textcolor{lime}{\sin(\pm\pi-x)}+2\pi
+n</span> <span class="math display">\begin{aligned}
+    4\sin^2x&amp;=1\\
+    4\sin^2x-1&amp;=0\\
+    (2\sin x-1)(2\sin x+1)&amp;=0\\
+\end{aligned}\\
+\,\\
+\begin{aligned}
+    2\sin x-1&amp;=0&amp;2\sin x+1&amp;=0\\
+    2\sin x&amp;=1&amp;\sin x&amp;=-\frac12\\
+    \sin x&amp;=\frac12&amp;\sin(-x)&amp;=\frac12\\
+    x_1&amp;=\frac\pi6+\textcolor{lime}{2\pi
+n}&amp;x_1&amp;=-\frac\pi6+\textcolor{lime}{2\pi n}\\
+    x_2&amp;=\left(\textcolor{aqua}{\pi-\frac\pi6}\right)+\textcolor{lime}{\textcolor{lime}{2\pi
+n}}\quad\because\text{odd}&amp;x_2&amp;=\left(\textcolor{aqua}{\frac\pi6-\pi}\right)+\textcolor{lime}{2\pi
+n}\quad\because\text{odd}
+\end{aligned}\\
+\begin{aligned}
+    \therefore x_1&amp;=\pm\frac\pi6+\textcolor{lime}{2\pi n}\\
+    x_2&amp;=\pm\frac{5\pi}6+\textcolor{lime}{2\pi n}\\
+    n&amp;\in\Z
+\end{aligned}</span></p>
+<h3 id="solve-cos">Solve <code>cos()</code></h3>
+<p><span class="math inline">\cos(x)=\textcolor{lime}{\cos(-x)}+2\pi
+n</span> <span class="math display">\begin{aligned}
+    \cos x&amp;=\frac{\sqrt3}2\\
+    x_1&amp;=\pi/6+\textcolor{lime}{2\pi n}\\
+    x_2&amp;=\textcolor{aqua}{-\pi/6}+\textcolor{lime}{2\pi
+n}\quad\because\text{even}\\
+    \therefore x&amp;=\pm\pi/6+\textcolor{lime}{2\pi n},n\in\Z
+\end{aligned}</span></p>
+<h3 id="solve-cot-or-tan">Solve <code>cot()</code> (or
+<code>tan()</code>)</h3>
+<p><span class="math inline">\tan(x)=\textcolor{lime}{\tan(x)+\pi
+n}</span> <span class="math display">\begin{aligned}
+    \sqrt3\cot(3x)+1&amp;=0\\
+    \cot(3x)&amp;=-\frac1{\sqrt3}\\
+    3x&amp;=\text{atan}(-\sqrt3)+\textcolor{lime}{\pi n},n\in\Z\\
+    3x&amp;=\frac{2\pi}3+\textcolor{lime}{\pi n}\\
+    x&amp;=\frac{2\pi}9+\frac{\textcolor{lime}{\pi n}}3,n\in\Z
+\end{aligned}</span></p>
+<h3 id="convert-angle-beforehand">Convert Angle Beforehand</h3>
+<p><span class="math display">\begin{aligned}
+    \sin\left(-\frac{3\pi}4\right)&amp;=\sin\left(\frac{3\pi}4-\pi\right)=\sin\left(-\frac\pi4\right)\\
+    &amp;=-\sin\left(\frac\pi4\right)=\frac{\sqrt2}2
+\end{aligned}</span></p>
+<h3 id="careful-of-atrig-range">Careful of aTrig Range</h3>
+<p><span
+class="math display">\text{asin}(\sin(-2))=\text{asin}(\sin(2-\pi))=2-\pi\\
+\because-2\lt\textcolor{aqua}{-\pi/2}\lt2-\pi</span> <img
+src="assets/asinsin.png" /></p>
+<h3 id="draw-triangle">Draw Triangle</h3>
+<p><span class="math display">\cos(\text{asin\,}x)=\sqrt{1-x^2}</span>
+<img src="assets/triangle.png" /></p>
+</body>
+</html>

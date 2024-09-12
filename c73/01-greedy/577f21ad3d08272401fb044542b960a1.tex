@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{xcolor,amsmath,amssymb,amsfonts}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage[tt=false, type1=true]{libertine}
+\usepackage[libertine]{newtxmath}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\definecolor{red}{HTML}{c63a44}
+\usepackage{forest}
+\newcommand{\f}[2][5]{\raisebox{-.#1\height}{\begin{forest}#2\end{forest}}}
+\begin{document}
+
+\f{[,circle,draw,for tree={minimum size=2em,inner sep=2pt}
+    [$\cdots$
+        [,circle,draw,red,edge=red,
+            [$\cdots$,edge=red,[$a_1$,circle,draw][$a_2$,circle,draw]]
+            [,phantom]]
+        [$\cdots$]]
+    [$\cdots$]]}
+$\longrightarrow$
+\f{[,circle,draw,for tree={minimum size=2em,inner sep=2pt}
+    [$\cdots$
+        [$\cdots$[$a_1$,circle,draw][$a_2$,circle,draw]]
+        [$\cdots$]]
+    [$\cdots$]]}
+
+\end{document}

@@ -1,0 +1,364 @@
+---
+layout: ../layouts/Main.astro
+title: B07
+---
+
+import Code from '../components/Code.astro'
+
+# PS2
+
+9. control flow graph: use line num as node
+    - `count = 0 -> for`
+    - `for -> if`
+    - `if (true) -> count++`
+    - `count++ -> for`
+    - `if (false) -> for`
+    - `for -> return`
+    - ans: third one
+10. all satisfied
+11.
+  - `1 -> 2 -> 3 -> 4 -> 5 -> 6`
+  - `6 -> 7 -> 8 -> 6 -> 9`
+  - `9 -> 10 -> 3 -> 11`
+  - edge covered
+13. `1 -> 2 -> 3 -> 4` and `3 -> 5 -> 2 -> 6`
+  - need 2 cases, e.g.
+    - `x = 1, A = { 1 }`
+    - `x = 0, A = { 1 }`
+  - assume node cov
+    - show each edge must covered in order to reach all nodes
+    - each node must have edge to come from, and must take edge to go to (unless return)
+18. `A = { 1 }, x = 0`
+    - infection on `left`
+    - output correct `->` no propagation
+19. control flow
+  - `1 -> 2 -> 3 -> 4`
+  - `2 -> 5 -> 6(while) -> 7 -> 8 -> 9`
+  - `7 -> 9 (i++) -> 6 -> 10 -> 11 -> 12`
+  - `10 -> 12`
+  - b. (i) false, `10 -> 11 -> 12` wo `10 -> 12`
+  - (ii) false
+    - a || b, (a,b) = (T,F) and (a,b) = (F,T) satisfied clause, but not predicate
+    - clause cov: all possible truth values for all PV are in test cases
+    - predicate cov: all possible truch values for all predications are in test cases
+  - (iii) active clause cov => clause cov
+  - but active clause cov =/> predicate cov
+  - (iv) true, e.g. A ∨ B: FF => F, TF => T, then predicate cov
+  - c.
+    - <Code code="double[] A = null" lang="java"/>
+    - `A = { 0 }` to satisfy <Code code="A[index] > max" lang="java"/>
+    - `A = { 1 }` to satisfy `max == NEG`
+1. a(iii) b(iv) c(i) d(ii, product owner) e(iv) f(ii) g(iv) h(ii) i(ii) j(ii)
+2. bob and carol explains their choices, (then another round of poker)
+3. a(w) b(s) c(s) d(s)
+4. a(d) b(m) c(d) d(d)
+5. ye ye ye
+6. metadata, automate, ui test
+7. avoid hardcoding string literals
+8. passes
+  - not defined in stub `->` returns default value
+  - `alreadyReg` returns false
+
+
+# Software Testing
+
+> testing `==>` execute code\
+> shows presence of bugs, not absence\
+> proof correctness is not scalable
+
+## Coverage Criterion
+> satisfying a cov crit gives confidence in
+> 1. covered edge cases
+> 2. low amount of overlap
+
+<details class="definition" open>
+<summary>$C_1$ subsumes $C_2$ iff the test satisfies $C_1\implies$ satisfies $C_2$</summary>
+</details>
+
+
+### Logic Coverage
+> let $\mathbb B=\{0,1\}$
+<details class="definition" open>
+<summary>given a boolean expression</summary>
+- treat it as a **propositional formula** (F)
+- each predicate is a **propositional variable** (PV)
+- each test case corresponds to a **truth assignment** ($\tau$)
+</details>
+<details class="definition" open>
+<summary>Predicate Coverage (covers F)</summary>
+$F$ is P coved iff $\forall b\in\mathbb B\enspace\exists\tau\textsf{ st }\tau^\ast(F)=b$
+
+- i.e. test cases produce all possible truth values of $F$
+</details>
+<details class="definition" open>
+<summary>Clause Coverage (covers PV)</summary>
+$F$ is C coved iff $\forall x\in PV\enspace\forall b\in\mathbb B\enspace\exists\tau\textsf{ st }\tau(x)=b$
+
+- i.e. test cases contains all possible truth values of all PVs
+</details>
+<details class="definition" open>
+<summary>Active Clause Coverage</summary>
+- PV $x$ **determines** $F$ in $\tau$ iff $\tau_1(x)\ne\tau_2(x)\implies \tau_1^\ast(F)\ne\tau_2^\ast(F)$
+
+$F$ is AC coved iff
+$$
+\forall x\in PV\enspace\forall b\in\mathbb B\enspace\exist\tau\textsf{ st }\tau(x)=b\textsf{ and }x\textsf{ determines }F
+$$
+
+- AC cov subsumes C cov
+</details>
+
+<details class="example">
+<summary>$F=((a>b)\lor c)\land (x<y)$</summary>
+wts $F$ is P coved and C coved by these tests
+- $\tau_1$ <Code code="let (a, b, c, x, y) = (2, 1, false, 4, 5);" lang="rs"/>
+- $\tau_2$ <Code code="let (a, b, c, x, y) = (1, 2, false, 4, 5);" lang="rs"/>
+- $\tau_3$ <Code code="let (a, b, c, x, y) = (1, 2, true, 5, 4);" lang="rs"/>
+
+
+- draw table
+
+||`a > b`|`c`|`x < y`| $F$ |
+|-:|:-:|:-:|:-:|:-:|
+|$\tau_1$|T|F|T|T
+|$\tau_2$|F|F|T|F
+|$\tau_3$|F|T|F|F
+
+- ∴ $F$ is P coved and C coved
+
+
+</details>
+
+### Graph Coverage
+<details class="definition" open>
+<summary></summary>
+given code, define digraph $G=(V,E)$ where
+- $V$ is set of **each statement** in code
+- $(u,v)\in E\iff$ code can reach from $u$ to $e$
+
+patterns
+
+- <Code code="if" lang="rs"/>: splits into 2 nodes
+- <Code code="while" lang="rs"/> or <Code code="for" lang="rs"/>: loop
+
+
+coverages
+- **branch** coverage: covers all edges
+- **statement** coverage: covers all nodes
+</details>
+
+<details class="theorem" open>
+<summary>branch coverage subsumes statement coverage</summary>
+</details>
+
+## RIPR Model
+<details class="theorem" open>
+<summary>For a Failure to be Observed</summary>
+- **reachable**: test reach the faulty code
+- **infection**: unexpected state after faulty code is executed
+- **propagation**: infected state propagates through the rest of the program
+- **revealable**: tester is able to observe the incorrect final state (i.e. test fails)
+</details>
+
+## Bugs
+<details class="definition" open>
+<summary>Given a line and the expected behavior of the program</summary>
+
+failure `==>` error `==> fault`
+
+- **fault**: semantic error (e.g. <Code code="let add = (a, b) => a * b;" lang="ts"/>)
+- **error** (given an input): wrong state (i.e. set of values assigned to each var)
+  ```rs
+  fn square(n: i32) -> i32 {
+      //! returns the square of n
+      let s = n * 2; // semantic fault
+      dbg(s, n); // wrong state => error
+      s
+  }
+  ```
+  - **coincidental correctness**: e.g. input `n = 2`
+  - have **infection** `<==>` have error `<==>` have unexpected state
+- **failure**: wrong ouput
+</details>
+
+## WB/BB Testing
+<details class="definition" open>
+<summary>White Box vs Black Box Testing</summary>
+- **BB** uses external descriptions to make tests
+- **WB** uses internal src code to make tests (more expensive)
+</details>
+
+## Levels
+<details class="definition" open>
+<summary></summary>
+- **acceptance**: test acceptable to the user (from user perspective)
+- **system**: test overall functionality of the system
+- **integration**: test interaction between modules
+- **module** (resp of prgmer): test modules in isolation and how the components interact with each other
+- **unit** (resp of prgmer): test units/methods individually
+</details>
+
+
+# Android
+
+## Mock Testing
+
+<details class="theorem" open>
+<summary>Use mock objects to</summary>
+- represents components not yet impled
+- speed up testing
+- reduce cost
+- avoid unrecoverable actions
+</details>
+
+## Testing
+<details class="theorem" open>
+<summary></summary>
+quantity: unit > intergration > UI\
+cost: unit < interaction < UI
+
+</details>
+
+### Unit Testing
+
+- test each **public** methods
+```java
+@Test
+void test1(){
+    assertTrue(cond);
+    // calls Object.equals(o1, o2);
+    assertEquals(o1, o2);
+    // assert throws exception
+    try{
+        throw new Exception();
+        fail();
+    }catch(Exception e){
+        assertTrue(true);
+    }
+}
+```
+
+### Integration Test
+- test interaction between M-V-P
+- test interaction between MVPs
+
+### UI Test
+- test user interaction with visual components
+
+## MVP
+<details class="definition" open>
+<summary>Model-View-Presenter</summary>
+- **model** manages data to be displayed and uses database
+  - fires event to P on data change
+- **presenter** contains business logic
+  - update M when V fires user event
+  - update V when data changes from M
+- **view** defines the components for UI
+  - receives update from P, fires user events to P
+</details>
+<details class="theorem" open>
+<summary>Advantages of MVP</summary>
+- easy to test
+- separates
+</details>
+
+## File Structure
+<details class="definition" open>
+<summary>Android (as a framework)</summary>
+- an app is a collection of **screen**
+- a screen consists of
+  - a **layout**: appearance (`.xml`)
+  - an **activity**: manange user interaction (`.java`)
+- a layout can use multiple **fragments**
+  - to promote modularity
+</details>
+
+
+# SDLC
+> skipped SDLC from p18 (Scrum & TDD), see sceenshots in laptop
+
+<details class="definition" open>
+<summary>Software Development Life Cycle</summary>
+- **Planning**: create concept
+- **Analysis**: analyse needs, create detailed requirements
+- **Design**: translate requirements to design (e.g. pseudocode, UML)
+- **Implementation**: develop and test the system
+- **Maintenance**: e.g. fix bugs
+</details>
+
+## Agile Methodologies: Scrum
+<details class="definition" open>
+<summary>Scrum</summary>
+- requirements represented as user stories
+- **Product Owner**: provide requirements
+  - participate in meetings before sprint, retrospective meetings
+  - need technical knowledge (comm with dev team)
+  - need business knowledge (comm with customers, stakeholders)
+- **Scrum Master**: facilitate the tasks
+  - remove impediments
+</details>
+<details class="definition" open>
+<summary>Sprint: 1-4 weeks</summary>
+- period of time to impl a set of features to be demo'ed to the product owner
+- takes some user stories and work on them
+- after a sprint, hold retrospective meeting to discuss
+  - the past sprint
+  - chance for improvement
+</details>
+<details class="definition" open>
+<summary>User Stories: "As a \{actor\}, I want to \{action\} so that \{result\}"</summary>
+- represents a requirement
+- pro: user friendly, uses simple language
+- dev team: translate user story to code
+</details>
+<details class="definition" open>
+<summary>Planning Poker</summary>
+- everyone assigns a difficulty to a user story to estimate workload
+- let the people who assigned the highest & lowest difficulty to explain
+- repeat until everyone ends up at the same difficulty
+</details>
+<details class="definition" open>
+<summary>Planning Session</summary>
+- before each sprint
+- team decides
+   - amount of work
+   - expected technical challenges
+- product owner is there to help with prioritisation
+</details>
+<details class="definition" open>
+<summary>Standup Meeting **Everyday**</summary>
+- to check progress
+- "what done since last standup"
+- "what will do by the next standup"
+- "what impediments I have"
+</details>
+
+## SDLC Impl
+<details class="definition" open>
+<summary>Agile: iterative</summary>
+- accomodate changes
+- no fixed time/cost
+- always high frequency of interactions between people involved
+- release after every sprint
+</details>
+<details class="definition" open>
+<summary>Spiral: risk-driven and iterative</summary>
+- before each iter: analyse risk
+- pros
+  - can accomodate changes
+- cons
+  - need expert risk assessors
+  - hard to estimate cost
+</details>
+<details class="definition" open>
+<summary>Waterfall: rigid time & budget</summary>
+- do SDLC once (i.e. sequentially)
+- workload starts heavy, gets ligter in the next stage
+- pros
+  - good for small project
+  - easy to estimate cost
+- cons
+  - costly to accomodate changes
+  - can't show prototype until after implementation
+</details>
+

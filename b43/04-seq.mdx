@@ -1,0 +1,859 @@
+---
+title: Convergence of Reals
+---
+
+## Cauchy
+
+<details class="definition" open>
+<summary>$(\mathbb{R},\mathcal{T}_E)$ cauchy</summary>
+
+sequence $(a_n)$ is **cauchy** iff
+
+$$
+\forall \varepsilon\gt0\quad\exists N\gt0\quad\forall i,j\gt N\quad|a_i-a_j|\lt\varepsilon
+$$
+
+</details>
+
+<details class="theorem" open>
+<summary>$(\mathbb{R},\mathcal{T}_E)$ cauchy implies bounded</summary>
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+assume $(a_n)$ cauchy
+
+$\therefore\exists N\gt0\quad\forall i,j\gt N\quad |a_i-a_j|\lt 1$
+
+$\therefore$ for any $i\gt N$
+
+$$
+|a_i|\le|a_i-a_{N+1}|+|a_{N+1}|\lt 1+|a_{N+1}|
+$$
+
+let $r=\max\{|a_1|,\cdots,|a_N|,1+|a_{N+1}|\}$
+
+$\therefore |a_n|\le r$ for any $n\gt0\enspace\square$
+</details>
+</details>
+
+## Convergence
+
+<details class="definition" open>
+<summary>convergence</summary>
+
+for space $(X,\mathcal{T})$
+
+- sequence $(a_n)\subseteq X$ **coverges** to $\alpha\in X$, denoted $a_n\to\alpha$ iff
+
+$$
+\forall\alpha\in U\in\mathcal{T} \quad\exists N\gt0\quad\forall n\gt N\quad a_n\in U
+$$
+
+- that is, only finite many points are outside any arbitrary neighborhood of $\alpha$
+
+for metric space $(X,d)$
+
+- sequence $(a_n)\in X$ **converges** to $\alpha\in X$ iff
+
+$$
+\forall\varepsilon\gt0\quad\exists N\gt0\quad\forall n\gt N\quad a_n\in B_d(\alpha,\varepsilon)
+$$
+</details>
+
+<details class="theorem" open>
+<summary>$(T_2)$ any sequence converge to at most one point</summary>
+
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+assume $a_n\to\alpha$ and $a_n\to\beta$, BWOC assume $\alpha\ne\beta$
+
+- $\therefore$ let $U_\alpha$ and $U_\beta$ be neighborhoods that separate $\alpha$ and $\beta$ respectively
+- $\therefore(a_n)$ almost contained in $U_\alpha$<span class="float-right">($a_n\to\alpha$)</span>
+
+let $A=\{a_n\}$
+- $\therefore A\cap U_\beta$ is subset of $A\cap U_\alpha^c$ which is finite
+- $\therefore$ contradicts that $(a_n)$ almost contained in $U_\beta\enspace\square$<span class="float-right">($a_n\to\beta$)</span>
+
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary>$(X,d)$ any sequence converges to at most one limit</summary>
+
+<details>
+<summary>**Lemma.** $\forall\varepsilon\gt0\quad d(x,y)\lt\varepsilon\implies  x=y$</summary>
+
+BWOC assume $x\ne y$, thus $d(x,y)\gt0$
+
+- $\therefore$ contradicts when $\varepsilon=d(x,y)\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+assume $a_n\to x$ and $a_n\to y$, wts $x=y$
+
+let any $\varepsilon\gt0$
+
+- $\therefore d(a_n,x),d(a_n,y)\lt\varepsilon/2$ where $n=N+1$ for some $N\gt0$
+
+- $\therefore d(x,y)\le d(x,a_n)+d(a_n,y)\lt\varepsilon/2+\varepsilon/2=\varepsilon$
+
+$\therefore x=y$ by lemma
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>$(X,d)$ convergent implies bounded</summary>
+
+for any sequence $(a_n)\subseteq  X$
+
+<div class="flex justify-center">
+
+$(a_n)$ converges $\implies  (a_n)$ bounded
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+assume $a_n\to\alpha$
+
+$\therefore\exists N\quad\forall n\gt N\quad d(a_n,\alpha)\lt1$
+
+let $r=\max\{d(a_1,\alpha),\cdots,d(a_N,\alpha),1\}$
+
+$\therefore \{a_n\}\subseteq B(\alpha,r)$, thus $(a_n)$ bounded $\enspace\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>$(\mathbb{R},\mathcal{T}_E)$ cauchy iff convergent</summary>
+
+for any sequence $(a_n)\subseteq\mathbb{R}$
+
+<div class="flex justify-center">
+
+$(a_n)$ cauchy $\iff (a_n)$ converges
+</div>
+
+
+<details class="list-none">
+<summary>**Proof.** $(\impliedby) $</summary>
+
+assume $a_n\to \alpha$
+
+let any $\varepsilon\gt0$
+
+$$
+\therefore\exists N\gt0\quad\forall n\gt N\quad|a_n-\alpha|\lt\varepsilon/2
+$$
+
+let any $i,j\gt N$
+
+
+$$
+\therefore|a_i-a_j|\le|a_i-\alpha|+|a_j-\alpha|\lt\varepsilon/2+\varepsilon/2=\varepsilon
+$$
+</details>
+<details class="list-none">
+<summary>**Proof.** $(\implies )$ </summary>
+
+assume $(a_n)$ cauchy, thus $A=\{a_n\}$ bounded
+
+WLOG assume $A$ is infinite
+
+$\therefore A$ has some accumulation point $\alpha$<span class="float-right">(BW)</span>
+
+$\therefore\alpha$ is limit point of $A$<span class="float-right">($T_1$)</span>
+
+<details open>
+<summary>wts $a_n\to\alpha$</summary>
+
+let any $\varepsilon\gt0$
+
+$$
+\therefore\exists N\gt0\quad\forall i,j\gt N\quad|a_i-a_j|\lt\varepsilon/2
+$$
+
+$\because|B(\alpha,\varepsilon/2)\cap A|\ge\aleph_0$<span class="float-right">($\alpha$ is limit point)</span>
+
+$\therefore\exists a_m\in B(\alpha,\varepsilon/2)\cap\{a_{N+1},a_{N+2},\cdots\}$, that is, $m\gt N$
+
+let any $n\gt N$
+
+$$
+\therefore |a_n-\alpha|\le\underbrace{|a_n-a_m|}_{n,m\gt N}+\underbrace{|\alpha-a_m|}_{a_m\in B(\alpha,\varepsilon/2)}\lt\varepsilon/2+\varepsilon/2=\varepsilon\enspace\square
+$$
+</details>
+
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+let $a_n\to \alpha\quad b_n\to \beta\quad c_n\to \gamma$
+
+$$
+\begin{align*}
+  a_n+b_n&\to \alpha+\beta\\
+  a_nb_n&\to \alpha\beta\\
+  ca_n&\to c\alpha\\
+\end{align*}
+\\
+\begin{align*}
+  \forall n&& a_n\le b_n\le c_n\text{ and }\alpha=\gamma&\implies \alpha=\beta=\gamma\\
+  \forall n&& a_n\le b_n&\implies \alpha\le\beta
+\end{align*}
+$$
+
+<details class="list-none" open>
+<summary>**Proof.** $a_n\le b_n\implies \alpha\le\beta$</summary>
+
+BWOC assume $\alpha\gt\beta$
+
+$\therefore\exists q\in\mathbb{R}$ such that $\beta\lt q\lt \alpha$<span class="float-right">(density)</span>
+
+$\because(-\infty,q)$ is neighborhood of $\beta$, and $(q,\infty)$ is neighborhood of $\alpha$
+
+$\therefore\exists a_n\exists b_n$ such thath $b_n\lt q\lt a_n$
+
+thus contradicts that $a_n\le b_n\enspace\square$
+
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>M ⊢ B `<=>` C</summary>
+
+for monotone $(a_n)$
+
+<div class="flex justify-center">
+
+$(a_n)$ bounded iff $(a_n)$ is converges
+</div>
+
+<details class="list-none">
+<summary>**Lemma<sup>+</sup>** increases and bounded above `==>` converges to supremum</summary>
+
+let $A=\{a_n\}$ and $\alpha=\sup A$<span class="float-right">(completeness)</span>
+
+let any $\varepsilon\gt0$
+
+- $\therefore\exists N\quad\alpha-\varepsilon\lt a_N$<span class="float-right">($\alpha$ is sup)</span>
+- $\therefore$ for any $n\gt N$
+
+$$
+\alpha-\varepsilon\lt a_N\le a_n\le\alpha\lt \alpha+\varepsilon
+$$
+
+- $\therefore|a_n-\alpha|\lt\varepsilon$
+
+</details>
+
+- **Lemma<sup>-</sup>** decreases and bounded below `==>` converges to infimum
+
+<details>
+<summary>**Proof.**</summary>
+
+$(\implies)$ trivial\
+$(\impliedby)$ by lemma <sup>+</sup> and <sup>-</sup>
+</details>
+</details>
+
+<details class="example" open>
+<summary>next term close to convergent series implies converges</summary>
+
+for any sequence $(\varepsilon_n\gt0)$ whose series $s_n\to s$
+
+for any sequence $(a_n)$
+
+<div class="flex justify-center">
+
+$\forall n|a_n-a_{n+1}|\lt\varepsilon_n\implies (a_n)$ converges
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any $\varepsilon\gt0$
+
+- $\therefore\exists N\quad\forall n\ge N\quad|s-s_n|\lt\varepsilon$
+
+- $\therefore$ for any $m\gt n\gt N$
+
+$$
+\begin{align*}
+  |a_n-a_m|&\le|a_n+a_{n+1}|+\cdots +|a_{m-1}-a_m|\\
+  &\le\varepsilon_n+\varepsilon_{n+1}+\cdots \varepsilon_{m-1}\\
+  &\le\varepsilon_n+\varepsilon_{n+1}+\cdots\\
+  &=s-s_{n+1}=|s-s_{n+1}|\lt\varepsilon
+\end{align*}
+$$
+
+$\therefore(a_n)$ cauchy, thus converges $\enspace\square$
+</details>
+</details>
+
+
+## Subsequence
+
+<details class="definition" open>
+<summary>subsequence</summary>
+
+for sequence $(a_n)$ and indices $0\lt n_1\lt n_2\lt\cdots$
+
+<div class="flex justify-center">
+
+$(a_{n_k})$ is a subsequence
+</div>
+
+</details>
+
+<details class="theorem" open>
+<summary>(BW corollary) bounded implies has convergent subsequence</summary>
+
+for any sequence $(a_n)\subseteq\mathbb{R}$
+
+<div class="flex justify-center">
+
+$(a_n)$ bounded $\implies (a_n)$ has convergent subsequence
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any bounded sequence $(a_n)$
+
+WLOG assume $A=\{a_n\}$ infinite
+
+$\therefore A$ has some accumulation point $\alpha$<span class="float-right">(BW)</span>
+
+$\therefore\alpha$ is limit point of $A$<span class="float-right">($T_1$)</span>
+
+$\therefore$ for any $k\in\mathbb{Z}^+$
+
+$$
+|B(\alpha,1/k)\cap A|\ge\aleph_0
+$$
+
+let subsequence $(a_{n_k})\subseteq(a_n)$ be defined inductively
+
+- choose $a_{n_1}\in B(\alpha,1)\cap A$<span class="float-right">(interesection is infinite)</span>
+- for any $k\in\mathbb{Z}^+$, choose $n_{k+1}\gt n_k$ st
+  $$
+  a_{n_{k+1}}\in B\left(\alpha,\frac1{k+1}\right)\cap\{a_{n_k+1},a_{n_k+2},\cdots\}
+  $$
+  - where this intersection is also infinite
+
+$\therefore n_1\lt n_2\lt\cdots$ and $a_{n_k}\in B(\alpha,1/k)$ for any $k$
+
+let any $\varepsilon\gt0$
+
+- $\therefore\exists N\in\mathbb{Z}^+\quad 1/N\lt\varepsilon$<span class="float-right">(arch)</span>
+- $\therefore$ for any $k\gt N$
+  $$
+  |a_{n_k}-\alpha|\lt 1/k\lt 1/N\lt \varepsilon\enspace\square
+  $$
+
+</details>
+</details>
+
+
+<details class="example" open>
+<summary>convergent (?) subsequences in $\mathbb{R}$</summary>
+
+- $a_n=(-1)^n/n\implies a_{2n}\to0$
+
+<details>
+<summary>BWOC assume $a_n=n$ has some convergent $(a_{n_k})$</summary>
+
+$\therefore(a_{n_k})$ bounded by some $M$
+
+$\because\exists k$ st $n_k\gt M$
+
+$\therefore a_{n_k}=n_k\gt M$, contradicts that $(a_{n_k})$ bounded $\enspace\square$
+
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary>sequence converges iff all subsequences converge</summary>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+
+$(\impliedby )$ a sequence is a subsequence of itself
+
+$(\implies )$ assume $a_n\to\alpha$, let any subsequence $(a_{n_k})$
+
+- let any $\varepsilon\gt0$, thus
+
+$$
+\exists N\gt0\quad\forall n\gt N\quad|a_n-\alpha|\lt\varepsilon
+$$
+
+- $\therefore$ for any $n_k\gt N$
+$$
+|a_{n_k}-\alpha|\lt\varepsilon\enspace\square
+$$
+</details>
+
+</details>
+
+
+<details class="theorem" open>
+<summary>any sequence has a monotone subsequence</summary>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any sequence $(a_n)$
+
+let $P=\{a_n:\forall k\ge n\quad a_n\ge a_k\}$ be set of **peaks**
+
+case $P$ infinite
+
+- $\therefore$ let $(a_{n_k})$ be sequence of $P$ ordered by index, thus $(a_{n_k})$ decreases
+
+case $P$ finite
+
+- $\therefore \exists N$ st $a_n$ is not peak for any $n\ge N$
+
+let $(a_{n_k})$ be defined inductively:
+
+- let $n_1=N$, thus $a_{n_1}$ is not peak
+- for any $k\ge1$, assume $n_k\ge N$ and $a_{n_k}$ is not peak
+  - $\therefore\exists m\gt n_k$ st $a_{n_k}\lt a_m$<span class="float-right">(def of peak)</span>
+
+  - $\therefore$ let $n_{k+1}=m\gt n_k\ge N$, thus $a_{n_{k+1}}$ is not peak
+
+- $\therefore (a_{n_k})$ is increases $\enspace\square$
+</details>
+</details>
+
+
+<details class="example" open>
+<summary></summary>
+
+for bounded sequence $(a_n)$ 
+
+<div class="flex justify-center">
+
+any convergent subseq converges to the same $\alpha\implies (a_n)$ also converges to $\alpha$
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+BWOC assume $(a_n)$ doesn't converge to $\alpha$
+
+$\therefore\exists\varepsilon\gt0\quad\forall k\gt0\quad\exists n_k\gt k$ such that
+$$
+|a_{n_k}-\alpha|\ge\varepsilon
+$$
+
+$\therefore$ we can choose such positive sequence $(n_k)$ that strictly increases
+
+let $(b_k)=(a_{n_k})$ be subsequence of $(a_n)$, thus
+
+$$
+\forall k\gt0\quad |b_k-\alpha|\ge\varepsilon
+$$
+
+$\because(b_k)$ bounded since $(a_n)$ bounded
+
+$\therefore(b_k)$ has some convergent subsequence $(c_i)=(b_{k_i})$<span class="float-right">(BW)</span>
+
+$\therefore$ for any $i\gt0$
+
+$$
+|c_i-\alpha|\ge\varepsilon
+$$
+
+which contradicts that $c_i\to\alpha\enspace\square$<span class="float-right">($c_i$ is convergent subsequence of $a_n$)</span>
+</details>
+</details>
+
+## Limit Superior & Limit Inferior
+
+
+<details class="definition" open>
+<summary>limsup liminf</summary>
+
+for any bounded $(a_n)\subseteq\mathbb{R}$, let
+
+
+$$
+\begin{equation*}
+\begin{split}
+A&=\{a_n\}\\
+A_{\lt\alpha}&=\{a_n\in A:a_n\lt\alpha\}\\
+A_\lt&=\{\alpha\in\mathbb{R}:|A_{\lt\alpha}|\lt\aleph_0\}
+\end{split}\quad
+\begin{split}
+A_n&=\{a_n,a_{n+1},\cdots \}\\
+A_{\gt\alpha}&=\{a_n\in A:a_n\gt\alpha\}\\
+A_\gt&=\{\alpha\in \mathbb{R}:|A_{\gt\alpha}|\lt\aleph_0\}\\
+\end{split}
+\end{equation*}
+$$
+
+**limit superior**: TFAE, denoted as $\displaystyle \varlimsup_{n\to\infty} a_n=\overline\alpha$
+
+- ①  $\overline\alpha=\inf A_>$
+  - infimum of $\alpha$s such that only finite many elements are above $\alpha$
+
+- ② $\forall\varepsilon\gt0\quad|A_{\gt\overline\alpha+\varepsilon}|\lt\aleph_0\quad|A_{\gt\overline\alpha-\varepsilon}|\ge\aleph_0$
+  - finitely many elements above $\overline\alpha+\varepsilon$
+  - infintely many elments above $\overline\alpha-\varepsilon$
+
+- ③ $\sup A_n\to\overline\alpha$
+
+  - aka $\inf\{\sup A_n\}=\overline\alpha$ since $(\sup A_n)$ decreases
+
+- ④ $\overline\alpha$ is supremum of $(a_n)$'s subsequential limits
+
+**limit inferior**: TFAE, denoted as $\displaystyle\varliminf_{n\to\infty}a_n=\underline\alpha$
+
+- ① $\underline\alpha=\sup A_\lt$
+  - supremum of $\alpha$s such that only finitely many elements are below $\alpha$
+
+- ② $\forall\varepsilon\gt0\quad|A_{\lt\underline\alpha-\varepsilon}|\lt\aleph_0\quad|A_{\lt\underline\alpha+\varepsilon}|\ge\aleph_0$
+
+  - finitely many elements below $\underline\alpha-\varepsilon$
+  - infinitely many elements below $\underline\alpha+\varepsilon$
+
+- ③ $\inf A_n\to\underline\alpha$
+
+  - aka $\sup\{\inf A_n\}=\underline\alpha$ since $(\inf A_n)$ increases
+
+- ④ $\alpha$ is infimum of $(a_n)$'s subsequential limits
+</details>
+
+<details class="theorem" open>
+<summary>(limsup) ①  `=>` ②  `=>` ③  `=>` ④  `=>` ① </summary>
+
+<details>
+<summary>**Proof.** assume ① , wts ② </summary>
+
+let any $\varepsilon\gt0$
+
+$\therefore\exists\alpha\in A_\gt$ such that
+
+$$
+|A_{\gt\alpha}|\lt\aleph_0\qquad\overline\alpha\le\alpha\lt\overline\alpha+\varepsilon
+$$
+
+$\therefore A_{\gt\overline\alpha+\varepsilon}\subseteq A_{\gt\alpha}$, thus $|A_{\gt\overline\alpha+\varepsilon}|\lt\aleph_0$
+
+$\because\overline\alpha-\varepsilon\notin A_>$<span class="float-right">($\overline\alpha$ is lower bound)</span>
+
+$\therefore|A_{\gt\overline\alpha-\varepsilon}|\ge\aleph_0\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** assume ② , wts ③ </summary>
+
+let any $\varepsilon\gt0$
+
+(1) wts $\sup A_n\lt\overline\alpha+\varepsilon$
+
+- $\because|A_{\gt\alpha+\varepsilon/2}|\lt\aleph_0$
+- $\therefore\exists N\quad\forall n\gt N\quad a_n\le\overline\alpha+\varepsilon/2$
+- $\therefore$ for any $n\gt N$
+
+$$
+\sup A_n\le\overline\alpha+\varepsilon/2\lt\alpha+\varepsilon
+$$
+
+(2) wts $\sup A_n\gt\overline\alpha-\varepsilon$
+
+- $\because|A_{\gt\overline\alpha-\varepsilon}|\ge\aleph_0$
+- $\therefore\forall n\gt N\quad\exists n'\ge n\quad a_{n'}\gt\overline\alpha-\varepsilon$
+- $\therefore$ for any $n\gt N$
+
+$$
+\sup A_n\ge a_{n'}\gt\overline\alpha-\varepsilon
+$$
+
+thus with (1) (2), for any $n\gt N$
+
+$$
+|\sup A_n-\overline\alpha|\lt\varepsilon
+$$
+
+thus $\sup A_n\to\overline\alpha\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** assume ③ , wts ④ </summary>
+
+let $S$ be set of subsequential limits
+
+$$
+S=\{\alpha\in\mathbb{R}:\exists(a_{n_k})\subseteq(a_n)\quad a_{n_k}\to\alpha\}
+$$
+
+wts $\sup S\le\overline\alpha$
+
+- let any $(a_{n_k})$ that converges to some $\alpha\in S$
+  - let any $k\gt0$, thus $n_k\ge k$
+  $$
+  \begin{align*}
+  \because&&a_{n_k}&\in A_{n_k}\subseteq A_k\\
+  \therefore&&a_{n_k}&\le\sup A_{n_k}\le\sup A_k
+  \end{align*}
+  $$
+  - where $a_{n_k}\to\alpha$ and $\sup A_k\to\overline\alpha$
+
+- $\therefore\alpha\le\overline\alpha$
+
+wts $\overline\alpha\in S$, thus $\overline\alpha=\max S=\sup S$
+
+- for any $k\gt0$, let $\varepsilon_k=1/k\gt0$
+
+  $$
+  \therefore\exists n_k\ge k\quad \sup A_k-\varepsilon_k\le a_{n_k}\le \sup A_k
+  $$
+- choose the smallest $n_k$ for any $k$ thus $(a_{n_k})$ is a subsequence of $(a_n)$
+
+$$
+\begin{align*}
+  \therefore&&\lim_{k\to\infty}(\sup A_k-\varepsilon_k)&\le\lim_{k\to\infty}a_{n_k}\le\lim_{k\to\infty}\sup A_k\\
+  \therefore&&\varlimsup_{k\to\infty}a_k-\lim_{k\to\infty}1/k&\le\lim_{k\to\infty}a_{n_k}\le\varlimsup_{k\to\infty}a_k\\
+  \therefore&&\overline\alpha-0=\overline\alpha&\le\alpha\le\overline\alpha
+\end{align*}
+$$
+
+- $\therefore a_{n_k}\to\overline\alpha$ by squeeze, thus $\overline\alpha\in S\enspace\square$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** assume ④ , wts ① </summary>
+
+wts $ \forall\varepsilon\gt0\quad\exists\alpha\in A_>\quad\sup S\le\alpha\lt\sup S+\varepsilon $
+
+let any $\varepsilon\gt0$
+
+let $\alpha=\sup S+\varepsilon/2$
+
+BWOC assume $|A_{\gt\alpha}|\ge\aleph_0$
+
+$\because A_{\gt\alpha}\subseteq A$ is bounded
+
+$\therefore A_{\gt\alpha}$ has some subsequence that converges to some $\alpha^*\ge\alpha$<span class="float-right">(BW)</span>
+
+$\therefore\alpha^*\in S$ where $\sup S\lt\alpha\le\alpha^*$, thus contradicts that $\sup S$ is upper bound
+
+thus $|A_{\gt\alpha}|\lt\aleph_0$, that is, $\alpha\in A_\gt\enspace\square$
+</details>
+
+</details>
+
+
+<details class="example" open>
+<summary>subsequentially converge to any point between liminf and limsup</summary>
+
+for any bounded $(a_n)\subseteq\mathbb{R}$ where
+
+- $\underline{a_n}\to\underline\alpha$ and $\overline{a_n}\to\overline\alpha$
+
+- $|a_n-a_{n+1}|\to0$
+
+<div class="flex justify-center">
+
+$(\underline\alpha,\overline\alpha)$ are subsequential limits of $(a_n)$
+</div>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let subsequences $(a_{\underline n_k})$ and $(a_{\overline n_k})$ such that
+
+$$
+\begin{align*}
+  a_{\underline n_k}&\to \underline\alpha\\
+  a_{\overline n_k}&\to \overline\alpha\\
+\end{align*}
+$$
+
+let any $\alpha\in(\underline\alpha,\overline\alpha)$
+
+$\therefore\exists N_1\exists N_2$ such that
+
+$$
+\forall k\gt N_1,N_2\quad a_{\underline n_k}\lt\alpha\lt a_{\overline n_k}
+$$
+
+let any $\varepsilon\gt0$
+
+$\therefore\exists N_3$ such that 
+
+$$
+\forall n\gt N_3\quad |a_n-a_{n+1}|\lt\varepsilon
+$$
+
+let $N=\max\{N_1,N_2,N_3\}$
+
+let any $k\gt N$
+
+- choose the smallest $\overline n_k$ and smallest $\underline n_k$ such that
+
+$$
+k\le\overline n_k\le\underline n_k
+$$
+
+- consider $I=\{\overline n_k,\overline n_k+1,\cdots ,\underline n_k\}$ where $a_{\underline n_k}\lt\alpha\lt a_{\overline n_k}$
+
+- $\therefore\exists n_k\in I$ such that $a_{n_k+1}\le\alpha\le a_{n_k}$
+
+$$
+\therefore |a_{n_k}-\alpha|=a_{n_k}-\alpha\lt a_{n_k}-a_{n_k+1}=|a_{n_k}-a_{n_k+1}|\lt\varepsilon
+$$
+
+thus $a_{n_k}\to \alpha\enspace\square$
+</details>
+</details>
+
+<details class="example" open>
+<summary></summary>
+
+for any convergent $(a_n)$ with positive limit point and bounded $(b_n)$
+
+$$
+\varlimsup_{n\to\infty}a_nb_n=\left(\lim_{n\to\infty}a_n\right)\left(\varlimsup_{n\to\infty}b_n\right)
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let $a_n\to \alpha\gt0\quad \overline{b_n}\to \overline\beta\quad \overline{a_nb_n}\to \gamma$
+
+wts $\alpha\overline\beta\le\gamma$
+
+- $\because\exists(b_{n_k})\subseteq(b_n)$ such that $b_{n_k}\to \overline\beta$ where $a_{n_k}\to \alpha$ (under same indices)
+- $\therefore a_{n_k}b_{n_k}\to \alpha\overline\beta$, thus $\alpha\overline\beta$ is a subsequential limit (where $\gamma$ is the supremum)
+
+wts $\gamma\le\alpha\overline\beta$
+
+- $\because\exists(a_{n_k}b_{n_k})$ such that $a_{n_k}b_{n_k}\to \gamma$ where 
+  - $a_{n_k}\to \alpha$<span class="float-right">(under same indices)</span>
+  - $b_{n_k}\to \gamma/\alpha\le\overline\beta$ <span class="float-right">($\overline\beta$ is supremum of subsequential limits)</span>
+
+  $$
+  \therefore\gamma=\alpha(\gamma/\alpha)\le \alpha\overline\beta
+  $$
+
+thus $\gamma=\alpha\overline\beta\enspace\square$
+</details>
+</details>
+
+## Series Convergence Tests
+<details class="definition" open>
+<summary>convergent series</summary>
+
+for series $\sum a_n$
+
+$$
+\sum a_n=s\iff s_n\to s
+$$
+
+- where $s_n=\sum_{k=1}^n a_k$
+
+</details>
+
+<details class="theorem" open>
+<summary>comparasion test (CT)</summary>
+
+for sequence $(a_n)$ and $(b_n)$ where
+
+$$
+0\lt a_n\le b_n
+$$
+
+then $\sum b_n\lt\infty\implies \sum a_n\lt\infty$
+
+</details>
+
+<details class="theorem" open>
+<summary>limit comparasion tests</summary>
+
+for sequence $(a_n),(b_n)\subset\mathbb{R}^+$
+
+① if $a_n/b_n\to \alpha\in(0,\infty)$, then
+
+$$
+\sum a_n\lt\infty\iff\sum b_n\lt\infty
+$$
+
+② if $a_n/b_n\to 0$, then
+
+$$
+\sum b_n\lt\infty\implies \sum a_n\lt\infty
+$$
+
+③ if $a_n/b_n\to \infty$, then
+
+$$
+\sum a_n\lt\infty\implies \sum b_n\lt\infty
+$$
+
+</details>
+
+<details class="definition" open>
+<summary>absolute convergence</summary>
+
+$\sum a_n$ **absolutely converges** iff
+
+$$
+\sum|a_n|\lt\infty
+$$
+
+notice AC $\implies $ C
+</details>
+
+<details class="theorem" open>
+<summary>root test</summary>
+
+for sequence $(a_n)$
+
+if 
+
+$$
+\lim_{n\to\infty}|a_{n+1}/a_n|\lt1
+$$
+
+then $\sum a_n$ AC
+
+</details>
+
+<details class="theorem" open>
+<summary>geometric series</summary>
+
+$$
+\sum_{n\in\omega}ar^n\lt\infty \iff|r|\lt1
+$$
+
+
+if converges, then $\sum ar^n=a/(1-r)$
+
+</details>
+
+<details class="theorem" open>
+<summary>integral test</summary>
+
+for decreasing $f:[N,\infty)\to \mathbb{R}$
+
+$$
+\sum_{n=N}^\infty f(n)\lt\infty \iff\int_N^\infty f(x)dx\lt\infty
+$$
+
+</details>

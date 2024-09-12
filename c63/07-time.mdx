@@ -1,0 +1,78 @@
+---
+title: Time Complexity
+---
+
+## Hardness & Completeness
+
+<details class="definition" open>
+<summary>$A\le_pB\iff\exists$ computable $f:\Sigma^*\to\Sigma^*$ st</summary>
+
+for any $w\in\Sigma^*$
+$$
+w\in A\iff f(w)\in B
+$$
+and $f$ computes in polynomial time
+</details>
+
+<details class="definition" open>
+<summary>$L\sube\Sigma^*$</summary>
+- is NPH iff $\forall A\in NP\enspace A\le_p L$
+- is NPC iff $L\in NP$ and NPH
+</details>
+
+## NP
+
+<details class="definition" open>
+<summary>verifier </summary>
+a **verifier** $V$ for $A\sube\Sigma^*$ is a TM st
+$$
+A=\{w:\exists c\enspace V\textsf{ accepts }\langle w,c\rangle\}
+$$
+
+where $c$ is the **certificate**
+
+- time of verifier depends only on $|w|$
+</details>
+
+<details class="definition" open>
+<summary>NP</summary>
+$NP$ is the class of all languages recognisable by a polytime verifier
+
+to show language $L\in NP$ 
+
+1. show $L$ is a decision problem
+2. for any $w\in L$, provide a certificate $c$ of $w$
+3. show $|c|$ is polysize (wrt $|w|$)
+4. provide a verifier $V$ (decider on $\langle w,c\rangle$)
+5. show $V$ runs in polytime
+</details>
+
+<details class="definition" open>
+<summary>coNP</summary>
+
+$$
+L\in \text{coNP}\iff\overline L\in NP
+$$
+</details>
+
+## P
+
+<details class="definition" open>
+<summary>time complexity class</summary>
+for any $t:\mathbb N\to\mathbb R^+$, define
+
+$$
+\text{TIME}(t)
+$$
+to be class of all languages decidable by an $\mathcal O(t)$ TM
+</details>
+
+<details class="definition" open>
+<summary>class P</summary>
+let $P$ be the class of all languages decidable by a DSTM
+
+$$
+P=\bigcup_k\text{TIME}(n^k)
+$$
+</details>
+

@@ -1,0 +1,75 @@
+---
+title: Natural Numbers
+---
+
+
+## Natural 
+
+<details class="definition" open>
+<summary>successor function</summary>
+
+for set $x$, the **successor** of $x$ is
+
+$$
+S(x)=x+1=x\cup\{x\}
+$$
+</details>
+
+<details class="definition" open>
+<summary>inductive set</summary>
+
+set $I$ is **inductive** iff all
+
+- $0\in I$
+- $\forall n(n\in I\implies n+1\in I)$
+</details>
+
+<details class="definition" open>
+<summary>naturals</summary>
+
+$$
+\begin{align*}
+  0&=\varnothing\\
+  1&=S(0)=\{0\}=\{\varnothing\}\\
+  2&=S(1)=\{0,1\}=\{\varnothing,\{\varnothing\}\}\\
+  3&=S(2)=\{0,1,2\}\\
+\end{align*}
+$$
+</details>
+
+<details class="definition" open>
+<summary>naturals</summary>
+
+let $A$ be some inductive set, define $\mathbb N\sube A$ where
+
+<div class="flex justify-center">
+$x\in\mathbb N\iff x\in I$ for any inductive $I$
+</div>
+
+- $\mathbb N$ is inductive
+- let $\lt$ be canonical order of $\mathbb N$ where $a\lt b\iff a\in b$
+  - strict, total, well-ordered
+</details>
+
+<details class="theorem" open>
+<summary>induction principle</summary>
+
+$$
+\bold P(0)\land\forall n(\bold P(n)\implies\bold P(n+1))\implies\forall n\bold P(n)
+$$
+</details>
+
+
+<details class="theorem" open>
+<summary>recursion theorem</summary>
+for any set $A$, element $a\in A$, function $g:A\times\mathbb N\to A$
+
+- $\exists !f:\mathbb N\to A$ such that
+
+$$
+\begin{align*}
+  f(0)&=a\\
+  \forall n\enspace f(n+1)&=g(f(n),n)
+\end{align*}
+$$
+</details>

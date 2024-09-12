@@ -1,0 +1,205 @@
+---
+title: Total Order
+---
+
+## Total Order
+
+<details class="definition" open>
+<summary>similar</summary>
+
+loset $(A,\le_A)$ and $(B,\le_B)$ **similar** (aka same order type) $\iff A\cong B$
+
+**Corollary.** similar is equivalence *relation*
+</details>
+
+<details class="theorem" open>
+<summary>finite sets of same cardinality are similar</summary>
+
+for any finite loset $(A,\le_A),(B,\le_B)$
+
+$$
+|A|=|B|\iff|A|\cong |B|
+$$
+
+<details class="list-none">
+<summary>**Lemma.** any total order on a finite set is well-order</summary>
+
+(induction on $|A|=n$)
+
+base $n=1$, obvious
+
+let $|A|=n+1$
+
+- $\therefore A=A'\sqcup\{a\}$ for some $a\in A-A'$
+- $\therefore A'$ has some least element $a'$<span class="float-right">(IH)</span>
+- $\therefore a$ or $a'$ is least element of $A\enspace\square$
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$(\impliedby )$ by definition
+
+$(\implies )$ induction on $|A|=|B|=n$
+
+base $n=0$, then $\varnothing\cong\varnothing$
+
+let any $|A|=|B|=n+1$, assume IH
+
+- $\because(A,\le_A),(B,\le_B)$ are wosets
+- let $a$ be least of $A$ and $b$ be least of $B$
+- let $A'=A-\{a\}$ and $B'=B-\{b\}$
+- $\therefore A'\cong B'$ by some $\varphi'$<span class="float-right">(IH)</span>
+- let $\varphi'=\varphi\cup\{(a,b)\}$
+- $\therefore A\cong B$ by $\varphi\enspace\square$
+
+</details>
+
+</details> 
+
+### Sum
+
+<details class="definition" open>
+<summary>sum of losets</summary>
+
+for **disjoint** losets $A$ and $B$, the sum $A+B$ is the loset $A\sqcup B$ where
+
+$$
+\begin{align*}
+  a,b\in A\land a\lt_A b&\implies a\lt b\\
+  a,b\in B\land a\lt_B b&\implies a\lt b\\
+  a\in A\land b\in B&\implies a\lt b\\
+\end{align*}
+$$
+
+otherwise $a\not\lt b$
+
+**N.B.** such sum is not commutative
+
+</details>
+
+
+### Countable Dense Losts
+
+<details class="definition" open>
+<summary>dense</summary>
+
+for $(X,\lt)$ with $|X|\ge2$
+
+<div class="flex justify-center">
+
+$X$ is **dense** $\iff\forall a,b\in X\quad\exists x\in X\quad (a\lt b\implies  a\lt x\lt b)$
+</div>
+
+<details class="list-none">
+<summary>**Proof.** any closed interval of a dloset is infinite</summary>
+
+BWOC assume $[a,b]\subseteq A$ finite
+
+let $[a,b]=\{a,a_1,a_2,\cdots,a_n,b\}$ where
+
+$$
+a\lt a_1\lt a_2\lt\cdots\lt a_n\lt b
+$$
+
+$\because A$ dense
+
+$\therefore\exists c\in A\quad a\lt c\lt a_1$
+
+$\therefore a\le c\lt a_1\le b$, thus $c\in[a,b]$
+
+$\because c\ne a$ and $c\ne a_1$
+
+$\therefore c\in\{a_2,\cdots,a_n,b\}$, contradicts that $c\lt a_1\enspace\square$
+
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary>countable dense losets without endpoints are similar</summary>
+
+for any countable dense loset $(P,\lt)$ without endpoints
+
+$$
+P\cong \mathbb{Q}
+$$
+
+</details>
+
+<details class="theorem" open>
+<summary>countable losets are similar</summary>
+any countable dense loset is similar to a subset of any countable loset without endpoints
+</details>
+
+
+
+## Complete Total Order
+
+<details class="definition" open>
+<summary>complete</summary>
+
+dense loset $(P,\lt)$ is **complete** iff
+
+<div class="flex justify-center">
+
+any nonempty $A\subseteq P$ bounded above has a supremum
+</div>
+
+</details>
+
+<details class="theorem" open>
+<summary>unique completion</summary>
+
+for any dense loset $(P,\lt_P)$ without endpoint
+
+<div class="flex justify-center">
+
+there is a unique (up to isomorphism) complete loset $(C,\lt_C)$ without endpoints 
+</div>
+
+- $P\subseteq C$ and $\lt_P\subseteq\lt_C$
+
+$$
+\forall p,q\in P\quad(p\lt_P q\iff p\lt _Cq)
+$$
+- $P$ is dense in $C$
+
+$$
+\forall p,q\in P\quad \exists c\in C\quad(p\lt q\implies  p\lt c\lt q)
+$$
+
+</details>
+
+<details class="definition" open>
+<summary>reals</summary>
+
+<div class="flex justify-center">
+
+$\mathbb{R}$ is the completion of $\mathbb{Q}$
+</div>
+
+$\mathbb{R}$ is the unique (up to isomorphism) complete dense loset without endpoints that contains a countable dense subset
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let any countable dense loset $C$ without endpoints that contains a countable dense subset $P$
+
+- $\therefore P\cong \mathbb{Q}$
+- $\therefore C\cong\mathbb{R}\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $|\mathbb{R}|\gt\aleph_0$</summary>
+
+$\because\mathbb{R}$ is dloset without endpoints
+
+BWOC assume $|\mathbb{R}|=\aleph_0$
+
+$\therefore\mathbb{R}\cong\mathbb{Q}$
+
+but $\mathbb{R}$ is complete whereas $\mathbb{Q}$ is not $\enspace\square$
+</details>
+</details>

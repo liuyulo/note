@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Proof Techniques</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Proof Techniques</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#language">Language</a>
+<ul>
+<li><a href="#from-defs-to-theorems">From Defs to Theorems</a></li>
+<li><a href="#quantifiers">Quantifiers</a></li>
+<li><a href="#implications">Implications</a></li>
+<li><a href="#counterexamples">Counterexamples</a></li>
+</ul></li>
+<li><a href="#proof">Proof</a>
+<ul>
+<li><a href="#calculational">Calculational</a></li>
+<li><a href="#direct">Direct</a></li>
+<li><a href="#contradiction">Contradiction</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="language">Language</h1>
+<p><em>(textbook)</em> ## From Defs to Theorems &gt; how to build on our
+basic definitions and develop the theory of calculus</p>
+<p>example definitions - an <strong>integer</strong> <span
+class="math inline">\Z</span> is a whole number that is positive,
+negative, or zero - an int <span class="math inline">n</span> is
+<strong>divisible</strong> by an int <span class="math inline">m</span>
+if <span class="math inline">n=km</span> for some int <span
+class="math inline">k</span> - an int <span class="math inline">n</span>
+is <strong>even</strong> if <span class="math inline">n=2k</span> for
+some int <span class="math inline">k</span> - an int <span
+class="math inline">n</span> is <strong>odd</strong> if <span
+class="math inline">n=2k+1</span> for some int <span
+class="math inline">k</span> - <span class="math inline">n</span> is a
+<strong>rational number</strong> <span
+class="math inline">\Bbb{Q}=\left\{\frac
+pq,p,q\in\Z,q\neq0\right\}</span></p>
+<h2 id="quantifiers">Quantifiers</h2>
+<blockquote>
+<p>for all upside-down A, there exists a backwards E</p>
+</blockquote>
+<ul>
+<li><strong><span class="math inline">\forall x, P</span></strong>
+property <span class="math inline">P</span> holds for all possible
+values of <span class="math inline">x</span></li>
+<li><strong><span class="math inline">\exist x\text{ st
+}P</span></strong> property <span class="math inline">P</span> is true
+for at least one value of <span class="math inline">x</span></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\forall\quad</span> for all</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\forall x\in\R,\enspace
+3x+3=3(x+1)</span></td>
+<td><code>true</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\forall x\in\R,\enspace \vert
+x\vert=-x</span></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\exist\quad</span> there exists</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\exist
+x\in\R\enspace\text{st}\enspace\sqrt x=-x</span></td>
+<td><code>true</code> <span class="math inline">(x=0)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="implications">Implications</h2>
+<blockquote>
+<p>the <strong>contrapositive</strong> of an implication is
+<em>always</em> logically equivalent to the original implication</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A\implies
+B</span></th>
+<th style="text-align: right;">if <span class="math inline">A</span>,
+then <span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\neg
+A\implies\neg B</span></td>
+<td style="text-align: right;"><em>inverse</em> of <span
+class="math inline">A\Rarr B</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">B\implies
+A</span></td>
+<td style="text-align: right;"><em>converse</em> of <span
+class="math inline">A\Rarr B</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">A\iff
+B</span></td>
+<td style="text-align: right;"><em>two-way implication</em>
+(<code>iff</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\neg
+B\implies\neg A</span></td>
+<td style="text-align: right;"><em>contrapositive</em> of <span
+class="math inline">A\Rarr B</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="counterexamples">Counterexamples</h2>
+<blockquote>
+<p>fast way to prove a “for all” statement is <strong>false</strong></p>
+</blockquote>
+<h1 id="proof">Proof</h1>
+<blockquote>
+<p>me when i write “QED” at end of a proof: i’m something of a
+mathematician myself</p>
+</blockquote>
+<h2 id="calculational">Calculational</h2>
+<p>prove that for all real numbers <span class="math inline">a</span>
+and <span class="math inline">b</span>, <span
+class="math inline">a^3-b^3=(a-b)(a^2+ab+b^2)</span> <span
+class="math display">\begin{aligned}
+    (a-b)(a^2+ab+b^2)&amp;=a^3+a^2b+ab^2-a^2b-ab^2-b^3\\
+    &amp;=a^3-b^3\quad\forall a,b\in\R\\
+\end{aligned}\\
+\therefore\; a^3-b^3=(a-b)(a^2+ab+b^2)\qquad\text{QED}</span></p>
+<h2 id="direct">Direct</h2>
+<p>prove that <span class="math inline">f(x)=\frac{x-3}{x+2}</span> is
+<strong>one-to-one</strong> function <span
+class="math display">\begin{aligned}
+    \text{Given: }&amp;f(x)=\frac{x-3}{x-2}\\
+    \text{Show: }&amp;f(x)\text{ is one-to-one}\\
+\end{aligned}\\
+\,\\
+\text{Definition: }f\text{ is one-to-one if }\exist a,b\text{ st
+}f(a)=f(b)\Rarr a=b\quad a,b\in\text{Dom}(f)\\
+\begin{aligned}
+    f(a)&amp;=f(b)\\
+    \frac{a-3}{a+2}&amp;=\frac{b-3}{b+2}\\
+    (b+2)(a-3)&amp;=(b-3)(a+2)\\
+    ab-3b+2a-6&amp;=ab-3a+2b-6\\
+    2a-3b&amp;=2b-3a\\
+    5a&amp;=5b\\
+    a&amp;=b
+\end{aligned}\\
+\begin{aligned}
+    \therefore\;&amp;f(a)=f(b)\Rarr a=b\\
+    \therefore\;&amp;f(x)\text{ is one-to-one}\qquad\text{QED}
+\end{aligned}</span></p>
+<h2 id="contradiction">Contradiction</h2>
+<p>prove that the sum of a rational number and an irrational number is
+irrational <span class="math display">\begin{aligned}
+    \text{Given: }&amp;r\in\Bbb{Q}, x\not\in\Bbb{Q}\\
+    \text{Show: }&amp;r+x\not\in\Bbb{Q}\\
+\end{aligned}\\\,\\
+\begin{aligned}
+    \text{Assume }&amp;r+x\in\Bbb{Q}\\
+    \therefore\;&amp;\exist s\in\Bbb{Q}\text{ st }r+x=s\\
+    \because\;&amp;s,r\in\Bbb{Q}\\
+    \therefore\;&amp;x=s-r\in\Bbb{Q}\\
+    &amp;\text{which contradicts the initial assumption that
+}x\not\in\Bbb{Q}\\
+    \therefore\;&amp;r+x\not\in\Bbb{Q}\qquad\text{QED}
+\end{aligned}</span></p>
+</body>
+</html>

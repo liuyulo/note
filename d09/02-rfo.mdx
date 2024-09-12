@@ -1,0 +1,380 @@
+---
+title: Relations, Functions, Orders
+---
+
+
+## Relation 
+
+<details class="definition" open>
+<summary>ordered pairs</summary>
+
+for sets $a,b$, the **ordered pair** of $a$ and $b$ is
+
+<div class="flex justify-center">
+
+$(a,b)=\{\{a\},\{a,b\}\}$
+
+</div>
+
+- N.B. $(a,a)=\{\{a\}\}$
+
+<details>
+<summary>**Construction.** using axioms</summary>
+
+- pair $a$ to $\{a\}$
+- pair $a,b$ to $\{a,b\}$
+- pair to $\{\{a\},\{a,b\}\}$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>pair equality</summary>
+<div class="flex justify-center">
+
+$(a_1,b_1)=(a_2,b_2)\iff a_1=a_2$ and $b_1=b_2$
+</div>
+</details>
+
+<details class="definition" open>
+<summary>(binary) relation</summary>
+
+set $R$ is **relation** iff
+
+$$
+\forall p\in R\quad\exists x\exists y\quad p=(x,y)
+$$
+
+$aRb$ denotes $(a,b)\in R$
+</details>
+
+<details class="definition" open>
+<summary>domain, range, field</summary>
+
+for relation $R$
+
+- **domain** of $R$ is 
+  $$
+  \begin{align*}
+  \operatorname{dom} R&=\{a:\exists b\enspace aRb\}\\
+  \end{align*}
+  $$
+- **range**  of $R$ is 
+  $$
+  \operatorname{ran} R=\{b:\exists a\enspace aRb\}
+  $$
+- **field** of $R$ is 
+  $$
+  \operatorname{field}R=\operatorname{dom} R\cup\operatorname{ran} R
+  $$
+
+notice $\operatorname{dom} R,\operatorname{ran}R\sube\cup(\cup A)$
+</details>
+
+<details class="definition" open>
+<summary>image, inverse image, inverse</summary>
+for relation $R$ 
+
+- **image** of set $A$ under $R$ is 
+  $$
+  R[A]=\{b\in\operatorname{ran}R:\exists a\in A\enspace aRb\}
+  $$
+- **inverse image** of set $B$ under $R$ is
+  $$
+  R^{-1}[B]=\{a\in\operatorname{dom}R:\exists b\in B\enspace aRb\}
+  $$
+- **inverse** of $R$ is
+  $$
+  R^{-1}=\{(b,a):aRb\}
+  $$
+<details class="list-none">
+<summary>**Proof.** inverse image is image of inverse</summary>
+
+let any relation $R$ and set $B$
+
+$\because\operatorname{dom} R=\operatorname{ran} R^{-1}$
+
+$\therefore$ let any $a\in\operatorname{dom}R$
+
+- $a$ is member of inverse image of $B$ under $R$
+- $\iff \exists b\in B\enspace aRb$
+- $\iff\exists b\in B\enspace bR^{-1}a$
+- $\iff a$ is member of image of $B$ under $R^{-1}\quad\square$
+</details>
+</details>
+
+<details class="definition" open>
+<summary>relation composition</summary>
+for relation $R$ and $S$
+
+- **composition** of $R$ and $S$ is 
+  $$
+  S\circ R=\{(a,c):\exists b\enspace aRb\enspace bSc\}
+  $$
+</details>
+
+<details class="definition" open>
+<summary>special relations</summary>
+
+for set $A$ and $B$
+
+- (cartesian) **product** of $a$ and $b$ is
+  $$
+  a\times b=\{(a,b): a\in a\enspace b\in b\}\sube\mathcal P(\mathcal P(a\cup b))
+  $$
+- **membership** relation on $a$ is
+  $$
+  \in_a=\{(a,b)\in a\times a:a\in b\}
+  $$
+- **identity** relation on $a$ is
+  $$
+  1_a=\{(a,a):a\in a\}
+  $$
+</details>
+
+<details class="definition" open>
+<summary>relation properties</summary>
+
+relation $R$ on set $A$ is
+
+
+<div class="flex justify-center">
+
+
+| | |
+|-:|:-|
+|**reflexive**|$\forall a(aRa)$|
+|**symmetric**|$\forall a\forall b(aRb\implies bRa)$|
+|**transitive**|$\forall a\forall b\forall c(aRb\implies bRc\implies aRc)$|
+|**equivalence** | reflexive, symmetric, transitive|
+
+</div>
+</details>
+
+<details class="definition" open>
+<summary>equivalence class</summary>
+for equivalence $E$ on $A$, the **equivalence class** of $a\in A$ modulo $E$ is
+
+$$
+[a]_E=\{b\in A:aEb\}
+$$
+
+the **system of equivalence classes** on $A$ modulo $E$ is
+
+$$
+A/E=\{[a]_E:a\in A\}
+$$
+
+</details>
+
+## Function
+
+<details class="definition" open>
+<summary>function</summary>
+relation $F$ is **function** iff
+
+$$
+\forall a\forall b_1\forall b_2\enspace aFb_1\implies aFb_2\implies b_1=b_2
+$$
+
+that is
+
+$$
+\forall a\in\operatorname{dom}F\enspace\exists!b\enspace aFb
+$$
+
+- $F(a)$ denotes such unique $b$
+- $F:A\to B$ denotes "$F$ is function where $\operatorname{dom}F=A$ and $\operatorname{ran} F\sube B$"
+</details>
+
+<details class="theorem" open>
+<summary>function equality</summary>
+for function $f$ and $g$
+
+$$
+f=g\iff\operatorname{dom} f=\operatorname{dom}g\text{ and }\forall x\enspace f(x)=g(x)
+$$
+</details>
+
+<details class="definition" open>
+<summary>terminology</summary>
+
+function $f$ is
+
+- **on** $A\iff\operatorname{dom}f=A$
+- **into** $B\iff\operatorname{ran} f\sube B$
+- **onto** $B\iff\operatorname{ran}f=B$
+
+a **restriction** of $f$ to set $A$ is
+$$
+f\upharpoonright A=\{(a,b)\in f:a\in A\}
+$$
+
+- $f$ is then an **extension** of its restriction
+</details>
+
+<details class="theorem" open>
+<summary>function composition</summary>
+for function $f$ and $g$, the **composition** $gf$ is function where
+
+$$
+\operatorname{dom}(g\circ f)=\operatorname{dom}f\cap f^{-1}[\operatorname{dom}g]
+$$
+that is, $x$ is defined on $gf\iff x$ is defined in $f$ and $f(x)$ is defined in $g$
+
+- $(g\circ f)(x)=g(f(x))$ for any $x\in\operatorname{dom}(g\circ f)$
+
+</details>
+
+<details class="definition" open>
+<summary>index system of sets (aka function)</summary>
+
+let function $S$ with domain $I$
+
+$$
+\{S_\alpha\}_{\alpha\in I}
+$$
+
+is an **indexed** system 
+
+</details>
+
+<details class="definition" open>
+<summary>product</summary>
+
+the product of $S$ is
+
+$$
+\prod_{\alpha\in I}S_\alpha=\{f:\forall\alpha\in I\enspace f(\alpha)\in S_\alpha\}
+$$
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+if $\exists B\forall\alpha\in I\quad S_\alpha=B$ then
+
+$$
+\prod_{\alpha\in I}S_\alpha
+$$
+</details>
+
+<details class="definition" open>
+<summary>indexed</summary>
+
+set $A$ is **indexed** by $S$ iff
+
+$$
+A=\{S_\alpha:\alpha\in I\}=\operatorname{ran}S
+$$
+
+</details>
+
+## Order
+
+<details class="definition" open>
+<summary>order</summary>
+
+for relation $R$ on $A$
+
+<div class="flex justify-center">
+$a,b\in A$ are **comparable** $\iff aRb\lor bRa$
+</div>
+
+relation $R$ on set $A$ is
+
+<div class="flex justify-center">
+
+| | |
+|-:|:-|
+|**antisymmetric**| $\forall a\forall b(a Rb\implies bRa\implies a=b)$
+|**asymmetric**|$\forall a\forall b(aR b\implies b\cancel Ra)$|
+|**partial order**|reflexive, antisymmetric, transitive|
+|**strict order** | asymmetric, transitive
+|**total order** | $\forall a\forall b(aRb\lor bRa)$
+|**well order**| total order, and any nonempty subset has a least element
+
+</div>
+
+- partial ordered set is **poset**
+- strictly ordered set is **soset**
+- total ordered set is **loset** (linear ordered set)
+- well ordered set is **woset**
+</details>
+
+<details class="theorem" open>
+<summary>poset to soset, soset to poset</summary>
+for poset $(A,\le)$, the *strict order* is defined
+
+$$
+\forall a\forall b\quad a\lt b\iff a\le b\land a\ne b
+$$
+
+for soset $(A,\lt)$, the *partial order* is defined
+
+$$
+\forall a\forall b\quad a\le b\iff a\lt b\lor a=b
+$$
+</details>
+
+<details class="definition" open>
+<summary>poset isomorphism</summary>
+for poset $A$ and $B$
+
+- $A\cong B\iff\exists f: A\stackrel\sim\to B$ st
+
+$$
+\forall a_1,a_2\in A(a_1\le a_2\iff f(a_1)\le f(a_2))
+$$
+</details>
+
+
+<details class="definition" open>
+<summary>least, minimal</summary>
+
+for poset $(A,\le)$ and $B\subseteq A$
+
+| | |
+|-|-|
+| $b\in B$ is **least** of $B$ in $\le$ | $\forall x\in B\quad b\le x$
+| $b\in B$ is **maximal** of $B$ in $\le$ | $\forall x\in B\quad x\le b\implies  x=b$
+| $b\in B$ is **greatest** of $B$ in $\le$|$\forall x\in B\quad b\ge x$
+|$b\in B$ is **maximal** of $B$ in $\le$|$\forall x\in B\quad x\ge b\implies x=b$
+
+- least is also called **left endpoint**
+- greatest is also called **right endpoint**
+- **endpoint** is either least or greatest
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+- $B$ has at most one least element
+- any least is maximal
+
+similar for greatest/maximal
+</details>
+
+<details class="definition" open>
+<summary>bound</summary>
+
+for poset $(A,\le)$ and $B\subseteq A$
+
+-  $a\in A$ is **lower bound** of $B$ in $(A,\le)\iff\forall x\in B\quad a\le x$
+- $a\in A$ is **infimum** of $B$ in $(A,\le)\iff a$ is greatest in set of all lower bounds of $B$ in $(A,\le)$
+-  $a\in A$ is **upper bound** of $B$ in $(A,\le)\iff\forall x\in B\quad a\ge x$
+- $a\in A$ is **supremum** of $B$ in $(A,\le)\iff a$ is least in set of all upper bounds of $B$ in $(A,\le)$
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+- $B$ has at most one infimum
+- least $\implies $ infimum
+- $a$ is infimum and $a\in B\implies a$ is least
+- $a\in A$ is infimum of $B$ in $(A,\le)\iff$
+  - $\forall x\in B\quad a\le x$
+  - $\forall a'\in A(\forall x\in B\quad a\le x)\implies a'\le a$
+
+same for supremum
+</details>
+
