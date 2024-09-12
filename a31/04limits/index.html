@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Limit</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Limit</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#formal-definition">Formal Definition</a></li>
+<li><a href="#uniqueness">Uniqueness</a></li>
+<li><a href="#one-sided">One-Sided</a></li>
+<li><a href="#infinity">Infinity</a>
+<ul>
+<li><a href="#infinite-limit">Infinite Limit</a></li>
+<li><a href="#limit-at-infitiy">Limit at infitiy</a></li>
+<li><a href="#inf-limit-at-inf">Inf Limit at Inf</a></li>
+</ul></li>
+<li><a href="#calculations">Calculations</a></li>
+<li><a href="#δ-ε-proofs">δ-ε Proofs</a>
+<ul>
+<li><a href="#normal">Normal</a></li>
+<li><a href="#find-upper-bound">Find Upper Bound</a>
+<ul>
+<li><a href="#assume-">Assume ∆</a></li>
+<li><a href="#root">Root</a></li>
+<li><a href="#trig">Trig</a></li>
+</ul></li>
+<li><a href="#one-sided-1">One-Sided</a></li>
+<li><a href="#to-inf">To Inf</a></li>
+<li><a href="#at-inf">At Inf</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="formal-definition">Formal Definition</h1>
+<blockquote>
+<p><span class="math inline">\lim\limits_{x\to c}f(x)=L</span> means
+<span
+class="math display">\forall\varepsilon\gt0\quad\exist\delta\gt0\text{
+st }\\ 0\lt|x-c|\lt\delta\implies|f(x)-L|\lt\varepsilon</span> or <span
+class="math display">x\in(c-\delta,c)\cup(c,c+\delta)\Rarr
+f(x)\in(L-\varepsilon,L+\varepsilon)</span></p>
+</blockquote>
+<center>
+<pre><code>    c-δ   c   c+δ            L-ε   L   L+ε
+x ∈  ○----○----○   =&gt;  f(x) ∈ ○----●----○</code></pre>
+</center>
+<h1 id="uniqueness">Uniqueness</h1>
+<blockquote>
+<p><span class="math display">\lim\limits_{x\to c}f(x)=L\text{ and
+}\lim\limits_{x\to c}f(x)=M\implies L=M</span></p>
+</blockquote>
+<details>
+<summary>
+proof
+</summary>
+<span class="math display">\begin{aligned}
+    &amp;\begin{aligned}
+        \text{assume }&amp;L\neq M\text{ and }L&gt;M\\
+        \therefore\;&amp;\exist k&gt;0\text{ st }L=M+k\\
+        \text{let }&amp;\varepsilon=k/2\\
+        \therefore\;&amp;(L-\varepsilon,L+\varepsilon)\cap(M-\varepsilon,M+\varepsilon)=\empty\\
+        \,\\
+        \because\;&amp;\lim\limits_{x\to c}f(x)=L\\
+        \therefore\;&amp;\forall\varepsilon&gt;0\enspace\exist\delta_1&gt;0\text{
+st }0\lt|x-c|\lt\delta_1\Rarr |f(x)-L|\lt\varepsilon \\
+        \,\\
+        \because\;&amp;\lim\limits_{x\to c}f(x)=M\\
+        \therefore\;&amp;\forall\varepsilon&gt;0\enspace\exist\delta_2&gt;0\text{
+st }0\lt|x-c|\lt\delta_2\Rarr |f(x)-M|\lt\varepsilon\\
+        \,\\
+        \text{let }&amp;\delta=\text{min}\{\delta_1,\delta_2\}\\
+        \therefore\;&amp;\forall
+x\in(c-\delta,c)\cup(c,c+\delta),\enspace
+f(x)\in(L-\varepsilon,L+\varepsilon)\text{ and
+}f(x)\in(M-\varepsilon,M+\varepsilon)\\
+        &amp;\text{ which is impossible because
+}(L-\varepsilon,L+\varepsilon)\cap(M-\varepsilon,M+\varepsilon)=\empty\\
+        \end{aligned}\\
+        &amp;\therefore\;L=M\\
+        &amp;\therefore\;\lim\limits_{x\to c}f(x)=L\text{ and
+}\lim\limits_{x\to c}f(x)=M\implies L=M\qquad\text{QED}
+\end{aligned}</span>
+</details>
+<h1 id="one-sided">One-Sided</h1>
+<blockquote>
+<p><span class="math inline">\lim\limits_{x\to c^+}f(x)=L</span> means
+<span class="math inline">\quad
+\forall\varepsilon\gt0\quad\exist\delta\gt0\text{ st }</span></p>
+<p><span class="math display">x\in(c-\delta,c)\implies
+f(x)\in(L-\varepsilon,L+\varepsilon)</span> <span
+class="math inline">\lim\limits_{x\to c^-}f(x)=L</span> means <span
+class="math inline">\quad
+\forall\varepsilon\gt0\quad\exist\delta\gt0\text{ st }</span></p>
+<p><span class="math display">x\in(c,c+\delta)\implies
+f(x)\in(L-\varepsilon,L+\varepsilon)</span></p>
+and <span class="math display">\lim\limits_{x\to
+c}f(x)=L\iff\lim\limits_{x\to c^-}f(x)=\lim\limits_{x\to
+c^+}f(x)=L</span>
+</blockquote>
+<details>
+<summary>
+proof
+</summary>
+<span class="math display">\begin{aligned}
+    &amp;\begin{aligned}
+        \text{assume }&amp;\lim\limits_{x\to L}f(x)=L\\
+        \therefore\;&amp;\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st }x\in(c-\delta,c)\cup(c,c+\delta)\Rarr
+f(x)\in(L-\varepsilon,L+\varepsilon)\\
+        \therefore\;&amp;\begin{cases}
+            x\in(c-\delta,c)\implies
+f(x)\in(L-\varepsilon,L+\varepsilon)\\
+            x\in(c,c+\delta)\implies
+f(x)\in(L-\varepsilon,L+\varepsilon)\\
+        \end{cases}\\
+        \therefore\;&amp;\lim\limits_{x\to c^-}f(x)=L\text{ and
+}\lim\limits_{x\to c^+}f(x)=L\\
+    \end{aligned}\\
+    &amp;\begin{aligned}
+        \text{assume }&amp;\lim\limits_{x\to c^-}f(x)=\lim\limits_{x\to
+c^+}f(x)=L\\
+        \therefore\;&amp;\forall\varepsilon&gt;0\enspace\exist\delta_1&gt;0,\delta_2&gt;0\text{
+st }x\in(c-\delta_1,c)\cup(c,c+\delta_2)\Rarr
+f(x)\in(L-\varepsilon,L+\varepsilon)\\
+        \text{let }&amp;\delta=\text{min}\{\delta_1,\delta_2\}\\
+        \therefore\;&amp;x\in(c-\delta,c)\cup(c,c+\delta)\Rarr
+f(x)\in(L-\varepsilon,L+\varepsilon)\\
+        \therefore\;&amp;\lim\limits_{x\to c}f(x)=L\\
+    \end{aligned}\\
+    &amp;\therefore\;\lim\limits_{x\to c}f(x)=L\iff\lim\limits_{x\to
+c^-}f(x)=\lim\limits_{x\to c^+}f(x)=L\qquad\text{QED}\\
+\end{aligned}</span>
+</details>
+<h1 id="infinity">Infinity</h1>
+<h2 id="infinite-limit">Infinite Limit</h2>
+<blockquote>
+<p><span class="math inline">\lim\limits_{x\to c}f(x)=\infty</span>
+means <span class="math display">\forall
+M&gt;0\enspace\exist\delta&gt;0\text{ st }\\
+x\in(c-\delta,c)\cup(c,c+\delta)\implies f(x)\in(M,\infty)</span></p>
+</blockquote>
+<h2 id="limit-at-infitiy">Limit at infitiy</h2>
+<blockquote>
+<p><span class="math inline">\lim\limits_{x\to\infty}f(x)=L</span> means
+<span class="math display">\forall\varepsilon&gt;0\enspace\exist
+N&gt;0\text{ st }\\ x\in(N,\infty)\implies
+f(x)\in(L-\varepsilon,L+\varepsilon)</span></p>
+</blockquote>
+<h2 id="inf-limit-at-inf">Inf Limit at Inf</h2>
+<blockquote>
+<p><span
+class="math inline">\lim\limits_{x\to-\infty}f(x)=-\infty</span> means
+<span class="math display">\forall M&gt;0\enspace\exist N&gt;0\text{ st
+}\\ x\in(-\infty,-N)\implies f(x)\in(-\infty,-M)</span></p>
+</blockquote>
+<h1 id="calculations">Calculations</h1>
+<blockquote>
+<p><span class="math inline">f(c\pm\delta)</span> must be inside <span
+class="math inline">L\pm\varepsilon</span>, therefore choose <em>min
+δ</em> and <em>max ε</em></p>
+</blockquote>
+<style>.g{color:lime;}.ng{color:red}</style>
+<details>
+<summary>
+<p>find <code>δ</code> or <code>ε</code></p>
+<span
+class="math inline">\lim\limits_{x\to\textcolor{aqua}3}2x=\textcolor{lime}6</span>
+</summary>
+<span
+class="math display">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st }\\
+|x-\textcolor{aqua}3|&lt;\delta\implies|2x-\textcolor{lime}6|&lt;\varepsilon\\
+\begin{aligned}
+    |2x-6|&amp;&lt;\varepsilon\\
+    2|x-3|&amp;&lt;\varepsilon\\
+    |x-3|&amp;&lt;\varepsilon/2\\
+    \therefore\;\delta&amp;=\varepsilon/2\\
+\end{aligned}</span>
+</details>
+<details>
+<summary>
+<p>find max <code>δ</code> by choosing min <code>δ</code></p>
+<span
+class="math inline">\lim\limits_{x\to\textcolor{aqua}{2}}x^3=\textcolor{lime}8,\quad\varepsilon=0.45</span>
+</summary>
+<p><span
+class="math display">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st }\\
+0&lt;|x-\textcolor{aqua}2|&lt;\delta\implies|x^3-\textcolor{lime}8|&lt;0.45\\
+\,\\
+\begin{aligned}
+    8.45&amp;&lt;x^3&lt;8+0.45\\
+    \sqrt[3]{7.55}&amp;&lt;x&lt;\sqrt[3]{8.45}\\
+    \because\;2-\delta_1&amp;&lt;x&lt;2+\delta_2\\
+\end{aligned}\\
+\begin{aligned}
+    \therefore\;&amp;\delta_1=2-\sqrt[3]{7.55}\quad\delta_2=\sqrt[3]{8.45}-2\\
+    \therefore\;&amp;\delta=\text{min}\{\delta_1,\delta_2\}=\delta_2\approx0.0368\\
+\end{aligned}</span></p>
+<ul>
+<li><details>
+<summary>
+why choose min δ
+</summary>
+<blockquote>
+<p><code>(2 ± δ) ^ 3</code> must be in <code>L ± ε</code></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 38%" />
+<col style="width: 36%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>δ<sub>1</sub> (max)</th>
+<th>δ<sub>2</sub> (min)</th>
+<th>L ± ε</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>(2 - δ) ^ 3</code></td>
+<td><span class="g">7.55</span></td>
+<td><span class="g">7.566</span></td>
+<td>7.55</td>
+</tr>
+<tr class="even">
+<td><code>(2 + δ) ^ 3</code></td>
+<td><span class="ng">8.467</span></td>
+<td><span class="g">8.45</span></td>
+<td>8.45</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</details>
+</details>
+<details>
+<summary>
+<p>find min <code>ε</code> by choosing max <code>ε</code></p>
+<span
+class="math inline">x\in(1,3)\implies|x^2-\textcolor{lime}6|&lt;\varepsilon</span>
+</summary>
+<p><span class="math display">\begin{aligned}
+    1&amp;&lt;x&lt;3\\
+    1&amp;&lt;x^2&lt;9\\
+    \because\;6-\varepsilon_1&amp;&lt;x^2&lt;6+\varepsilon_2\\
+\end{aligned}\\
+\begin{aligned}
+    \therefore\;&amp;\varepsilon_1=5\quad\varepsilon_2=3\\
+    \therefore\;&amp;\varepsilon=\text{max}\{\varepsilon_1,\varepsilon_2\}=5\\
+\end{aligned}</span></p>
+<ul>
+<li><details>
+<summary>
+why choose max ε
+</summary>
+<blockquote>
+<p><code>c ± δ</code> must be in <code>sqrt(6 ± ε)</code></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 7%" />
+<col style="width: 36%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>c ± δ</th>
+<th>ε<sub>1</sub> (max)</th>
+<th>ε<sub>2</sub> (min)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>sqrt(6 - ε)</code></td>
+<td>1</td>
+<td><span class="g">1</span></td>
+<td><span class="ng">1.732</span></td>
+</tr>
+<tr class="even">
+<td><code>sqrt(6 + ε)</code></td>
+<td>3</td>
+<td><span class="g">3.317</span></td>
+<td><span class="g">3</span></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</details>
+</details>
+<h1 id="δ-ε-proofs">δ-ε Proofs</h1>
+<h2 id="normal">Normal</h2>
+<p><span class="math inline">\lim\limits_{x\to2}(x^2-4x+5)=1</span></p>
+<p><span
+class="math display">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st
+}0&lt;\textcolor{aqua}{|x-2|}&lt;\delta\implies\textcolor{lime}{|x^2-4x+5-1|}&lt;\varepsilon</span></p>
+<ul>
+<li>aside: <span class="math display">\begin{aligned}
+      \textcolor{lime}{|(x^2-4x+5)-1|}&amp;=|x^2-4x+4|\\
+      &amp;=|(x-2)^2|\\
+      &amp;=|x-2|^2&lt;\varepsilon\\
+  \textcolor{aqua}{|x-2|}&amp;&lt;\textcolor{coral}{\sqrt\varepsilon=\delta}\\
+\end{aligned}</span></li>
+<li>proof: <span class="math display">\text{given
+}\varepsilon&gt;0,\text{ let
+}\textcolor{coral}{\delta=\sqrt\varepsilon}\\
+\begin{aligned}
+\therefore\;0&lt;\textcolor{aqua}{|x-2|}&lt;\delta\implies&amp;\textcolor{lime}{|(x^2-4x+5)-1|}\\
+=&amp;\textcolor{aqua}{|x-2|}^2&lt;\delta^2=(\sqrt\varepsilon)^2=\varepsilon\quad\blacksquare\\
+\end{aligned}</span></li>
+</ul>
+<h2 id="find-upper-bound">Find Upper Bound</h2>
+<h3 id="assume">Assume ∆</h3>
+<p><span class="math inline">\lim\limits_{x\to2}(x^2+x-2)=4</span></p>
+<p><span
+class="math display">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st }0&lt;|x-2|&lt;\delta\implies|(x^2+x-2)-4|&lt;\varepsilon</span></p>
+<ul>
+<li><p>aside: <span class="math display">\begin{aligned}
+    |(x^2+x-2)-4|=&amp;&amp;|x^2-x-6|\\
+    =&amp;&amp;|(x+3)(x-2)|\\
+    =&amp;&amp;|x+3||x-2|&amp;&lt;\varepsilon\\
+    &amp;&amp;|x-2|&amp;&lt;\frac \varepsilon{|x+3|}\\
+\end{aligned}\\
+\begin{aligned}
+    \text{assume }|x-2|&amp;&lt;1\\
+    |x+3|&amp;\le|x|+3\quad(\Delta)\\
+    &amp;=|x-2+2|+3\\
+    &amp;\le|x-2|+5\quad(\Delta)\\
+    &amp;&lt;1+5=6
+\end{aligned}\\
+\begin{aligned}
+    &amp;\therefore\;|x-2|&lt;\frac\varepsilon{|x+3|}&lt;\frac\varepsilon6=\delta
+\end{aligned}</span></p></li>
+<li><p>proof: <span class="math display">\text{given
+}\varepsilon&gt;0,\text{ let }\delta=\text{min}\{1,\varepsilon/6\}\\
+\begin{aligned}
+    \therefore\;0&lt;|x-2|&lt;\delta\implies|(x^2+x-2)-4|&amp;=|x-2||x+3|\\
+    &amp;&lt;|x+3|\delta\\
+    &amp;&lt;6\delta=6\cdot\frac\varepsilon6=\varepsilon\quad\blacksquare
+\end{aligned}</span></p></li>
+</ul>
+<h3 id="root">Root</h3>
+<p><span
+class="math inline">\lim\limits_{x\to-2}\sqrt{x^2+5}=3</span></p>
+<p><span
+class="math display">\forall\varepsilon&gt;0\enspace\exist\delta&gt;0\text{
+st }0&lt;|x+2|&lt;\delta\Rarr|\sqrt{x^2+5}-3|&lt;\varepsilon</span> -
+aside: <span class="math display">\begin{aligned}
+    \because\;&amp;\sqrt{x^2+5}&gt;0\\
+    \therefore\;&amp;|\sqrt{x^2+5}-3|=\frac{|x^2+5-9|}{\sqrt{x^2+5}+3}\\
+    &amp;=\frac{|x-2||x+2|}{\sqrt{x^2+5}+3}&lt;\frac{|x-2||x+2|}3&lt;\varepsilon\Rarr|x+2|&lt;\frac{3\varepsilon}{|x-2|}
+  \end{aligned}\\
+  \begin{aligned}
+    \text{assume }|x+2|&amp;&lt;1\\
+    -1&lt;x+2&amp;&lt;1\\
+    -5&lt;x-2&amp;&lt;-3\\
+  \end{aligned}\\
+  \begin{aligned}
+    &amp;\therefore\;|x-2|&lt;\text{max}\{|-5|,|-3|\}=5\\
+    &amp;\therefore\;|x+2|&lt;\frac{3\varepsilon}{|x-2|}&lt;\frac{3\varepsilon}5=\delta\\
+  \end{aligned}</span> - proof: <span class="math display">\text{given
+}\varepsilon&gt;0,\text{ let
+}\delta=\text{min}\left\{1,\frac{3\varepsilon}5\right\}\\
+  \begin{aligned}
+  \therefore\;0&lt;|x+2|&lt;\delta\Rarr|\sqrt{x^2+5}-3|=\frac{|x-2||x+2|}{\sqrt{x^2+5}+3}&lt;&amp;\frac{5|x+2|}3\\
+  =&amp;\frac{5(3\varepsilon/5)}3=\varepsilon\quad\blacksquare
+  \end{aligned}</span></p>
+<h3 id="trig">Trig</h3>
+<p><span class="math inline">\lim\limits_{x\to\infty}\frac{\sin
+x}x=0</span></p>
+<p><span class="math display">\forall\varepsilon&gt;0\enspace\exist
+N&gt;0\text{ st }x&gt;N\Rarr\left|\frac{\sin
+x}x\right|&lt;\varepsilon</span> - aside: <span
+class="math display">\begin{aligned}
+    &amp;\because\;|\sin x|\le1;\;x&gt;0\\
+    &amp;\therefore\;\left|\frac{\sin x}x\right|=\frac{|\sin
+x|}x\le\frac 1x&lt;\varepsilon\Rarr x&gt;\frac 1\varepsilon=N\\
+  \end{aligned}</span> - proof: <span class="math display">\text{given
+}\varepsilon&gt;0\text{ let
+}N=\text{max}\left\{1,1/\varepsilon\right\}\\
+  \therefore\;x&gt;1\Rarr\left|\frac{\sin
+x}x\right|\le\left|\frac1x\right|=\frac1x&lt;\frac1{1/\varepsilon}=\varepsilon\quad\blacksquare</span></p>
+<h2 id="one-sided-1">One-Sided</h2>
+<p><span
+class="math inline">\lim\limits_{x\to1^+}\sqrt{x-1}=0</span></p>
+<p><span
+class="math display">\forall\varepsilon&gt;0\enspace\exist\delta\text{
+st
+}\textcolor{aqua}{0&lt;x-1&lt;\delta}\implies|\sqrt{x-1}|&lt;\varepsilon</span></p>
+<ul>
+<li>aside: <span class="math display">\begin{aligned}
+    |\sqrt{x-1}|=\sqrt{x-1}&amp;&lt;\varepsilon\\
+    x-1&amp;&lt;\varepsilon^2=\delta\\
+\end{aligned}</span></li>
+<li>proof: <span class="math display">\text{given
+}\varepsilon&gt;0,\text{ let }\delta=\varepsilon^2\\
+\begin{aligned}
+    \therefore\;0&lt;x-1&lt;\delta\implies&amp;|\sqrt{x-1}-1|\\
+    =&amp;\sqrt{x-1}&lt;\sqrt\delta=\sqrt{\varepsilon^2}=\varepsilon\quad\blacksquare
+\end{aligned}</span></li>
+</ul>
+<h2 id="to-inf">To Inf</h2>
+<p><span
+class="math inline">\lim\limits_{x\to\infty}\frac{8x-7}{4x}=2</span></p>
+<span class="math display">\forall\varepsilon&gt;0\enspace\exist
+N&gt;0\text{ st
+}x&gt;N\implies\left|\frac{8x-7}{4x}-2\right|&lt;\varepsilon</span> -
+aside: <span class="math display">\begin{aligned}
+      \left|\frac{8x-7}{4x}-2\right|=\left|2-\frac7{4x}-2\right|=\left|\frac7{4x}\right|=\frac7{4x}&amp;&lt;\varepsilon\\
+      x&amp;&lt;\frac7{4\varepsilon}=N
+  \end{aligned}</span> - proof: <span class="math display">\text{given
+}\varepsilon&gt;0,\text{ let }N=\frac7{4\varepsilon}\\
+  \therefore\;x&gt;N\implies\left|\frac{8x-7}{4x}-2\right|=\frac7{4x}&lt;\frac7{4N}=\varepsilon\quad\blacksquare</span>
+</details>
+<h2 id="at-inf">At Inf</h2>
+<p><span class="math inline">\lim\limits_{x\to3^-}\frac
+1{3-x}=\infty</span></p>
+<p><span class="math display">\forall
+M&gt;0\enspace\exist\delta&gt;0\text{ st }-\delta&lt;x-3&lt;0\implies
+\left|\frac 1{3-x}\right|&gt;M</span></p>
+<ul>
+<li>aside: <span class="math display">\begin{aligned}
+    &amp;\because\;-\delta&lt;x-3&lt;0\implies0&lt;3-x&lt;\delta\\
+    &amp;\begin{aligned}
+        \therefore\;\frac 1{3-x}&amp;&gt;M\\
+        3-x&amp;&lt;\frac 1M=\delta\\
+    \end{aligned}
+\end{aligned}</span></li>
+<li>proof: <span class="math display">\text{given }M&gt;0,\text{ let
+}\delta=M^{-1}\\
+\therefore\;-\delta&lt;x-3&lt;0\implies\frac 1{3-x}&gt;\frac
+1\delta=\frac 1{M^{-1}}=M\quad\blacksquare
+</span>
+</details></li>
+</ul>
+</body>
+</html>

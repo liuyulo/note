@@ -1,0 +1,535 @@
+.w {
+  color: #f1f1f1;
+}
+
+.r {
+  color: #c53943;
+}
+
+.g {
+  color: #39c575;
+}
+
+.o {
+  color: #ff9966;
+}
+
+.l {
+  color: #39c5bb;
+}
+
+.b {
+  color: #3989c5;
+}
+
+.p {
+  color: #ff6680;
+}
+
+.y {
+  color: #ffe666;
+}
+
+.s {
+  color: #66ccff;
+}
+
+.c {
+  color: #66ffe6;
+}
+
+.w {
+  color: #f1f1f1;
+}
+
+.r {
+  color: #c53943;
+}
+
+.g {
+  color: #39c575;
+}
+
+.o {
+  color: #ff9966;
+}
+
+.l {
+  color: #39c5bb;
+}
+
+.b {
+  color: #3989c5;
+}
+
+.p {
+  color: #ff6680;
+}
+
+.y {
+  color: #ffe666;
+}
+
+.s {
+  color: #66ccff;
+}
+
+.c {
+  color: #66ffe6;
+}
+
+@font-face {
+  font-family: iosevka;
+  font-display: swap;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  src: url(.woff2) format("woff2");
+}
+@font-face {
+  font-family: iosevka;
+  font-display: swap;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: italic;
+  src: url(.woff2) format("woff2");
+}
+@font-face {
+  font-family: kosugi;
+  font-display: swap;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  src: url(.woff2) format("woff2");
+}
+@font-face {
+  font-family: roboto;
+  font-display: swap;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  src: url(.woff2) format("woff2");
+}
+html {
+  font-family: roboto, "UD Digi Kyokasho NK-R", kosugi, sans-serif;
+  font-size: 20px !important;
+  background: #000000;
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
+body {
+  padding-bottom: 30em;
+  max-width: 36em;
+  margin: 0 auto;
+  cursor: initial;
+}
+
+rt {
+  user-select: none;
+}
+
+img.tikz {
+  filter: invert(1);
+}
+
+header#title-block-header {
+  display: flex;
+  justify-content: center;
+}
+
+p, header, dl, ul, ol, pre {
+  margin: 0;
+}
+
+h1:not(.title) {
+  border-bottom: 1px solid;
+}
+
+h1, h2, h3 {
+  color: #ffe666;
+  margin: 0.5em 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+a {
+  color: #ffe666;
+  text-decoration: none;
+}
+a:visited {
+  color: #ffe666;
+}
+a:hover {
+  color: #f1f1f1;
+  text-decoration: underline;
+  background: #0f0f0f;
+}
+
+blockquote {
+  color: rgba(241, 241, 241, 0.75) !important;
+}
+
+table {
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+table tbody > tr:not(:first-child) {
+  border-top: 1px solid #5e5e5e;
+}
+table thead > tr {
+  border-bottom: 1px solid #f1f1f1 !important;
+}
+table td, table th {
+  padding: 0.5em;
+}
+
+pre {
+  background: #0f0f0f;
+}
+pre > code {
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+code {
+  color: #f1f1f1;
+  line-height: 1.3;
+  font-family: "Iosevka Custom Extended", consolas;
+  font-size: unset !important;
+}
+code > span > a:first-child::before {
+  text-decoration: none !important;
+}
+
+.w {
+  color: #f1f1f1;
+}
+
+.r {
+  color: #c53943;
+}
+
+.g {
+  color: #39c575;
+}
+
+.o {
+  color: #ff9966;
+}
+
+.l {
+  color: #39c5bb;
+}
+
+.b {
+  color: #3989c5;
+}
+
+.p {
+  color: #ff6680;
+}
+
+.y {
+  color: #ffe666;
+}
+
+.s {
+  color: #66ccff;
+}
+
+.c {
+  color: #66ffe6;
+}
+
+blockquote {
+  padding: 0 1em;
+  background: rgba(255, 230, 102, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #ffe666;
+}
+
+details.theorem {
+  padding: 0 1em;
+  background: rgba(57, 197, 187, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #39c5bb;
+  padding-top: 0;
+}
+details.theorem strong, details.theorem .textbf {
+  color: #39c5bb;
+}
+details.theorem > summary {
+  background: rgba(57, 197, 187, 0.1);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+details.theorem > summary::before {
+  content: "theorem.";
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #39c5bb;
+}
+details.example {
+  padding: 0 1em;
+  background: rgba(255, 153, 102, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #ff9966;
+  padding-top: 0;
+}
+details.example strong, details.example .textbf {
+  color: #ff9966;
+}
+details.example > summary {
+  background: rgba(255, 153, 102, 0.1);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+details.example > summary::before {
+  content: "example.";
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #ff9966;
+}
+details.definition {
+  padding: 0 1em;
+  background: rgba(102, 204, 255, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #66ccff;
+  padding-top: 0;
+}
+details.definition strong, details.definition .textbf {
+  color: #66ccff;
+}
+details.definition > summary {
+  background: rgba(102, 204, 255, 0.1);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+details.definition > summary::before {
+  content: "definition.";
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #66ccff;
+}
+details.algorithm {
+  padding: 0 1em;
+  background: rgba(255, 102, 128, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #ff6680;
+  padding-top: 0;
+}
+details.algorithm strong, details.algorithm .textbf {
+  color: #ff6680;
+}
+details.algorithm > summary {
+  background: rgba(255, 102, 128, 0.1);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+details.algorithm > summary::before {
+  content: "algorithm.";
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #ff6680;
+}
+details.leek {
+  padding: 0 1em;
+  background: rgba(57, 197, 187, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #39c5bb;
+  padding-top: 0;
+}
+details.leek strong, details.leek .textbf {
+  color: #39c5bb;
+}
+details.leek > summary {
+  background: rgba(57, 197, 187, 0.1);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+details.orange {
+  padding: 0 1em;
+  background: rgba(255, 153, 102, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #ff9966;
+  padding-top: 0;
+}
+details.orange strong, details.orange .textbf {
+  color: #ff9966;
+}
+details.orange > summary {
+  background: rgba(255, 153, 102, 0.1);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+details.sky {
+  padding: 0 1em;
+  background: rgba(102, 204, 255, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #66ccff;
+  padding-top: 0;
+}
+details.sky strong, details.sky .textbf {
+  color: #66ccff;
+}
+details.sky > summary {
+  background: rgba(102, 204, 255, 0.1);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+details.pink {
+  padding: 0 1em;
+  background: rgba(255, 102, 128, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #ff6680;
+  padding-top: 0;
+}
+details.pink strong, details.pink .textbf {
+  color: #ff6680;
+}
+details.pink > summary {
+  background: rgba(255, 102, 128, 0.1);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+details.yellow {
+  padding: 0 1em;
+  background: rgba(255, 230, 102, 0.1);
+  margin: 0;
+  border-left: 0.25em solid #ffe666;
+  padding-top: 0;
+}
+details.yellow strong, details.yellow .textbf {
+  color: #ffe666;
+}
+details.yellow > summary {
+  background: rgba(255, 230, 102, 0.1);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+
+.w {
+  color: #f1f1f1;
+}
+
+.r {
+  color: #c53943;
+}
+
+.g {
+  color: #39c575;
+}
+
+.o {
+  color: #ff9966;
+}
+
+.l {
+  color: #39c5bb;
+}
+
+.b {
+  color: #3989c5;
+}
+
+.p {
+  color: #ff6680;
+}
+
+.y {
+  color: #ffe666;
+}
+
+.s {
+  color: #66ccff;
+}
+
+.c {
+  color: #66ffe6;
+}
+
+#TOC {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  display: none;
+  direction: rtl;
+  overflow-y: scroll;
+  background: rgba(0, 0, 0, 0.875);
+}
+#TOC > ul {
+  margin: 1em;
+  direction: ltr;
+}
+#TOC.show {
+  display: unset;
+}
+
+.katex-display {
+  margin: 0 !important;
+}
+
+.hidden {
+  display: none;
+}
+
+h1.collapsed, h2.collapsed, h3.collapsed {
+  color: #878787;
+}
+
+.\32 d > table tr td:first-child, .\32 d > table tr th:first-child {
+  border-right: 1px solid #f1f1f1;
+  font-weight: bold;
+}
+
+.vertical > table tbody > tr {
+  border: none;
+}
+.vertical > table tr > th:not(:first-child), .vertical > table td:not(:first-child) {
+  border-left: 1px solid #5e5e5e;
+}
+
+.right {
+  border-right: 1px solid #878787;
+}
+
+.high {
+  border-top: 1px solid #878787;
+  border-radius: 3px;
+}
+
+.low {
+  border-bottom: 1px solid #878787;
+  border-radius: 3px;
+}

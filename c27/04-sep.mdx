@@ -1,0 +1,78 @@
+---
+title: Trennungsaxiom
+---
+
+## The Separation Axioms
+
+<details class="definition" open>
+<summary>separate</summary>
+
+for space $X$
+
+- $a,b\in X$ are **separated** $\iff$ each lies in some nei that contain't the other point
+- $a,b\in X$ are **separated by neighborhood** $\iff$ each lies in some disjoint neis
+
+- similar definition for 
+  - $a\in X$ and $B\sube X$ separated by neighborhood
+  - $A,B\sube X$ separated by neighborhood
+</details>
+
+<details class="definition" open>
+<summary>$T_1$ points are separated</summary>
+<div class="flex justify-center">
+
+space $X$ is $T_1\iff$ distinct points are separated
+</div>
+
+or equivalently
+
+1. every singleton set is closed
+1. every finite set is closed
+1. $x\in X$ is limit point of $A\subseteq X\iff x$ is accumulation point of $X$
+
+<details class="list-none">
+<summary>**Proof.** $T_1\implies 1$</summary>
+
+let any distinct $a,b\in X$
+
+- $\therefore a$ has some neighborhood $U$ such that $b\notin U$
+- $\therefore a\notin\overline{\{b\}}$
+- $\therefore\overline{\{b\}}=\{b\}$, thus $\{b\}$ is closed
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $T_1\implies3$</summary>
+
+$(\implies )$ let any limit point $x$ of $A$ and any neighborhood $U$ of $x$
+
+- $\therefore|U\cap A|\ge\aleph_0$
+- $\therefore U$ intersects $A$ at some point other than $x$
+- $\therefore x$ is accumulation point of $A$
+
+$(\impliedby )$ let any accumulation point $x$ of $A$ 
+
+- BWOC assume $x$ has some neighborhood $U$ st $|U\cap A|$ is finite
+- let $A_0=\{a_1,\cdots,a_n\}=(U\cap A)-\{x\}\subseteq U\cap A$
+- $\because A_0$ is closed and $x\notin A_0$<span style="float: right;">(T1)</span>
+- $\therefore$ let $N=A^c_0$ be open and contains $x$
+- $\therefore N$ is neighborhood of $x$, but $N^*$ disjonts $A$, contradcts that $x$ is acc $\enspace\square$
+
+
+</details>
+</details>
+
+<details class="definition" open>
+<summary>$T_2$ points are separated by neighborhoods (Hausdorff)</summary>
+
+<div class="flex justify-center">
+space $X$ is **Hausdorff** $\iff$ distinct points are separated by neighborhoods
+</div>
+
+**Corollary.** $T_2\implies T_1$
+</details>
+
+todo thm 17.10 seq converges to at most one point
+
+todo thm 17.11 Hausdorff is closed under product, subspace
+
+

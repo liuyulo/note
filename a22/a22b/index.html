@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>A22 Post-Midterm | Linear Algebra I</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style>
+  @charset "UTF-8";
+  .hidden {
+    display: none;
+  }
+
+  html {
+    font-family: "source sans pro", "iosevka custom extended", "UD Digi Kyokasho NK-R", sans-serif;
+    font-size: 20px;
+    background: #000000;
+    color: #f1f1f1;
+  }
+  html body {
+    padding-bottom: 30em;
+  }
+  html header#title-block-header {
+    display: flex;
+    justify-content: center;
+  }
+  html h1:not(.title) {
+    border-bottom: 1px solid;
+  }
+  html h1, html h2, html h3 {
+    color: #ffe666;
+    margin: 0.5em 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  html a {
+    color: #ffe666;
+    text-decoration: none;
+  }
+  html a:visited {
+    color: #ffe666;
+  }
+  html a:hover {
+    color: #f1f1f1;
+    text-decoration: underline;
+    background: #0f0f0f;
+  }
+  html blockquote {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ffe666;
+    background: rgba(255, 230, 102, 0.1);
+    color: #f1f1f1 !important;
+  }
+  html p, html header {
+    margin: 0;
+  }
+  html ul {
+    padding-left: 2em;
+  }
+  html table {
+    border-collapse: collapse;
+  }
+  html table tbody > tr:not(:first-child) {
+    border-top: 1px solid #5e5e5e;
+  }
+  html table thead {
+    border-bottom: 1px solid #f1f1f1 !important;
+  }
+  html table td, html table th {
+    padding: 0.5em;
+  }
+  html pre {
+    background: #0f0f0f;
+  }
+  html pre code {
+    color: #f1f1f1;
+  }
+  html code {
+    color: #ff6680;
+    font-family: "iosevka custom extended";
+  }
+
+  details.theorem {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #39c5bb;
+    background: rgba(57, 197, 187, 0.1);
+    padding-top: 0;
+  }
+  details.theorem strong, details.theorem .textbf {
+    color: #39c5bb;
+  }
+  details.theorem summary {
+    cursor: pointer;
+  }
+  details.theorem > summary {
+    padding: 0.5em 1em;
+    background: rgba(57, 197, 187, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.theorem > summary::before {
+    content: "theorem.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #39c5bb;
+  }
+  details.example {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff9966;
+    background: rgba(255, 153, 102, 0.1);
+    padding-top: 0;
+  }
+  details.example strong, details.example .textbf {
+    color: #ff9966;
+  }
+  details.example summary {
+    cursor: pointer;
+  }
+  details.example > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 153, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.example > summary::before {
+    content: "example.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff9966;
+  }
+  details.definition {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #66ccff;
+    background: rgba(102, 204, 255, 0.1);
+    padding-top: 0;
+  }
+  details.definition strong, details.definition .textbf {
+    color: #66ccff;
+  }
+  details.definition summary {
+    cursor: pointer;
+  }
+  details.definition > summary {
+    padding: 0.5em 1em;
+    background: rgba(102, 204, 255, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.definition > summary::before {
+    content: "definition.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #66ccff;
+  }
+  details.algorithm {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.algorithm strong, details.algorithm .textbf {
+    color: #ff6680;
+  }
+  details.algorithm summary {
+    cursor: pointer;
+  }
+  details.algorithm > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.algorithm > summary::before {
+    content: "algorithm.";
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ff6680;
+  }
+  details.leek {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #39c5bb;
+    background: rgba(57, 197, 187, 0.1);
+    padding-top: 0;
+  }
+  details.leek strong, details.leek .textbf {
+    color: #39c5bb;
+  }
+  details.leek summary {
+    cursor: pointer;
+  }
+  details.leek > summary {
+    padding: 0.5em 1em;
+    background: rgba(57, 197, 187, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.orange {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff9966;
+    background: rgba(255, 153, 102, 0.1);
+    padding-top: 0;
+  }
+  details.orange strong, details.orange .textbf {
+    color: #ff9966;
+  }
+  details.orange summary {
+    cursor: pointer;
+  }
+  details.orange > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 153, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.sky {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #66ccff;
+    background: rgba(102, 204, 255, 0.1);
+    padding-top: 0;
+  }
+  details.sky strong, details.sky .textbf {
+    color: #66ccff;
+  }
+  details.sky summary {
+    cursor: pointer;
+  }
+  details.sky > summary {
+    padding: 0.5em 1em;
+    background: rgba(102, 204, 255, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.pink {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ff6680;
+    background: rgba(255, 102, 128, 0.1);
+    padding-top: 0;
+  }
+  details.pink strong, details.pink .textbf {
+    color: #ff6680;
+  }
+  details.pink summary {
+    cursor: pointer;
+  }
+  details.pink > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 102, 128, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  details.yellow {
+    padding: 0.5em 1em;
+    margin: 0;
+    border-left: 0.25em solid #ffe666;
+    background: rgba(255, 230, 102, 0.1);
+    padding-top: 0;
+  }
+  details.yellow strong, details.yellow .textbf {
+    color: #ffe666;
+  }
+  details.yellow summary {
+    cursor: pointer;
+  }
+  details.yellow > summary {
+    padding: 0.5em 1em;
+    background: rgba(255, 230, 102, 0.1);
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+
+  .inference + ul > li {
+    list-style-type: decimal;
+  }
+  .inference + ul > li:last-child {
+    border-top: solid 1px #f1f1f1;
+    list-style-type: "∴ ";
+  }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">A22 Post-Midterm | Linear Algebra I</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#finite-vector-space" id="toc-finite-vector-space">Finite
+Vector Space</a>
+<ul>
+<li><a href="#othogonality" id="toc-othogonality">Othogonality</a></li>
+<li><a href="#similarity" id="toc-similarity">Similarity</a></li>
+<li><a href="#diagonisation"
+id="toc-diagonisation">Diagonisation</a></li>
+</ul></li>
+<li><a href="#vector-space" id="toc-vector-space">Vector Space</a>
+<ul>
+<li><a href="#subspaces" id="toc-subspaces">Subspaces</a>
+<ul>
+<li><a href="#sum" id="toc-sum">Sum</a></li>
+<li><a href="#direct-sum" id="toc-direct-sum">Direct Sum</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#linear-maps" id="toc-linear-maps">Linear Maps</a>
+<ul>
+<li><a href="#vector-space-of-linear-maps"
+id="toc-vector-space-of-linear-maps">Vector Space of Linear
+Maps</a></li>
+<li><a href="#null-and-image-spaces" id="toc-null-and-image-spaces">Null
+and Image Spaces</a>
+<ul>
+<li><a href="#null-space-injectivity"
+id="toc-null-space-injectivity">Null Space &amp; Injectivity</a></li>
+<li><a href="#image-space-surjectivity"
+id="toc-image-space-surjectivity">Image Space &amp;
+Surjectivity</a></li>
+<li><a href="#finite-dimensional" id="toc-finite-dimensional">Finite
+Dimensional</a></li>
+</ul></li>
+<li><a href="#matrices" id="toc-matrices">Matrices</a></li>
+<li><a href="#product-space" id="toc-product-space">Product Space</a>
+<ul>
+<li><a href="#with-direct-sum" id="toc-with-direct-sum">With Direct
+Sum</a></li>
+</ul></li>
+<li><a href="#quotient-space" id="toc-quotient-space">Quotient
+Space</a></li>
+</ul></li>
+<li><a href="#eigenvaluesvectors"
+id="toc-eigenvaluesvectors">Eigenvalues/vectors</a>
+<ul>
+<li><a href="#invariant-subspace" id="toc-invariant-subspace">Invariant
+Subspace</a></li>
+</ul></li>
+</ul>
+</nav>
+<details class="yellow">
+<summary>
+Sets
+</summary>
+<ul>
+<li><span class="math inline">F</span> is <span
+class="math inline">\R</span> or <span
+class="math inline">\mathbb{C}</span></li>
+<li><span class="math inline">\R^D</span> is set of functions <span
+class="math inline">f:D\to\R</span></li>
+<li><span class="math inline">\mathcal L(V,W)</span> is set of linear
+maps <span class="math inline">T:V\to W</span>
+<ul>
+<li><span class="math inline">\mathcal L(V)=\mathcal L(V,V)</span></li>
+</ul></li>
+<li><span class="math inline">V</span> is infinite dimentional vector
+space
+<ul>
+<li><span class="math inline">V^n</span> is <span
+class="math inline">n</span> dimentional vector space</li>
+</ul></li>
+</ul>
+</details>
+<h1 id="finite-vector-space">Finite Vector Space</h1>
+<h2 id="othogonality">Othogonality</h2>
+<details class="definition">
+<summary>
+for <span class="math inline">u,v,w\in V^n</span>
+</summary>
+<ul>
+<li><span class="math inline">u\cdot v=u_1 v_1+\cdots+u_nv_n</span> (def
+of dot prod)
+<ul>
+<li>distributivity commutativity associativity</li>
+</ul></li>
+<li><span class="math inline">||u||^2=u\cdot u</span>
+<ul>
+<li><span class="math inline">||u||=0\iff u=0</span></li>
+<li><span class="math inline">\forall\lambda\in F\quad||\lambda
+u||=|\lambda|||u||</span></li>
+</ul></li>
+</ul>
+</details>
+<details class="theorem">
+<summary>
+Cauchy Inequality
+</summary>
+$for <span class="math inline">u,v\in V^n\quad\because
+||u+v||^2=||u||^2+2(u\cdot v)+||v||^2</span> <span
+class="math display">|u\cdot v|\leqslant||u||||v||</span> <span
+class="math display">|u\cdot v|=||u||||v||\iff\exist\lambda\in F\textsf{
+st }u=\lambda v</span>
+</details>
+<details class="definition">
+<summary>
+Orthogonal Sets
+</summary>
+<p><span class="math inline">\{v_i\}</span> is
+<strong>othogonal</strong> iff all:</p>
+<p><span class="math display">\forall i\enspace v_i\ne
+0\quad\land\quad\forall i\ne j\enspace v_i\cdot v_j=0</span></p>
+<p>is <strong>onthogonal</strong> iff all:</p>
+<span class="math display">\textsf{is orthogonal}\quad\land\quad\forall
+i\enspace ||v_i||=1</span>
+</details>
+<details class="theorem">
+<summary>
+Pythagorean Theorem
+</summary>
+<span
+class="math display">||v_1+\cdots+v_n||^2=||v_1||^2+\cdots+||v_n||^2</span>
+</details>
+<details class="example">
+<summary>
+prove PyTheorem
+</summary>
+given <span class="math inline">\forall i\ne j\enspace v_i\cdot
+v_j=0</span> <span class="math display">\begin{align*}
+    ||v_i+\cdots+v_n||^2&amp;=(v_1+\cdots+v_n)\cdot(v_1+\cdots+v_n)\\
+    &amp;=(v_1\cdot v_1+\cdots+v_n\cdot v_n)+\sum_{i\ne j}v_i\cdot v_j\\
+    &amp;=||v_1||^2+\cdots+||v_n||^2+0\quad\blacksquare\\
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+Prove orthogonal sets are always indep
+</summary>
+let <span class="math inline">\{v_i\}</span> be orthogonal and suppose
+<span class="math inline">a_1v_1+\cdots+a_nv_n=0</span> <span
+class="math display">\begin{align*}
+    \textsf{ suppose }&amp;a_1v_1+\cdots+a_nv_n=0\\
+    \because&amp;\,||x||=0\iff x=0\\
+    \therefore&amp;\,||a_1v_1+\cdots+a_nv_n||=0\\
+    \because&amp;\,\left|\left|\sum a_iv_i\right|\right|^2=\sum
+||a_iv_i||^2\tag{\sf Pythagorean}\\
+    \therefore&amp;\,||a_1v_1||^2+\cdots+||a_nv_n||^2=0\\
+    \because&amp;\,||av||^2=(|a|||v||)^2\tag{\sf norm prop}\\
+    &amp;=|a|^2||v||^2\tag{\sf exp law}\\
+    \therefore&amp;\,|a_1|^2||v_1||^2+\cdots+|a_n|^2||v_n||^2=0\\
+    \because&amp;\,||v_i||\ne 0\tag{\sf orthogonal}\\
+    \therefore&amp;\, |a_1|^2=\cdots=|a_n|^2=0\\
+    \therefore&amp;\,\forall i\enspace a_i=0\\
+    \therefore&amp;\,\textsf{ linearly indep}
+\end{align*}</span>
+</details>
+<h2 id="similarity">Similarity</h2>
+<details class="definition">
+<summary>
+for <span class="math inline">A,B\in\mathcal L(V^n)</span>
+</summary>
+<p><span class="math display">A\sim B\iff\exist P,P^{-1}\in\mathcal
+L(V^n)\enspace A=PBP^{-1}</span></p>
+<ul>
+<li><span class="math inline">A\sim A</span></li>
+<li>commutativity transitivity</li>
+<li><span class="math inline">A\sim B\implies</span>
+<ul>
+<li><span class="math inline">|A|=|B|</span></li>
+<li><span class="math inline">\mathrm{tr}\,A=\mathrm{tr}\,B</span></li>
+<li><span
+class="math inline">\mathrm{rank}\,A=\mathrm{rank}\,B</span></li>
+<li><span class="math inline">c_A=c_B</span></li>
+<li>have same eigenvals</li>
+</ul></li>
+</ul>
+</details>
+<h2 id="diagonisation">Diagonisation</h2>
+<details class="definition">
+<summary>
+Characteristic Polynomial of <span class="math inline">A\in\mathcal
+L(V^n)</span>
+</summary>
+<p><span class="math display">c_A(\lambda)=|\lambda I-A|</span></p>
+by <strong>Fundamental Theorem of Algebra</strong>, <span
+class="math inline">|\lambda I-A|</span> always has <span
+class="math inline">n</span> non-distinct roots
+</details>
+<details class="algorithm">
+<summary>
+Diagonisation for <span class="math inline">A\in\mathcal L(V^n)</span>
+</summary>
+<ol type="1">
+<li>find each root of <span class="math inline">c_A(\lambda)=|\lambda
+I-A|</span> as <strong>eigenval <span
+class="math inline">\lambda_i</span></strong></li>
+<li>for each <span class="math inline">\lambda_i</span>, find solution
+of <span class="math inline">(\lambda_i I-A)x=0</span> as
+<strong>eigenvec <span class="math inline">x</span></strong></li>
+<li>if <span class="math inline">\{x_i\}</span> is a basis of <span
+class="math inline">V^n</span>, then
+<ul>
+<li><span class="math inline">P=\begin{bmatrix}
+x_1&amp;x_2&amp;\cdots&amp;x_n\\ \end{bmatrix}</span> is invertible</li>
+<li><span
+class="math inline">PAP^{-1}=D=\mathrm{diag}(\lambda_i)</span></li>
+</ul></li>
+</ol>
+</details>
+<details class="theorem">
+<summary>
+Distict Eigenvals <span class="math inline">\implies</span> Indep
+Eigenvecs
+</summary>
+for <span class="math inline">T\in\mathcal L(V^n)</span> <span
+class="math display">\begin{align*}
+&amp;\{\lambda_i\}_{i=1}^m\textsf{ are \textbf{distinct} eigenvals of
+}A\\
+\implies&amp;\{v_i\}_{i=1}^m\textsf{ as corresponding eigenvecs are
+\textbf{indep}}
+\end{align*}</span>
+</details>
+<details class="example" open>
+<summary>
+prove above (by contradiction)
+</summary>
+given <span class="math inline">T\in\mathcal L(V^n)</span> with <span
+class="math inline">\lambda_1,\cdots,\lambda_m</span>
+<strong>distinct</strong> eigenvals <span
+class="math display">\begin{align*}
+  &amp;\textsf{suppose }v_1,\cdots,v_m\textsf{ is dep}\\
+  \therefore&amp;\,\exist k\textsf{ st
+}v_k\in\mathrm{sp}\{v_i,\cdots,v_{k-1}\}\quad\{v_i\}_{i=1}^{k-1}\textsf{
+is indep}\\
+  \therefore&amp;\,\exist a_i\in F\textsf{ st
+}v_k=a_1v_1+\cdots+a_{k-1}v_{k-1}\tag{\sf def of span (1)}\\
+  \therefore&amp;\,\lambda_kv_k=a_1\lambda_1v_1+\cdots+a_{k-1}\lambda_{k-1}v_{k-1}\tag{\sf
+apply $T$ (2)}\\
+  &amp;\,\lambda_kv_k=a_1\lambda_kv_k+\cdots+a_{k-1}\lambda_kv_{k-1}\tag{\sf
+apply $\lambda_k$ (3)}\\
+  \therefore&amp;\,\textsf{(3)}-\textsf{(2) gives
+}0=a_1(\lambda_k-\lambda_1)v_1+\cdots+a_{k-1}(\lambda_k-\lambda_{k-1})v_{k-1}\\
+  \because&amp;\,v_1,\cdots,v_{k-1}\textsf{ is
+indep}\quad\lambda_i\ne\lambda_j\enspace\forall i\ne j\tag{\sf given
+distinct}\\
+  \therefore&amp;\,a_1=\cdots=a_{k-1}=0\\
+  \therefore&amp;\,v_k=0\tag{\sf from (1)}\\
+  \therefore&amp;\,\textsf{contradicts that }v_k\ne0\tag{\sf $v_k$ is
+eigenvec}\\
+  \therefore&amp;\,v_1,\cdots,v_m\textsf{ is indep}\quad\blacksquare
+\end{align*}</span>
+</details>
+<h1 id="vector-space">Vector Space</h1>
+<h2 id="subspaces">Subspaces</h2>
+<details class="definition">
+<summary>
+<span class="math inline">U</span> is a <strong>subspace</strong> of
+<span class="math inline">V</span> iff all:
+</summary>
+<ul>
+<li><span class="math inline">U\subseteq V</span></li>
+<li><span class="math inline">U</span> is vecspc</li>
+</ul>
+</details>
+<details class="algorithm">
+<summary>
+Check if <span class="math inline">U\subseteq V</span> is
+<strong>subspc</strong>
+</summary>
+<ol type="1">
+<li><span class="math inline">0\in U</span> (has additive identity)</li>
+<li><span class="math inline">u,w\in U\implies u+w\in U</span> (closure
+add)</li>
+<li><span class="math inline">\lambda\in F,u\in U\implies \lambda u\in
+U</span> (closure scalar mul)</li>
+</ol>
+</details>
+<details class="theorem">
+<summary>
+</summary>
+<ul>
+<li><span class="math inline">\{0\}</span> is the smallest subspc of
+<span class="math inline">V</span></li>
+<li><span class="math inline">V</span> is the largest subspc of <span
+class="math inline">V</span></li>
+</ul>
+</details>
+<h3 id="sum">Sum</h3>
+<details class="definition">
+<summary>
+for <span class="math inline">U_i\subseteq V</span>
+</summary>
+<span class="math display">\sum U_i=\left\{\sum u_i:u_i\in
+U_i\right\}</span>
+</details>
+<details class="theorem">
+<summary>
+</summary>
+<ul>
+<li><span class="math inline">U,W\subseteq V\implies U\cap W\subseteq
+V</span></li>
+<li><span class="math inline">U\cup W</span> is rarely a subspc</li>
+</ul>
+</details>
+<details class="example">
+<summary>
+given <span class="math inline">U,W\subseteq V</span> show <span
+class="math inline">U\cup W\subseteq V\iff U\subseteq W\lor W\subseteq
+U</span>
+</summary>
+<ul>
+<li>wts <span class="math inline">U\cup W\subseteq V\implies U\subseteq
+W</span> or <span class="math inline">W\subseteq U</span>
+<ul>
+<li>assume <span class="math inline">U\cup W\subseteq V</span> and <span
+class="math inline">U\not\subseteq W\land W\not\subseteq U</span> <span
+class="math display">\begin{align*}
+  &amp;\therefore\exists u\in U,w\in W\textsf{ st }u\not\in W,w\not\in
+U\\
+  &amp;\because u,w\in U\cup W\subseteq V\\
+  &amp;\therefore u+w\in U\cup W\\
+  &amp;\therefore\textsf{WLOG assume }u+w\in U\subseteq V\\
+  &amp;\therefore (u+w)-u=w\in U\\
+  &amp;\therefore\textsf{ contradiction }\\
+  &amp;\therefore U\subseteq W\lor W\subseteq U\quad\blacksquare
+\end{align*}</span></li>
+</ul></li>
+<li>wts <span class="math inline">U\subseteq W\lor W\subseteq U\implies
+U\cup W\subseteq V</span>
+<ul>
+<li>assume <span class="math inline">U\subseteq W\lor W\subseteq
+U</span> <span class="math display">\begin{align*}
+  &amp;\therefore\textsf{WLOG assume }U\subseteq W\\
+  &amp;\therefore U\cup W=W\subseteq V\quad\blacksquare
+\end{align*}</span></li>
+</ul></li>
+</ul>
+</details>
+<h3 id="direct-sum">Direct Sum</h3>
+<details class="definition">
+<summary>
+<span class="math inline">\displaystyle\sum U_i=\bigoplus U_i</span> iff
+any:
+</summary>
+<ul>
+<li>for <span class="math inline">\displaystyle u_i\in U_i\enspace\sum
+u_i=0\implies u_i=0</span></li>
+<li><span class="math inline">\displaystyle\bigcap U_i=\{0\}</span></li>
+<li><span class="math inline">\displaystyle\sum\dim U_i=\dim \sum
+U_i</span> (proof <a href="#with-direct-sum">here</a>)</li>
+</ul>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">U+W=U\oplus W\iff U\cap W=\{0\}</span>
+</summary>
+<ul>
+<li><p>wts <span class="math inline">U+W=U\oplus W\implies U\cap
+W=\{0\}</span> <span class="math display">\begin{align*}
+   \textsf{let any}&amp;\,v\in U\cap W\\
+   \therefore&amp;\,v+(-v)=0\quad v\in U,-v\in W\\
+   \because&amp;\,\textsf{repesentation of the sum must be unique}\\
+   \therefore&amp;\,v=0\\
+   \therefore&amp;\,U\cap W=\{0\}\\
+\end{align*}</span></p></li>
+<li><p>wts <span class="math inline">U\cap W=\{0\}\implies U+W=U\oplus
+W</span> <span class="math display">\begin{align*}
+  \textsf{given }&amp;U\cap W=\{0\}\\
+  \textsf{suppose }&amp;u+w=0\quad u\in U,w\in W\\
+  \therefore&amp;\,u=-w\in W\\
+  \therefore&amp;\,u\in U\cap W\\
+  \therefore&amp;\,u=0\quad w=-u=0\\
+  \because&amp;\,U+W=U\oplus W\iff u+w=0\implies u=w=0\\
+  \therefore&amp;\,U+W=U\oplus W\quad\blacksquare\\
+\end{align*}</span></p></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+disprove <span class="math inline">U_1\oplus W=U_2\oplus W\implies
+U_1=U_2</span>
+</summary>
+<span class="math display">\begin{align*}
+    \textsf{let }&amp;W=\{(x,x)\in\R^2\}\\
+     &amp;U_1=\{(0,x)\in\R^2\}\quad U_2=\{(x,0)\in\R^2\}\\
+     &amp;\therefore U_1+W=W=U_2+W\\
+     &amp;\textsf{but }U_1\ne U_2
+\end{align*}</span>
+</details>
+<details class="example">
+<summary>
+show <span class="math inline">\R^\R=U_e\oplus U_o</span>
+</summary>
+<ul>
+<li>wts <span class="math inline">\R^\R=U_e+U_o</span>
+<ul>
+<li>let any <span class="math inline">f\in\R^\R</span>, choose <span
+class="math display">f_e(x)=\frac{f(x)+f(-x)}2\quad
+f_o(x)=\frac{f(x)-f(-x)}2</span> <span
+class="math display">\begin{align*}
+    &amp;\because f_e(-x)=\frac{f(-x)+f(x)}2=\frac{f(x)+f(-x)}2=f_e(x)\\
+    &amp;\because
+f_o(-x)=\frac{f(-x)-f(x)}2=-\frac{f(x)-f(-x)}2=-f_o(x)\\
+    &amp;\therefore f_e\in U_e\enspace f_o\in U_o\\
+    &amp;\because
+f_e(x)+f_o(x)=\frac{f(x)+f(-x)}2+\frac{f(x)-f(-x)}2=f(x)\\
+    &amp;\therefore\forall f\in\R^\R\enspace\exists f_e\in U_e\enspace
+f_o\in U_o\textsf{ st }f=f_e+f_o\\
+    &amp;\therefore \R^\R=U_e+U_o\\
+\end{align*}</span></li>
+</ul></li>
+<li>wts <span class="math inline">\R^\R=U_e\oplus U_o</span>
+<ul>
+<li>let any <span class="math inline">f\in U_e\cap U_o</span> <span
+class="math display">\begin{align*}
+  &amp;\because f\in U_e\\
+  &amp;\therefore f(x)=f(-x)\\
+  &amp;\because f\in U_o\\
+  &amp;\therefore f(x)=-f(-x)\\
+  &amp;\therefore 2f(x)=f(-x)-f(-x)=0\implies f(x)=0\enspace\forall
+x\in\R\\
+  &amp;\therefore f=0\forall f\in U_e\cap U_o\\
+  &amp;\therefore U_e\cap U_o=\{0\}\\
+  &amp;\therefore \R^\R=U_e+U_o=U_e\oplus U_o\quad\blacksquare\\
+\end{align*}</span></li>
+</ul></li>
+</ul>
+</details>
+<h1 id="linear-maps">Linear Maps</h1>
+<h2 id="vector-space-of-linear-maps">Vector Space of Linear Maps</h2>
+<details class="definition">
+<summary>
+Map <span class="math inline">T:V\to W</span> is <strong>linear</strong>
+iff all:
+</summary>
+<ul>
+<li><span class="math inline">\forall u,v\in V\quad T(u+v)=Tu+Tv\implies
+T(0)=0</span></li>
+<li><span class="math inline">\forall\lambda\in F,v\in V\quad T(\lambda
+v)=\lambda(Tv)</span></li>
+</ul>
+</details>
+<details class="definition">
+<summary>
+Add and Scalar-Mul on <span class="math inline">\mathcal L(V,W)</span>
+</summary>
+<p>for <span class="math inline">S,T\in\mathcal L(V,W)</span> <span
+class="math display">(S+T)v=Sv+Tv\quad(\lambda
+T)v=\lambda(Tv)</span></p>
+<ul>
+<li><span class="math inline">\forall v\in V</span></li>
+<li>commutativity, associativity, distributivity</li>
+</ul>
+</details>
+<details class="definition">
+<summary>
+Product of Linear Maps
+</summary>
+<p>for <span class="math inline">T\in\mathcal L(U,V)</span> and <span
+class="math inline">S\in\mathcal L(V,W)</span> <span
+class="math display">ST\in\mathcal L(U,W)\quad(ST)u=S(Tu)</span></p>
+<ul>
+<li><span class="math inline">\forall u\in U</span></li>
+<li>associativity, distributivity</li>
+</ul>
+</details>
+<details class="theorem">
+<summary>
+Map basis
+</summary>
+if <span class="math inline">\{v_i\}</span> is a basis of <span
+class="math inline">V^n</span> and <span
+class="math inline">\{w_i\}</span> is a basis of <span
+class="math inline">W^n</span>, then <span
+class="math display">\exist!T\in\mathcal L(V,W)\textsf{ st
+}Tv_i=w_i</span>
+</details>
+<h2 id="null-and-image-spaces">Null and Image Spaces</h2>
+<h3 id="null-space-injectivity">Null Space &amp; Injectivity</h3>
+<details class="definition">
+<summary>
+null space for <span class="math inline">T\in\mathcal L(V,W)</span>
+</summary>
+<span class="math display">\mathrm{null}\,T=\{v\in V:Tv=0\}\subseteq
+V</span>
+</details>
+<details class="definition">
+<summary>
+<span class="math inline">T\in\mathcal L(V,W)</span> is
+<strong>injective</strong> iff any:
+</summary>
+<ul>
+<li><span class="math inline">Tu=Tv\implies u=v</span></li>
+<li><span class="math inline">\mathrm{null}\,T=\{0\}</span></li>
+</ul>
+</details>
+<h3 id="image-space-surjectivity">Image Space &amp; Surjectivity</h3>
+<details class="definition">
+<summary>
+image space for <span class="math inline">T\in\mathcal L(V,W)</span>
+</summary>
+<span class="math display">\mathrm{im}\,T=\{Tv:v\in V\}\subseteq
+W</span>
+</details>
+<details class="definition">
+<summary>
+<span class="math inline">T\in\mathcal L(V,W)</span> is
+<strong>surjective</strong> iff any:
+</summary>
+<ul>
+<li><span class="math inline">\mathrm{im}\,T=W</span></li>
+<li><span class="math inline">\forall w\in W\enspace\exist v\in
+V\textsf{ st }Tv=w</span></li>
+</ul>
+</details>
+<h3 id="finite-dimensional">Finite Dimensional</h3>
+<details class="theorem">
+<summary>
+Fundamental Theorem of Linear Maps
+</summary>
+<p>for <span class="math inline">T\in\mathcal L(V^n,W^m)</span> <span
+class="math display">\begin{align*}
+\dim V&amp;=\dim \mathrm{null}\,T+\dim \mathrm{im}\,T\\
+n&amp;=\dim \mathrm{null}\,T+\mathrm{rank}\,T\\
+\end{align*}</span></p>
+<p><span class="math inline">\therefore T:V^n\to W^m</span> is</p>
+<ul>
+<li><strong>injective</strong> iff any
+<ul>
+<li><span class="math inline">\dim \mathrm{null}\,T=0</span></li>
+<li><span class="math inline">\mathrm{rank}\,T=n</span> (aka full
+rank)</li>
+</ul></li>
+<li><strong>surjective</strong> iff any
+<ul>
+<li><span class="math inline">\mathrm{rank}\,T=m</span></li>
+<li><span class="math inline">\mathrm{im}\,T=W^n</span></li>
+</ul></li>
+</ul>
+</details>
+<details class="example">
+<summary>
+Prove Fundamental Theorem of Linear Maps for <span
+class="math inline">T\in\mathcal L(V,W)</span>
+</summary>
+<ul>
+<li>wts <span class="math inline">\dim V=\dim\mathrm{null}\,T+n</span>
+<span class="math display">\begin{align*}
+  \textsf{let }&amp;\{u_i\}^m_{i=1}\textsf{ be a basis of
+}\mathrm{null}\,T\\
+  \therefore&amp;\,\dim\mathrm{null}\,T=m\\
+  \because&amp;\,\forall i\enspace u_i\in\mathrm{null}\,T\textsf{ is a
+basis}\\
+  \therefore&amp;\,\forall i\enspace u_i\in V\textsf{ is indep}\\
+  \therefore&amp;\,\{u_1,\cdots,u_m\}\textsf{ can be extended to }\\
+  &amp;\,\{u_i,\cdots,u_m,v_1,\cdots,v_n\}\textsf{ as a basis of }V\\
+  \therefore&amp;\,\dim V=m+n=\dim\mathrm{null}\,T+n\\
+\end{align*}</span></li>
+<li>wts <span class="math inline">n=\dim\mathrm{im}\,T</span>
+<ul>
+<li>wts <span class="math inline">\{Tv_i\}^n_{i=1}</span> is a basis of
+<span class="math inline">\mathrm{im}\,T</span>
+<ul>
+<li>wts <span
+class="math inline">\mathrm{im}\,T=\mathrm{sp}\{Tv_i\}</span></li>
+</ul>
+<span class="math display">\begin{align*}
+    \textsf{let any }&amp;v\in V\\
+    \because&amp;\,v=\mathrm{span}\{u_1,\cdots,u_m,v_i,\cdots,v_n\}\\
+    \therefore&amp;\,v=\sum_{i=1}^m a_iu_i+\sum_{i=1}^nb_iv_i\quad
+a_i,b_i\in F\\
+    \therefore&amp;\,Tv=\sum_{i=1}^m a_iTu_i+\sum_{i=1}^nb_iTv_i\tag{\sf
+$T$ is linear}\\
+    \because&amp;\,u_i\in\mathrm{null}\,T\\
+    \therefore&amp;\,Tv=0+\sum_{i=1}^nb_iTv_i=\sum_{i=1}^nb_iTv_i\\
+    \therefore&amp;\,\forall Tv\in\mathrm{im}\,T\enspace\exist b_i\in
+F\textsf{ st }Tv=\sum_{i=1}^nb_iTv_i\\
+    \therefore&amp;\,\mathrm{im}\,T=\mathrm{sp}\{Tv_i\}
+\end{align*}</span>
+<ul>
+<li>wts <span class="math inline">\{Tv_i\}</span> is indep</li>
+</ul>
+<span class="math display">\begin{align*}
+    \textsf{suppose }&amp;\,c_1Tv_1+\cdots+c_nTv_n=0\quad c_i\in F\\
+    \therefore&amp;\,T(c_1v_1+\cdots+c_nv_n)=0\tag{\sf $T$ is linear}\\
+    \therefore&amp;\,\sum_{i=1}^nc_iv_i\in\mathrm{null}\,T\\
+    \because&amp;\,\mathrm{null}\,T=\mathrm{sp}\{u_i\}_{i=1}^m\\
+    \therefore&amp;\,\sum_{i=1}^nc_iv_i=\sum_{i=1}^md_iu_i\quad d_i\in
+F\\
+    \therefore&amp;\,\sum_{i=1}^nc_iv_i-\sum_{i=1}^md_iu_i=0\\
+    \because&amp;\,\{u_1,\cdots,u_m,v_1,\cdots,v_n\}\textsf{ is indep}\\
+    \therefore&amp;\,c_1=\cdots=c_n=0\\
+    \therefore&amp;\,\{Tv_i\}^n_{i=1}\textsf{ is indep}
+\end{align*}</span>
+<ul>
+<li><span class="math inline">\therefore\{Tv_i\}^n_{i=1}</span> is a
+basis of <span class="math inline">\mathrm{im}\,T</span></li>
+</ul></li>
+<li><span class="math inline">\therefore\dim\mathrm{im}\,T=n</span></li>
+</ul></li>
+<li><span class="math inline">\therefore\dim
+V=m+n=\dim\mathrm{null}\,T+\dim\mathrm{im}\,T\quad\blacksquare</span></li>
+</ul>
+</details>
+<h2 id="matrices">Matrices</h2>
+<details class="definition">
+<summary>
+<span class="math inline">\mathcal M(T)</span> for <span
+class="math inline">T\in\mathcal L(V^n,W^m)</span>
+</summary>
+if <span class="math inline">T:V^n\to W^m</span> then <span
+class="math display">\mathcal M(T)=\begin{bmatrix}
+    T\vec b_1&amp;T\vec b_2&amp;\cdots&amp;T\vec b_n
+\end{bmatrix}\in M^{m\times n}</span> where <span
+class="math inline">\{\vec b_i\}</span> is a basis of <span
+class="math inline">V^n</span>
+</details>
+<h2 id="product-space">Product Space</h2>
+<details class="definition">
+<summary>
+Cross Product
+</summary>
+<span class="math display">\prod V_i=\{(v_1,\cdots,v_n):v_i\in
+V_i\}</span>
+</details>
+<details class="theorem">
+<summary>
+Dimension of Product
+</summary>
+<span class="math display">\dim \prod V_i=\sum\dim V_i</span>
+</details>
+<h3 id="with-direct-sum">With Direct Sum</h3>
+<details class="definition">
+<summary>
+<span class="math inline">\displaystyle\Gamma:\prod U_i\to\sum
+U_i\quad</span> (a finite dimension map)
+</summary>
+<p><span
+class="math display">\Gamma(u_1,\cdots,u_n)=u_1+\cdots+u_n</span></p>
+<ul>
+<li><span class="math inline">\Gamma</span> is
+<strong>surjective</strong> by obviousness</li>
+</ul>
+</details>
+<details class="theorem">
+<summary>
+<span class="math inline">\displaystyle\sum U_i=\bigoplus
+U_i\iff\Gamma</span> is <strong>injective</strong>
+</summary>
+<p><strong>Proof.</strong> assume <span class="math inline">\sum
+U_i=\bigoplus U_i</span></p>
+<span class="math display">\begin{align*}
+    &amp;\therefore\sum u_i=0\iff u_i=0\\
+    &amp;\therefore\Gamma(u)=0\iff u=0\\
+    &amp;\therefore\mathrm{null}\,\Gamma=\{0\}\\
+\end{align*}</span>
+</details>
+<details class="theorem">
+<summary>
+<span class="math inline">\displaystyle\sum U_i=\bigoplus U_i\iff\dim
+\sum U_i=\sum\dim U_i</span>
+</summary>
+<strong>Proof.</strong> <span class="math display">\begin{align*}
+    &amp;\because\Gamma\textsf{ is \textbf{surjective}}\\
+    &amp;\therefore\dim \mathrm{im}\,\Gamma=\dim \sum U_i\\
+    &amp;\therefore\dim \prod U_i=\dim \mathrm{null}\,\Gamma+\dim \sum
+U_i\\
+    &amp;\because\dim \prod U_i=\sum\dim U_i\\
+    &amp;\therefore\Gamma\textsf{ is \textbf{injective}}\iff\sum\dim
+U_i=\dim \sum U_i\\
+    &amp;\therefore\sum U_i=\bigoplus U_i\iff\sum\dim U_i=\dim \sum U_i
+\end{align*}</span>
+</details>
+<h2 id="quotient-space">Quotient Space</h2>
+<details class="definition">
+<summary>
+<span class="math inline">\displaystyle v+U\textsf{ for }v\in
+V,U\subseteq V</span>
+</summary>
+<p><span class="math display">v+U=\{v+u:u\in U\}</span></p>
+<ul>
+<li>is a <strong>affine subset</strong> of <span
+class="math inline">V</span></li>
+<li>is <strong>parallel</strong> to <span
+class="math inline">U</span></li>
+</ul>
+</details>
+<details class="definition">
+<summary>
+<span class="math inline">\displaystyle V/U\textsf{ for }U\subseteq
+V</span>
+</summary>
+<p><span class="math display">V/U=\{v+U:v\in V\}</span></p>
+<ul>
+<li>is set of all affine subsets parallel to <span
+class="math inline">U</span></li>
+</ul>
+</details>
+<details class="theorem">
+<summary>
+Two affine subsets parallel to <span class="math inline">U</span> are
+equal ⊻ disjoint
+</summary>
+<p>for <span class="math inline">U\subseteq V\enspace v,w\in V</span>,
+equiv:</p>
+<ul>
+<li><span class="math inline">v-w\in U</span></li>
+<li><span class="math inline">v+U=w+U</span></li>
+<li><span class="math inline">(v+U)\cap(w+U)\ne\varnothing</span></li>
+</ul>
+</details>
+<details class="definition">
+<summary>
+Add and Scalar-Mul on <span class="math inline">V/U</span>
+</summary>
+<p>for <span class="math inline">v,w\in V\enspace U\subseteq
+V\enspace\lambda\in F</span> <span class="math display">\begin{align*}
+    (v+U)+(w+U)&amp;=v+w+U\\
+    \lambda(v+U)&amp;=\lambda v+U\\
+\end{align*}</span></p>
+</details>
+<details class="definition">
+<summary>
+Quotient Map <span class="math inline">\pi:V\to V/U</span>
+</summary>
+<p><span class="math display">\pi(v)=v+U</span></p>
+<ul>
+<li><span class="math inline">\mathrm{null}\,\pi=U</span></li>
+<li><span class="math inline">\mathrm{im}\,\pi=V/U</span> (aka
+<strong>surjective</strong>)</li>
+</ul>
+</details>
+<details class="theorem">
+<summary>
+Dimension of Quotient Space
+</summary>
+for <strong>finite-dimensional</strong> <span
+class="math inline">V</span> and <span class="math inline">U\subseteq
+V</span> <span class="math display">\dim V/U=\dim V-\dim U</span>
+</details>
+<details class="definition">
+<summary>
+<span class="math inline">\tilde T:V/\mathrm{null}\,T\to W</span>
+</summary>
+for <span class="math inline">T\in\mathcal L(V,W)</span> <span
+class="math display">\tilde T(v+\mathrm{null}\,T)=Tv</span>
+</details>
+<details class="theorem">
+<summary>
+First Isomorphism Theorem
+</summary>
+for <span class="math inline">T\in\mathcal L(V,W)</span> <span
+class="math display">V/(\mathrm{null}\, T)\cong\mathrm{im}\,T</span>
+</details>
+<details class="example">
+<summary>
+prove First Isomorphism Theorem
+</summary>
+<ul>
+<li>given <span class="math inline">T\in\mathcal L(V,W)</span></li>
+<li>let <span class="math inline">K=\mathrm{null}\,T</span></li>
+<li>define <span class="math inline">\tilde
+T:V/K\to\mathrm{im}\,T\textsf{ st }\tilde T(v+K)=Tv\enspace\forall v\in
+V</span></li>
+</ul>
+<ol type="1">
+<li><p>wts <span class="math inline">\tilde T</span> is <strong>well
+defined</strong> <span class="math display">\begin{align*}
+&amp;&amp;\textsf{let any }&amp;v,w\in V\textsf{ st }v+K=w+K\\
+\implies&amp;&amp;v-w&amp;\in\mathrm{null}\,T\\
+\implies&amp;&amp;T(v-w)&amp;=0\tag{\sf def of null}\\
+\implies&amp;&amp;T(v)-T(w)&amp;=0\tag{\sf $T$ is linear}\\
+\implies&amp;&amp;T(v)&amp;=T(w)\\
+\implies&amp;&amp;\tilde T(v+K)&amp;=\tilde T(w+K)\tag{\sf def of
+$\tilde T$}
+\end{align*}</span></p></li>
+<li><p>wts <span class="math inline">\tilde T</span> is
+<strong>linear</strong> <span class="math display">\begin{align*}
+\textsf{let any }&amp;u,v\in V\quad\lambda\in F\\
+\therefore&amp;\,\tilde T((u+K)+\lambda(v+K))=\tilde T((u+\lambda
+v)+K)\\
+&amp;=T(u+\lambda v)=Tu+\lambda Tv\tag{\sf $T$ is linear}\\
+&amp;=\tilde T(u+K)+\lambda\tilde T(v+K)\tag{\sf by def}\\
+\therefore&amp;\,\tilde T\textsf{ is linear}
+\end{align*}</span></p></li>
+<li><p>wts <span class="math inline">\tilde T</span> is
+<strong>isomorphism</strong> i.e. <span
+class="math inline">V/K\cong\mathrm{im}\,T</span></p>
+<ul>
+<li>wts <span class="math inline">\tilde T</span> is
+<strong>injective</strong> <span class="math display">\begin{align*}
+\textsf{let any }&amp;v\in V\textsf{ st }\tilde T(v+K)=0\qquad\\
+\therefore&amp;\,\tilde T(v+K)=Tv=0\tag{\sf def of $\tilde T$}\\
+\therefore&amp;\,v\in\mathrm{null}\,T=K\tag{\sf def of
+$\mathrm{null}\,T$}\\
+\because&amp;\,v-0=v\in K\\
+\therefore&amp;\,v+K=0+K=K\tag{\sf affine subset prop}\\
+\therefore&amp;\,\mathrm{null}\,\tilde T=\{K\}\tag{\sf null is
+trivial}\\
+\therefore&amp;\,\tilde T\textsf{ is \textbf{injective}}
+\end{align*}</span></li>
+<li>wts <span class="math inline">\tilde T</span> is
+<strong>surjective</strong> <span class="math display">\begin{align*}
+\textsf{let any }&amp;Tv\in\mathrm{im}\,T\\
+\because&amp;\,T\in\mathcal L(V,W)\\
+\therefore&amp;\,v\in V\\
+\therefore&amp;\,v+K\in V/K\\
+\therefore&amp;\,\tilde T(v+K)=Tv\in\mathrm{im}\,T\\
+\therefore&amp;\,\forall Tv\in\mathrm{im}\,T\enspace\exists v+K\in
+V/K\textsf{ st }\tilde T(v+K)=Tv\\
+\therefore&amp;\,\tilde T\textsf{ is \textbf{surjective}}
+\end{align*}</span></li>
+<li><span class="math inline">\therefore
+V/K\cong\mathrm{im}\,T\quad\blacksquare</span></li>
+</ul></li>
+</ol>
+</details>
+<h1 id="eigenvaluesvectors">Eigenvalues/vectors</h1>
+<h2 id="invariant-subspace">Invariant Subspace</h2>
+<!--
+<details class="definition"><summary>
+for $T\in\mathcal L(V)\enspace U\sube V\quad U$ is **invariant** under $T$ iff
+</summary>
+$$u\in U\implies Tu\in U$$
+</details>
+-->
+<details class="definition">
+<summary>
+for <span class="math inline">T\in\mathcal L(V)\quad\lambda\in F</span>
+is an <strong>eigenvalue</strong> iff
+</summary>
+<span class="math display">\exist v\ne0\in V\textsf{ st }Tv=\lambda
+v</span>
+</details>
+<details class="theorem">
+<summary>
+for <span class="math inline">T\in\mathcal L(V^n)\enspace\lambda\in
+F</span>, equiv:
+</summary>
+<ul>
+<li><span class="math inline">\lambda</span> is an
+<strong>eigenval</strong> of <span class="math inline">T</span></li>
+<li><span class="math inline">T-\lambda I</span> is not
+<strong>injective</strong></li>
+<li><span class="math inline">T-\lambda I</span> is not
+<strong>surjective</strong></li>
+<li><span class="math inline">T-\lambda I</span> is not
+<strong>invertible</strong></li>
+<li><span class="math inline">|T-\lambda I|=0</span></li>
+</ul>
+</details>
+<details class="definition">
+<summary>
+for <span class="math inline">T\in\mathcal L(V)\enspace\lambda\in
+F</span> is an eigenval of <span class="math inline">T</span><br>then
+<span class="math inline">v\ne0\in V</span> is an <strong><span
+class="math inline">\lambda</span>-eigenvector</strong> of <span
+class="math inline">T</span> iff
+</summary>
+<span class="math display">Tv=\lambda v\iff(T-\lambda I)v=0\iff
+v\in\mathrm{null}(T-\lambda I)</span>
+</details>
+<script>
+const headers = ['h1', 'h2', 'h3'];
+const hidden = ' hidden';
+const isheader = tag => /h\d/.test(tag);
+
+function cmp(a,b){ // assume h1 > h2
+	// same header level
+	if(a === b) return 0;
+	// h1 > h2 => 1    h2 < h1 => -1
+	return (+a[1] < +b[1]) * 2 - 1;
+}
+
+function toggle(tag, element, hide){
+	if(!element) return;
+
+	const t = element.tagName.toLowerCase();
+	if(isheader(t) && cmp(tag, t) <= 0) return;
+
+	if(hide){
+		element.className += hidden;
+	}else{
+		element.className = element.className.replace(hidden, '');
+	}
+	toggle(tag, element.nextElementSibling, hide);
+}
+
+// open all details
+document.querySelectorAll('details:not(.example)').forEach(e => e.open = true);
+// click on header will hide all following elements until next header of same level
+headers.forEach(
+	tag => document.querySelectorAll(tag + ':not(.title)').forEach(
+		element => element.onclick = ({target: { nextElementSibling } }) => {
+			toggle(tag, nextElementSibling, !nextElementSibling.className.includes('hidden'))
+		}
+	)
+);
+// click on title to toggle all h1
+document.querySelector('h1.title').onclick = () => document.querySelectorAll('h1:not(.title)').forEach(h1 => h1.click());
+
+</script>
+</body>
+</html>

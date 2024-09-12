@@ -1,0 +1,114 @@
+%! TeX program = lualatex
+\documentclass[twocolumn]{article}
+
+\usepackage{xfrac}
+\usepackage[mathletters]{ucs}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\author{}
+\setlength{\topsep}{0em}
+\raggedbottom
+\raggedright
+
+\def\epsilon{\varepsilon}
+\NewCommandCopy{\oldbf}{\textbf}
+\def\colo{white}
+\renewcommand{\textbf}[1]{\textcolor{\colo}{\oldbf{#1}}}
+% supports augmented matrix
+\newenvironment{mat}[1]{\left[\begin{array}{#1}}{\end{array}\right]}
+\newenvironment{vmat}[1]{\left|\begin{array}{#1}}{\end{array}\right|}
+
+% no margin align
+\makeatletter
+\renewenvironment{align*}{\ifvmode\else\hfil\null\linebreak\fi
+  \hspace*{-\leftmargin}\minipage\textwidth
+  \setlength{\abovedisplayskip}{0pt}
+  \setlength{\abovedisplayshortskip}{\abovedisplayskip}
+  \start@align\@ne\st@rredtrue\m@ne}
+{\endalign\endminipage\linebreak}
+\makeatother
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+
+\usepackage{listings}
+\lstset{
+	basicstyle={\ttfamily},
+	commentstyle=\color{gray},
+	keywordstyle=\color{pink},
+	columns=flexible,
+}
+
+\usepackage[no-math]{fontspec}
+\setsansfont{SourceSansPro}
+\setmonofont{Iosevka Custom}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[UKenglish]{datetime}
+\renewcommand{\dateseparator}{-}
+\yyyymmdddate
+\date{\today}
+
+\usepackage{xcolor}
+\definecolor{black}{HTML}{000000}
+\definecolor{darkest}{HTML}{060606}
+\definecolor{darker}{HTML}{131313}
+\definecolor{dark}{HTML}{313131}
+\definecolor{gray}{HTML}{787878}
+\definecolor{light}{HTML}{bfbfbf}
+\definecolor{lighter}{HTML}{dddddd}
+\definecolor{lightest}{HTML}{eaeaea}
+\definecolor{white}{HTML}{f1f1f1}
+\definecolor{red}{HTML}{c53943}
+\definecolor{green}{HTML}{39c575}
+\definecolor{orange}{HTML}{ff9966}
+\definecolor{blue}{HTML}{3989c5}
+\definecolor{indigo}{HTML}{3943c5}
+\definecolor{leek}{HTML}{39c5bb}
+\definecolor{pink}{HTML}{ff6680}
+\definecolor{lime}{HTML}{66ff99}
+\definecolor{yellow}{HTML}{ffe666}
+\definecolor{sky}{HTML}{66ccff}
+\definecolor{purple}{HTML}{a68cd9}
+\definecolor{cyan}{HTML}{66ffe6}
+\colorlet{fg}{white}
+\colorlet{bg}{black}
+\pagecolor{bg}
+\color{fg}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linktoc=all,linkcolor=yellow}
+
+\usepackage{mdframed}
+\mdfdefinestyle{default}{
+	topline=false,
+	bottomline=false,
+	rightline=false,
+	linewidth=3pt,
+	fontcolor=fg,
+	backgroundcolor=bg,
+	% nobreak=true,
+}
+% \newenvironment{framed}[3]{
+% 	\def\colo{#1}
+% 	\begin{minipage}{\linewidth}
+% 		\begin{mdframed}[style=default,linecolor=#1,backgroundcolor=#1!20!bg]
+% 			\textcolor{#1}{\textbf{#2.}} #3
+% 		\end{mdframed}
+% 		\begin{mdframed}[style=default,linecolor=#1,backgroundcolor=#1!10!bg]
+% }{\end{mdframed}\end{minipage}\def\colo{white}}
+
+\newenvironment{framed}[3]{
+	\def\colo{#1}
+		\begin{mdframed}[style=default,linecolor=#1,backgroundcolor=#1!20!bg]
+			\textcolor{#1}{\textbf{#2.}} #3
+		\end{mdframed}
+		\begin{mdframed}[style=default,linecolor=#1,backgroundcolor=#1!10!bg]
+}{\end{mdframed}\def\colo{white}}
+
+\newenvironment{theorem}[1][]{\begin{framed}{leek}{Theorem}{#1}}{\end{framed}}
+\newenvironment{definition}[1][]{\begin{framed}{sky}{Definition}{#1}}{\end{framed}}
+\newenvironment{algorithm}[1][]{\begin{framed}{pink}{Algorithm}{#1}}{\end{framed}}
+\newenvironment{example}[1][]{\begin{framed}{orange}{Example}{#1}}{\end{framed}}
+
+\newenvironment{leek}[1][]{\begin{tframed}{leek}{#1}{}}{\end{tframed}}

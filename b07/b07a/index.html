@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-TBNDYO75">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="./favicon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" crossorigin="anonymous" class="astro-TBNDYO75">
+    <title>B07</title>
+<link rel="stylesheet" href="../index.8f2f0644.css" /><script type="module">const e=document.querySelector("aside");document.querySelectorAll('input[type="checkbox"]').forEach(c=>c.disabled=!1);e&&(e.onclick=()=>e.classList.toggle("hide"),document.querySelectorAll("h1,h2,h3").forEach(c=>c.onclick=()=>e.classList.toggle("hide")));
+</script></head>
+<body class="astro-TBNDYO75">
+    <aside class="hide astro-TBNDYO75"><ul>
+<li><a href="#05-design-patterns">05 Design Patterns</a>
+        <ul>
+<li><a href="#creational">Creational</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#structural">Structural</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#behavioral">Behavioral</a>
+        <ul>
+
+</ul>
+        </li>
+</ul>
+        </li><li><a href="#04-solid-principles">04 SOLID Principles</a>
+        <ul>
+<li><a href="#srp-single-responsibility">SRP: Single Responsibility</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#ocp-openclosed">OCP: Open/Closed</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#lsp-liskov-substitution">LSP: Liskov Substitution</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#isp-interface-segregation">ISP: Interface Segregation</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#dip-depndency-inversion">DIP: Depndency Inversion</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#code-smells">Code Smells</a>
+        <ul>
+
+</ul>
+        </li>
+</ul>
+        </li><li><a href="#03-oop">03 OOP</a>
+        <ul>
+<li><a href="#exception">Exception</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#abstraction">Abstraction</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#encapsulation">Encapsulation</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#polymorphism">Polymorphism</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#overload--override">Overload &amp; Override</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#cast">Cast</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#inheritance">Inheritance</a>
+        <ul>
+
+</ul>
+        </li>
+</ul>
+        </li><li><a href="#02-java">02 Java</a>
+        <ul>
+
+</ul>
+        </li><li><a href="#01-version-control">01 Version Control</a>
+        <ul>
+<li><a href="#centralised-vs-distributed">Centralised vs Distributed</a>
+        <ul>
+
+</ul>
+        </li>
+</ul>
+        </li>
+</ul></aside>
+    <!-- <main><Load client:load><slot/></Load></main> -->
+    <main class="astro-TBNDYO75"><h1 id="05-design-patterns">05 Design Patterns</h1>
+<h2 id="creational">Creational</h2>
+<details class="definition" open><p><summary>Singleton</summary>
+want single entity that has access to resrcs</p><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#FF6680">final</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Manager</span><span style="color:#F1F1F1"> </span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">private</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">static</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Manager</span><span style="color:#F1F1F1"> manager</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">private</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Manager</span><span style="color:#878787">(){}</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">static</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">getManager</span><span style="color:#878787">(){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">if</span><span style="color:#878787">(</span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#F1F1F1">manager </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">null</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">            </span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#F1F1F1">manager </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Manager</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">return</span><span style="color:#F1F1F1"> </span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#F1F1F1">manager</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre></details>
+<details class="definition" open><p><summary>Factory Method</summary>
+meant to be implemented</p><ul>
+<li><code>App -&gt; AApp -&gt; AModel</code></li>
+<li><code>Model -&gt; AModel</code></li>
+</ul><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#FF6680">abstract</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">AbstractApp</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#7F7F7F">    /** Factory method */</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">abstract</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">AbstractModel</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">createModel</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">useModel</span><span style="color:#878787">(){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#66CCFF">Model</span><span style="color:#F1F1F1"> item </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#66FF99">createModel</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#878787">        </span><span style="color:#7F7F7F">// use the object item</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre></details>
+<h2 id="structural">Structural</h2>
+<details class="definition" open><p><summary>Adapter</summary>
+make classes work together without code change</p><ul>
+<li>code works with <code>Target</code></li>
+<li>now, want code works with <code>Adaptee</code></li>
+</ul><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#FF6680">interface</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Adaptee</span><span style="color:#878787">{</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">sum</span><span style="color:#878787">(</span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">a</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">b</span><span style="color:#878787">);</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">interface</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Target</span><span style="color:#878787">{</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">add</span><span style="color:#878787">(</span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">a</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">b</span><span style="color:#878787">);</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Adapter</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">implements</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Target</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66CCFF">Adaptee</span><span style="color:#F1F1F1"> adaptee</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Adapter</span><span style="color:#878787">(</span><span style="color:#66CCFF">Adaptee</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">adaptee</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#F1F1F1">adaptee </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> adaptee</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">add</span><span style="color:#878787">(</span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">a</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">b</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">return</span><span style="color:#F1F1F1"> </span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#F1F1F1">adaptee</span><span style="color:#878787">.</span><span style="color:#66FF99">sum</span><span style="color:#878787">(</span><span style="color:#F1F1F1">a</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> b</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre></details>
+<details class="definition" open><p><summary>Facade</summary>
+simplify (i.e. partially hide) the system</p><ul>
+<li>uses multiple (and complex) classes in the system, so the client doesn’t have to</li>
+</ul><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">A</span><span style="color:#878787">{</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">static</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">stuff</span><span style="color:#878787">(){}</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">B</span><span style="color:#878787">{</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">static</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">stuff</span><span style="color:#878787">(){}</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">C</span><span style="color:#878787">{</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">static</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">stuff</span><span style="color:#878787">(){}</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Facade</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">doStuff</span><span style="color:#878787">(){</span></span>
+<span class="line"><span style="color:#F1F1F1">        A</span><span style="color:#878787">.</span><span style="color:#66FF99">stuff</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">        B</span><span style="color:#878787">.</span><span style="color:#66FF99">stuff</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">        C</span><span style="color:#878787">.</span><span style="color:#66FF99">stuff</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Client</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">doStuff</span><span style="color:#878787">(){</span></span>
+<span class="line"><span style="color:#878787">        </span><span style="color:#7F7F7F">// no need to know about A, B, C</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#66CCFF">Facade</span><span style="color:#F1F1F1"> f </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Facade</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">        f</span><span style="color:#878787">.</span><span style="color:#66FF99">doStuff</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre></details>
+<h2 id="behavioral">Behavioral</h2>
+<details class="definition" open><p><summary>Observer</summary>
+observer gets notified when subject changes</p><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#FF6680">import</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">java</span><span style="color:#878787">.</span><span style="color:#FF6680">util</span><span style="color:#878787">.</span><span style="color:#FF6680">ArrayList</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#FF6680">import</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">java</span><span style="color:#878787">.</span><span style="color:#FF6680">util</span><span style="color:#878787">.</span><span style="color:#FF6680">List</span><span style="color:#878787">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Subject</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">private</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> state</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66CCFF">List</span><span style="color:#878787">&lt;</span><span style="color:#66CCFF">Observer</span><span style="color:#878787">&gt;</span><span style="color:#F1F1F1"> observers</span><span style="color:#878787">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Subject</span><span style="color:#878787">(){</span></span>
+<span class="line"><span style="color:#F1F1F1">        observers </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">ArrayList</span><span style="color:#878787">&lt;</span><span style="color:#66CCFF">Observer</span><span style="color:#878787">&gt;();</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">register</span><span style="color:#878787">(</span><span style="color:#66CCFF">Observer</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">o</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">        observers</span><span style="color:#878787">.</span><span style="color:#66FF99">add</span><span style="color:#878787">(</span><span style="color:#F1F1F1">o</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">getState</span><span style="color:#878787">(){</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">return</span><span style="color:#F1F1F1"> state</span><span style="color:#878787">;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">setState</span><span style="color:#878787">(</span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">state</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#F1F1F1">state </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> state</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">for</span><span style="color:#878787">(</span><span style="color:#66CCFF">Observer</span><span style="color:#F1F1F1"> o </span><span style="color:#FF6680">:</span><span style="color:#F1F1F1"> observers</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">            o</span><span style="color:#878787">.</span><span style="color:#66FF99">update</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#F1F1F1"> </span></span>
+<span class="line"><span style="color:#FF6680">abstract</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Observer</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66CCFF">Subject</span><span style="color:#F1F1F1"> subject</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">abstract</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">update</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">O1</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">extends</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Observer</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">O1</span><span style="color:#878787">(</span><span style="color:#66CCFF">Subject</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">s</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">        subject </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> s</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">update</span><span style="color:#878787">(){</span><span style="color:#7F7F7F">/* update */</span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#7F7F7F">// similar code for O2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Main</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">static</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">main</span><span style="color:#878787">(){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#66CCFF">Subject</span><span style="color:#F1F1F1"> s </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Subject</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">O1</span><span style="color:#878787">(</span><span style="color:#F1F1F1">s</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">O2</span><span style="color:#878787">(</span><span style="color:#F1F1F1">s</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#F1F1F1">        s</span><span style="color:#878787">.</span><span style="color:#66FF99">setState</span><span style="color:#878787">(</span><span style="color:#A68CD9">69</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre></details>
+<details class="definition" open><p><summary>Strategy</summary>
+abstraction of an algorithm</p><ul>
+<li>good for OCP</li>
+</ul><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#FF6680">interface</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Server</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">void</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">compute</span><span style="color:#878787">(</span><span style="color:#66CCFF">String</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">input</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Client</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66CCFF">Server</span><span style="color:#F1F1F1"> server</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Client</span><span style="color:#878787">(</span><span style="color:#66CCFF">Server</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">server</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#F1F1F1">server </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> server</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">S1</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">implements</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Server</span><span style="color:#878787">{</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F">/* impl compute */</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">S2</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">implements</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Server</span><span style="color:#878787">{</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F">/* impl compute */</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">S3</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">implements</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Server</span><span style="color:#878787">{</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F">/* impl compute */</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span></code></pre></details>
+<h1 id="04-solid-principles">04 SOLID Principles</h1>
+<h2 id="srp-single-responsibility">SRP: Single Responsibility</h2>
+<details class="theorem" open><summary>Class: has 1 responsibility</summary><ul>
+<li>otherwise causes unecessary deps</li>
+<li>happens when
+<ul>
+<li>
+<p><code>A -&gt; B &lt;- C</code></p>
+</li>
+<li>
+<p>but <code>A</code> or <code>C</code> doesnt use everything from <code>B</code></p>
+</li>
+</ul>
+</li>
+<li><strong>solution</strong>:
+<ul>
+<li><code>B1 -&gt; B &lt;- B2    A -&gt; B1    C -&gt; B2</code></li>
+</ul>
+</li>
+</ul></details>
+<h2 id="ocp-openclosed">OCP: Open/Closed</h2>
+<details class="theorem" open><p><summary>Software entities: open for extension, but closed for modification</summary>
+software entities: class, module, function, etc</p><ul>
+<li>otherwise causes code change when adding new features (e.g. support a new server)</li>
+<li>happens when
+<ul>
+<li><code>A -&gt; B1</code> but then we want to add <code>A -&gt; B2</code></li>
+</ul>
+</li>
+<li><strong>solution</strong>:
+<ul>
+<li><code>B1 ┄⇢ B ⇠┄ B2    A ┄⇢ B</code></li>
+</ul>
+</li>
+</ul></details>
+<h2 id="lsp-liskov-substitution">LSP: Liskov Substitution</h2>
+<details class="theorem" open><summary>Subtype should be substitutable by their base types</summary><ul>
+<li>happens when
+<ul>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">class</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">A</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">extends</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">B</span></span></code></pre>
+
+</li>
+<li>code works for <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">B</span></span></code></pre>
+ but not for <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">A</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><strong>solution</strong>:
+<ul>
+<li>dont use inheritance, or <code>A ┄⇢ ABC ⇠┄ B</code></li>
+</ul>
+</li>
+</ul></details>
+<h2 id="isp-interface-segregation">ISP: Interface Segregation</h2>
+<details class="theorem" open><summary>The sub class should use everything from its interface (SRP)</summary><ul>
+<li><strong>solution</strong>: split into multiple interfaces</li>
+</ul></details>
+<h2 id="dip-depndency-inversion">DIP: Depndency Inversion</h2>
+<details class="theorem" open><summary><code>HighLevel</code> should depends on <code>ILowLevel</code>, not <code>LowLevel</code></summary><ul>
+<li>happens when <code>A -&gt; B -&gt; C</code></li>
+<li><strong>solution</strong>: <code>A -&gt; IB ⇠┄ B -&gt; IC ⇠┄ C</code></li>
+</ul></details>
+<h2 id="code-smells">Code Smells</h2>
+<ul>
+<li>bad OCP <code>==&gt;</code> rigid</li>
+<li>bad LSP or bad SRP <code>==&gt;</code> fragile</li>
+<li>bad DIP <code>==&gt;</code> immobile (hard to migrate to other applications)</li>
+<li>too SOLID <code>==&gt;</code> needless complexity and opacity (i.e. hard to understand)</li>
+</ul>
+<h1 id="03-oop">03 OOP</h1>
+<h2 id="exception">Exception</h2>
+<details class="definition" open><summary></summary><ul>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Exception</span></span></code></pre>
+ and its subclasses are <strong>checked exceptions</strong>
+<ul>
+<li>must be try-catched or declared in method header</li>
+</ul>
+</li>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">RuntimeException</span></span></code></pre>
+ and its subclasses are <strong>unchecked exceptions</strong></li>
+</ul></details>
+<details class="definition" open><summary>try-catch and order of operation</summary><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#7F7F7F">/*</span></span>
+<span class="line"><span style="color:#7F7F7F">1. call first</span></span>
+<span class="line"><span style="color:#7F7F7F">2. call second</span></span>
+<span class="line"><span style="color:#7F7F7F">3. call third</span></span>
+<span class="line"><span style="color:#7F7F7F">4. call last</span></span>
+<span class="line"><span style="color:#7F7F7F">5. return third()</span></span>
+<span class="line"><span style="color:#7F7F7F">*/</span></span>
+<span class="line"><span style="color:#FF6680">try</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">first</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">throw</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Exception</span><span style="color:#878787">(</span><span style="color:#878787">&quot;</span><span style="color:#FFE666">no</span><span style="color:#878787">&quot;</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#878787">}</span><span style="color:#FF6680">catch</span><span style="color:#878787">(</span><span style="color:#66CCFF">Exception</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">e</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">second</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">return</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">third</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#878787">}</span><span style="color:#FF6680">finally</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66FF99">last</span><span style="color:#878787">();</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre></details>
+<h2 id="abstraction">Abstraction</h2>
+<details class="definition" open><summary>Abstract class and Interface</summary><ul>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">abstract</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">class</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">Abstract</span></span></code></pre>
+
+<ul>
+<li>has <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">abstract</span></span></code></pre>
+ method <code>==&gt;</code> must be <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">abstract</span></span></code></pre>
+ class</li>
+<li>abstract <code>===</code> not concrete</li>
+<li>use <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">class</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">Concrete</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">extends</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">Abstract</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">interface</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">I</span></span></code></pre>
+
+<ul>
+<li>all methods are <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">abstract</span></span></code></pre>
+ or <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">public</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">abstract</span></span></code></pre>
+</li>
+<li>all fields are <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">final</span></span></code></pre>
+</li>
+<li>the keywords <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">public</span></span></code></pre>
+, <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">abstract</span></span></code></pre>
+, <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">final</span></span></code></pre>
+ are optional</li>
+<li>used for unrelated class but with same same method signatures (e.g. <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Comparable</span><span style="color: #FF6680">&lt;</span><span style="color: #F1F1F1">T</span><span style="color: #FF6680">&gt;</span></span></code></pre>
+)</li>
+<li>use <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">class</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">Concrete</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">implements</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">I1</span><span style="color: #878787">,</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">I2</span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul></details>
+<h2 id="encapsulation">Encapsulation</h2>
+<details class="definition" open><summary>Encapsulation: controls access</summary><ul>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">private</span></span></code></pre>
+: only within same class</li>
+<li>package-private (default): only classes in the same package</li>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">protected</span></span></code></pre>
+: only package-private and subclasses</li>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">public</span></span></code></pre>
+: anywhere</li>
+</ul></details>
+<h2 id="polymorphism">Polymorphism</h2>
+<details class="theorem" open><p><summary>Polymorphism</summary>
+<code>o</code> is instance of <code>Subclass ==&gt; o</code> is instance of <code>Superclass</code></p><p>i.e. object of subclass can be treated as object of its superclass</p></details>
+<h2 id="overload--override">Overload &amp; Override</h2>
+<details class="definition" open><p><summary>Method Signature</summary>
+a method’s signature is defined by</p><ul>
+<li>sequence of parameter types</li>
+<li>method name</li>
+</ul></details>
+<details class="sky" open><summary>Method overload in the same class</summary><ul>
+<li>same method name but a different sequence of parameter types</li>
+</ul></details>
+<details class="sky" open><summary>Method override in subclasses</summary><ul>
+<li>same signature and same return type but different implementation</li>
+<li>variable calls the method in the <strong>runtime type</strong> (or its superclass)</li>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">for</span><span style="color: #878787">(</span><span style="color: #66CCFF">Object</span><span style="color: #F1F1F1"> o</span><span style="color: #FF6680">:</span><span style="color: #F1F1F1"> arr</span><span style="color: #878787">)</span></span></code></pre>
+ the runtime type of <code>o</code> depends on iter</li>
+<li><code>@Override</code> is optional
+<ul>
+<li>but compile error if ∄ the method signature in the superclass</li>
+<li>i.e. compile error if not overriding</li>
+</ul>
+</li>
+</ul></details>
+<h2 id="cast">Cast</h2>
+<details class="sky" open><summary>Declared Type vs Runtime Type</summary><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#66CCFF">Declared</span><span style="color:#F1F1F1"> d </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Runtime</span><span style="color:#878787">();</span></span></code></pre><ul>
+<li>declared type: type of variable</li>
+<li>runtime type: type that ctor returns</li>
+</ul></details>
+<details class="sky" open><summary>Type Casting</summary><ul>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Super</span><span style="color: #F1F1F1"> p </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">new</span><span style="color: #F1F1F1"> </span><span style="color: #66FF99">Sub</span><span style="color: #878787">();</span></span></code></pre>
+
+<ul>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Sub</span></span></code></pre>
+ upcasted to <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Super</span></span></code></pre>
+</li>
+<li>data is not lost</li>
+<li><code>p</code> has <strong>declared</strong> type <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Super</span></span></code></pre>
+ and <strong>runtime</strong> type <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Sub</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Sub</span><span style="color: #F1F1F1"> b </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> </span><span style="color: #878787">(</span><span style="color: #F1F1F1">Sub</span><span style="color: #878787">)</span><span style="color: #F1F1F1">p</span><span style="color: #878787">;</span></span></code></pre>
+
+<ul>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Super</span></span></code></pre>
+ downcasted to <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Sub</span></span></code></pre>
+</li>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Sub</span><span style="color: #F1F1F1"> b </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> p</span><span style="color: #878787">;</span></span></code></pre>
+ causes Type Mismatch</li>
+<li>lhs declared must be superclass of (or same as) rhs declared</li>
+</ul>
+</li>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #F1F1F1">a </span><span style="color: #FF6680">instanceof</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">A</span></span></code></pre>
+ checks if <code>a</code> has runtime/superclass of <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">A</span></span></code></pre>
+</li>
+</ul></details>
+<h2 id="inheritance">Inheritance</h2>
+<details class="sky" open><summary>Inheritance</summary><ul>
+<li>all class inherits <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Object</span></span></code></pre>
+</li>
+<li>use <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">class</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">Sub</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">extends</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">Super</span></span></code></pre>
+  to specify superclass
+<ul>
+<li>no multiple superclasses</li>
+<li><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">class</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">A</span></span></code></pre>
+ <code>==&gt;</code> <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">class</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">A</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">extends</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">Object</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li>use <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #B8B8B8">super</span><span style="color: #878787">(</span><span style="color: #F1F1F1">args</span><span style="color: #878787">)</span></span></code></pre>
+ to call ctor of <strong>direct superclass</strong>
+<ul>
+<li>must be first statement in subclass ctor</li>
+<li>no <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #B8B8B8">super</span><span style="color: #878787">(...)</span></span></code></pre>
+ <code>==&gt;</code> implicit <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #B8B8B8">super</span><span style="color: #878787">()</span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Super</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> m</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Super</span><span style="color:#878787">(){</span><span style="color:#F1F1F1"> m </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">0</span><span style="color:#878787">;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Super</span><span style="color:#878787">(</span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">m</span><span style="color:#878787">){</span><span style="color:#F1F1F1"> </span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#F1F1F1">m </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> m</span><span style="color:#878787">;</span><span style="color:#F1F1F1"> </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Sub</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">extends</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Super</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> n</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Sub</span><span style="color:#878787">(</span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">n</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">m</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#878787">        </span><span style="color:#7F7F7F">// calls super(); implicitly</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#B8B8B8">this</span><span style="color:#878787">.</span><span style="color:#F1F1F1">n </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> n</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#878787">        </span><span style="color:#7F7F7F">// this.n == n &amp;&amp; this.m == 0;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre></details>
+<h1 id="02-java">02 Java</h1>
+<details class="teal" open><summary>Override methods in <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Object</span></span></code></pre>
+</summary><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">public</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">boolean</span><span style="color: #F1F1F1"> </span><span style="color: #66FF99">equals</span><span style="color: #878787">(</span><span style="color: #66CCFF">Object</span><span style="color: #F1F1F1"> o</span><span style="color: #878787">)</span></span></code></pre>
+<ul>
+<li>default: check if same reference address</li>
+<li>for <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #F1F1F1">x </span><span style="color: #FF6680">!=</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">null</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">&amp;&amp;</span><span style="color: #F1F1F1"> y </span><span style="color: #FF6680">!=</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">null</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">&amp;&amp;</span><span style="color: #F1F1F1"> z </span><span style="color: #FF6680">!=</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">null</span></span></code></pre>
+
+<ul>
+<li><strong>reflexive</strong>: <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #F1F1F1">x </span><span style="color: #FF6680">==</span><span style="color: #F1F1F1"> x</span></span></code></pre>
+</li>
+<li><strong>symmetric</strong>: <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #F1F1F1">x </span><span style="color: #FF6680">==</span><span style="color: #F1F1F1"> y </span><span style="color: #FF6680">&lt;==&gt;</span><span style="color: #F1F1F1"> y </span><span style="color: #FF6680">==</span><span style="color: #F1F1F1"> x</span></span></code></pre>
+</li>
+<li><strong>transitive</strong>: <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #F1F1F1">x </span><span style="color: #FF6680">==</span><span style="color: #F1F1F1"> y </span><span style="color: #FF6680">&amp;&amp;</span><span style="color: #F1F1F1"> y </span><span style="color: #FF6680">==</span><span style="color: #F1F1F1"> z </span><span style="color: #FF6680">==&gt;</span><span style="color: #F1F1F1"> x </span><span style="color: #FF6680">==</span><span style="color: #F1F1F1"> z</span></span></code></pre>
+</li>
+<li><strong>consistent</strong>: multiple calls of same variables should be consistent</li>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #F1F1F1">x </span><span style="color: #FF6680">!=</span><span style="color: #F1F1F1"> </span><span style="color: #A68CD9">null</span></span></code></pre>
+
+</li>
+</ul>
+</li>
+</ul><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">public</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">int</span><span style="color: #F1F1F1"> </span><span style="color: #66FF99">hashCode</span><span style="color: #878787">()</span></span></code></pre>
+<ul>
+<li>default: return address</li>
+<li>override <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66FF99">equals</span><span style="color: #878787">(</span><span style="color: #66CCFF">Object</span><span style="color: #F1F1F1"> o</span><span style="color: #878787">)</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">==&gt;</span></span></code></pre>
+ override <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66FF99">hashCode</span><span style="color: #878787">()</span></span></code></pre>
+</li>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #F1F1F1">x </span><span style="color: #FF6680">==</span><span style="color: #F1F1F1"> y </span><span style="color: #FF6680">==&gt;</span><span style="color: #F1F1F1"> x</span><span style="color: #878787">.</span><span style="color: #66FF99">hashCode</span><span style="color: #878787">()</span><span style="color: #F1F1F1"> </span><span style="color: #FF6680">==</span><span style="color: #F1F1F1"> y</span><span style="color: #878787">.</span><span style="color: #66FF99">hashCode</span><span style="color: #878787">()</span></span></code></pre>
+
+</li>
+<li>good hash: (not necessary)
+<pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#F1F1F1">x </span><span style="color:#FF6680">!=</span><span style="color:#F1F1F1"> y </span><span style="color:#FF6680">==&gt;</span><span style="color:#F1F1F1"> x</span><span style="color:#878787">.</span><span style="color:#66FF99">hashCode</span><span style="color:#878787">()</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">!=</span><span style="color:#F1F1F1"> y</span><span style="color:#878787">.</span><span style="color:#66FF99">hashCode</span><span style="color:#878787">()</span></span></code></pre>
+</li>
+</ul><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #FF6680">public</span><span style="color: #F1F1F1"> </span><span style="color: #66CCFF">String</span><span style="color: #F1F1F1"> </span><span style="color: #66FF99">toString</span><span style="color: #878787">()</span></span></code></pre>
+<ul>
+<li>default: <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">f</span><span style="color: #FFE666">&#39;</span><span style="color: #A68CD9">{</span><span style="color: #F1F1F1">className</span><span style="color: #A68CD9">}</span><span style="color: #FFE666">@</span><span style="color: #A68CD9">{</span><span style="color: #F1F1F1">address</span><span style="color: #A68CD9">}</span><span style="color: #FFE666">&#39;</span></span></code></pre>
+</li>
+<li>these do <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66FF99">toString</span><span style="color: #878787">()</span></span></code></pre>
+ implicitly
+<ul>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #F1F1F1">System</span><span style="color: #878787">.</span><span style="color: #F1F1F1">out</span><span style="color: #878787">.</span><span style="color: #66FF99">println</span><span style="color: #878787">(</span><span style="color: #66CCFF">Object</span><span style="color: #F1F1F1"> o</span><span style="color: #878787">)</span></span></code></pre>
+
+</li>
+<li>
+<pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #F1F1F1">o </span><span style="color: #FF6680">+</span><span style="color: #F1F1F1"> </span><span style="color: #878787">&quot;&quot;</span></span></code></pre>
+
+</li>
+</ul>
+</li>
+</ul><details><summary>Boilerplate</summary><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#FF6680">class</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">A</span><span style="color:#878787">{</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> n</span><span style="color:#878787">;</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">Object</span><span style="color:#F1F1F1"> obj</span><span style="color:#878787">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">@</span><span style="color:#66CCFF">Override</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">boolean</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">equals</span><span style="color:#878787">(</span><span style="color:#66CCFF">Object</span><span style="color:#F1F1F1"> </span><span style="color:#FF9966">o</span><span style="color:#878787">){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">if</span><span style="color:#878787">(</span><span style="color:#B8B8B8">this</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> o</span><span style="color:#878787">)</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">return</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">true</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">if</span><span style="color:#878787">(</span><span style="color:#F1F1F1">o </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">null</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">||</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">getClass</span><span style="color:#878787">()</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">!=</span><span style="color:#F1F1F1"> o</span><span style="color:#878787">.</span><span style="color:#66FF99">getClass</span><span style="color:#878787">())</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">return</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">false</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#66CCFF">A</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#878787">(</span><span style="color:#F1F1F1">A</span><span style="color:#878787">)</span><span style="color:#F1F1F1">o</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">return</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">==</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">.</span><span style="color:#F1F1F1">n </span><span style="color:#FF6680">&amp;&amp;</span><span style="color:#F1F1F1"> Object</span><span style="color:#878787">.</span><span style="color:#66FF99">equals</span><span style="color:#878787">(</span><span style="color:#F1F1F1">obj</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> a</span><span style="color:#878787">.</span><span style="color:#F1F1F1">obj</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">@</span><span style="color:#66CCFF">Override</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">hashCode</span><span style="color:#878787">(){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">return</span><span style="color:#F1F1F1"> Object</span><span style="color:#878787">.</span><span style="color:#66FF99">hash</span><span style="color:#878787">(</span><span style="color:#F1F1F1">n</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> obj</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">@</span><span style="color:#66CCFF">Override</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#FF6680">public</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">String</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">toString</span><span style="color:#878787">(){</span></span>
+<span class="line"><span style="color:#F1F1F1">        </span><span style="color:#FF6680">return</span><span style="color:#F1F1F1"> </span><span style="color:#878787">&quot;</span><span style="color:#FFE666">A[n=</span><span style="color:#878787">&quot;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">+</span><span style="color:#F1F1F1"> n </span><span style="color:#FF6680">+</span><span style="color:#F1F1F1"> </span><span style="color:#878787">&quot;</span><span style="color:#FFE666">, obj=</span><span style="color:#878787">&quot;</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">+</span><span style="color:#F1F1F1"> obj </span><span style="color:#FF6680">+</span><span style="color:#F1F1F1"> </span><span style="color:#878787">&quot;</span><span style="color:#FFE666">]</span><span style="color:#878787">&quot;</span><span style="color:#878787">;</span></span>
+<span class="line"><span style="color:#F1F1F1">    </span><span style="color:#878787">}</span></span>
+<span class="line"><span style="color:#878787">}</span></span></code></pre></details></details>
+<details class="sky" open><summary>Java Memory Model</summary><p>one stack per thread</p><ul>
+<li>stores local vars (in fn call stack)</li>
+</ul><p>one heap per program</p><ul>
+<li>stores objects</li>
+</ul></details>
+<details class="teal" open><summary>Source Code to Bytecode</summary><ol>
+<li>write source code <code>.java</code></li>
+<li><code>javac</code> compiles <code>.java</code> to <code>.class</code> (bytecode)</li>
+<li><code>java</code> interprets and executes bytecode in <strong>JVM</strong></li>
+</ol></details>
+<details class="sky" open><summary>Data Types</summary><ul>
+<li>8 primitive types
+<pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#66CCFF">byte</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">char</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">short</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">long</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">float</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">double</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">boolean</span></span></code></pre>
+<ul>
+<li>local var is assigned with data stored in stack</li>
+</ul>
+</li>
+<li>others are objects (defined by a class)
+<ul>
+<li>∴ array of primitives is an object (and has <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #A68CD9">null</span></span></code></pre>
+ as default value)</li>
+<li>local var is assigned with ref that points to data stored in heap</li>
+</ul>
+</li>
+<li>assignment <pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #66CCFF">Object</span><span style="color: #F1F1F1"> a </span><span style="color: #FF6680">=</span><span style="color: #F1F1F1"> b</span><span style="color: #878787">;</span></span></code></pre>
+
+<ul>
+<li>if Object is primitive, then copy by value</li>
+<li>if Object is object, then copy by reference</li>
+</ul>
+</li>
+</ul></details>
+<details class="teal" open><summary>Instantiation: creates an object/instance of a class</summary><pre class="astro-code" style="background-color:#000000;overflow-x:auto"><code><span class="line"><span style="color:#66CCFF">Point</span><span style="color:#F1F1F1"> p </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66FF99">Point</span><span style="color:#878787">(</span><span style="color:#A68CD9">1</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">2</span><span style="color:#878787">);</span></span>
+<span class="line"><span style="color:#66CCFF">int</span><span style="color:#878787">[]</span><span style="color:#F1F1F1"> a </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">int</span><span style="color:#878787">[</span><span style="color:#F1F1F1">n</span><span style="color:#878787">];</span><span style="color:#F1F1F1"> </span><span style="color:#7F7F7F">// array of 0</span></span>
+<span class="line"><span style="color:#66CCFF">double</span><span style="color:#878787">[]</span><span style="color:#F1F1F1"> l </span><span style="color:#FF6680">=</span><span style="color:#F1F1F1"> </span><span style="color:#FF6680">new</span><span style="color:#F1F1F1"> </span><span style="color:#66CCFF">double</span><span style="color:#878787">[]{</span><span style="color:#A68CD9">0.0</span><span style="color:#878787">,</span><span style="color:#F1F1F1"> </span><span style="color:#A68CD9">1.0</span><span style="color:#878787">};</span></span></code></pre></details>
+<details class="teal" open><p><summary>Default Values (for uninitialised class fields)</summary>
+<strong>local variables</strong> don’t have default values</p><ul>
+<li>can use without init <code>==&gt;</code> compile error</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="right">Type</th><th>Default Value</th><th align="right">Type</th><th>Default Value</th></tr></thead><tbody><tr><td align="right">reference</td><td><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #A68CD9">null</span></span></code></pre>
+</td><td align="right">number</td><td><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #A68CD9">0</span></span></code></pre>
+</td></tr><tr><td align="right">boolean</td><td><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #A68CD9">false</span></span></code></pre>
+</td><td align="right">char</td><td><pre class="shiki" style="background-color: #000000"><code><span class="line"><span style="color: #878787">&#39;</span><span style="color: #A68CD9">\u</span><span style="color: #FFE666">0000</span><span style="color: #878787">&#39;</span></span></code></pre>
+</td></tr></tbody></table></details>
+<h1 id="01-version-control">01 Version Control</h1>
+<details class="teal" open><summary>features</summary><ul>
+<li>merge conflict: ask user to resolve conflict</li>
+<li>branch: divergent copies of dev lines</li>
+</ul></details>
+<h2 id="centralised-vs-distributed">Centralised vs Distributed</h2>
+<details class="sky" open><summary>Centralised Version Control</summary><ul>
+<li>structure
+<ul>
+<li><strong>repository</strong> on the server</li>
+<li><strong>copy</strong> on local machines</li>
+</ul>
+</li>
+<li>actions
+<ul>
+<li><strong>commit</strong> pushes changes to server</li>
+<li><strong>update</strong> pulls changes from server</li>
+</ul>
+</li>
+<li>storage
+<ul>
+<li>svn stores incremental diffs between 2 versions</li>
+</ul>
+</li>
+</ul></details>
+<details class="sky" open><summary>Distributed Version Control</summary><ul>
+<li>structure
+<ul>
+<li><strong>remote repo</strong> on the server</li>
+<li><strong>local repo</strong></li>
+</ul>
+</li>
+<li>actions
+<ul>
+<li><strong>commit</strong> <strong>checkout</strong> <strong>push</strong> <strong>pull</strong></li>
+</ul>
+</li>
+<li>storeage
+<ul>
+<li>git stores snapshots of each version
+<ul>
+<li>if file is unchanged, stores link to previous version</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></details></main>
+
+</body>
+
+
+</html>

@@ -1,0 +1,124 @@
+---
+title: Expander
+---
+
+<details class="definition" open>
+<summary>expander</summary>
+
+bipartite graph $G=(U,V,E)$ is $D$ **regular** iff 
+
+$$
+\forall u\in U\quad |N(u)|=D
+$$
+
+- that is, every left vertex has $D$ neighbors
+
+bipartite graph $G=(U,V,E)$ is $(K,A)$ **expander** iff
+
+$$
+\forall S\subseteq U\quad |S|\le K\implies |N(S)|\ge A|S|
+$$
+
+$D$ regular bipartite $\Gamma:[N]\to [D]\to [M]$ is $(K,A)$ **expander** iff
+
+$$
+\forall S\subseteq[N]\quad |S|=K\implies |\Gamma(S)|\le AK
+$$
+
+**good** expander is
+
+$$
+D=\mathcal{O}(1)\quad K=\Omega(N)\quad A\text{ close to } D
+$$
+</details>
+
+<details class="theorem" open>
+<summary>half of balanced regular bipartite are good expanders</summary>
+
+<div class="flex justify-center">
+
+$\forall D\exists \alpha\forall N$ half of $\text{Bip}_{N,D}$ are $(\alpha N,D-2)$ expanders
+
+</div>
+
+- where $\text{Bip}_{N,D}$ is set of $D$ regular bipartite with $N$ left and $N$ right vertices
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+1. notice not $(\alpha N,D-2)$ expander means
+
+<div class="flex justify-center">
+
+$\exists K\le\alpha N\quad\exists S\subseteq[N]\quad |S|=K$ but $|N(S)|\lt AK=KD-2K$
+</div>
+
+   - that is, has $2K$ repeated right vertices
+2. given $K,S,2K$, the probability that the $1\le i\le KD$ th vertex repeat (with previous) is 
+
+$$
+\frac{i-1}N\le \frac{KD}N
+$$
+
+2. given $K,S$, the probability that $\exists 2K$ repeats is at most
+
+$$
+\left(\frac{KD}N\right)^{2K}
+$$
+
+3. given $K$, the probability that $\exists S\exists2K$ is at most
+
+
+$$
+\binom{KD}{2K}\left(\frac{KD}N\right)^{2K}
+$$
+
+4. the probability that $\exists K\exists S\exists 2K$ is at most
+
+$$
+\binom NK\binom{KD}{2K}\left(\frac{KD}N\right)^{2K}\le\left(\frac{e^3D^4}4\cdot \frac KN\right)^K
+$$
+
+  - notice $\binom nk\le(ne/k)^k$
+
+5. thus let $\alpha=1/e^3D^4\ge K/N$, we have
+
+$$
+\left(\frac{e^3D^4}4\cdot \frac KN\right)^K\le \left(\frac{e^3D^4}4\cdot\alpha\right)^K=4^{-K}
+$$
+
+6. finally
+
+$$
+\text{Pr}_{G\in\text{BiP}_{ND}}[G\text{ bad}]\le\sum_{K=1}^{\alpha N}4^{-K}\le1/2\enspace\square
+$$
+</details>
+
+</details>
+
+<details class="theorem" open>
+<summary>spectral expansion iff vertex expansion</summary>
+
+
+- spectral expansion $\gamma\implies  (N/2,1+\gamma)$ expander<br/>
+
+- $(N/2,1+\delta)$ expander $\implies \Omega((\alpha/D)^2)$ spectral expansion
+
+</details>
+
+<details class="example" open>
+<summary>discrete torus</summary>
+
+let $[N]=\mathbb{Z}_M\oplus\mathbb{Z}_M$
+
+$$
+\Gamma(x,y)=\{(x,y),(x+1,y),(x,y+1),(x,x+y),(-y,x)\}
+$$
+
+this is $D=5$ regular with $N=M^2$
+
+- has spectral expansion $\gamma=\Omega(1)$
+
+- thus is $(N/2,1+\gamma)$ expander
+
+</details>

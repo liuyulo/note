@@ -1,0 +1,154 @@
+---
+title: Axiomatic Set Theroy
+---
+
+## Axioms
+
+<details class="definition" open>
+<summary>notation</summary>
+
+- `[A-Z]` denotes sets (of sets)
+- `[a-z]` denotes sets (as objects)
+- $\in$ (membership) is a binary (meta) relation
+- $\bold P$ denotes any meta relation
+- assume classical logic
+- assume law of excluded middle
+</details>
+
+<details class="definition" open>
+<summary>ZFC axioms</summary>
+
+existence of **empty set**
+
+$$
+\exists A\forall x(x\notin A)
+$$
+
+axiom of **extensionality**
+
+$$
+\forall A\forall B(\forall x( x\in A\lrarr x\in B )\to A=B)
+$$
+
+axiom of **comprehension** 
+$$
+\forall A\exists B(\forall x(x\in B\lrarr x\in A\land\bold P(x)))
+$$
+- denote such $B$ as $\{x\in A:\bold P(x)\}$
+
+
+axiom of **pair**
+$$
+\forall a\forall b\exists C(\forall x(x\in C\lrarr x=a\lor x=b))
+$$
+- denote $C$ as $\{a,b\}$ or $\{a\}$ when $a=b$
+
+axiom of **union**
+$$
+\forall S\exists U(\forall x(x\in U\lrarr\exists A(A\in S\land x\in A)))
+$$
+- denote such $U$ as $\cup S$
+
+axiom of **powerset**
+$$
+\forall S\exists P(\forall x(x\in P\lrarr x\sube S))
+$$
+- denote such $P$ as $\mathcal P[S]$
+
+axiom of **infinity**
+
+<div class="flex justify-center">
+an inductive set exists
+</div>
+
+axiom of **foudation**
+
+<div class="flex justify-center">
+all sets are well-founded, thus $\forall x(x\notin x)$
+</div>
+
+axiom of **replacement**
+
+- for any $\bold P$ where $\forall x\exists!\bold F(x)$ such that $\bold P(x,\bold F(x))$
+
+$$
+\forall A\exists B\forall x(x\in A\implies \bold F(x)\in B)
+$$
+
+- denote such $B$ as $\{\bold F(x):x\in A\}$
+
+axiom of **choice**
+
+- for nonempty system $\mathcal{S}$ of nonempty sets
+  - there is a *choice* function $f:\mathcal{S}\to\bigcup\mathcal{S}$ where
+
+  $$
+  \forall X\in\mathcal{S}\quad f(X)\in X
+  $$
+</details>
+
+<details class="definition" open>
+<summary>subset</summary>
+
+for set $A$ and $B$
+<div class="flex justify-center">
+
+$A\sube B\iff\forall x(x\in A\lrarr x\in B)$
+</div>
+</details>
+<details class="theorem" open>
+<summary>unrestricted extensionality</summary>
+
+<div class="flex justify-center">
+$\exists A(\forall x(\bold P(x)\implies x\in A))\implies\{x:\bold P(x)\}$ is set
+</div>
+</details>
+
+<details class="theorem" open>
+<summary>pair any finite tuple</summary>
+<details>
+<summary>**Example.**</summary>
+to make $\{a,b,c\}$ where $a,b,c$ distinct
+
+- pair $a,b$ to $\{a,b\}$
+- pair $c$ to $\{c\}$
+- pair to $\{\{a,b\},\{c\}\}$
+- union to $\{a,b,c\}$
+</details>
+</details>
+
+## Elementary Operations
+
+<details class="theorem" open>
+<summary>subset</summary>
+- $\sube$ is transitive and reflexive
+- $A\sube B$ and $B\sube A\implies A=B$
+</details>
+
+<details class="definition" open>
+<summary>set operations</summary>
+
+| name | notation | definition
+|:-:|:-:|:-:|
+|intersection | $A\cap B$|$\{x\in A:x\in B\}$
+|union |$A\cup B$|$\cup\{A,B\}$
+|difference |$A-B$|$\{x\in A:x\notin B\}$
+|symmetric difference |$A\triangle B$|$(A-B)\cup(B-A)$
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+- $A\cap(B-C)=(A\cap B)-C$
+- $A-B=\varnothing\iff A\sube B$
+- $A\triangle A=\varnothing$
+- $\triangle$ commutes and associates
+</details>
+
+<details class="definition" open>
+<summary>intersection of nonempty system of sets</summary>
+for non empty system of sets $S$
+
+$$
+\cap S=\{x:\forall A(A\in S\to x\in A)\}
+$$
+</details>

@@ -1,0 +1,230 @@
+---
+title: Ring Homomorphisms
+---
+
+import Tikz from '../../components/Tikz.astro'
+
+<details class="definition" open>
+<summary>ring homomorphism</summary>
+
+function $\varphi:R\to S$ is a ring **homomorphism** iff
+
+$$
+\begin{align*}
+  \forall a\forall b&&\varphi(a+b)&=\varphi(a)+\varphi(b)\\
+  &&\varphi(ab)&=\varphi(a)\varphi(b)\\
+\end{align*}
+$$
+
+- bijective homomorphism is called **isomorphism**
+
+</details>
+
+<details class="theorem" open>
+<summary>for $\varphi: R\to S$</summary>
+
+- $A$ is subring of $R\implies \varphi(A)$ is subring of $S$
+- $A$ is ideal of $R\implies \varphi(A)$ is ideal of $\varphi(R)$
+- $B$ is ideal of $S\implies \varphi^{-1}(B)$ is ideal of $R$
+- $R$ commutative $\implies \varphi(R)$ commutative
+- when $\varphi$ nontrivial and $R$ has unity, $\varphi$ perserves unity and unit IN $\varphi(R)$
+
+
+<details class="list-none">
+<summary>**Proof.** $\varphi(A)$ is ideal</summary>
+
+two step ideal test
+
+1. $\varphi(A)$ nonempty ($A$ nonempty), WLOG let any $\varphi(a),\varphi(b)\in\varphi(A)$
+
+  - $\because a-b\in A$<span class="float-right">($A$ ring)</span>
+  - $\therefore\varphi(a)-\varphi(b)=\varphi(a-b)\in\varphi(A)$
+
+2. since $\varphi$ onto and $A$ absorbes, we have
+  $$
+  \begin{align*}
+    S\varphi(A)&=\varphi(R)\varphi(A)=\varphi(RA)\subseteq\varphi(A)\\
+    \varphi(A)S&=\varphi(A)\varphi(R)=\varphi(AR)\subseteq\varphi(A)\\
+  \end{align*}
+  $$
+
+$\therefore\varphi(A)$ ideal $\enspace\square$
+</details>
+
+<details class="list-none">
+<summary>**Proof.** $\varphi(1)$ is unity</summary>
+
+WLOG let any $\varphi(r)\in\varphi(R)=S$
+
+- $\therefore\varphi(r)\varphi(1)=\varphi(r1)=\varphi(r)$
+- $\therefore\varphi(1)$ is unity $\enspace\square$
+
+</details>
+</details>
+
+
+
+<details class="theorem" open>
+<summary>first isomorphism theorem</summary>
+
+for any $\varphi:R\to S$
+
+$$
+R/\ker\varphi\cong\operatorname{ran}\varphi
+$$
+
+<Tikz>
+{String.raw`$$
+\usetikzlibrary{arrows}
+\begin{tikzpicture}[scale=3]
+    \node at (0,0)(r){$R$};
+    \node at (1,0)(s){$S$};
+    \node at (0,-1)(k){$R/\ker\varphi$};
+    \path[->]
+        (r)edge node[left]{$\eta$}(k)
+        (r)edge node[above]{$\varphi$}(s);
+    \path[right hook->](k)edge node[below]{$\psi$}(s);
+\end{tikzpicture}
+$$`}
+</Tikz>
+
+<details class="list-none">
+<summary>**Proof?**</summary>
+
+let $\eta:R\to R/\ker\varphi$ be the natural homomorphism
+
+$$
+\eta(r)=r+\ker\varphi
+$$
+
+let $\psi$ be defined on domain $R/\ker\varphi$
+
+$$
+\psi=\{(a+\ker\varphi,\varphi(a)):a\in R\}
+$$
+
+wts $R/\ker\varphi$ and $\operatorname{ran}\varphi$ are rings
+
+wts $\psi:R/\ker\varphi\stackrel\sim\to\operatorname{ran}\varphi$
+
+- is function
+- is injective
+- is surjective
+- is homomorphism
+
+wts $\varphi=\psi\circ\eta$
+
+
+
+
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>kernels are ideals, ideals are kernels</summary>
+
+for any ideal $A$ of $R$, let $\varphi:R\to R/A$ be the natural homomorphism
+
+<div class="flex justify-center">
+
+$A$ is kernel of $\varphi$
+</div>
+
+for any homomorphism $\varphi:R\to S$
+
+<div class="flex justify-center">
+
+$\ker\varphi$ is ideal of $R$
+</div>
+
+</details>
+
+<details class="theorem" open>
+<summary>any ring contains $\mathbb{Z}_n$ or $\mathbb{Z}$</summary>
+
+for any ring $R$
+
+- $\operatorname{char}R=n\gt0\implies R$ has a subring isomorphic to $\mathbb{Z}_n$
+- $\operatorname{char}R=0\implies R$ has a subring isomorphic to $\mathbb{Z}$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+let homomorphism $\varphi:\mathbb{Z}\to R$ where $\varphi(n)=n\cdot 1$
+
+$\therefore\mathbb{Z}/\ker\varphi\cong\varphi(R)$<span class="float-right">(1st iso thm)</span>
+
+$\because\ker\varphi=n\mathbb{Z}$ where $n$ is additive order of $1$, that is, $n=\operatorname{char}R$
+
+case $\operatorname{char}R=0$
+
+- $\therefore\mathbb{Z}\cong\mathbb{Z}/\langle 0\rangle\cong\varphi(R)$
+
+case $\operatorname{char}R=n\gt0$
+
+- $\therefore\mathbb{Z}_n\cong\mathbb{Z}/n\mathbb{Z}\cong\varphi(R)$
+
+where in both cases, $\varphi(R)$ is subring of $R\enspace\square$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>any field contains $\mathbb{Z}_p$ or $\mathbb{Q}$</summary>
+
+for any field $F$
+
+- $\operatorname{char}F=p\gt0\implies F$ has a subfield isomorphic to $\mathbb{Z}_p$
+- $\operatorname{char}F=0\implies F$ has a subfield isomorphic to $\mathbb{Q}$
+
+<details class="list-none">
+<summary>**Proof.** (?)</summary>
+
+case $\operatorname{char}F=p$
+- $\therefore$ holds since $F$ is ring
+
+case $\operatorname{char}F=0$
+
+- let $Q=\{ab^{-1}:a,b\in F\quad b\ne0\}$
+- wts $Q\cong \mathbb{Q}$
+</details>
+
+such subfield is called the **prime subfield** of $F$
+
+- which is also the intersection of all subfields
+
+</details>
+
+<details class="example" open>
+<summary></summary>
+
+<details class="list-none">
+<summary>**Proof.** determine all homomorphisms $\varphi:\mathbb{Z}\to \mathbb{Z}$</summary>
+
+$\because\varphi(1)=\varphi(1^2)=\varphi(1)^2$ 
+
+$\therefore\varphi(1)(1-\varphi(1))=\varphi(1)-\varphi(1)^2=0$
+
+$\therefore\varphi(1)=0$ or $\varphi(1)=1$<span class="float-right">($\operatorname{cod}\varphi=\mathbb{Z}$ ID)</span>
+
+$\because\varphi(n)=n\cdot\varphi(1)$ for any $n\in\mathbb{Z}$
+
+$\therefore\varphi=0$ or $\varphi=1_\mathbb{Z}$
+
+
+</details>
+
+<details class="list-none">
+<summary>**Proof.** any nontrivial ring homomorphism from a field is injective</summary>
+
+let any hom $\varphi:F\to R$
+
+$\because\ker\varphi$ is ideal of $F$ where the only ideals of $F$ are trivial and $F$
+
+$\because\ker\varphi=F$ means $\varphi$ trivial
+
+$\therefore\ker\varphi=\{0\}$, thus $\varphi$ injective $\enspace\square$
+
+
+</details>
+
+</details>

@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{xcolor,amsmath,amssymb,amsfonts}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage[tt=false, type1=true]{libertine}
+\usepackage[libertine]{newtxmath}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\definecolor{red}{HTML}{c63a44}
+\usepackage{forest}
+
+\begin{document}
+
+$$
+\begin{forest}
+    [,for tree={draw,circle,minimum size=2em,inner sep=2pt}
+    [$a_1$] [$a_2$]
+    ]
+\end{forest}
+$$
+
+\end{document}

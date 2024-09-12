@@ -1,0 +1,11 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor, amsmath, amssymb}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}[every node/.style={circle,draw},scale=2]
+\node at(0,0)(r){$\#$};
+\node at(-0.57,-1)(t){$T$};
+\node at(0.57,-1)(f){$F$};
+\draw[-](r)--(t)--(f)--(r);
+\end{tikzpicture}
+\end{document}

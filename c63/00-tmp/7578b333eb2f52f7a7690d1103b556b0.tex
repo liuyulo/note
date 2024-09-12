@@ -1,0 +1,39 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor, amsmath, amssymb}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+
+\begin{tikzpicture}[scale=3,minimum size=25pt]
+\pgfmathsetmacro\r1
+\pgfmathsetmacro\n6
+\foreach\i[parse=true]in{0,...,\n - 1}{
+    % inner
+    \pgfmathsetmacro\a{ 360 / \n };
+    \pgfmathsetmacro\t{ \a * \i };
+    \pgfmathsetmacro\x{ \r * cos(\t) };
+    \pgfmathsetmacro\y{ \r * sin(\t) };
+    \node[circle,draw] at(\x,\y)(\i){};
+    % outer
+    \pgfmathsetmacro\aa{ \a / 2 };
+    \pgfmathsetmacro\tt{ \t + \aa };
+    \pgfmathsetmacro\s{ sqrt(3) };
+    \pgfmathsetmacro\rr{ \r * (cos(\aa) + \s * sin(\aa)) };
+    \pgfmathsetmacro\x{ \rr * cos(\tt) };
+    \pgfmathsetmacro\y{ \rr * sin(\tt) };
+    \pgfmathsetmacro\j{ div(\i + 2,2) };
+    \node[circle,draw] at(\x,\y)(\i'){$c_{i\j}$};
+    % variable
+    \pgfmathsetmacro\rr{ \r * (cos(\aa) + \s / 3 * sin(\aa)) };
+    \pgfmathsetmacro\x{ \rr * cos(\tt) };
+    \pgfmathsetmacro\y{ \rr * sin(\tt) };
+    \pgfmathsetmacro\v{ iseven(\i) ? "" : "\overline" };
+    \node at(\x,\y){$\v{x_i}$};
+}
+
+\foreach\i[parse=true]in{0,...,\n - 1}{
+    \pgfmathsetmacro\j{ int(mod(\i + 1, \n)) };
+    \draw(\j)--(\i')--(\i)--(\j);
+}
+\end{tikzpicture}
+
+\end{document}

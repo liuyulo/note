@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Memory</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Memory</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="memory">Memory</h1>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#what-for">What For?</a>
+<ul>
+<li><a href="#search-metaphor">Search Metaphor</a></li>
+<li><a href="#questioning-search-metaphor">Questioning Search
+Metaphor</a></li>
+<li><a href="#thinking-about-function">Thinking about Function</a></li>
+<li><a href="#history">History</a></li>
+</ul></li>
+<li><a href="#encoding-memories">Encoding Memories</a>
+<ul>
+<li><a href="#sensory-memory">Sensory Memory</a></li>
+<li><a href="#immediate-memory">Immediate Memory</a>
+<ul>
+<li><a href="#characteristics">Characteristics</a></li>
+<li><a href="#model">Model</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#long-term-memory">Long-term Memory</a>
+<ul>
+<li><a href="#types">Types</a></li>
+<li><a href="#transfer-to-ltm">Transfer to LTM</a></li>
+<li><a href="#effective-encoding-strats">Effective Encoding
+Strats</a></li>
+</ul></li>
+<li><a href="#retrieval">Retrieval</a>
+<ul>
+<li><a href="#centrality-of-cues">Centrality of Cues</a>
+<ul>
+<li><a href="#specificity-principle">Specificity Principle</a></li>
+<li><a href="#transfer-appropriate">Transfer Appropriate</a></li>
+</ul></li>
+<li><a href="#implicit-memory">Implicit Memory</a></li>
+<li><a href="#frederic-barlett">Frederic Barlett</a></li>
+</ul></li>
+<li><a href="#error-and-forgetting">Error and Forgetting</a>
+<ul>
+<li><a href="#memory-errors">Memory Errors</a>
+<ul>
+<li><a href="#omission">Omission</a></li>
+<li><a href="#commission">Commission</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#forgetting">Forgetting</a></li>
+</ul>
+</div>
+<h1 id="summary">Summary</h1>
+<ul>
+<li>Search metaphors are inadequate to describe how our memorysystems
+work: Reconstruction metaphors, such as “putting together a dinosaur
+skeleton,” are far moreaccurate</li>
+<li>Sensory memory consists of iconic and echoic functions andallows us
+to “hold on” to transient information for a brief period of time</li>
+<li>Immediate memory can be described as the “contents ofconsciousness”
+and can be characterized by representation, duration, and capacity</li>
+<li>The inner eye and inner voice describe two ways in whichimmediate
+memory are represented; these concepts are analogous to the visuospatial
+sketchpad andphonological loop of Baddeley’s working memory model,
+respectively</li>
+<li>The duration of immediate memory is fleeting, lasting only afew
+seconds without a person employing active rehearsal</li>
+<li>The capacity of immediate memory can be described by measuringmemory
+span and can be improved through the process of chunking</li>
+<li>Long-term memory can be examined by looking at its threeprimary
+types: episodic (memory for events), semantic (memory for facts), and
+procedural (memory foractions or processes)</li>
+<li>Elaborative rehearsal helps transfer information fromimmediate
+memory to long-term memory, and imagery, organization, distinctiveness,
+and self-reference areeffective ways to engage in elaborative
+rehearsal</li>
+<li>Several strategies for effectively encoding informationinclude
+spacing out learning (spaced practice), using mnemonic techniques,
+adaptive memory strategies,and retrieval practices</li>
+<li>The cues that are present at encoding and retrieval caninfluence and
+determine whether we will remember a piece of information, with the
+encoding specificityprinciple and transfer-appropriate processing
+describing the role of both context and type of mentalprocessing,
+respectively</li>
+<li>There are seven “sins” of memory that can be divided into twogroups:
+errors of omission and errors of commission; these errors describe
+whether information cannot berecalled (omission) or is recalled
+incorrectly/inappropriately (commission)</li>
+<li>Interference (both proactive and retroactive) best explainswhy we
+forget information, and it plays a role in the errors of omission:
+transience, absent-mindedness,and blocking</li>
+<li>Errors of commission (misattribution, suggestibility, bias,and
+persistence) occur when we recall information incorrectly or
+inappropriately and can occur even formajor life-altering events, as is
+seen in flashbulb memories</li>
+<li>The hippocampus contributes to the formation of long-termmemories:
+It is heavily involved in episodic memory, but plays a smaller role in
+proceduralmemory</li>
+<li>Retrograde amnesia refers to refers to losing one’s memory ofpast
+events (e.g., someone hitting their head and not remembering who they
+are); anterograde amnesiaoccurs when someone cannot form new
+memories.</li>
+</ul>
+<h1 id="what-for">What For?</h1>
+<h2 id="search-metaphor">Search Metaphor</h2>
+<blockquote>
+<p><em>memory</em>: structures+processes involved in storage+retrieval
+of information <em>search metaphor</em>: describe the processes involved
+in memory using relatable terms and phrases</p>
+</blockquote>
+<ul>
+<li>remembering: search through the contents of our minds</li>
+</ul>
+<h2 id="questioning-search-metaphor">Questioning Search Metaphor</h2>
+<ul>
+<li><em>failure of search</em>: inability to remember something</li>
+<li>search metaphor is insufficient</li>
+</ul>
+<h2 id="thinking-about-function">Thinking about Function</h2>
+<blockquote>
+<p><em>reconstruction metaphor</em>: how we primarily use memory to
+cobble together a useful response using what we know + the situation
+around us <em>autobiographical memory</em>: gives continuity to your
+life as an individual</p>
+</blockquote>
+<h2 id="history">History</h2>
+<p>Weber - perception<br> Ebbinghous - forgetting</p>
+<h1 id="encoding-memories">Encoding Memories</h1>
+<ul>
+<li><em>encoding</em>: transform an experience into memory</li>
+<li><em>storage</em>: maintain information about an event over time</li>
+</ul>
+<h2 id="sensory-memory">Sensory Memory</h2>
+<blockquote>
+<ul>
+<li>keeps information translated by the senses briefly active in a
+relatively unaltered, unexamined form</li>
+<li>is thought to feed into the more general immediate memory</li>
+</ul>
+</blockquote>
+<ul>
+<li>visual: <em>iconic memory</em></li>
+<li>auditory: <em>echoic memory</em>
+<ul>
+<li>sometimes longer than visual</li>
+</ul></li>
+</ul>
+<blockquote>
+<img src="assets/08mod.png" /> - <em>sensory trace</em>: stimulus
+remains after is gone - termed sensory memory, very short-term - studied
+by George Sperling (iconic memory)
+</blockquote>
+<h2 id="immediate-memory">Immediate Memory</h2>
+<blockquote>
+<p>actively holds on to a limited amount of information so that it can
+be manipulated and processed</p>
+</blockquote>
+<ul>
+<li>aka <em>short-term/working memory</em></li>
+</ul>
+<h3 id="characteristics">Characteristics</h3>
+<ul>
+<li><em>inner voice</em>: talk in your head, evidence for verbal
+representation in immediate memory</li>
+<li><em>inner eye</em>: see stuff using imagination, evidence for visual
+representation in immediate memory</li>
+<li><em>rehearsal</em>: repeat information</li>
+<li><em>duration</em>: how long the memory system can contain
+information
+<ul>
+<li>indefinite with rehearsal</li>
+<li>~3 sec without</li>
+</ul></li>
+<li><em>capacity/memory span</em>: amount of information held at once
+<ul>
+<li>7±2 things</li>
+</ul></li>
+<li><em>chunking</em>: arrange information into compact and meaningful
+chunks</li>
+</ul>
+<h3 id="model">Model</h3>
+<p><img src="assets/08wok.png" /></p>
+<ul>
+<li>visuospatial: <em>iconic memory</em> (inner eye)</li>
+<li>episodic: <em>immediate memory</em></li>
+<li>phonological lookup: <em>echoic memory</em> (inner voice)</li>
+</ul>
+<h1 id="long-term-memory">Long-term Memory</h1>
+<blockquote>
+<p>store and recall information over extended periods of time</p>
+</blockquote>
+<h2 id="types">Types</h2>
+<ul>
+<li><em>episodic</em>: pertain to specific events</li>
+<li><em>semantic</em>: specific facts not based on personal
+experience</li>
+<li><em>procedual</em>: how something is done (eg motor skills)</li>
+</ul>
+<p><img src="assets/08mem.png" /></p>
+<h2 id="transfer-to-ltm">Transfer to LTM</h2>
+<ul>
+<li><em>elaborative rehearsal</em>: actively manipulating information in
+the immediate memory to meaningfully connect it to other information
+already stored in LTM</li>
+<li>level of processing
+<ul>
+<li><em>deep</em>: encoding new information through making meaningful
+connections to existing knowledge</li>
+<li><em>shallow/structural</em>: based only on its surface
+characteristics</li>
+</ul></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 25%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Types of Elaboration</th>
+<th style="text-align: center;">Procedure</th>
+<th style="text-align: center;">Caution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Imagery</strong></td>
+<td style="text-align: center;">imagine a story</td>
+<td style="text-align: center;">not prefect, not exact representation of
+reality, tend to be generalised</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Organisation</strong></td>
+<td style="text-align: center;">group into categories</td>
+<td style="text-align: center;">often leads to mistakes within the
+category</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Distinctiveness</strong></td>
+<td style="text-align: center;">remember the exclusion of order</td>
+<td style="text-align: center;">time-consuming, hard to remember large
+amount, use with org</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Self-Reference</strong></td>
+<td style="text-align: center;">Relate to yourself</td>
+<td style="text-align: center;">hard with more detailed material, for
+individualistic cultures</td>
+</tr>
+</tbody>
+</table>
+<h2 id="effective-encoding-strats">Effective Encoding Strats</h2>
+<p>memory is the result of processes, can become more effective with
+practice - <em>massed practice</em>: repreated exposure over a very
+short period of time/without gaps - not effective - <em>spacing
+effect</em>: learning is most robust when repeated exposure occurs over
+a longer timeframe - <em>mnemonics</em>: provide a framework for
+encoding and recall - <em>adaptive memory</em>: evolutionary, the way
+that brains are designed to use - <em>retrieval practice</em>: repeated
+retrieval - <em>memory cue</em>: use something we know to help
+retrieve</p>
+<h1 id="retrieval">Retrieval</h1>
+<h2 id="centrality-of-cues">Centrality of Cues</h2>
+<blockquote>
+<p><em>cue</em>: helps retrieve information</p>
+</blockquote>
+<ul>
+<li><em>free recall</em>: without cues</li>
+<li><em>cued recall</em>: with cues</li>
+</ul>
+<h3 id="specificity-principle">Specificity Principle</h3>
+<blockquote>
+<p><em>encoding specificity principle</em>:cue is only useful if it
+matches the original context during encoding</p>
+</blockquote>
+<h3 id="transfer-appropriate">Transfer Appropriate</h3>
+<blockquote>
+<p><em>transfer-appropriate processing</em>: engaging in similar
+processes at both encoding and retrieval tends to enhance recall</p>
+</blockquote>
+<h2 id="implicit-memory">Implicit Memory</h2>
+<blockquote>
+<p>remeber without conscious</p>
+</blockquote>
+<h2 id="frederic-barlett">Frederic Barlett</h2>
+<ul>
+<li>memory is reconstructive</li>
+<li>people remember gist of things, not details</li>
+</ul>
+<h1 id="error-and-forgetting">Error and Forgetting</h1>
+<h2 id="memory-errors">Memory Errors</h2>
+<ul>
+<li><em>error of omission</em>: information cannot be brought to
+mind</li>
+<li><em>error of commission</em>: wrong/unwanted information is brought
+to mind</li>
+</ul>
+<h3 id="omission">Omission</h3>
+<p>Schacter identified 3 errors of omission: - <em>transience</em>:
+unable to retrieve information because it has been forgotten (memory
+decay) - 2 interferences that cause forgetting (leads to transience) -
+<em>retroactive</em> interference: inability to retrieve older
+information due to influnce of newer+similar information -
+<em>proactive</em> interference: old information interferes with new
+information - time/decay is <strong>not</strong> responsible for
+transience - <em>absent-mindness</em>: memories sometimes are
+unavailable because failure to encode them - <em>blocking</em>: not
+enough distinct cues are available to help recover a specific memory -
+<em>tip-of-the-tongue</em></p>
+<h3 id="commission">Commission</h3>
+<ul>
+<li><em>misattribution</em>: incorrectly recall the source of the
+information
+<ul>
+<li><em>deja vu</em>: can’t remember the source</li>
+<li><em>flashblub memories</em>: memories for the details surrounding
+events that are surprising + significant</li>
+</ul></li>
+<li><em>suggestibility</em>: memories can be altered by context
+(remembered to better fit the current context)
+<ul>
+<li><em>misinformation effect</em>: misleading information alters a
+subsequent memory</li>
+</ul></li>
+<li><em>bias</em>: memories can change as a result of the influence of
+knowledeg and beliefs
+<ul>
+<li><em>schemas</em>: complex knowledge structures that help put
+information in context, but often leads to overgenerealisation</li>
+</ul></li>
+<li><em>persisitence</em>: memories can be retrieved when they are not
+wanted</li>
+</ul>
+<h1 id="forgetting">Forgetting</h1>
+<ul>
+<li><em>hyperthymesia</em>: near perfect autobiographical call
+<ul>
+<li>has additional connections between amygdala and hippocampus</li>
+</ul></li>
+<li><em>amnesia</em>: memory loss due to physical damage/problems in the
+brain
+<ul>
+<li><em>retrograde</em> amnesia: loss of memories prior to a traumatic
+event</li>
+<li><em>anterograde</em> amnesia: inability to encode new information
+into LTM
+<ul>
+<li>alcohol =&gt; Korsakoff syndrome =&gt; anetograde amnesia</li>
+</ul></li>
+<li>H.M.
+<ul>
+<li>had seizure</li>
+<li>hippocampus removed</li>
+<li>had anterograde and retrogade amnesia</li>
+<li>shows distinction between immedaie/LTM and procedural/semantic
+memory</li>
+</ul></li>
+</ul></li>
+</ul>
+</body>
+</html>

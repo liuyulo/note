@@ -1,0 +1,456 @@
+\input{preamble}
+
+\title{A37 Midterm | Calculus II}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Integrals}
+	(don't do in exam!)
+	\begin{itemize}
+		\item $\displaystyle\sum_{i=1}^na_i$ is simplified to $\displaystyle\sum a_i$\\
+		\item $\displaystyle\{x_i\}_{i=0}^n$ is simplified to $\displaystyle\{x_i\}$\\
+	\end{itemize}
+	\subsection{Sigma Notation}
+		\subsubsection{Properties}
+			\begin{theorem}[for const $k$ with respect to $i$]
+				\begin{align*}
+					\sum(a_i+kb_i)&=\sum a_i+k\sum b_i\\
+					\sum_{i=1}^na_i&=\sum_{i=1}^{p-1}a_i+\sum_{i=p}^na_i\text{ for }1<p<n\\
+				\end{align*}
+				\textbf{Proof.} $\Sigma$ is linear 
+				given $a_i,b_i,k\in\mathbb{R}$
+				\begin{align*}
+					\sum(a_i+kb_i)&=(a_1+kb_1)+...+(a_n+kb_n)\tag*{(def of $\Sigma$)}\\
+					&=(a_1+...+a_n)+(kb_1+...+kb_n)\tag*{(assoc of $\mathbb{R}$)}\\
+					&=\sum a_i+(kb_1+...+kb_n)\tag*{(def of $\Sigma$)}\\
+					&=\sum a_i+k(b_1+...+b_n)\tag*{(distr of $\mathbb{R}$)}\\
+					&=\sum a_i+k\sum b_i\quad\blacksquare\tag*{(def of $\Sigma$)}\\
+				\end{align*}
+			\end{theorem}
+		\subsubsection{Common Sums}
+			\begin{theorem}\begin{align*}
+				\sum1&=n&&\sum i^2=\frac{n(n+1)(2n+1)}6\\
+				\sum i&=\frac{n(n+1)}2&&\sum i^3=\frac{n^2(n+1)^2}4
+			\end{align*}\end{theorem}
+		\subsection{Telescope}
+			\begin{example}[$\displaystyle\sum\ln\left(\frac{i+1}i\right)=ln(n+1)$]
+				\begin{align*}
+					&=\ln\left(\frac21\right)+\ln\left(\frac32\right)+...+\ln\left(\frac{n+1}n\right)\tag*{(def of $\Sigma$)}\\
+					&=\ln2-\ln1+\ln3-\ln2+...+\ln(n+1)-\ln n\tag*{($\ln$ law)}\\
+					&=\ln(n+1)-\ln(1)=\ln(n+1)+0=\ln(n+1)\\
+				\end{align*}
+			\end{example}
+
+	\subsection{Riemann Sum}
+		\subsubsection{Partition}
+			\begin{definition}
+				for $a,b\in\mathbb{R}$, a \textbf{partition $P$ of $[a,b]$} is
+				$$P=\{x_i\}$$
+				for $n\in\mathbb{N}$ st $x_0=a<x_1<x_2<.....<x_n=b$
+			\end{definition}
+		\subsubsection{Riemann Sums}
+			\begin{definition}
+				for $f\in[a,b]$, a \textbf{Riemann Sum} of $f(x)$ in $[a,b]$ is
+				$$R_n=\sum f(x^*_i)\Delta x$$
+				where $\Delta x=\dfrac{b-a}n\quad x_i=a+i\Delta x$ and $x_i^*$ is an endpoint
+			\end{definition}
+		\subsubsection{Endpoints}
+			\begin{definition}\begin{itemize}
+				\item for \textbf{left} endpoint, $x^*_i=x_{i-1}$
+				\item for \textbf{right} endpoint, $x^*_i=x_i$
+				\item for \textbf{mid} endpoint, $x^*_i=\dfrac{x_{i-1}+x}2$
+			\end{itemize}\end{definition}
+			\begin{example}[{show if $f$ is cont and $\downarrow$ on $[a,b]$, then $L_n=R_n$}]
+				let $P=\{x_i\}$ be a \textbf{Riemann partition} of $[a,b]$\\
+				$\therefore$ for each $i\in\{1,2,..,n\}$
+				\begin{flalign*}
+				  &\implies x_{i-1}<x_i\tag*{(def of RSum)}&\\
+				  &\implies f(x_{i-1})\ge f(x_i)\tag*{($f\downarrow$ on $[a,b]$)}&\\
+				  &\implies f(x_{i-1})\Delta x\ge f(x_i)\Delta x\tag*{(\Delta x>0)}&\\
+				\end{flalign*}
+				\begin{align*}
+					\therefore\sum f(x_{i-1})\Delta x&\ge\sum f(x_i)\Delta x\tag*{(ineq above holds $\forall i$)}&\\
+					L_n&\ge R_n\tag*{(def of RSum)}&\\
+				\end{align*}
+			\end{example}
+
+	\subsection{Definite Integral}
+		\begin{definition}
+			$$\int_{a}^{a}f(x)\,dx=\lim_{n\to\infty}\sum_{i=1}^nf(x_i^*)\Delta x$$
+			where $\Delta x=\dfrac{b-a}n\quad x_i=a+i\Delta x$\\
+			\textbf{specify using right Riemann and $x_i^*=x_i$}
+		\end{definition}\,\\
+		\subsubsection{Riemann Sum}
+			\begin{algorithm}{Find Dintegral Using Riemann Sum}
+				\label{sec:Riemann}
+				\begin{enumerate}
+					\item find $\Delta x=\dfrac{b-a}n$
+					\item find $x_i=a+i\Delta x$
+					\item choose $x_i^*$ (usually right RSum $x_i^*=x_i$)
+					\item find $R_n = \sum_{i=1}^nf(x_i^*)$
+					\item find $S=\lim_{n\to\infty}R_n$
+				\end{enumerate}
+			\end{algorithm}
+		\subsubsection{Properties}
+			\begin{theorem}\begin{itemize}
+				\item$\displaystyle\int_a^b(f+kg)\,dx=\int_a^bf(x)\,dx+k\int_a^bg(x)\,dx$
+				\item $\displaystyle\int_a^af(x)\,dx=0$
+				\item $\displaystyle\int_a^bf(x)\,dx=-\int_b^af(x)\,dx$
+				\item $\displaystyle\int_a^bf(x)\,dx=\int_a^{\textcolor{\colo}c}f(x)\,dx+\int_{\textcolor{\colo}c}^bf(x)\,dx$ for $\textcolor{\colo}c\in[a,b]$
+			\end{itemize}\end{theorem}
+		\subsubsection{Example Riemann}
+			\begin{example}[{Find dint using Riemann (\hyperref[sec:Riemann]{algorithm})}]
+				by def of dint as RSum:
+				$$\int_0^1(x^2+2x+e)\,dx=\lim_{n\to\infty}R_n=\lim_{n\to\infty}\sum f(x^*_i)\Delta x$$
+				choose \textbf{right Riemann sum}
+				\begin{align*}
+					\Delta x&=\frac{b-a}n=\frac{1-0}n=\frac1n\\
+					x_i^*&=x_i=a+i\Delta x=\frac1n\\
+					f(x_i^*)&=x_i=a+i\Delta x=\frac1n+\frac{i^2}{n^2}+\frac{2i}n-e\\
+				\end{align*}
+				\begin{align*}
+					R_n&=\sum\left(\frac1n+\frac{i^2}{n^2}+\frac{2i}n-e\right)\Delta x\tag*{(def of dint as RSum)}\\
+					   &=\frac1n\left(\frac1{n^2}\sum i^2+\frac2n\sum i-e\sum 1\right)\tag*{($\Sigma$ props)}\\
+					   &=\frac1{n}\left(\frac{n(n+1)(2n+1)}{6n^2}+\frac{2n(n+1)}{2n}-en\right)\tag*{($\Sigma$ formulas)}\\
+					   &=\frac{n^2(1+\sfrac1n)}{6n^2}+\frac{n(1+\sfrac1n)}n-e\tag*{(factoring)}\\
+					   &=\frac{(1+\sfrac1n)(2+\sfrac1n)}6+1+\sfrac1n-e\\
+				\end{align*}
+				\begin{align*}
+					\lim_{n\to\infty}R_n&=\lim_{n\to\infty}\left(\frac{(1+\sfrac1n)(2+\sfrac1n)}6+1+\sfrac1n-e\right)\\
+					&=\sfrac26+1-e=\sfrac43-e\tag*{(lim laws)}\\
+				\end{align*}
+			\end{example}
+		\subsubsection{Darboux}
+			\begin{definition}[Darboux Sum]
+				\begin{align*}
+					\text{assume }&a<b\quad n\in\mathbb{Z}^+\\
+					\text{let }&P=\{x_i\}\text{ st }a=x_0<x_1<...<x_n=b\\
+				    &M_i = \sup\{f(x):x_{i-1}\le x\le x_i\}\\
+					&m_i = \inf\{f(x):x_{i-1}\le x\le x_i\}\\
+					&U(f,P)=\sum(x_i-x_{i-1})M_i=M_i(b-a)\\
+					&L(f,P)=\sum(x_i-x_{i-1})m_i=m_i(b-a)\\
+				\end{align*}
+			\end{definition}
+			\begin{definition}[Darboux Integral]
+				\begin{align*}
+					U_f=\sup\{U(f,P):P\text{ is a partition of }[a,b]\}\\
+					L_f=\inf\{L(f,P):P\text{ is a partition of }[a,b]\}\\
+				\end{align*}
+				$f$ is integrable on $[a,b]$ iff $U_f=L_f$
+			\end{definition}
+			\begin{definition}[Integrability Reformulation]
+				$f$ is NOT integrable on $[a,b]$ iff 
+				$$\exists\varepsilon>0\enspace\forall\text{partition }P\text{ of }[a,b]\text{ st } U(f,P)-L(f,P)\ge\varepsilon$$
+			\end{definition}
+			\begin{example}[show Dirichlet function $1_{\mathbb{Q}}(x)$ is NOT integrable]
+				let $P={x_i}$ be any partition of $[a,b]$\\
+				$\because$ $\mathbb{Q}$ and $\mathbb{R}\setminus\mathbb{Q}$ are dense subsets of $\mathbb{R}$\\
+				$\therefore\forall i\in\{1,2,...,n\}$, $f(x)$ can be 0 or 1 $\forall x\in[x_{i-1},x_i]\subset\mathbb{R}$
+				\begin{align*}
+					\therefore M_i&=\sup\{f(x):x\in[x_{i-1},x_i]\}\\
+					   &=\sup\{1,0\}=1\\
+					m_i&=\inf\{f(x):x\in[x_{i-1},x_i]\}\\
+					   &=\inf\{1,0\}=0\\
+					\therefore U(f,P)&=\sum(x_i-x_{i-1})M_i=\sum(x_i-x_{i-1})=b-a\\
+					L(f,P)&=\sum(x_i-x_{i-1})m_i=0\\
+					\therefore U_f&=\sup\{U(f,P):P\text{ is a partition of }[a,b]\}\\
+						  &=\sup\{b-a\}=b-a\\
+					L_f&=\inf\{L(f,P):P\text{ is a partition of }[a,b]\}\\
+					   &=\inf\{0\}=0
+			   \end{align*}
+			   \begin{align*}
+					&\because b<a\\
+					&\therefore U_f\ne L_f\implies\int_a^b1_{\mathbb{Q}}(x)\,dx\text{ DNE}\quad\blacksquare
+				\end{align*}
+			\end{example}
+			\begin{example}[show again with reformulation (using $U(f,P)$ and $L(f,P)$)]
+				choose $\varepsilon=b-a>0$\\
+				let $P$ be any partition of $[a,b]$
+				\begin{align*}
+					&\because U(f,P)=b-a\quad L(f,P)=0\tag*{(from previous)}\\
+					&\therefore U(f,P)-L(f,P)=b-a-0\\
+					&=b-a\ge\varepsilon=b-a\quad\blacksquare
+				\end{align*} 
+			\end{example}
+
+	\subsection{Indefinite Integral}
+		\begin{definition}[Indefinite Integral of a Function]
+			$$\int f'(x)\,dx=f(x)+C$$
+		\end{definition}\,\\
+		\begin{theorem}[Linearity]
+			$$\int(f+kg)\,dx=\int f\,dx+k\int g\,dx$$
+			\textbf{Proof.} suppose $k$ is constant, $F'(x)=f(x)$ and $G'(x)=g(x)$
+			\begin{align*}
+				\therefore(F(x)+C_1)'&=f(x)\tag*{for const $C_1$}\\
+			    (G(x)+C_2)'&=g(x)\tag*{for const $C_2$}\\
+				\therefore(F(x)+kG(x))'&=F'(x)+(kG(x))'+0\tag*{(sum rule)}\\
+							 &=F'(x)+kG'(x)\tag*{(const-mul rule)}\\
+							 &=f(x)+kg(x)
+			\end{align*}
+			\begin{align*}
+				\therefore&\int(f(x)+kg(x))\,dx=(F(x)+kG(x))'+C\tag*{(definition)}\\
+					   &=F'(x)+kG'(x)+C\tag*{(above)}\\
+					   &=F'(x)+C_1+kG'(x)+kC_2\tag*{(for $C_1+kC_2=C$)}\\
+					   &=(F'(x)+C_1)+k(G'(x)+C_2)\tag*{(distr $\mathbb{R}$)}\\
+					   &=\int f(x)\,dx+k\int g(x)\,dx\tag*{(definition)}\\
+			\end{align*}
+		\end{theorem}
+		\subsubsection{Integral Fomulas}
+			\begin{theorem}[Power]
+				prove using derivatives
+				\begin{align*}
+					\text{if } k\ne-1&\text{, then }\int x^k\,dx=\frac{x^{k+1}}{k+1}+C\\
+					\text{if } k=-1&\text{, then }\displaystyle\int\frac{dx}x=\ln|x|+C
+				\end{align*}
+			\end{theorem}
+			\begin{theorem}[Exponential]
+				\begin{align*}
+					\text{if }k\ne0&\text{, then }\int e^{kx}\,dx=\frac{e^{kx}}k+C\\
+					\text{if }b>0\land b\ne0&\text{, then}\int b^x\,dx=\frac{b^x}{\ln b}+C
+				\end{align*}
+			\end{theorem}
+			\begin{theorem}[Trigonometric]
+				\begin{align*}
+					&\int\sin x\,dx=-\cos x+C&&\int\cos x\,dx=\sin x+C\\
+					&\int\sec^2x\,dx=\tan x+C&&\int\csc^2x\,dx=-\cot x+C\\
+					&\int\sec x\tan x\,dx=\sec x+C&&\int\csc x\cot x\,dx=-\csc x+C
+				\end{align*}
+			\end{theorem}
+			\begin{theorem}[ArcTrigonometric]
+				\begin{align*}
+					&\int\frac{dx}{\sqrt{1-x^2}}=\mathrm{asin}(x)+C\\
+					&\int\frac{dx}{1 + x^2}=\mathrm{atan}(x)+C\\
+					&\int\frac{dx}{|x|\sqrt{x^2-1}}=\mathrm{asec}(x)+C
+				\end{align*}
+			\end{theorem}
+	\subsection{Fundamental Theorem of Calculus}
+		\subsubsection{FToC I}
+			\begin{theorem}
+				if $f$ is cont on $[a,b]$, then
+				$$\int_a^bf(x)\,dx=\int f(x)\,dx\Big|_a^b$$
+				% \textbf{Proof.} use $R_n$ and MVT\\
+				% suppose $f$ be cont on $[a,b]$ and let $F'=f$
+				% \begin{align*}
+				% 	&\therefore f\text{ is intable }\\
+				% 	&\therefore F\text{ is diffable and cont on }[a,b]\\
+				% 	&\therefore\int_a^b f(x)\,dx=\lim_{n\to\infty}\sum f(x_i^*)\Delta x=\lim_{n\to\infty}\sum F'(x_i^*)\Delta x
+				% \end{align*}
+				% where $\Delta x=\frac{b-a}n$, $x_i=a+i\Delta x$, and $x_i^*\in[x_{i-1},x_i]$
+				% \begin{align*}
+				% 	&\because F\text{ is cont } on [x_{i-1},x_i]\\
+				% 	&\therefore\exists c_i\in\Big(x_{i-1},x_i]\text{ st }F'(c_i)=\frac{F(x_i)-F(x_{i-1})}{x_i-x_{i-1}}
+				% \end{align*}
+				% \begin{align*}
+				% 	\text{let }x_i^*=c_i&\\
+				% 	\because\Delta x=x_i-&x_{i-1}\\
+				% 	\therefore\int_a^b f(x)\,dx=&\lim_{n\to\infty}\sum\frac{F(x_i)-F(x_{i-1})}{\Delta x}\Delta x\\
+				% 	=&\lim_{n\to\infty}\sum(F(x_i)-F(x_{i-1}))\\
+				% 	\because\sum(F(x_i)-F(x_{i-1}))=&\textcolor{sky}{F(x_1)}-F(x_0)+\textcolor{leek}{F(x_2)}-\textcolor{sky}{F(x_1)}+...\\
+				% 	+&\textcolor{leek}{F(x_{n-1})}-\textcolor{sky}{F(x_{n-2})}+F(x_n)-\textcolor{leek}{F(x_{n-1})}\\
+				% 	=&F(x_n)-F(x_0)=F(b)-F(a)\\
+				% 	\therefore\int_a^b f(x)\,dx=&\lim_{n\to\infty}(F(b)-F(a))=F(b)-F(a)
+				% \end{align*}
+			\end{theorem}
+		\subsubsection{FToC II}
+			\begin{theorem}
+				if $f$ is continuous on $[a,b]$ and let $\displaystyle F(x)=\int_a^x f(t)\,dt\quad\forall x\in[a,b]$, then
+				\begin{itemize}
+					\item $F$ is continuous on $[a,b]$ and diffable on $(a,b)$
+					\item $F'(x)=f(x)$
+				\end{itemize}
+			\end{theorem}
+			\begin{theorem}
+				for $f$ is cont on $[a,b]$
+				\begin{align*}
+					\frac d{dx}\int_a^x f(t)\,dt&=f(x)\\
+					\frac d{dx}\int_a^{u(x)} f(t)\,dt&=f(u(x))u'(x)\tag*{(chain rule)}
+				\end{align*}
+				trivials:
+				\begin{align*}
+					\frac d{dx}\int_a^b f(t)\,dt&=0\tag*{(deriv of constant)}\\
+					\frac d{dx}\int_{v(x)}^{u(x)}f(t)\,dt&=\frac d{dx}\int_0^uf(t)\,dt-\frac d{dx}\int_0^vf(t)\,dt
+				\end{align*}
+			\end{theorem}
+		    \begin{example}[find $\displaystyle F'(x)=\frac d{dx}\int_x^1x\sqrt{t+\sin(t)}\,dt$]
+				let $f(t)=\sqrt{t+\sin(t)}$
+				\begin{align*}
+					\therefore F(x)&=\int_x^1xf(t)\,dt=x\int_x^1f(t)\,dt\tag*{($x$ is const wrt $t$)}\\
+								   &=-x\int_1^xf(t)\,dt\tag*{($\int$ prop)}
+				\end{align*}
+				in $f(t)=\sqrt{t+\sin(t)}=\sqrt{g(t)}$
+				\begin{itemize}
+					\item $t$ is poly $\implies$ cont on $\mathrm{dom}(t)=\mathbb{R}$
+					\item $\sin(t)$ is trig $\implies$ cont on $\mathrm{dom}(\sin(t))=\mathbb{R}$
+					\item sum of cont fn $\in\mathbb{R}$ is cont $\in\mathbb{R}\implies t+\sin(t)$ is cont on $\mathbb{R}$
+					\item $\because\forall t>1$ $\sin(t)\in[-1,1]\implies g(t)=t+\sin(t)\in$\\
+						$\therefore$ todo
+				\end{itemize}
+		    \end{example}
+\section{Techniques}
+    \subsection{Substitution}
+	    \begin{theorem}[usub]
+			let $u=g(x)\quad du=g'(x)dx$
+			\begin{align*}
+				\int_a^b f'(g(x))g'(x)\,dx&=\int_{u(a)}^{u(b)}f'(u)\,du=(f\circ g)(x)\Big|_b^a\\
+				\int f'(g(x))g'(x)\,dx&=\int f'(u)\,du=f(u)+C
+			\end{align*}
+			\textbf{Proof.} (definite) assume $f'$ and $g$ are integrable on $[a,b]$
+			\begin{align*}
+				\therefore\int_a^b f'(g(x))g'(x)\,dx&=\int_a^b(f\circ g)'(x)\,dx\tag*{chain rule}\\
+					&=(f\circ g)(x)\Big|_b^a\tag*{FToCI}\\
+					&=(f\circ g)(b)-(f\circ g)(a)\quad\blacksquare
+			\end{align*}
+	    \end{theorem}
+		\begin{example}[Recognise atan $\displaystyle\int\frac{dx}{\sqrt x(4x+1)}$]
+			let $u=2\sqrt x\quad du=\frac{dx}{\sqrt x}$
+			$$=\int\frac{du}{u^2+1}=\mathrm{atan}(u)=\mathrm{atan}(2\sqrt x)+C$$
+		\end{example}
+		\begin{example}[Extra Algebra $\displaystyle\int\frac{\sqrt{x+4}}x\,dx$]
+			let $u=\sqrt{x+4}\quad du=\frac{dx}{2u}\quad\color{\colo}2u\,du=dx\quad x=u^2-4$
+			$$=2\int{u^2}{u^2-4}\,du=2\int\left(1+\frac4{u^2-4}\right)\,du=2u+8\int\frac{du}{u^2-4}$$
+		\end{example}
+		\begin{example}[Definite $\displaystyle\int_1^4\frac{x\,dx}{3x^2+1}$ (no need to replace back)]
+			let $u=3x^2+1\quad du=6x\,dx\quad\color{\colo}u(1)=4\quad u(4)=49$
+			$$=\frac16\int_4^{49}\frac{du}u=\frac{[\ln|u|]_4^{49}}6=\frac{(\ln7-\ln2)}3$$
+		\end{example}
+	\subsection{Intergration By Parts}
+	    \begin{theorem}
+			\begin{align*}
+				\text{let }u=f(x)\enspace&\enspace dv=g'(x)dx\\
+				du=f'(x)dx\enspace&\enspace v=g(x)\\
+				\int u\,dv&=uv-\int v\,du\\
+				\int_a^bu\,dv&=uv\Big|_a^b-\int_a^bv\,du
+			\end{align*}
+			\textbf{Proof.} (indefinite) let $f$ and $g$ be diffable\\
+			let $u=f(x)$ and $v=g(x)$
+			\begin{align*}
+				\int(f(x)g(x))'\,dx&=\int(f'(x)g(x)+f(x)g'(x))\,dx\tag*{(product rule)}\\
+				&=\int g(x)f'(x)\,dx+\int f(x)g'(x)\,dx\tag*{(linearity)}\\
+				&=\int v\,du+\int u\,dv\tag*{(premise)}\\
+				&=f(x)g(x)=uv\tag*{(def of indef int)}\\
+				\therefore\int u\,dv&=uv-\int v\,du\quad\blacksquare
+			\end{align*}
+	    \end{theorem}
+		\begin{algorithm}[Choosing strategy]
+			when \textbf{unknown * poly}
+			\begin{itemize}
+				\item case \textbf{trig} or \textbf{exp} $\implies$ let \textbf{poly} be $u$ and unknown be $dv$
+				\item case \textbf{atrig} or \textbf{log} $\implies$ let known be $u$ and \textbf{poly} be $dv$
+				\item boomerang happens for $f(x)g(x)$ or $f(\ln x)$\\
+					when $f$ is trig and $g$ is log
+			\end{itemize}
+		\end{algorithm}
+		\begin{example}[Boomerange $\displaystyle\int\sin(\ln x)\,dx=I$]
+			\begin{align*}
+				u&=\sin(\ln x)&dv&=dx\\
+				du&=\frac{\cos(\ln x)}xdx&v&=x
+			\end{align*}
+			\begin{align*}
+			    I=x\sin(\ln x)-\overbrace{\int\cos(\ln x)\,dx}^A
+			\end{align*}
+			\begin{align*}
+				s&=\cos(\ln x)&dt&=dx\\
+				ds&=-\frac{\sin(\ln x)}xdx&t&=x
+			\end{align*}
+			\begin{align*}
+				A&=x\cos(\ln x)+\overbrace{\int\sin(\ln x)\,dx}^I\\
+				\therefore I&=x\sin(\ln x)-x\cos(\ln x)-I\\
+				2I&=x(\sin(\ln x)-\cos(\ln x))\\
+				I&=\frac x2\Big(\sin(\ln x)-\cos(\ln x)\Big)
+			\end{align*}
+		\end{example}
+	\subsection{Partial Fraction}
+		\subsubsection{Improper Fraction}
+			\begin{theorem}[if $\sfrac pq$ is improper, then do division]
+				$$\frac pq=s+\frac rq$$
+				for $s$ of degree $0<\deg(s)=(\deg p-\deg q)$
+			\end{theorem}
+		\subsubsection{Proper Fraction}
+			\begin{example}[usub $\displaystyle\frac{4x+8}{x^2+4x+1}\,dx$]
+				let $u=x^2+4x+1\quad du=(2x+4)dx$
+				$$=2\int\frac{du}u=2\ln|u|=2\ln|x^2+4x+1|+C$$
+			\end{example}
+			\begin{example}[$\displaystyle f(x)=\frac{x^5-x^4+5x^5-2x^2+4}{x^4+4x^2}$]
+				\begin{align*}
+					f(x)&=x-1+\underbrace{\frac{x^3+2x^2+4}{x^2(x^2+4)}}_{g(x)}\tag*{(div \& factorise)}\\
+					g(x)&=\frac Ax+\frac B{x^2}+\frac{Cx+D}{x^2+4}
+				\end{align*}
+				Cover up method: 
+				\begin{align*}
+					B=\frac{x^3+x^2+x+4}{x^2+4}\Big|_0=1\tag*{($x=0\implies x^2=0$)}
+				\end{align*}
+				Match coefficients:
+				\begin{align*}
+					&Ax(x^2+4)+B(x^2+4)+(Cx+D)x^2\\
+					=&\,A(x^2+4x)+x^2+4+Cx^3+Dx^2\\
+					=&\,x^3+2x^2+4
+				\end{align*}
+				\begin{gather*}
+					\begin{array}{cc|c|c|c}
+						&x^3&x^2&x&1\\\hline
+						&A&&4A&\\ &&1&&4\\ +&C&D&&\\\hline
+						=&1&2&0&4\\
+					\end{array}\implies\begin{cases}
+						A&=0\\ B&=1\\ C&=1\\ D&=1
+					\end{cases}\\
+					\therefore f(x)=x-1+\frac1{x^2}+\frac x{x^2+4}+\frac1{x^2+4}
+				\end{gather*}
+			\end{example}
+	\subsection{Improper Integral}
+	    \subsubsection{Definition}
+			\begin{definition}[Unbounded]
+				\begin{align*}
+					\int_a^{\pm\infty} f(x)\,dx&=\lim_{n\to\pm\infty}\int_a^nf(x)\,dx\\
+					\int_{\pm\infty}^bf(x)\,dx&=\lim_{n\to\pm\infty}\int_n^bf(x)\,dx\\
+					\int_{-\infty}^\infty f(x)\,dx&=\lim_{n\to-\infty}\int_n^{\textcolor{\colo}c}f(x)\,dx+\lim_{n\to\infty}\int_{\textcolor{\colo}c}^nf(x)\,dx
+				\end{align*}
+			\end{definition}
+			\begin{definition}[Discontinuity]
+				\begin{align*}
+					f\in(a,b)\implies&\int_a^bf(x)\,dx=\lim_{A\to a^+}\int_A^bf(x)\,dx\\
+					f\in[a,b)\implies&\int_a^bf(x)\,dx=\lim_{B\to b^-}\int_a^Bf(x)\,dx\\
+					f\in[a,c)\cup(c,b]\implies&\lim_{B\to c^-}\int_a^Bf(x)\,dx+\lim_{A\to c+}\int_A^bf(x)\,dx
+				\end{align*}
+			\end{definition}
+		\subsubsection{Comparasion Test}
+			\begin{theorem}
+				suppose $f$ and $g$ are continuous on $[a,b]$, $\forall x\in[a,b]$:
+				\begin{itemize}
+					\item $0\le g(x)\le f(x)$ and $g$ div, then $\displaystyle\int_a^bf(x)\,dx$ div
+					\item $0\le f(x)\le g(x)$ and $g$ conv, then $\displaystyle\int_a^bf(x)\,dx$ conv
+				\end{itemize}
+			\end{theorem}
+			\begin{example}[$\displaystyle\int_0^\infty e^{-x^2}\,dx$ converges]
+				let $I=[0,\infty)$
+				\begin{align*}
+					\text{(1)}\because e^u&\ge0\quad\forall u\in\mathbb{R}&\text{(2)}\because u+1&\le e^u\quad\forall u\in\mathbb{R}\\
+					\therefore e^{-x^2}&\ge0\quad\forall x\in I&\therefore x^2+1&\le e^{x^2}\quad\forall x\in I\\
+				   &&\frac1{x^2+1}&\ge e^{-x^2}
+				\end{align*}
+				\begin{align*}
+					&\because\text{(1) and (2)}\\
+					&\therefore0\le e^{-x^2}\le\frac1{1+x^2}\\
+					&\therefore0\le\int_0^\infty{e^{-x^2}}\,dx\le\int_0^\infty\frac{dx}{1+x^2}=\frac\pi2
+					&\therefore\text{converges}
+				\end{align*}
+			\end{example}
+			\begin{example}[$\displaystyle\int_2^\infty\frac{dx}{x-\ln x}$ diverges]
+				let $I=[2,\infty]$
+			\end{example}
+	\subsection{Trig Substitution}
+		\begin{theorem}
+			\begin{gather*} \begin{array}{c|c|c|c}
+				\text{Expression}&\text{Substitution}&\text{Range}&\text{Result}\\\hline
+				\sqrt{u^2-a^2}&u=a\sec\theta&\theta\in\begin{cases}
+					[0,\sfrac\pi2)&u\ge a\\
+					(\sfrac\pi2,\pi]&u\le-a
+				\end{cases}&a\tan\theta\\
+				\sqrt{a^2-u^2}&u=a\sin\theta&|\theta|\le\frac\pi2&a\cos\theta\\
+				\sqrt{u^2+a^2}&u=a\tan\theta&|\theta|<\frac\pi2&a\sec\theta\\
+			\end{array} \end{gather*}
+		\end{theorem}
+		\begin{example}[Complete the square $\displaystyle\int\frac{dx}{\sqrt{x^2-6x+13}}=\int f(x)\,dx$]
+			$$f(x)=\frac1{\sqrt{(x-3)^2+4}}$$
+		\end{example}
+\end{document}
+

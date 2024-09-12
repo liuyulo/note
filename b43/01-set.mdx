@@ -1,0 +1,277 @@
+---
+title: Set Theory
+---
+
+## Sets and Dependent Types
+
+<details class="definition" open>
+<summary>almost containment</summary>
+$A\sube^*B$ means $A\setminus B$ is finite
+
+- i.e. $A$ has finitely many elements not in $B$
+
+**Corollary.** $A$ is finite $\implies A\sube^*B$ for any $B$
+</details>
+
+<details class="definition" open>
+<summary>almost disjoint</summary>
+$A$ **almost disjoints** $B$ iff $A\cap B$ is finite
+- i.e. the "disjoint" property holds for finitely many elements
+</details>
+
+<details class="definition" open>
+<summary>union and intersection</summary>
+let set $I$ be an index
+
+let indexed family $\mathcal F=\{A_\alpha:\alpha\in I\}$
+
+let intersection and union
+
+$$
+\begin{align*}
+  \bigcup_{\alpha\in I}A_\alpha&=\{a:\exists \alpha\in I\enspace a\in A_\alpha\}\\
+  \bigcap_{\alpha\in I}A_\alpha&=\{a:\forall\alpha\in I\enspace a\in A_\alpha\}
+\end{align*}
+$$
+
+</details>
+
+<details class="definition" open>
+<summary>functions</summary>
+let set $A,B$
+$$
+B^A=\{f\mid f:A\to B\}
+$$
+
+- $f:A\hookrightarrow B$ is **injective**
+- $f:A\twoheadrightarrow B$ is **surjective**
+- $f:A\stackrel\sim\to B$ is **bijective**
+</details>
+
+<details class="definition" open>
+<summary>cartesian product (sequence)</summary>
+for family $\mathcal F=\{A_\alpha\}_{\alpha\in I}$, let union $A=\bigcup_\alpha A_\alpha$
+
+$$
+\prod_{\alpha\in I} A_\alpha=\{f\in A^I\mid \forall\alpha\in I\enspace f(\alpha)\in A_\alpha\}
+$$
+</details>
+
+## Cardinality
+
+<details class="definition" open>
+<summary>equinumerous</summary>
+for set $A$ and $B$
+<div class="flex justify-center">
+$A\sim B\iff\exists f: A\stackrel\sim\to B$
+</div>
+</details>
+
+
+<details class="definition" open>
+<summary>aleph 0</summary>
+let $\omega\sim \mathbb N$
+
+<div class="flex justify-center">
+$\aleph_0$ denotes the cardinality of $\omega$
+</div>
+</details>
+
+
+<details class="definition" open>
+<summary>relation on set</summary>
+for set $A$
+
+<div class="flex justify-center">
+a **relation** on $A$ is $R\sube A\times A$
+</div>
+</details>
+
+<details class="definition" open>
+<summary>equivalence relation</summary>
+relation $R$ is **equivalence relation** iff
+
+- symmetric $aRb\implies bRa$
+- transitive $aRb\implies bRc\implies aRc$
+- reflexive $aRa$
+</details>
+
+<details class="definition" open>
+<summary>partition</summary>
+for set $A$ and powerset $\mathcal P(A)$, a **partition** $P\in\mathcal P(A)$ iff
+
+$$
+\bigsqcup_{A_\alpha\in P} A_\alpha=A
+$$
+
+</details>
+
+<details class="theorem" open>
+<summary>Schroder Berstein</summary>
+for set $A$ and $B$
+
+$$
+\exists f:A\hookrightarrow B\text{ and }\exists g:B\hookrightarrow A\implies A\sim B
+$$
+</details>
+
+<details class="definition" open>
+<summary>cardinality</summary>
+$$
+|A|=|B|\iff A\sim B
+$$
+</details>
+
+<details class="example" open>
+<summary>cartesian of countable is countable</summary>
+$$
+\mathbb N\sim\mathbb N\times\mathbb N
+$$
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$x\mapsto (1,n)$ is injective
+
+
+$(n,m)\mapsto 2^n3^m$ is injective by fundamental theorem of arithmetic
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>countable</summary>
+TFAE (definition of countable set)
+
+1. $A\sim\mathbb N$
+2. $\exists f:A\hookrightarrow \mathbb N$
+3. $\exists g:\mathbb N\twoheadrightarrow A$
+
+<details class="list-none">
+<summary>**Proof.** (?)</summary>
+
+wts `1 => 2 => 3 => 1` 
+
+- `1 => 2` is trivial
+
+wts `2 => 3`
+
+- let $f:A\hookrightarrow \mathbb N$ and $B=f[A]\sube\mathbb N$
+- $\therefore f:A\stackrel\sim\to B$
+- $\therefore$ let some $n_0\in A$ and define $g:\mathbb N\to A$
+
+$$
+\begin{align*}
+  g(n)&=f^{-1}(n)&&\text{if }n\in B\\
+  g(n)&=n_0&&\text{if }n\notin B
+\end{align*}
+$$
+
+wts `3 => 1`
+
+- todo
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>countable union of countable sets is countable</summary>
+
+<details class="list-none">
+<summary>**Proof.** (?)</summary>
+see assigment
+</details>
+</details>
+
+<details class="definition" open>
+<summary>uncountable</summary>
+
+<div class="flex justify-center">
+$A$ is **uncountable** iff $\nexists f:\mathbb N\twoheadrightarrow A$
+</div>
+
+denoted as $\aleph_1\le A|$ where $\aleph_0\lt\aleph_1$
+</details>
+
+<details class="example" open>
+<summary>diagonalisation</summary>
+
+$$
+\aleph_1\le|\{0,1\}^\omega|
+$$
+
+<details class="list-none" open>
+<summary>**Proof.** (?)</summary>
+
+</details>
+</details>
+
+<details class="example" open>
+<summary>russell's paradox</summary>
+for any nonempty $A$
+
+$$
+|A|\lt|\mathcal P(A)|
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+
+$\because a\mapsto\{a\}$ is injective 
+
+$\therefore|A|\le|\mathcal P(A)|$
+
+BWOC assume $\exists \varphi:A\stackrel\sim\to\mathcal P(A)$
+
+- $\therefore\mathcal P(A)=\{\varphi(a)\}_{a\in A}$
+- let $A'=\{a\in A:a\notin\varphi(a)\}$
+- $\therefore\exists a'\in A$ st $\varphi(a')=A'$ as $\varphi$ surj
+- ...
+- $\therefore\bot$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary></summary>
+
+for finite $A,B$
+$$
+\begin{align*}
+  |A\times B|&=|A||B|\\
+  |B^A|&=|B|^{|A|}
+\end{align*}
+$$
+</details>
+
+<details class="example" open>
+<summary>set difference equinumerous `=>` equinumerous</summary>
+for any nonempty sets $A,B$
+
+$$
+(A-B)\sim(B-A)\implies |A|=|B|
+$$
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+let $f:A-B\stackrel\sim\to B-A$
+
+let $\varphi:A\to B$ be
+
+- $\varphi(a)=a$ for any $a\in A\cap B$
+- $\varphi(a)=f(a)$ otherwise
+
+$\because A=(A-B)\sqcup(A\cap B)$, similar for $B$
+
+$\therefore \varphi:A\stackrel\sim\to B$
+</details>
+</details>
+
+<details class="theorem" open>
+<summary>countable product of finite sets is uncountable</summary>
+
+<details class="list-none">
+<summary>**Proof.**</summary>
+$$
+\prod_{i\in\omega}\{0,1\}=\{0,1\}^\omega
+$$
+
+thus uncountable
+</details>
+</details>

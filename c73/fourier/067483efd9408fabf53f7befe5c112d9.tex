@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{xcolor,amsmath,amssymb,amsfonts}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage[tt=false, type1=true]{libertine}
+\usepackage[libertine]{newtxmath}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\definecolor{red}{HTML}{c63a44}
+\usepackage{forest}
+\newcommand\x[1]{x_{#1}=}
+\begin{document}
+
+\begin{forest}[$1$,for tree={grow=north}
+  [$-1$
+      [$-i$[$\x7-\sqrt {-i}$][$\x6\sqrt {-i}$]]
+      [$i$[$\x5-\sqrt i$][$\x4\sqrt i$]]
+      ]
+  [$1$
+      [$-1$[$\x3-i$][$\x2i$]]
+      [$1$[$\x1-1$][$\x01$]]]
+]\end{forest}
+
+\end{document}

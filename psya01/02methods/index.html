@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Methods</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Methods</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="methods">Methods</h1>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#the-scientific-method">The Scientific Method</a></li>
+<li><a href="#descriptive-methods">Descriptive Methods</a>
+<ul>
+<li><a href="#naturalistic-observation">Naturalistic
+Observation</a></li>
+<li><a href="#participant-observation">Participant Observation</a></li>
+<li><a href="#case-study">Case Study</a></li>
+<li><a href="#surveys">Surveys</a></li>
+</ul></li>
+<li><a href="#research-ethics-for-human">Research Ethics for Human</a>
+<ul>
+<li><a href="#the-tuskegee-syphilis-study">The Tuskegee Syphilis
+Study</a></li>
+<li><a href="#general-ethical-principles">General Ethical Principles</a>
+<ul>
+<li><a href="#beneficece-and-non-maleficence">Beneficece and
+Non-maleficence</a></li>
+<li><a href="#fidelity-and-responisbility">Fidelity and
+Responisbility</a></li>
+<li><a href="#integrity">Integrity</a></li>
+<li><a href="#justice">Justice</a></li>
+<li><a href="#respect-rights-and-dignity">Respect Rights and
+Dignity</a></li>
+</ul></li>
+<li><a href="#practice-of-ethical-research">Practice of Ethical
+Research</a>
+<ul>
+<li><a href="#the-fb-emotional-contagion-experiment">The FB Emotional
+Contagion Experiment</a></li>
+</ul></li>
+<li><a href="#special-ethical-considerations">Special Ethical
+Considerations</a>
+<ul>
+<li><a href="#vulnerable-populations">Vulnerable Populations</a></li>
+<li><a href="#deception">Deception</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#correlation">Correlation</a>
+<ul>
+<li><a href="#direction">Direction</a></li>
+<li><a href="#strength">Strength</a></li>
+<li><a href="#misleading">Misleading</a></li>
+</ul></li>
+<li><a href="#experimental-methods">Experimental Methods</a>
+<ul>
+<li><a href="#hypothesis">Hypothesis</a></li>
+<li><a href="#experimental-variables">Experimental Variables</a></li>
+<li><a href="#sample-selection">Sample Selection</a></li>
+<li><a href="#experimentalcontrol-groups">Experimental/Control
+Groups</a></li>
+<li><a href="#inexternal-validity">In/External Validity</a></li>
+</ul></li>
+<li><a href="#making-sense-of-the-data">Making Sense of the Data</a>
+<ul>
+<li><a href="#central-tendency">Central Tendency</a></li>
+<li><a href="#spread-of-data">Spread of Data</a></li>
+<li><a href="#inferential-statistics">Inferential Statistics</a></li>
+<li><a href="#drawing-conclusions">Drawing Conclusions</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="summary">Summary</h1>
+<ul>
+<li>The steps of the scientific method are (1) identifying the problem,
+(2) gathering information, (3) generating a hypothesis, (4) designing
+and conducting experiments, (5) analyzing data and formulating
+conclusions, and (6) restarting the process at step 3 by taking what
+you’ve learned into consideration.</li>
+<li>The difference between naturalistic and participant observation is
+whether the researcher is a part of the environment while making their
+observations about it.</li>
+<li>Bias can appear in observational research in many ways, including
+when participants change their behavior in response to being observed
+(known as <em>reactivity </em>or the <em>Hawthorne effect</em>) and when
+multiple observers disagree about what they’ve observed.</li>
+<li>Case studies are an in-depth way to gather a large amount of
+detailed information about a single person or a handful of individuals;
+however, case studies may not be generalizable to larger
+populations.</li>
+<li>Populations need to be sampled effectively, preferably using random
+sampling techniques; sampling error/bias can occur when the people who
+participate in a study are not representative of the intended
+population.</li>
+<li>The way people respond to questions in research studies is
+influenced by multiple factors, including but not limited to the wording
+of questions, the desire to answer in socially desirable ways, a general
+tendency to agree or say yes to questions, and a tendency to think of
+ourselves as better than average.</li>
+<li>Five ethical principles have been developed by the American
+Psychological Association (APA) to guide research with human subjects:
+(1) beneficence and nonmaleficence, (2) fidelity and responsibility, (3)
+integrity, (4) justice, and (5) respect for people’s rights and
+dignity.</li>
+<li>Ethical research in psychology should strive to have the most
+potential benefits to society with the fewest potential harms, not take
+advantage of participants, and be truthful with both participants in the
+study and the wider scientific community.</li>
+<li>Vulnerable populations (including those with impaired
+decision-making skills and those who are vulnerable by virtue of their
+circumstances) must be treated with particular care; informed consent is
+especially important in these groups.</li>
+<li>Deception in psychological research is only warranted in special
+circumstances, and participants must be fully debriefed about any
+deception that occurred after they finish participating in the
+study.</li>
+<li>A correlation describes the relationship between two or more
+variables and can be positive, negative, or zero (unrelated).</li>
+<li>Correlations have both strength and direction; strength describes
+how closely two variables are related, while direction describes whether
+the variables increase and decrease together (a positive relationship)
+or are inversely related, meaning that if one increases the other
+variable decreases (a negative relationship).</li>
+<li>Correlation coefficients are calculated to describe the strength and
+direction of a correlation.</li>
+<li>Correlation is not the same as causation: At times, correlation
+coefficients are misleading or confounding variables can make two
+variables appear causally related when they, in fact, are not.</li>
+<li>Experiments are conducted to determine whether manipulating an
+independent variable causes changes in a measured dependent
+variable.</li>
+<li>Independent variables are manipulated by researchers (resulting in
+“experimental” and “control” groups), while changes in a dependent
+variable or “outcome measure” represent the effect of the researchers’
+manipulation.</li>
+<li>Placebo effects can occur if a person believes in a cause-and-effect
+relationship; these effects represent the power of participants’
+expectations in an experimental setting and can be mitigated by the use
+of placebo groups.</li>
+<li>Internal validity exists in an experiment when a cause-and-effect
+relationship can be established; extraneous (confounding) variables
+threaten our ability to claim that an independent variable causes a
+change in a dependent variable.</li>
+<li>External validity describes the extent to which the results of an
+experiment are generalizable to other people, other settings, other time
+periods, or other contexts.</li>
+<li>Descriptive statistics are used when we want to report on our
+results descriptively: Measures of central tendency (e.g., mean, median,
+and mode) attempt to find a number that best represents the data, while
+measures of variability (e.g., standard deviation and variance) help
+describe the distribution or “spread” of the data.</li>
+<li>The mean is the average score in a data sample, the median is the
+“middle” score if the scores were rank-ordered from lowest to highest,
+and the mode is the most common score.</li>
+<li>Standard deviation describes the average distance from the mean
+score in a data set; this helps us understand whether scores are all
+very close to the mean or more spread out.</li>
+<li>Inferential statistics allow us to make inferences about whether
+differences exist between two (or more) sets of data; for example,
+whether or not a true difference is likely to exist between experimental
+and control groups. Such differences could be statistically significant
+depending on the results of the analyses used on the data.</li>
+</ul>
+<h1 id="introduction">Introduction</h1>
+<blockquote>
+<p>psychologists had few methods other than <em>logic and reasoning</em>
+(<strong>rationalism</strong>)<br> now, using experimental methods,
+researchers gather facts and observations of phenomena to form
+<em>scientific theroies</em> (rational explanations to describe and
+predict future behavior)</p>
+</blockquote>
+<h1 id="the-scientific-method">The Scientific Method</h1>
+<blockquote>
+<p>common approach is which researchers methodologically answer
+questions</p>
+</blockquote>
+<ol type="1">
+<li>identify the problem</li>
+<li>gather information</li>
+<li>generate a hypothesis<br>(the predicted outcome of an experiment or
+research study)</li>
+<li>design and conduct experiments</li>
+<li>analyze data and formulate conclusions</li>
+<li>restart the process</li>
+</ol>
+<h1 id="descriptive-methods">Descriptive Methods</h1>
+<blockquote>
+<p>any means to capture, report, record, or <em>describe</em> a
+group<br> interested in identifying “<em>what is</em>”, without
+necessarily understanding “<em>why it is</em>”</p>
+</blockquote>
+<h2 id="naturalistic-observation">Naturalistic Observation</h2>
+<blockquote>
+<p>observation of behavior as it happens in an natural environment<br>
+in the scientific process, it suggests potentially interest</p>
+</blockquote>
+<ul>
+<li>differences
+<ul>
+<li><strong>naturalistic</strong> observation: lack of manipulation</li>
+<li><strong>field</strong> experiments: manipulates and controls the
+conditions in natural settings</li>
+</ul></li>
+<li>can be captured
+<ul>
+<li><strong>qualitatively</strong> (collect opinions, notes)</li>
+<li><strong>quantitatively</strong> (measure/count specific
+behaviors)</li>
+</ul></li>
+<li>benefit
+<ul>
+<li>can often help generate new ideas about an observed phenomeon</li>
+<li>better understand behavior exactly as it happens in the real
+world</li>
+<li><em>ecologically valid</em>: product of genuine reactions</li>
+</ul></li>
+<li>disadvantage: lack control over the environment
+<ul>
+<li>not always sure of <em>what</em> is influencing behavior</li>
+</ul></li>
+<li>important: stay as unobstrusive as possible
+<ul>
+<li>behavior changes once they realise they are being observed:
+<strong>reactivity</strong> aka <em>Hawthorne effect</em></li>
+</ul></li>
+</ul>
+<h2 id="participant-observation">Participant Observation</h2>
+<blockquote>
+<p>researcher becomes part of the group under investigation</p>
+</blockquote>
+<ul>
+<li>benefit
+<ul>
+<li>research is privy to new perspectives and insights that would not be
+obtainable from naturalistic observation</li>
+</ul></li>
+<li>drawbacks
+<ul>
+<li>validity: researcher’s views and bias can affect the interpretation
+of events</li>
+<li>reliablity: highly dependant on the unique conditions of
+participation</li>
+</ul></li>
+</ul>
+<h2 id="case-study">Case Study</h2>
+<blockquote>
+<p>in-depth analysis of a unique circumstance or individual</p>
+</blockquote>
+<ul>
+<li>con: generalise
+<ul>
+<li>can never be sure the conclusions draw from this particular case can
+be broadly generalised to other cases</li>
+</ul></li>
+</ul>
+<h2 id="surveys">Surveys</h2>
+<blockquote>
+<p>using questions to collect information on how people think or act</p>
+</blockquote>
+<ul>
+<li>conducted to a <em>sample</em> (subset of <em>population</em>)</li>
+<li>biases
+<ul>
+<li>the questions must be carefully worded to avoid biasing the outcome,
+otherwise will cause <em>wording effects</em></li>
+<li><strong>response bias</strong>: tendency for people to answer the
+question the way they feel they are expected to answer
+<ul>
+<li><strong>acquiescent response bias</strong>: indiscriminately agree
+regardless of their actual opinion</li>
+<li><strong>socially desirable bias</strong>: answer questions that they
+believe would be seen as acceptable by others</li>
+<li><strong>illusory superiority</strong>: describe our own behavior as
+better than average</li>
+<li><strong>volunteer bias</strong>: only a motivated fraction of
+population respond to a survey or participate in research</li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="research-ethics-for-human">Research Ethics for Human</h1>
+<blockquote>
+<p>set of principles or standards of behavior for psychologists to
+follow in research</p>
+</blockquote>
+<h2 id="the-tuskegee-syphilis-study">The Tuskegee Syphilis Study</h2>
+<blockquote>
+<p>was intended to follow the natural progression of syphilis(a
+contagious desease)</p>
+</blockquote>
+<ul>
+<li>researchers
+<ul>
+<li>misled participants about the actual purpose of the study</li>
+<li>denied medical treatment</li>
+</ul></li>
+</ul>
+<h2 id="general-ethical-principles">General Ethical Principles</h2>
+<blockquote>
+<p>developed by APA</p>
+</blockquote>
+<h3 id="beneficece-and-non-maleficence">Beneficece and
+Non-maleficence</h3>
+<blockquote>
+<p>research should to good(beneficence) and avoid creating experiments
+that can intentionally harm(maleficence) participants</p>
+</blockquote>
+<ul>
+<li>psychologists must carefully weigh the benefits of the reseach
+against the costs that participants may experience</li>
+</ul>
+<h3 id="fidelity-and-responisbility">Fidelity and Responisbility</h3>
+<blockquote>
+<p>researchers should be honest and reliable with participants</p>
+</blockquote>
+<ul>
+<li>let participants know ahead of time the potential risks of
+participation</li>
+</ul>
+<h3 id="integrity">Integrity</h3>
+<blockquote>
+<p>psychologists should engage in accurate, honest, and non-biased
+practices</p>
+</blockquote>
+<ul>
+<li>always communicate results to colleagues and the public accurately
+<ul>
+<li>no making up data (fdabrication)</li>
+<li>no manipulating research data (falsification)</li>
+</ul></li>
+</ul>
+<h3 id="justice">Justice</h3>
+<blockquote>
+<p>the people who participate in the research process should also be the
+same people who stand to benefit from the reseach outcomes</p>
+</blockquote>
+<ul>
+<li>eg study on child development should only include children
+<ul>
+<li>“child” is an <strong>inclusion criterion</strong>(attribute of
+participants that is necessary to be a part of research study)</li>
+<li>“adult” is an <strong>exclusion criterion</strong></li>
+</ul></li>
+<li>inclusion + exclusion = <strong>eligibility criteria</strong></li>
+</ul>
+<h3 id="respect-rights-and-dignity">Respect Rights and Dignity</h3>
+<blockquote>
+<p>should respect and protect participants’ rights, privacy, and
+welfare</p>
+</blockquote>
+<ul>
+<li>communicate openly and honestly abuot the details before asking for
+consent</li>
+<li>respect privacyand confidentiality</li>
+<li>keep data private/anonymous</li>
+<li>no coercion</li>
+</ul>
+<h2 id="practice-of-ethical-research">Practice of Ethical Research</h2>
+<blockquote>
+<p>research projects conducted in the USA must be review by
+<em>Instutional Review Broad</em> (IRB)</p>
+</blockquote>
+<ul>
+<li>IRB ensures
+<ul>
+<li>proposed study will use sound research design</li>
+<li>risks associated with participation in the study are minimised and
+reasonable</li>
+<li>benefits of the research outweigh any potential risks</li>
+<li>all participants can make an informed decision to participate in the
+study, and that decision may be withdrown at any time without
+consequence to the participant</li>
+<li>safeguards are in place to protect the well-being of
+participants</li>
+<li>all data collected will be kept private and confidential</li>
+</ul></li>
+<li>after IRB approval, reseachers must obtain <em>informed consent</em>
+from all participants by describing essential details of the study
+<ul>
+<li>experimental procedures</li>
+<li>risks</li>
+<li>benefits associated with participation in the study</li>
+<li>how personal information will be protected</li>
+<li>rights of participants</li>
+</ul></li>
+</ul>
+<h3 id="the-fb-emotional-contagion-experiment">The FB Emotional
+Contagion Experiment</h3>
+<blockquote>
+<p>Facebook users participated in psychology reseach without informed
+consent: violates <strong>respect for people’s rights and
+dignity</strong></p>
+</blockquote>
+<h2 id="special-ethical-considerations">Special Ethical
+Considerations</h2>
+<h3 id="vulnerable-populations">Vulnerable Populations</h3>
+<blockquote>
+<p>any group of individuals who may not be able to provide free and
+informed consent to participate in reseach</p>
+</blockquote>
+<ul>
+<li>vulnerable populations
+<ul>
+<li><strong>decisional impairment</strong>: participant has diminished
+capacity to provide informed consent
+<ul>
+<li>mentally disabled children</li>
+</ul></li>
+<li><strong>situational vulnerability</strong>: the freedom of ‘choice’
+to participate in reseach is compromised as a result of undue influence
+from another source
+<ul>
+<li>prisoners may feel coerced/obigated to participate out of fear of
+being punished if they do not</li>
+<li>people who need money may be inclined to participate</li>
+</ul></li>
+</ul></li>
+<li>then, reseacher should consider
+<ul>
+<li>if the research question could be reasonably carried out using
+participants without these vulnerabilites, no study should ever be
+conducted on vulnerable populations</li>
+<li>when research is carried out with vulnerable populations,
+researchers should be responsive to the needs, conditions, and
+priorities of these individuals</li>
+<li><em>decisional impairment</em>: requires
+<ol type="1">
+<li>parents and guardians must provide informed consent on behalf of the
+participant</li>
+<li>the participant must provide <strong>assent</strong> (affirmation
+permission to take part in the study)</li>
+</ol></li>
+<li><em>situational vulnerbility</em>: additional safeguards should be
+put in place to prevent exploitation
+<ul>
+<li>eg include an impartial 3rd party to advocate for the
+individuals</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="deception">Deception</h3>
+<blockquote>
+<p>some reseach experiments may seek IRB approval to engage in
+participant <strong>deception</strong>: withhold information abuot the
+purpose and procedures of the study during the informed consent
+process</p>
+</blockquote>
+<ul>
+<li>to get approve:
+<ul>
+<li>reseach poses no more than a minimal risk to participants
+<ul>
+<li>=&gt; unlikely to cause emotional or physical discomfort to
+participants</li>
+</ul></li>
+<li>deception doesn’t affect the well-being and the rights of the
+participants throughout the study</li>
+<li>must provide justification that using deception is the only way to
+conduct the study</li>
+<li>after the participant’s role in the study is finished, participants
+should be <strong>debriefed</strong> by reseachers
+<ul>
+<li>must be told about the deception</li>
+<li>must be given reasons why this was necessary</li>
+<li>must be allowed to ask questions and seek clarification</li>
+<li>to leave the study in a similar mental state as to when they entered
+the study</li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="correlation">Correlation</h1>
+<blockquote>
+<p><code>-1 &lt;= r &lt;= 1</code> captures the direction and strength
+of a relationship between variables</p>
+</blockquote>
+<p>one way to represent relationship between variables is
+<strong>scatterplot</strong> - if the graph cluster tightly together:
+strong <img src="assets/02r.png" alt="r" /></p>
+<h2 id="direction">Direction</h2>
+<p><img src="assets/02direction.png" alt="direction" /> -
+<strong>positive correlation</strong>: <code>r &gt; 0</code> -
+<strong>neg</strong>: <code>r &lt; 0</code> - <strong>zero
+correlation</strong>: no correlation <code>r == 0</code> - <strong>line
+of best fit</strong>: a straight line through the points</p>
+<h2 id="strength">Strength</h2>
+<blockquote>
+<p>perfect correlation: <code>abs(r) == 1</code></p>
+</blockquote>
+<h2 id="misleading">Misleading</h2>
+<blockquote>
+<p>correlations are not causation - a 3rd variable may influence one or
+both variable that we are measuring, therefore influencing the
+correlation coefficient</p>
+</blockquote>
+<h1 id="experimental-methods">Experimental Methods</h1>
+<h2 id="hypothesis">Hypothesis</h2>
+<blockquote>
+<p>prediction about what will happen in research in format of</p>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f&#39;if </span><span class="sc">{</span>do_this<span class="sc">}</span><span class="ss">, then </span><span class="sc">{</span>this<span class="sc">}</span><span class="ss"> will happen&#39;</span></span></code></pre></div>
+<ul>
+<li><strong>consistent</strong> with prior observations or an existing
+theory</li>
+<li>as <strong>simple</strong> as possible, only cause-and-effect
+relationship between <strong>2</strong> variables</li>
+<li><strong>specific</strong>, provied all the details about what to
+measure, what changes will be made, what effect is expected</li>
+<li><strong>testable</strong>, state what evidence will be measured and
+use as a comparasion</li>
+<li><strong>falsifiable</strong>, have outcomes that could prove the
+hypothesis false</li>
+</ul>
+<h2 id="experimental-variables">Experimental Variables</h2>
+<blockquote>
+<p>manipulate <em>independent</em> variable (IV) and measure
+<em>dependent</em> variable (DV)<br> <em>extraneous/confounding</em>
+variable is not the focus of study, but may influence the outcomes</p>
+</blockquote>
+<h2 id="sample-selection">Sample Selection</h2>
+<blockquote>
+<p>select people for experimental and control groups</p>
+</blockquote>
+<ul>
+<li><em>simple</em> random sample
+<ul>
+<li>every individual in the population has an equal change of
+participating</li>
+<li>if large enough, should approximate the population we wish to
+study</li>
+</ul></li>
+<li><em>stratified</em> random sample
+<ul>
+<li>divide the population by <em>subgroups</em>, randomly takes samples
+in proportion to the population of interest</li>
+<li>eg subgroup by gender</li>
+</ul></li>
+<li><em>non-random/convenience</em> sample
+<ul>
+<li>group of individuals that are only selected because of a
+<em>pre-existing condition</em></li>
+</ul></li>
+</ul>
+<h2 id="experimentalcontrol-groups">Experimental/Control Groups</h2>
+<blockquote>
+<p><em>experimental</em> group receives the treatment of interest, the
+<em>control</em> group doesn’t</p>
+</blockquote>
+<h2 id="inexternal-validity">In/External Validity</h2>
+<blockquote>
+<p><em>external</em> validity is how the result can be applied
+<strong>beyond</strong> the scope of the experiment, ake
+<em>generalisation</em></p>
+</blockquote>
+<h1 id="making-sense-of-the-data">Making Sense of the Data</h1>
+<h2 id="central-tendency">Central Tendency</h2>
+<blockquote>
+<p><em>descriptive statistics</em>: collection of ways to describe the
+data using quantitative values</p>
+</blockquote>
+<ul>
+<li>types of central tendency (single point to describe the center)
+<ul>
+<li>mean (average)</li>
+<li>median (middle)</li>
+<li>mode (most frequent) ## Spread of Data &gt;
+<em>variability/range</em>: <code>max - min</code><br> &gt; <em>standard
+derivation (SD)</em>: <span class="math inline">\sigma</span></li>
+</ul></li>
+</ul>
+<p><span class="math display">\sigma=\sqrt{\frac{\sum(x-\bar
+x)^2}{n-1}}</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Formula</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">x-\bar x</span></td>
+<td>derivation</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\sum(x-\bar x)^2</span></td>
+<td>variance</td>
+</tr>
+</tbody>
+</table>
+<h2 id="inferential-statistics">Inferential Statistics</h2>
+<blockquote>
+<p>if the probability <code>p &lt; 0.05</code>, it is <em>unlikely</em>
+to happen</p>
+</blockquote>
+<h2 id="drawing-conclusions">Drawing Conclusions</h2>
+<blockquote>
+<p>reject the <em>null hypothesis</em> when <code>p &lt; 0.05</code></p>
+</blockquote>
+</body>
+</html>

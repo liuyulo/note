@@ -1,0 +1,23 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor, amsmath, amssymb}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={circle,draw},scale=3,minimum size=30pt]
+\node[dashed] at(0,1.71)(v){$c_j$};
+\node at(0,0.71)(u){$d_j$};
+\node at(0,-0.71)(u'){$d_{j+1}'$};
+\node[dashed] at(0,-1.71)(v'){$c_{j+1}$};
+\pgfmathsetmacro\s{ sqrt(2) / 2 }
+\foreach\i in{1,2,3}{
+    \pgfmathsetmacro{\x}{ \s * (\i-2) };
+    \pgfmathsetmacro{\xx}{ \s * \i  };
+    \node at(\x, 0)(l\i){$\ell_\i$};
+    \node[dashed] at(\xx, 0.71)(l\i'){$\overline{\ell_\i}$};
+    \path(l\i)edge(l\i');
+}
+\path(u)edge(v)edge(l1)edge(l2)edge(l3)
+    (u')edge(v')edge(l1)edge(l2)edge(l3);
+\end{tikzpicture}
+
+\end{document}

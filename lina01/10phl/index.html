@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Phonemes and Allophones</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Phonemes and Allophones</h1>
+</header>
+<div id="left">
+<!-- omit in toc -->
+<h1 id="phonemes-and-allophones">Phonemes and Allophones</h1>
+<ul>
+<li><a href="#segments">Segments</a>
+<ul>
+<li><a href="#phonemes-and-allophones">Phonemes and Allophones</a></li>
+<li><a href="#minimal-pairs">Minimal Pairs</a></li>
+<li><a href="#phonetic-and-phonomic-representations">Phonetic and
+Phonomic Representations</a></li>
+</ul></li>
+<li><a href="#syllables">Syllables</a>
+<ul>
+<li><a href="#phonotactics-english">Phonotactics (English)</a></li>
+<li><a href="#syllabification">Syllabification</a></li>
+<li><a href="#nucleus">Nucleus</a></li>
+<li><a href="#onset">Onset</a></li>
+<li><a href="#coda">Coda</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#sonority">Sonority</a></li>
+<li><a href="#binarity">Binarity</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="segments">Segments</h1>
+<blockquote>
+<p>alternations between oral and nasal vowels is a <em>by-product</em>
+of the articulation of neighbouring sounds within the word</p>
+</blockquote>
+<ul>
+<li>e.g. <code>bean [ĩ]</code>, <code>beak [i]</code></li>
+</ul>
+<h2 id="phonemes-and-allophones-1">Phonemes and Allophones</h2>
+<ul>
+<li><em>phoneme</em>: abstract unit of sound that changes meaning
+between sounds
+<ul>
+<li><em>allophones</em>: variation of the same phoneme</li>
+<li>e.g. <code>[ĩ]</code> and <code>[i]</code> are allophones<br>
+<code>[æ̃]</code> is an allophone of <code>/æ/</code><br>
+<code>[i]</code> and <code>[æ]</code> are separate phonemes</li>
+</ul></li>
+</ul>
+<h2 id="minimal-pairs">Minimal Pairs</h2>
+<blockquote>
+<p>set of two words that <em>differ by a single sound</em> in the same
+position</p>
+</blockquote>
+<p><strong>what</strong></p>
+<p><strong><em>italic</em></strong></p>
+<ul>
+<li>the sound differences are <em>constrastive</em>
+<ul>
+<li>e.g. <code>bat</code>, <code>cat</code></li>
+<li><code>b</code> and <code>c</code> are constrastive</li>
+</ul></li>
+</ul>
+<h2 id="phonetic-and-phonomic-representations">Phonetic and Phonomic
+Representations</h2>
+<blockquote>
+<p>/phonemic/: less information<br> [phonetic]: contains aspiration,
+nasalisation, devoicing, etc</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th>Word</th>
+<th>Phonemic</th>
+<th>Phonetic</th>
+<th>Diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>swam</td>
+<td><code>/swæm/</code></td>
+<td><code>[swæ̃m]</code></td>
+<td>nasalisation</td>
+</tr>
+<tr class="even">
+<td>type</td>
+<td><code>/tajp/</code></td>
+<td><code>[tʰʌjp]</code></td>
+<td>aspiration, canadian rising</td>
+</tr>
+</tbody>
+</table>
+<h1 id="syllables">Syllables</h1>
+<p>Wd - σ (CVC, CV, VC) - onset (O) - rhyme (R) - nucleus (N) - coda
+(Co) ## Phonotactics (English) - if on onset has 3 consonants - 1st
+always <code>[s]</code> - 2nd awlays voiceless stop <code>[ptk]</code> -
+3rd liquid or glide <code>[lrwj]</code></p>
+<h2 id="syllabification">Syllabification</h2>
+<h3 id="nucleus">Nucleus</h3>
+<blockquote>
+<p>every vowel segment is separate nucleus
+(<code>σ -&gt; R -&gt; N</code>) ### Onset the longest sequence of
+consonants to the left of each nucleus ### Coda any left-over consonants
+to the right</p>
+</blockquote>
+<ul>
+<li>if a syllable has a coda, it’s a <em>closed syllable</em>, else
+open</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<pre><code>    Wd (extreme)
+┌─────┴─────┐
+σ           σ
+|           ├───────┐
+R           │       R
+├───┐       │       ├───┐
+N   C   ┌───O───┐   N   C
+│   │   │   │   │   │   │
+ɛ   k   s   t   r   i   m</code></pre>
+<pre><code>   Wd (entry)
+┌─────┴─────┐
+σ           σ
+|           ├───┐
+R           │   R
+├───┐       │   │
+N   C   ┌───O   N
+│   │   │   │   │
+ɛ   n   t   r   i</code></pre>
+<h2 id="requirements">Requirements</h2>
+<h3 id="sonority">Sonority</h3>
+<blockquote>
+<p>sonority mest rise before the nucleus and fall after it</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th colspan="5">
+<b>Sonority Level</b>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td>
+1
+</td>
+<td>
+2
+</td>
+<td>
+3
+</td>
+<td>
+4
+</td>
+</tr>
+<tr>
+<td>
+Obstruent<br>(stops, fricative, affricates)
+</td>
+<td>
+Nasal
+</td>
+<td>
+Liquid
+</td>
+<td>
+Glide
+</td>
+<td>
+Vowel
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="binarity">Binarity</h3>
+<blockquote>
+<p>onset and coda must have 2 consonants at most</p>
+</blockquote>
+<ul>
+<li>e.g. <strong>pr</strong>i<strong>nt</strong></li>
+<li>but some can violate
+<ul>
+<li><strong>str</strong>ong</li>
+<li>tru<strong>nks</strong></li>
+</ul></li>
+</ul>
+</body>
+</html>
