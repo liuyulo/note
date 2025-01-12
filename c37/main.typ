@@ -5,8 +5,6 @@
 #show: preamble
 
 #set heading(numbering:"1.")
-#set page(height: auto)
-
 #set text(size: 16pt)
 
 
