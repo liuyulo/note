@@ -5,10 +5,6 @@
 #show: preamble
 
 #set heading(numbering:"1.")
-#show heading: it => {
-pagebreak()
-it
-}
 #set page(height: auto)
 
 #set text(size: 16pt)
