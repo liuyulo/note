@@ -37,6 +37,15 @@ $
     That is, there is a finite $n$ such that in every play, some player wins at the $n$th position.
 ]
 
+#definition[
+  Given a game $⟨Ω,τ,W_1,W_2⟩$, a *strategy* for Player $i$ is a function $f:{bold(a) in Ω^(< ω):τ(bold(a))=i}->Ω$. 
+]
+The function $f$ tells that Player $i$ should choose $f(bold(a))$ when the game is at position $bold(a) in Ω^(<ω)$. We say that a strategy is *winning* if Player $i$ wins in every play using $f$. 
+
+#remark[
+  Define $Ω_f$ to be the set of plays $(a_1,a_2,⋯)$ such that $a_(k+1)=f(a_1,⋯,a_k)$ whenever $τ(a_1,⋯,a_k)=i$. It follows that $f$ is _winning_ iff $Ω_f ⊆ W_i$.
+]
+
 #definition[A *combinatorial game* is a structure $G=⟨X,R_1,R_2⟩$ where
 
   - $X$ is the set of *positions*,
