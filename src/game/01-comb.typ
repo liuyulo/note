@@ -1,4 +1,6 @@
 #import "preamble.typ": *
+
+#import "@preview/suiji:0.3.0"
 #let Hex = smallcaps[Hex]
 #let Y = smallcaps[Y]
 
@@ -40,20 +42,34 @@ We introduce the game of #Hex and show its determinacy. In particular, we show t
 
 #let n = 4
 #figure(
-  cetz.canvas({
-    import cetz.draw: *
-    let arr = (..range(n), n, ..range(n).rev())
-    let arr = arr.map(n => n + 2)
-    for (x, n) in arr.enumerate() {
-      hexagons(x, n / 2, range(n).map(_ => ()))
-    }
-  }),
+  cetz.canvas(
+    length: 17pt,
+    {
+      import cetz.draw: *
+      let arr = (..range(n), n, ..range(n).rev())
+      let arr = arr.map(n => n + 2)
+      for (x, n) in arr.enumerate() {
+        let ss = range(n - 2).map(_ => none)
+        let ss = if x < n { (blue, ..ss, yellow) } else { (yellow, ..ss, blue) }
+        hexagons(x, n / 2, ss.map(f => (fill: f)))
+      }
+
+      translate(x: 16)
+      let (rng, ss) = (suiji.gen-rng-f(42), ())
+      for (x, n) in arr.enumerate() {
+        (rng, ss) = suiji.choice-f(rng, (blue, yellow), size: n - 2)
+        let ss = if x < n { (blue, ..ss, yellow) } else { (yellow, ..ss, blue) }
+        hexagons(x, n / 2, ss.map(f => (fill: f)))
+      }
+    },
+  ),
+  caption:[An empty #Hex board (left) and a filled #Hex board (right)]
 )<hex>
 
 Notably, the players do not have to alternate between turns, and do not need to terminate the game once the opposite sides have a connecting path. The following theorem encapsulates this generalisation, and implies that #Hex has no ties.
 
 #theorem[
-Every filled #Hex board has exactly one connecting path from opposite sides.
+  Every filled #Hex board has exactly one connecting path from opposite sides.
 ]
 
 #cetz.canvas(
