@@ -131,7 +131,7 @@ Playing #Hex is equivalent to playing #Y with some hexagons precolored, as show 
 
 We prove that every filled #Y board contains exactly one Y. This is done via reduction to smaller boards.
 #theorem[
-  Every filld #Y board of side length $n$ contains exactly one Y.
+  Every filled #Y board of side length $n$ contains exactly one Y.
 ]
 #proof[
 
