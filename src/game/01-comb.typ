@@ -98,7 +98,7 @@ To prove this theorem, we reduce a game of #Hex to a game of #Y.
   caption: [An empty #Y board (left) and a filled #Y board (right)],
 )
 
-Playing #Hex is equivalent to playing #Y with some hexagons precolored, as show in
+Playing #Hex is equivalent to playing #Y with some hexagons precolored, as show in @reduce.
 
 #figure(
   cetz.canvas(
@@ -126,7 +126,7 @@ Playing #Hex is equivalent to playing #Y with some hexagons precolored, as show 
     },
   ),
   caption: [An empty #Y board (left) and a filled #Y board (right)],
-)
+)<reduce>
 
 
 We prove that every filled #Y board contains exactly one Y. This is done via reduction to smaller boards.
