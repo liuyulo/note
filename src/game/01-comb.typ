@@ -176,7 +176,6 @@ We prove that every filled #Y board contains exactly one Y. This is done via red
             translate(x: 10 - i)
           }
         })
-        set-style(line: (stroke: red + 3pt), polygon: (stroke: red + 3pt))
 
         let arr = (
           (1, s * 1.5),
@@ -187,8 +186,13 @@ We prove that every filled #Y board contains exactly one Y. This is done via red
           (3.5, s * 2),
           (4, s * 1.5),
         )
-        line(..arr, ..arr.map(((x, y)) => (x, -y + s * 3)).rev())
-        polygon((11.5, s * 1.5), 6)
+        let arr = (..arr, ..arr.map(((x, y)) => (x, -y + s * 3)).rev())
+
+        line(..arr, stroke: red + 3pt)
+        polygon((11.5, s * 1.5), 6, stroke: red + 3pt)
+        translate(x: -1.5, y: s * -2.5)
+        line(..arr, stroke: green + 3pt)
+        polygon((11.5, s * 1.5), 6, stroke: green + 3pt)
       },
     ),
     caption: [Reduction from a filled $5$ board to smaller boards],
