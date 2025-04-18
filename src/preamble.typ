@@ -25,7 +25,6 @@
   show math.equation: set text(font: "STIX Two Math")
 
   set heading(numbering: "1.1.1")
-  set figure(placement: auto)
   set text(size: 15pt)
   // set text(font: ("Libertinus Serif", "UD Digi Kyokasho N-R"))
   set enum(indent: 5pt, body-indent: 5pt)

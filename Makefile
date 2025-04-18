@@ -7,11 +7,9 @@ public: $(patsubst public/%,build/%,$(shell find public -type f))
 # build/%: public/% build
 # 	cp "$<" "$@"
 
-build/%.pdf: src/%/main.typ build
+build/%.pdf: src/%/main.typ 
+	mkdir -p "$(dir $@)"
 	typst compile --font-path fonts --root . "$<" "$@"
-
-build:
-	mkdir -p build
 
 clean:
 	rm -rf build
