@@ -1,0 +1,47 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  contents: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: typst-community/setup-typst@v3
+    - name: Uncomment includes
+      run: find src -name '*.typ' -exec perl -i -pe 's/^\/\/ \#include/\#include/' {} \;
+
+    - name: Build PDFs
+      run: make
+    - run: ls build
+
+    # - name: Generate HTML
+    #   run: python tree.py build > build/index.html
+    #
+    # - run: sudo apt-get update && sudo apt-get install -y ghostscript
+    # - name: Invert PDFs
+    #   run: |
+    #     for f in `find build -name '*.pdf'`; do
+    #       gs -o "`dirname $f`/_`basename $f`" -sDEVICE=pdfwrite -c "{1 exch sub}{1 exch sub}{1 exch sub}{1 exch sub} setcolortransfer" -f $f
+    #     done
+
+    # - name: Setup Pages
+    #   uses: actions/configure-pages@v5
+    # - name: Upload artifact
+    #   uses: actions/upload-pages-artifact@v3
+    #   with: { path: build }
+    # - name: Deploy to GitHub Pages
+    #   uses: actions/deploy-pages@v4
