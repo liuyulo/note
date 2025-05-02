@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  GH_TOKEN: ${{ github.token }}
+
 permissions:
   pages: write
   contents: write
@@ -22,25 +25,44 @@ jobs:
     - uses: typst-community/setup-typst@v3
     - name: Uncomment includes
       run: find src -name '*.typ' -exec perl -i -pe 's/^\/\/ \#include/\#include/' {} \;
-
     - name: Build PDFs
       run: make
-    - run: ls build
 
-    # - name: Generate HTML
-    #   run: python tree.py build > build/index.html
-    #
     # - run: sudo apt-get update && sudo apt-get install -y ghostscript
     # - name: Invert PDFs
     #   run: |
     #     for f in `find build -name '*.pdf'`; do
     #       gs -o "`dirname $f`/_`basename $f`" -sDEVICE=pdfwrite -c "{1 exch sub}{1 exch sub}{1 exch sub}{1 exch sub} setcolortransfer" -f $f
     #     done
+    
+    - name: Prepare Jekyll
+      run: |
+        mv build/* .
+        rm src fonts -rf
 
-    # - name: Setup Pages
-    #   uses: actions/configure-pages@v5
-    # - name: Upload artifact
-    #   uses: actions/upload-pages-artifact@v3
-    #   with: { path: build }
-    # - name: Deploy to GitHub Pages
-    #   uses: actions/deploy-pages@v4
+    - name: Build website with Jekyll
+      uses: actions/jekyll-build-pages@v1
+      with:
+        source: .
+        destination: ./_site
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+
+    - name: Delete past workflow runs
+      # | jq -r '.workflow_runs[] | [ .id, .display_title, .conclusion ] | @tsv' \
+      run: gh api /repos/${{ github.repository }}/actions/runs \
+        | jq -r '.workflow_runs[] | .id' \
+        | tail -n +2 \
+        | xargs -tI{} gh api -X DELETE /repos/${{ github.repository }}/actions/runs/{}
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
