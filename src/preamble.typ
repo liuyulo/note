@@ -4,7 +4,7 @@
 
 #let br(base, a) = math.attach(base, br: a)
 #let tr(base, a) = math.attach(base, tr: a)
-#let bij = math.attach(math.arrow, t: math.tilde)
+#let bij = $->^~$
 #let res = math.harpoon.tr
 #let inj = math.arrow.hook
 #let sur = math.arrow.twohead
