@@ -4,6 +4,8 @@
 #set document(title:"Sample")
 #show: preamble
 
+#outline()
+
 = General Features
 - *Last updated date.* The date shown at the top of the document indicates the latest date when this document is compiled.
 - *Page numbers.* Every page has a footer that shows the page number.
@@ -16,6 +18,7 @@ $
 phi:2^X -> cal(P)(X)\
 phi(f)={x in X:f(x)=1}
 $
+
 
 
 = Fancy Boxes <fancy>
