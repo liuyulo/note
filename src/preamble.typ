@@ -19,7 +19,7 @@
   show list: set block(above: 0.5em, below: 1em)
   show enum: set block(above: 0.5em, below: 1em)
   show raw: set text(font: "Iosevka Custom", discretionary-ligatures: true)
-  show math.equation: set text(font: "STIX Two Math")
+  show math.equation: set text(font: "Libertinus Math")
 
   set heading(numbering: "1.1.1")
   set figure(placement: auto)
