@@ -8,14 +8,11 @@
 #let res = math.harpoon.tr
 #let inj = math.arrow.hook
 #let sur = math.arrow.twohead
-#let le = math.lt.eq.slant
-#let ge = math.gt.eq.slant
 #let dom = math.op("dom")
 #let cod = math.op("cod")
 #let ran = math.op("ran")
 #let cal = text.with(font: "Pxsy")
 #let todo(body) = text(red, [todo: ] + body)
-#let roman(i) = ("(I)", "(Ⅱ)", "(Ⅲ)", "(Ⅳ)", "(Ⅴ)", "(Ⅵ)").at(i - 1)
 
 #let preamble(date: true, header: true, dark: false, body) = {
   show: details
@@ -26,11 +23,8 @@
 
   set heading(numbering: "1.1.1")
   set figure(placement: auto)
-  set text(size: 15pt)
-  // set text(font: ("Libertinus Serif", "UD Digi Kyokasho N-R"))
-  set enum(indent: 5pt, body-indent: 5pt)
-  set list(indent: 5pt, body-indent: 5pt, marker: [•])
-  set outline(indent: auto)
+  set text(size: 16pt)
+  set list(marker: [•])
   set page(margin: .5in, numbering: "1")
   set page(
     header: context {
