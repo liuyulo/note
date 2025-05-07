@@ -35,7 +35,10 @@ Suppose $OO NN$ is the set of all ordinals, then itself would be an ordinal beca
 ]
 
 
-= Another Section
-== A Subsection
-
+= Appendix
+== Subsection
+#lorem(200)
+== Another Subsection
+#lorem(200)
+== More Subsections
 #lorem(200)
