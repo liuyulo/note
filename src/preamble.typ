@@ -22,7 +22,6 @@
   show math.equation: set text(font: "Libertinus Math")
 
   set heading(numbering: "1.1.1")
-  set figure(placement: auto)
   set text(size: 16pt)
   set list(marker: [•])
   set page(margin: .5in, numbering: "1")
