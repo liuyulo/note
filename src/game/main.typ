@@ -4,3 +4,5 @@
 #show: preamble
 
 #include "01-comb.typ"
+
+#bibliography("refs.bib")
