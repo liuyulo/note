@@ -64,12 +64,30 @@
   }
 }
 
-#cetz.canvas({
+#let Hex = smallcaps[Hex]
+#definition(name: Hex)[
+  The game of #Hex is played on a rhombus-shaped board tiled with hexagons (see @hex). Two players are assigned different colors and opposite sides of the board. They take turns coloring an empty hexagon, and the player who connects the two sides first wins.
+]
+
+#let n = 4
+#figure(cetz.canvas({
   import cetz.draw: *
-  let n = 4
   let arr = (..range(n), n, ..range(n).rev())
   let arr = arr.map(n => n + 2)
   for (x, n) in arr.enumerate() {
     hexagons(x, n / 2, n)
   }
-})
+}))<hex>
+
+=== Reduction to Y
+
+#cetz.canvas(
+  length: 15pt,
+  {
+    import cetz.draw: *
+    let arr = range(n * 2).rev()
+    for (x, n) in arr.enumerate() {
+      hexagons(x, n / 2, n)
+    }
+  },
+)
