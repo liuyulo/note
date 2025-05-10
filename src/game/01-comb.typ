@@ -46,13 +46,23 @@
 //   Define $Ω_f$ to be the set of plays $(a_1,a_2,⋯)$ such that $a_(k+1)=f(a_1,⋯,a_k)$ whenever $τ(a_1,⋯,a_k)=i$. It follows that $f$ is _winning_ iff $Ω_f ⊆ W_i$.
 // ]
 
-#definition[A *combinatorial game* is a structure $G=⟨X,R_1,R_2⟩$ where
+// #definition[A *combinatorial game* is a structure $G=⟨X,R_1,R_2⟩$ where
+//
+//   - $X$ is the set of *positions*,
+//   - $R_i ⊆ X × X$ is the set of *moves* for player $i$.
+// ]
+//
+// We say that $x in X$ is a *terminal* position for player $i$ if there exists no $y$ such that $x R_i y$. A game is *impartial* if the players have the same move (i.e. $R_1=R_2$), otherwise it is *partisan*.
 
-  - $X$ is the set of *positions*,
-  - $R_i ⊆ X × X$ is the set of *moves* for player $i$.
-]
+== Hex
 
-We say that $x in X$ is a *terminal* position for player $i$ if there exists no $y$ such that $x R_i y$. A game is *impartial* if the players have the same move (i.e. $R_1=R_2$), otherwise it is *partisan*.
+#let hexagons(x, y, n) = {
+  // draw n adjacent hexagons vertically
+  import cetz.draw: *
+  for j in range(n) {
+    polygon((x * 1.5, (y - j) * calc.sqrt(3)), 6)
+  }
+}
 
 #cetz.canvas({
   import cetz.draw: *
@@ -60,8 +70,6 @@ We say that $x in X$ is a *terminal* position for player $i$ if there exists no 
   let arr = (..range(n), n, ..range(n).rev())
   let arr = arr.map(n => n + 2)
   for (x, n) in arr.enumerate() {
-    for j in range(n) {
-      polygon((x * 1.5, (n / 2 - j) * calc.sqrt(3)), 6)
-    }
+    hexagons(x, n / 2, n)
   }
 })
