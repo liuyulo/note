@@ -41,6 +41,7 @@ We introduce the game of #Hex and show its determinacy. In particular, we show t
 ]
 
 #let n = 4
+#let rng = suiji.gen-rng-f(42)
 #figure(
   cetz.canvas(
     length: 17pt,
@@ -48,6 +49,7 @@ We introduce the game of #Hex and show its determinacy. In particular, we show t
       import cetz.draw: *
       let arr = (..range(n), n, ..range(n).rev())
       let arr = arr.map(n => n + 2)
+      let ss = ()
       for (x, n) in arr.enumerate() {
         let ss = range(n - 2).map(_ => none)
         let ss = if x < n { (blue, ..ss, yellow) } else { (yellow, ..ss, blue) }
@@ -55,7 +57,6 @@ We introduce the game of #Hex and show its determinacy. In particular, we show t
       }
 
       translate(x: 16)
-      let (rng, ss) = (suiji.gen-rng-f(42), ())
       for (x, n) in arr.enumerate() {
         (rng, ss) = suiji.choice-f(rng, (blue, yellow), size: n - 2)
         let ss = if x < n { (blue, ..ss, yellow) } else { (yellow, ..ss, blue) }
@@ -63,22 +64,43 @@ We introduce the game of #Hex and show its determinacy. In particular, we show t
       }
     },
   ),
-  caption:[An empty #Hex board (left) and a filled #Hex board (right)]
+  caption: [An empty #Hex board (left) and a filled #Hex board (right)],
 )<hex>
 
-Notably, the players do not have to alternate between turns, and do not need to terminate the game once the opposite sides have a connecting path. The following theorem encapsulates this generalisation, and implies that #Hex has no ties.
+Notably, the players do not have to alternate between turns, and do not need to terminate the game once the opposite sides have a connecting path. This generalisation is alluded by the theorem that every filled #Hex board has one and only one connecting path from opposite sides. It then follows that #Hex has no ties.
 
-#theorem[
-  Every filled #Hex board has exactly one connecting path from opposite sides.
-]
+To prove this theorem, we reduce a game of #Hex to a game of #Y.
 
-#cetz.canvas(
-  length: 15pt,
-  {
-    import cetz.draw: *
-    let arr = range(n * 2).rev()
-    for (x, n) in arr.enumerate() {
-      hexagons(x, n / 2, range(n).map(_ => ()))
-    }
-  },
+=== Reduction to Y
+
+#definition(
+  name: Y,
+)[The game of #Y is played on a triangular board tiled with hexagons. Similar to #Hex, the players are assigned two colors, and they take turns coloring each hexagon. The winner is the player who establishes a monochrmatic connected region (a "Y") that meets all three sides of the triangle.]
+
+#figure(
+  cetz.canvas(
+    length: 17pt,
+    {
+      import cetz.draw: *
+      let arr = range(n * 2).rev()
+      for (x, n) in arr.enumerate() {
+        hexagons(x, n / 2, range(n).map(_ => ()))
+      }
+      translate(x: 16)
+      let ss = ()
+      for (x, n) in arr.enumerate() {
+        (rng, ss) = suiji.choice-f(rng, (blue, yellow), size: n)
+        hexagons(x, n / 2, ss.map(f => (fill: f)))
+      }
+    },
+  ),
+  caption: [An empty #Y board (left) and a filled #Y board (right)],
 )
+
+We prove that every filled #Y board contains exactly one Y. This is done via reduction to smaller boards.
+#theorem[
+  Every filld #Y board of side length $n$ contains exactly one Y.
+]
+#proof[
+
+]
