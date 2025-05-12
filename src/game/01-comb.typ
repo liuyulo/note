@@ -52,7 +52,7 @@ We introduce the game of #Hex and show its determinacy. In particular, we show t
       let arr = arr.map(n => n + 2)
       let ss = ()
       for (x, n) in arr.enumerate() {
-        let ss = range(n - 2).map(_ => none)
+        let ss = array.replicate(n - 2, none)
         let ss = if x < n { (blue, ..ss, yellow) } else { (yellow, ..ss, blue) }
         hexagons(x, n / 2, ss.map(f => (fill: f)))
       }
@@ -85,7 +85,7 @@ To prove this theorem, we reduce a game of #Hex to a game of #Y.
       import cetz.draw: *
       let arr = range(n * 2).rev()
       for (x, n) in arr.enumerate() {
-        hexagons(x, n / 2, range(n).map(_ => ()))
+        hexagons(x, n / 2, array.replicate(n, ()))
       }
       translate(x: 16)
       let ss = ()
@@ -109,7 +109,7 @@ Playing #Hex is equivalent to playing #Y with some hexagons precolored, as show 
       let arr = arr.map(n => n + 2)
       let ss = ()
       for (x, n) in arr.enumerate() {
-        let ss = range(n - 2).map(_ => none)
+        let ss = array.replicate(n - 2, none)
         let ss = if x < n { (blue, ..ss, yellow) } else { (yellow, ..ss, blue) }
         hexagons(x, n / 2, ss.map(f => (fill: f)))
       }
