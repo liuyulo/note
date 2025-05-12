@@ -1,4 +1,5 @@
 #import "preamble.typ": *
+#import "../array.typ"
 
 #import "@preview/suiji:0.3.0"
 #let Hex = smallcaps[Hex]
@@ -96,6 +97,37 @@ To prove this theorem, we reduce a game of #Hex to a game of #Y.
   ),
   caption: [An empty #Y board (left) and a filled #Y board (right)],
 )
+
+Playing #Hex is equivalent to playing #Y with some hexagons precolored, as show in
+
+#figure(
+  cetz.canvas(
+    length: 17pt,
+    {
+      import cetz.draw: *
+      let arr = (..range(n), n, ..range(n).rev())
+      let arr = arr.map(n => n + 2)
+      let ss = ()
+      for (x, n) in arr.enumerate() {
+        let ss = range(n - 2).map(_ => none)
+        let ss = if x < n { (blue, ..ss, yellow) } else { (yellow, ..ss, blue) }
+        hexagons(x, n / 2, ss.map(f => (fill: f)))
+      }
+      translate(x: 16)
+      let arr = range(n * 2).rev()
+      for (x, i) in arr.enumerate() {
+        let ss = (
+          ..array.replicate(i - 4, blue),
+          ..array.replicate(calc.min(i, n * 2 - i), none),
+          ..array.replicate(i - 4, yellow),
+        ).map(c => (fill: c))
+        hexagons(x, i / 2, ss)
+      }
+    },
+  ),
+  caption: [An empty #Y board (left) and a filled #Y board (right)],
+)
+
 
 We prove that every filled #Y board contains exactly one Y. This is done via reduction to smaller boards.
 #theorem[
