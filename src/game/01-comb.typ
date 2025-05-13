@@ -125,7 +125,7 @@ Playing #Hex is equivalent to playing #Y with some hexagons precolored, as show 
       }
     },
   ),
-  caption: [An empty #Y board (left) and a filled #Y board (right)],
+  caption: [Reduction from #Hex to #Y],
 )<reduce>
 
 
