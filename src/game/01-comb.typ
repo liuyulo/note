@@ -134,5 +134,48 @@ We prove that every filled #Y board contains exactly one Y. This is done via red
   Every filled #Y board of side length $n$ contains exactly one Y.
 ]
 #proof[
+  We reduce a filled #Y board of length $n$ to a board of $n-1$. It then it follows from induction that every filled board has exactly one Y, because a board of length $1$ has exactly one.
+
+  Intuitively, given a filled $n$ board, we construct a $n-1$ board by disregarding the left-most column.
+  #let arrs = ()
+  #arrs.push((
+    (yellow, yellow, blue, yellow, blue),
+    (blue, blue, yellow, yellow),
+    (yellow, yellow, blue),
+    (blue, yellow),
+    (yellow,),
+  ))
+  #arrs.push((
+    (yellow, blue, yellow, yellow),
+    (blue, yellow, yellow),
+    (yellow, yellow),
+    (yellow,),
+  ))
+  #arrs.push((
+    (blue, yellow, yellow),
+    (yellow, yellow),
+    (yellow,),
+  ))
+  #arrs.push((
+    (yellow, yellow),
+    (yellow,),
+  ))
+  #arrs.push(((yellow,),))
+  #figure(
+    cetz.canvas(
+      length: 14pt,
+      {
+        import cetz.draw: *
+        for (i, arrs) in arrs.enumerate() {
+          let arr = range(arrs.len() + 1).rev()
+          for (x, arr) in arrs.enumerate() {
+            hexagons(x, arr.len() / 2, arr.map(f => (fill: f)))
+          }
+          translate(x: 10 - i)
+        }
+      },
+    ),
+    caption: [An empty #Y board (left) and a filled #Y board (right)],
+  )
 
 ]
