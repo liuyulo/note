@@ -166,16 +166,31 @@ We prove that every filled #Y board contains exactly one Y. This is done via red
       length: 14pt,
       {
         import cetz.draw: *
-        for (i, arrs) in arrs.enumerate() {
-          let arr = range(arrs.len() + 1).rev()
-          for (x, arr) in arrs.enumerate() {
-            hexagons(x, arr.len() / 2, arr.map(f => (fill: f)))
+        let s = calc.sqrt(3)
+        group({
+          for (i, arrs) in arrs.enumerate() {
+            let arr = range(arrs.len() + 1).rev()
+            for (x, arr) in arrs.enumerate() {
+              hexagons(x, arr.len() / 2, arr.map(f => (fill: f)))
+            }
+            translate(x: 10 - i)
           }
-          translate(x: 10 - i)
-        }
+        })
+        set-style(line: (stroke: red + 3pt), polygon: (stroke: red + 3pt))
+
+        let arr = (
+          (1, s * 1.5),
+          (.5, s * 2),
+          (1, s * 2.5),
+          (2, s * 2.5),
+          (2.5, s * 2),
+          (3.5, s * 2),
+          (4, s * 1.5),
+        )
+        line(..arr, ..arr.map(((x, y)) => (x, -y + s * 3)).rev())
+        polygon((11.5, s * 1.5), 6)
       },
     ),
     caption: [Reduction from a filled $5$ board to smaller boards],
   )
-
 ]
