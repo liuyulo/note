@@ -175,7 +175,7 @@ We prove that every filled #Y board contains exactly one Y. This is done via red
         }
       },
     ),
-    caption: [An empty #Y board (left) and a filled #Y board (right)],
+    caption: [Reduction from a filled $5$ board to smaller boards],
   )
 
 ]
