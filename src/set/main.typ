@@ -4,4 +4,6 @@
 
 #show: preamble
 
+#include "cardinal.typ"
+
 #bibliography("refs.bib")
