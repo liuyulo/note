@@ -24,7 +24,28 @@ For convenience, let $|A|⩽ |B|$ denote the statement "there is an injection fr
   BWOC assume $κ ⩽ α$, then $|α|=|κ|=κ$, contradicting $α < κ$.
 ]
 
-== Cardinal Arithmetic
+== Cardinal Arithmetics
+
+#definition[
+  Let $κ$ and $λ$ be cardinals. 
+  $
+  κ plus.square λ &≝ |κ × {0} ∪ λ × {1}|\
+  κ times.circle λ &≝ |κ × λ|
+  $
+]
+
+Notice that $plus.square$ and $times.circle$ are commutative.
+
+#theorem[
+  Every infinite cardinal is a limit ordinal.
+]
+#proof[
+  BWOC assume some infinite cardinal $κ=α+1$ for some ordinal $α$. Since $α$ must be infinite, we have that $|1+α|=|α|$. It then follows that
+  $
+  κ=|κ|=|α+1|=|1+α|=|α|.
+  $
+  Thus $κ ⩽ α$, contradicting that $κ=α+1 > α$.
+]
 
 #theorem(name: [Product Theorem])[(#ac) For any infinite cardinal $κ$
 
