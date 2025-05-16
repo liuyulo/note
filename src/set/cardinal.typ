@@ -2,6 +2,21 @@
 
 = Cardinals
 
+#definition[A set $A$ is said to be *equinumerous*  to $B$, denoted $|A|=|B|$, iff there is a bijection from $A$ to $B$.]
+
+#definition[Let $A$ be well-orderable. The *cardinality* of $A$, denoted $|A|$, is the smallest ordinal equinumerous to $A$.]
+#definition[An ordinal $α$ is a *cardinal* iff $|α|=α$.]
+
+For convenience, let $|A|⩽ |B|$ denote the statement "there is an injection from $A$ to $B$".
+
+#theorem(name:[Cantor-Berstein])[
+  Let $A$ and $B$ be well-orderable sets. If $|A| ⩽ |B|$ and $|B| ⩽ |A|$, then $|A|=|B|$.
+]
+
+#lemma[Let $α$ and $β$ be ordinals. If $|α| ⩽ β ⩽ α$, then $|α|=|β|$.]
+#proof[
+  $β ⩽ α$ implies $|β| ⩽ |α|$; and $|α| ⩽ β$ implies $|a|=||a|| ⩽ |β|$.
+]
 #corollary[
   Let $α$ be an ordinal and $κ$ be a cardinal. If $|α| < κ$, then $α < κ$.
 ]<ord-card>
