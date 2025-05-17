@@ -2,14 +2,14 @@
 
 = Cardinals
 
-#definition[A set $A$ is said to be *equinumerous*  to $B$, denoted $|A|=|B|$, iff there is a bijection from $A$ to $B$.]
+#definition[A set $A$ is said to be *equinumerous* to $B$, denoted $|A|=|B|$, iff there is a bijection from $A$ to $B$.]
 
 #definition[Let $A$ be well-orderable. The *cardinality* of $A$, denoted $|A|$, is the smallest ordinal equinumerous to $A$.]
 #definition[An ordinal $α$ is a *cardinal* iff $|α|=α$.]
 
 For convenience, let $|A|⩽ |B|$ denote the statement "there is an injection from $A$ to $B$".
 
-#theorem(name:[Cantor-Berstein])[
+#theorem(name: [Cantor-Berstein])[
   Let $A$ and $B$ be well-orderable sets. If $|A| ⩽ |B|$ and $|B| ⩽ |A|$, then $|A|=|B|$.
 ]
 
@@ -30,12 +30,12 @@ For convenience, let $|A|⩽ |B|$ denote the statement "there is an injection fr
 
 We say a cardinal is a _successor_ cardinal iff it is the successor of some cardinal, otherwise it is a _limit_ cardinal.
 
-#definition(name:[Alephs])[
+#definition(name: [Alephs])[
   Through recursion, define the cardinal $aleph_α=ω_α$ for any ordinal $α$:
   $
-  aleph_0=ω_0 &≝ ω,\
-  aleph_α=ω_α& ≝  sup_(xi < α) aleph_xi quad α "is a limit ordinal",\
-  aleph_(α+1)=ω_(α+1) & ≝ aleph_a^+.\
+            aleph_0=ω_0 & ≝ ω,                                                 \
+            aleph_α=ω_α & ≝ sup_(xi < α) aleph_xi quad α "is a limit ordinal", \
+    aleph_(α+1)=ω_(α+1) & ≝ aleph_a^+.                                         \
   $
 ]
 
@@ -52,7 +52,7 @@ We say a cardinal is a _successor_ cardinal iff it is the successor of some card
 #proof[
   BWOC assume some infinite cardinal $κ=α+1$ for some ordinal $α$. Since $α$ must be infinite, we have that $|1+α|=|α|$. It then follows that
   $
-  κ=|κ|=|α+1|=|1+α|=|α|.
+    κ=|κ|=|α+1|=|1+α|=|α|.
   $
   Thus $κ ⩽ α$, contradicting that $κ=α+1 > α$.
 ]
@@ -60,9 +60,9 @@ We say a cardinal is a _successor_ cardinal iff it is the successor of some card
 == Cardinal Multiplication
 
 #definition[
-  Let $κ$ and $λ$ be cardinals. 
+  Let $κ$ and $λ$ be cardinals.
   $
-  κ times.circle λ &≝ |κ × λ|
+    κ times.circle λ & ≝ |κ × λ|
   $
 ]
 
@@ -90,13 +90,13 @@ Notice that $times.circle$ is commutative.
 
   The left-most inequality follows from the definition of cardinality. To show $otp_prec (κ × κ) ⩽ sup_(δ < κ) otp_prec (δ × δ)$, let any $xi < otp(κ × κ)$, and we claim that $xi < otp(δ × δ)$ for some $δ < κ$. Let $(α,β)dn$ be the initial segment of $κ × κ$ order isomorphic to $xi$. Define $δ= (α ∪ β)+1 < κ$ (notice $κ$ is a limit ordinal), then it follows that for any $(α',β') prec (α,β)$
   $
-  α' ∪ β' ⩽ α ∪ β < δ.
+    α' ∪ β' ⩽ α ∪ β < δ.
   $
   Therefore, $(α',β') in δ × δ$ and $(α,β)dn$ (which is order isomorphic to $α$) is also an initial segment of $δ × δ$. Thus $α < otp(δ × δ)$.
 
   To show $otp(δ × δ) < κ$, let any $δ < κ$. By induction hypothesis, it follows that
   $
-  |otp(δ × δ)|=|δ × δ|=|δ| ⩽ δ < κ.
+    |otp(δ × δ)|=|δ × δ|=|δ| ⩽ δ < κ.
   $
   Thus $otp(δ × δ)<κ$ by @ord-card.
 ]
@@ -104,11 +104,27 @@ Notice that $times.circle$ is commutative.
 #corollary[
   (#ac) Let $κ$ be infinite and ${X_α:α < κ}$ be a family in which each $|X_α| ⩽ κ$, then
   $
-  abs(union.big_(α < κ) X_α) ⩽ κ.
+    abs(union.big_(α < κ) X_α) ⩽ κ.
   $
 ]
 #proof[
   Choose each $f_α:X_α inj κ$ by #ac and let $X=union.big_α X_α$. It suffices to construct $f:X inj κ × κ$ and apply @product.
 
   For each $x in X$, define $α_x = min{α < κ: x in X_α}$. Let $f(x)=(α_x,f_(α_x) (x))$. If $(α,f_α (x))=(α,f_α (x'))$ for $α=α_x=α_(x')$, then $f_α (x)=f_α (x')$, so $x=x'$ since $f_α$ is injective.
+]
+
+== Cardinal Exponentiation
+
+#definition[(#ac) Let $κ$ and $λ$ be cardinals
+
+  $
+    κ^λ ≝ |attach(κ, tl: λ)|
+  $]
+#lemma[If $λ$ is an infinite cardinal and $2 ⩽ κ ⩽ λ$, then
+  $
+    2^λ = κ^λ = λ^λ = |cal(P)(λ)|.
+  $
+]
+#proof[
+  By @product we have $2^λ ⩽ κ^λ ⩽ λ^λ ⩽ |cal(P)(λ × λ)|=|cal(P)(λ)|$, and $|attach(λ,tl:2)|=|cal(P)(λ)|$ is established by the bijection $f |-> {x in λ:f(x)=1|$.
 ]
