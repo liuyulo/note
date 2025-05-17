@@ -46,18 +46,6 @@ We say a cardinal is a _successor_ cardinal iff it is the successor of some card
   + $α$ is a limit ordinal iff $aleph_α$ is a limit cardinal.
 ]
 
-== Cardinal Arithmetics
-
-#definition[
-  Let $κ$ and $λ$ be cardinals. 
-  $
-  κ plus.square λ &≝ |κ × {0} ∪ λ × {1}|\
-  κ times.circle λ &≝ |κ × λ|
-  $
-]
-
-Notice that $plus.square$ and $times.circle$ are commutative.
-
 #theorem[
   Every infinite cardinal is a limit ordinal.
 ]
@@ -68,6 +56,18 @@ Notice that $plus.square$ and $times.circle$ are commutative.
   $
   Thus $κ ⩽ α$, contradicting that $κ=α+1 > α$.
 ]
+
+== Cardinal Multiplication
+
+#definition[
+  Let $κ$ and $λ$ be cardinals. 
+  $
+  κ times.circle λ &≝ |κ × λ|
+  $
+]
+
+Notice that $times.circle$ is commutative.
+
 
 #theorem(name: [Product Theorem])[(#ac) For any infinite cardinal $κ$
 
