@@ -24,6 +24,28 @@ For convenience, let $|A|⩽ |B|$ denote the statement "there is an injection fr
   BWOC assume $κ ⩽ α$, then $|α|=|κ|=κ$, contradicting $α < κ$.
 ]
 
+#definition[
+  Let $κ$ be a cardinal. The *successor* of $κ$, denoted $κ^+$ is the least cardinal greater than $κ$.
+]
+
+We say a cardinal is a _successor_ cardinal iff it is the successor of some cardinal, otherwise it is a _limit_ cardinal.
+
+#definition(name:[Alephs])[
+  Through recursion, define the cardinal $aleph_α=ω_α$ for any ordinal $α$:
+  $
+  aleph_0=ω_0 &≝ ω,\
+  aleph_α=ω_α& ≝  sup_(xi < α) aleph_xi quad α "is a limit ordinal",\
+  aleph_(α+1)=ω_(α+1) & ≝ aleph_a^+.\
+  $
+]
+
+#lemma[
+  + $aleph_α$ is a cardinal for any ordinal $α$.
+  + Every infinite cardinal is equal to $aleph_α$ for some ordinal $α$.
+  + If $α < β$, then $ω_β < ω_β$.
+  + $α$ is a limit ordinal iff $aleph_α$ is a limit cardinal.
+]
+
 == Cardinal Arithmetics
 
 #definition[
@@ -52,7 +74,7 @@ Notice that $plus.square$ and $times.circle$ are commutative.
   $
     κ times.circle κ=κ.
   $
-]
+]<product>
 #proof[
   An injection from $κ$ to $κ × κ$ is straight forward, so we are left to show that $κ times.circle κ ⩽ κ$. Assume $α times.circle α=α$ for any infinite cardinal $α < κ$. Define the following well-order $prec$ on $κ × κ$:
 
@@ -77,4 +99,16 @@ Notice that $plus.square$ and $times.circle$ are commutative.
   |otp(δ × δ)|=|δ × δ|=|δ| ⩽ δ < κ.
   $
   Thus $otp(δ × δ)<κ$ by @ord-card.
+]
+
+#corollary[
+  (#ac) Let $κ$ be infinite and ${X_α:α < κ}$ be a family in which each $|X_α| ⩽ κ$, then
+  $
+  abs(union.big_(α < κ) X_α) ⩽ κ.
+  $
+]
+#proof[
+  Choose each $f_α:X_α inj κ$ by #ac and let $X=union.big_α X_α$. It suffices to construct $f:X inj κ × κ$ and apply @product.
+
+  For each $x in X$, define $α_x = min{α < κ: x in X_α}$. Let $f(x)=(α_x,f_(α_x) (x))$. If $(α,f_α (x))=(α,f_α (x'))$ for $α=α_x=α_(x')$, then $f_α (x)=f_α (x')$, so $x=x'$ since $f_α$ is injective.
 ]
