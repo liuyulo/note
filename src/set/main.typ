@@ -5,5 +5,6 @@
 #show: preamble
 
 #include "cardinal.typ"
+#include "cofinal.typ"
 
 #bibliography("refs.bib")
