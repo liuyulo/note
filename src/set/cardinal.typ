@@ -13,7 +13,7 @@ For convenience, let $|A|⩽ |B|$ denote the statement "there is an injection fr
   Let $A$ and $B$ be well-orderable sets. If $|A| ⩽ |B|$ and $|B| ⩽ |A|$, then $|A|=|B|$.
 ]
 
-#lemma[Let $α$ and $β$ be ordinals. If $|α| ⩽ β ⩽ α$, then $|α|=|β|$.]
+#proposition[Let $α$ and $β$ be ordinals. If $|α| ⩽ β ⩽ α$, then $|α|=|β|$.]
 #proof[
   $β ⩽ α$ implies $|β| ⩽ |α|$; and $|α| ⩽ β$ implies $|a|=||a|| ⩽ |β|$.
 ]
@@ -39,7 +39,7 @@ We say a cardinal is a _successor_ cardinal iff it is the successor of some card
   $
 ]
 
-#lemma[
+#proposition[
   + $aleph_α$ is a cardinal for any ordinal $α$.
   + Every infinite cardinal is equal to $aleph_α$ for some ordinal $α$.
   + If $α < β$, then $ω_β < ω_β$.
