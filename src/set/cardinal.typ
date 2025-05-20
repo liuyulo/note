@@ -39,12 +39,12 @@ We say a cardinal is a _successor_ cardinal iff it is the successor of some card
   $
 ]
 
-#proposition[
-  + $aleph_α$ is a cardinal for any ordinal $α$.
-  + Every infinite cardinal is equal to $aleph_α$ for some ordinal $α$.
+#lemma[
+  + $omega_α$ is a cardinal for any ordinal $α$.
+  + Every infinite cardinal is equal to $omega_α$ for some ordinal $α$.
   + If $α < β$, then $ω_β < ω_β$.
-  + $α$ is a limit ordinal iff $aleph_α$ is a limit cardinal.
-]
+  + $α$ is a limit ordinal iff $omega_α$ is a limit cardinal.
+]<aleph>
 
 #theorem[
   Every infinite cardinal is a limit ordinal.
