@@ -81,3 +81,10 @@ Notice that this union ensures that $f$ is increasing and cofinal. If we were to
   }),
   caption: $h(gamma)=min{xi in alpha:f(xi)>g_beta (gamma)$,
 )<h>
+
+#corollary[
+  If $alpha$ is a limit ordinal, then $cof omega_alpha=cof alpha$.
+]
+#proof[
+  Define $f:alpha->omega_alpha$ by $f(xi)=omega_xi$. Since $f$ is strictly increasing, it suffices to show that it is cofinal. Since $alpha$ is a limit ordinal, every $gamma in omega_alpha$ has some $xi in alpha$ such that $gamma < omega_xi=f(xi)$.
+]
