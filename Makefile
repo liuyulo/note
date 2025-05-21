@@ -9,7 +9,7 @@ public: $(patsubst public/%,build/%,$(shell find public -type f))
 
 build/%.pdf: src/%/main.typ 
 	mkdir -p "$(dir $@)"
-	typst compile --font-path fonts --root . "$<" "$@"
+	typst compile --ignore-system-fonts --font-path fonts --root . "$<" "$@"
 
 clean:
 	rm -rf build
