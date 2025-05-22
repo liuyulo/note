@@ -1,6 +1,5 @@
 #import "./details.typ": details
 #import "./array.typ"
-#let sf = text.with(font: "Roboto")
 
 #let br(base, a) = math.attach(base, br: a)
 #let tr(base, a) = math.attach(base, tr: a)
@@ -18,7 +17,7 @@
   show: details
   show list: set block(above: 0.5em, below: 1em)
   show enum: set block(above: 0.5em, below: 1em)
-  show raw: set text(font: "Iosevka Custom", discretionary-ligatures: true)
+  show raw: set text(font: "Iosevka Custom NF", discretionary-ligatures: true)
   show math.equation: set text(font: "Libertinus Math")
 
   set heading(numbering: "1.1.1")
